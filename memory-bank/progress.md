@@ -17,45 +17,49 @@
 
 ## Currently Working On
 
-- 🔄 **Ready for MVP-02**: Theme & Design Tokens
+- ✅ **MVP-02**: Theme & Design Tokens (COMPLETED)
+- 🔄 **Ready for MVP-03**: Header & Navigation
 
-## What's Left (20 stories total)
+## What's Left (21 stories total)
 
-### EPIC: Project Setup & Tooling
+### EPIC-MVP-SETUP: Project Setup & Tooling
 
 - ✅ **MVP-01**: Scaffold & Tooling (COMPLETED)
-- ⏸️ **MVP-02**: Theme & Design Tokens
+- ✅ **MVP-02**: Theme & Design Tokens (COMPLETED)
 
-### EPIC: App Shell
+### EPIC-MVP-SHELL: App Shell
 
-- ⏸️ **MVP-03**: Header & Navigation
-- ⏸️ **MVP-04**: Footer
+- ⏸️ **MVP-03**: Header & Navigation (sticky, responsive, mobile drawer)
+- ⏸️ **MVP-04**: Footer (4 columns + socials + legal pages)
 
-### EPIC: Homepage (9 stories)
+### EPIC-MVP-HOMEPAGE: Homepage (9 sections)
 
-- ⏸️ **MVP-05**: Hero
-- ⏸️ **MVP-06**: Track Chooser + CTA
-- ⏸️ **MVP-07**: Trust Strip
-- ⏸️ **MVP-08**: Video Banner
-- ⏸️ **MVP-09**: Why TechLabs
-- ⏸️ **MVP-10**: Stories Carousel
-- ⏸️ **MVP-11**: Numbers Band
-- ⏸️ **MVP-12**: Support CTA
-- ⏸️ **MVP-13**: FAQs
+- ⏸️ **MVP-05**: Hero (H1 + subhead with emphasis)
+- ⏸️ **MVP-06**: Track Chooser + Deadline + Persistence (sessionStorage)
+- ⏸️ **MVP-07**: Trust Strip (award + partner logos)
+- ⏸️ **MVP-08**: Video Banner (modal + captions + a11y focus trap)
+- ⏸️ **MVP-09**: Why TechLabs (3 value cards + CTA)
+- ⏸️ **MVP-10**: Stories Carousel (a11y controls, no autoplay)
+- ⏸️ **MVP-11**: Numbers Band (15 Cities, 600+ Graduates, 35 Mentors)
+- ⏸️ **MVP-12**: Support CTA (highlight CTA to /support)
+- ⏸️ **MVP-13**: FAQs (accordion + link to About #faq)
 
-### EPIC: Core Pages
+### EPIC-MVP-PAGES: Core Pages
 
-- ⏸️ **MVP-14**: Tracks Page
-- ⏸️ **MVP-15**: Events Page
-- ⏸️ **MVP-16**: Stories Page
-- ⏸️ **MVP-17**: Partners Page
-- ⏸️ **MVP-18**: About Us Page
+- ⏸️ **MVP-14**: Tracks Page (grid + inline expanders + query prefs)
+- ⏸️ **MVP-15**: Events Page (Upcoming/Past filters + pagination)
+- ⏸️ **MVP-16**: Stories Page (gallery + track filter + modal details)
+- ⏸️ **MVP-17**: Partners Page (tier grouping + partnership CTA)
+- ⏸️ **MVP-18**: About Us Page (mission + timeline + full FAQs + #faq anchor)
 
-### EPIC: Components & QA
+### EPIC-MVP-COMPONENTS: Shared Components Library
 
-- ⏸️ **MVP-19**: Shared Components Library
-- ⏸️ **MVP-20**: Accessibility & SEO Pass
-- ⏸️ **MVP-21**: Testing & Mocks Stabilization
+- ⏸️ **MVP-19**: Shared Primitives (10 reusable components with docs)
+
+### EPIC-MVP-QA: A11y, SEO, Testing & Mocks
+
+- ⏸️ **MVP-20**: Accessibility & SEO Pass (WCAG AA + Lighthouse targets)
+- ⏸️ **MVP-21**: Testing & Mocks Stabilization (8+ tests + Zod schemas)
 
 ## Known Issues
 
@@ -67,14 +71,24 @@
 - **Accessibility**: Will be tested in MVP-20
 - **Performance**: Will be optimized throughout development
 
-## Dependencies Resolved
+## Dependencies Chain (Per Jira Tickets)
 
-- All technical decisions made
-- No external dependencies blocking progress
+**Critical Path:**
+- MVP-01 → MVP-02 → (MVP-03, MVP-04)
+- MVP-03 → MVP-05 → MVP-06 → MVP-07 → MVP-08 → MVP-09 → MVP-10 → MVP-11 → MVP-12 → MVP-13
+- MVP-06 → MVP-14 (Tracks page needs track chooser for pref query)
+- MVP-10 → MVP-16 (Stories page extends carousel)
+- MVP-13 → MVP-18 (About page reuses FAQ accordion)
+
+**Parallel Tracks:**
+- MVP-02 → MVP-15 (Events page)
+- MVP-07 → MVP-17 (Partners page)
+- MVP-01 → MVP-19, MVP-21 (can start anytime)
+- All pages → MVP-20 (final A11y/SEO pass)
 
 ## Next Milestones
 
-1. **Week 1**: Complete foundation (MVP-01, MVP-02, MVP-03, MVP-04)
-2. **Week 2**: Homepage core sections (MVP-05 through MVP-09)
-3. **Week 3**: Homepage completion + pages (MVP-10 through MVP-18)
-4. **Week 4**: Components, testing, and final QA (MVP-19 through MVP-21)
+1. **Foundation Week**: MVP-01✅, MVP-02🔄, MVP-03, MVP-04
+2. **Homepage Sprint**: MVP-05 through MVP-13 (sequential)
+3. **Pages Sprint**: MVP-14 through MVP-18 (some parallel)
+4. **Polish Sprint**: MVP-19, MVP-20, MVP-21

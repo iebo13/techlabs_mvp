@@ -1,7 +1,9 @@
 import React from 'react'
-import { Container, Box, ContainerProps } from '@mui/material'
 
-export interface SectionProps extends Omit<ContainerProps, 'component'> {
+import { Container, Box } from '@mui/material'
+import type { ContainerProps } from '@mui/material/Container'
+
+export type SectionProps = {
     /** Background color variant */
     variant?: 'default' | 'paper' | 'primary' | 'secondary'
     /** Additional padding multiplier (default: 1) */
@@ -10,7 +12,7 @@ export interface SectionProps extends Omit<ContainerProps, 'component'> {
     component?: 'section' | 'div' | 'main' | 'article' | 'aside'
     /** Children content */
     children: React.ReactNode
-}
+} & Omit<ContainerProps, 'component'>
 
 /**
  * Section component provides consistent spacing and layout for page sections.

@@ -1,7 +1,9 @@
 import React from 'react'
-import { Typography, Box, TypographyProps } from '@mui/material'
 
-export interface SectionHeadingProps extends Omit<TypographyProps, 'variant'> {
+import { Typography, Box } from '@mui/material'
+import type { TypographyProps } from '@mui/material/Typography'
+
+export type SectionHeadingProps = {
     /** Heading level for semantic HTML and styling */
     level?: 1 | 2 | 3 | 4 | 5 | 6
     /** Visual emphasis style */
@@ -14,7 +16,7 @@ export interface SectionHeadingProps extends Omit<TypographyProps, 'variant'> {
     maxWidth?: string | number
     /** Children content (heading text) */
     children: React.ReactNode
-}
+} & Omit<TypographyProps, 'variant'>
 
 /**
  * SectionHeading component provides consistent heading typography and styling.
@@ -80,7 +82,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     return (
         <Box sx={containerStyles}>
             <Typography
-                component={`h${level}` as any}
+                component={`h${level}` as keyof JSX.IntrinsicElements}
                 variant={getVariant()}
                 sx={{
                     ...getEmphasisStyles(),

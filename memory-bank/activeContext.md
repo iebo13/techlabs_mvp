@@ -1,37 +1,35 @@
 # Active Context - TechLabs Website
 
-## Current Focus: MVP-03 Header & Navigation
+## Current Focus: MVP-05 Hero
 
 **Status**: Ready to implement  
-**Epic**: EPIC-MVP-SHELL (App Shell)
-**Dependencies**: MVP-02 ✅ (completed)
+**Epic**: EPIC-MVP-HOMEPAGE (Homepage)
+**Dependencies**: MVP-03 ✅ (completed)
 
 ## Immediate Task Details
 
-### MVP-03 Acceptance Criteria
-- ✅ Header visible and sticky; logo → "/"; client-side routing for nav items
-- ✅ <960px burger opens Drawer with same links; ESC closes; focus trap  
-- ✅ CTAs: **Start Learning** → `#tracks` on home or `/tracks`; **Join our team** → `/careers` (placeholder)
-- ✅ Add elevation after 8px scroll; use middle dots `·` in copy; "About Us" capitalization
+### MVP-05 Acceptance Criteria
+- ✅ H1 "Learn **Tech** Skills for Free" with emphasis span "Tech"
+- ✅ Subhead: "Blended learning · Local Community · Practical Projects"
 
 ### Technical Implementation
-- Components: MUI `AppBar`, `Menu`, `Drawer`, `IconButton`, `ListItemButton`
-- Router: React Router 7 `<Link>`
-- A11y: keyboard nav, aria, drawer focus trap
+- `Hero.tsx`; use theme typography clamps (`clamp(34px, 7vw, 88px)`)
+- Ensure there is a single page H1
 
 ### Tasks Breakdown
-1. Implement `HeaderNav.tsx` desktop & mobile
-2. Create `NavLink` with active state
-3. A11y tests (keyboard nav, aria, drawer focus trap)
+1. Build `Hero.tsx` layout & copy
+2. Snapshot test for copy & structure
 
 ## Recent Changes
 
-- ✅ **MVP-02 COMPLETED**: Theme & Design Tokens
-  - Created comprehensive MUI theme with design tokens
-  - Implemented Section and SectionHeading components
-  - Added ThemeProvider and CssBaseline integration
-  - Documented theme system with usage examples
-  - Verified WCAG AA color contrast compliance
+- ✅ **MVP-05 COMPLETED**: Hero
+  - Created Hero component with responsive typography and proper semantic structure
+  - Implemented H1 "Learn **Tech** Skills for Free" with emphasized "Tech" span
+  - Added subhead "Blended learning · Local Community · Practical Projects" with middle dot separators
+  - Used clamp() typography for responsive scaling across devices
+  - Organized HomePage as separate page component for better structure
+  - Added comprehensive Jest + RTL tests with snapshot testing
+  - Ensured single H1 per page for SEO and accessibility
 
 ## Decisions Made
 

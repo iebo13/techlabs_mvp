@@ -18,7 +18,10 @@
 ## Currently Working On
 
 - ✅ **MVP-02**: Theme & Design Tokens (COMPLETED)
-- 🔄 **Ready for MVP-03**: Header & Navigation
+- ✅ **MVP-03**: Header & Navigation (COMPLETED)
+- ✅ **MVP-04**: Footer (COMPLETED)
+- ✅ **MVP-05**: Hero (COMPLETED)
+- 🔄 **Ready for MVP-06**: Track Chooser + Deadline + Persistence
 
 ## What's Left (21 stories total)
 
@@ -26,15 +29,16 @@
 
 - ✅ **MVP-01**: Scaffold & Tooling (COMPLETED)
 - ✅ **MVP-02**: Theme & Design Tokens (COMPLETED)
+- ✅ **MVP-03**: Header & Navigation (COMPLETED)
 
 ### EPIC-MVP-SHELL: App Shell
 
-- ⏸️ **MVP-03**: Header & Navigation (sticky, responsive, mobile drawer)
-- ⏸️ **MVP-04**: Footer (4 columns + socials + legal pages)
+- ✅ **MVP-03**: Header & Navigation (COMPLETED)
+- ✅ **MVP-04**: Footer (COMPLETED)
 
 ### EPIC-MVP-HOMEPAGE: Homepage (9 sections)
 
-- ⏸️ **MVP-05**: Hero (H1 + subhead with emphasis)
+- ✅ **MVP-05**: Hero (COMPLETED)
 - ⏸️ **MVP-06**: Track Chooser + Deadline + Persistence (sessionStorage)
 - ⏸️ **MVP-07**: Trust Strip (award + partner logos)
 - ⏸️ **MVP-08**: Video Banner (modal + captions + a11y focus trap)

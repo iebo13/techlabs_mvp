@@ -1,22 +1,106 @@
-import prettier from 'eslint-config-prettier';
-import importPlugin from 'eslint-plugin-import';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
-import tseslint from 'typescript-eslint';
-import js from '@eslint/js';
-import globals from 'globals';
-import reactRefresh from 'eslint-plugin-react-refresh';
-import { globalIgnores } from 'eslint/config';
-import eslintPluginUnicorn from 'eslint-plugin-unicorn';
-import unusedImports from 'eslint-plugin-unused-imports';
+import prettier from 'eslint-config-prettier'
+import importPlugin from 'eslint-plugin-import'
+import react from 'eslint-plugin-react'
+import reactHooks from 'eslint-plugin-react-hooks'
+import tseslint from 'typescript-eslint'
+import js from '@eslint/js'
+import globals from 'globals'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { globalIgnores } from 'eslint/config'
+import eslintPluginUnicorn from 'eslint-plugin-unicorn'
+import unusedImports from 'eslint-plugin-unused-imports'
 
 export default [
   {
-    ignores: ['dist/*', 'build/*', 'node_modules/*'],
+    ignores: ['dist/*', 'build/*', 'node_modules/*', 'src/vite-env.d.ts'],
+  },
+  // Configuration for test files with vitest globals
+  {
+    files: ['src/**/*.test.{js,jsx,ts,tsx}', 'src/**/__tests__/**/*.{js,jsx,ts,tsx}', 'src/test/**/*.{js,jsx,ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      parser: tseslint.parser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+        project: './tsconfig.test.json',
+        tsconfigRootDir: '.',
+      },
+      globals: {
+        ...globals.browser,
+        describe: 'readonly',
+        it: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        test: 'readonly',
+        vi: 'readonly',
+      },
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+      'import/parsers': {
+        '@typescript-eslint/parser': ['.ts', '.tsx'],
+      },
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.test.json',
+        },
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tseslint.plugin,
+      react,
+      'react-hooks': reactHooks,
+      import: importPlugin,
+      'unused-imports': unusedImports,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      // Relaxed rules for test files
+      '@typescript-eslint/no-explicit-any': 'off',
+      'max-lines': 'off',
+      'max-lines-per-function': 'off',
+      'no-console': 'off',
+
+      // Keep important TypeScript rules
+      '@typescript-eslint/no-non-null-assertion': 'error',
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+      '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
+
+      // React rules
+      'react/prop-types': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
+      'react-hooks/rules-of-hooks': 'error',
+
+      // Import rules
+      'import/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
+      'unused-imports/no-unused-imports': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+    },
   },
   // Configuration for app source files with strict TypeScript checking
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
+    ignores: ['src/**/*.test.{js,jsx,ts,tsx}', 'src/**/__tests__/**/*.{js,jsx,ts,tsx}', 'src/test/**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -40,9 +124,6 @@ export default [
         typescript: {
           alwaysTryTypes: true,
           project: './tsconfig.app.json',
-        },
-        node: {
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
       },
     },
@@ -129,7 +210,6 @@ export default [
       'react/jsx-curly-brace-presence': ['warn', { props: 'never', children: 'never' }],
       'react/self-closing-comp': ['warn', { component: true, html: true }],
       /* Import rules */
-      'import/no-default-export': 'error',
       'import/prefer-default-export': 'off',
       'import/order': [
         'error',
@@ -235,4 +315,4 @@ export default [
   },
 
   prettier,
-];
+]

@@ -1,0 +1,83 @@
+import React from 'react'
+
+import { Link as RouterLink, useLocation } from 'react-router-dom'
+
+import { Link, useTheme } from '@mui/material'
+import type { LinkProps } from '@mui/material/Link'
+
+export type NavLinkProps = {
+    /** Target route path */
+    to: string
+    /** Whether this is an external link */
+    external?: boolean
+    /** Whether to show active state based on current route */
+    showActive?: boolean
+    /** Children content */
+    children: React.ReactNode
+} & Omit<LinkProps, 'component'>
+
+/**
+ * NavLink component provides consistent navigation styling with active states.
+ * Integrates with React Router for internal navigation and supports external links.
+ */
+export const NavLink: React.FC<NavLinkProps> = ({
+    to,
+    external = false,
+    showActive = true,
+    children,
+    sx,
+    ...linkProps
+}) => {
+    const location = useLocation()
+    const theme = useTheme()
+
+    const isActive = showActive && location.pathname === to
+
+    const linkStyles = {
+        color: isActive ? 'primary.main' : 'text.primary',
+        textDecoration: 'none',
+        fontWeight: isActive ? 700 : 600,
+        fontSize: '1rem',
+        padding: '8px 16px',
+        borderRadius: '8px',
+        transition: theme.transitions.create(['color', 'background-color'], {
+            duration: theme.transitions.duration.short,
+        }),
+        '&:hover': {
+            color: 'primary.main',
+            backgroundColor: 'rgba(250, 33, 92, 0.04)',
+            textDecoration: 'none',
+        },
+        '&:focus-visible': {
+            outline: `3px solid ${theme.palette.primary.main}25`,
+            outlineOffset: 2,
+            backgroundColor: 'rgba(250, 33, 92, 0.04)',
+        },
+        ...sx,
+    }
+
+    if (external) {
+        return (
+            <Link
+                href={to}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={linkStyles}
+                {...linkProps}
+            >
+                {children}
+            </Link>
+        )
+    }
+
+    return (
+        <Link
+            component={RouterLink}
+            to={to}
+            sx={linkStyles}
+            {...linkProps}
+        >
+            {children}
+        </Link>
+    )
+}

@@ -11,7 +11,6 @@ import {
     Box,
     Grid,
     useTheme,
-    useMediaQuery,
 } from '@mui/material'
 
 import homeData from '../mocks/home.json'
@@ -60,7 +59,8 @@ const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
  */
 export const TrustStrip: React.FC<TrustStripProps> = ({ className }) => {
     const theme = useTheme()
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+    // Mobile breakpoint ready for future responsive features
+    // const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
     // Validate and parse mock data
     const validatedData: HomeData = HomeDataSchema.parse(homeData)
@@ -100,10 +100,10 @@ export const TrustStrip: React.FC<TrustStripProps> = ({ className }) => {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        {partners.map((partner: Partner, index: number) => (
+                        {partners.map((partner: Partner) => (
                             <Grid
                                 size={{ xs: 6, sm: 3, md: 3 }}
-                                key={`${partner.name}-${index}`}
+                                key={partner.name}
                                 sx={{
                                     display: 'flex',
                                     justifyContent: 'center',
@@ -142,7 +142,6 @@ export const TrustStrip: React.FC<TrustStripProps> = ({ className }) => {
 
                 {/* Additional context for screen readers */}
                 <Typography
-                    variant="srOnly"
                     component="p"
                     aria-label="Our trusted partners support TechLabs educational programs"
                 >

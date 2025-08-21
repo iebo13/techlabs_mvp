@@ -23,7 +23,8 @@
 - ✅ **MVP-05**: Hero (COMPLETED)
 - ✅ **MVP-06**: Track Chooser + Deadline + Persistence (COMPLETED)
 - ✅ **MVP-07**: Trust Strip (Award + Logos) (COMPLETED)
-- 🔄 **Ready for MVP-08**: Video Banner (Modal + Captions)
+- ✅ **MVP-08**: Video Banner (Modal + Captions) (COMPLETED)
+- 🔄 **Ready for MVP-09**: Why TechLabs (3 value cards + CTA)
 
 ## What's Left (21 stories total)
 
@@ -43,7 +44,7 @@
 - ✅ **MVP-05**: Hero (COMPLETED)
 - ✅ **MVP-06**: Track Chooser + Deadline + Persistence (COMPLETED)
 - ✅ **MVP-07**: Trust Strip (award + partner logos) (COMPLETED)
-- ⏸️ **MVP-08**: Video Banner (modal + captions + a11y focus trap)
+- ✅ **MVP-08**: Video Banner (modal + captions + a11y focus trap) (COMPLETED)
 - ⏸️ **MVP-09**: Why TechLabs (3 value cards + CTA)
 - ⏸️ **MVP-10**: Stories Carousel (a11y controls, no autoplay)
 - ⏸️ **MVP-11**: Numbers Band (15 Cities, 600+ Graduates, 35 Mentors)
@@ -80,8 +81,8 @@
 ## Dependencies Chain (Per Jira Tickets)
 
 **Critical Path:**
-- MVP-01 → MVP-02 → (MVP-03, MVP-04)
-- MVP-03 → MVP-05 → MVP-06 → MVP-07 → MVP-08 → MVP-09 → MVP-10 → MVP-11 → MVP-12 → MVP-13
+- MVP-01 → MVP-02 → (MVP-03, MVP-04) ✅
+- MVP-03 → MVP-05 → MVP-06 → MVP-07 → MVP-08 ✅ → MVP-09 → MVP-10 → MVP-11 → MVP-12 → MVP-13
 - MVP-06 → MVP-14 (Tracks page needs track chooser for pref query)
 - MVP-10 → MVP-16 (Stories page extends carousel)
 - MVP-13 → MVP-18 (About page reuses FAQ accordion)

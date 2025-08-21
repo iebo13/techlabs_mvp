@@ -1,39 +1,38 @@
 # Active Context - TechLabs Website
 
-## Current Focus: MVP-08 Video Banner
+## Current Focus: MVP-09 Why TechLabs
 
 **Status**: Ready to implement  
 **Epic**: EPIC-MVP-HOMEPAGE (Homepage)
-**Dependencies**: MVP-07 ✅ (completed)
+**Dependencies**: MVP-08 ✅ (completed)
 
 ## Immediate Task Details
 
-### MVP-08 Acceptance Criteria (BDD)
-- ⏸️ Poster shows play button and `00:45` badge (aria-label duration)
-- ⏸️ Modal opens on play; ESC or overlay click closes; keyboard trap in modal
-- ⏸️ Captions track available
+### MVP-09 Acceptance Criteria (BDD)
+- ⏸️ Cards: "Totally free", "Networking", "Job Ready"; CTA below
+- ⏸️ Copy from `home.json` features array
 
 ### Technical Implementation
-- `HeroVideo.tsx` + `VideoEmbed` component; `.vtt` captions
-- Respect `prefers-reduced-motion`; no autoplay
+- `WhyTechlabs.tsx`; `ValuePropCard` component
+- 3 value cards with icons and CTA to `/tracks`
 
 ### Tasks Breakdown
-1. Implement video card & modal w/ focus trap
-2. Add captions & aria labels
-3. Tests: open/close via keyboard
+1. Build section and cards
+2. Tests: card titles render
 
 ## Recent Changes
 
 - ✅ **MVP-05 COMPLETED**: Hero (see details in progress.md)
 - ✅ **MVP-06 COMPLETED**: Track Chooser + Deadline + Persistence (see details in progress.md)
-- ✅ **MVP-07 COMPLETED**: Trust Strip (Award + Logos)
-  - TrustStrip component with Google.org Impact Challenge award line
-  - Partner logo grid with 4+ logos from mock data, lazy-loaded images
-  - Proper alt text using organization names for accessibility
-  - Responsive design with Grid v2 API (xs: 6, sm: 3, md: 3 layout)
-  - Grayscale hover effects and focus management for linked partners
-  - Comprehensive test suite (11 tests) covering all acceptance criteria
-  - Screen reader context and semantic structure
+- ✅ **MVP-07 COMPLETED**: Trust Strip (Award + Logos) (see details in progress.md)
+- ✅ **MVP-08 COMPLETED**: Video Banner (Modal + Captions)
+  - HeroVideo component with poster image, play button overlay, and 00:45 duration badge
+  - VideoEmbed modal component with HTML5 video, ESC/overlay close, and keyboard focus trap
+  - Captions track (.vtt) for accessibility with English subtitles
+  - Respects prefers-reduced-motion preference, no autoplay behavior
+  - Comprehensive test suites for both components (21+ tests total)
+  - Proper ARIA labels and keyboard navigation support
+  - Responsive design with mobile/desktop optimizations
 
 ## Decisions Made
 

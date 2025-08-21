@@ -21,7 +21,9 @@
 - ✅ **MVP-03**: Header & Navigation (COMPLETED)
 - ✅ **MVP-04**: Footer (COMPLETED)
 - ✅ **MVP-05**: Hero (COMPLETED)
-- 🔄 **Ready for MVP-06**: Track Chooser + Deadline + Persistence
+- ✅ **MVP-06**: Track Chooser + Deadline + Persistence (COMPLETED)
+- ✅ **MVP-07**: Trust Strip (Award + Logos) (COMPLETED)
+- 🔄 **Ready for MVP-08**: Video Banner (Modal + Captions)
 
 ## What's Left (21 stories total)
 
@@ -39,8 +41,8 @@
 ### EPIC-MVP-HOMEPAGE: Homepage (9 sections)
 
 - ✅ **MVP-05**: Hero (COMPLETED)
-- ⏸️ **MVP-06**: Track Chooser + Deadline + Persistence (sessionStorage)
-- ⏸️ **MVP-07**: Trust Strip (award + partner logos)
+- ✅ **MVP-06**: Track Chooser + Deadline + Persistence (COMPLETED)
+- ✅ **MVP-07**: Trust Strip (award + partner logos) (COMPLETED)
 - ⏸️ **MVP-08**: Video Banner (modal + captions + a11y focus trap)
 - ⏸️ **MVP-09**: Why TechLabs (3 value cards + CTA)
 - ⏸️ **MVP-10**: Stories Carousel (a11y controls, no autoplay)

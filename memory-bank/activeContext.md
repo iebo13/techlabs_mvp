@@ -1,35 +1,39 @@
 # Active Context - TechLabs Website
 
-## Current Focus: MVP-05 Hero
+## Current Focus: MVP-08 Video Banner
 
 **Status**: Ready to implement  
 **Epic**: EPIC-MVP-HOMEPAGE (Homepage)
-**Dependencies**: MVP-03 ✅ (completed)
+**Dependencies**: MVP-07 ✅ (completed)
 
 ## Immediate Task Details
 
-### MVP-05 Acceptance Criteria
-- ✅ H1 "Learn **Tech** Skills for Free" with emphasis span "Tech"
-- ✅ Subhead: "Blended learning · Local Community · Practical Projects"
+### MVP-08 Acceptance Criteria (BDD)
+- ⏸️ Poster shows play button and `00:45` badge (aria-label duration)
+- ⏸️ Modal opens on play; ESC or overlay click closes; keyboard trap in modal
+- ⏸️ Captions track available
 
 ### Technical Implementation
-- `Hero.tsx`; use theme typography clamps (`clamp(34px, 7vw, 88px)`)
-- Ensure there is a single page H1
+- `HeroVideo.tsx` + `VideoEmbed` component; `.vtt` captions
+- Respect `prefers-reduced-motion`; no autoplay
 
 ### Tasks Breakdown
-1. Build `Hero.tsx` layout & copy
-2. Snapshot test for copy & structure
+1. Implement video card & modal w/ focus trap
+2. Add captions & aria labels
+3. Tests: open/close via keyboard
 
 ## Recent Changes
 
-- ✅ **MVP-05 COMPLETED**: Hero
-  - Created Hero component with responsive typography and proper semantic structure
-  - Implemented H1 "Learn **Tech** Skills for Free" with emphasized "Tech" span
-  - Added subhead "Blended learning · Local Community · Practical Projects" with middle dot separators
-  - Used clamp() typography for responsive scaling across devices
-  - Organized HomePage as separate page component for better structure
-  - Added comprehensive Jest + RTL tests with snapshot testing
-  - Ensured single H1 per page for SEO and accessibility
+- ✅ **MVP-05 COMPLETED**: Hero (see details in progress.md)
+- ✅ **MVP-06 COMPLETED**: Track Chooser + Deadline + Persistence (see details in progress.md)
+- ✅ **MVP-07 COMPLETED**: Trust Strip (Award + Logos)
+  - TrustStrip component with Google.org Impact Challenge award line
+  - Partner logo grid with 4+ logos from mock data, lazy-loaded images
+  - Proper alt text using organization names for accessibility
+  - Responsive design with Grid v2 API (xs: 6, sm: 3, md: 3 layout)
+  - Grayscale hover effects and focus management for linked partners
+  - Comprehensive test suite (11 tests) covering all acceptance criteria
+  - Screen reader context and semantic structure
 
 ## Decisions Made
 

@@ -82,7 +82,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     return (
         <Box sx={containerStyles}>
             <Typography
-                component={`h${level}` as keyof JSX.IntrinsicElements}
+                component={`h${level}` as React.ElementType}
                 variant={getVariant()}
                 sx={{
                     ...getEmphasisStyles(),

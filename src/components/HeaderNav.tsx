@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material'
+import { Menu as MenuIcon } from '@mui/icons-material'
 import {
     AppBar,
     Toolbar,
     Box,
     IconButton,
     Drawer,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemText,
     Button,
     Container,
     useTheme,
@@ -18,26 +14,9 @@ import {
     Typography,
 } from '@mui/material'
 
+import { navigationItems, ctaButtons } from './data/navigationData'
+import { MobileDrawer } from './MobileDrawer'
 import { NavLink } from './NavLink'
-
-type NavigationItem = {
-    label: string
-    path: string
-    external?: boolean
-}
-
-const navigationItems: NavigationItem[] = [
-    { label: 'Tracks', path: '/tracks' },
-    { label: 'Events', path: '/events' },
-    { label: 'Stories', path: '/stories' },
-    { label: 'Partners', path: '/partners' },
-    { label: 'About Us', path: '/about' },
-]
-
-const ctaButtons = [
-    { label: 'Start Learning', path: '/tracks', variant: 'contained' as const },
-    { label: 'Join our team', path: '/careers', variant: 'outlined' as const },
-]
 
 /**
  * HeaderNav component provides sticky navigation with responsive mobile drawer.
@@ -95,74 +74,7 @@ export const HeaderNav: React.FC = () => {
         }
     }, [mobileOpen])
 
-    const drawer = (
-        <Box sx={{ width: 280, height: '100%', pt: 2 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, mb: 3 }}>
-                <Typography variant="h6" component="div" sx={{ fontWeight: 700, color: 'primary.main' }}>
-                    TechLabs
-                </Typography>
-                <IconButton
-                    edge="end"
-                    onClick={handleDrawerClose}
-                    aria-label="close navigation menu"
-                    sx={{
-                        color: 'text.primary',
-                        '&:focus-visible': {
-                            outline: `3px solid ${theme.palette.primary.main}40`,
-                            outlineOffset: 2,
-                        },
-                    }}
-                >
-                    <CloseIcon />
-                </IconButton>
-            </Box>
 
-            <List sx={{ px: 1 }}>
-                {navigationItems.map((item) => (
-                    <ListItem key={item.path} disablePadding>
-                        <ListItemButton
-                            component={NavLink}
-                            to={item.path}
-                            onClick={handleDrawerClose}
-                            sx={{
-                                borderRadius: 2,
-                                mx: 1,
-                                mb: 0.5,
-                                '&:focus-visible': {
-                                    outline: `3px solid ${theme.palette.primary.main}40`,
-                                    outlineOffset: 2,
-                                },
-                            }}
-                        >
-                            <ListItemText
-                                primary={item.label}
-                                primaryTypographyProps={{
-                                    fontWeight: 600,
-                                    fontSize: '1rem',
-                                }}
-                            />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-
-            <Box sx={{ px: 2, mt: 4, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {ctaButtons.map((button) => (
-                    <Button
-                        key={button.path}
-                        variant={button.variant}
-                        component={NavLink}
-                        to={button.path}
-                        onClick={handleDrawerClose}
-                        size="large"
-                        fullWidth
-                    >
-                        {button.label}
-                    </Button>
-                ))}
-            </Box>
-        </Box>
-    )
 
     return (
         <>
@@ -296,7 +208,7 @@ export const HeaderNav: React.FC = () => {
                     },
                 }}
             >
-                {drawer}
+                <MobileDrawer onClose={handleDrawerClose} />
             </Drawer>
         </>
     )

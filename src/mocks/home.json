@@ -1,0 +1,86 @@
+{
+  "hero": {
+    "title": "Learn Tech Skills for Free",
+    "emphasis": "Tech",
+    "subtitle": "Blended learning · Local Community · Practical Projects"
+  },
+  "tracks": [
+    { "id": "web-dev", "label": "Web Development" },
+    { "id": "data-science", "label": "Data Science" },
+    { "id": "product-design", "label": "Product Design" },
+    { "id": "ai", "label": "Artificial Intelligence" }
+  ],
+  "applicationDeadlineISO": "2025-11-15T00:00:00Z",
+  "partners": [
+    { "name": "arc", "logoUrl": "/img/partners/arc.svg" },
+    { "name": "HUAWEI", "logoUrl": "/img/partners/huawei.svg" },
+    { "name": "Beiersdorf", "logoUrl": "/img/partners/beiersdorf.svg" },
+    { "name": "zeb", "logoUrl": "/img/partners/zeb.svg" }
+  ],
+  "video": {
+    "posterUrl": "/img/video-poster.jpg",
+    "srcUrl": "/video/intro.mp4",
+    "duration": 45
+  },
+  "features": [
+    {
+      "icon": "VolunteerActivism",
+      "title": "Totally free",
+      "body": "We cover tuition so you can focus on learning and outcomes."
+    },
+    {
+      "icon": "Groups",
+      "title": "Networking",
+      "body": "Grow your network through mentors, peers, and partners."
+    },
+    {
+      "icon": "WorkspacePremium",
+      "title": "Job Ready",
+      "body": "Build projects and a portfolio that accelerate your job search."
+    }
+  ],
+  "stories": [
+    {
+      "id": "1",
+      "title": "Max Startup is Rocketing",
+      "excerpt": "From concept to seed funding in 6 months.",
+      "imageUrl": "/img/stories/max.jpg",
+      "href": "/stories/max-startup"
+    },
+    {
+      "id": "2",
+      "title": "Lia just landed her first client",
+      "excerpt": "Freelance success after the DS track.",
+      "imageUrl": "/img/stories/lia.jpg",
+      "href": "/stories/lia-first-client"
+    },
+    {
+      "id": "3",
+      "title": "Anna is now in the head of Tech",
+      "excerpt": "Rapid growth into leadership.",
+      "imageUrl": "/img/stories/anna.jpg",
+      "href": "/stories/anna-lead"
+    }
+  ],
+  "numbers": [
+    { "label": "Cities", "value": "15" },
+    { "label": "Graduates", "value": "+600" },
+    { "label": "Mentors", "value": "35" }
+  ],
+  "support": {
+    "title": "Support Tech Education",
+    "body": "Help us empower the next generation by funding cohorts and resources.",
+    "imageUrl": "/img/support.jpg",
+    "cta": { "label": "Support Tech Education", "to": "/support" }
+  },
+  "faqs": [
+    {
+      "q": "Where does the TechLabs take place?",
+      "a": "We run in multiple cities and online. Check the application page for your city."
+    },
+    {
+      "q": "Is it a full time program?",
+      "a": "No. It is designed to fit alongside work or studies (part-time)."
+    }
+  ]
+}

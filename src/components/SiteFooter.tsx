@@ -1,13 +1,6 @@
 import React from 'react'
 
-import {
-    LinkedIn,
-    Twitter,
-    Instagram,
-    Facebook,
-    GitHub,
-    Email,
-} from '@mui/icons-material'
+
 import {
     Box,
     Container,
@@ -19,94 +12,8 @@ import {
     Divider,
 } from '@mui/material'
 
+import { footerSections, socialLinks } from './data/footerData'
 import { NavLink } from './NavLink'
-
-type FooterSection = {
-    title: string
-    links: Array<{
-        label: string
-        path: string
-        external?: boolean
-    }>
-}
-
-const footerSections: FooterSection[] = [
-    {
-        title: 'Programs',
-        links: [
-            { label: 'Digital Shaper Program', path: '/tracks' },
-            { label: 'Events & Workshops', path: '/events' },
-            { label: 'Mentorship', path: '/about' },
-            { label: 'Community', path: '/about' },
-        ],
-    },
-    {
-        title: 'Tracks',
-        links: [
-            { label: 'Web Development', path: '/tracks' },
-            { label: 'Data Science', path: '/tracks' },
-            { label: 'Product Design', path: '/tracks' },
-            { label: 'AI & Machine Learning', path: '/tracks' },
-        ],
-    },
-    {
-        title: 'Get Involved',
-        links: [
-            { label: 'Become a Learner', path: '/tracks' },
-            { label: 'Join as Mentor', path: '/careers' },
-            { label: 'Partner with Us', path: '/partners' },
-            { label: 'Support Us', path: '/about' },
-        ],
-    },
-    {
-        title: 'About Us',
-        links: [
-            { label: 'Our Story', path: '/about' },
-            { label: 'Team', path: '/about' },
-            { label: 'Careers', path: '/careers' },
-            { label: 'Graduate Stories', path: '/stories' },
-        ],
-    },
-]
-
-const socialLinks = [
-    {
-        name: 'LinkedIn',
-        icon: LinkedIn,
-        url: 'https://linkedin.com/company/techlabs',
-        ariaLabel: 'Follow TechLabs on LinkedIn',
-    },
-    {
-        name: 'Twitter',
-        icon: Twitter,
-        url: 'https://twitter.com/techlabs',
-        ariaLabel: 'Follow TechLabs on Twitter',
-    },
-    {
-        name: 'Instagram',
-        icon: Instagram,
-        url: 'https://instagram.com/techlabs',
-        ariaLabel: 'Follow TechLabs on Instagram',
-    },
-    {
-        name: 'Facebook',
-        icon: Facebook,
-        url: 'https://facebook.com/techlabs',
-        ariaLabel: 'Follow TechLabs on Facebook',
-    },
-    {
-        name: 'GitHub',
-        icon: GitHub,
-        url: 'https://github.com/techlabs',
-        ariaLabel: 'Follow TechLabs on GitHub',
-    },
-    {
-        name: 'Email',
-        icon: Email,
-        url: 'mailto:hello@techlabs.org',
-        ariaLabel: 'Send email to TechLabs',
-    },
-]
 
 /**
  * SiteFooter component provides comprehensive site navigation and legal information.
@@ -122,7 +29,7 @@ export const SiteFooter: React.FC = () => {
                     {/* Main Footer Content */}
                     <Grid container spacing={4}>
                         {/* Brand Section */}
-                        <Grid item xs={12} md={4}>
+                        <Grid size={{ xs: 12, md: 4 }}>
                             <Typography
                                 variant="h6"
                                 component="div"
@@ -184,10 +91,10 @@ export const SiteFooter: React.FC = () => {
                         </Grid>
 
                         {/* Footer Links Columns */}
-                        <Grid item xs={12} md={8}>
+                        <Grid size={{ xs: 12, md: 8 }}>
                             <Grid container spacing={3}>
                                 {footerSections.map((section) => (
-                                    <Grid item xs={6} sm={3} key={section.title}>
+                                    <Grid size={{ xs: 6, sm: 3 }} key={section.title}>
                                         <Typography
                                             variant="subtitle2"
                                             sx={{

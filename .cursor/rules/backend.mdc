@@ -1,0 +1,33 @@
+---
+alwaysApply: true
+---
+Architecture (MVC + Services/Repos)
+- **MVC** with pragmatic layering: `routes/` → `controllers/` → `services/` → `models/ (Mongoose)` → `lib/`.
+- Controllers are thin; no business logic in routes. Use services for orchestration.
+- **No classes**; prefer factory functions and pure functions.
+- never use classes
+- Ensure secure, efficient code following RESTful API best practices.  
+- 
+- 
+
+API Design
+- Base path `/api`. Lists are paginated (`?page=&limit=`) and support sort/filter.
+- Consistent response envelope: `{ data }` on success, `{ error }` on failure.
+
+Validation & Errors
+- Implement proper error handling and input validation.
+- Use **zod** for request/response DTO validation at route boundaries.
+- Central error middleware: map domain errors to HTTP codes; attach `traceId`.
+
+Security
+- `helmet`, `cors` (allowlist), rate limiting on auth/sensitive routes.
+- Validate env with zod on startup; fail fast if invalid. Never log secrets.
+- Authentication: JSON Web Tokens (JWT)
+
+Mongoose & Data
+- Schemas `strict: "throw"`; define indexes; TTL for ephemeral documents.
+- Map `_id` → `id` in API models; hide internal fields (`__v`, credentials, tokens).
+
+Operational
+- Structured logging (pino) with `reqId`; log inbound/outbound calls with latency.
+- Keep files **≤ 220 lines**; split handlers/services when larger.

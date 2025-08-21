@@ -1,0 +1,21 @@
+---
+description: Code style, naming conventions, and formatting
+globs: "**/*"
+alwaysApply: true
+---
+TypeScript
+- `"strict": true`. **Never use `any`**. Prefer `unknown` then narrow with zod/type guards.
+- Prefer **enums** for categorical values; avoid unnecessary generics.
+- Prefer `type` aliases for props and unions; `interface` only for extension.
+- Avoid default exports; prefer named exports.
+- never use classes
+- Create a design system with consistent colors, typography, spacing, and component styles.
+
+Formatting & Lint
+- Prettier for formatting; ESLint for rules. Import order: builtin → external → internal.
+- No unused imports/vars; no implicit any.
+- Comments: JSDoc for exported functions/types; explain *why*, not *what*.
+
+React specifics
+- Components use **React.FC** when props exist; props readonly; avoid mutation.
+- Keys are stable (ids, not indexes). No inline anonymous components.

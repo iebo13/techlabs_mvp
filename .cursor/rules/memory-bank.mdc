@@ -1,0 +1,34 @@
+---
+description: Memory Bank governance & Planner/Act modes
+globs: "**/*"
+alwaysApply: true
+---
+Intent
+- Cursor resets between sessions; therefore, **the Memory Bank is the single source of project context**.
+- At the **start of every task**, the agent MUST read **all core Memory Bank files** and verify completeness.
+
+Memory Bank (required files in `memory-bank/`)
+- `projectbrief.md` – scope, goals, constraints (source of truth)
+- `productContext.md` – problem, users, UX goals, success criteria
+- `systemPatterns.md` – architecture, components, patterns, relationships
+- `techContext.md` – stack, tooling, setup, constraints, dependencies
+- `activeContext.md` – current focus, recent changes, next steps, decisions
+- `progress.md` – status, what works, what’s left, known issues
+
+Rules of Use
+- If any core file is missing/outdated, create/update it **before** major work.
+- Update Memory Bank when: discovering new patterns, after significant changes, on explicit user request “update memory bank”, or when context is unclear.
+- On “update memory bank”: review **ALL** files; prioritize `activeContext.md` and `progress.md`.
+
+Operating Modes
+- **Planner Mode** (when asked to plan or /plan):
+  1) Read & summarize Memory Bank → 2) Ask **4–6 clarifying questions** → 3) Propose a stepwise plan → 4) Request approval → 5) On approval, execute.
+- **Act Mode**: Check Memory Bank → Update docs (as needed) → Update `.cursor/rules` if applicable → Execute task → Document changes in `progress.md` & `activeContext.md`.
+
+Style & Constraints
+- Keep each Memory Bank file **≤ 120 lines**; split with links if needed.
+- Maintain clean, DRY documentation; prefer enums & strict typing in referenced code.
+- Never use classes in produced code; avoid speculative useMemo/useCallback/generics.
+
+Project Intelligence
+- Capture project-specific insights in `./.cursor/rules/90-project-intel.mdc`. Optionally mirror high-value notes to legacy `.cursorrules` if required by tooling.

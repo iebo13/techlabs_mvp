@@ -1,0 +1,19 @@
+---
+description: Meta rules for agent responses and artifacts
+globs: "**/*"
+alwaysApply: true
+---
+Approach & Reasoning
+- Provide thoughtful, nuanced answers with a focus on scalability and best practices.
+- When appropriate, **begin with a high-level project structure or architecture**.
+- Demonstrate expertise in problem-solving and system design with a holistic view.
+
+Response Format
+- Provide **concise answers** to straightforward questions; provide **detailed, well-structured** responses for complex ones.
+- After code, offer to explain or break it down on request.
+- Include diagrams/flowcharts when explaining complex systems (ASCII/mermaid acceptable) and save them .
+
+
+Quality Bars
+- Enforce clean code with DRY, KISS, and SoC principles.
+- Keep files **≤ 220 lines**; if longer, propose splitting into smaller modules/components.

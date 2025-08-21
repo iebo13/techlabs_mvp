@@ -1,0 +1,56 @@
+---
+description: General engineering conventions for this monorepo
+globs: "**/*"
+alwaysApply: true
+---
+Goals
+- Ship maintainable, accessible, type-safe code with predictable behavior.
+- Keep architecture simple (KISS) and consistent; avoid unnecessary dependencies (DRY, SoC).
+
+Stack & Principles
+- Frontend:
+	- Core Framework: React 18.x with TypeScript
+	- Styling: MUI 7.x
+	- State Management: React context provider
+	- Routing: React Router 7.x 
+	- Form Handling: React Hook Form 7.x 
+	- Validation with zod.
+	- Data Fetching: React Query (TanStack Query) 5.x
+	- Testing: Jest 
+	- Linting: ESLint with Airbnb config, typescript-eslint/eslint-plugin, eslint-plugin-react, eslint-plugin-react-hooks, eslint-plugin-unicorn
+	- Formatting: Prettier
+	- Package Manager: npm
+
+- Backend:
+	- Node.js
+	- Express
+	- MongoDB (Mongoose)
+	- Validation with zod.
+	- Testing: Jest 
+	- Linting: ESLint with Airbnb config
+	- Formatting: Prettier
+	- Package Manager: npm
+- Strict typing everywhere; no `any`. Prefer enums where appropriate.
+- Functional programming style; **never use classes** in frontend or backend.
+- Avoid unnecessary generics; only use if they materially improve safety/ergonomics.
+- Prefer composition and small modules; meaningful, domain-driven names.
+
+Performance
+- Frontend: target LCP < 2.5s (4G); code-split routes/heavy widgets; tree-shake.
+- Backend: avoid N+1s; index slow queries; paginate lists by default.
+
+UX
+- Clear loading/empty/error states. Avoid layout shifts.
+
+Security & Privacy
+- Validate and sanitize all external inputs.
+- Principle of least privilege for DB/APIs. Parameterized queries/Mongoose validators.
+- Never log secrets or PII; redact tokens/passwords/emails by default.
+
+Errors
+- Frontend: user-friendly messages; error boundary for routes; telemetry capture.
+- Backend: central error middleware; consistent error shape `{ error: { code, message, details?, traceId } }`.
+
+Git & CI
+- Conventional Commits; small PRs with tests and description.
+- CI gates: lint, typecheck, tests, and build must pass.

@@ -1,0 +1,17 @@
+---
+description: Logging & observability (backend & frontend)
+globs: "**/*"
+alwaysApply: true
+---
+Backend (Node)
+- Use **pino** (or equivalent) with ISO timestamps and levels; attach `reqId` via `pino-http`.
+- Redact: `authorization`, `password`, `token`, `cookie`, `email`, `phone`.
+- Levels: trace (dev), debug, info, warn, error. Log inbound/outbound with latency.
+- Errors: log Error objects; expose safe `{ error }` to clients; never expose stack traces in responses.
+
+Frontend
+- Tiny logger wrapper. In production, record only warn/error. Route unhandled errors/rejections to telemetry (e.g., Sentry) with user consent.
+- Never log PII; strip query params from URLs before logging.
+
+No console spamming
+- `console.*` disallowed in committed code (lint rule); use structured logger.

@@ -1,0 +1,17 @@
+---
+description: Project Intelligence (learning journal)
+globs: "**/*"
+alwaysApply: true
+---
+Purpose
+- Capture patterns, preferences, decisions, and caveats discovered during work.
+
+Workflow
+1) Identify a reusable pattern or insight
+2) Validate with user when non-obvious or high-impact
+3) Record succinctly here (link to code/Memory Bank section)
+4) run the precommit-checks always at the end and fix the error 
+
+Guidelines
+- Keep entries atomic and dated; prefer links to code and docs.
+- Examples: API error shape, testing heuristics, layout primitives, naming rules, release process.

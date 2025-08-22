@@ -10,32 +10,12 @@ import { SectionHeading } from './components/SectionHeading'
 import { SiteFooter } from './components/SiteFooter'
 import { EventsPage } from './pages/EventsPage'
 import { HomePage } from './pages/HomePage'
+import { PartnersPage } from './pages/PartnersPage'
+import { StoriesPage } from './pages/StoriesPage'
 import { TracksPage } from './pages/TracksPage'
 import { theme } from './theme/theme'
 
 // Placeholder pages for navigation
-
-const StoriesPage: React.FC = () => (
-  <main>
-    <Section>
-      <SectionHeading level={1} centered>
-        Stories
-      </SectionHeading>
-      <p>Stories page placeholder - will be implemented in MVP-16</p>
-    </Section>
-  </main>
-)
-
-const PartnersPage: React.FC = () => (
-  <main>
-    <Section>
-      <SectionHeading level={1} centered>
-        Partners
-      </SectionHeading>
-      <p>Partners page placeholder - will be implemented in MVP-17</p>
-    </Section>
-  </main>
-)
 
 const AboutPage: React.FC = () => (
   <main>

@@ -10,6 +10,8 @@ import { SupportCta } from '../components/SupportCta'
 import { WhyTechlabs } from '../components/WhyTechlabs'
 import homeData from '../mocks/home.json'
 
+import type { HomeData } from '../types/home'
+
 /**
  * HomePage component - main landing page for TechLabs website.
  * Contains unified Hero section with track selection and trust indicators, followed by additional sections.
@@ -33,7 +35,7 @@ export const HomePage: React.FC = () => {
       <WhyTechlabs />
 
       {/* Stories Carousel Section - MVP-10 */}
-      <StoriesCarousel stories={homeData.stories} />
+      <StoriesCarousel stories={homeData.stories as HomeData['stories']} />
 
       {/* Numbers Band Section - MVP-11 */}
       <NumbersBand numbers={homeData.numbers} />

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 
 import { Alert, Box, Button, Container, Grid, Tab, Tabs, Typography } from '@mui/material'
 
@@ -13,14 +13,14 @@ export const EventsPage: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<EventType>('all')
   const [visibleCount, setVisibleCount] = useState(EVENTS_PER_PAGE)
 
-  const filteredEvents = useMemo(() => {
+  const filteredEvents = (() => {
     if (selectedTab === 'all') {
       return eventsData.events as Event[]
     }
     return (eventsData.events as Event[]).filter(event => event.type === selectedTab)
-  }, [selectedTab])
+  })()
 
-  const sortedEvents = useMemo(() => {
+  const sortedEvents = (() => {
     return [...filteredEvents].sort((a, b) => {
       const dateA = new Date(a.date)
       const dateB = new Date(b.date)
@@ -30,7 +30,7 @@ export const EventsPage: React.FC = () => {
       }
       return dateA.getTime() - dateB.getTime() // Soonest first
     })
-  }, [filteredEvents, selectedTab])
+  })()
 
   const visibleEvents = sortedEvents.slice(0, visibleCount)
   const hasMoreEvents = visibleCount < sortedEvents.length

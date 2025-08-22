@@ -1,0 +1,94 @@
+{
+  "partners": [
+    {
+      "tier": "platinum",
+      "name": "Google.org",
+      "logoUrl": "/img/partners/google-org.svg",
+      "description": "Winner of the Google.org Impact Challenge Germany 2018",
+      "website": "https://www.google.org",
+      "category": "Technology & Innovation"
+    },
+    {
+      "tier": "gold",
+      "name": "HUAWEI",
+      "logoUrl": "/img/partners/huawei.svg",
+      "description": "Global technology leader supporting digital transformation",
+      "website": "https://www.huawei.com",
+      "category": "Technology & Innovation"
+    },
+    {
+      "tier": "gold",
+      "name": "Beiersdorf",
+      "logoUrl": "/img/partners/beiersdorf.svg",
+      "description": "Consumer goods company driving digital innovation",
+      "website": "https://www.beiersdorf.com",
+      "category": "Consumer Goods"
+    },
+    {
+      "tier": "silver",
+      "name": "arc",
+      "logoUrl": "/img/partners/arc.svg",
+      "description": "Digital agency specializing in creative technology solutions",
+      "website": "https://www.arc.com",
+      "category": "Digital Agency"
+    },
+    {
+      "tier": "silver",
+      "name": "zeb",
+      "logoUrl": "/img/partners/zeb.svg",
+      "description": "Management consultancy for financial services",
+      "website": "https://www.zeb.de",
+      "category": "Consulting"
+    },
+    {
+      "tier": "bronze",
+      "name": "Microsoft",
+      "logoUrl": "/img/partners/microsoft.svg",
+      "description": "Empowering digital transformation through technology",
+      "website": "https://www.microsoft.com",
+      "category": "Technology & Innovation"
+    },
+    {
+      "tier": "bronze",
+      "name": "SAP",
+      "logoUrl": "/img/partners/sap.svg",
+      "description": "Enterprise software solutions for digital business",
+      "website": "https://www.sap.com",
+      "category": "Technology & Innovation"
+    },
+    {
+      "tier": "bronze",
+      "name": "Volkswagen",
+      "logoUrl": "/img/partners/volkswagen.svg",
+      "description": "Automotive industry leader in digital innovation",
+      "website": "https://www.volkswagen.com",
+      "category": "Automotive"
+    }
+  ],
+  "tiers": [
+    {
+      "id": "platinum",
+      "name": "Platinum Partners",
+      "description": "Our highest-level partners who provide significant support and resources",
+      "color": "#E5E4E2"
+    },
+    {
+      "id": "gold",
+      "name": "Gold Partners",
+      "description": "Strategic partners who contribute to our mission and growth",
+      "color": "#FFD700"
+    },
+    {
+      "id": "silver",
+      "name": "Silver Partners",
+      "description": "Valued partners supporting our programs and initiatives",
+      "color": "#C0C0C0"
+    },
+    {
+      "id": "bronze",
+      "name": "Bronze Partners",
+      "description": "Supporting partners helping us make tech education accessible",
+      "color": "#CD7F32"
+    }
+  ]
+}

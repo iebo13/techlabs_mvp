@@ -44,22 +44,58 @@
       "id": "1",
       "title": "Max Startup is Rocketing",
       "excerpt": "From concept to seed funding in 6 months.",
+      "fullDescription": "Max joined TechLabs with a background in business but no technical skills. Through the Web Development track, he learned to build his own MVP and validate his startup idea. Within 6 months of graduating, he secured seed funding and now leads a team of 5 developers.",
       "imageUrl": "/img/stories/max.jpg",
-      "href": "/stories/max-startup"
+      "href": "/stories/max-startup",
+      "track": "web-dev",
+      "trackLabel": "Web Development",
+      "graduationDate": "2024-03",
+      "location": "Berlin",
+      "currentRole": "Founder & CEO",
+      "company": "TechFlow Solutions",
+      "achievements": [
+        "Secured €500K seed funding",
+        "Built MVP from scratch",
+        "Hired 5-person development team"
+      ]
     },
     {
       "id": "2",
       "title": "Lia just landed her first client",
       "excerpt": "Freelance success after the DS track.",
+      "fullDescription": "Lia was a marketing professional looking to transition into data science. The Data Science track at TechLabs gave her the practical skills and portfolio she needed. She now works as a freelance data analyst, helping startups make data-driven decisions.",
       "imageUrl": "/img/stories/lia.jpg",
-      "href": "/stories/lia-first-client"
+      "href": "/stories/lia-first-client",
+      "track": "data-science",
+      "trackLabel": "Data Science",
+      "graduationDate": "2024-01",
+      "location": "Munich",
+      "currentRole": "Freelance Data Analyst",
+      "company": "Self-employed",
+      "achievements": [
+        "First client within 2 weeks of graduation",
+        "€3K monthly recurring revenue",
+        "Portfolio of 3 successful projects"
+      ]
     },
     {
       "id": "3",
       "title": "Anna is now in the head of Tech",
       "excerpt": "Rapid growth into leadership.",
+      "fullDescription": "Anna came to TechLabs as a junior developer looking to advance her career. The comprehensive curriculum and mentorship helped her develop both technical and leadership skills. She's now Head of Technology at a growing fintech company.",
       "imageUrl": "/img/stories/anna.jpg",
-      "href": "/stories/anna-lead"
+      "href": "/stories/anna-lead",
+      "track": "web-dev",
+      "trackLabel": "Web Development",
+      "graduationDate": "2023-11",
+      "location": "Hamburg",
+      "currentRole": "Head of Technology",
+      "company": "FinTech Innovations",
+      "achievements": [
+        "Promoted from Junior to Lead in 8 months",
+        "Manages team of 8 developers",
+        "Led successful product launch"
+      ]
     }
   ],
   "numbers": [

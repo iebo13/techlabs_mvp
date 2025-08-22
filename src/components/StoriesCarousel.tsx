@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 import { Link } from 'react-router-dom'
 
@@ -35,28 +35,25 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0)
   const carouselRef = useRef<HTMLDivElement>(null)
 
-  const goToSlide = useCallback(
-    (newIndex: number) => {
-      const clampedIndex = Math.max(0, Math.min(newIndex, maxIndex))
-      setCurrentIndex(clampedIndex)
+  const goToSlide = (newIndex: number) => {
+    const clampedIndex = Math.max(0, Math.min(newIndex, maxIndex))
+    setCurrentIndex(clampedIndex)
 
-      // Announce current position to screen readers
-      const announcement = `Showing ${clampedIndex + 1} to ${Math.min(clampedIndex + cardsPerView, stories.length)} of ${stories.length} stories`
-      announceToScreenReader(announcement)
-    },
-    [maxIndex, cardsPerView, stories.length]
-  )
+    // Announce current position to screen readers
+    const announcement = `Showing ${clampedIndex + 1} to ${Math.min(clampedIndex + cardsPerView, stories.length)} of ${stories.length} stories`
+    announceToScreenReader(announcement)
+  }
 
-  const goToPrevious = useCallback(() => {
+  const goToPrevious = () => {
     goToSlide(currentIndex - 1)
-  }, [currentIndex, goToSlide])
+  }
 
-  const goToNext = useCallback(() => {
+  const goToNext = () => {
     goToSlide(currentIndex + 1)
-  }, [currentIndex, goToSlide])
+  }
 
   // Screen reader announcements
-  const announceToScreenReader = useCallback((message: string) => {
+  const announceToScreenReader = (message: string) => {
     // Only run in browser environment
     if (typeof document === 'undefined') return
 
@@ -79,7 +76,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({
         document.body.removeChild(announcement)
       }
     }, 1000)
-  }, [])
+  }
 
   // Keyboard navigation
   useEffect(() => {
@@ -108,7 +105,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({
 
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [goToPrevious, goToNext, goToSlide, maxIndex])
+  }, [currentIndex, maxIndex])
 
   const visibleStories = stories.slice(currentIndex, currentIndex + cardsPerView)
 

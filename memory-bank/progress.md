@@ -1,6 +1,6 @@
 # Progress Tracking - TechLabs Website
 
-## Project Status: **HOMEPAGE + TRACKS PAGE + EVENTS PAGE COMPLETE**
+## Project Status: **HOMEPAGE + TRACKS PAGE + EVENTS PAGE + STORIES PAGE COMPLETE**
 
 ## What's Complete
 
@@ -31,8 +31,9 @@
 - ✅ **MVP-13**: FAQs (accordion + link to About #faq) (COMPLETED)
 - ✅ **MVP-14**: Tracks Page (grid + inline expanders + query prefs) (COMPLETED)
 - ✅ **MVP-15**: Events Page (Upcoming/Past filters + pagination) (COMPLETED)
+- ✅ **MVP-16**: Stories Page (gallery + track filter + modal details) (COMPLETED)
 
-## What's Left (10 stories total)
+## What's Left (8 stories total)
 
 ### EPIC-MVP-SETUP: Project Setup & Tooling
 
@@ -61,8 +62,8 @@
 
 - ✅ **MVP-14**: Tracks Page (grid + inline expanders + query prefs) (COMPLETED)
 - ✅ **MVP-15**: Events Page (Upcoming/Past filters + pagination) (COMPLETED)
-- ⏸️ **MVP-16**: Stories Page (gallery + track filter + modal details)
-- ⏸️ **MVP-17**: Partners Page (tier grouping + partnership CTA)
+- ✅ **MVP-16**: Stories Page (gallery + track filter + modal details) (COMPLETED)
+- ✅ **MVP-17**: Partners Page (tier grouping + partnership CTA) (COMPLETED)
 - ⏸️ **MVP-18**: About Us Page (mission + timeline + full FAQs + #faq anchor)
 
 ### EPIC-MVP-COMPONENTS: Shared Components Library

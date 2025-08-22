@@ -19,6 +19,27 @@ export const PartnerSchema = z.object({
   href: z.string().optional(),
 })
 
+export const PartnerTierSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  description: z.string().min(1),
+  color: z.string().min(1),
+})
+
+export const DetailedPartnerSchema = z.object({
+  tier: z.string().min(1),
+  name: z.string().min(1),
+  logoUrl: z.string().min(1),
+  description: z.string().min(1),
+  website: z.string().url(),
+  category: z.string().min(1),
+})
+
+export const PartnersDataSchema = z.object({
+  partners: z.array(DetailedPartnerSchema),
+  tiers: z.array(PartnerTierSchema),
+})
+
 export const VideoDataSchema = z.object({
   posterUrl: z.string().min(1), // Allow relative paths for MVP
   srcUrl: z.string().min(1), // Allow relative paths for MVP
@@ -35,8 +56,16 @@ export const StorySchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
   excerpt: z.string().min(1),
+  fullDescription: z.string().min(1),
   imageUrl: z.string().min(1), // Allow relative paths for MVP
   href: z.string().min(1),
+  track: TrackKeySchema,
+  trackLabel: z.string().min(1),
+  graduationDate: z.string().min(1),
+  location: z.string().min(1),
+  currentRole: z.string().min(1),
+  company: z.string().min(1),
+  achievements: z.array(z.string().min(1)),
 })
 
 export const NumberStatSchema = z.object({
@@ -83,3 +112,8 @@ export const HomeDataSchema = z.object({
 export type HomeDataValidated = z.infer<typeof HomeDataSchema>
 export type TrackKeyValidated = z.infer<typeof TrackKeySchema>
 export type TrackValidated = z.infer<typeof TrackSchema>
+export type StoryValidated = z.infer<typeof StorySchema>
+export type PartnerValidated = z.infer<typeof PartnerSchema>
+export type PartnerTierValidated = z.infer<typeof PartnerTierSchema>
+export type DetailedPartnerValidated = z.infer<typeof DetailedPartnerSchema>
+export type PartnersDataValidated = z.infer<typeof PartnersDataSchema>

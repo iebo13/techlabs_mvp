@@ -1,49 +1,57 @@
 # Active Context - TechLabs Website
 
-## Current Focus: MVP-16 Stories Page
+## Current Focus: MVP-18 About Us Page
 
 **Status**: Ready to implement  
 **Epic**: EPIC-MVP-PAGES (Core Pages)
-**Dependencies**: MVP-10 ✅ (completed)
+**Dependencies**: MVP-13 ✅ (completed)
 
 ## Immediate Task Details
 
-### MVP-12 Acceptance Criteria (BDD) ✅ COMPLETED
+### MVP-16 Acceptance Criteria (BDD) ✅ COMPLETED
 
-- ✅ Highlight CTA block linking to `/support` (placeholder)
-- ✅ Button text "Support Tech Education" routes correctly
-
-### Technical Implementation ✅ COMPLETED
-
-- ✅ `SupportCta.tsx` component with image + copy + CTA button
-- ✅ Data from `support` object in `home.json`
-
-### Tasks Breakdown ✅ COMPLETED
-
-1. ✅ Implement section + CTA button
-2. ✅ Test: link target routes correctly
-
----
-
-### MVP-13 Acceptance Criteria (BDD) ✅ COMPLETED
-
-- ✅ FAQ accordion with at least 2 items + "More questions" link to About `#faq`
-- ✅ Keyboard and SR friendly; single-open behavior implemented
-- ✅ First two questions match mocks
+- ✅ Stories gallery with filter by track; modal details
+- ✅ Grid of cards; filter dropdown; clicking opens modal with details (mock)
+- ✅ Extends the StoriesCarousel functionality from the homepage
 
 ### Technical Implementation ✅ COMPLETED
 
-- ✅ `Faqs.tsx` component with accordion functionality
-- ✅ Data from `faqs` array in `home.json`
-- ✅ Link to About page `#faq` anchor
+- ✅ `StoriesPage.tsx` component with comprehensive story gallery
+- ✅ Track-based filtering (All Tracks, Web Development, Data Science, Product Design, AI)
+- ✅ Responsive grid layout (1 column mobile, 2 tablet, 3 desktop)
+- ✅ Story detail modal with full description, metadata, and achievements
+- ✅ Comprehensive stories.json with 6 detailed stories
+- ✅ Updated Story type with all required fields
+- ✅ Route added to App.tsx at `/stories`
+- ✅ MUI Grid v2 syntax updated throughout component
 
 ### Tasks Breakdown ✅ COMPLETED
 
-1. ✅ Implement accordion with single-open behavior
-2. ✅ Add "More questions" link to About #faq
-3. ✅ Test: toggle behavior, first two questions
+1. ✅ Create comprehensive stories.json with extended story data
+2. ✅ Update Story type definition with new fields
+3. ✅ Implement StoriesPage component with filtering and modal
+4. ✅ Add route to App.tsx
+5. ✅ Fix MUI Grid v2 syntax and component issues
 
 ## Recent Changes
+
+- ✅ **MVP-17 COMPLETED**: Partners Page (tiered partners + partnership CTA)
+  - Created comprehensive partners.json with 8 partners across 4 tiers (platinum, gold, silver, bronze)
+  - Updated partner types and schemas to support detailed partner information
+  - Built PartnersPage component with tiered display and responsive grid layout
+  - Added "Become a Partner" CTA section linking to /about#contact
+  - Integrated with existing app structure and navigation
+  - All tests pass, build successful, and linting clean
+  - Ready for production use with responsive design and modern UI patterns
+
+- ✅ **MVP-16 COMPLETED**: Stories Page (gallery + track filter + modal details)
+  - Created comprehensive stories.json with 6 detailed graduate stories
+  - Updated Story type to include track, location, role, company, achievements
+  - Built StoriesPage component with track filtering and responsive grid
+  - Implemented story detail modal with comprehensive information display
+  - Added route to App.tsx for /stories navigation
+  - Fixed MUI Grid v2 syntax and component prop issues
+  - Ready for production use with responsive design and accessibility features
 
 - ✅ **MVP-15 COMPLETED**: Events Page (Upcoming/Past filters + pagination)
   - Created comprehensive events.json with 10 sample events (5 upcoming, 5 past)

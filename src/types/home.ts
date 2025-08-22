@@ -16,6 +16,27 @@ export type Partner = {
   href?: string
 }
 
+export type PartnerTier = {
+  id: string
+  name: string
+  description: string
+  color: string
+}
+
+export type DetailedPartner = {
+  tier: string
+  name: string
+  logoUrl: string
+  description: string
+  website: string
+  category: string
+}
+
+export type PartnersData = {
+  partners: DetailedPartner[]
+  tiers: PartnerTier[]
+}
+
 export type VideoData = {
   posterUrl: string
   srcUrl: string
@@ -32,8 +53,16 @@ export type Story = {
   id: string
   title: string
   excerpt: string
+  fullDescription: string
   imageUrl: string
   href: string
+  track: TrackKey
+  trackLabel: string
+  graduationDate: string
+  location: string
+  currentRole: string
+  company: string
+  achievements: string[]
 }
 
 export type NumberStat = {

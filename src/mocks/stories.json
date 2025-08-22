@@ -1,0 +1,116 @@
+[
+  {
+    "id": "1",
+    "title": "Max Startup is Rocketing",
+    "excerpt": "From concept to seed funding in 6 months.",
+    "fullDescription": "Max joined TechLabs with a background in business but no technical skills. Through the Web Development track, he learned to build his own MVP and validate his startup idea. Within 6 months of graduating, he secured seed funding and now leads a team of 5 developers.",
+    "imageUrl": "/img/stories/max.jpg",
+    "href": "/stories/max-startup",
+    "track": "web-dev",
+    "trackLabel": "Web Development",
+    "graduationDate": "2024-03",
+    "location": "Berlin",
+    "currentRole": "Founder & CEO",
+    "company": "TechFlow Solutions",
+    "achievements": [
+      "Secured €500K seed funding",
+      "Built MVP from scratch",
+      "Hired 5-person development team"
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Lia just landed her first client",
+    "excerpt": "Freelance success after the DS track.",
+    "fullDescription": "Lia was a marketing professional looking to transition into data science. The Data Science track at TechLabs gave her the practical skills and portfolio she needed. She now works as a freelance data analyst, helping startups make data-driven decisions.",
+    "imageUrl": "/img/stories/lia.jpg",
+    "href": "/stories/lia-first-client",
+    "track": "data-science",
+    "trackLabel": "Data Science",
+    "graduationDate": "2024-01",
+    "location": "Munich",
+    "currentRole": "Freelance Data Analyst",
+    "company": "Self-employed",
+    "achievements": [
+      "First client within 2 weeks of graduation",
+      "€3K monthly recurring revenue",
+      "Portfolio of 3 successful projects"
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Anna is now in the head of Tech",
+    "excerpt": "Rapid growth into leadership.",
+    "fullDescription": "Anna came to TechLabs as a junior developer looking to advance her career. The comprehensive curriculum and mentorship helped her develop both technical and leadership skills. She's now Head of Technology at a growing fintech company.",
+    "imageUrl": "/img/stories/anna.jpg",
+    "href": "/stories/anna-lead",
+    "track": "web-dev",
+    "trackLabel": "Web Development",
+    "graduationDate": "2023-11",
+    "location": "Hamburg",
+    "currentRole": "Head of Technology",
+    "company": "FinTech Innovations",
+    "achievements": [
+      "Promoted from Junior to Lead in 8 months",
+      "Manages team of 8 developers",
+      "Led successful product launch"
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Sarah's AI breakthrough",
+    "excerpt": "From teacher to AI researcher.",
+    "fullDescription": "Sarah was a high school teacher with a passion for technology. The AI track at TechLabs opened up a completely new career path. She now works as an AI researcher, developing educational technology solutions.",
+    "imageUrl": "/img/stories/sarah.jpg",
+    "href": "/stories/sarah-ai",
+    "track": "ai",
+    "trackLabel": "Artificial Intelligence",
+    "graduationDate": "2024-02",
+    "location": "Frankfurt",
+    "currentRole": "AI Research Engineer",
+    "company": "EduTech Labs",
+    "achievements": [
+      "Published 2 research papers",
+      "Developed AI-powered learning platform",
+      "Presented at international conferences"
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Marcus designs the future",
+    "excerpt": "Product design career transformation.",
+    "fullDescription": "Marcus had a background in graphic design but wanted to move into digital product design. The Product Design track at TechLabs provided him with UX/UI skills and a strong portfolio. He now leads design at a successful startup.",
+    "imageUrl": "/img/stories/marcus.jpg",
+    "href": "/stories/marcus-design",
+    "track": "product-design",
+    "trackLabel": "Product Design",
+    "graduationDate": "2023-12",
+    "location": "Cologne",
+    "currentRole": "Lead Product Designer",
+    "company": "InnovateHub",
+    "achievements": [
+      "Redesigned company's flagship product",
+      "Increased user engagement by 40%",
+      "Built 3-person design team"
+    ]
+  },
+  {
+    "id": "6",
+    "title": "Julia's data science journey",
+    "excerpt": "From finance to data science.",
+    "fullDescription": "Julia worked in traditional finance but wanted to leverage her analytical skills in the tech world. The Data Science track at TechLabs gave her the technical foundation she needed. She now works as a senior data scientist.",
+    "imageUrl": "/img/stories/julia.jpg",
+    "href": "/stories/julia-data",
+    "track": "data-science",
+    "trackLabel": "Data Science",
+    "graduationDate": "2023-09",
+    "location": "Stuttgart",
+    "currentRole": "Senior Data Scientist",
+    "company": "DataCorp Solutions",
+    "achievements": [
+      "Increased company revenue by 25% through insights",
+      "Mentors 3 junior data scientists",
+      "Speaks at industry conferences"
+    ]
+  }
+]

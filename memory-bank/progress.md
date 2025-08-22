@@ -1,6 +1,6 @@
 # Progress Tracking - TechLabs Website
 
-## Project Status: **HOMEPAGE 89% COMPLETE**
+## Project Status: **HOMEPAGE 100% COMPLETE**
 
 ## What's Complete
 
@@ -28,9 +28,9 @@
 - ✅ **MVP-10**: Stories Carousel (a11y controls, no autoplay) (COMPLETED)
 - ✅ **MVP-11**: Numbers Band (15 Cities, 600+ Graduates, 35 Mentors) (COMPLETED)
 - ✅ **MVP-12**: Support CTA (highlight CTA to /support) (COMPLETED)
-- 🔄 **Ready for MVP-13**: FAQs (accordion + link to About #faq)
+- ✅ **MVP-13 COMPLETED**: FAQs (accordion + link to About #faq)
 
-## What's Left (21 stories total)
+## What's Left (12 stories total)
 
 ### EPIC-MVP-SETUP: Project Setup & Tooling
 
@@ -43,7 +43,7 @@
 - ✅ **MVP-03**: Header & Navigation (COMPLETED)
 - ✅ **MVP-04**: Footer (COMPLETED)
 
-### EPIC-MVP-HOMEPAGE: Homepage (9 sections)
+### EPIC-MVP-HOMEPAGE: Homepage (9 sections) ✅ COMPLETED
 
 - ✅ **MVP-05**: Hero (COMPLETED)
 - ✅ **MVP-06**: Track Chooser + Deadline + Persistence (COMPLETED)
@@ -53,7 +53,7 @@
 - ✅ **MVP-10**: Stories Carousel (a11y controls, no autoplay) (COMPLETED)
 - ✅ **MVP-11**: Numbers Band (15 Cities, 600+ Graduates, 35 Mentors) (COMPLETED)
 - ✅ **MVP-12**: Support CTA (highlight CTA to /support) (COMPLETED)
-- ⏸️ **MVP-13**: FAQs (accordion + link to About #faq)
+- ✅ **MVP-13**: FAQs (accordion + link to About #faq) (COMPLETED)
 
 ### EPIC-MVP-PAGES: Core Pages
 
@@ -101,7 +101,7 @@
 
 ## Next Milestones
 
-1. **Foundation Week**: MVP-01✅, MVP-02🔄, MVP-03, MVP-04
-2. **Homepage Sprint**: MVP-05 through MVP-13 (sequential)
+1. **Foundation Week**: MVP-01✅, MVP-02✅, MVP-03✅, MVP-04✅
+2. **Homepage Sprint**: MVP-05 through MVP-13 ✅ (COMPLETED)
 3. **Pages Sprint**: MVP-14 through MVP-18 (some parallel)
 4. **Polish Sprint**: MVP-19, MVP-20, MVP-21

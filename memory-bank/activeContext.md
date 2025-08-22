@@ -1,10 +1,10 @@
 # Active Context - TechLabs Website
 
-## Current Focus: MVP-13 FAQs (Accordion)
+## Current Focus: MVP-14 Tracks Page
 
 **Status**: Ready to implement  
-**Epic**: EPIC-MVP-HOMEPAGE (Homepage)
-**Dependencies**: MVP-12 ✅ (completed)
+**Epic**: EPIC-MVP-PAGES (Core Pages)
+**Dependencies**: MVP-06 ✅ (completed)
 
 ## Immediate Task Details
 
@@ -25,23 +25,23 @@
 
 ---
 
-### MVP-13 Acceptance Criteria (BDD)
+### MVP-13 Acceptance Criteria (BDD) ✅ COMPLETED
 
-- ⏸️ FAQ accordion with at least 2 items + "More questions" link to About `#faq`
-- ⏸️ Keyboard and SR friendly; only one panel open at a time
-- ⏸️ First two questions match mocks
+- ✅ FAQ accordion with at least 2 items + "More questions" link to About `#faq`
+- ✅ Keyboard and SR friendly; single-open behavior implemented
+- ✅ First two questions match mocks
 
-### Technical Implementation
+### Technical Implementation ✅ COMPLETED
 
-- `Faqs.tsx` component with accordion functionality
-- Data from `faqs` array in `home.json`
-- Link to About page `#faq` anchor
+- ✅ `Faqs.tsx` component with accordion functionality
+- ✅ Data from `faqs` array in `home.json`
+- ✅ Link to About page `#faq` anchor
 
-### Tasks Breakdown
+### Tasks Breakdown ✅ COMPLETED
 
-1. Implement accordion with single-open behavior
-2. Add "More questions" link to About #faq
-3. Test: toggle behavior, first two questions
+1. ✅ Implement accordion with single-open behavior
+2. ✅ Add "More questions" link to About #faq
+3. ✅ Test: toggle behavior, first two questions
 
 ## Recent Changes
 
@@ -101,6 +101,15 @@
   - Integrated with React Router navigation to /support route
   - Comprehensive test coverage (5 tests) covering rendering, navigation, and accessibility
   - Added to HomePage component and verified build success
+
+- ✅ **MVP-13 COMPLETED**: FAQs (accordion + link to About #faq)
+  - Created Faqs component with MUI Accordion for expandable FAQ sections
+  - Implemented single-open behavior (only one panel open at a time)
+  - Added "More Questions" button linking to /about#faq with proper styling
+  - Used proper heading structure (H2 for section, no duplicate H3s)
+  - Comprehensive test coverage (9 tests) covering rendering, accessibility, and behavior
+  - Integrated into HomePage component and verified all tests pass
+  - Fixed linting issues and ensured proper TypeScript typing
 
 - ✅ **FIGMA DESIGN ALIGNMENT COMPLETED**: Major design improvements to match Figma
   - Updated brand pink color to #FF2D63 across theme and components

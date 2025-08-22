@@ -1,11 +1,14 @@
 import React from 'react'
-import { Container, Grid, Button, Box } from '@mui/material'
+
 import { Link } from 'react-router-dom'
+
+import { Container, Grid, Button, Box } from '@mui/material'
+
+import homeData from '../mocks/home.json'
 
 import { Section } from './Section'
 import { SectionHeading } from './SectionHeading'
 import { ValuePropCard } from './ValuePropCard'
-import homeData from '../mocks/home.json'
 
 /**
  * WhyTechlabs component - showcases 3 key value propositions
@@ -27,8 +30,8 @@ export const WhyTechlabs: React.FC = () => {
 
                 {/* Value Proposition Cards */}
                 <Grid container spacing={{ xs: 3, md: 4 }} sx={{ mb: { xs: 6, md: 8 } }}>
-                    {homeData.features.map((feature, index) => (
-                        <Grid size={{ xs: 12, md: 4 }} key={index}>
+                    {homeData.features.map((feature) => (
+                        <Grid size={{ xs: 12, md: 4 }} key={feature.title}>
                             <ValuePropCard
                                 icon={feature.icon}
                                 title={feature.title}

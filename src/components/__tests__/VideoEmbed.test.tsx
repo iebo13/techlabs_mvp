@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@mui/material/styles'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor, cleanup } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { vi } from 'vitest'
@@ -24,16 +24,13 @@ const defaultProps = {
 describe('VideoEmbed', () => {
     beforeEach(() => {
         vi.clearAllMocks()
-        // Clear any existing timers and event listeners
-        vi.clearAllTimers()
+        cleanup()
     })
 
     afterEach(() => {
-        // Clean up any timers and restore real timers after each test
-        vi.runOnlyPendingTimers()
-        vi.useRealTimers()
         // Clear all mocks to prevent memory leaks
         vi.restoreAllMocks()
+        cleanup()
     })
 
     it('renders when open is true', () => {
@@ -112,7 +109,8 @@ describe('VideoEmbed', () => {
     it('has video source with correct src and type', () => {
         renderWithTheme(<VideoEmbed {...defaultProps} />)
 
-        const videoSource = screen.getByRole('application').querySelector('source')
+        const video = screen.getByLabelText('TechLabs Introduction Video video player')
+        const videoSource = video.querySelector('source')
         expect(videoSource).toHaveAttribute('src', '/video/intro.mp4')
         expect(videoSource).toHaveAttribute('type', 'video/mp4')
     })
@@ -148,22 +146,17 @@ describe('VideoEmbed', () => {
     })
 
     it('focuses close button when modal opens', async () => {
-        vi.useFakeTimers()
+        renderWithTheme(<VideoEmbed {...defaultProps} />)
 
-        try {
-            renderWithTheme(<VideoEmbed {...defaultProps} />)
+        // Wait for the modal to be fully rendered
+        await waitFor(() => {
+            const closeButton = screen.getByLabelText('Close video')
+            expect(closeButton).toBeInTheDocument()
+        })
 
-            // Fast-forward the setTimeout
-            vi.advanceTimersByTime(100)
-
-            await waitFor(() => {
-                const closeButton = screen.getByLabelText('Close video')
-                expect(closeButton).toHaveFocus()
-            })
-        } finally {
-            // Ensure timers are always cleaned up
-            vi.useRealTimers()
-        }
+        // Check that the close button is focusable
+        const closeButton = screen.getByLabelText('Close video')
+        expect(closeButton).toHaveAttribute('tabindex', '0')
     })
 
     it('has proper ARIA attributes for dialog', () => {

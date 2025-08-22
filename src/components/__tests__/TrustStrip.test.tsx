@@ -24,9 +24,10 @@ describe('TrustStrip', () => {
             </TestWrapper>
         )
 
-        expect(
-            screen.getByText('Winner of the Google.org Impact Challenge Germany 2018')
-        ).toBeInTheDocument()
+        // Check that the award text components are present
+        expect(screen.getByText('Winner of the')).toBeInTheDocument()
+        expect(screen.getByText('Impact Challenge Germany 2018')).toBeInTheDocument()
+        expect(screen.getByAltText('Google.org')).toBeInTheDocument()
     })
 
     it('displays at least 4 partner logos', () => {
@@ -153,10 +154,9 @@ describe('TrustStrip', () => {
 
         // The component should be wrapped in a section with appropriate background
         // We can check this indirectly by ensuring the content is properly contained
-        expect(
-            screen.getByText('Winner of the Google.org Impact Challenge Germany 2018')
-        ).toBeInTheDocument()
-
+        expect(screen.getByText('Winner of the')).toBeInTheDocument()
+        expect(screen.getByText('Impact Challenge Germany 2018')).toBeInTheDocument()
+        expect(screen.getByAltText('Google.org')).toBeInTheDocument()
         expect(screen.getByAltText('arc')).toBeInTheDocument()
     })
 
@@ -167,9 +167,10 @@ describe('TrustStrip', () => {
             </TestWrapper>
         )
 
-        // Award line should be in a typography element
-        const awardLine = screen.getByText('Winner of the Google.org Impact Challenge Germany 2018')
-        expect(awardLine).toBeInTheDocument()
+        // Award line should be in typography elements
+        expect(screen.getByText('Winner of the')).toBeInTheDocument()
+        expect(screen.getByText('Impact Challenge Germany 2018')).toBeInTheDocument()
+        expect(screen.getByAltText('Google.org')).toBeInTheDocument()
 
         // Screen reader context should be properly labeled
         const srContext = screen.getByLabelText('Our trusted partners support TechLabs educational programs')
@@ -186,8 +187,8 @@ describe('TrustStrip', () => {
         )
 
         // At minimum, the award line should always render
-        expect(
-            screen.getByText('Winner of the Google.org Impact Challenge Germany 2018')
-        ).toBeInTheDocument()
+        expect(screen.getByText('Winner of the')).toBeInTheDocument()
+        expect(screen.getByText('Impact Challenge Germany 2018')).toBeInTheDocument()
+        expect(screen.getByAltText('Google.org')).toBeInTheDocument()
     })
 })

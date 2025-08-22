@@ -2,8 +2,10 @@ import React from 'react'
 
 import { HeroSection } from '../components/HeroSection'
 import HeroVideo from '../components/HeroVideo'
-import { WhyTechlabs } from '../components/WhyTechlabs'
+import { NumbersBand } from '../components/NumbersBand'
 import { Section } from '../components/Section'
+import { StoriesCarousel } from '../components/StoriesCarousel'
+import { WhyTechlabs } from '../components/WhyTechlabs'
 import homeData from '../mocks/home.json'
 
 /**
@@ -27,6 +29,12 @@ export const HomePage: React.FC = () => {
 
             {/* Why TechLabs Section - MVP-09 */}
             <WhyTechlabs />
+
+            {/* Stories Carousel Section - MVP-10 */}
+            <StoriesCarousel stories={homeData.stories} />
+
+            {/* Numbers Band Section - MVP-11 */}
+            <NumbersBand numbers={homeData.numbers} />
 
             {/* Additional homepage sections will be added in subsequent MVP stories */}
         </main>

@@ -1,25 +1,24 @@
 # Active Context - TechLabs Website
 
-## Current Focus: MVP-10 Stories Carousel
+## Current Focus: MVP-12 Support CTA
 
 **Status**: Ready to implement  
 **Epic**: EPIC-MVP-HOMEPAGE (Homepage)
-**Dependencies**: MVP-09 ✅ (completed)
+**Dependencies**: MVP-11 ✅ (completed)
 
 ## Immediate Task Details
 
-### MVP-10 Acceptance Criteria (BDD)
-- ⏸️ Prev/Next accessible via keyboard; announced slide position (e.g., "Slide 2 of 3")
-- ⏸️ "See all" → `/stories`
-- ⏸️ No autoplay; respects reduced motion
+### MVP-12 Acceptance Criteria (BDD)
+- ⏸️ Highlight CTA block linking to `/support` (placeholder)
+- ⏸️ Button text "Support Tech Education" routes correctly
 
 ### Technical Implementation
-- `StoriesCarousel.tsx`; `keen-slider` or custom; data from `stories.json`
-- Carousel of ≥3 stories with keyboardable prev/next and "See all" link
+- `SupportCta.tsx` component with image + copy + CTA button
+- Data from `support` object in `home.json`
 
 ### Tasks Breakdown
-1. Implement carousel + a11y controls
-2. Tests: keyboard nav, link target
+1. Implement section + CTA button
+2. Test: link target routes correctly
 
 ## Recent Changes
 
@@ -49,6 +48,27 @@
   - Comprehensive test coverage (9 tests total) for both components
   - All cards render correct titles, descriptions, and maintain accessible heading structure
   - Proper responsive design and keyboard navigation support
+
+- ✅ **MVP-10 COMPLETED**: Stories Carousel (a11y controls, no autoplay)
+  - Created StoriesCarousel component with full accessibility features
+  - Implemented keyboard navigation (Arrow keys, Home/End) and screen reader announcements
+  - Added responsive design: 1 card mobile, 2 tablet, 3 desktop with proper navigation controls
+  - Built custom carousel without external dependencies for full control over accessibility
+  - Added "See all stories" link routing to /stories page
+  - Respects prefers-reduced-motion setting, no autoplay behavior
+  - Comprehensive test suite (18 tests) covering all functionality, keyboard nav, and edge cases
+  - Fixed MUI icons imports and TypeScript issues for Windows compatibility
+  - Integrated into HomePage component and verified build success
+
+- ✅ **MVP-11 COMPLETED**: Numbers Band (15 Cities, 600+ Graduates, 35 Mentors)
+  - Created KpiStat component for individual metric tiles with consistent styling and accessibility
+  - Implemented NumbersBand component with responsive grid layout and proper spacing
+  - Added emoji icons (🏙️ Cities, 🎓 Graduates, 👥 Mentors) to avoid MUI import issues on Windows
+  - Emphasized the "Graduates" metric with primary color styling
+  - Used MUI Grid v2 syntax (size prop instead of item/xs/sm/md) for responsive behavior
+  - Comprehensive test coverage (17 tests total) for both components
+  - All metrics render correctly with proper accessibility structure
+  - Integrated into HomePage component and verified build success
 
 - ✅ **FIGMA DESIGN ALIGNMENT COMPLETED**: Major design improvements to match Figma
   - Updated brand pink color to #FF2D63 across theme and components

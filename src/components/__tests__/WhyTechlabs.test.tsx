@@ -1,10 +1,10 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
+import { render, screen } from '@testing-library/react'
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
 
-import { WhyTechlabs } from '../WhyTechlabs'
 import { theme } from '../../theme/theme'
+import { WhyTechlabs } from '../WhyTechlabs'
 
 /**
  * Test wrapper component that provides MUI theme and router context

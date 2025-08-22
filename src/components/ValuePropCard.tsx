@@ -1,10 +1,11 @@
 import React from 'react'
-import { Card, CardContent, Typography, Box } from '@mui/material'
-import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism'
-import GroupsIcon from '@mui/icons-material/Groups'
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
 
-interface ValuePropCardProps {
+import GroupsIcon from '@mui/icons-material/Groups'
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism'
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
+import { Card, CardContent, Typography, Box } from '@mui/material'
+
+type ValuePropCardProps = {
     /** MUI icon name as string */
     icon: string
     /** Card title */

@@ -1,9 +1,9 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
 import { ThemeProvider } from '@mui/material/styles'
+import { render, screen } from '@testing-library/react'
+import React from 'react'
 
-import { ValuePropCard } from '../ValuePropCard'
 import { theme } from '../../theme/theme'
+import { ValuePropCard } from '../ValuePropCard'
 
 /**
  * Test wrapper component that provides MUI theme context

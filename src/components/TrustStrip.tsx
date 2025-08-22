@@ -70,27 +70,55 @@ export const TrustStrip: React.FC<TrustStripProps> = ({ className }) => {
         <Section
             className={className}
             sx={{
-                py: { xs: 4, md: 6 },
-                backgroundColor: 'grey.50',
-                borderTop: '1px solid',
-                borderBottom: '1px solid',
-                borderColor: 'grey.200',
+                py: { xs: 3, md: 4 }, // Modest gap spacing
+                backgroundColor: 'background.default', // Pure white background
+                // Remove borders for cleaner minimal look
             }}
         >
-            <Stack spacing={4} alignItems="center">
-                {/* Award Line */}
-                <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    textAlign="center"
+            <Stack spacing={3} alignItems="center">
+                {/* Award Line with inline Google.org mark */}
+                <Box
                     sx={{
-                        fontStyle: 'italic',
-                        fontSize: { xs: '0.875rem', sm: '1rem' },
-                        fontWeight: 500,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: 1.5,
+                        flexWrap: 'wrap',
                     }}
                 >
-                    Winner of the Google.org Impact Challenge Germany 2018
-                </Typography>
+                    <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        textAlign="center"
+                        sx={{
+                            fontSize: { xs: '0.875rem', sm: '1rem' },
+                            fontWeight: 500,
+                        }}
+                    >
+                        Winner of the
+                    </Typography>
+                    <Box
+                        component="img"
+                        src="https://www.google.org/static/images/google-org-logo.svg"
+                        alt="Google.org"
+                        sx={{
+                            height: { xs: 20, sm: 24 },
+                            width: 'auto',
+                            opacity: 0.8,
+                        }}
+                    />
+                    <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        textAlign="center"
+                        sx={{
+                            fontSize: { xs: '0.875rem', sm: '1rem' },
+                            fontWeight: 500,
+                        }}
+                    >
+                        Impact Challenge Germany 2018
+                    </Typography>
+                </Box>
 
                 {/* Partner Logos Grid */}
                 <Box sx={{ width: '100%', maxWidth: 800 }}>
@@ -144,6 +172,18 @@ export const TrustStrip: React.FC<TrustStripProps> = ({ className }) => {
                 <Typography
                     component="p"
                     aria-label="Our trusted partners support TechLabs educational programs"
+                    sx={{
+                        sr: 'only', // Screen reader only
+                        position: 'absolute',
+                        width: '1px',
+                        height: '1px',
+                        padding: 0,
+                        margin: '-1px',
+                        overflow: 'hidden',
+                        clip: 'rect(0, 0, 0, 0)',
+                        whiteSpace: 'nowrap',
+                        border: 0,
+                    }}
                 >
                     Our trusted partners who support TechLabs educational programs
                 </Typography>

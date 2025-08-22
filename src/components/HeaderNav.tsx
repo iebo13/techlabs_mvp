@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { Menu as MenuIcon } from '@mui/icons-material'
+import { Menu as MenuIcon, KeyboardArrowDown } from '@mui/icons-material'
 import {
     AppBar,
     Toolbar,
@@ -8,13 +8,12 @@ import {
     IconButton,
     Drawer,
     Button,
-    Container,
     useTheme,
     useMediaQuery,
-    Typography,
 } from '@mui/material'
 
 import { navigationItems, ctaButtons } from './data/navigationData'
+import { Logo } from './Logo'
 import { MobileDrawer } from './MobileDrawer'
 import { NavLink } from './NavLink'
 
@@ -26,18 +25,7 @@ export const HeaderNav: React.FC = () => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
     const [mobileOpen, setMobileOpen] = useState(false)
-    const [scrolled, setScrolled] = useState(false)
-
-    // Handle scroll elevation
-    useEffect(() => {
-        const handleScroll = () => {
-            const isScrolled = window.scrollY > 8
-            setScrolled(isScrolled)
-        }
-
-        window.addEventListener('scroll', handleScroll, { passive: true })
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
+    // Removed scroll state as header styling is now consistent per Figma requirements
 
     // Handle drawer toggle
     const handleDrawerToggle = () => {
@@ -80,113 +68,112 @@ export const HeaderNav: React.FC = () => {
         <>
             <AppBar
                 position="sticky"
-                elevation={scrolled ? 4 : 0}
+                elevation={0}
                 sx={{
-                    backgroundColor: scrolled
-                        ? 'rgba(255, 255, 255, 0.95)'
-                        : 'rgba(255, 255, 255, 0.8)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
                     backdropFilter: 'blur(10px)',
-                    borderBottom: scrolled
-                        ? '1px solid rgba(0, 0, 0, 0.12)'
-                        : '1px solid rgba(0, 0, 0, 0.06)',
-                    transition: theme.transitions.create(['elevation', 'background-color', 'border-color'], {
-                        duration: theme.transitions.duration.short,
-                    }),
+                    borderBottom: '1px solid rgba(0, 0, 0, 0.08)', // Consistent hairline border
+                    boxShadow: 'none', // No shadows per Figma
                 }}
             >
-                <Container maxWidth="lg">
-                    <Toolbar sx={{ px: { xs: 0, sm: 0 }, minHeight: { xs: 64, sm: 72 } }}>
-                        {/* Logo */}
-                        <NavLink
-                            to="/"
-                            showActive={false}
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                mr: 'auto',
-                                padding: '8px 0',
-                                '&:hover': {
-                                    backgroundColor: 'transparent',
-                                },
-                            }}
-                        >
-                            <Typography
-                                variant="h6"
-                                component="div"
-                                sx={{
-                                    fontWeight: 800,
-                                    fontSize: '1.5rem',
-                                    color: 'primary.main',
-                                    letterSpacing: '-0.02em',
-                                }}
-                            >
-                                TechLabs
-                            </Typography>
-                        </NavLink>
+                <Toolbar sx={{ px: { xs: 2, sm: 3, md: 4 }, minHeight: { xs: 64, md: 72 } }}>
+                    {/* Left cluster: Logo + Nav */}
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 4, mr: 'auto' }}>
+                        <Logo />
 
                         {/* Desktop Navigation */}
                         {!isMobile && (
-                            <>
-                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mr: 3 }}>
-                                    {navigationItems.map((item, index) => (
-                                        <React.Fragment key={item.path}>
-                                            <NavLink to={item.path}>
-                                                {item.label}
-                                            </NavLink>
-                                            {index < navigationItems.length - 1 && (
-                                                <Typography
-                                                    component="span"
-                                                    sx={{
-                                                        color: 'text.disabled',
-                                                        mx: 0.5,
-                                                        fontSize: '0.875rem',
-                                                        userSelect: 'none',
-                                                    }}
-                                                >
-                                                    ·
-                                                </Typography>
-                                            )}
-                                        </React.Fragment>
-                                    ))}
-                                </Box>
-
-                                <Box sx={{ display: 'flex', gap: 2 }}>
-                                    {ctaButtons.map((button) => (
-                                        <Button
-                                            key={button.path}
-                                            variant={button.variant}
-                                            component={NavLink}
-                                            to={button.path}
-                                            size="medium"
-                                        >
-                                            {button.label}
-                                        </Button>
-                                    ))}
-                                </Box>
-                            </>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                                {navigationItems.map((item) => (
+                                    <Box key={item.path} sx={{ display: 'flex', alignItems: 'center' }}>
+                                        <NavLink to={item.path}>
+                                            {item.label}
+                                        </NavLink>
+                                        {/* Add dropdown carets for Tracks, Stories, Events */}
+                                        {(['Tracks', 'Stories', 'Events'].includes(item.label)) && (
+                                            <KeyboardArrowDown
+                                                fontSize="small"
+                                                sx={{ ml: 0.5, color: 'text.primary' }}
+                                            />
+                                        )}
+                                    </Box>
+                                ))}
+                            </Box>
                         )}
+                    </Box>
 
-                        {/* Mobile Menu Button */}
-                        {isMobile && (
-                            <IconButton
-                                edge="end"
-                                onClick={handleDrawerToggle}
-                                aria-label="open navigation menu"
-                                aria-expanded={mobileOpen}
-                                aria-controls="mobile-navigation-drawer"
+                    {/* Right cluster: Locale + CTAs */}
+                    {!isMobile && (
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+                            {/* Locale/City selector */}
+                            <Button
+                                variant="text"
+                                endIcon={<KeyboardArrowDown />}
                                 sx={{
-                                    color: 'text.primary',
-                                    '&:focus-visible': {
-                                        outline: `3px solid ${theme.palette.primary.main}40`,
-                                        outlineOffset: 2,
+                                    fontWeight: 700,
+                                    color: 'primary.main',
+                                    px: 1,
+                                    py: 0.5,
+                                    minWidth: 'auto',
+                                    '&:hover': {
+                                        backgroundColor: 'transparent',
                                     },
                                 }}
                             >
-                                <MenuIcon />
-                            </IconButton>
-                        )}
-                    </Toolbar>
-                </Container>
+                                Düsseldorf / EN
+                            </Button>
+
+                            {/* CTAs */}
+                            <Box sx={{ display: 'flex', gap: 1.5 }}>
+                                {ctaButtons.map((button) => (
+                                    <Button
+                                        key={button.path}
+                                        variant={button.variant}
+                                        component={NavLink}
+                                        to={button.path}
+                                        size="large"
+                                        sx={{
+                                            height: 48,
+                                            borderRadius: '999px',
+                                            fontWeight: 800,
+                                            px: 3,
+                                            minWidth: 'fit-content',
+                                            whiteSpace: 'nowrap',
+                                            ...(button.variant === 'outlined' && {
+                                                borderWidth: '2px',
+                                                '&:hover': {
+                                                    borderWidth: '2px',
+                                                },
+                                            }),
+                                        }}
+                                    >
+                                        {button.label}
+                                    </Button>
+                                ))}
+                            </Box>
+                        </Box>
+                    )}
+
+                    {/* Mobile Menu Button */}
+                    {isMobile && (
+                        <IconButton
+                            edge="end"
+                            onClick={handleDrawerToggle}
+                            aria-label="open navigation menu"
+                            aria-expanded={mobileOpen}
+                            aria-controls="mobile-navigation-drawer"
+                            sx={{
+                                color: 'text.primary',
+                                '&:focus-visible': {
+                                    outline: `3px solid ${theme.palette.primary.main}40`,
+                                    outlineOffset: 2,
+                                },
+                            }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    )}
+                </Toolbar>
             </AppBar>
 
             {/* Mobile Drawer */}

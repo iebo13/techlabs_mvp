@@ -1,22 +1,18 @@
 import React from 'react'
 
-import { Hero } from '../components/Hero'
+import { HeroSection } from '../components/HeroSection'
 import HeroVideo from '../components/HeroVideo'
 import { Section } from '../components/Section'
-import { TrackChooser } from '../components/TrackChooser'
-import { TrustStrip } from '../components/TrustStrip'
 import homeData from '../mocks/home.json'
 
 /**
  * HomePage component - main landing page for TechLabs website.
- * Contains Hero section, Track Chooser, Trust Strip, and additional sections to follow.
+ * Contains unified Hero section with track selection and trust indicators, followed by additional sections.
  */
 export const HomePage: React.FC = () => {
     return (
         <main>
-            <Hero />
-            <TrackChooser />
-            <TrustStrip />
+            <HeroSection />
 
             {/* Video Banner Section - MVP-08 */}
             <Section sx={{ py: { xs: 6, md: 8 } }}>

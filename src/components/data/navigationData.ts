@@ -16,13 +16,13 @@ export type CTAButton = {
 
 export const navigationItems: NavigationItem[] = [
     { label: 'Tracks', path: '/tracks' },
-    { label: 'Events', path: '/events' },
     { label: 'Stories', path: '/stories' },
-    { label: 'Partners', path: '/partners' },
-    { label: 'About Us', path: '/about' },
+    { label: 'Events', path: '/events' },
+    { label: 'Be a Partner', path: '/partners' },
+    { label: 'About us', path: '/about' },
 ]
 
 export const ctaButtons: CTAButton[] = [
-    { label: 'Start Learning', path: '/tracks', variant: 'contained' },
     { label: 'Join our team', path: '/careers', variant: 'outlined' },
+    { label: 'Start Learning', path: '/tracks', variant: 'contained' },
 ]

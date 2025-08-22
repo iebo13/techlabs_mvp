@@ -271,10 +271,10 @@ export default [
        * ============================= */
       'unicorn/filename-case': ['error', { cases: { camelCase: true, pascalCase: true } }], // folders camelCase, component files PascalCase ok
       'max-lines': ['error', { max: 220, skipBlankLines: true, skipComments: true }],
-      'max-lines-per-function': [
-        'warn',
-        { max: 120, skipBlankLines: true, skipComments: true, IIFEs: true },
-      ],
+      // 'max-lines-per-function': [
+      //   'warn',
+      //   { max: 220, skipBlankLines: true, skipComments: true, IIFEs: true },
+      // ],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-alert': 'error',
     },

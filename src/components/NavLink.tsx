@@ -38,20 +38,19 @@ export const NavLink: React.FC<NavLinkProps> = ({
         textDecoration: 'none',
         fontWeight: isActive ? 700 : 600,
         fontSize: '1rem',
-        padding: '8px 16px',
+        px: 1.5,
+        py: 0.5,
         borderRadius: '8px',
-        transition: theme.transitions.create(['color', 'background-color'], {
+        transition: theme.transitions.create(['color'], {
             duration: theme.transitions.duration.short,
         }),
         '&:hover': {
             color: 'primary.main',
-            backgroundColor: 'rgba(250, 33, 92, 0.04)',
             textDecoration: 'none',
         },
         '&:focus-visible': {
             outline: `3px solid ${theme.palette.primary.main}25`,
             outlineOffset: 2,
-            backgroundColor: 'rgba(250, 33, 92, 0.04)',
         },
         ...sx,
     }

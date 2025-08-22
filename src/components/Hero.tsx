@@ -17,7 +17,7 @@ export const Hero: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 textAlign: 'center',
-                py: { xs: 8, md: 12 },
+                backgroundColor: 'background.default', // Pure white background
                 '& > .MuiContainer-root': {
                     '&[aria-labelledby]': {
                         ariaLabelledby: 'hero-heading',
@@ -28,18 +28,13 @@ export const Hero: React.FC = () => {
             <Box sx={{ width: '100%', maxWidth: '800px', mx: 'auto' }}>
                 {/* Main Heading */}
                 <Typography
+                    variant="h1"
                     id="hero-heading"
                     component="h1"
                     sx={{
-                        fontSize: {
-                            xs: 'clamp(2.125rem, 8vw, 3.5rem)', // 34px to 56px on mobile
-                            md: 'clamp(3rem, 6vw, 5.5rem)',     // 48px to 88px on desktop
-                        },
-                        fontWeight: 800,
-                        lineHeight: 1.1,
-                        letterSpacing: '-0.02em',
-                        color: 'text.primary',
-                        mb: 3,
+                        // Use theme h1 typography with very tight line-height
+                        lineHeight: 0.95, // Very tight line-height per Figma
+                        mb: 4, // Generous spacing below headline
                         '& .emphasis': {
                             color: 'primary.main',
                             fontWeight: 'inherit',
@@ -60,12 +55,13 @@ export const Hero: React.FC = () => {
                     sx={{
                         fontSize: { xs: '1.125rem', md: '1.25rem' },
                         fontWeight: 400,
-                        lineHeight: 1.5,
-                        color: 'text.secondary',
+                        lineHeight: 1.7, // Comfortable line-height
+                        color: 'text.secondary', // Muted gray
                         maxWidth: '600px',
                         mx: 'auto',
+                        mb: { xs: 6, md: 8 }, // Generous spacing below subtitle
                         '& .separator': {
-                            color: 'text.disabled',
+                            color: 'text.secondary',
                             mx: 1,
                             fontSize: '0.875em',
                             userSelect: 'none',

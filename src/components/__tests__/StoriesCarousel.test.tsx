@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { vi } from 'vitest'
-
 import { theme } from '../../theme/theme'
 import type { Story } from '../../types/home'
 import { StoriesCarousel } from '../StoriesCarousel'

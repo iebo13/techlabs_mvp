@@ -11,7 +11,7 @@ import faqData from '../mocks/faq.json'
 
 // Type definitions for the content data
 type AboutData = typeof contentData.about
-type FAQ = typeof faqData.faqs[0]
+type FAQ = (typeof faqData.faqs)[0]
 
 /**
  * AboutPage component - Comprehensive about page with mission, program, timeline, team, and FAQ sections.

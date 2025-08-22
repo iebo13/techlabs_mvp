@@ -3,7 +3,6 @@
  */
 
 import { vi } from 'vitest'
-
 import type { TrackKey } from '../../types/home'
 import {
   saveTrackSelection,

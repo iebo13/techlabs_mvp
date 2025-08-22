@@ -35,49 +35,6 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0)
   const carouselRef = useRef<HTMLDivElement>(null)
 
-  const goToSlide = (newIndex: number) => {
-    const clampedIndex = Math.max(0, Math.min(newIndex, maxIndex))
-    setCurrentIndex(clampedIndex)
-
-    // Announce current position to screen readers
-    const announcement = `Showing ${clampedIndex + 1} to ${Math.min(clampedIndex + cardsPerView, stories.length)} of ${stories.length} stories`
-    announceToScreenReader(announcement)
-  }
-
-  const goToPrevious = () => {
-    goToSlide(currentIndex - 1)
-  }
-
-  const goToNext = () => {
-    goToSlide(currentIndex + 1)
-  }
-
-  // Screen reader announcements
-  const announceToScreenReader = (message: string) => {
-    // Only run in browser environment
-    if (typeof document === 'undefined') return
-
-    const announcement = document.createElement('div')
-    announcement.setAttribute('aria-live', 'polite')
-    announcement.setAttribute('aria-atomic', 'true')
-    announcement.setAttribute('class', 'sr-only')
-    announcement.style.position = 'absolute'
-    announcement.style.left = '-10000px'
-    announcement.style.width = '1px'
-    announcement.style.height = '1px'
-    announcement.style.overflow = 'hidden'
-    announcement.textContent = message
-
-    document.body.appendChild(announcement)
-
-    // Simple cleanup without tracking timeouts
-    setTimeout(() => {
-      if (document.body.contains(announcement)) {
-        document.body.removeChild(announcement)
-      }
-    }, 1000)
-  }
-
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -86,26 +43,26 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({
       switch (event.key) {
         case 'ArrowLeft':
           event.preventDefault()
-          goToPrevious()
+          setCurrentIndex(prev => (prev - 1 + stories.length) % stories.length)
           break
         case 'ArrowRight':
           event.preventDefault()
-          goToNext()
+          setCurrentIndex(prev => (prev + 1) % stories.length)
           break
         case 'Home':
           event.preventDefault()
-          goToSlide(0)
+          setCurrentIndex(0)
           break
         case 'End':
           event.preventDefault()
-          goToSlide(maxIndex)
+          setCurrentIndex(maxIndex)
           break
       }
     }
 
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [currentIndex, maxIndex])
+  }, [currentIndex, maxIndex, stories.length])
 
   const visibleStories = stories.slice(currentIndex, currentIndex + cardsPerView)
 
@@ -116,8 +73,8 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({
           sectionTitle={sectionTitle}
           currentIndex={currentIndex}
           maxIndex={maxIndex}
-          onPrevious={goToPrevious}
-          onNext={goToNext}
+          onPrevious={() => setCurrentIndex(prev => (prev - 1 + stories.length) % stories.length)}
+          onNext={() => setCurrentIndex(prev => (prev + 1) % stories.length)}
         />
 
         {/* Carousel container */}

@@ -3,7 +3,6 @@ import { render, screen, fireEvent, waitFor, cleanup } from '@testing-library/re
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { vi } from 'vitest'
-
 import { theme } from '../../theme/theme'
 import VideoEmbed from '../VideoEmbed'
 

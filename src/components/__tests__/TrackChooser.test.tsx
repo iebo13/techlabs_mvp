@@ -7,7 +7,6 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { vi } from 'vitest'
-
 import { theme } from '../../theme/theme'
 import * as dateUtils from '../../utils/date'
 import * as persistenceUtils from '../../utils/persistence'

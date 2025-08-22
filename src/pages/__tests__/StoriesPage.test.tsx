@@ -3,7 +3,6 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { describe, it, expect } from 'vitest'
-
 import { theme } from '../../theme/theme'
 import { StoriesPage } from '../StoriesPage'
 

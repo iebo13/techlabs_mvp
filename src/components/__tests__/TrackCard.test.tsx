@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@mui/material/styles'
 import { render, screen, fireEvent } from '@testing-library/react'
-
 import { theme } from '../../theme/theme'
 import { TrackCard, type Track } from '../TrackCard'
 

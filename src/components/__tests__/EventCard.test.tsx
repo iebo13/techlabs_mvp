@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { vi, describe, it, expect, beforeEach } from 'vitest'
-
 import { theme } from '../../theme/theme'
 import { EventCard, type Event } from '../EventCard'
 

@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
-
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import { Card, CardMedia, CardContent, Typography, Button, IconButton, Stack } from '@mui/material'
+import { Card, CardMedia, CardContent, Typography, IconButton, Stack } from '@mui/material'
 
+import { CTAButton } from './CTAButton'
 import { SectionHeading } from './SectionHeading'
 
 import type { Story } from '../types/home'
@@ -142,15 +141,14 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => (
       <Typography variant="body2" color="text.secondary" sx={{ mb: 2, flexGrow: 1 }}>
         {story.excerpt}
       </Typography>
-      <Button
-        component={Link}
+      <CTAButton
         to={`/stories/${story.id}`}
         variant="outlined"
         size="small"
         sx={{ alignSelf: 'flex-start' }}
       >
         Read Story
-      </Button>
+      </CTAButton>
     </CardContent>
   </Card>
 )

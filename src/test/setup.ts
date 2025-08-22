@@ -14,6 +14,8 @@ vi.mock('@mui/icons-material', () => ({
   LocationOn: () => '📍',
   Work: () => '💼',
   School: () => '🎓',
+  ChevronLeft: () => '◀',
+  ChevronRight: () => '▶',
   // Add any other icons that might be used
   default: {
     PlayArrow: () => '▶',
@@ -27,6 +29,8 @@ vi.mock('@mui/icons-material', () => ({
     LocationOn: () => '📍',
     Work: () => '💼',
     School: () => '🎓',
+    ChevronLeft: () => '◀',
+    ChevronRight: () => '▶',
   },
 }))
 

@@ -1,7 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles'
 import { render, screen } from '@testing-library/react'
 import React from 'react'
-
 import { theme } from '../../theme/theme'
 import { KPIStat } from '../KpiStat'
 

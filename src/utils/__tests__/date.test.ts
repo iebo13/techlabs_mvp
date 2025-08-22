@@ -3,7 +3,6 @@
  */
 
 import { vi } from 'vitest'
-
 import { differenceInWeeks, differenceInDays, formatDeadlineText } from '../date'
 
 describe('Date utilities', () => {

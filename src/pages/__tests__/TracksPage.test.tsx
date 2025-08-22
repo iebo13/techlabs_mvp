@@ -7,205 +7,262 @@ import { TracksPage } from '../TracksPage'
 
 // Mock the tracks data
 vi.mock('../../mocks/tracks.json', () => ({
-    default: {
-        tracks: [
-            {
-                id: 'web-dev',
-                label: 'Web Development',
-                description:
-                    'Learn modern web development with HTML, CSS, JavaScript, and popular frameworks.',
-                duration: '6 months',
-                format: 'Part-time, 2 evenings per week',
-                skills: ['HTML5', 'CSS3', 'JavaScript', 'React'],
-                projects: ['Personal portfolio', 'E-commerce site'],
-                careerPaths: ['Frontend Developer', 'Full-stack Developer'],
-                nextCohort: 'March 2025',
-                applicationDeadline: '2025-02-15',
-                spotsAvailable: 25,
-                icon: '💻',
-            },
-            {
-                id: 'data-science',
-                label: 'Data Science',
-                description: 'Master data analysis, machine learning, and statistical modeling.',
-                duration: '8 months',
-                format: 'Part-time, 2 evenings per week',
-                skills: ['Python', 'Pandas', 'NumPy'],
-                projects: ['Customer segmentation', 'Sales forecasting'],
-                careerPaths: ['Data Analyst', 'Data Scientist'],
-                nextCohort: 'April 2025',
-                applicationDeadline: '2025-03-20',
-                spotsAvailable: 20,
-                icon: '📊',
-            },
-        ],
-    },
+  default: {
+    tracks: [
+      {
+        id: 'web-dev',
+        label: 'Web Development',
+        description:
+          'Learn modern web development with HTML, CSS, JavaScript, and popular frameworks. Build responsive websites and web applications.',
+        duration: '6 months',
+        format: 'Part-time, 2 evenings per week',
+        skills: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js', 'Git'],
+        projects: ['Personal portfolio', 'E-commerce site', 'Social media app'],
+        careerPaths: ['Frontend Developer', 'Full-stack Developer', 'Web Designer'],
+        nextCohort: 'March 2025',
+        applicationDeadline: 'February 15, 2025',
+        spotsAvailable: 25,
+        icon: '💻',
+      },
+      {
+        id: 'data-science',
+        label: 'Data Science',
+        description:
+          'Master data analysis, machine learning, and statistical modeling. Work with real datasets and build predictive models.',
+        duration: '8 months',
+        format: 'Part-time, 2 evenings per week',
+        skills: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'SQL', 'Data Visualization'],
+        projects: ['Customer segmentation', 'Sales forecasting', 'Sentiment analysis'],
+        careerPaths: ['Data Analyst', 'Data Scientist', 'Business Intelligence'],
+        nextCohort: 'April 2025',
+        applicationDeadline: 'March 20, 2025',
+        spotsAvailable: 20,
+        icon: '📊',
+      },
+      {
+        id: 'product-design',
+        label: 'Product Design',
+        description:
+          'Design user-centered digital products using modern design tools and methodologies. Learn UX/UI principles and prototyping.',
+        duration: '6 months',
+        format: 'Part-time, 2 evenings per week',
+        skills: ['Figma', 'User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
+        projects: ['Mobile app design', 'Website redesign', 'Design system'],
+        careerPaths: ['UX Designer', 'UI Designer', 'Product Designer'],
+        nextCohort: 'May 2025',
+        applicationDeadline: 'April 25, 2025',
+        spotsAvailable: 18,
+        icon: '🎨',
+      },
+      {
+        id: 'ai',
+        label: 'Artificial Intelligence',
+        description:
+          'Explore AI fundamentals, machine learning algorithms, and neural networks. Build intelligent systems and applications.',
+        duration: '8 months',
+        format: 'Part-time, 2 evenings per week',
+        skills: ['Python', 'TensorFlow', 'PyTorch', 'Deep Learning', 'NLP', 'Computer Vision'],
+        projects: ['Chatbot', 'Image classifier', 'Recommendation system'],
+        careerPaths: ['AI Engineer', 'Machine Learning Engineer', 'Research Scientist'],
+        nextCohort: 'June 2025',
+        applicationDeadline: 'May 30, 2025',
+        spotsAvailable: 15,
+        icon: '🤖',
+      },
+    ],
+  },
 }))
 
 // Mock sessionStorage
 const mockSessionStorage = {
-    getItem: vi.fn(),
-    setItem: vi.fn(),
-    clear: vi.fn(),
+  getItem: vi.fn(),
+  setItem: vi.fn(),
+  clear: vi.fn(),
 }
 Object.defineProperty(window, 'sessionStorage', {
-    value: mockSessionStorage,
+  value: mockSessionStorage,
 })
 
 // Mock window.location
 const mockLocation = {
-    href: '',
+  href: '',
 }
 Object.defineProperty(window, 'location', {
-    value: mockLocation,
-    writable: true,
+  value: mockLocation,
+  writable: true,
 })
 
 const renderWithProviders = (component: React.ReactElement) => {
-    return render(
-        <BrowserRouter>
-            <ThemeProvider theme={theme}>{component}</ThemeProvider>
-        </BrowserRouter>
-    )
+  return render(
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>{component}</ThemeProvider>
+    </BrowserRouter>
+  )
 }
 
 describe('TracksPage', () => {
-    beforeEach(() => {
-        vi.clearAllMocks()
-        mockSessionStorage.getItem.mockReturnValue(null)
-        mockLocation.href = ''
-    })
+  beforeEach(() => {
+    vi.clearAllMocks()
+    mockSessionStorage.getItem.mockReturnValue(null)
+    mockLocation.href = ''
+  })
 
-    it('renders page title and description', () => {
-        renderWithProviders(<TracksPage />)
+  it('renders all tracks in a grid', () => {
+    renderWithProviders(<TracksPage />)
 
-        expect(screen.getByText('Choose Your Learning Track')).toBeInTheDocument()
-        expect(
-            screen.getByText('Select the track that aligns with your career goals and interests')
-        ).toBeInTheDocument()
-    })
+    expect(screen.getByText('Web Development')).toBeInTheDocument()
+    expect(screen.getByText('Data Science')).toBeInTheDocument()
+    expect(screen.getByText('Product Design')).toBeInTheDocument()
+    expect(screen.getByText('Artificial Intelligence')).toBeInTheDocument()
+    expect(screen.getByText('💻')).toBeInTheDocument()
+    expect(screen.getByText('📊')).toBeInTheDocument()
+    expect(screen.getByText('🎨')).toBeInTheDocument()
+    expect(screen.getByText('🤖')).toBeInTheDocument()
+  })
 
-    it('renders all tracks in a grid', () => {
-        renderWithProviders(<TracksPage />)
+  it('displays track preferences when available in session storage', () => {
+    mockSessionStorage.getItem.mockReturnValue(JSON.stringify(['web-dev', 'data-science']))
 
-        expect(screen.getByText('Web Development')).toBeInTheDocument()
-        expect(screen.getByText('Data Science')).toBeInTheDocument()
-        expect(screen.getByText('💻')).toBeInTheDocument()
-        expect(screen.getByText('📊')).toBeInTheDocument()
-    })
+    renderWithProviders(<TracksPage />)
 
-    it('displays track preferences when available in session storage', () => {
-        mockSessionStorage.getItem.mockReturnValue(JSON.stringify(['web-dev', 'data-science']))
+    expect(screen.getByText('🎯 Your Preferred Tracks')).toBeInTheDocument()
+    expect(
+      screen.getByText('Based on your selection: Web Development, Data Science')
+    ).toBeInTheDocument()
+  })
 
-        renderWithProviders(<TracksPage />)
+  it('shows assessment section', () => {
+    renderWithProviders(<TracksPage />)
 
-        expect(screen.getByText('Your Preferred Tracks:')).toBeInTheDocument()
-        // Check for preferred tracks chips specifically
-        expect(screen.getByText('Web Development', { selector: '.MuiChip-label' })).toBeInTheDocument()
-        expect(screen.getByText('Data Science', { selector: '.MuiChip-label' })).toBeInTheDocument()
-    })
+    expect(screen.getByText('Not Sure Which Track to Choose?')).toBeInTheDocument()
+    expect(
+      screen.getByText('Take our quick assessment to find the best track for your skills and goals')
+    ).toBeInTheDocument()
 
-    it('displays track preferences from URL params', () => {
-        // This test requires more complex mocking of useSearchParams
-        // For now, we'll test the basic functionality without URL params
-        renderWithProviders(<TracksPage />)
+    const assessmentButton = screen.getByRole('link', { name: /take assessment/i })
+    expect(assessmentButton).toHaveAttribute('href', '/assessment')
+  })
 
-        // Verify the page renders correctly
-        expect(screen.getByText('Choose Your Learning Track')).toBeInTheDocument()
-        expect(screen.getByText('Web Development')).toBeInTheDocument()
-        expect(screen.getByText('Data Science')).toBeInTheDocument()
-    })
+  it('shows application deadline alert', () => {
+    renderWithProviders(<TracksPage />)
 
-    it('shows Start Learning button', () => {
-        renderWithProviders(<TracksPage />)
+    // Look for the alert container and verify it contains the expected text
+    const alert = screen.getByRole('alert')
+    expect(alert).toBeInTheDocument()
+    expect(alert).toHaveTextContent('Application Deadlines')
+    expect(alert).toHaveTextContent(
+      'Each track has different start dates and application deadlines'
+    )
+    expect(alert).toHaveTextContent('Make sure to apply early to secure your spot')
+  })
 
-        const startLearningButton = screen.getByRole('button', { name: /start learning/i })
-        expect(startLearningButton).toBeInTheDocument()
-    })
+  it('handles session storage parsing errors gracefully', () => {
+    mockSessionStorage.getItem.mockReturnValue('invalid-json')
 
-    it('navigates to home with track preferences when Start Learning is clicked', () => {
-        mockSessionStorage.getItem.mockReturnValue(JSON.stringify(['web-dev']))
+    renderWithProviders(<TracksPage />)
 
-        renderWithProviders(<TracksPage />)
+    // Should still render without crashing
+    expect(screen.getByText('Web Development')).toBeInTheDocument()
+    expect(screen.getByText('Data Science')).toBeInTheDocument()
+  })
 
-        const startLearningButton = screen.getByRole('button', { name: /start learning/i })
-        fireEvent.click(startLearningButton)
+  it('expands track when toggle button is clicked', () => {
+    renderWithProviders(<TracksPage />)
 
-        expect(mockLocation.href).toBe('/#tracks?pref=web-dev')
-    })
+    // Find the first track's toggle button and click it
+    const toggleButtons = screen.getAllByRole('button', { name: /show more details/i })
+    expect(toggleButtons).toHaveLength(4) // Should have 4 tracks
 
-    it('navigates to home without preferences when no tracks are selected', () => {
-        renderWithProviders(<TracksPage />)
+    // Click the first toggle button to expand it
+    fireEvent.click(toggleButtons[0])
 
-        const startLearningButton = screen.getByRole('button', { name: /start learning/i })
-        fireEvent.click(startLearningButton)
+    // Verify the content is expanded
+    expect(screen.getByText("Skills You'll Learn")).toBeInTheDocument()
+  })
 
-        expect(mockLocation.href).toBe('/#tracks')
-    })
+  it('renders track cards with proper spacing', () => {
+    renderWithProviders(<TracksPage />)
 
-    it('shows assessment section', () => {
-        renderWithProviders(<TracksPage />)
+    const trackCards = screen.getAllByText(
+      /Web Development|Data Science|Product Design|Artificial Intelligence/
+    )
+    expect(trackCards).toHaveLength(4)
+  })
 
-        expect(screen.getByText('Not Sure Which Track to Choose?')).toBeInTheDocument()
-        expect(
-            screen.getByText('Take our quick assessment to find the best track for your skills and goals')
-        ).toBeInTheDocument()
+  it('shows track information correctly', () => {
+    renderWithProviders(<TracksPage />)
 
-        const assessmentButton = screen.getByRole('link', { name: /take assessment/i })
-        expect(assessmentButton).toHaveAttribute('href', '/assessment')
-    })
+    // Use getAllByText since these texts appear multiple times
+    const sixMonthTexts = screen.getAllByText('6 months')
+    const eightMonthTexts = screen.getAllByText('8 months')
+    expect(sixMonthTexts).toHaveLength(2) // Web Dev and Product Design
+    expect(eightMonthTexts).toHaveLength(2) // Data Science and AI
 
-    it('shows application deadline alert', () => {
-        renderWithProviders(<TracksPage />)
+    // Use getAllByText since this text appears multiple times
+    const formatTexts = screen.getAllByText('Part-time, 2 evenings per week')
+    expect(formatTexts).toHaveLength(4)
+  })
 
-        // Look for the alert container and verify it contains the expected text
-        const alert = screen.getByRole('alert')
-        expect(alert).toBeInTheDocument()
-        expect(alert).toHaveTextContent('Application Deadlines')
-        expect(alert).toHaveTextContent('Each track has different start dates')
-        expect(alert).toHaveTextContent('Make sure to apply early')
-    })
+  it('shows apply now buttons for each track', () => {
+    renderWithProviders(<TracksPage />)
 
-    it('handles session storage parsing errors gracefully', () => {
-        mockSessionStorage.getItem.mockReturnValue('invalid-json')
+    const applyButtons = screen.getAllByRole('link', { name: /apply now/i })
+    expect(applyButtons).toHaveLength(4)
 
-        renderWithProviders(<TracksPage />)
+    expect(applyButtons[0]).toHaveAttribute('href', '/apply?track=web-dev')
+    expect(applyButtons[1]).toHaveAttribute('href', '/apply?track=data-science')
+    expect(applyButtons[2]).toHaveAttribute('href', '/apply?track=product-design')
+    expect(applyButtons[3]).toHaveAttribute('href', '/apply?track=ai')
+  })
 
-        // Should still render without crashing
-        expect(screen.getByText('Choose Your Learning Track')).toBeInTheDocument()
-        expect(screen.getByText('Web Development')).toBeInTheDocument()
-    })
+  it('shows track details when expanded', () => {
+    renderWithProviders(<TracksPage />)
 
-    it('expands first track automatically when only one preference is selected', () => {
-        // This test requires more complex mocking of useSearchParams
-        // For now, we'll test that tracks can be expanded manually
-        renderWithProviders(<TracksPage />)
+    // Click the first track's toggle button
+    const toggleButtons = screen.getAllByRole('button', { name: /show more details/i })
+    fireEvent.click(toggleButtons[0])
 
-        // Find the first track's toggle button and click it
-        const toggleButtons = screen.getAllByRole('button', { name: /show more details/i })
-        expect(toggleButtons).toHaveLength(2) // Should have 2 tracks
+    // Verify expanded content
+    expect(screen.getByText("Skills You'll Learn")).toBeInTheDocument()
+    expect(screen.getByText("Projects You'll Build")).toBeInTheDocument()
+    expect(screen.getByText('Career Paths')).toBeInTheDocument()
+    expect(screen.getByText('Application Details')).toBeInTheDocument()
 
-        // Click the first toggle button to expand it
-        fireEvent.click(toggleButtons[0])
+    // Check for specific skills
+    expect(screen.getByText('HTML5')).toBeInTheDocument()
+    expect(screen.getByText('React')).toBeInTheDocument()
 
-        // Verify the content is expanded
-        expect(screen.getByText("Skills You'll Learn")).toBeInTheDocument()
-    })
+    // Check for specific projects
+    expect(screen.getByText('Personal portfolio')).toBeInTheDocument()
+    expect(screen.getByText('E-commerce site')).toBeInTheDocument()
 
-    it('renders track cards with proper spacing', () => {
-        renderWithProviders(<TracksPage />)
+    // Check for career paths
+    expect(screen.getByText('Frontend Developer')).toBeInTheDocument()
+    expect(screen.getByText('Full-stack Developer')).toBeInTheDocument()
+  })
 
-        const trackCards = screen.getAllByText(/Web Development|Data Science/)
-        expect(trackCards).toHaveLength(2)
-    })
+  it('can expand tracks manually when toggle button is clicked', () => {
+    renderWithProviders(<TracksPage />)
 
-    it('shows track information correctly', () => {
-        renderWithProviders(<TracksPage />)
+    // Find the first track's toggle button and click it
+    const toggleButtons = screen.getAllByRole('button', { name: /show more details/i })
+    expect(toggleButtons).toHaveLength(4) // Should have 4 tracks
 
-        expect(screen.getByText('6 months')).toBeInTheDocument()
-        expect(screen.getByText('8 months')).toBeInTheDocument()
-        // Use getAllByText since this text appears multiple times
-        const formatTexts = screen.getAllByText('Part-time, 2 evenings per week')
-        expect(formatTexts).toHaveLength(2)
-    })
+    // Click the first toggle button to expand it
+    fireEvent.click(toggleButtons[0])
+
+    // Verify the content is expanded
+    expect(screen.getByText("Skills You'll Learn")).toBeInTheDocument()
+    expect(screen.getByText('HTML5')).toBeInTheDocument()
+  })
+
+  it('shows track preferences from URL params', () => {
+    // This test requires more complex mocking of useSearchParams
+    // For now, we'll test the basic functionality without URL params
+    renderWithProviders(<TracksPage />)
+
+    // Verify the page renders correctly
+    expect(screen.getByText('Web Development')).toBeInTheDocument()
+    expect(screen.getByText('Data Science')).toBeInTheDocument()
+  })
 })

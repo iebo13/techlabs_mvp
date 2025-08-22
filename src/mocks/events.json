@@ -1,0 +1,104 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "TechLabs Düsseldorf Meetup",
+      "blurb": "Join our local community for networking, project showcases, and tech talks.",
+      "date": "2025-01-15T18:00:00Z",
+      "location": "Düsseldorf, Germany",
+      "type": "upcoming",
+      "imageUrl": "/img/events/meetup.jpg",
+      "href": "/events/techlabs-dusseldorf-meetup"
+    },
+    {
+      "id": "2",
+      "title": "Web Development Workshop",
+      "blurb": "Hands-on session on modern web development with React and TypeScript.",
+      "date": "2025-01-22T14:00:00Z",
+      "location": "Berlin, Germany",
+      "type": "upcoming",
+      "imageUrl": "/img/events/web-dev-workshop.jpg",
+      "href": "/events/web-development-workshop"
+    },
+    {
+      "id": "3",
+      "title": "Data Science Career Panel",
+      "blurb": "Learn from industry experts about breaking into data science and AI.",
+      "date": "2025-01-28T19:00:00Z",
+      "location": "Munich, Germany",
+      "type": "upcoming",
+      "imageUrl": "/img/events/data-science-panel.jpg",
+      "href": "/events/data-science-career-panel"
+    },
+    {
+      "id": "4",
+      "title": "Product Design Portfolio Review",
+      "blurb": "Get feedback on your portfolio from experienced designers and mentors.",
+      "date": "2025-02-05T16:00:00Z",
+      "location": "Hamburg, Germany",
+      "type": "upcoming",
+      "imageUrl": "/img/events/portfolio-review.jpg",
+      "href": "/events/product-design-portfolio-review"
+    },
+    {
+      "id": "5",
+      "title": "AI Ethics Workshop",
+      "blurb": "Explore the ethical implications of AI and machine learning in modern applications.",
+      "date": "2025-02-12T13:00:00Z",
+      "location": "Frankfurt, Germany",
+      "type": "upcoming",
+      "imageUrl": "/img/events/ai-ethics.jpg",
+      "href": "/events/ai-ethics-workshop"
+    },
+    {
+      "id": "6",
+      "title": "Graduation Ceremony 2024",
+      "blurb": "Celebrating the achievements of our latest cohort of TechLabs graduates.",
+      "date": "2024-12-15T15:00:00Z",
+      "location": "Düsseldorf, Germany",
+      "type": "past",
+      "imageUrl": "/img/events/graduation-2024.jpg",
+      "href": "/events/graduation-ceremony-2024"
+    },
+    {
+      "id": "7",
+      "title": "Hackathon: Sustainable Tech",
+      "blurb": "24-hour hackathon focused on building solutions for environmental challenges.",
+      "date": "2024-11-20T10:00:00Z",
+      "location": "Cologne, Germany",
+      "type": "past",
+      "imageUrl": "/img/events/hackathon-sustainable.jpg",
+      "href": "/events/hackathon-sustainable-tech"
+    },
+    {
+      "id": "8",
+      "title": "Mentor Networking Event",
+      "blurb": "Connect with TechLabs mentors and learn about mentorship opportunities.",
+      "date": "2024-10-28T18:00:00Z",
+      "location": "Stuttgart, Germany",
+      "type": "past",
+      "imageUrl": "/img/events/mentor-networking.jpg",
+      "href": "/events/mentor-networking-event"
+    },
+    {
+      "id": "9",
+      "title": "Tech Career Fair",
+      "blurb": "Meet potential employers and explore career opportunities in tech.",
+      "date": "2024-10-15T11:00:00Z",
+      "location": "Düsseldorf, Germany",
+      "type": "past",
+      "imageUrl": "/img/events/career-fair.jpg",
+      "href": "/events/tech-career-fair"
+    },
+    {
+      "id": "10",
+      "title": "Summer Coding Bootcamp",
+      "blurb": "Intensive 2-week program covering web development fundamentals.",
+      "date": "2024-08-05T09:00:00Z",
+      "location": "Berlin, Germany",
+      "type": "past",
+      "imageUrl": "/img/events/summer-bootcamp.jpg",
+      "href": "/events/summer-coding-bootcamp"
+    }
+  ]
+}

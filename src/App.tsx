@@ -8,22 +8,12 @@ import { HeaderNav } from './components/HeaderNav'
 import { Section } from './components/Section'
 import { SectionHeading } from './components/SectionHeading'
 import { SiteFooter } from './components/SiteFooter'
+import { EventsPage } from './pages/EventsPage'
 import { HomePage } from './pages/HomePage'
 import { TracksPage } from './pages/TracksPage'
 import { theme } from './theme/theme'
 
 // Placeholder pages for navigation
-
-const EventsPage: React.FC = () => (
-  <main>
-    <Section>
-      <SectionHeading level={1} centered>
-        Events
-      </SectionHeading>
-      <p>Events page placeholder - will be implemented in MVP-15</p>
-    </Section>
-  </main>
-)
 
 const StoriesPage: React.FC = () => (
   <main>

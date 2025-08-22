@@ -1,6 +1,6 @@
 # Progress Tracking - TechLabs Website
 
-## Project Status: **HOMEPAGE + TRACKS PAGE COMPLETE**
+## Project Status: **HOMEPAGE + TRACKS PAGE + EVENTS PAGE COMPLETE**
 
 ## What's Complete
 
@@ -28,9 +28,11 @@
 - ✅ **MVP-10**: Stories Carousel (a11y controls, no autoplay) (COMPLETED)
 - ✅ **MVP-11**: Numbers Band (15 Cities, 600+ Graduates, 35 Mentors) (COMPLETED)
 - ✅ **MVP-12**: Support CTA (highlight CTA to /support) (COMPLETED)
-- ✅ **MVP-13 COMPLETED**: FAQs (accordion + link to About #faq)
+- ✅ **MVP-13**: FAQs (accordion + link to About #faq) (COMPLETED)
+- ✅ **MVP-14**: Tracks Page (grid + inline expanders + query prefs) (COMPLETED)
+- ✅ **MVP-15**: Events Page (Upcoming/Past filters + pagination) (COMPLETED)
 
-## What's Left (11 stories total)
+## What's Left (10 stories total)
 
 ### EPIC-MVP-SETUP: Project Setup & Tooling
 
@@ -58,7 +60,7 @@
 ### EPIC-MVP-PAGES: Core Pages
 
 - ✅ **MVP-14**: Tracks Page (grid + inline expanders + query prefs) (COMPLETED)
-- ⏸️ **MVP-15**: Events Page (Upcoming/Past filters + pagination)
+- ✅ **MVP-15**: Events Page (Upcoming/Past filters + pagination) (COMPLETED)
 - ⏸️ **MVP-16**: Stories Page (gallery + track filter + modal details)
 - ⏸️ **MVP-17**: Partners Page (tier grouping + partnership CTA)
 - ⏸️ **MVP-18**: About Us Page (mission + timeline + full FAQs + #faq anchor)

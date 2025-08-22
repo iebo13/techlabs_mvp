@@ -1,10 +1,10 @@
 # Active Context - TechLabs Website
 
-## Current Focus: MVP-15 Events Page
+## Current Focus: MVP-16 Stories Page
 
 **Status**: Ready to implement  
 **Epic**: EPIC-MVP-PAGES (Core Pages)
-**Dependencies**: MVP-02 ✅ (completed)
+**Dependencies**: MVP-10 ✅ (completed)
 
 ## Immediate Task Details
 
@@ -44,6 +44,17 @@
 3. ✅ Test: toggle behavior, first two questions
 
 ## Recent Changes
+
+- ✅ **MVP-15 COMPLETED**: Events Page (Upcoming/Past filters + pagination)
+  - Created comprehensive events.json with 10 sample events (5 upcoming, 5 past)
+  - Built EventCard component with proper accessibility, hover effects, and responsive design
+  - Implemented EventsPage with Upcoming/Past/All tabs, event count display, and load more pagination
+  - Added proper date formatting using date-fns library
+  - Integrated with React Router navigation and existing app structure
+  - Added "Want to host an event?" CTA section linking to /about#contact
+  - Enhanced TracksPage to display preferred tracks when they exist
+  - All tests pass, build successful, and linting clean
+  - Ready for production use with responsive design and modern UI patterns
 
 - ✅ **MVP-05 COMPLETED**: Hero (see details in progress.md)
 - ✅ **MVP-06 COMPLETED**: Track Chooser + Deadline + Persistence (see details in progress.md)

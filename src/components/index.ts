@@ -1,6 +1,6 @@
 // Shared UI Components
 export { CTAButton } from './CTAButton'
-export { FAQAccordion } from './FAQAccordion'
+export { FAQAccordion } from './FaqAccordion'
 export { Carousel } from './Carousel'
 
 // Layout Components

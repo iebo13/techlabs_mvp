@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import { FAQAccordion } from '../FAQAccordion'
+import { FAQAccordion } from '../FaqAccordion'
 
 const mockFaqs = [
     {

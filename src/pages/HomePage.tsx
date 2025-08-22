@@ -2,6 +2,7 @@ import React from 'react'
 
 import { HeroSection } from '../components/HeroSection'
 import HeroVideo from '../components/HeroVideo'
+import { WhyTechlabs } from '../components/WhyTechlabs'
 import { Section } from '../components/Section'
 import homeData from '../mocks/home.json'
 
@@ -23,6 +24,9 @@ export const HomePage: React.FC = () => {
                     title="TechLabs Introduction Video"
                 />
             </Section>
+
+            {/* Why TechLabs Section - MVP-09 */}
+            <WhyTechlabs />
 
             {/* Additional homepage sections will be added in subsequent MVP stories */}
         </main>

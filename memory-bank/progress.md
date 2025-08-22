@@ -24,7 +24,8 @@
 - ✅ **MVP-06**: Track Chooser + Deadline + Persistence (COMPLETED)
 - ✅ **MVP-07**: Trust Strip (Award + Logos) (COMPLETED)
 - ✅ **MVP-08**: Video Banner (Modal + Captions) (COMPLETED)
-- 🔄 **Ready for MVP-09**: Why TechLabs (3 value cards + CTA)
+- ✅ **MVP-09**: Why TechLabs (3 value cards + CTA) (COMPLETED)
+- 🔄 **Ready for MVP-10**: Stories Carousel (a11y controls, no autoplay)
 
 ## What's Left (21 stories total)
 
@@ -45,7 +46,7 @@
 - ✅ **MVP-06**: Track Chooser + Deadline + Persistence (COMPLETED)
 - ✅ **MVP-07**: Trust Strip (award + partner logos) (COMPLETED)
 - ✅ **MVP-08**: Video Banner (modal + captions + a11y focus trap) (COMPLETED)
-- ⏸️ **MVP-09**: Why TechLabs (3 value cards + CTA)
+- ✅ **MVP-09**: Why TechLabs (3 value cards + CTA) (COMPLETED)
 - ⏸️ **MVP-10**: Stories Carousel (a11y controls, no autoplay)
 - ⏸️ **MVP-11**: Numbers Band (15 Cities, 600+ Graduates, 35 Mentors)
 - ⏸️ **MVP-12**: Support CTA (highlight CTA to /support)

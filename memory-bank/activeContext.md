@@ -1,24 +1,25 @@
 # Active Context - TechLabs Website
 
-## Current Focus: MVP-09 Why TechLabs
+## Current Focus: MVP-10 Stories Carousel
 
 **Status**: Ready to implement  
 **Epic**: EPIC-MVP-HOMEPAGE (Homepage)
-**Dependencies**: MVP-08 ✅ (completed)
+**Dependencies**: MVP-09 ✅ (completed)
 
 ## Immediate Task Details
 
-### MVP-09 Acceptance Criteria (BDD)
-- ⏸️ Cards: "Totally free", "Networking", "Job Ready"; CTA below
-- ⏸️ Copy from `home.json` features array
+### MVP-10 Acceptance Criteria (BDD)
+- ⏸️ Prev/Next accessible via keyboard; announced slide position (e.g., "Slide 2 of 3")
+- ⏸️ "See all" → `/stories`
+- ⏸️ No autoplay; respects reduced motion
 
 ### Technical Implementation
-- `WhyTechlabs.tsx`; `ValuePropCard` component
-- 3 value cards with icons and CTA to `/tracks`
+- `StoriesCarousel.tsx`; `keen-slider` or custom; data from `stories.json`
+- Carousel of ≥3 stories with keyboardable prev/next and "See all" link
 
 ### Tasks Breakdown
-1. Build section and cards
-2. Tests: card titles render
+1. Implement carousel + a11y controls
+2. Tests: keyboard nav, link target
 
 ## Recent Changes
 
@@ -39,6 +40,15 @@
   - Comprehensive test suites for both components (21+ tests total)
   - Proper ARIA labels and keyboard navigation support
   - Responsive design with mobile/desktop optimizations
+- ✅ **MVP-09 COMPLETED**: Why TechLabs (3 value cards + CTA)
+  - Created ValuePropCard component for reusable feature cards with MUI icons
+  - Implemented WhyTechlabs section component with "Totally free", "Networking", "Job Ready" cards
+  - Added CTA button linking to /tracks with proper styling and accessibility
+  - Fixed MUI icons import to avoid file system limits on Windows
+  - Updated to MUI Grid v2 syntax (size prop instead of item/xs/md)
+  - Comprehensive test coverage (9 tests total) for both components
+  - All cards render correct titles, descriptions, and maintain accessible heading structure
+  - Proper responsive design and keyboard navigation support
 
 - ✅ **FIGMA DESIGN ALIGNMENT COMPLETED**: Major design improvements to match Figma
   - Updated brand pink color to #FF2D63 across theme and components

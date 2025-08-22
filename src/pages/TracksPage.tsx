@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom'
 import { Container, Grid, Typography, Box, Button, Alert } from '@mui/material'
 
 import { Section } from '../components/Section'
+import { SEO } from '../components/Seo'
 import { TrackCard, type Track } from '../components/TrackCard'
 import tracksData from '../mocks/tracks.json'
 
@@ -44,6 +45,15 @@ export const TracksPage: React.FC = () => {
 
   return (
     <main>
+      <SEO
+        title="Learning Tracks - TechLabs"
+        description="Explore our learning tracks: Web Development, Data Science, Product Design, and AI. Choose the path that fits your career goals and start learning for free."
+        keywords="learning tracks, web development, data science, product design, AI, tech education, free courses"
+        image="/img/tracks-og-image.jpg"
+        url="/tracks"
+        type="website"
+        tags={['learning tracks', 'web development', 'data science', 'product design', 'AI']}
+      />
       <Section>
         <Container maxWidth="lg">
           {/* Preferred Tracks Display */}

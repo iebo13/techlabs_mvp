@@ -4,10 +4,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { ThemeProvider, CssBaseline, Box } from '@mui/material'
 
+import { AccessibilityTester } from './components/AccessibilityTester'
 import { HeaderNav } from './components/HeaderNav'
 import { Section } from './components/Section'
 import { SectionHeading } from './components/SectionHeading'
 import { SiteFooter } from './components/SiteFooter'
+import { SkipToContent } from './components/SkipToContent'
 import { AboutPage } from './pages/AboutPage'
 import { EventsPage } from './pages/EventsPage'
 import { HomePage } from './pages/HomePage'
@@ -57,8 +59,9 @@ const App: React.FC = () => {
       <CssBaseline />
       <BrowserRouter>
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <SkipToContent />
           <HeaderNav />
-          <Box component="main" sx={{ flex: 1 }}>
+          <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/tracks" element={<TracksPage />} />
@@ -72,6 +75,7 @@ const App: React.FC = () => {
             </Routes>
           </Box>
           <SiteFooter />
+          <AccessibilityTester />
         </Box>
       </BrowserRouter>
     </ThemeProvider>

@@ -32,8 +32,12 @@
 - ✅ **MVP-14**: Tracks Page (grid + inline expanders + query prefs) (COMPLETED)
 - ✅ **MVP-15**: Events Page (Upcoming/Past filters + pagination) (COMPLETED)
 - ✅ **MVP-16**: Stories Page (gallery + track filter + modal details) (COMPLETED)
+- ✅ **MVP-17**: Partners Page (tier grouping + partnership CTA) (COMPLETED)
+- ✅ **MVP-18**: About Us Page (mission + timeline + full FAQs + #faq anchor) (COMPLETED)
+- ✅ **MVP-19**: Shared Primitives (10 reusable components with docs) (COMPLETED)
+- 🚧 **MVP-20**: Accessibility & SEO Pass (WCAG AA + Lighthouse targets) (IN PROGRESS)
 
-## What's Left (5 stories total)
+## What's Left (2 stories total)
 
 ### EPIC-MVP-SETUP: Project Setup & Tooling
 
@@ -68,11 +72,11 @@
 
 ### EPIC-MVP-COMPONENTS: Shared Components Library
 
-- ⏸️ **MVP-19**: Shared Primitives (10 reusable components with docs)
+- ✅ **MVP-19**: Shared Primitives (10 reusable components with docs) (COMPLETED)
 
 ### EPIC-MVP-QA: A11y, SEO, Testing & Mocks
 
-- ⏸️ **MVP-20**: Accessibility & SEO Pass (WCAG AA + Lighthouse targets)
+- 🚧 **MVP-20**: Accessibility & SEO Pass (WCAG AA + Lighthouse targets) (IN PROGRESS)
 - ⏸️ **MVP-21**: Testing & Mocks Stabilization (8+ tests + Zod schemas)
 
 ## Known Issues

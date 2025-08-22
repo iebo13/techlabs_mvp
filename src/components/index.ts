@@ -2,6 +2,9 @@
 export { CTAButton } from './CTAButton'
 export { FAQAccordion } from './FaqAccordion'
 export { Carousel } from './Carousel'
+export { AccessibilityTester } from './AccessibilityTester'
+export { SEO } from './Seo'
+export { SkipToContent } from './SkipToContent'
 
 // Layout Components
 export { Section } from './Section'

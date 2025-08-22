@@ -4,6 +4,7 @@ import { ContactSection } from '../components/ContactSection'
 import { Faqs } from '../components/Faqs'
 import { MissionSection } from '../components/MissionSection'
 import { ProgramSection } from '../components/ProgramSection'
+import { SEO } from '../components/Seo'
 import { TeamSection } from '../components/TeamSection'
 import { TimelineSection } from '../components/TimelineSection'
 import contentData from '../mocks/content.json'
@@ -36,6 +37,15 @@ export const AboutPage: React.FC = () => {
 
   return (
     <main>
+      <SEO
+        title="About Us - TechLabs"
+        description="Learn about TechLabs mission to provide free tech education, our program approach, timeline, team, and frequently asked questions."
+        keywords="about techlabs, mission, program, team, timeline, FAQ, tech education"
+        image="/img/about-og-image.jpg"
+        url="/about"
+        type="website"
+        tags={['about', 'mission', 'program', 'team', 'timeline', 'FAQ']}
+      />
       <MissionSection data={aboutData.mission} />
       <ProgramSection data={aboutData.program} />
       <TimelineSection data={aboutData.timeline} />

@@ -5,6 +5,7 @@ import { HeroSection } from '../components/HeroSection'
 import HeroVideo from '../components/HeroVideo'
 import { NumbersBand } from '../components/NumbersBand'
 import { Section } from '../components/Section'
+import { SEO } from '../components/Seo'
 import { StoriesCarousel } from '../components/StoriesCarousel'
 import { SupportCta } from '../components/SupportCta'
 import { WhyTechlabs } from '../components/WhyTechlabs'
@@ -19,6 +20,15 @@ import type { HomeData } from '../types/home'
 export const HomePage: React.FC = () => {
   return (
     <main>
+      <SEO
+        title="TechLabs - Learn Tech Skills for Free"
+        description="Learn tech skills for free with TechLabs. Blended learning, local community, practical projects. Winner of Google.org Impact Challenge Germany 2018."
+        keywords="tech education, free coding, web development, data science, product design, AI, digital skills, Germany"
+        image="/img/techlabs-og-image.jpg"
+        url="/"
+        type="website"
+        tags={['tech education', 'free coding', 'web development', 'data science', 'product design', 'AI']}
+      />
       <HeroSection />
 
       {/* Video Banner Section - MVP-08 */}

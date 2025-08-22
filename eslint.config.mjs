@@ -16,7 +16,11 @@ export default [
   },
   // Configuration for test files with vitest globals
   {
-    files: ['src/**/*.test.{js,jsx,ts,tsx}', 'src/**/__tests__/**/*.{js,jsx,ts,tsx}', 'src/test/**/*.{js,jsx,ts,tsx}'],
+    files: [
+      'src/**/*.test.{js,jsx,ts,tsx}',
+      'src/**/__tests__/**/*.{js,jsx,ts,tsx}',
+      'src/test/**/*.{js,jsx,ts,tsx}',
+    ],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -100,7 +104,11 @@ export default [
   // Configuration for app source files with strict TypeScript checking
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
-    ignores: ['src/**/*.test.{js,jsx,ts,tsx}', 'src/**/__tests__/**/*.{js,jsx,ts,tsx}', 'src/test/**/*.{js,jsx,ts,tsx}'],
+    ignores: [
+      'src/**/*.test.{js,jsx,ts,tsx}',
+      'src/**/__tests__/**/*.{js,jsx,ts,tsx}',
+      'src/test/**/*.{js,jsx,ts,tsx}',
+    ],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',

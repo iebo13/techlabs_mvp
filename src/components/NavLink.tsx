@@ -6,14 +6,14 @@ import { Link, useTheme } from '@mui/material'
 import type { LinkProps } from '@mui/material/Link'
 
 export type NavLinkProps = {
-    /** Target route path */
-    to: string
-    /** Whether this is an external link */
-    external?: boolean
-    /** Whether to show active state based on current route */
-    showActive?: boolean
-    /** Children content */
-    children: React.ReactNode
+  /** Target route path */
+  to: string
+  /** Whether this is an external link */
+  external?: boolean
+  /** Whether to show active state based on current route */
+  showActive?: boolean
+  /** Children content */
+  children: React.ReactNode
 } & Omit<LinkProps, 'component'>
 
 /**
@@ -21,62 +21,51 @@ export type NavLinkProps = {
  * Integrates with React Router for internal navigation and supports external links.
  */
 export const NavLink: React.FC<NavLinkProps> = ({
-    to,
-    external = false,
-    showActive = true,
-    children,
-    sx,
-    ...linkProps
+  to,
+  external = false,
+  showActive = true,
+  children,
+  sx,
+  ...linkProps
 }) => {
-    const location = useLocation()
-    const theme = useTheme()
+  const location = useLocation()
+  const theme = useTheme()
 
-    const isActive = showActive && location.pathname === to
+  const isActive = showActive && location.pathname === to
 
-    const linkStyles = {
-        color: isActive ? 'primary.main' : 'text.primary',
-        textDecoration: 'none',
-        fontWeight: isActive ? 700 : 600,
-        fontSize: '1rem',
-        px: 1.5,
-        py: 0.5,
-        borderRadius: '8px',
-        transition: theme.transitions.create(['color'], {
-            duration: theme.transitions.duration.short,
-        }),
-        '&:hover': {
-            color: 'primary.main',
-            textDecoration: 'none',
-        },
-        '&:focus-visible': {
-            outline: `3px solid ${theme.palette.primary.main}25`,
-            outlineOffset: 2,
-        },
-        ...sx,
-    }
+  const linkStyles = {
+    color: isActive ? 'primary.main' : 'text.primary',
+    textDecoration: 'none',
+    fontWeight: isActive ? 700 : 600,
+    fontSize: '1rem',
+    px: 1.5,
+    py: 0.5,
+    borderRadius: '8px',
+    transition: theme.transitions.create(['color'], {
+      duration: theme.transitions.duration.short,
+    }),
+    '&:hover': {
+      color: 'primary.main',
+      textDecoration: 'none',
+    },
+    '&:focus-visible': {
+      outline: `3px solid ${theme.palette.primary.main}25`,
+      outlineOffset: 2,
+    },
+    ...sx,
+  }
 
-    if (external) {
-        return (
-            <Link
-                href={to}
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={linkStyles}
-                {...linkProps}
-            >
-                {children}
-            </Link>
-        )
-    }
-
+  if (external) {
     return (
-        <Link
-            component={RouterLink}
-            to={to}
-            sx={linkStyles}
-            {...linkProps}
-        >
-            {children}
-        </Link>
+      <Link href={to} target="_blank" rel="noopener noreferrer" sx={linkStyles} {...linkProps}>
+        {children}
+      </Link>
     )
+  }
+
+  return (
+    <Link component={RouterLink} to={to} sx={linkStyles} {...linkProps}>
+      {children}
+    </Link>
+  )
 }

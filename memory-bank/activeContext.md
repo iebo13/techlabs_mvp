@@ -1,24 +1,47 @@
 # Active Context - TechLabs Website
 
-## Current Focus: MVP-12 Support CTA
+## Current Focus: MVP-13 FAQs (Accordion)
 
 **Status**: Ready to implement  
 **Epic**: EPIC-MVP-HOMEPAGE (Homepage)
-**Dependencies**: MVP-11 ✅ (completed)
+**Dependencies**: MVP-12 ✅ (completed)
 
 ## Immediate Task Details
 
-### MVP-12 Acceptance Criteria (BDD)
-- ⏸️ Highlight CTA block linking to `/support` (placeholder)
-- ⏸️ Button text "Support Tech Education" routes correctly
+### MVP-12 Acceptance Criteria (BDD) ✅ COMPLETED
+
+- ✅ Highlight CTA block linking to `/support` (placeholder)
+- ✅ Button text "Support Tech Education" routes correctly
+
+### Technical Implementation ✅ COMPLETED
+
+- ✅ `SupportCta.tsx` component with image + copy + CTA button
+- ✅ Data from `support` object in `home.json`
+
+### Tasks Breakdown ✅ COMPLETED
+
+1. ✅ Implement section + CTA button
+2. ✅ Test: link target routes correctly
+
+---
+
+### MVP-13 Acceptance Criteria (BDD)
+
+- ⏸️ FAQ accordion with at least 2 items + "More questions" link to About `#faq`
+- ⏸️ Keyboard and SR friendly; only one panel open at a time
+- ⏸️ First two questions match mocks
 
 ### Technical Implementation
-- `SupportCta.tsx` component with image + copy + CTA button
-- Data from `support` object in `home.json`
+
+- `Faqs.tsx` component with accordion functionality
+- Data from `faqs` array in `home.json`
+- Link to About page `#faq` anchor
 
 ### Tasks Breakdown
-1. Implement section + CTA button
-2. Test: link target routes correctly
+
+1. Implement accordion with single-open behavior
+2. Add "More questions" link to About #faq
+3. Test: toggle behavior, first two questions
 
 ## Recent Changes
 
@@ -70,6 +93,15 @@
   - All metrics render correctly with proper accessibility structure
   - Integrated into HomePage component and verified build success
 
+- ✅ **MVP-12 COMPLETED**: Support CTA (highlight CTA to /support)
+  - Created SupportCta component with highlight card design and prominent CTA button
+  - Implemented responsive layout with image (left) and content (right) sections
+  - Added hover effects and smooth transitions for enhanced user experience
+  - Used MUI Grid v2 syntax (size prop) for responsive behavior
+  - Integrated with React Router navigation to /support route
+  - Comprehensive test coverage (5 tests) covering rendering, navigation, and accessibility
+  - Added to HomePage component and verified build success
+
 - ✅ **FIGMA DESIGN ALIGNMENT COMPLETED**: Major design improvements to match Figma
   - Updated brand pink color to #FF2D63 across theme and components
   - Enhanced TrackChooser section with proper typography (40-48px, extra-bold, tight line-height)
@@ -93,18 +125,20 @@
 ## Upcoming Decisions Needed
 
 - Exact color palette refinement (primary/#ff3366 is starter)
-- Typography scale specifics  
+- Typography scale specifics
 - Custom component variants vs MUI defaults
 - Breakpoint customization beyond MUI defaults
 
 ## Cross-Epic Awareness
 
 **Header Navigation (MVP-03)** will immediately need:
+
 - Theme breakpoints for responsive behavior
 - Typography tokens for nav links
 - Z-index layering for sticky header
 
 **Homepage sections (MVP-05+)** will need:
+
 - Section wrapper component
 - Heading hierarchy and styling
 - Responsive typography (esp. Hero clamp sizing)
@@ -119,11 +153,13 @@
 ## Files to Focus On
 
 **Creating:**
+
 - `src/theme/theme.ts` - Main theme configuration
-- `src/theme/README.md` - Theme documentation  
+- `src/theme/README.md` - Theme documentation
 - `src/components/Section.tsx` - Layout wrapper
 - `src/components/SectionHeading.tsx` - Typography component
 
 **Updating:**
+
 - `src/App.tsx` - Add ThemeProvider wiring
 - `src/main.tsx` - Ensure CssBaseline integration

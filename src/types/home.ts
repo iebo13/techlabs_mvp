@@ -6,71 +6,71 @@
 export type TrackKey = 'web-dev' | 'data-science' | 'product-design' | 'ai'
 
 export type Track = {
-    id: TrackKey
-    label: string
+  id: TrackKey
+  label: string
 }
 
 export type Partner = {
-    name: string
-    logoUrl: string
-    href?: string
+  name: string
+  logoUrl: string
+  href?: string
 }
 
 export type VideoData = {
-    posterUrl: string
-    srcUrl: string
-    duration: number // seconds
+  posterUrl: string
+  srcUrl: string
+  duration: number // seconds
 }
 
 export type Feature = {
-    icon: string
-    title: string
-    body: string
+  icon: string
+  title: string
+  body: string
 }
 
 export type Story = {
-    id: string
-    title: string
-    excerpt: string
-    imageUrl: string
-    href: string
+  id: string
+  title: string
+  excerpt: string
+  imageUrl: string
+  href: string
 }
 
 export type NumberStat = {
-    label: string
-    value: string
+  label: string
+  value: string
 }
 
 export type SupportData = {
-    title: string
-    body: string
-    imageUrl: string
-    cta: {
-        label: string
-        to: string
-    }
+  title: string
+  body: string
+  imageUrl: string
+  cta: {
+    label: string
+    to: string
+  }
 }
 
 export type FAQ = {
-    q: string
-    a: string
+  q: string
+  a: string
 }
 
 export type HeroData = {
-    title: string
-    emphasis: string
-    subtitle: string
+  title: string
+  emphasis: string
+  subtitle: string
 }
 
 export type HomeData = {
-    hero: HeroData
-    tracks: Track[]
-    applicationDeadlineISO: string // e.g., '2025-10-01T00:00:00Z'
-    partners: Partner[]
-    video: VideoData
-    features: Feature[]
-    stories: Story[]
-    numbers: NumberStat[]
-    support: SupportData
-    faqs: FAQ[]
+  hero: HeroData
+  tracks: Track[]
+  applicationDeadlineISO: string // e.g., '2025-10-01T00:00:00Z'
+  partners: Partner[]
+  video: VideoData
+  features: Feature[]
+  stories: Story[]
+  numbers: NumberStat[]
+  support: SupportData
+  faqs: FAQ[]
 }

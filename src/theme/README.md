@@ -5,6 +5,7 @@ This directory contains the MUI theme configuration and design tokens for the Te
 ## Overview
 
 The theme system provides:
+
 - **Consistent design tokens** (colors, typography, spacing)
 - **Responsive typography** with fluid scaling
 - **Dark/light theme support** (light theme active, dark ready)
@@ -21,21 +22,25 @@ The theme system provides:
 ### Color Palette
 
 **Primary Colors (Pink/Red):**
+
 - Primary 500: `#FA215C` (main brand color)
 - Primary 700: `#AF1740` (dark variant)
 - Primary 300: `#FB638C` (light variant)
 
 **Secondary Colors (Grey):**
+
 - Secondary 700: `#5C5C5C` (main secondary)
 - Secondary 500: `#A0A0A0` (light variant)
 - Secondary 900: `#040404` (dark variant)
 
 **Accent Colors (Blue):**
+
 - Info 500: `#6A9EF6` (main info color)
 - Info 700: `#336FDB` (dark variant)
 - Info 300: `#91B8F8` (light variant)
 
 **Neutral Colors:**
+
 - Background: `#F5F4F4` (light) / `#040404` (dark)
 - Paper: `#FFFFFF` (light) / `#1a1a1a` (dark)
 - Text Primary: `#040404` (light) / `#FFFFFF` (dark)
@@ -46,12 +51,14 @@ The theme system provides:
 **Font Family:** Inter, Poppins, Roboto, Helvetica Neue, Arial, sans-serif
 
 **Fixed Typography Scale:**
+
 - H1: `3.5rem` (56px), weight 800, line-height 1.15 - Hero text
-- H2: `2.5rem` (40px), weight 700, line-height 1.2 - Section headings  
+- H2: `2.5rem` (40px), weight 700, line-height 1.2 - Section headings
 - H3: `1.875rem` (30px), weight 700, line-height 1.25 - Subsection headings
 - Subtitle1: `1.125rem` (18px), weight 600, line-height 1.45 - Large body text
 
 **Body Text:**
+
 - Body1: 16px, weight 400, line-height 1.625 - Main content
 - Body2: 14px, weight 400, line-height 1.57 - Secondary content
 - Button: 16px, weight 700, no text transform
@@ -80,26 +87,31 @@ Provides consistent page section layout with semantic HTML:
 import { Section } from '../components/Section';
 
 // Basic section
+
 <Section>
   <h2>Section Content</h2>
 </Section>
 
 // Paper background variant
+
 <Section variant="paper">
   <p>Content on grey background</p>
 </Section>
 
 // Primary color background
+
 <Section variant="primary">
   <p>Content on primary color (white text)</p>
 </Section>
 
 // Custom padding scale
+
 <Section paddingScale={1.5}>
   <p>1.5x default padding</p>
 </Section>
 
 // Custom semantic element
+
 <Section component="main">
   <p>Renders as main element</p>
 </Section>
@@ -114,30 +126,30 @@ import { SectionHeading } from '../components/SectionHeading';
 
 // Basic heading (defaults to h2)
 <SectionHeading>
-  Section Title
+Section Title
 </SectionHeading>
 
 // Custom heading level
 <SectionHeading level={1}>
-  Page Title
+Page Title
 </SectionHeading>
 
 // Centered with emphasis
 <SectionHeading level={2} emphasis="gradient" centered>
-  Hero Heading
+Hero Heading
 </SectionHeading>
 
 // With subtitle
-<SectionHeading 
-  level={3} 
-  subtitle="Additional context or description"
->
-  Main Heading
-</SectionHeading>
+<SectionHeading
+level={3}
+subtitle="Additional context or description"
+
+> Main Heading
+> </SectionHeading>
 
 // Color emphasis
 <SectionHeading emphasis="primary">
-  Primary Color Heading
+Primary Color Heading
 </SectionHeading>
 \`\`\`
 
@@ -167,8 +179,9 @@ import { SectionHeading } from '../components/SectionHeading';
 ### Color Contrast
 
 All color combinations meet WCAG AA standards:
+
 - Primary text (#040404) on white: 21:1 contrast ratio
-- Secondary text (#5C5C5C) on white: 7.15:1 contrast ratio  
+- Secondary text (#5C5C5C) on white: 7.15:1 contrast ratio
 - White text on primary (#FA215C): 4.84:1 contrast ratio
 - Primary color has sufficient contrast for accessibility compliance
 
@@ -201,12 +214,12 @@ The theme can be extended with additional design tokens:
 
 \`\`\`tsx
 const customTheme = createTheme({
-  ...theme,
-  palette: {
-    ...theme.palette,
-    // Add custom colors
-  },
-  // Add custom component variants
+...theme,
+palette: {
+...theme.palette,
+// Add custom colors
+},
+// Add custom component variants
 });
 \`\`\`
 

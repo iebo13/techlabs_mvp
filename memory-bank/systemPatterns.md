@@ -50,36 +50,43 @@ App
 ### Shared Primitives (MVP-19)
 
 **Layout & Typography:**
+
 - `Section` - Consistent page section wrapper
 - `SectionHeading` - Typography hierarchy component
 - `CTAButton` - Primary action buttons
 
 **Content Cards:**
+
 - `ValuePropCard` - Why TechLabs feature cards
-- `TrackCard` - Track selection/display cards  
+- `TrackCard` - Track selection/display cards
 - `EventCard` - Event listing cards
 - `KPIStat` - Number/metric display tiles
 
 **Interactive Components:**
+
 - `FAQAccordion` - Expandable Q&A sections
 - `Carousel` - A11y-compliant content slider
 - `VideoEmbed` - Modal video player with captions
 
 **Brand Elements:**
+
 - `PartnerLogo` - Consistent logo display
 
 ## Data Flow
 
 **Mock Data Pipeline:**
+
 1. JSON files in `src/mocks/` → Zod schema validation → TypeScript types
 2. Files: `tracks.json`, `events.json`, `stories.json`, `partners.json`, `faq.json`, `home.json`, `content.json`
 
 **State Management:**
+
 - `sessionStorage` for track selection persistence (TrackChooser)
 - URL params for track preferences (`/tracks?pref=comma-separated-ids`)
 - React Context for theme/global state (no Redux for MVP)
 
 **A11y State:**
+
 - Focus management for modals and navigation
 - Keyboard event handling for carousels and accordions
 - Screen reader announcements for dynamic content

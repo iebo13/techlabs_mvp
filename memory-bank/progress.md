@@ -1,6 +1,6 @@
 # Progress Tracking - TechLabs Website
 
-## Project Status: **HOMEPAGE 73% COMPLETE**
+## Project Status: **HOMEPAGE 89% COMPLETE**
 
 ## What's Complete
 
@@ -27,7 +27,8 @@
 - ✅ **MVP-09**: Why TechLabs (3 value cards + CTA) (COMPLETED)
 - ✅ **MVP-10**: Stories Carousel (a11y controls, no autoplay) (COMPLETED)
 - ✅ **MVP-11**: Numbers Band (15 Cities, 600+ Graduates, 35 Mentors) (COMPLETED)
-- 🔄 **Ready for MVP-12**: Support CTA (highlight CTA to /support)
+- ✅ **MVP-12**: Support CTA (highlight CTA to /support) (COMPLETED)
+- 🔄 **Ready for MVP-13**: FAQs (accordion + link to About #faq)
 
 ## What's Left (21 stories total)
 
@@ -51,7 +52,7 @@
 - ✅ **MVP-09**: Why TechLabs (3 value cards + CTA) (COMPLETED)
 - ✅ **MVP-10**: Stories Carousel (a11y controls, no autoplay) (COMPLETED)
 - ✅ **MVP-11**: Numbers Band (15 Cities, 600+ Graduates, 35 Mentors) (COMPLETED)
-- ⏸️ **MVP-12**: Support CTA (highlight CTA to /support)
+- ✅ **MVP-12**: Support CTA (highlight CTA to /support) (COMPLETED)
 - ⏸️ **MVP-13**: FAQs (accordion + link to About #faq)
 
 ### EPIC-MVP-PAGES: Core Pages
@@ -84,6 +85,7 @@
 ## Dependencies Chain (Per Jira Tickets)
 
 **Critical Path:**
+
 - MVP-01 → MVP-02 → (MVP-03, MVP-04) ✅
 - MVP-03 → MVP-05 → MVP-06 → MVP-07 → MVP-08 ✅ → MVP-09 → MVP-10 → MVP-11 ✅ → MVP-12 → MVP-13
 - MVP-06 → MVP-14 (Tracks page needs track chooser for pref query)
@@ -91,6 +93,7 @@
 - MVP-13 → MVP-18 (About page reuses FAQ accordion)
 
 **Parallel Tracks:**
+
 - MVP-02 → MVP-15 (Events page)
 - MVP-07 → MVP-17 (Partners page)
 - MVP-01 → MVP-19, MVP-21 (can start anytime)

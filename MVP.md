@@ -76,19 +76,19 @@
 
 ```ts
 // types.ts
-export type TrackKey = 'web-dev' | 'data-science' | 'product-design' | 'ai';
+export type TrackKey = 'web-dev' | 'data-science' | 'product-design' | 'ai'
 
 export interface HomeData {
-  hero: { title: string; emphasis: string; subtitle: string };
-  tracks: { id: TrackKey; label: string }[];
-  applicationDeadlineISO: string; // e.g., '2025-10-01T00:00:00Z'
-  partners: { name: string; logoUrl: string; href?: string }[];
-  video: { posterUrl: string; srcUrl: string; duration: number /* seconds */ };
-  features: { icon: string; title: string; body: string }[];
-  stories: { id: string; title: string; excerpt: string; imageUrl: string; href: string }[];
-  numbers: { label: string; value: string }[];
-  support: { title: string; body: string; imageUrl: string; cta: { label: string; to: string } };
-  faqs: { q: string; a: string }[];
+  hero: { title: string; emphasis: string; subtitle: string }
+  tracks: { id: TrackKey; label: string }[]
+  applicationDeadlineISO: string // e.g., '2025-10-01T00:00:00Z'
+  partners: { name: string; logoUrl: string; href?: string }[]
+  video: { posterUrl: string; srcUrl: string; duration: number /* seconds */ }
+  features: { icon: string; title: string; body: string }[]
+  stories: { id: string; title: string; excerpt: string; imageUrl: string; href: string }[]
+  numbers: { label: string; value: string }[]
+  support: { title: string; body: string; imageUrl: string; cta: { label: string; to: string } }
+  faqs: { q: string; a: string }[]
 }
 ```
 
@@ -377,7 +377,7 @@ And social icons have accessible names and open in new tabs with noopener
 
 ```ts
 // theme.ts (excerpt)
-const primary = { main: '#ff3366' }; // refine to your brand pink
+const primary = { main: '#ff3366' } // refine to your brand pink
 export const theme = createTheme({
   palette: { mode: 'light', primary },
   shape: { borderRadius: 16 },
@@ -386,7 +386,7 @@ export const theme = createTheme({
     button: { textTransform: 'none', fontWeight: 700 },
   },
   components: { MuiButton: { defaultProps: { disableElevation: true } } },
-});
+})
 ```
 
 ---

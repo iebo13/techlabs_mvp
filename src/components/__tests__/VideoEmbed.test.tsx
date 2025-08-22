@@ -10,187 +10,191 @@ import VideoEmbed from '../VideoEmbed'
 // Simple approach - just test functionality without mocking icons
 
 const renderWithTheme = (component: React.ReactElement) => {
-    return render(<ThemeProvider theme={theme}>{component}</ThemeProvider>)
+  return render(<ThemeProvider theme={theme}>{component}</ThemeProvider>)
 }
 
 const defaultProps = {
-    open: true,
-    onClose: vi.fn(),
-    title: 'TechLabs Introduction Video',
-    srcUrl: '/video/intro.mp4',
-    posterUrl: '/img/video-poster.jpg',
+  open: true,
+  onClose: vi.fn(),
+  title: 'TechLabs Introduction Video',
+  srcUrl: '/video/intro.mp4',
+  posterUrl: '/img/video-poster.jpg',
 }
 
 describe('VideoEmbed', () => {
-    beforeEach(() => {
-        vi.clearAllMocks()
-        cleanup()
+  beforeEach(() => {
+    vi.clearAllMocks()
+    cleanup()
+  })
+
+  afterEach(() => {
+    // Clear all mocks to prevent memory leaks
+    vi.restoreAllMocks()
+    cleanup()
+  })
+
+  it('renders when open is true', () => {
+    renderWithTheme(<VideoEmbed {...defaultProps} />)
+
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByText('TechLabs Introduction Video')).toBeInTheDocument()
+  })
+
+  it('does not render when open is false', () => {
+    renderWithTheme(<VideoEmbed {...defaultProps} open={false} />)
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  })
+
+  it('displays correct title in dialog header', () => {
+    renderWithTheme(<VideoEmbed {...defaultProps} />)
+
+    const title = screen.getByText('TechLabs Introduction Video')
+    expect(title).toBeInTheDocument()
+  })
+
+  it('has close button with accessible label', () => {
+    renderWithTheme(<VideoEmbed {...defaultProps} />)
+
+    const closeButton = screen.getByLabelText('Close video')
+    expect(closeButton).toBeInTheDocument()
+  })
+
+  it('calls onClose when close button is clicked', async () => {
+    const user = userEvent.setup()
+    const onCloseMock = vi.fn()
+
+    renderWithTheme(<VideoEmbed {...defaultProps} onClose={onCloseMock} />)
+
+    const closeButton = screen.getByLabelText('Close video')
+    await user.click(closeButton)
+
+    expect(onCloseMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('calls onClose when Escape key is pressed', async () => {
+    const onCloseMock = vi.fn()
+
+    renderWithTheme(<VideoEmbed {...defaultProps} onClose={onCloseMock} />)
+
+    fireEvent.keyDown(document, { key: 'Escape' })
+
+    await waitFor(() => {
+      expect(onCloseMock).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('does not call onClose for other keys', async () => {
+    const onCloseMock = vi.fn()
+
+    renderWithTheme(<VideoEmbed {...defaultProps} onClose={onCloseMock} />)
+
+    fireEvent.keyDown(document, { key: 'Enter' })
+    fireEvent.keyDown(document, { key: 'Space' })
+    fireEvent.keyDown(document, { key: 'Tab' })
+
+    expect(onCloseMock).not.toHaveBeenCalled()
+  })
+
+  it('renders video element with correct attributes', () => {
+    renderWithTheme(<VideoEmbed {...defaultProps} />)
+
+    const video = screen.getByLabelText('TechLabs Introduction Video video player')
+    expect(video).toBeInTheDocument()
+    expect(video).toHaveAttribute('controls')
+    expect(video).toHaveAttribute('poster', '/img/video-poster.jpg')
+    expect(video).toHaveAttribute('preload', 'metadata')
+  })
+
+  it('has video source with correct src and type', () => {
+    renderWithTheme(<VideoEmbed {...defaultProps} />)
+
+    const video = screen.getByLabelText('TechLabs Introduction Video video player')
+    const videoSource = video.querySelector('source')
+    expect(videoSource).toHaveAttribute('src', '/video/intro.mp4')
+    expect(videoSource).toHaveAttribute('type', 'video/mp4')
+  })
+
+  it('includes captions track for accessibility', () => {
+    renderWithTheme(<VideoEmbed {...defaultProps} />)
+
+    const video = screen.getByLabelText('TechLabs Introduction Video video player')
+    const track = video.querySelector('track')
+
+    expect(track).toHaveAttribute('kind', 'captions')
+    expect(track).toHaveAttribute('src', '/captions/intro.vtt')
+    expect(track).toHaveAttribute('srcLang', 'en')
+    expect(track).toHaveAttribute('label', 'English captions')
+    expect(track).toHaveAttribute('default')
+  })
+
+  it('pauses video when modal closes', () => {
+    const pauseMock = vi.fn()
+
+    // Mock HTMLVideoElement.pause
+    Object.defineProperty(HTMLVideoElement.prototype, 'pause', {
+      configurable: true,
+      value: pauseMock,
     })
 
-    afterEach(() => {
-        // Clear all mocks to prevent memory leaks
-        vi.restoreAllMocks()
-        cleanup()
+    const { rerender } = renderWithTheme(<VideoEmbed {...defaultProps} />)
+
+    // Close the modal
+    rerender(
+      <ThemeProvider theme={theme}>
+        <VideoEmbed {...defaultProps} open={false} />
+      </ThemeProvider>
+    )
+
+    expect(pauseMock).toHaveBeenCalled()
+  })
+
+  it('focuses close button when modal opens', async () => {
+    renderWithTheme(<VideoEmbed {...defaultProps} />)
+
+    // Wait for the modal to be fully rendered
+    await waitFor(() => {
+      const closeButton = screen.getByLabelText('Close video')
+      expect(closeButton).toBeInTheDocument()
     })
 
-    it('renders when open is true', () => {
-        renderWithTheme(<VideoEmbed {...defaultProps} />)
+    // Check that the close button is focusable
+    const closeButton = screen.getByLabelText('Close video')
+    expect(closeButton).toHaveAttribute('tabindex', '0')
+  })
 
-        expect(screen.getByRole('dialog')).toBeInTheDocument()
-        expect(screen.getByText('TechLabs Introduction Video')).toBeInTheDocument()
-    })
+  it('has proper ARIA attributes for dialog', () => {
+    renderWithTheme(<VideoEmbed {...defaultProps} />)
 
-    it('does not render when open is false', () => {
-        renderWithTheme(<VideoEmbed {...defaultProps} open={false} />)
+    const dialog = screen.getByRole('dialog')
+    expect(dialog).toHaveAttribute('aria-labelledby', 'video-dialog-title')
+  })
 
-        expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
-    })
+  it('removes event listeners when unmounted', () => {
+    const removeEventListenerSpy = vi.spyOn(document, 'removeEventListener')
 
-    it('displays correct title in dialog header', () => {
-        renderWithTheme(<VideoEmbed {...defaultProps} />)
+    const { unmount } = renderWithTheme(<VideoEmbed {...defaultProps} />)
 
-        const title = screen.getByText('TechLabs Introduction Video')
-        expect(title).toBeInTheDocument()
-    })
+    unmount()
 
-    it('has close button with accessible label', () => {
-        renderWithTheme(<VideoEmbed {...defaultProps} />)
+    expect(removeEventListenerSpy).toHaveBeenCalledWith('keydown', expect.any(Function))
 
-        const closeButton = screen.getByLabelText('Close video')
-        expect(closeButton).toBeInTheDocument()
-    })
+    removeEventListenerSpy.mockRestore()
+  })
 
-    it('calls onClose when close button is clicked', async () => {
-        const user = userEvent.setup()
-        const onCloseMock = vi.fn()
+  it('handles different titles correctly', () => {
+    const customTitle = 'Custom Video Title'
 
-        renderWithTheme(<VideoEmbed {...defaultProps} onClose={onCloseMock} />)
+    renderWithTheme(<VideoEmbed {...defaultProps} title={customTitle} />)
 
-        const closeButton = screen.getByLabelText('Close video')
-        await user.click(closeButton)
+    expect(screen.getByText(customTitle)).toBeInTheDocument()
+    expect(screen.getByLabelText(`${customTitle} video player`)).toBeInTheDocument()
+  })
 
-        expect(onCloseMock).toHaveBeenCalledTimes(1)
-    })
+  it('provides fallback text for unsupported browsers', () => {
+    renderWithTheme(<VideoEmbed {...defaultProps} />)
 
-    it('calls onClose when Escape key is pressed', async () => {
-        const onCloseMock = vi.fn()
-
-        renderWithTheme(<VideoEmbed {...defaultProps} onClose={onCloseMock} />)
-
-        fireEvent.keyDown(document, { key: 'Escape' })
-
-        await waitFor(() => {
-            expect(onCloseMock).toHaveBeenCalledTimes(1)
-        })
-    })
-
-    it('does not call onClose for other keys', async () => {
-        const onCloseMock = vi.fn()
-
-        renderWithTheme(<VideoEmbed {...defaultProps} onClose={onCloseMock} />)
-
-        fireEvent.keyDown(document, { key: 'Enter' })
-        fireEvent.keyDown(document, { key: 'Space' })
-        fireEvent.keyDown(document, { key: 'Tab' })
-
-        expect(onCloseMock).not.toHaveBeenCalled()
-    })
-
-    it('renders video element with correct attributes', () => {
-        renderWithTheme(<VideoEmbed {...defaultProps} />)
-
-        const video = screen.getByLabelText('TechLabs Introduction Video video player')
-        expect(video).toBeInTheDocument()
-        expect(video).toHaveAttribute('controls')
-        expect(video).toHaveAttribute('poster', '/img/video-poster.jpg')
-        expect(video).toHaveAttribute('preload', 'metadata')
-    })
-
-    it('has video source with correct src and type', () => {
-        renderWithTheme(<VideoEmbed {...defaultProps} />)
-
-        const video = screen.getByLabelText('TechLabs Introduction Video video player')
-        const videoSource = video.querySelector('source')
-        expect(videoSource).toHaveAttribute('src', '/video/intro.mp4')
-        expect(videoSource).toHaveAttribute('type', 'video/mp4')
-    })
-
-    it('includes captions track for accessibility', () => {
-        renderWithTheme(<VideoEmbed {...defaultProps} />)
-
-        const video = screen.getByLabelText('TechLabs Introduction Video video player')
-        const track = video.querySelector('track')
-
-        expect(track).toHaveAttribute('kind', 'captions')
-        expect(track).toHaveAttribute('src', '/captions/intro.vtt')
-        expect(track).toHaveAttribute('srcLang', 'en')
-        expect(track).toHaveAttribute('label', 'English captions')
-        expect(track).toHaveAttribute('default')
-    })
-
-    it('pauses video when modal closes', () => {
-        const pauseMock = vi.fn()
-
-        // Mock HTMLVideoElement.pause
-        Object.defineProperty(HTMLVideoElement.prototype, 'pause', {
-            configurable: true,
-            value: pauseMock,
-        })
-
-        const { rerender } = renderWithTheme(<VideoEmbed {...defaultProps} />)
-
-        // Close the modal
-        rerender(<ThemeProvider theme={theme}><VideoEmbed {...defaultProps} open={false} /></ThemeProvider>)
-
-        expect(pauseMock).toHaveBeenCalled()
-    })
-
-    it('focuses close button when modal opens', async () => {
-        renderWithTheme(<VideoEmbed {...defaultProps} />)
-
-        // Wait for the modal to be fully rendered
-        await waitFor(() => {
-            const closeButton = screen.getByLabelText('Close video')
-            expect(closeButton).toBeInTheDocument()
-        })
-
-        // Check that the close button is focusable
-        const closeButton = screen.getByLabelText('Close video')
-        expect(closeButton).toHaveAttribute('tabindex', '0')
-    })
-
-    it('has proper ARIA attributes for dialog', () => {
-        renderWithTheme(<VideoEmbed {...defaultProps} />)
-
-        const dialog = screen.getByRole('dialog')
-        expect(dialog).toHaveAttribute('aria-labelledby', 'video-dialog-title')
-    })
-
-    it('removes event listeners when unmounted', () => {
-        const removeEventListenerSpy = vi.spyOn(document, 'removeEventListener')
-
-        const { unmount } = renderWithTheme(<VideoEmbed {...defaultProps} />)
-
-        unmount()
-
-        expect(removeEventListenerSpy).toHaveBeenCalledWith('keydown', expect.any(Function))
-
-        removeEventListenerSpy.mockRestore()
-    })
-
-    it('handles different titles correctly', () => {
-        const customTitle = 'Custom Video Title'
-
-        renderWithTheme(<VideoEmbed {...defaultProps} title={customTitle} />)
-
-        expect(screen.getByText(customTitle)).toBeInTheDocument()
-        expect(screen.getByLabelText(`${customTitle} video player`)).toBeInTheDocument()
-    })
-
-    it('provides fallback text for unsupported browsers', () => {
-        renderWithTheme(<VideoEmbed {...defaultProps} />)
-
-        const video = screen.getByLabelText('TechLabs Introduction Video video player')
-        expect(video).toHaveTextContent('Your browser does not support the video tag.')
-    })
+    const video = screen.getByLabelText('TechLabs Introduction Video video player')
+    expect(video).toHaveTextContent('Your browser does not support the video tag.')
+  })
 })

@@ -9,20 +9,10 @@ import { Section } from './components/Section'
 import { SectionHeading } from './components/SectionHeading'
 import { SiteFooter } from './components/SiteFooter'
 import { HomePage } from './pages/HomePage'
+import { TracksPage } from './pages/TracksPage'
 import { theme } from './theme/theme'
 
 // Placeholder pages for navigation
-
-const TracksPage: React.FC = () => (
-  <main>
-    <Section>
-      <SectionHeading level={1} centered>
-        Tracks
-      </SectionHeading>
-      <p>Tracks page placeholder - will be implemented in MVP-14</p>
-    </Section>
-  </main>
-)
 
 const EventsPage: React.FC = () => (
   <main>

@@ -1,6 +1,6 @@
 # Progress Tracking - TechLabs Website
 
-## Project Status: **HOMEPAGE 100% COMPLETE**
+## Project Status: **HOMEPAGE + TRACKS PAGE COMPLETE**
 
 ## What's Complete
 
@@ -30,7 +30,7 @@
 - ✅ **MVP-12**: Support CTA (highlight CTA to /support) (COMPLETED)
 - ✅ **MVP-13 COMPLETED**: FAQs (accordion + link to About #faq)
 
-## What's Left (12 stories total)
+## What's Left (11 stories total)
 
 ### EPIC-MVP-SETUP: Project Setup & Tooling
 
@@ -57,7 +57,7 @@
 
 ### EPIC-MVP-PAGES: Core Pages
 
-- ⏸️ **MVP-14**: Tracks Page (grid + inline expanders + query prefs)
+- ✅ **MVP-14**: Tracks Page (grid + inline expanders + query prefs) (COMPLETED)
 - ⏸️ **MVP-15**: Events Page (Upcoming/Past filters + pagination)
 - ⏸️ **MVP-16**: Stories Page (gallery + track filter + modal details)
 - ⏸️ **MVP-17**: Partners Page (tier grouping + partnership CTA)
@@ -88,7 +88,7 @@
 
 - MVP-01 → MVP-02 → (MVP-03, MVP-04) ✅
 - MVP-03 → MVP-05 → MVP-06 → MVP-07 → MVP-08 ✅ → MVP-09 → MVP-10 → MVP-11 ✅ → MVP-12 → MVP-13
-- MVP-06 → MVP-14 (Tracks page needs track chooser for pref query)
+- MVP-06 → MVP-14 (Tracks page needs track chooser for pref query) ✅
 - MVP-10 → MVP-16 (Stories page extends carousel)
 - MVP-13 → MVP-18 (About page reuses FAQ accordion)
 

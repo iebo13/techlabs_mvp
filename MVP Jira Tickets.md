@@ -1,6 +1,6 @@
 # TechLabs — MVP Jira Tickets (Epics → Stories/Tasks)
 
-> **Scope:** Public website MVP, frontend only, mocked data. Tech: React 18 + TypeScript, MUI 7, React Router 7, React Hook Form + Zod, React Query 5 (installed, reserved for V2), Jest + RTL. Dark-friendly theme, Context Provider, pure functions & hooks.
+> **Scope:** Public website MVP, frontend only, mocked data. Tech: React 18 + TypeScript, MUI 7, React Router 7, React Hook Form + Zod, React Query 5 (installed, reserved for V2), vitest + RTL. Dark-friendly theme, Context Provider, pure functions & hooks.
 
 ---
 
@@ -32,16 +32,16 @@
 
 #### **MVP-01 — Scaffold & Tooling**
 
-- **What should be done**: Initialize Vite React TS app; configure Router 7, ESLint + Prettier; set up Jest + RTL; install MUI 7, RHF + Zod, React Query 5; add base folders & scripts.
+- **What should be done**: Initialize Vite React TS app; configure Router 7, ESLint + Prettier; set up vitest + RTL; install MUI 7, RHF + Zod, React Query 5; add base folders & scripts.
 - **Why it’s important for users**: Solid foundations reduce defects and speed up delivery, resulting in a smoother, reliable site for users.
 - **Acceptance Criteria (AC)**
   - App boots locally; sample route renders; 404 route exists.
   - Scripts `start`, `build`, `test`, `lint`, `format` work.
-  - ESLint/Prettier run clean; one sample Jest+RTL test passes.
+  - ESLint/Prettier run clean; one sample vitest+RTL test passes.
   - Libraries installed and importable (MUI, Router, RHF, Zod, RQ5).
 
 - **Technical Information**
-  - Tooling: Vite, TypeScript, Jest + React Testing Library.
+  - Tooling: Vite, TypeScript, vitest + React Testing Library.
   - Structure: `src/app`, `src/pages`, `src/components`, `src/theme`, `src/mocks`, `src/types`.
 
 - **Tech Notes**
@@ -50,7 +50,7 @@
 
 - **Tasks**
   1. Create Vite React TS app and repository scaffolding.
-  2. Install libs (MUI, Router, RHF, Zod, React Query, Jest, RTL).
+  2. Install libs (MUI, Router, RHF, Zod, React Query, vitest, RTL).
   3. Configure ESLint (Airbnb+TS+react+hooks+unicorn) + Prettier; add npm scripts.
   4. Add sample component + test; verify CI locally.
   5. Add `.nvmrc`, `.editorconfig`, `CONTRIBUTING.md`.
@@ -475,7 +475,7 @@
   - (Optional) CI runs lint + tests on PRs.
 
 - **Technical Information**
-  - Jest + RTL; optional MSW for future API simulation.
+  - vitest + RTL; optional MSW for future API simulation.
 
 - **Tech Notes**
   - Align mock shapes to future API contracts; keep deterministic ids.

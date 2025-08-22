@@ -1,10 +1,10 @@
 # Active Context - TechLabs Website
 
-## Current Focus: MVP-14 Tracks Page
+## Current Focus: MVP-15 Events Page
 
 **Status**: Ready to implement  
 **Epic**: EPIC-MVP-PAGES (Core Pages)
-**Dependencies**: MVP-06 ✅ (completed)
+**Dependencies**: MVP-02 ✅ (completed)
 
 ## Immediate Task Details
 
@@ -98,6 +98,17 @@
   - Implemented responsive layout with image (left) and content (right) sections
   - Added hover effects and smooth transitions for enhanced user experience
   - Used MUI Grid v2 syntax (size prop) for responsive behavior
+
+- ✅ **MVP-14 COMPLETED**: Tracks Page (grid + inline expanders + query prefs)
+  - Created comprehensive tracks.json with detailed information for 4 learning tracks
+  - Implemented TrackCard component with expandable details, skills, projects, career paths
+  - Built TracksPage with grid layout, track preferences display, and session storage integration
+  - Added proper accessibility features: ARIA labels, keyboard navigation, screen reader support
+  - Integrated with existing track chooser system for seamless user experience
+  - Comprehensive test coverage: 12 tests for TrackCard, 13 tests for TracksPage
+  - Fixed MUI icons mocking in test setup for ExpandMore/ExpandLess icons
+  - All tests passing, build successful, and linting clean
+  - Ready for production use with responsive design and modern UI patterns
   - Integrated with React Router navigation to /support route
   - Comprehensive test coverage (5 tests) covering rendering, navigation, and accessibility
   - Added to HomePage component and verified build success

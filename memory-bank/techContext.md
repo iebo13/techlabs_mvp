@@ -13,7 +13,7 @@
 - **Forms**: React Hook Form 7.x + Zod validation
 - **State**: React Context Provider (no Redux for MVP)
 - **Data Fetching**: React Query 5.x (installed, reserved for V2)
-- **Testing**: Jest + React Testing Library
+- **Testing**: vitest + React Testing Library
 - **Icons**: MUI Icons
 
 ## Development Tools

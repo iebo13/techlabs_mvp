@@ -8,6 +8,9 @@ vi.mock('@mui/icons-material', () => ({
   ArrowBack: () => '←',
   ArrowForward: () => '→',
   HourglassEmpty: () => '⏳',
+  ExpandMore: () => '▼',
+  ExpandLess: () => '▲',
+  QuestionAnswer: () => '❓',
   // Add any other icons that might be used
   default: {
     PlayArrow: () => '▶',
@@ -15,6 +18,9 @@ vi.mock('@mui/icons-material', () => ({
     ArrowBack: () => '←',
     ArrowForward: () => '→',
     HourglassEmpty: () => '⏳',
+    ExpandMore: () => '▼',
+    ExpandLess: () => '▲',
+    QuestionAnswer: () => '❓',
   },
 }))
 

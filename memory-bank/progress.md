@@ -1,6 +1,6 @@
 # Progress Tracking - TechLabs Website
 
-## Project Status: **HOMEPAGE + TRACKS PAGE + EVENTS PAGE + STORIES PAGE COMPLETE**
+## Project Status: **HOMEPAGE + TRACKS PAGE + EVENTS PAGE + STORIES PAGE + PARTNERS PAGE + ABOUT PAGE COMPLETE**
 
 ## What's Complete
 
@@ -33,7 +33,7 @@
 - ✅ **MVP-15**: Events Page (Upcoming/Past filters + pagination) (COMPLETED)
 - ✅ **MVP-16**: Stories Page (gallery + track filter + modal details) (COMPLETED)
 
-## What's Left (8 stories total)
+## What's Left (5 stories total)
 
 ### EPIC-MVP-SETUP: Project Setup & Tooling
 
@@ -64,7 +64,7 @@
 - ✅ **MVP-15**: Events Page (Upcoming/Past filters + pagination) (COMPLETED)
 - ✅ **MVP-16**: Stories Page (gallery + track filter + modal details) (COMPLETED)
 - ✅ **MVP-17**: Partners Page (tier grouping + partnership CTA) (COMPLETED)
-- ⏸️ **MVP-18**: About Us Page (mission + timeline + full FAQs + #faq anchor)
+- ✅ **MVP-18**: About Us Page (mission + timeline + full FAQs + #faq anchor) (COMPLETED)
 
 ### EPIC-MVP-COMPONENTS: Shared Components Library
 
@@ -106,5 +106,5 @@
 
 1. **Foundation Week**: MVP-01✅, MVP-02✅, MVP-03✅, MVP-04✅
 2. **Homepage Sprint**: MVP-05 through MVP-13 ✅ (COMPLETED)
-3. **Pages Sprint**: MVP-14 through MVP-18 (some parallel)
+3. **Pages Sprint**: MVP-14 through MVP-18 ✅ (COMPLETED)
 4. **Polish Sprint**: MVP-19, MVP-20, MVP-21

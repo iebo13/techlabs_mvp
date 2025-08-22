@@ -8,6 +8,7 @@ import { HeaderNav } from './components/HeaderNav'
 import { Section } from './components/Section'
 import { SectionHeading } from './components/SectionHeading'
 import { SiteFooter } from './components/SiteFooter'
+import { AboutPage } from './pages/AboutPage'
 import { EventsPage } from './pages/EventsPage'
 import { HomePage } from './pages/HomePage'
 import { PartnersPage } from './pages/PartnersPage'
@@ -16,17 +17,6 @@ import { TracksPage } from './pages/TracksPage'
 import { theme } from './theme/theme'
 
 // Placeholder pages for navigation
-
-const AboutPage: React.FC = () => (
-  <main>
-    <Section>
-      <SectionHeading level={1} centered>
-        About Us
-      </SectionHeading>
-      <p>About Us page placeholder - will be implemented in MVP-18</p>
-    </Section>
-  </main>
-)
 
 const CareersPage: React.FC = () => (
   <main>

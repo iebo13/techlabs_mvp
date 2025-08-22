@@ -1,0 +1,52 @@
+{
+  "faqs": [
+    {
+      "q": "Where does the TechLabs take place?",
+      "a": "We run in multiple cities and online. Check the application page for your city."
+    },
+    {
+      "q": "Is it a full time program?",
+      "a": "No. It is designed to fit alongside work or studies (part-time)."
+    },
+    {
+      "q": "What are the admission requirements?",
+      "a": "We look for motivation and potential, not prior experience. You need to be 18+, have basic computer skills, and be able to commit 15-20 hours per week to learning."
+    },
+    {
+      "q": "How long does the program take?",
+      "a": "The complete program takes 20 weeks, divided into 4 phases: Application (2 weeks), Foundation Learning (8 weeks), Project Development (6 weeks), and Career Launch (4 weeks)."
+    },
+    {
+      "q": "What tracks do you offer?",
+      "a": "We currently offer 4 tracks: Web Development, Data Science, Product Design, and Artificial Intelligence. Each track is designed to prepare you for entry-level positions in that field."
+    },
+    {
+      "q": "Do you provide job placement?",
+      "a": "While we don't guarantee job placement, we provide extensive career support including portfolio building, networking events, job application guidance, and connections to our partner companies."
+    },
+    {
+      "q": "What if I can't attend in-person sessions?",
+      "a": "Our program is designed as blended learning, meaning most content is available online. In-person sessions are optional but highly recommended for networking and community building."
+    },
+    {
+      "q": "Are there any hidden costs?",
+      "a": "No hidden costs. The program is completely free, including all learning materials, mentorship, and career support. You only need to provide your own computer and internet connection."
+    },
+    {
+      "q": "Can I switch tracks during the program?",
+      "a": "Track switching is possible during the first 2 weeks of the Foundation Learning phase, subject to availability and mentor approval. We encourage you to choose carefully based on your interests and career goals."
+    },
+    {
+      "q": "What happens after graduation?",
+      "a": "Graduates become part of our alumni network with access to continued learning resources, networking events, and career opportunities. Many stay involved as mentors or volunteers."
+    },
+    {
+      "q": "How do you select mentors?",
+      "a": "Our mentors are experienced professionals from partner companies and our alumni network. They undergo training in effective teaching methods and are committed to supporting student success."
+    },
+    {
+      "q": "What makes TechLabs different from other coding bootcamps?",
+      "a": "Our unique blend of free education, local community support, and focus on practical skills sets us apart. We prioritize accessibility and long-term career success over quick technical training."
+    }
+  ]
+}

@@ -1,57 +1,24 @@
-// Shared UI Components
-export { CTAButton } from './CtaButton'
-export { FAQAccordion } from './FaqAccordion'
-export { Carousel } from './Carousel'
-export { AccessibilityTester } from './AccessibilityTester'
-export { SEO } from './Seo'
-export { SkipToContent } from './SkipToContent'
+// Button Components
+export { CTAButton } from './Buttons/CtaButton'
+export { SquareCheckboxIcon, SquareCheckedIcon } from './Buttons/SquareCheckbox'
+
+// Form Components
+export { FAQAccordion } from './Forms/FaqAccordion'
+export { default as VideoEmbed } from './Forms/VideoEmbed'
+export { Faqs } from './Forms/Faqs'
 
 // Layout Components
-export { Section } from './Section'
-export { SectionHeading } from './SectionHeading'
+export { Carousel } from './Layouts/Carousel'
+export { AccessibilityTester } from './Layouts/AccessibilityTester'
+export { SEO } from './Layouts/Seo'
+export { SkipToContent } from './Layouts/SkipToContent'
+export { Section } from './Layouts/Section'
+export { SectionHeading } from './Layouts/SectionHeading'
+export { HeaderNav } from './Layouts/HeaderNav'
+export { NavLink } from './Layouts/NavLink'
+export { MobileDrawer } from './Layouts/MobileDrawer'
+export { SiteFooter } from './Layouts/SiteFooter'
+export { Logo } from './Layouts/Logo'
 
-// Data Display Components
-export { KPIStat } from './KpiStat'
-export { ValuePropCard } from './ValuePropCard'
-export { TrackCard } from './TrackCard'
-export { EventCard } from './EventCard'
-export { PartnerLogo } from './PartnerLogo'
-export { StoryCard } from './StoryCard'
-
-// Interactive Components
-export { default as VideoEmbed } from './VideoEmbed'
-export { SquareCheckboxIcon, SquareCheckedIcon } from './SquareCheckbox'
-
-// Navigation Components
-export { HeaderNav } from './HeaderNav'
-export { NavLink } from './NavLink'
-export { MobileDrawer } from './MobileDrawer'
-export { SiteFooter } from './SiteFooter'
-
-// Page-Specific Components
-export { Hero } from './Hero'
-export { HeroSection } from './HeroSection'
-export { default as HeroVideo } from './HeroVideo'
-export { TrackChooser } from './TrackChooser'
-export { TrackChooserSection } from './TrackChooserSection'
-export { TrustStrip } from './TrustStrip'
-export { TrustStripSection } from './TrustStripSection'
-export { WhyTechlabs } from './WhyTechlabs'
-export { StoriesCarousel } from './StoriesCarousel'
-export { CarouselNavigation, CarouselItem, CarouselHeader } from './StoriesCarouselComponents'
-export { NumbersBand } from './NumbersBand'
-export { SupportCta } from './SupportCta'
-export { Faqs } from './Faqs'
-
-// About Page Components
-export { MissionSection } from './MissionSection'
-export { ProgramSection } from './ProgramSection'
-export { TimelineSection } from './TimelineSection'
-export { TeamSection } from './TeamSection'
-export { ContactSection } from './ContactSection'
-
-// Modal Components
-export { StoryModal } from './StoryModal'
-
-// Logo Component
-export { Logo } from './Logo'
+// Popup Components
+export { StoryModal } from './Popups/StoryModal'

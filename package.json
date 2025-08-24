@@ -18,9 +18,11 @@
     "typecheck": "tsc ",
     "typecheck:watch": "tsc --noEmit --watch",
     "unimported": "npx unimported",
-    "check": "npm run lint && npm run typecheck && npm run format",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run format",
     "check:fix": "npm run lint:fix  && npm run format:fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "convert-imports": "node scripts/convert-imports.js",
+    "convert-imports:dry-run": "node scripts/convert-imports.js --dry-run"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -59,6 +61,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "eslint-plugin-unicorn": "^60.0.0",
+    "glob": "^10.3.10",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",

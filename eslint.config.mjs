@@ -133,7 +133,6 @@ export default [
         {
           groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
           // never have newlines between imports
-          'newlines-between': 'never',
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],

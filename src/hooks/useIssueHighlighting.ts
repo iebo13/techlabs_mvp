@@ -1,5 +1,3 @@
-import { useCallback } from 'react'
-
 import type { AccessibilityIssue } from './useAccessibilityChecks'
 
 /**
@@ -7,7 +5,7 @@ import type { AccessibilityIssue } from './useAccessibilityChecks'
  * Extracts highlighting logic from AccessibilityTester component
  */
 export const useIssueHighlighting = () => {
-  const highlightIssue = useCallback((issue: AccessibilityIssue) => {
+  const highlightIssue = (issue: AccessibilityIssue) => {
     if (issue.element) {
       issue.element.scrollIntoView({ behavior: 'smooth', block: 'center' })
       issue.element.style.outline = '2px solid red'
@@ -21,7 +19,7 @@ export const useIssueHighlighting = () => {
         }
       }, 3000)
     }
-  }, [])
+  }
 
   return {
     highlightIssue,

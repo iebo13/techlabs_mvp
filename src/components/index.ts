@@ -9,15 +9,23 @@ export { Faqs } from './Forms/Faqs'
 
 // Layout Components
 export { Carousel } from './Layouts/Carousel'
+export { CarouselNavigation } from './Layouts/CarouselNavigation'
+export { CarouselIndicators } from './Layouts/CarouselIndicators'
 export { AccessibilityTester } from './Layouts/AccessibilityTester'
+export { AccessibilityIssueList } from './Layouts/AccessibilityIssueList'
 export { SEO } from './Layouts/Seo'
 export { SkipToContent } from './Layouts/SkipToContent'
 export { Section } from './Layouts/Section'
 export { SectionHeading } from './Layouts/SectionHeading'
 export { HeaderNav } from './Layouts/HeaderNav'
+export { DesktopNavigation } from './Layouts/DesktopNavigation'
+export { MobileMenuButton } from './Layouts/MobileMenuButton'
 export { NavLink } from './Layouts/NavLink'
 export { MobileDrawer } from './Layouts/MobileDrawer'
 export { SiteFooter } from './Layouts/SiteFooter'
+export { FooterBrandSection } from './Layouts/FooterBrandSection'
+export { FooterLinksSection } from './Layouts/FooterLinksSection'
+export { FooterBottom } from './Layouts/FooterBottom'
 export { Logo } from './Layouts/Logo'
 
 // Popup Components

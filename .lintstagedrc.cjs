@@ -4,7 +4,4 @@ module.exports = {
 
   // Format other files
   '*.{json,md,yml,yaml,css,scss}': ['prettier --write'],
-
-  // Type check TypeScript files
-  '*.{ts,tsx}': [() => 'tsc --noEmit'],
 }

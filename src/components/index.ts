@@ -1,34 +1,20 @@
-// Button Components
+// Layouts
+export { HeaderNav } from './Layouts/HeaderNav'
+export { LazyPage } from './Layouts/LazyPage'
+export { Section } from './Layouts/Section'
+export { SectionHeading } from './Layouts/SectionHeading'
+export { SiteFooter } from './Layouts/SiteFooter'
+export { SkipToContent } from './Layouts/SkipToContent'
+export { OptimizedImage } from './Layouts/OptimizedImage'
+
+// Forms
+export { Faqs } from './Forms/Faqs'
+export { FAQAccordion } from './Forms/FaqAccordion'
+export { default as VideoEmbed } from './Forms/VideoEmbed'
+
+// Buttons
 export { CTAButton } from './Buttons/CtaButton'
 export { SquareCheckboxIcon, SquareCheckedIcon } from './Buttons/SquareCheckbox'
 
-// Form Components
-export { FAQAccordion } from './Forms/FaqAccordion'
-export { default as VideoEmbed } from './Forms/VideoEmbed'
-export { Faqs } from './Forms/Faqs'
-
-// Layout Components
-export { Carousel } from './Layouts/Carousel'
-export { CarouselNavigation } from './Layouts/CarouselNavigation'
-export { CarouselIndicators } from './Layouts/CarouselIndicators'
-export { AccessibilityTester } from './Layouts/AccessibilityTester'
-export { AccessibilityIssueList } from './Layouts/AccessibilityIssueList'
-export { SEO } from './Layouts/Seo'
-export { SkipToContent } from './Layouts/SkipToContent'
-export { Section } from './Layouts/Section'
-export { SectionHeading } from './Layouts/SectionHeading'
-export { HeaderNav } from './Layouts/HeaderNav'
-export { DesktopNavigation } from './Layouts/DesktopNavigation'
-export { MobileMenuButton } from './Layouts/MobileMenuButton'
-export { NavLink } from './Layouts/NavLink'
-export { MobileDrawer } from './Layouts/MobileDrawer'
-export { SiteFooter } from './Layouts/SiteFooter'
-export { FooterBrandSection } from './Layouts/FooterBrandSection'
-export { FooterLinksSection } from './Layouts/FooterLinksSection'
-export { FooterBottom } from './Layouts/FooterBottom'
-export { Logo } from './Layouts/Logo'
-export { LazyPage } from './Layouts/LazyPage'
-export { LazyComponent } from './Layouts/LazyComponent'
-
-// Popup Components
+// Popups
 export { StoryModal } from './Popups/StoryModal'

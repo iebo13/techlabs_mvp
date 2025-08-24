@@ -5,8 +5,18 @@ import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vite.dev/config/
 export default defineConfig({
+  define: {
+    // Make environment variables available to the client
+    __DEV__: JSON.stringify(process.env.NODE_ENV === 'development'),
+  },
   plugins: [
-    react(),
+    react({
+      // Optimize React for production
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: ['@emotion/babel-plugin'],
+      },
+    }),
     visualizer({
       filename: 'dist/stats.html',
       open: false,
@@ -31,29 +41,44 @@ export default defineConfig({
     },
   },
   build: {
+    target: 'es2015', // Target modern browsers for better tree shaking
+    minify: 'esbuild', // Use esbuild for better compatibility
     rollupOptions: {
       output: {
         manualChunks: id => {
-          // Vendor chunks
+          // Vendor chunks with better optimization
           if (id.includes('node_modules')) {
+            // Core React chunks
             if (id.includes('react') || id.includes('react-dom')) {
               return 'vendor-react'
             }
-            if (id.includes('@mui') || id.includes('@emotion')) {
-              return 'vendor-mui'
+            // MUI chunks - split by core and icons
+            if (id.includes('@mui/material') && !id.includes('@mui/icons-material')) {
+              return 'vendor-mui-core'
             }
+            if (id.includes('@mui/icons-material')) {
+              return 'vendor-mui-icons'
+            }
+            if (id.includes('@emotion')) {
+              return 'vendor-emotion'
+            }
+            // Router
             if (id.includes('react-router-dom')) {
               return 'vendor-router'
             }
+            // Form libraries
             if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
               return 'vendor-forms'
             }
+            // Query library
             if (id.includes('@tanstack/react-query')) {
               return 'vendor-query'
             }
-            if (id.includes('date-fns')) {
+            // Utility libraries
+            if (id.includes('date-fns') || id.includes('lodash') || id.includes('ramda')) {
               return 'vendor-utils'
             }
+            // Font libraries
             if (id.includes('@fontsource')) {
               return 'vendor-fonts'
             }
@@ -61,7 +86,7 @@ export default defineConfig({
             return 'vendor-other'
           }
 
-          // Feature chunks
+          // Feature chunks with better granularity
           if (id.includes('/features/home/')) {
             return 'feature-home'
           }
@@ -81,7 +106,7 @@ export default defineConfig({
             return 'feature-about'
           }
 
-          // Component chunks
+          // Component chunks with better organization
           if (id.includes('/components/Layouts/')) {
             return 'components-layout'
           }
@@ -94,13 +119,50 @@ export default defineConfig({
           if (id.includes('/components/Popups/')) {
             return 'components-popups'
           }
+
+          // Utility chunks
+          if (id.includes('/utils/')) {
+            return 'utils'
+          }
+          if (id.includes('/hooks/')) {
+            return 'hooks'
+          }
+          if (id.includes('/theme/')) {
+            return 'theme'
+          }
         },
+        // Optimize chunk loading
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
       },
     },
     chunkSizeWarningLimit: 1000, // Increase warning limit to 1MB
     sourcemap: false, // Disable sourcemaps in production for smaller bundle
+    // Enable CSS code splitting
+    cssCodeSplit: true,
+    // Optimize dependencies
+    commonjsOptions: {
+      include: [/node_modules/],
+      transformMixedEsModules: true,
+    },
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', '@mui/material', '@mui/icons-material', 'react-router-dom'],
+    include: [
+      'react',
+      'react-dom',
+      '@mui/material',
+      '@mui/icons-material',
+      'react-router-dom',
+      '@emotion/react',
+      '@emotion/styled',
+    ],
+    exclude: ['@emotion/babel-plugin'], // Exclude build-time dependencies
+  },
+  // Performance optimizations
+  server: {
+    hmr: {
+      overlay: false, // Disable error overlay for better performance
+    },
   },
 })

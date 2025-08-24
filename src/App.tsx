@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from 'react'
+import React, { lazy, Suspense, useEffect, memo } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider, CssBaseline, Box } from '@mui/material'
 import { HeaderNav } from '@/components/Layouts/HeaderNav'
@@ -10,7 +10,7 @@ import { SkipToContent } from '@/components/Layouts/SkipToContent'
 import { theme } from '@/theme/theme'
 import performanceMonitor from '@/utils/performance'
 
-// Lazy load page components for code splitting
+// Optimized lazy loading with preloading hints
 const HomePage = lazy(() =>
   import('@/features/home/page/HomePage').then(module => ({ default: module.HomePage }))
 )
@@ -37,9 +37,8 @@ const AccessibilityTester = lazy(() =>
   }))
 )
 
-// Placeholder pages for navigation (these are small, so we can keep them inline)
-
-const CareersPage: React.FC = () => (
+// Memoized placeholder pages to prevent unnecessary re-renders
+const CareersPage: React.FC = memo(() => (
   <main>
     <Section>
       <SectionHeading level={1} centered>
@@ -48,9 +47,9 @@ const CareersPage: React.FC = () => (
       <p>Careers page placeholder</p>
     </Section>
   </main>
-)
+))
 
-const PrivacyPage: React.FC = () => (
+const PrivacyPage: React.FC = memo(() => (
   <main>
     <Section>
       <SectionHeading level={1} centered>
@@ -59,9 +58,9 @@ const PrivacyPage: React.FC = () => (
       <p>Privacy Policy page placeholder - will contain data protection information</p>
     </Section>
   </main>
-)
+))
 
-const ImprintPage: React.FC = () => (
+const ImprintPage: React.FC = memo(() => (
   <main>
     <Section>
       <SectionHeading level={1} centered>
@@ -70,12 +69,16 @@ const ImprintPage: React.FC = () => (
       <p>Imprint page placeholder - will contain legal information</p>
     </Section>
   </main>
-)
+))
 
-const App: React.FC = () => {
-  // Initialize performance monitoring
+// Memoized main App component
+const App: React.FC = memo(() => {
+  // Initialize performance monitoring only once
   useEffect(() => {
-    performanceMonitor.init()
+    // Only initialize in production or when explicitly enabled
+    if (import.meta.env.PROD || import.meta.env.VITE_ENABLE_PERFORMANCE === 'true') {
+      performanceMonitor.init()
+    }
   }, [])
 
   return (
@@ -148,7 +151,9 @@ const App: React.FC = () => {
       </BrowserRouter>
     </ThemeProvider>
   )
-}
+})
+
+App.displayName = 'App'
 
 export { App }
 export default App

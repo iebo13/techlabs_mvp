@@ -19,8 +19,12 @@ export type PerformanceMetric = {
 
 export type PerformanceConfig = {
   debug?: boolean
-  endpoint?: string
   sampleRate?: number
+  endpoint?: string
+  enableWebVitals?: boolean
+  enableComponentTracking?: boolean
+  enableApiTracking?: boolean
+  enableBundleTracking?: boolean
 }
 
 export type PerformanceMonitor = {
@@ -29,7 +33,7 @@ export type PerformanceMonitor = {
   measureComponentRender: (componentName: string) => void
   recordCustomMetric: (name: string, value: number, metadata?: Record<string, unknown>) => void
   getMetrics: () => PerformanceMetric[]
-  getMetricsByName: (name: string) => PerformanceMetric[]
   clearMetrics: () => void
-  getSummary: () => Record<string, { avg: number; min: number; max: number; count: number }>
+  setComponentTracking: (enabled: boolean) => void
+  getConfig: () => PerformanceConfig
 }

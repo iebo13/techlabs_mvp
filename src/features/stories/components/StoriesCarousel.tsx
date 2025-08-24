@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useMemo, useCallback, memo } from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Button, Stack, useTheme, useMediaQuery } from '@mui/material'
 import { Section } from '@/components/Layouts/Section'
@@ -15,118 +15,157 @@ type StoriesCarouselProps = {
  * StoriesCarousel component - accessible carousel showcasing graduate stories
  * Features keyboard navigation, reduced motion support, and screen reader announcements
  */
-export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({
-  stories,
-  sectionTitle = "Our Graduates' Stories",
-  showSeeAllLink = true,
-}) => {
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'))
+export const StoriesCarousel: React.FC<StoriesCarouselProps> = memo(
+  ({ stories, sectionTitle = "Our Graduates' Stories", showSeeAllLink = true }) => {
+    const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+    const isTablet = useMediaQuery(theme.breakpoints.down('md'))
 
-  // Calculate cards per view based on screen size
-  const cardsPerView = isMobile ? 1 : isTablet ? 2 : 3
-  const maxIndex = Math.max(0, stories.length - cardsPerView)
+    // Calculate cards per view based on screen size - memoized to prevent recalculation
+    const cardsPerView = useMemo(() => (isMobile ? 1 : isTablet ? 2 : 3), [isMobile, isTablet])
+    const maxIndex = useMemo(
+      () => Math.max(0, stories.length - cardsPerView),
+      [stories.length, cardsPerView]
+    )
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const carouselRef = useRef<HTMLDivElement>(null)
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const carouselRef = useRef<HTMLDivElement>(null)
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (!carouselRef.current?.contains(event.target as Node)) return
+    // Memoize navigation handlers to prevent unnecessary re-renders
+    const handlePrevious = useCallback(() => {
+      setCurrentIndex(prev => (prev - 1 + stories.length) % stories.length)
+    }, [stories.length])
 
-      switch (event.key) {
-        case 'ArrowLeft':
+    const handleNext = useCallback(() => {
+      setCurrentIndex(prev => (prev + 1) % stories.length)
+    }, [stories.length])
+
+    const handleGoToStart = useCallback(() => {
+      setCurrentIndex(0)
+    }, [])
+
+    const handleGoToEnd = useCallback(() => {
+      setCurrentIndex(maxIndex)
+    }, [maxIndex])
+
+    // Memoize visible stories to prevent recalculation
+    const visibleStories = useMemo(
+      () => stories.slice(currentIndex, currentIndex + cardsPerView),
+      [stories, currentIndex, cardsPerView]
+    )
+
+    // Memoize carousel styles to prevent recalculation
+    const carouselStyles = useMemo(
+      () => ({
+        position: 'relative' as const,
+        overflow: 'hidden',
+        borderRadius: 2,
+      }),
+      []
+    )
+
+    // Memoize grid styles to prevent recalculation
+    const gridStyles = useMemo(
+      () => ({
+        display: 'grid',
+        gridTemplateColumns: {
+          xs: '1fr',
+          sm: 'repeat(2, 1fr)',
+          md: 'repeat(3, 1fr)',
+        },
+        gap: 3,
+      }),
+      []
+    )
+
+    // Memoize story key down handler to prevent unnecessary re-renders
+    const handleStoryKeyDown = useCallback(
+      (storyId: string) => (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault()
-          setCurrentIndex(prev => (prev - 1 + stories.length) % stories.length)
-          break
-        case 'ArrowRight':
-          event.preventDefault()
-          setCurrentIndex(prev => (prev + 1) % stories.length)
-          break
-        case 'Home':
-          event.preventDefault()
-          setCurrentIndex(0)
-          break
-        case 'End':
-          event.preventDefault()
-          setCurrentIndex(maxIndex)
-          break
+          window.location.href = `/stories/${storyId}`
+        }
+      },
+      []
+    )
+
+    // Keyboard navigation
+    useEffect(() => {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (!carouselRef.current?.contains(event.target as Node)) return
+
+        switch (event.key) {
+          case 'ArrowLeft':
+            event.preventDefault()
+            handlePrevious()
+            break
+          case 'ArrowRight':
+            event.preventDefault()
+            handleNext()
+            break
+          case 'Home':
+            event.preventDefault()
+            handleGoToStart()
+            break
+          case 'End':
+            event.preventDefault()
+            handleGoToEnd()
+            break
+        }
       }
-    }
 
-    document.addEventListener('keydown', handleKeyDown)
+      document.addEventListener('keydown', handleKeyDown)
 
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [currentIndex, maxIndex, stories.length])
+      return () => document.removeEventListener('keydown', handleKeyDown)
+    }, [handlePrevious, handleNext, handleGoToStart, handleGoToEnd])
 
-  const visibleStories = stories.slice(currentIndex, currentIndex + cardsPerView)
+    return (
+      <Section sx={{ py: { xs: 6, md: 8 } }}>
+        <Stack spacing={4}>
+          <CarouselHeader
+            sectionTitle={sectionTitle}
+            currentIndex={currentIndex}
+            maxIndex={maxIndex}
+            onPrevious={handlePrevious}
+            onNext={handleNext}
+          />
 
-  return (
-    <Section sx={{ py: { xs: 6, md: 8 } }}>
-      <Stack spacing={4}>
-        <CarouselHeader
-          sectionTitle={sectionTitle}
-          currentIndex={currentIndex}
-          maxIndex={maxIndex}
-          onPrevious={() => setCurrentIndex(prev => (prev - 1 + stories.length) % stories.length)}
-          onNext={() => setCurrentIndex(prev => (prev + 1) % stories.length)}
-        />
-
-        {/* Carousel container */}
-        <Box
-          ref={carouselRef}
-          role="region"
-          aria-label="Stories carousel"
-          aria-live="polite"
-          sx={{
-            position: 'relative',
-            overflow: 'hidden',
-            borderRadius: 2,
-          }}
-        >
-          {/* Stories grid */}
+          {/* Carousel container */}
           <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: {
-                xs: '1fr',
-                sm: 'repeat(2, 1fr)',
-                md: 'repeat(3, 1fr)',
-              },
-              gap: 3,
-            }}
+            ref={carouselRef}
+            role="region"
+            aria-label="Stories carousel"
+            aria-live="polite"
+            sx={carouselStyles}
           >
-            {visibleStories.map((story, index) => (
-              <Box
-                key={story.id}
-                tabIndex={0}
-                role="button"
-                aria-label={`Story ${currentIndex + index + 1}: ${story.title}`}
-                onKeyDown={event => {
-                  if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault()
-                    // Navigate to story detail page
-                    window.location.href = `/stories/${story.id}`
-                  }
-                }}
-              >
-                <CarouselItem story={story} />
-              </Box>
-            ))}
+            {/* Stories grid */}
+            <Box sx={gridStyles}>
+              {visibleStories.map((story, index) => (
+                <Box
+                  key={story.id}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Story ${currentIndex + index + 1}: ${story.title}`}
+                  onKeyDown={handleStoryKeyDown(story.id)}
+                >
+                  <CarouselItem story={story} />
+                </Box>
+              ))}
+            </Box>
           </Box>
-        </Box>
 
-        {/* See all stories link */}
-        {showSeeAllLink && stories.length > cardsPerView && (
-          <Box sx={{ textAlign: 'center' }}>
-            <Button component={Link} to="/stories" variant="outlined" size="large" sx={{ px: 4 }}>
-              See All Stories
-            </Button>
-          </Box>
-        )}
-      </Stack>
-    </Section>
-  )
-}
+          {/* See all stories link */}
+          {showSeeAllLink && stories.length > cardsPerView && (
+            <Box sx={{ textAlign: 'center' }}>
+              <Button component={Link} to="/stories" variant="outlined" size="large" sx={{ px: 4 }}>
+                See All Stories
+              </Button>
+            </Box>
+          )}
+        </Stack>
+      </Section>
+    )
+  }
+)
+
+StoriesCarousel.displayName = 'StoriesCarousel'

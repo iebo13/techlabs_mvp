@@ -3,7 +3,9 @@ import type { PerformanceMonitor } from './performanceTypes'
 /**
  * Setup Web Vitals monitoring
  */
-export const setupWebVitals = (recordCustomMetric: PerformanceMonitor['recordCustomMetric']): void => {
+export const setupWebVitals = (
+  recordCustomMetric: PerformanceMonitor['recordCustomMetric']
+): void => {
   setupCLS(recordCustomMetric)
   setupFID(recordCustomMetric)
   setupFCP(recordCustomMetric)

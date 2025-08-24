@@ -14,6 +14,30 @@ export type AccessibilityIssue = {
 export const useAccessibilityChecks = () => {
   const [issues, setIssues] = useState<AccessibilityIssue[]>([])
 
+  const generateUniqueSelector = (element: Element, index: number): string => {
+    // Try to use ID first
+    if (element.id) {
+      return `#${element.id}`
+    }
+
+    // Try to use a unique class combination
+    if (element.classList.length > 0) {
+      const classes = Array.from(element.classList).slice(0, 2).join('.')
+      return `${element.tagName.toLowerCase()}.${classes}`
+    }
+
+    // Use tag name with position and context
+    const parent = element.parentElement
+    if (parent) {
+      const parentTag = parent.tagName.toLowerCase()
+      const parentId = parent.id ? `#${parent.id}` : parentTag
+      return `${parentId} > ${element.tagName.toLowerCase()}:nth-child(${index + 1})`
+    }
+
+    // Fallback to tag with index
+    return `${element.tagName.toLowerCase()}:nth-child(${index + 1})`
+  }
+
   const runAccessibilityChecks = () => {
     const newIssues: AccessibilityIssue[] = []
 
@@ -26,7 +50,7 @@ export const useAccessibilityChecks = () => {
           type: 'error',
           message: `Image missing alt text: ${img.src || `Image ${index + 1}`}`,
           element: img,
-          selector: `img:nth-child(${index + 1})`,
+          selector: generateUniqueSelector(img, index),
         })
       }
     })
@@ -43,7 +67,7 @@ export const useAccessibilityChecks = () => {
           type: 'warning',
           message: `Heading hierarchy skip: ${heading.tagName} (${heading.textContent?.slice(0, 50)})`,
           element: heading as HTMLElement,
-          selector: `${heading.tagName.toLowerCase()}:nth-child(${index + 1})`,
+          selector: generateUniqueSelector(heading, index),
         })
       }
 
@@ -54,10 +78,13 @@ export const useAccessibilityChecks = () => {
     const h1Tags = document.querySelectorAll('h1')
 
     if (h1Tags.length > 1) {
-      newIssues.push({
-        type: 'error',
-        message: `Multiple H1 tags found: ${h1Tags.length} H1 elements`,
-        selector: 'h1',
+      h1Tags.forEach((h1, index) => {
+        newIssues.push({
+          type: 'error',
+          message: `Multiple H1 tags found: ${h1Tags.length} H1 elements`,
+          element: h1 as HTMLElement,
+          selector: generateUniqueSelector(h1, index),
+        })
       })
     }
 
@@ -74,7 +101,7 @@ export const useAccessibilityChecks = () => {
           type: 'warning',
           message: `Form input missing label: ${input.tagName.toLowerCase()}`,
           element: input as HTMLElement,
-          selector: `${input.tagName.toLowerCase()}:nth-child(${index + 1})`,
+          selector: generateUniqueSelector(input, index),
         })
       }
     })
@@ -82,7 +109,7 @@ export const useAccessibilityChecks = () => {
     // Check for sufficient color contrast (basic check)
     const textElements = document.querySelectorAll('p, span, div, h1, h2, h3, h4, h5, h6')
 
-    textElements.forEach(element => {
+    textElements.forEach((element, index) => {
       const style = window.getComputedStyle(element)
       const color = style.color
       const backgroundColor = style.backgroundColor
@@ -93,6 +120,7 @@ export const useAccessibilityChecks = () => {
           type: 'warning',
           message: 'Potential contrast issue: text and background colors are the same',
           element: element as HTMLElement,
+          selector: generateUniqueSelector(element, index),
         })
       }
     })
@@ -102,7 +130,7 @@ export const useAccessibilityChecks = () => {
       'button, a, input, select, textarea, [tabindex]'
     )
 
-    interactiveElements.forEach(element => {
+    interactiveElements.forEach((element, index) => {
       const tabIndex = element.getAttribute('tabindex')
 
       if (tabIndex === '-1' && !element.hasAttribute('aria-hidden')) {
@@ -110,6 +138,7 @@ export const useAccessibilityChecks = () => {
           type: 'info',
           message: 'Element with tabindex="-1" - ensure this is intentional for accessibility',
           element: element as HTMLElement,
+          selector: generateUniqueSelector(element, index),
         })
       }
     })

@@ -1,93 +1,93 @@
-import { useEffect, useRef } from 'react'
-import performanceMonitor from '@/utils/performance'
+import { useEffect, useRef, useCallback, useMemo } from 'react'
+import type { PerformanceMetric } from '@/utils/performanceTypes'
 
-type UsePerformanceOptions = {
-  componentName?: string
-  trackRenders?: boolean
-  trackInteractions?: boolean
+type PerformanceOptions = {
+  enabled?: boolean
+  threshold?: number
+  onThresholdExceeded?: (metric: PerformanceMetric) => void
 }
 
 /**
- * React hook for performance monitoring
+ * Optimized performance monitoring hook
+ * Only tracks when explicitly enabled to reduce overhead
  */
-export const usePerformance = (options: UsePerformanceOptions = {}) => {
+export const usePerformance = (componentName: string, options: PerformanceOptions = {}) => {
   const {
-    componentName = 'UnknownComponent',
-    trackRenders = true,
-    trackInteractions = true,
+    enabled = false, // Disabled by default for better performance
+    threshold = 100, // 100ms threshold
+    onThresholdExceeded,
   } = options
 
-  const renderCount = useRef(0)
-  const lastRenderTime = useRef(performance.now())
+  const startTimeRef = useRef<number>(0)
+  const isTrackingRef = useRef(false)
 
-  // Track component render performance
+  // Memoize the start tracking function to prevent unnecessary re-renders
+  const startTracking = useCallback(() => {
+    if (!enabled || typeof window === 'undefined' || !('performance' in window)) {
+      return
+    }
+
+    startTimeRef.current = performance.now()
+    isTrackingRef.current = true
+  }, [enabled])
+
+  // Memoize the stop tracking function to prevent unnecessary re-renders
+  const stopTracking = useCallback(() => {
+    if (!enabled || !isTrackingRef.current || typeof window === 'undefined') {
+      return
+    }
+
+    const duration = performance.now() - startTimeRef.current
+
+    isTrackingRef.current = false
+
+    // Only log if threshold is exceeded
+    if (duration > threshold) {
+      const metric: PerformanceMetric = {
+        name: 'COMPONENT_RENDER',
+        value: duration,
+        rating: duration < 50 ? 'good' : duration < 100 ? 'needs-improvement' : 'poor',
+        delta: 0,
+        id: `${componentName}-${Date.now()}`,
+      }
+
+      if (onThresholdExceeded) {
+        onThresholdExceeded(metric)
+      }
+
+      // Only log in development
+      if (import.meta.env.DEV) {
+        console.warn(
+          `Performance warning: ${componentName} took ${duration.toFixed(2)}ms to render`
+        )
+      }
+    }
+  }, [enabled, threshold, onThresholdExceeded, componentName])
+
+  // Memoize the performance data to prevent unnecessary re-renders
+  const performanceData = useMemo(
+    () => ({
+      startTracking,
+      stopTracking,
+      isTracking: isTrackingRef.current,
+    }),
+    [startTracking, stopTracking]
+  )
+
+  // Auto-track on mount/unmount if enabled
   useEffect(() => {
-    if (trackRenders) {
-      performanceMonitor.markComponentRender(componentName)
+    if (enabled) {
+      startTracking()
 
-      const renderTime = performance.now()
-      const timeSinceLastRender = renderTime - lastRenderTime.current
-
-      performanceMonitor.recordCustomMetric('COMPONENT_RENDER', timeSinceLastRender, {
-        component: componentName,
-        renderCount: ++renderCount.current,
-      })
-
-      lastRenderTime.current = renderTime
+      return () => {
+        if (isTrackingRef.current) {
+          stopTracking()
+        }
+      }
     }
-  })
+  }, [enabled, startTracking, stopTracking])
 
-  // Track user interactions
-  const trackInteraction = (interactionName: string, metadata?: Record<string, unknown>) => {
-    if (trackInteractions) {
-      performanceMonitor.recordCustomMetric('USER_INTERACTION', performance.now(), {
-        component: componentName,
-        interaction: interactionName,
-        ...metadata,
-      })
-    }
-  }
-
-  // Track async operations
-  const trackAsyncOperation = async <T>(
-    operationName: string,
-    operation: () => Promise<T>,
-    metadata?: Record<string, unknown>
-  ): Promise<T> => {
-    const startTime = performance.now()
-
-    try {
-      const result = await operation()
-      const duration = performance.now() - startTime
-
-      performanceMonitor.recordCustomMetric('ASYNC_OPERATION', duration, {
-        component: componentName,
-        operation: operationName,
-        status: 'success',
-        ...metadata,
-      })
-
-      return result
-    } catch (error) {
-      const duration = performance.now() - startTime
-
-      performanceMonitor.recordCustomMetric('ASYNC_OPERATION', duration, {
-        component: componentName,
-        operation: operationName,
-        status: 'error',
-        error: error instanceof Error ? error.message : String(error),
-        ...metadata,
-      })
-
-      throw error
-    }
-  }
-
-  return {
-    trackInteraction,
-    trackAsyncOperation,
-    getMetrics: () => performanceMonitor.getMetricsByName(componentName),
-  }
+  return performanceData
 }
 
 export default usePerformance

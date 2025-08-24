@@ -4,88 +4,137 @@ import type {
   PerformanceConfig,
   PerformanceMonitor,
 } from './performanceTypes'
-import { getPerformanceRating, sendMetric, monitorBundlePerformance, monitorApiCalls } from './performanceUtils'
+import {
+  getPerformanceRating,
+  sendMetric,
+  monitorBundlePerformance,
+  monitorApiCalls,
+} from './performanceUtils'
 import { setupWebVitals } from './performanceWebVitals'
 
 // Create performance monitor using factory function
 const createPerformanceMonitor = (config: PerformanceConfig = {}): PerformanceMonitor => {
   const _config = {
     debug: false,
-    sampleRate: 1.0, // 100% sampling
+    sampleRate: 0.1, // Reduce to 10% sampling for better performance
+    enableWebVitals: true,
+    enableComponentTracking: false, // Disable by default to reduce overhead
+    enableApiTracking: true,
+    enableBundleTracking: true,
     ...config,
   }
 
   const _metrics = new Map<string, PerformanceMetric>()
+  let _isInitialized = false
 
   /**
    * Initialize performance monitoring
    */
   const init = (): void => {
-    if (typeof window === 'undefined') return
+    if (typeof window === 'undefined' || _isInitialized) return
 
     // Only track if we're in production or debug is enabled
-    if (!_config.debug && process.env.NODE_ENV !== 'production') {
+    if (!_config.debug && !import.meta.env.PROD) {
       return
     }
 
     // Apply sampling rate
-    if (Math.random() > (_config.sampleRate ?? 1.0)) {
+    if (Math.random() > (_config.sampleRate ?? 0.1)) {
       return
     }
 
-    setupWebVitals(recordCustomMetric)
-    monitorBundlePerformance(recordCustomMetric)
-    monitorApiCalls(recordCustomMetric)
+    // Setup monitoring based on configuration
+    if (_config.enableWebVitals) {
+      setupWebVitals(recordCustomMetric)
+    }
+
+    if (_config.enableBundleTracking) {
+      monitorBundlePerformance(recordCustomMetric)
+    }
+
+    if (_config.enableApiTracking) {
+      monitorApiCalls(recordCustomMetric)
+    }
+
+    _isInitialized = true
   }
 
   /**
-   * Mark component render start
+   * Mark component render start - only if component tracking is enabled
    */
   const markComponentRender = (componentName: string): void => {
-    if (typeof window !== 'undefined' && 'performance' in window) {
-      performance.mark(`${componentName}-render-start`)
+    if (
+      !_config.enableComponentTracking ||
+      typeof window === 'undefined' ||
+      !('performance' in window)
+    ) {
+      return
     }
+
+    performance.mark(`${componentName}-render-start`)
   }
 
   /**
-   * Mark component render end and measure
+   * Mark component render end and measure - only if component tracking is enabled
    */
   const measureComponentRender = (componentName: string): void => {
-    if (typeof window !== 'undefined' && 'performance' in window) {
-      performance.mark(`${componentName}-render-end`)
-      performance.measure(
-        `${componentName}-render`,
-        `${componentName}-render-start`,
-        `${componentName}-render-end`
-      )
+    if (
+      !_config.enableComponentTracking ||
+      typeof window === 'undefined' ||
+      !('performance' in window)
+    ) {
+      return
+    }
 
-      const measure = performance.getEntriesByName(`${componentName}-render`)[0]
+    performance.mark(`${componentName}-render-end`)
+    performance.measure(
+      `${componentName}-render`,
+      `${componentName}-render-start`,
+      `${componentName}-render-end`
+    )
 
-      if (measure) {
-        recordCustomMetric('COMPONENT_RENDER', measure.duration, {
-          component: componentName,
-        })
-      }
+    const measure = performance.getEntriesByName(`${componentName}-render`)[0]
+
+    if (measure) {
+      recordCustomMetric('COMPONENT_RENDER', measure.duration, {
+        component: componentName,
+      })
     }
   }
 
   /**
-   * Record custom performance metric
+   * Record custom performance metric with throttling
    */
   const recordCustomMetric = (
     name: string,
     value: number,
     metadata: Record<string, unknown> = {}
   ): void => {
+    // Throttle metric recording to reduce overhead
+    const metricId = `${name}-${Math.floor(Date.now() / 1000)}` // Group by second
+
+    if (_metrics.has(metricId)) {
+      return // Skip if we already recorded this metric type in this second
+    }
+
     const metric: PerformanceMetric = {
       name: name as MetricName,
       value,
       rating: getPerformanceRating(value, name),
       delta: 0,
-      id: `${name}-${Date.now()}`,
+      id: metricId,
     }
 
-    _metrics.set(metric.id, metric)
+    _metrics.set(metricId, metric)
+
+    // Clean up old metrics to prevent memory leaks
+    if (_metrics.size > 100) {
+      const firstKey = _metrics.keys().next().value
+
+      if (firstKey) {
+        _metrics.delete(firstKey)
+      }
+    }
 
     if (_config.debug) {
       // eslint-disable-next-line no-console
@@ -98,49 +147,31 @@ const createPerformanceMonitor = (config: PerformanceConfig = {}): PerformanceMo
   }
 
   /**
-   * Get all recorded metrics
+   * Get performance metrics
    */
   const getMetrics = (): PerformanceMetric[] => {
     return [..._metrics.values()]
   }
 
   /**
-   * Get metrics by name
-   */
-  const getMetricsByName = (name: string): PerformanceMetric[] => {
-    return getMetrics().filter(metric => metric.name === name)
-  }
-
-  /**
-   * Clear all metrics
+   * Clear performance metrics
    */
   const clearMetrics = (): void => {
     _metrics.clear()
   }
 
   /**
-   * Get performance summary
+   * Enable/disable component tracking
    */
-  const getSummary = (): Record<
-    string,
-    { avg: number; min: number; max: number; count: number }
-  > => {
-    const summary: Record<string, { avg: number; min: number; max: number; count: number }> = {}
+  const setComponentTracking = (enabled: boolean): void => {
+    _config.enableComponentTracking = enabled
+  }
 
-    getMetrics().forEach(metric => {
-      if (!summary[metric.name]) {
-        summary[metric.name] = { avg: 0, min: Infinity, max: -Infinity, count: 0 }
-      }
-
-      const stats = summary[metric.name]
-
-      stats.count++
-      stats.min = Math.min(stats.min, metric.value)
-      stats.max = Math.max(stats.max, metric.value)
-      stats.avg = (stats.avg * (stats.count - 1) + metric.value) / stats.count
-    })
-
-    return summary
+  /**
+   * Get current configuration
+   */
+  const getConfig = (): PerformanceConfig => {
+    return { ..._config }
   }
 
   return {
@@ -149,17 +180,20 @@ const createPerformanceMonitor = (config: PerformanceConfig = {}): PerformanceMo
     measureComponentRender,
     recordCustomMetric,
     getMetrics,
-    getMetricsByName,
     clearMetrics,
-    getSummary,
+    setComponentTracking,
+    getConfig,
   }
 }
 
-// Create default instance
+// Create and export the default performance monitor instance
 const performanceMonitor = createPerformanceMonitor({
-  debug: process.env.NODE_ENV === 'development',
+  debug: import.meta.env.DEV,
+  sampleRate: import.meta.env.PROD ? 0.05 : 0.1, // 5% in production, 10% in development
+  enableComponentTracking: false, // Disable by default for better performance
+  enableWebVitals: true,
+  enableApiTracking: true,
+  enableBundleTracking: true,
 })
 
-// Export default instance and factory function
 export default performanceMonitor
-export { createPerformanceMonitor }

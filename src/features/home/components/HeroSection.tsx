@@ -3,7 +3,7 @@
  * Features: main value proposition, track selection, and trust indicators
  */
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Typography, Stack } from '@mui/material'
 import { Section } from '@/components/Layouts/Section'
@@ -30,11 +30,11 @@ export type HeroSectionProps = {
 /**
  * HeroSection component - unified hero area with track selection and trust indicators
  */
-export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
+export const HeroSection: React.FC<HeroSectionProps> = memo(({ className }) => {
   const navigate = useNavigate()
 
-  // Validate and parse mock data
-  const validatedData: HomeData = HomeDataSchema.parse(homeData)
+  // Validate and parse mock data - memoized to prevent re-validation
+  const validatedData: HomeData = useMemo(() => HomeDataSchema.parse(homeData), [])
   const { tracks, partners } = validatedData
 
   // State for selected tracks
@@ -47,39 +47,45 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
     setSelectedTracks(savedTracks)
   }, [])
 
-  // Handle track selection change
-  const handleTrackChange = (trackId: TrackKey, checked: boolean) => {
-    const newSelection = checked
-      ? [...selectedTracks, trackId]
-      : selectedTracks.filter(id => id !== trackId)
+  // Handle track selection change - memoized to prevent unnecessary re-renders
+  const handleTrackChange = useCallback((trackId: TrackKey, checked: boolean) => {
+    setSelectedTracks(prev => {
+      const newSelection = checked ? [...prev, trackId] : prev.filter(id => id !== trackId)
 
-    setSelectedTracks(newSelection)
-    saveTrackSelection(newSelection)
-  }
+      saveTrackSelection(newSelection)
 
-  // Handle "Start Learning" button click
-  const handleStartLearning = () => {
+      return newSelection
+    })
+  }, [])
+
+  // Handle "Start Learning" button click - memoized to prevent unnecessary re-renders
+  const handleStartLearning = useCallback(() => {
     const queryParam = trackIdsToQueryParam(selectedTracks)
     const route = selectedTracks.length > 0 ? `/tracks?pref=${queryParam}` : '/tracks'
 
     navigate(route)
-  }
+  }, [selectedTracks, navigate])
+
+  // Memoize the section styles to prevent recalculation
+  const sectionStyles = useMemo(
+    () => ({
+      minHeight: { xs: '50vh', md: '60vh' },
+      display: 'flex',
+      alignItems: 'center',
+      textAlign: 'center',
+      backgroundColor: 'background.default',
+      pt: { xs: 6, md: 6 },
+      pb: { xs: 8, md: 8 },
+    }),
+    []
+  )
+
+  // Memoize the stack spacing to prevent recalculation
+  const stackSpacing = useMemo(() => ({ xs: 6, md: 8 }), [])
 
   return (
-    <Section
-      className={className}
-      component="section"
-      sx={{
-        minHeight: { xs: '50vh', md: '60vh' },
-        display: 'flex',
-        alignItems: 'center',
-        textAlign: 'center',
-        backgroundColor: 'background.default',
-        pt: { xs: 6, md: 6 },
-        pb: { xs: 8, md: 8 },
-      }}
-    >
-      <Stack spacing={{ xs: 6, md: 8 }} alignItems="center" sx={{ width: '100%' }}>
+    <Section className={className} component="section" sx={sectionStyles}>
+      <Stack spacing={stackSpacing} alignItems="center" sx={{ width: '100%' }}>
         {/* Hero Content */}
         <Box sx={{ width: '100%', mx: 'auto' }}>
           {/* Main Heading */}
@@ -142,4 +148,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
       </Stack>
     </Section>
   )
-}
+})
+
+HeroSection.displayName = 'HeroSection'

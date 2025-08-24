@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo, useCallback, memo } from 'react'
 import { HourglassEmpty } from '@mui/icons-material'
 import {
   Box,
@@ -29,155 +29,175 @@ export type TrackChooserSectionProps = {
 /**
  * TrackChooserSection component - track selection with CTA button
  */
-export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({
-  tracks,
-  selectedTracks,
-  onTrackChange,
-  onStartLearning,
-}) => {
-  const theme = useTheme()
+export const TrackChooserSection: React.FC<TrackChooserSectionProps> = memo(
+  ({ tracks, selectedTracks, onTrackChange, onStartLearning }) => {
+    const theme = useTheme()
 
-  return (
-    <Stack spacing={6} alignItems="center" sx={{ width: '100%' }}>
-      <Box sx={{ textAlign: 'center' }}>
-        <Typography variant="h3" color="primary">
-          Choose your Journey Now <br /> & Become a digital shaper of tomorrow
-        </Typography>
-      </Box>
+    // Memoize the form group styles to prevent recalculation
+    const formGroupStyles = useMemo(
+      () => ({
+        gap: { xs: 2.5, sm: 3 },
+        width: '100%',
+        maxWidth: 400,
+      }),
+      []
+    )
 
-      <Box
-        sx={{
-          maxWidth: 880,
-          width: '100%',
-          mx: 'auto',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <Stack spacing={3}>
-          <Typography
-            variant="body2"
-            textAlign="center"
-            sx={{
-              mb: { xs: 2.5, sm: 3 },
-              fontSize: '0.875rem',
-              color: SECONDARY_TEXT_COLOR,
-              fontWeight: 400,
-            }}
-          >
-            Select the tracks that interest you most
+    // Memoize the button styles to prevent recalculation
+    const buttonStyles = useMemo(
+      () => ({
+        height: 60,
+        minWidth: 140,
+        width: '100%',
+        px: 2,
+        fontSize: '1rem',
+        fontWeight: 800,
+        borderRadius: 1,
+        textTransform: 'none' as const,
+        boxShadow: 'none',
+        '&:hover': {
+          boxShadow: 'none',
+        },
+        '&:focus-visible': {
+          outline: `2px solid ${theme.palette.primary.main}`,
+          outlineOffset: 2,
+        },
+        '&:disabled': {
+          backgroundColor: theme.palette.action.disabled,
+          color: theme.palette.action.disabled,
+        },
+      }),
+      [theme.palette.primary.main, theme.palette.action.disabled]
+    )
+
+    // Memoize the track change handler to prevent unnecessary re-renders
+    const handleTrackChange = useCallback(
+      (trackId: TrackKey) => (event: React.ChangeEvent<HTMLInputElement>) => {
+        onTrackChange(trackId, event.target.checked)
+      },
+      [onTrackChange]
+    )
+
+    // Memoize the start learning handler to prevent unnecessary re-renders
+    const handleStartLearningClick = useCallback(() => {
+      onStartLearning()
+    }, [onStartLearning])
+
+    return (
+      <Stack spacing={6} alignItems="center" sx={{ width: '100%' }}>
+        <Box sx={{ textAlign: 'center' }}>
+          <Typography variant="h3" color="primary">
+            Choose your Journey Now <br /> & Become a digital shaper of tomorrow
           </Typography>
+        </Box>
 
-          <FormGroup
-            role="group"
-            aria-labelledby="track-chooser-heading"
-            sx={{
-              gap: { xs: 2.5, sm: 3 },
-              width: '100%',
-              maxWidth: 400,
-            }}
-          >
-            {tracks.map((track: Track) => (
-              <FormControlLabel
-                key={track.id}
-                control={
-                  <Checkbox
-                    checked={selectedTracks.includes(track.id)}
-                    onChange={event => onTrackChange(track.id, event.target.checked)}
-                    name={track.id}
-                    color="primary"
-                    icon={<SquareCheckboxIcon />}
-                    checkedIcon={<SquareCheckedIcon />}
-                    size="medium"
-                  />
-                }
-                label={
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      fontSize: { xs: '1rem', sm: '1.125rem' },
-                      fontWeight: 600,
-                      ml: 1.5,
-                    }}
-                  >
-                    {track.label}
-                  </Typography>
-                }
-                sx={{
-                  alignItems: 'center',
-                  justifyContent: 'flex-start',
-                  margin: 0,
-                  width: '100%',
-                  '& .MuiFormControlLabel-label': {
+        <Box
+          sx={{
+            maxWidth: 880,
+            width: '100%',
+            mx: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Stack spacing={3}>
+            <Typography
+              variant="body2"
+              textAlign="center"
+              sx={{
+                mb: { xs: 2.5, sm: 3 },
+                fontSize: '0.875rem',
+                color: SECONDARY_TEXT_COLOR,
+                fontWeight: 400,
+              }}
+            >
+              Select the tracks that interest you most
+            </Typography>
+
+            <FormGroup role="group" aria-labelledby="track-chooser-heading" sx={formGroupStyles}>
+              {tracks.map((track: Track) => (
+                <FormControlLabel
+                  key={track.id}
+                  control={
+                    <Checkbox
+                      checked={selectedTracks.includes(track.id)}
+                      onChange={handleTrackChange(track.id)}
+                      name={track.id}
+                      color="primary"
+                      icon={<SquareCheckboxIcon />}
+                      checkedIcon={<SquareCheckedIcon />}
+                      size="medium"
+                    />
+                  }
+                  label={
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontSize: { xs: '1rem', sm: '1.125rem' },
+                        fontWeight: 600,
+                        ml: 1.5,
+                      }}
+                    >
+                      {track.label}
+                    </Typography>
+                  }
+                  sx={{
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                    margin: 0,
                     width: '100%',
-                  },
-                }}
-              />
-            ))}
-          </FormGroup>
+                    '& .MuiFormControlLabel-label': {
+                      width: '100%',
+                    },
+                  }}
+                />
+              ))}
+            </FormGroup>
 
-          <Box sx={{ textAlign: 'center', mt: 3 }}>
-            <Button
-              variant="contained"
-              size="large"
-              onClick={onStartLearning}
-              disabled={selectedTracks.length === 0}
-              sx={{
-                height: 60,
-                minWidth: 140,
-                width: '100%',
-                px: 2,
-                fontSize: '1rem',
-                fontWeight: 800,
-                borderRadius: 1,
-                textTransform: 'none',
-                boxShadow: 'none',
-                '&:hover': {
-                  boxShadow: 'none',
-                },
-                '&:focus-visible': {
-                  outline: `2px solid ${theme.palette.primary.main}`,
-                  outlineOffset: 2,
-                },
-                '&:disabled': {
-                  backgroundColor: theme.palette.action.disabled,
-                  color: theme.palette.action.disabled,
-                },
-              }}
-            >
-              Start learning
-            </Button>
+            <Box sx={{ textAlign: 'center', mt: 3 }}>
+              <Button
+                variant="contained"
+                size="large"
+                onClick={handleStartLearningClick}
+                disabled={selectedTracks.length === 0}
+                sx={buttonStyles}
+              >
+                Start learning
+              </Button>
 
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 1.5,
-                mt: 1,
-              }}
-            >
-              <HourglassEmpty
+              <Box
                 sx={{
-                  fontSize: '1rem',
-                  color: SECONDARY_TEXT_COLOR,
-                }}
-              />
-              <Typography
-                variant="caption"
-                sx={{
-                  fontSize: { xs: '0.75rem', sm: '0.8125rem' },
-                  color: SECONDARY_TEXT_COLOR,
-                  fontWeight: 400,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 1.5,
+                  mt: 1,
                 }}
               >
-                Application closes in 2 weeks for next batch
-              </Typography>
+                <HourglassEmpty
+                  sx={{
+                    fontSize: '1rem',
+                    color: SECONDARY_TEXT_COLOR,
+                  }}
+                />
+                <Typography
+                  variant="caption"
+                  sx={{
+                    fontSize: { xs: '0.75rem', sm: '0.8125rem' },
+                    color: SECONDARY_TEXT_COLOR,
+                    fontWeight: 400,
+                  }}
+                >
+                  Application closes in 2 weeks for next batch
+                </Typography>
+              </Box>
             </Box>
-          </Box>
-        </Stack>
-      </Box>
-    </Stack>
-  )
-}
+          </Stack>
+        </Box>
+      </Stack>
+    )
+  }
+)
+
+TrackChooserSection.displayName = 'TrackChooserSection'

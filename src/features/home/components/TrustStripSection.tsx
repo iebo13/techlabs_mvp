@@ -1,9 +1,6 @@
 import React from 'react'
-
 import { Box, Typography, Stack, Grid, useTheme } from '@mui/material'
-
 import { PartnerLogo } from '@/features/partners/components/PartnerLogo'
-
 import type { Partner } from '@/types/home'
 
 export type TrustStripSectionProps = {

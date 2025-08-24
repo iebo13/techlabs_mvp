@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Box, Stack } from '@mui/material'
 
 type CarouselIndicatorsProps = {

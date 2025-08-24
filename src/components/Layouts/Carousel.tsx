@@ -1,11 +1,8 @@
 import React from 'react'
-
 import { Box, Stack } from '@mui/material'
-
 import { useCarouselAutoPlay } from '@/hooks/useCarouselAutoPlay'
 import { useCarouselKeyboard } from '@/hooks/useCarouselKeyboard'
 import { useCarouselNavigation } from '@/hooks/useCarouselNavigation'
-
 import { CarouselIndicators } from './CarouselIndicators'
 import { CarouselNavigation } from './CarouselNavigation'
 

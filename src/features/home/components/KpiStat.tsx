@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Box, Typography, Paper } from '@mui/material'
 import type { SxProps, Theme } from '@mui/material'
 

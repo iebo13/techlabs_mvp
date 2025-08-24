@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { FormGroup, FormControlLabel, Checkbox, Typography } from '@mui/material'
-
 import type { Track } from '@/types/home'
 
 // Define TrackKey locally to avoid import issues

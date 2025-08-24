@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { Grid, Typography, Stack, IconButton } from '@mui/material'
-
 import { socialLinks } from '@/config/data/footerData'
 
 /**

@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Container, Box } from '@mui/material'
 import type { ContainerProps } from '@mui/material/Container'
 

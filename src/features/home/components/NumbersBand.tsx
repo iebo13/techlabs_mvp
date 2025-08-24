@@ -1,10 +1,7 @@
 import React from 'react'
-
 import { Grid, Box } from '@mui/material'
-
 import { Section } from '@/components/Layouts/Section'
 import { SectionHeading } from '@/components/Layouts/SectionHeading'
-
 import { KPIStat } from './KpiStat'
 
 export type NumbersBandProps = {

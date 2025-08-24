@@ -1,9 +1,6 @@
 import React from 'react'
-
 import { AppBar, Toolbar, Box, Drawer, useTheme, useMediaQuery } from '@mui/material'
-
 import { useMobileDrawer } from '@/hooks/useMobileDrawer'
-
 import { DesktopNavigation } from './DesktopNavigation'
 import { Logo } from './Logo'
 import { MobileDrawer } from './MobileDrawer'

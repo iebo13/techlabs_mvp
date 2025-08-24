@@ -1,5 +1,4 @@
 import { createTheme } from '@mui/material/styles'
-
 import { PRIMARY, BLUE, GREY } from './colors'
 import { componentOverrides } from './components'
 

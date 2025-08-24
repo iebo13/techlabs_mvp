@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { Box, Chip, Container, Paper, Stack, Typography } from '@mui/material'
-
 import { Section } from '@/components/Layouts/Section'
 import { SectionHeading } from '@/components/Layouts/SectionHeading'
 

@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { HourglassEmpty } from '@mui/icons-material'
 import {
   Box,
@@ -11,9 +10,7 @@ import {
   Button,
   useTheme,
 } from '@mui/material'
-
 import { SquareCheckboxIcon, SquareCheckedIcon } from '@/components/Buttons/SquareCheckbox'
-
 import type { Track } from '@/types/home'
 
 // Define TrackKey locally to avoid import issues

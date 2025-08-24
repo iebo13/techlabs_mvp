@@ -27,6 +27,8 @@ export { FooterBrandSection } from './Layouts/FooterBrandSection'
 export { FooterLinksSection } from './Layouts/FooterLinksSection'
 export { FooterBottom } from './Layouts/FooterBottom'
 export { Logo } from './Layouts/Logo'
+export { LazyPage } from './Layouts/LazyPage'
+export { LazyComponent } from './Layouts/LazyComponent'
 
 // Popup Components
 export { StoryModal } from './Popups/StoryModal'

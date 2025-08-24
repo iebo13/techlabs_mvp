@@ -1,18 +1,15 @@
 import React from 'react'
-
 import { Faqs } from '@/components/Forms/Faqs'
 import { Section } from '@/components/Layouts/Section'
 import { SEO } from '@/components/Layouts/Seo'
 import { StoriesCarousel } from '@/features/stories/components/StoriesCarousel'
 import { SupportCta } from '@/features/stories/components/SupportCta'
 import homeData from '@/mocks/home.json'
-
+import type { HomeData } from '@/types/home'
 import { HeroSection } from '../components/HeroSection'
 import HeroVideo from '../components/HeroVideo'
 import { NumbersBand } from '../components/NumbersBand'
 import { WhyTechlabs } from '../components/WhyTechlabs'
-
-import type { HomeData } from '@/types/home'
 
 /**
  * HomePage component - main landing page for TechLabs website.

@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { useNavigate } from 'react-router-dom'
-
 import {
   Box,
   Button,
@@ -13,7 +11,6 @@ import {
   Typography,
   useTheme,
 } from '@mui/material'
-
 import { Section } from '@/components/Layouts/Section'
 
 export type SupportCtaProps = {

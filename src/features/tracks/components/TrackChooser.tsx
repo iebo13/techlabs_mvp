@@ -4,19 +4,15 @@
  */
 
 import React from 'react'
-
 import { Paper, Stack } from '@mui/material'
-
 import { Section } from '@/components/Layouts/Section'
 import { useTrackSelection } from '@/hooks/useTrackSelection'
 import homeData from '@/mocks/home.json'
 import { HomeDataSchema } from '@/mocks/schemas'
-
+import type { HomeData } from '@/types/home'
 import { TrackChooserActions } from './TrackChooserActions'
 import { TrackChooserForm } from './TrackChooserForm'
 import { TrackChooserHeader } from './TrackChooserHeader'
-
-import type { HomeData } from '@/types/home'
 
 /**
  * TrackChooser component props

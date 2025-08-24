@@ -1,5 +1,4 @@
 import { alpha } from '@mui/material/styles'
-
 import { PRIMARY, GREY } from './colors'
 
 export const componentOverrides = {

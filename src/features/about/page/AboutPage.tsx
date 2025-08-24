@@ -1,11 +1,9 @@
 import React, { useEffect, useRef } from 'react'
-
 import { Faqs } from '@/components/Forms/Faqs'
 import { SEO } from '@/components/Layouts/Seo'
 import { ProgramSection } from '@/features/tracks/components/ProgramSection'
 import contentData from '@/mocks/content.json'
 import faqData from '@/mocks/faq.json'
-
 import { ContactSection } from '../components/ContactSection'
 import { MissionSection } from '../components/MissionSection'
 import { TeamSection } from '../components/TeamSection'

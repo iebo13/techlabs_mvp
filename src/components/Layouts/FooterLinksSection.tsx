@@ -1,9 +1,6 @@
 import React from 'react'
-
 import { Grid, Typography, Stack } from '@mui/material'
-
 import { footerSections } from '@/config/data/footerData'
-
 import { NavLink } from './NavLink'
 
 /**

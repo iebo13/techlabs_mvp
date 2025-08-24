@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Typography, Box } from '@mui/material'
 import type { TypographyProps } from '@mui/material/Typography'
 

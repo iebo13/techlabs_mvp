@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Close as CloseIcon } from '@mui/icons-material'
 import {
   Box,
@@ -14,9 +13,7 @@ import {
   Divider,
   useTheme,
 } from '@mui/material'
-
 import { navigationItems, ctaButtons } from '@/config/data/navigationData'
-
 import { NavLink } from './NavLink'
 
 type MobileDrawerProps = {

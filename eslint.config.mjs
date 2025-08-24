@@ -132,7 +132,7 @@ export default [
         'error',
         {
           groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-          // never have newlines between imports
+          'newlines-between': 'never',
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
@@ -264,17 +264,8 @@ export default [
       'import/order': [
         'error',
         {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-            'object',
-            'type',
-          ],
-          'newlines-between': 'always',
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
+          'newlines-between': 'never',
           alphabetize: { order: 'asc', caseInsensitive: true },
           pathGroups: [
             { pattern: 'react', group: 'external', position: 'before' },

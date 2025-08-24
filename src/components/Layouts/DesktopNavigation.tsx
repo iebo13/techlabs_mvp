@@ -1,10 +1,7 @@
 import React from 'react'
-
 import { KeyboardArrowDown } from '@mui/icons-material'
 import { Box, Button } from '@mui/material'
-
 import { navigationItems, ctaButtons } from '@/config/data/navigationData'
-
 import { NavLink } from './NavLink'
 
 /**

@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
-
 import { Button, type ButtonProps } from '@mui/material'
 
 type CTAButtonProps = Omit<ButtonProps, 'component'> & {

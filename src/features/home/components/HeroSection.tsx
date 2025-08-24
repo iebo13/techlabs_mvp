@@ -4,20 +4,15 @@
  */
 
 import React, { useState, useEffect } from 'react'
-
 import { useNavigate } from 'react-router-dom'
-
 import { Box, Typography, Stack } from '@mui/material'
-
 import { Section } from '@/components/Layouts/Section'
 import { TrackChooserSection } from '@/features/tracks/components/TrackChooserSection'
 import homeData from '@/mocks/home.json'
 import { HomeDataSchema } from '@/mocks/schemas'
-import { saveTrackSelection, loadTrackSelection, trackIdsToQueryParam } from '@/utils/persistence'
-
-import { TrustStripSection } from './TrustStripSection'
-
 import type { HomeData } from '@/types/home'
+import { saveTrackSelection, loadTrackSelection, trackIdsToQueryParam } from '@/utils/persistence'
+import { TrustStripSection } from './TrustStripSection'
 
 // Define TrackKey locally to avoid import issues
 type TrackKey = 'web-dev' | 'data-science' | 'product-design' | 'ai'

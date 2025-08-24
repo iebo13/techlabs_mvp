@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-
 import { Link } from 'react-router-dom'
-
 import { ExpandMore, QuestionAnswer } from '@mui/icons-material'
 import {
   Accordion,
@@ -13,7 +11,6 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-
 import { Section } from '../Layouts/Section'
 
 type FAQ = {

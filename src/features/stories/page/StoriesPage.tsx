@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-
+import React, { useState, lazy, Suspense } from 'react'
 import {
   Box,
+  CircularProgress,
   FormControl,
   Grid,
   InputLabel,
@@ -9,19 +9,20 @@ import {
   Select,
   Stack,
   Typography,
-  useTheme,
   useMediaQuery,
+  useTheme,
 } from '@mui/material'
 import type { SelectChangeEvent } from '@mui/material'
-
 import { Section } from '@/components/Layouts/Section'
 import { SectionHeading } from '@/components/Layouts/SectionHeading'
-import { StoryModal } from '@/components/Popups/StoryModal'
 import storiesData from '@/mocks/stories.json'
-
+import type { Story, TrackKey } from '@/types/home'
 import { StoryCard } from '../components/StoryCard'
 
-import type { Story, TrackKey } from '@/types/home'
+// Lazy load StoryModal component since it's only used when user clicks on a story
+const StoryModal = lazy(() =>
+  import('@/components/Popups/StoryModal').then(module => ({ default: module.StoryModal }))
+)
 
 // Type assertion for the JSON data
 const typedStoriesData = storiesData as Story[]
@@ -124,7 +125,12 @@ export const StoriesPage: React.FC<StoriesPageProps> = () => {
         </Stack>
       </Section>
 
-      <StoryModal story={selectedStory} onClose={handleCloseModal} isMobile={isMobile} />
+      {/* StoryModal with lazy loading */}
+      {selectedStory && (
+        <Suspense fallback={<CircularProgress />}>
+          <StoryModal story={selectedStory} onClose={handleCloseModal} isMobile={isMobile} />
+        </Suspense>
+      )}
     </>
   )
 }

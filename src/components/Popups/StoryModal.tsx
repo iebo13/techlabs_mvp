@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {
   Close as CloseIcon,
   LocationOn as LocationIcon,
@@ -18,7 +17,6 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-
 import type { Story } from '@/types/home'
 
 type StoryModalProps = {

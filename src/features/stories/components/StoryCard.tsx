@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {
   LocationOn as LocationIcon,
   Work as WorkIcon,
@@ -16,7 +15,6 @@ import {
   Typography,
   useTheme,
 } from '@mui/material'
-
 import type { Story } from '@/types/home'
 
 type StoryCardProps = {

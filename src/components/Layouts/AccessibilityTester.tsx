@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-
 import { Box, Button, Collapse, Typography } from '@mui/material'
-
 import { useAccessibilityChecks } from '@/hooks/useAccessibilityChecks'
 import { useIssueHighlighting } from '@/hooks/useIssueHighlighting'
-
 import { AccessibilityIssueList } from './AccessibilityIssueList'
 
 /**

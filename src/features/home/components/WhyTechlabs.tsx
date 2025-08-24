@@ -1,13 +1,9 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
-
 import { Container, Grid, Button, Box } from '@mui/material'
-
 import { Section } from '@/components/Layouts/Section'
 import { SectionHeading } from '@/components/Layouts/SectionHeading'
 import homeData from '@/mocks/home.json'
-
 import { ValuePropCard } from './ValuePropCard'
 
 /**

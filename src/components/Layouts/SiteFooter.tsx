@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { Box, Container, Grid, Divider } from '@mui/material'
-
 import { FooterBottom } from './FooterBottom'
 import { FooterBrandSection } from './FooterBrandSection'
 import { FooterLinksSection } from './FooterLinksSection'

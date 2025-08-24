@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
-
 import { useNavigate } from 'react-router-dom'
-
 import { saveTrackSelection, loadTrackSelection, trackIdsToQueryParam } from '@/utils/persistence'
 
 // Define TrackKey locally to avoid import issues

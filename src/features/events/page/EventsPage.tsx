@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-
 import { Alert, Box, Button, Container, Grid, Tab, Tabs, Typography } from '@mui/material'
-
 import eventsData from '@/mocks/events.json'
-
 import { EventCard, type Event } from '../components/EventCard'
 
 type EventType = 'upcoming' | 'past' | 'all'

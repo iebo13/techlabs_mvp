@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { Alert, List, ListItem, ListItemText, Typography } from '@mui/material'
-
 import type { AccessibilityIssue } from '@/hooks/useAccessibilityChecks'
 
 type AccessibilityIssueListProps = {
@@ -28,43 +26,46 @@ export const AccessibilityIssueList: React.FC<AccessibilityIssueListProps> = ({
   return (
     <>
       <List dense sx={{ maxHeight: 300, overflow: 'auto' }}>
-        {issues.map(issue => (
-          <ListItem
-            key={`issue-${issue.type}-${issue.message.slice(0, 20).replace(/\s+/g, '-')}`}
-            component="div"
-            onClick={() => onIssueClick(issue)}
-            sx={{
-              border: '1px solid',
-              borderColor:
-                issue.type === 'error'
-                  ? 'error.main'
-                  : issue.type === 'warning'
-                    ? 'warning.main'
-                    : 'info.main',
-              borderRadius: 1,
-              mb: 1,
-              cursor: 'pointer',
-            }}
-          >
-            <ListItemText
-              primary={issue.message}
-              secondary={issue.selector}
-              primaryTypographyProps={{
-                variant: 'body2',
-                color:
+        {issues.map(issue => {
+          const uniqueId = `${issue.type}-${issue.selector || 'no-selector'}-${issue.message.slice(0, 30).replace(/[^a-zA-Z0-9]/g, '')}`
+          return (
+            <ListItem
+              key={uniqueId}
+              component="div"
+              onClick={() => onIssueClick(issue)}
+              sx={{
+                border: '1px solid',
+                borderColor:
                   issue.type === 'error'
                     ? 'error.main'
                     : issue.type === 'warning'
                       ? 'warning.main'
                       : 'info.main',
+                borderRadius: 1,
+                mb: 1,
+                cursor: 'pointer',
               }}
-              secondaryTypographyProps={{
-                variant: 'caption',
-                color: 'text.secondary',
-              }}
-            />
-          </ListItem>
-        ))}
+            >
+              <ListItemText
+                primary={issue.message}
+                secondary={issue.selector}
+                primaryTypographyProps={{
+                  variant: 'body2',
+                  color:
+                    issue.type === 'error'
+                      ? 'error.main'
+                      : issue.type === 'warning'
+                        ? 'warning.main'
+                        : 'info.main',
+                }}
+                secondaryTypographyProps={{
+                  variant: 'caption',
+                  color: 'text.secondary',
+                }}
+              />
+            </ListItem>
+          )
+        })}
       </List>
 
       <Typography variant="caption" color="text.secondary">

@@ -1,14 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
-
 import { Link } from 'react-router-dom'
-
 import { Box, Button, Stack, useTheme, useMediaQuery } from '@mui/material'
-
 import { Section } from '@/components/Layouts/Section'
-
-import { CarouselHeader, CarouselItem } from './StoriesCarouselComponents'
-
 import type { Story } from '@/types/home'
+import { CarouselHeader, CarouselItem } from './StoriesCarouselComponents'
 
 type StoriesCarouselProps = {
   stories: Story[]

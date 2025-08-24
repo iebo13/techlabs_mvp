@@ -1,12 +1,9 @@
 import React from 'react'
-
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Card, CardMedia, CardContent, Typography, IconButton, Stack } from '@mui/material'
-
 import { CTAButton } from '@/components/Buttons/CtaButton'
 import { SectionHeading } from '@/components/Layouts/SectionHeading'
-
 import type { Story } from '@/types/home'
 
 export type CarouselNavigationProps = {

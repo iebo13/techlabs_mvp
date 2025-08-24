@@ -1,9 +1,20 @@
-import React, { useState } from 'react'
-
+import React, { useState, lazy, Suspense } from 'react'
 import { PlayArrow as PlayArrowIcon } from '@mui/icons-material'
-import { Card, CardMedia, Box, IconButton, Chip, useTheme, useMediaQuery } from '@mui/material'
+import {
+  Card,
+  CardMedia,
+  Box,
+  IconButton,
+  Chip,
+  useTheme,
+  useMediaQuery,
+  CircularProgress,
+} from '@mui/material'
 
-import VideoEmbed from '@/components/Forms/VideoEmbed'
+// Lazy load VideoEmbed component since it's only used when user clicks to watch video
+const VideoEmbed = lazy(() =>
+  import('@/components/Forms/VideoEmbed').then(module => ({ default: module.default }))
+)
 
 type HeroVideoProps = {
   posterUrl: string
@@ -143,14 +154,18 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
         />
       </Card>
 
-      {/* Video Modal */}
-      <VideoEmbed
-        open={modalOpen}
-        onClose={handleCloseModal}
-        title={title}
-        srcUrl={srcUrl}
-        posterUrl={posterUrl}
-      />
+      {/* Video Modal with lazy loading */}
+      {modalOpen && (
+        <Suspense fallback={<CircularProgress />}>
+          <VideoEmbed
+            open={modalOpen}
+            onClose={handleCloseModal}
+            title={title}
+            srcUrl={srcUrl}
+            posterUrl={posterUrl}
+          />
+        </Suspense>
+      )}
     </>
   )
 }

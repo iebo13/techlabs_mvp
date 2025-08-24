@@ -41,7 +41,7 @@ export default defineConfig({
     },
   },
   build: {
-    target: 'es2015', // Target modern browsers for better tree shaking
+    target: 'es2020', // Target more modern browsers for better compatibility
     minify: 'esbuild', // Use esbuild for better compatibility
     rollupOptions: {
       output: {
@@ -52,15 +52,13 @@ export default defineConfig({
             if (id.includes('react') || id.includes('react-dom')) {
               return 'vendor-react'
             }
-            // MUI chunks - split by core and icons
-            if (id.includes('@mui/material') && !id.includes('@mui/icons-material')) {
-              return 'vendor-mui-core'
-            }
-            if (id.includes('@mui/icons-material')) {
-              return 'vendor-mui-icons'
-            }
-            if (id.includes('@emotion')) {
-              return 'vendor-emotion'
+            // MUI and Emotion should be bundled together to avoid initialization issues
+            if (
+              id.includes('@mui/material') ||
+              id.includes('@mui/icons-material') ||
+              id.includes('@emotion')
+            ) {
+              return 'vendor-mui'
             }
             // Router
             if (id.includes('react-router-dom')) {
@@ -158,6 +156,7 @@ export default defineConfig({
       '@emotion/styled',
     ],
     exclude: ['@emotion/babel-plugin'], // Exclude build-time dependencies
+    force: true, // Force dependency optimization
   },
   // Performance optimizations
   server: {

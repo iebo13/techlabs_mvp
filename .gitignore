@@ -86,6 +86,7 @@ __snapshots__
 *.njsproj
 *.sln
 *.sw?
+.firebase
 
 # OS generated files
 .DS_Store

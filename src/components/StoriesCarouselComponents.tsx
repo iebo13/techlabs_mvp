@@ -4,7 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Card, CardMedia, CardContent, Typography, IconButton, Stack } from '@mui/material'
 
-import { CTAButton } from './CTAButton'
+import { CTAButton } from './CtaButton'
 import { SectionHeading } from './SectionHeading'
 
 import type { Story } from '../types/home'

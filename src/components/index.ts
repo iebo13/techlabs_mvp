@@ -1,5 +1,5 @@
 // Shared UI Components
-export { CTAButton } from './CTAButton'
+export { CTAButton } from './CtaButton'
 export { FAQAccordion } from './FaqAccordion'
 export { Carousel } from './Carousel'
 export { AccessibilityTester } from './AccessibilityTester'

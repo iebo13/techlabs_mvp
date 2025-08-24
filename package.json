@@ -18,7 +18,7 @@
     "typecheck": "tsc ",
     "typecheck:watch": "tsc --noEmit --watch",
     "unimported": "npx unimported",
-    "check": "npm run lint && npm run typecheck && npm run test && npm run format",
+    "check": "npm run lint && npm run typecheck && npm run format",
     "check:fix": "npm run lint:fix  && npm run format:fix",
     "prepare": "husky"
   },

@@ -2,9 +2,6 @@
 
 echo "🔍 Running pre-commit quality checks..."
 
-# Run lint-staged first (fast checks on staged files)
-npm run lint:staged
-
 # Run comprehensive quality checks
 node scripts/precommit-checks.js
 

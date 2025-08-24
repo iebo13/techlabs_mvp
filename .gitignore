@@ -87,6 +87,7 @@ __snapshots__
 *.sln
 *.sw?
 .firebase
+.firebase/
 
 # OS generated files
 .DS_Store

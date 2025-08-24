@@ -45,101 +45,15 @@ export default defineConfig({
     minify: 'esbuild', // Use esbuild for better compatibility
     rollupOptions: {
       output: {
-        manualChunks: id => {
-          // Vendor chunks with better optimization
-          if (id.includes('node_modules')) {
-            // Core React chunks
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor-react'
-            }
-            // MUI and Emotion should be bundled together to avoid initialization issues
-            if (
-              id.includes('@mui/material') ||
-              id.includes('@mui/icons-material') ||
-              id.includes('@emotion')
-            ) {
-              return 'vendor-mui'
-            }
-            // Router
-            if (id.includes('react-router-dom')) {
-              return 'vendor-router'
-            }
-            // Form libraries
-            if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
-              return 'vendor-forms'
-            }
-            // Query library
-            if (id.includes('@tanstack/react-query')) {
-              return 'vendor-query'
-            }
-            // Utility libraries
-            if (id.includes('date-fns') || id.includes('lodash') || id.includes('ramda')) {
-              return 'vendor-utils'
-            }
-            // Font libraries
-            if (id.includes('@fontsource')) {
-              return 'vendor-fonts'
-            }
-            // Other vendor libraries
-            return 'vendor-other'
-          }
-
-          // Feature chunks with better granularity
-          if (id.includes('/features/home/')) {
-            return 'feature-home'
-          }
-          if (id.includes('/features/tracks/')) {
-            return 'feature-tracks'
-          }
-          if (id.includes('/features/events/')) {
-            return 'feature-events'
-          }
-          if (id.includes('/features/stories/')) {
-            return 'feature-stories'
-          }
-          if (id.includes('/features/partners/')) {
-            return 'feature-partners'
-          }
-          if (id.includes('/features/about/')) {
-            return 'feature-about'
-          }
-
-          // Component chunks with better organization
-          if (id.includes('/components/Layouts/')) {
-            return 'components-layout'
-          }
-          if (id.includes('/components/Forms/')) {
-            return 'components-forms'
-          }
-          if (id.includes('/components/Buttons/')) {
-            return 'components-buttons'
-          }
-          if (id.includes('/components/Popups/')) {
-            return 'components-popups'
-          }
-
-          // Utility chunks
-          if (id.includes('/utils/')) {
-            return 'utils'
-          }
-          if (id.includes('/hooks/')) {
-            return 'hooks'
-          }
-          if (id.includes('/theme/')) {
-            return 'theme'
-          }
-        },
-        // Optimize chunk loading
+        // Let Vite handle chunking automatically to prevent initialization issues
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
       },
     },
-    chunkSizeWarningLimit: 1000, // Increase warning limit to 1MB
-    sourcemap: false, // Disable sourcemaps in production for smaller bundle
-    // Enable CSS code splitting
+    chunkSizeWarningLimit: 500,
+    sourcemap: false,
     cssCodeSplit: true,
-    // Optimize dependencies
     commonjsOptions: {
       include: [/node_modules/],
       transformMixedEsModules: true,
@@ -147,21 +61,61 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: [
+      // Core React dependencies - pre-bundle for faster dev
       'react',
       'react-dom',
-      '@mui/material',
+      'react-dom/client',
+      'react/jsx-runtime',
+      'react/jsx-dev-runtime',
+      // MUI core components and icons
+      '@mui/material/styles',
+      '@mui/material/Button',
+      '@mui/material/Typography',
+      '@mui/material/Box',
+      '@mui/material/Container',
       '@mui/icons-material',
-      'react-router-dom',
+      // Emotion core
       '@emotion/react',
       '@emotion/styled',
+      '@emotion/cache',
+      // Router essentials
+      'react-router-dom',
     ],
-    exclude: ['@emotion/babel-plugin'], // Exclude build-time dependencies
-    force: true, // Force dependency optimization
+    exclude: [
+      '@emotion/babel-plugin',
+      'firebase',
+    ],
+    force: true,
+    entries: ['src/main.tsx'],
   },
   // Performance optimizations
   server: {
+    port: 3000,
+    host: true,
     hmr: {
-      overlay: false, // Disable error overlay for better performance
+      overlay: false,
+      port: 24678,
+      protocol: 'ws',
+      host: '127.0.0.1',
+      timeout: 30000,
+    },
+    fs: {
+      allow: ['..'],
+    },
+    strictPort: false,
+    open: false,
+    ...(process.env.NODE_ENV === 'development' && {
+      cors: true,
+      hmr: {
+        ...(process.env.VITE_HMR_HOST && { host: process.env.VITE_HMR_HOST }),
+        ...(process.env.VITE_HMR_PORT && { port: parseInt(process.env.VITE_HMR_PORT) }),
+      },
+    }),
+  },
+
+  experimental: {
+    renderBuiltUrl: () => {
+      return { relative: true }
     },
   },
 })

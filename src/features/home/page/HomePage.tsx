@@ -1,15 +1,38 @@
-import React from 'react'
-import { Faqs } from '@/components/Forms/Faqs'
+import React, { lazy } from 'react'
+import { Box, Skeleton } from '@mui/material'
+import { LazyIntersection } from '@/components/Layouts/LazyIntersection'
 import { Section } from '@/components/Layouts/Section'
 import { SEO } from '@/components/Layouts/Seo'
-import { StoriesCarousel } from '@/features/stories/components/StoriesCarousel'
-import { SupportCta } from '@/features/stories/components/SupportCta'
 import homeData from '@/mocks/home.json'
 import type { HomeData } from '@/types/home'
 import { HeroSection } from '../components/HeroSection'
 import HeroVideo from '../components/HeroVideo'
-import { NumbersBand } from '../components/NumbersBand'
-import { WhyTechlabs } from '../components/WhyTechlabs'
+
+// Lazy load below-the-fold components for better initial loading
+const WhyTechlabs = lazy(() => import('../components/WhyTechlabs').then(m => ({ default: m.WhyTechlabs })))
+const StoriesCarousel = lazy(() => import('@/features/stories/components/StoriesCarousel').then(m => ({ default: m.StoriesCarousel })))
+const NumbersBand = lazy(() => import('../components/NumbersBand').then(m => ({ default: m.NumbersBand })))
+const SupportCta = lazy(() => import('@/features/stories/components/SupportCta').then(m => ({ default: m.SupportCta })))
+const Faqs = lazy(() => import('@/components/Forms/Faqs').then(m => ({ default: m.Faqs })))
+
+// Optimized loading fallbacks
+const SectionSkeleton: React.FC<{ height?: number }> = ({ height = 200 }) => (
+  <Section>
+    <Box sx={{ py: 4 }}>
+      <Skeleton variant="rectangular" height={height} sx={{ borderRadius: 2 }} />
+    </Box>
+  </Section>
+)
+
+const CarouselSkeleton: React.FC = () => (
+  <Section>
+    <Box sx={{ py: 4, display: 'flex', gap: 2 }}>
+      {[1, 2, 3].map(i => (
+        <Skeleton key={i} variant="rectangular" height={300} sx={{ flex: 1, borderRadius: 2 }} />
+      ))}
+    </Box>
+  </Section>
+)
 
 /**
  * HomePage component - main landing page for TechLabs website.
@@ -47,24 +70,34 @@ export const HomePage: React.FC = () => {
       </Section>
 
       {/* Why TechLabs Section - MVP-09 */}
-      <WhyTechlabs />
+      <LazyIntersection fallback={<SectionSkeleton height={300} />} minHeight={300}>
+        <WhyTechlabs />
+      </LazyIntersection>
 
       {/* Stories Carousel Section - MVP-10 */}
-      <StoriesCarousel stories={homeData.stories as HomeData['stories']} />
+      <LazyIntersection fallback={<CarouselSkeleton />} minHeight={350}>
+        <StoriesCarousel stories={homeData.stories as HomeData['stories']} />
+      </LazyIntersection>
 
       {/* Numbers Band Section - MVP-11 */}
-      <NumbersBand numbers={homeData.numbers} />
+      <LazyIntersection fallback={<SectionSkeleton height={150} />} minHeight={150}>
+        <NumbersBand numbers={homeData.numbers} />
+      </LazyIntersection>
 
       {/* Support CTA Section - MVP-12 */}
-      <SupportCta
-        title={homeData.support.title}
-        body={homeData.support.body}
-        imageUrl={homeData.support.imageUrl}
-        cta={homeData.support.cta}
-      />
+      <LazyIntersection fallback={<SectionSkeleton height={250} />} minHeight={250}>
+        <SupportCta
+          title={homeData.support.title}
+          body={homeData.support.body}
+          imageUrl={homeData.support.imageUrl}
+          cta={homeData.support.cta}
+        />
+      </LazyIntersection>
 
       {/* FAQs Section - MVP-13 */}
-      <Faqs faqs={homeData.faqs} />
+      <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>
+        <Faqs faqs={homeData.faqs} />
+      </LazyIntersection>
 
       {/* Additional homepage sections will be added in subsequent MVP stories */}
     </main>

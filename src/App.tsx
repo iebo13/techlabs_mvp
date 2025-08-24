@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect, memo } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider, CssBaseline, Box } from '@mui/material'
+import { ErrorBoundary } from '@/components/Layouts/ErrorBoundary'
 import { HeaderNav } from '@/components/Layouts/HeaderNav'
 import { LazyPage } from '@/components/Layouts/LazyPage'
 import { Section } from '@/components/Layouts/Section'
@@ -8,12 +9,19 @@ import { SectionHeading } from '@/components/Layouts/SectionHeading'
 import { SiteFooter } from '@/components/Layouts/SiteFooter'
 import { SkipToContent } from '@/components/Layouts/SkipToContent'
 import { theme } from '@/theme/theme'
+import errorMonitor from '@/utils/errorMonitor'
 import performanceMonitor from '@/utils/performance'
+import { initializeResourceHints } from '@/utils/resourceHints'
 
-// Optimized lazy loading with preloading hints
-const HomePage = lazy(() =>
-  import('@/features/home/page/HomePage').then(module => ({ default: module.HomePage }))
-)
+// Optimized lazy loading with preloading hints and priority-based loading
+const HomePage = lazy(() => {
+  // Preload critical home page dependencies
+  import('@/features/home/components/HeroSection')
+  const homeImport = import('@/features/home/page/HomePage')
+
+  return homeImport.then(module => ({ default: module.HomePage }))
+})
+
 const TracksPage = lazy(() =>
   import('@/features/tracks/page/TracksPage').then(module => ({ default: module.TracksPage }))
 )
@@ -35,6 +43,11 @@ const AccessibilityTester = lazy(() =>
   import('@/components/Layouts/AccessibilityTester').then(module => ({
     default: module.AccessibilityTester,
   }))
+)
+
+// Lazy load DebugPanel for production debugging
+const DebugPanel = lazy(() =>
+  import('@/utils/debugPanel').then(module => ({ default: module.DebugPanel }))
 )
 
 // Memoized placeholder pages to prevent unnecessary re-renders
@@ -73,83 +86,113 @@ const ImprintPage: React.FC = memo(() => (
 
 // Memoized main App component
 const App: React.FC = memo(() => {
-  // Initialize performance monitoring only once
+  // Initialize performance monitoring and preloading
   useEffect(() => {
+    // Initialize resource hints for better loading performance
+    initializeResourceHints()
+
+    // Initialize error monitoring
+    errorMonitor.init()
+
     // Only initialize in production or when explicitly enabled
     if (import.meta.env.PROD || import.meta.env.VITE_ENABLE_PERFORMANCE === 'true') {
       performanceMonitor.init()
     }
+
+
+    // Preload likely-to-be-visited pages after initial load
+    const preloadPages = () => {
+      // Preload tracks page (common next navigation)
+      setTimeout(() => {
+        import('@/features/tracks/page/TracksPage')
+      }, 2000)
+
+      // Preload about page (common footer navigation)
+      setTimeout(() => {
+        import('@/features/about/page/AboutPage')
+      }, 3000)
+    }
+
+    // Only preload in production to avoid dev overhead
+    if (import.meta.env.PROD) {
+      preloadPages()
+    }
   }, [])
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <BrowserRouter>
-        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <SkipToContent />
-          <HeaderNav />
-          <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <LazyPage>
-                    <HomePage />
-                  </LazyPage>
-                }
-              />
-              <Route
-                path="/tracks"
-                element={
-                  <LazyPage>
-                    <TracksPage />
-                  </LazyPage>
-                }
-              />
-              <Route
-                path="/events"
-                element={
-                  <LazyPage>
-                    <EventsPage />
-                  </LazyPage>
-                }
-              />
-              <Route
-                path="/stories"
-                element={
-                  <LazyPage>
-                    <StoriesPage />
-                  </LazyPage>
-                }
-              />
-              <Route
-                path="/partners"
-                element={
-                  <LazyPage>
-                    <PartnersPage />
-                  </LazyPage>
-                }
-              />
-              <Route
-                path="/about"
-                element={
-                  <LazyPage>
-                    <AboutPage />
-                  </LazyPage>
-                }
-              />
-              <Route path="/careers" element={<CareersPage />} />
-              <Route path="/privacy" element={<PrivacyPage />} />
-              <Route path="/imprint" element={<ImprintPage />} />
-            </Routes>
+    <ErrorBoundary>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <BrowserRouter>
+          <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <SkipToContent />
+            <HeaderNav />
+            <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <LazyPage>
+                      <HomePage />
+                    </LazyPage>
+                  }
+                />
+                <Route
+                  path="/tracks"
+                  element={
+                    <LazyPage>
+                      <TracksPage />
+                    </LazyPage>
+                  }
+                />
+                <Route
+                  path="/events"
+                  element={
+                    <LazyPage>
+                      <EventsPage />
+                    </LazyPage>
+                  }
+                />
+                <Route
+                  path="/stories"
+                  element={
+                    <LazyPage>
+                      <StoriesPage />
+                    </LazyPage>
+                  }
+                />
+                <Route
+                  path="/partners"
+                  element={
+                    <LazyPage>
+                      <PartnersPage />
+                    </LazyPage>
+                  }
+                />
+                <Route
+                  path="/about"
+                  element={
+                    <LazyPage>
+                      <AboutPage />
+                    </LazyPage>
+                  }
+                />
+                <Route path="/careers" element={<CareersPage />} />
+                <Route path="/privacy" element={<PrivacyPage />} />
+                <Route path="/imprint" element={<ImprintPage />} />
+              </Routes>
+            </Box>
+            <SiteFooter />
+            <Suspense fallback={null}>
+              <AccessibilityTester />
+            </Suspense>
+            <Suspense fallback={null}>
+              <DebugPanel />
+            </Suspense>
           </Box>
-          <SiteFooter />
-          <Suspense fallback={null}>
-            <AccessibilityTester />
-          </Suspense>
-        </Box>
-      </BrowserRouter>
-    </ThemeProvider>
+        </BrowserRouter>
+      </ThemeProvider>
+    </ErrorBoundary>
   )
 })
 

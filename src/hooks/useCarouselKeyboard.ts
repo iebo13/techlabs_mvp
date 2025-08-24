@@ -36,6 +36,7 @@ export const useCarouselKeyboard = (
     }
 
     document.addEventListener('keydown', handleKeyDown)
+
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [currentIndex, maxIndex, goToSlide])
 

@@ -48,7 +48,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
       <Stack spacing={2}>
         {faqs.map((faq, index) => (
           <Accordion
-            key={`faq-${faq.q.slice(0, 20).toLowerCase().replace(/\s+/g, '-')}`}
+            key={`faq-${faq.q.slice(0, 20).toLowerCase().replaceAll(/\s+/g, '-')}`}
             expanded={expanded === `panel${index}`}
             onChange={handleChange(`panel${index}`)}
             sx={{

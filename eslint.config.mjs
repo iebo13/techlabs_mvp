@@ -9,6 +9,10 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { globalIgnores } from 'eslint/config'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import unusedImports from 'eslint-plugin-unused-imports'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
+import sonarjs from 'eslint-plugin-sonarjs'
+import promise from 'eslint-plugin-promise'
+import security from 'eslint-plugin-security'
 
 export default [
   {
@@ -108,6 +112,9 @@ export default [
       import: importPlugin,
       'unused-imports': unusedImports,
       'react-refresh': reactRefresh,
+      'jsx-a11y': jsxA11y,
+      sonarjs,
+      promise,
     },
     rules: {
       // Relaxed rules for test files
@@ -115,6 +122,8 @@ export default [
       'max-lines': 'off',
       'max-lines-per-function': 'off',
       'no-console': 'off',
+      'sonarjs/no-duplicate-string': 'off',
+      'sonarjs/cognitive-complexity': 'off',
 
       // Keep important TypeScript rules
       '@typescript-eslint/no-non-null-assertion': 'error',
@@ -141,6 +150,16 @@ export default [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
+
+      // Accessibility rules for test files
+      'jsx-a11y/alt-text': 'error',
+      'jsx-a11y/anchor-has-content': 'error',
+      'jsx-a11y/anchor-is-valid': 'error',
+      'jsx-a11y/aria-props': 'error',
+      'jsx-a11y/aria-proptypes': 'error',
+      'jsx-a11y/aria-unsupported-elements': 'error',
+      'jsx-a11y/role-has-required-aria-props': 'error',
+      'jsx-a11y/role-supports-aria-props': 'error',
     },
   },
   // Configuration for app source files with strict TypeScript checking
@@ -189,6 +208,10 @@ export default [
       'unused-imports': unusedImports,
       'react-refresh': reactRefresh,
       import: importPlugin,
+      'jsx-a11y': jsxA11y,
+      sonarjs,
+      promise,
+      security,
     },
     rules: {
       /* Discourage classes and speculative memoization */
@@ -210,6 +233,7 @@ export default [
           message: 'Classes are not allowed. Use functions instead.',
         },
       ],
+
       // TypeScript specific rules
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-non-null-assertion': 'error',
@@ -232,8 +256,12 @@ export default [
         },
         { selector: 'enum', format: ['PascalCase'] },
         { selector: 'typeAlias', format: ['PascalCase'] },
-        { selector: 'variable', format: ['camelCase', 'UPPER_CASE', 'PascalCase'] },
-        { selector: 'function', format: ['camelCase', 'PascalCase'] },
+        {
+          selector: 'variable',
+          format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+          leadingUnderscore: 'allow',
+        },
+        { selector: 'function', format: ['camelCase', 'PascalCase'], leadingUnderscore: 'allow' },
         { selector: 'parameter', format: ['camelCase'], leadingUnderscore: 'allow' },
         {
           selector: 'memberLike',
@@ -259,6 +287,7 @@ export default [
       'react-hooks/exhaustive-deps': 'warn',
       'react/jsx-curly-brace-presence': ['warn', { props: 'never', children: 'never' }],
       'react/self-closing-comp': ['warn', { component: true, html: true }],
+
       /* Import rules */
       'import/prefer-default-export': 'off',
       'import/order': [
@@ -312,47 +341,162 @@ export default [
        * ============================= */
       'unicorn/filename-case': ['error', { cases: { camelCase: true, pascalCase: true } }], // folders camelCase, component files PascalCase ok
       'max-lines': ['error', { max: 220, skipBlankLines: true, skipComments: true }],
-      // 'max-lines-per-function': [
-      //   'warn',
-      //   { max: 220, skipBlankLines: true, skipComments: true, IIFEs: true },
-      // ],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-alert': 'error',
-    },
-    // // General rules
-    // "prefer-const": "error",
-    // "no-var": "error",
-    // "object-shorthand": "warn",
-    // eqeqeq: ["warn", "always"],
 
-    // // Spacing and formatting rules
-    // "padding-line-between-statements": [
-    //   "error",
-    //   { blankLine: "always", prev: "*", next: "return" },
-    //   { blankLine: "always", prev: ["const", "let", "var"], next: "*" },
-    //   {
-    //     blankLine: "any",
-    //     prev: ["const", "let", "var"],
-    //     next: ["const", "let", "var"],
-    //   },
-    //   { blankLine: "always", prev: "directive", next: "*" },
-    //   { blankLine: "always", prev: "block-like", next: "*" },
-    // ],
-    // "lines-around-comment": [
-    //   "error",
-    //   {
-    //     beforeBlockComment: true,
-    //     beforeLineComment: true,
-    //     allowBlockStart: true,
-    //     allowClassStart: true,
-    //     allowObjectStart: true,
-    //     allowArrayStart: true,
-    //   },
-    // ],
-    // "no-multiple-empty-lines": ["error", { max: 2, maxEOF: 0, maxBOF: 0 }],
-    // "object-curly-spacing": ["error", "always"],
-    // "array-bracket-spacing": ["error", "never"],
-    // "comma-spacing": ["error", { before: false, after: true }],
+      /* =============================
+       * Accessibility rules
+       * ============================= */
+      'jsx-a11y/alt-text': 'error',
+      'jsx-a11y/anchor-has-content': 'error',
+      'jsx-a11y/anchor-is-valid': 'error',
+      'jsx-a11y/aria-props': 'error',
+      'jsx-a11y/aria-proptypes': 'error',
+      'jsx-a11y/aria-unsupported-elements': 'error',
+      'jsx-a11y/click-events-have-key-events': 'error',
+      'jsx-a11y/heading-has-content': 'error',
+      'jsx-a11y/html-has-lang': 'error',
+      'jsx-a11y/iframe-has-title': 'error',
+      'jsx-a11y/img-redundant-alt': 'error',
+      'jsx-a11y/no-access-key': 'error',
+      'jsx-a11y/no-autofocus': 'error',
+      'jsx-a11y/no-distracting-elements': 'error',
+      'jsx-a11y/no-redundant-roles': 'error',
+      'jsx-a11y/role-has-required-aria-props': 'error',
+      'jsx-a11y/role-supports-aria-props': 'error',
+      'jsx-a11y/scope': 'error',
+      'jsx-a11y/tabindex-no-positive': 'error',
+
+      /* =============================
+       * Code quality rules (SonarJS)
+       * ============================= */
+      'sonarjs/no-duplicate-string': ['error', { threshold: 3 }],
+      'sonarjs/no-redundant-boolean': 'error',
+      'sonarjs/prefer-immediate-return': 'error',
+      'sonarjs/no-identical-functions': 'error',
+      'sonarjs/cognitive-complexity': ['error', 15],
+      'sonarjs/no-nested-switch': 'error',
+      'sonarjs/no-collapsible-if': 'error',
+      'sonarjs/no-redundant-jump': 'error',
+      'sonarjs/no-small-switch': 'error',
+      'sonarjs/no-unused-collection': 'error',
+      'sonarjs/no-useless-catch': 'error',
+      'sonarjs/prefer-object-literal': 'error',
+      'sonarjs/no-element-overwrite': 'error',
+      'sonarjs/no-extra-arguments': 'error',
+      'sonarjs/no-one-iteration-loop': 'error',
+      'sonarjs/no-use-of-empty-return-value': 'error',
+
+      /* =============================
+       * Promise rules
+       * ============================= */
+      'promise/always-return': 'error',
+      'promise/no-return-wrap': 'error',
+      'promise/param-names': 'error',
+      'promise/catch-or-return': 'error',
+      'promise/no-new-statics': 'error',
+      'promise/no-return-in-finally': 'error',
+      'promise/valid-params': 'error',
+
+      /* =============================
+       * Security rules
+       * ============================= */
+      'security/detect-object-injection': 'warn',
+      'security/detect-non-literal-regexp': 'warn',
+      'security/detect-unsafe-regex': 'warn',
+      'security/detect-buffer-noassert': 'warn',
+      'security/detect-child-process': 'warn',
+      'security/detect-disable-mustache-escape': 'warn',
+      'security/detect-eval-with-expression': 'warn',
+      'security/detect-no-csrf-before-method-override': 'warn',
+      'security/detect-non-literal-fs-filename': 'warn',
+      'security/detect-non-literal-require': 'warn',
+      'security/detect-possible-timing-attacks': 'warn',
+      'security/detect-pseudoRandomBytes': 'warn',
+
+      /* =============================
+       * Performance rules (Unicorn)
+       * ============================= */
+      'unicorn/prefer-array-find': 'error',
+      'unicorn/prefer-array-flat': 'error',
+      'unicorn/prefer-array-flat-map': 'error',
+      'unicorn/prefer-array-index-of': 'error',
+      'unicorn/prefer-array-some': 'error',
+      'unicorn/prefer-includes': 'error',
+      'unicorn/prefer-optional-catch-binding': 'error',
+      'unicorn/prefer-string-replace-all': 'error',
+      'unicorn/prefer-string-slice': 'error',
+      'unicorn/prefer-string-starts-ends-with': 'error',
+      'unicorn/prefer-string-trim-start-end': 'error',
+      'unicorn/prefer-ternary': 'error',
+      'unicorn/no-console-spaces': 'error',
+      'unicorn/no-for-loop': 'error',
+      'unicorn/no-hex-escape': 'error',
+      'unicorn/no-lonely-if': 'error',
+      'unicorn/no-new-buffer': 'error',
+      'unicorn/no-process-exit': 'error',
+      'unicorn/no-useless-undefined': 'error',
+      'unicorn/number-literal-case': 'error',
+      'unicorn/prefer-date-now': 'error',
+      'unicorn/prefer-default-parameters': 'error',
+      'unicorn/prefer-math-trunc': 'error',
+      'unicorn/prefer-negative-index': 'error',
+      'unicorn/prefer-spread': 'error',
+      'unicorn/throw-new-error': 'error',
+
+      /* =============================
+       * General code quality rules
+       * ============================= */
+      'prefer-const': 'error',
+      'no-var': 'error',
+      'object-shorthand': 'warn',
+      eqeqeq: ['warn', 'always'],
+      'no-eval': 'error',
+      'no-implied-eval': 'error',
+      'no-new-func': 'error',
+      'no-script-url': 'error',
+      'no-sequences': 'error',
+      'no-throw-literal': 'error',
+      'no-unmodified-loop-condition': 'error',
+      'no-unused-expressions': 'error',
+      'no-useless-call': 'error',
+      'no-useless-concat': 'error',
+      'no-useless-return': 'error',
+      'prefer-promise-reject-errors': 'error',
+      'require-await': 'error',
+      yoda: 'error',
+
+      /* =============================
+       * Spacing and formatting rules
+       * ============================= */
+      'padding-line-between-statements': [
+        'error',
+        { blankLine: 'always', prev: '*', next: 'return' },
+        { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+        {
+          blankLine: 'any',
+          prev: ['const', 'let', 'var'],
+          next: ['const', 'let', 'var'],
+        },
+        { blankLine: 'always', prev: 'directive', next: '*' },
+        { blankLine: 'always', prev: 'block-like', next: '*' },
+      ],
+      'lines-around-comment': [
+        'error',
+        {
+          beforeBlockComment: true,
+          beforeLineComment: true,
+          allowBlockStart: true,
+          allowClassStart: true,
+          allowObjectStart: true,
+          allowArrayStart: true,
+        },
+      ],
+      'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 0, maxBOF: 0 }],
+      'object-curly-spacing': ['error', 'always'],
+      'array-bracket-spacing': ['error', 'never'],
+      'comma-spacing': ['error', { before: false, after: true }],
+    },
   },
 
   prettier,

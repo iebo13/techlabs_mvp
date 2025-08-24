@@ -39,31 +39,37 @@ export const SEO: React.FC<SEOProps> = ({
 
     // Update or create meta description
     let metaDescription = document.querySelector('meta[name="description"]')
+
     if (!metaDescription) {
       metaDescription = document.createElement('meta')
       metaDescription.setAttribute('name', 'description')
       document.head.appendChild(metaDescription)
     }
+
     metaDescription.setAttribute('content', description)
 
     // Update or create meta keywords
     if (keywords) {
       let metaKeywords = document.querySelector('meta[name="keywords"]')
+
       if (!metaKeywords) {
         metaKeywords = document.createElement('meta')
         metaKeywords.setAttribute('name', 'keywords')
         document.head.appendChild(metaKeywords)
       }
+
       metaKeywords.setAttribute('content', keywords)
     }
 
     // Update or create meta author
     let metaAuthor = document.querySelector('meta[name="author"]')
+
     if (!metaAuthor) {
       metaAuthor = document.createElement('meta')
       metaAuthor.setAttribute('name', 'author')
       document.head.appendChild(metaAuthor)
     }
+
     metaAuthor.setAttribute('content', author)
 
     // Update or create Open Graph tags
@@ -85,11 +91,13 @@ export const SEO: React.FC<SEOProps> = ({
 
     ogTags.forEach(({ property, content }) => {
       let ogTag = document.querySelector(`meta[property="${property}"]`)
+
       if (!ogTag) {
         ogTag = document.createElement('meta')
         ogTag.setAttribute('property', property)
         document.head.appendChild(ogTag)
       }
+
       ogTag.setAttribute('content', content)
     })
 
@@ -107,21 +115,25 @@ export const SEO: React.FC<SEOProps> = ({
 
     twitterTags.forEach(({ name, content }) => {
       let twitterTag = document.querySelector(`meta[name="${name}"]`)
+
       if (!twitterTag) {
         twitterTag = document.createElement('meta')
         twitterTag.setAttribute('name', name)
         document.head.appendChild(twitterTag)
       }
+
       twitterTag.setAttribute('content', content)
     })
 
     // Update canonical URL
     let canonicalLink = document.querySelector('link[rel="canonical"]')
+
     if (!canonicalLink) {
       canonicalLink = document.createElement('link')
       canonicalLink.setAttribute('rel', 'canonical')
       document.head.appendChild(canonicalLink)
     }
+
     canonicalLink.setAttribute(
       'href',
       url ? `${window.location.origin}${url}` : window.location.href

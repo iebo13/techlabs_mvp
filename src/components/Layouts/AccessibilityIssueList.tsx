@@ -27,7 +27,8 @@ export const AccessibilityIssueList: React.FC<AccessibilityIssueListProps> = ({
     <>
       <List dense sx={{ maxHeight: 300, overflow: 'auto' }}>
         {issues.map(issue => {
-          const uniqueId = `${issue.type}-${issue.selector || 'no-selector'}-${issue.message.slice(0, 30).replace(/[^a-zA-Z0-9]/g, '')}`
+          const uniqueId = `${issue.type}-${issue.selector || 'no-selector'}-${issue.message.slice(0, 30).replaceAll(/[^a-zA-Z0-9]/g, '')}`
+
           return (
             <ListItem
               key={uniqueId}

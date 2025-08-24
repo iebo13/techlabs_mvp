@@ -9,6 +9,7 @@
 export const differenceInWeeks = (laterDate: Date, earlierDate: Date): number => {
   const diffTime = laterDate.getTime() - earlierDate.getTime()
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+
   return Math.floor(diffDays / 7) // Use floor to get complete weeks
 }
 
@@ -17,6 +18,7 @@ export const differenceInWeeks = (laterDate: Date, earlierDate: Date): number =>
  */
 export const differenceInDays = (laterDate: Date, earlierDate: Date): number => {
   const diffTime = laterDate.getTime() - earlierDate.getTime()
+
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24))
 }
 
@@ -39,10 +41,12 @@ export const formatDeadlineText = (deadlineISO: string): string => {
   if (days > 7) {
     const weeks = Math.floor(days / 7)
     const weekText = weeks === 1 ? 'week' : 'weeks'
+
     return `Applications close in ${weeks} ${weekText} for next batch`
   }
 
   // Otherwise show in days
   const dayText = days === 1 ? 'day' : 'days'
+
   return `Applications close in ${days} ${dayText} for next batch`
 }

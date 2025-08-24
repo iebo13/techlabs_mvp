@@ -28,16 +28,18 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({
   // Map labels to appropriate icons (using simple text icons to avoid MUI import issues)
   const getIconForLabel = (label: string) => {
     const lowerLabel = label.toLowerCase()
+
     if (lowerLabel.includes('cities') || lowerLabel.includes('city')) {
       return <span style={{ fontSize: '2rem' }}>🏙️</span>
     }
+
     if (lowerLabel.includes('graduates') || lowerLabel.includes('graduate')) {
       return <span style={{ fontSize: '2rem' }}>🎓</span>
     }
+
     if (lowerLabel.includes('mentors') || lowerLabel.includes('mentor')) {
       return <span style={{ fontSize: '2rem' }}>👥</span>
     }
-    return undefined
   }
 
   return (

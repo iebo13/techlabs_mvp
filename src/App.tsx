@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider, CssBaseline, Box } from '@mui/material'
 import { HeaderNav } from '@/components/Layouts/HeaderNav'
@@ -8,6 +8,7 @@ import { SectionHeading } from '@/components/Layouts/SectionHeading'
 import { SiteFooter } from '@/components/Layouts/SiteFooter'
 import { SkipToContent } from '@/components/Layouts/SkipToContent'
 import { theme } from '@/theme/theme'
+import performanceMonitor from '@/utils/performance'
 
 // Lazy load page components for code splitting
 const HomePage = lazy(() =>
@@ -72,6 +73,11 @@ const ImprintPage: React.FC = () => (
 )
 
 const App: React.FC = () => {
+  // Initialize performance monitoring
+  useEffect(() => {
+    performanceMonitor.init()
+  }, [])
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

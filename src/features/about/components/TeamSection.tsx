@@ -35,7 +35,7 @@ export const TeamSection: React.FC<{ data: TeamData }> = ({ data }) => (
       <Grid container spacing={4}>
         {data.members.map(member => (
           <Grid
-            key={member.name.toLowerCase().replace(/\s+/g, '-')}
+            key={member.name.toLowerCase().replaceAll(/\s+/g, '-')}
             size={{ xs: 12, sm: 6, md: 4 }}
           >
             <Card

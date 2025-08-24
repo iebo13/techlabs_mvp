@@ -52,7 +52,7 @@ export const ProgramSection: React.FC<{ data: ProgramData }> = ({ data }) => {
         <Grid container spacing={4}>
           {data.phases.map(phase => (
             <Grid
-              key={phase.title.toLowerCase().replace(/\s+/g, '-')}
+              key={phase.title.toLowerCase().replaceAll(/\s+/g, '-')}
               size={{ xs: 12, sm: 6, md: 3 }}
             >
               <Card

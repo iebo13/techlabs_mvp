@@ -50,6 +50,7 @@ export const StoriesPage: React.FC<StoriesPageProps> = () => {
 
   const filteredStories = (() => {
     if (selectedTrack === 'all') return typedStoriesData
+
     return typedStoriesData.filter(story => story.track === selectedTrack)
   })()
 

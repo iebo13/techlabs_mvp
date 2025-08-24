@@ -14,6 +14,7 @@ export const useCarouselNavigation = (
 
   const goToSlide = (newIndex: number) => {
     const clampedIndex = Math.max(0, Math.min(newIndex, maxIndex))
+
     setCurrentIndex(clampedIndex)
     onItemChange?.(clampedIndex)
   }

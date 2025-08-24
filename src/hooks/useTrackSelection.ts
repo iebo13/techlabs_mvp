@@ -16,6 +16,7 @@ export const useTrackSelection = () => {
   // Load saved selections on mount
   useEffect(() => {
     const savedTracks = loadTrackSelection()
+
     setSelectedTracks(savedTracks)
   }, [])
 

@@ -45,6 +45,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
 
   const handleToggle = () => {
     const newExpanded = !expanded
+
     setExpanded(newExpanded)
     onToggle?.(track.id)
   }

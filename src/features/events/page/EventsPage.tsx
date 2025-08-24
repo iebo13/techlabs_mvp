@@ -15,6 +15,7 @@ export const EventsPage: React.FC = () => {
     if (selectedTab === 'all') {
       return eventsData.events as Event[]
     }
+
     return (eventsData.events as Event[]).filter(event => event.type === selectedTab)
   })()
 
@@ -26,6 +27,7 @@ export const EventsPage: React.FC = () => {
       if (selectedTab === 'past') {
         return dateB.getTime() - dateA.getTime() // Most recent first
       }
+
       return dateA.getTime() - dateB.getTime() // Soonest first
     })
   })()
@@ -44,6 +46,7 @@ export const EventsPage: React.FC = () => {
 
   const getTabLabel = (type: EventType) => {
     const events = eventsData.events as Event[]
+
     switch (type) {
       case 'upcoming':
         return `Upcoming (${events.filter(e => e.type === 'upcoming').length})`

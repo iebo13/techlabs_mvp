@@ -14,6 +14,9 @@ import type { HomeData } from '@/types/home'
 import { saveTrackSelection, loadTrackSelection, trackIdsToQueryParam } from '@/utils/persistence'
 import { TrustStripSection } from './TrustStripSection'
 
+// Common color constant
+const SECONDARY_TEXT_COLOR = 'text.secondary' as const
+
 // Define TrackKey locally to avoid import issues
 type TrackKey = 'web-dev' | 'data-science' | 'product-design' | 'ai'
 
@@ -40,6 +43,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
   // Load saved selections on mount
   useEffect(() => {
     const savedTracks = loadTrackSelection()
+
     setSelectedTracks(savedTracks)
   }, [])
 
@@ -85,7 +89,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
             component="h2"
             sx={{
               pb: 2,
-              color: 'text.secondary',
+              color: SECONDARY_TEXT_COLOR,
               '& .emphasis': {
                 color: 'primary.main',
                 fontWeight: 'inherit',
@@ -104,9 +108,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
             variant="body1"
             component="p"
             sx={{
-              color: 'text.secondary',
+              color: SECONDARY_TEXT_COLOR,
               '& .separator': {
-                color: 'text.secondary',
+                color: SECONDARY_TEXT_COLOR,
                 mx: 0.5,
                 fontSize: '0.875em',
                 userSelect: 'none',

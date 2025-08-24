@@ -13,6 +13,9 @@ import {
 import { SquareCheckboxIcon, SquareCheckedIcon } from '@/components/Buttons/SquareCheckbox'
 import type { Track } from '@/types/home'
 
+// Common color constant
+const SECONDARY_TEXT_COLOR = 'text.secondary' as const
+
 // Define TrackKey locally to avoid import issues
 type TrackKey = 'web-dev' | 'data-science' | 'product-design' | 'ai'
 
@@ -59,7 +62,7 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({
             sx={{
               mb: { xs: 2.5, sm: 3 },
               fontSize: '0.875rem',
-              color: 'text.secondary',
+              color: SECONDARY_TEXT_COLOR,
               fontWeight: 400,
             }}
           >
@@ -158,14 +161,14 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({
               <HourglassEmpty
                 sx={{
                   fontSize: '1rem',
-                  color: 'text.secondary',
+                  color: SECONDARY_TEXT_COLOR,
                 }}
               />
               <Typography
                 variant="caption"
                 sx={{
                   fontSize: { xs: '0.75rem', sm: '0.8125rem' },
-                  color: 'text.secondary',
+                  color: SECONDARY_TEXT_COLOR,
                   fontWeight: 400,
                 }}
               >

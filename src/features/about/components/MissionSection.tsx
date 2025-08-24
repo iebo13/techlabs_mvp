@@ -50,7 +50,7 @@ export const MissionSection: React.FC<{ data: MissionData }> = ({ data }) => (
         <Grid container spacing={4}>
           {data.values.map(value => (
             <Grid
-              key={value.title.toLowerCase().replace(/\s+/g, '-')}
+              key={value.title.toLowerCase().replaceAll(/\s+/g, '-')}
               size={{ xs: 12, sm: 6, md: 3 }}
             >
               <Card

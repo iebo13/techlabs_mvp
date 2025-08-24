@@ -19,6 +19,7 @@ export const useCarouselAutoPlay = (
     const interval = setInterval(() => {
       const nextIndex = currentIndex + 1
       const clampedIndex = nextIndex > maxIndex ? 0 : nextIndex
+
       goToSlide(clampedIndex)
     }, autoPlayInterval)
 

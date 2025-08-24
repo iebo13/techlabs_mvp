@@ -19,6 +19,7 @@ export const useAccessibilityChecks = () => {
 
     // Check for missing alt text on images
     const images = document.querySelectorAll('img')
+
     images.forEach((img, index) => {
       if (!img.alt && !img.getAttribute('aria-label')) {
         newIssues.push({
@@ -33,8 +34,10 @@ export const useAccessibilityChecks = () => {
     // Check for proper heading hierarchy
     const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6')
     let previousLevel = 0
+
     headings.forEach((heading, index) => {
       const level = parseInt(heading.tagName.charAt(1))
+
       if (level > previousLevel + 1) {
         newIssues.push({
           type: 'warning',
@@ -43,11 +46,13 @@ export const useAccessibilityChecks = () => {
           selector: `${heading.tagName.toLowerCase()}:nth-child(${index + 1})`,
         })
       }
+
       previousLevel = level
     })
 
     // Check for multiple H1 tags
     const h1Tags = document.querySelectorAll('h1')
+
     if (h1Tags.length > 1) {
       newIssues.push({
         type: 'error',
@@ -58,6 +63,7 @@ export const useAccessibilityChecks = () => {
 
     // Check for proper form labels
     const formInputs = document.querySelectorAll('input, select, textarea')
+
     formInputs.forEach((input, index) => {
       const id = input.getAttribute('id')
       const label = input.getAttribute('aria-label')
@@ -75,6 +81,7 @@ export const useAccessibilityChecks = () => {
 
     // Check for sufficient color contrast (basic check)
     const textElements = document.querySelectorAll('p, span, div, h1, h2, h3, h4, h5, h6')
+
     textElements.forEach(element => {
       const style = window.getComputedStyle(element)
       const color = style.color
@@ -94,8 +101,10 @@ export const useAccessibilityChecks = () => {
     const interactiveElements = document.querySelectorAll(
       'button, a, input, select, textarea, [tabindex]'
     )
+
     interactiveElements.forEach(element => {
       const tabIndex = element.getAttribute('tabindex')
+
       if (tabIndex === '-1' && !element.hasAttribute('aria-hidden')) {
         newIssues.push({
           type: 'info',

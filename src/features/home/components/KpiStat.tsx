@@ -2,6 +2,11 @@ import React from 'react'
 import { Box, Typography, Paper } from '@mui/material'
 import type { SxProps, Theme } from '@mui/material'
 
+// Common color constants
+const SECONDARY_TEXT_COLOR = 'text.secondary' as const
+const PRIMARY_TEXT_COLOR = 'text.primary' as const
+const PRIMARY_MAIN_COLOR = 'primary.main' as const
+
 export type KPIStatProps = {
   /** The numeric value to display prominently */
   value: string
@@ -36,7 +41,7 @@ export const KPIStat: React.FC<KPIStatProps> = ({ value, label, icon, emphasized
         alignItems: 'center',
         transition: 'all 0.2s ease-in-out',
         '&:hover': {
-          borderColor: emphasized ? 'primary.main' : 'divider',
+          borderColor: emphasized ? PRIMARY_MAIN_COLOR : 'divider',
           transform: 'translateY(-2px)',
         },
         ...sx,
@@ -46,7 +51,7 @@ export const KPIStat: React.FC<KPIStatProps> = ({ value, label, icon, emphasized
         <Box
           sx={{
             mb: 2,
-            color: emphasized ? 'primary.main' : 'text.secondary',
+            color: emphasized ? PRIMARY_MAIN_COLOR : SECONDARY_TEXT_COLOR,
             fontSize: '2rem',
           }}
         >
@@ -61,7 +66,7 @@ export const KPIStat: React.FC<KPIStatProps> = ({ value, label, icon, emphasized
           fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
           fontWeight: 900,
           lineHeight: 0.9,
-          color: emphasized ? 'primary.main' : 'text.primary',
+          color: emphasized ? PRIMARY_MAIN_COLOR : PRIMARY_TEXT_COLOR,
           mb: 1,
         }}
       >
@@ -70,7 +75,7 @@ export const KPIStat: React.FC<KPIStatProps> = ({ value, label, icon, emphasized
 
       <Typography
         variant="body1"
-        color="text.secondary"
+        color={SECONDARY_TEXT_COLOR}
         sx={{
           fontWeight: 600,
           textTransform: 'uppercase',

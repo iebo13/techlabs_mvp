@@ -57,6 +57,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({
     }
 
     document.addEventListener('keydown', handleKeyDown)
+
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [currentIndex, maxIndex, stories.length])
 

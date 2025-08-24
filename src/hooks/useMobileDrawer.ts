@@ -26,16 +26,13 @@ export const useMobileDrawer = () => {
     }
 
     document.addEventListener('keydown', handleEscape)
+
     return () => document.removeEventListener('keydown', handleEscape)
   }, [mobileOpen])
 
   // Lock body scroll when drawer is open
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
+    document.body.style.overflow = mobileOpen ? 'hidden' : 'unset'
 
     return () => {
       document.body.style.overflow = 'unset'

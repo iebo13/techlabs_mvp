@@ -49,7 +49,7 @@ export const TimelineSection: React.FC<{ data: TimelineData }> = ({ data }) => (
         <Stack spacing={4}>
           {data.milestones.map((milestone, index) => (
             <Box
-              key={`${milestone.year}-${milestone.title.toLowerCase().replace(/\s+/g, '-')}`}
+              key={`${milestone.year}-${milestone.title.toLowerCase().replaceAll(/\s+/g, '-')}`}
               sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', md: 'row' },

@@ -18,6 +18,7 @@ export const TracksPage: React.FC = () => {
 
     if (urlPrefs) {
       const trackIds = urlPrefs.split(',').filter(Boolean)
+
       setPreferredTracks(trackIds)
 
       // If only one track is preferred, expand it automatically
@@ -27,6 +28,7 @@ export const TracksPage: React.FC = () => {
     } else if (sessionPrefs) {
       try {
         const trackIds = JSON.parse(sessionPrefs)
+
         setPreferredTracks(trackIds)
       } catch (error) {
         console.warn('Failed to parse session storage tracks:', error)

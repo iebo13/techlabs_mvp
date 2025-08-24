@@ -11,20 +11,28 @@ import type { DetailedPartner } from '@/types/home'
  * with CTA to become a partner
  */
 export const PartnersPage: React.FC = () => {
-  // Group partners by tier
+  // Group partners by tier using a more type-safe approach
   const partnersByTier = (() => {
     const grouped: Record<string, DetailedPartner[]> = {}
+
     partnersData.partners.forEach(partner => {
-      if (!grouped[partner.tier]) {
-        grouped[partner.tier] = []
+      const tier = partner.tier
+
+      // Validate tier is a string before using as key
+      if (typeof tier === 'string' && tier.length > 0) {
+        if (!grouped[tier]) {
+          grouped[tier] = []
+        }
+
+        grouped[tier].push(partner)
       }
-      grouped[partner.tier].push(partner)
     })
+
     return grouped
   })()
 
   // Sort tiers by priority (platinum, gold, silver, bronze)
-  const tierOrder = ['platinum', 'gold', 'silver', 'bronze']
+  const tierOrder = ['platinum', 'gold', 'silver', 'bronze'] as const
 
   return (
     <main>

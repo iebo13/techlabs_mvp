@@ -10,6 +10,9 @@ import {
   useMediaQuery,
 } from '@mui/material'
 
+// Common color constant
+const WHITE_COLOR = 'common.white' as const
+
 type VideoEmbedProps = {
   open: boolean
   onClose: () => void
@@ -66,7 +69,7 @@ const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, p
       PaperProps={{
         sx: {
           bgcolor: 'common.black',
-          color: 'common.white',
+          color: WHITE_COLOR,
           borderRadius: isMobile ? 0 : 2,
         },
       }}
@@ -79,7 +82,7 @@ const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, p
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          color: 'common.white',
+          color: WHITE_COLOR,
           pb: 1,
         }}
       >
@@ -88,7 +91,7 @@ const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, p
           ref={closeButtonRef}
           onClick={onClose}
           aria-label="Close video"
-          sx={{ color: 'common.white' }}
+          sx={{ color: WHITE_COLOR }}
         >
           <CloseIcon />
         </IconButton>

@@ -38,6 +38,7 @@ export const FooterBrandSection: React.FC = () => {
       <Stack direction="row" spacing={1}>
         {socialLinks.map(social => {
           const IconComponent = social.icon
+
           return (
             <IconButton
               key={social.name}

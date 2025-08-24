@@ -9,6 +9,7 @@ import { Box } from '@mui/material'
 export const SkipToContent: React.FC = () => {
   const handleClick = () => {
     const mainContent = document.querySelector('main')
+
     if (mainContent) {
       mainContent.focus()
       mainContent.scrollIntoView({ behavior: 'smooth' })

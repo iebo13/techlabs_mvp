@@ -19,7 +19,8 @@
     "typecheck:watch": "tsc --noEmit --watch",
     "unimported": "npx unimported",
     "check": "npm run lint && npm run typecheck && npm run test && npm run format",
-    "check:fix": "npm run lint:fix  && npm run format:fix"
+    "check:fix": "npm run lint:fix  && npm run format:fix",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -57,6 +58,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "eslint-plugin-unicorn": "^60.0.0",
     "globals": "^16.3.0",
+    "husky": "^9.1.7",
     "jsdom": "^26.1.0",
     "prettier": "^3.6.2",
     "typescript": "~5.8.3",

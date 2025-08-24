@@ -27,7 +27,14 @@ export const HomePage: React.FC = () => {
         image="/img/techlabs-og-image.jpg"
         url="/"
         type="website"
-        tags={['tech education', 'free coding', 'web development', 'data science', 'product design', 'AI']}
+        tags={[
+          'tech education',
+          'free coding',
+          'web development',
+          'data science',
+          'product design',
+          'AI',
+        ]}
       />
       <HeroSection />
 

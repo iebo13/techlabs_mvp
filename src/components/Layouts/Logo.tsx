@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { NavLink } from './NavLink'
 
 /**
@@ -20,28 +20,15 @@ export const Logo: React.FC = () => {
         },
       }}
     >
-      {/* Logo icon placeholder - pink round icon */}
-      <Box
-        sx={{
+      {/* Logo SVG icon */}
+      <img
+        src="/Logo.svg"
+        alt="TechLabs Logo"
+        style={{
           width: 32,
           height: 32,
-          backgroundColor: 'primary.main',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
         }}
-      >
-        <Typography
-          sx={{
-            color: 'white',
-            fontWeight: 800,
-            fontSize: '0.875rem',
-          }}
-        >
-          T
-        </Typography>
-      </Box>
+      />
       {/* TechLabs wordmark */}
       <Typography
         variant="h6"

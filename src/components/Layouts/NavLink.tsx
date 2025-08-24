@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { Link, useTheme } from '@mui/material'
 import type { LinkProps } from '@mui/material/Link'
@@ -18,14 +18,14 @@ export type NavLinkProps = {
  * NavLink component provides consistent navigation styling with active states.
  * Integrates with React Router for internal navigation and supports external links.
  */
-export const NavLink: React.FC<NavLinkProps> = ({
+export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(({
   to,
   external = false,
   showActive = true,
   children,
   sx,
   ...linkProps
-}) => {
+}, ref) => {
   const location = useLocation()
   const theme = useTheme()
 
@@ -55,15 +55,17 @@ export const NavLink: React.FC<NavLinkProps> = ({
 
   if (external) {
     return (
-      <Link href={to} target="_blank" rel="noopener noreferrer" sx={linkStyles} {...linkProps}>
+      <Link ref={ref} href={to} target="_blank" rel="noopener noreferrer" sx={linkStyles} {...linkProps}>
         {children}
       </Link>
     )
   }
 
   return (
-    <Link component={RouterLink} to={to} sx={linkStyles} {...linkProps}>
+    <Link ref={ref} component={RouterLink} to={to} sx={linkStyles} {...linkProps}>
       {children}
     </Link>
   )
-}
+})
+
+NavLink.displayName = 'NavLink'

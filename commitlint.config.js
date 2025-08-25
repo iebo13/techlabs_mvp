@@ -113,32 +113,19 @@ export default {
     // Header Configuration
     'header-case': [2, 'always', 'lower-case'],
     'header-full-stop': [2, 'never', '.'],
-    'header-max-length': [2, 'always', 72], // Git standard
+    'header-max-length': [2, 'always', 100], // Git standard
     'header-min-length': [2, 'always', 10],
 
     // Body Configuration
     'body-leading-blank': [2, 'always'], // Blank line before body
-    'body-max-line-length': [2, 'always', 100],
+    'body-max-line-length': [2, 'always', 140],
     'body-min-length': [0], // Allow empty body
     'body-case': [0], // No case restrictions for body
 
     // Footer Configuration
     'footer-leading-blank': [2, 'always'], // Blank line before footer
-    'footer-max-line-length': [2, 'always', 100],
+    'footer-max-line-length': [2, 'always', 140],
     'footer-min-length': [0], // Allow empty footer
-
-    // Breaking Changes
-    'trailer-exists': [
-      1, // Warning level
-      'always',
-      'BREAKING CHANGE',
-    ],
-
-    // References
-    'references-empty': [
-      1, // Warning level - encourage but don't require
-      'never',
-    ],
   },
 
   // Parser Preset for enhanced parsing

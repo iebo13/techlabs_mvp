@@ -435,7 +435,13 @@ class QualityChecker {
 }
 
 // Run checks if this script is executed directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Fixed condition to work on Windows and other platforms
+const isMain =
+  import.meta.url === `file://${process.argv[1]}` ||
+  import.meta.url.endsWith(process.argv[1]) ||
+  process.argv[1].includes('precommit-checks.js')
+
+if (isMain) {
   const checker = new QualityChecker()
   checker
     .runAllChecks()

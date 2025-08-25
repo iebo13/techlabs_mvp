@@ -1,93 +1,135 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Close as CloseIcon } from '@mui/icons-material'
 import {
   Box,
   List,
   ListItem,
-  ListItemButton,
-  ListItemText,
   Button,
   IconButton,
   Typography,
   Stack,
   Divider,
   useTheme,
+  useMediaQuery,
 } from '@mui/material'
 import { navigationItems, ctaButtons } from '@/config/data/navigationData'
+import {
+  getDrawerSpacing,
+  getHeaderTypography,
+  createCloseButtonStyles,
+  createNavLinkStyles,
+  createCtaButtonStyles,
+} from './MobileDrawerUtils'
 import { NavLink } from './NavLink'
 
 type MobileDrawerProps = {
   onClose: () => void
 }
 
-/**
- * MobileDrawer component provides mobile navigation menu
- */
-export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
+export const MobileDrawer: React.FC<MobileDrawerProps> = memo(({ onClose }) => {
   const theme = useTheme()
 
+  const isXs = useMediaQuery(theme.breakpoints.only('xs'))
+  const isSm = useMediaQuery(theme.breakpoints.only('sm'))
+
+  const spacing = getDrawerSpacing(isXs, isSm)
+  const headerTypography = getHeaderTypography(isXs, isSm)
+  const closeButtonStyles = createCloseButtonStyles(theme)
+  const navLinkStyles = createNavLinkStyles(theme)
+  const getCtaStyles = (variant: 'contained' | 'outlined') => createCtaButtonStyles(theme, variant)
+
   return (
-    <Box sx={{ width: 280, height: '100%', pt: 2 }}>
+    <Box
+      sx={{
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        paddingTop: {
+          xs: `max(${spacing.py * 8}px, env(safe-area-inset-top, ${spacing.py * 8}px))`,
+        },
+        paddingBottom: {
+          xs: `max(${spacing.py * 8}px, env(safe-area-inset-bottom, ${spacing.py * 8}px))`,
+        },
+        '& > *': {
+          width: '100%',
+        },
+      }}
+    >
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          px: 2,
-          mb: 3,
+          px: spacing.px,
+          mb: spacing.headerMb,
+          flexShrink: 0,
         }}
       >
-        <Typography variant="h6" component="div" sx={{ fontWeight: 700, color: 'primary.main' }}>
+        <Typography
+          variant={headerTypography.variant}
+          component="div"
+          sx={{
+            fontWeight: 700,
+            color: 'primary.main',
+            fontSize: headerTypography.fontSize,
+            lineHeight: 1.2,
+          }}
+        >
           TechLabs
         </Typography>
         <IconButton
           edge="end"
           onClick={onClose}
           aria-label="close navigation menu"
-          sx={{
-            color: 'text.primary',
-            '&:focus-visible': {
-              outline: `3px solid ${theme.palette.primary.main}40`,
-              outlineOffset: 2,
-            },
-          }}
+          sx={closeButtonStyles}
         >
-          <CloseIcon />
+          <CloseIcon
+            sx={{
+              fontSize: {
+                xs: 24,
+                sm: 26,
+              },
+            }}
+          />
         </IconButton>
       </Box>
 
-      <List sx={{ px: 1 }}>
-        {navigationItems.map(item => (
-          <ListItem key={item.path} disablePadding>
-            <ListItemButton
-              component={NavLink}
-              to={item.path}
-              onClick={onClose}
-              sx={{
-                borderRadius: 2,
-                mx: 1,
-                mb: 0.5,
-                '&:focus-visible': {
-                  outline: `3px solid ${theme.palette.primary.main}40`,
-                  outlineOffset: 2,
-                },
-              }}
-            >
-              <ListItemText
-                primary={item.label}
-                primaryTypographyProps={{
-                  fontWeight: 600,
-                  fontSize: '1rem',
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <Box sx={{ flex: 1, overflowY: 'auto' }}>
+        <List sx={{ px: spacing.listPx }}>
+          {navigationItems.map(item => (
+            <ListItem key={item.path} disablePadding>
+              <NavLink to={item.path} onClick={onClose} sx={navLinkStyles}>
+                <Typography
+                  sx={{
+                    fontWeight: 600,
+                    fontSize: {
+                      xs: '1.05rem',
+                      sm: '1.1rem',
+                    },
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {item.label}
+                </Typography>
+              </NavLink>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
 
-      <Box sx={{ px: 2, mt: 4 }}>
-        <Divider sx={{ mb: 3 }} />
-        <Stack spacing={2}>
+      <Box
+        sx={{
+          px: spacing.px,
+          mt: spacing.ctaMt,
+          flexShrink: 0,
+          // Safe area padding for bottom
+          pb: {
+            xs: `max(${spacing.py * 8}px, env(safe-area-inset-bottom, ${spacing.py * 8}px))`,
+          },
+        }}
+      >
+        <Divider sx={{ mb: spacing.dividerMb }} />
+        <Stack spacing={{ xs: 2, sm: 2.5 }}>
           {ctaButtons.map(button => (
             <Button
               key={button.path}
@@ -96,17 +138,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
               variant={button.variant}
               fullWidth
               onClick={onClose}
-              sx={{
-                py: 1.5,
-                fontSize: '0.95rem',
-                fontWeight: 600,
-                borderRadius: 2,
-                textTransform: 'none',
-                '&:focus-visible': {
-                  outline: `3px solid ${theme.palette.primary.main}40`,
-                  outlineOffset: 2,
-                },
-              }}
+              sx={getCtaStyles(button.variant)}
             >
               {button.label}
             </Button>
@@ -115,4 +147,6 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
       </Box>
     </Box>
   )
-}
+})
+
+MobileDrawer.displayName = 'MobileDrawer'

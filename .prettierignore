@@ -1,93 +1,46 @@
-# Dependencies
+# Dependencies and build outputs
 node_modules/
 dist/
 build/
-.cursor/
-
-# Build outputs
-*.min.js
-*.bundle.js
-
-# Generated files
 coverage/
 .nyc_output/
 
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Generated and minified files
+*.min.js
+*.bundle.js
+*.map
 
-# Package files
+# Package lock files (should not be formatted)
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
-# Lock files
-*.lock
+# Environment files
+.env*
 
-# Coverage directory used by tools like istanbul
-coverage/
-*.lcov
-
-# nyc test coverage
-.nyc_output
-
-# Dependency directories
-node_modules/
-jspm_packages/
-
-# Optional npm cache directory
-.npm
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env
-.env.test
-.env.production
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-
-# next.js build output
-.next
-
-# nuxt.js build output
-.nuxt
-
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless
-
-# FuseBox cache
+# Cache directories
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist/
+.serverless/
 .fusebox/
-
-# DynamoDB Local files
 .dynamodb/
 
-# TernJS port file
+# Logs
+*.log
+
+# Tool-specific files
 .tern-port
+lighthouse*.json
+lighthouse*.html
 
-# Lighthouse reports
-lighthouseReport.json
-
-# Memory bank files
+# Project-specific ignores
 memory-bank/
 .cursor/
-
-# VSCode settings
 .vscode/
+.firebase/
 
 # OS generated files
 .DS_Store
@@ -98,14 +51,9 @@ memory-bank/
 ehthumbs.db
 Thumbs.db
 
-# Markdown files (optional - you can remove this if you want Prettier to format markdown)
-*.md
+# Let Prettier handle these (removed from ignore)
+# *.md - We want Prettier to format markdown
+# *.json - We want Prettier to format JSON
 
-# JSON files (optional - you can remove this if you want Prettier to format JSON)
-*.json
-
-# Configuration files
+# Only ignore specific config files that shouldn't be formatted
 .editorconfig
-.eslintrc*
-.prettierrc*
-commitlint.config.js

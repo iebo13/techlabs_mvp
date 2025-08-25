@@ -1,6 +1,7 @@
 # TechLabs Theme System
 
-This directory contains the MUI theme configuration and design tokens for the TechLabs website.
+This directory contains the MUI theme configuration and design tokens for the
+TechLabs website.
 
 ## Overview
 
@@ -83,8 +84,7 @@ The theme system provides:
 
 Provides consistent page section layout with semantic HTML:
 
-\`\`\`tsx
-import { Section } from '../components/Section';
+\`\`\`tsx import { Section } from '../components/Section';
 
 // Basic section
 
@@ -121,37 +121,24 @@ import { Section } from '../components/Section';
 
 Provides semantic headings with consistent typography:
 
-\`\`\`tsx
-import { SectionHeading } from '../components/SectionHeading';
+\`\`\`tsx import { SectionHeading } from '../components/SectionHeading';
 
-// Basic heading (defaults to h2)
-<SectionHeading>
-Section Title
+// Basic heading (defaults to h2) <SectionHeading> Section Title
 </SectionHeading>
 
-// Custom heading level
-<SectionHeading level={1}>
-Page Title
-</SectionHeading>
+// Custom heading level <SectionHeading level={1}> Page Title </SectionHeading>
 
 // Centered with emphasis
-<SectionHeading level={2} emphasis="gradient" centered>
-Hero Heading
+<SectionHeading level={2} emphasis="gradient" centered> Hero Heading
 </SectionHeading>
 
-// With subtitle
-<SectionHeading
-level={3}
-subtitle="Additional context or description"
+// With subtitle <SectionHeading level={3} subtitle="Additional context or
+description"
 
-> Main Heading
-> </SectionHeading>
+> Main Heading </SectionHeading>
 
-// Color emphasis
-<SectionHeading emphasis="primary">
-Primary Color Heading
-</SectionHeading>
-\`\`\`
+// Color emphasis <SectionHeading emphasis="primary"> Primary Color Heading
+</SectionHeading> \`\`\`
 
 ## Custom Component Styles
 
@@ -200,8 +187,7 @@ All color combinations meet WCAG AA standards:
 
 A dark theme variant is included but not currently active. To enable:
 
-\`\`\`tsx
-import { darkTheme } from './theme/theme';
+\`\`\`tsx import { darkTheme } from './theme/theme';
 
 <ThemeProvider theme={darkTheme}>
   {/* App content */}
@@ -212,15 +198,8 @@ import { darkTheme } from './theme/theme';
 
 The theme can be extended with additional design tokens:
 
-\`\`\`tsx
-const customTheme = createTheme({
-...theme,
-palette: {
-...theme.palette,
-// Add custom colors
-},
-// Add custom component variants
-});
+\`\`\`tsx const customTheme = createTheme({ ...theme, palette: {
+...theme.palette, // Add custom colors }, // Add custom component variants });
 \`\`\`
 
 ## Performance Notes

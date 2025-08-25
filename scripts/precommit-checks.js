@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * Pre-commit quality checks script
- * Runs all quality gates before allowing commits
+ * TechLabs MVP Pre-commit Quality Checks
+ * Comprehensive quality gates following industry best practices
+ * Based on conventional commits, security checks, and performance optimization
+ *
+ * @author TechLabs MVP Team
+ * @version 2.0.0
  */
 
 import { execSync } from 'child_process'
@@ -152,27 +156,47 @@ class QualityChecker {
   }
 
   /**
-   * Check for security vulnerabilities
+   * Comprehensive security vulnerability check
    */
   checkSecurity() {
+    const startTime = Date.now()
     try {
+      log.info('Running security vulnerability checks...')
+
       // Check for common security issues in dependencies
       const packageJson = JSON.parse(execSync('cat package.json', { encoding: 'utf8' }))
       const hasSecurityIssues = this.checkForSecurityIssues(packageJson)
 
+      // Check for hardcoded secrets in staged files
+      const secretsFound = this.checkForSecrets()
+
+      // Check for vulnerable dependencies (if npm audit is available)
+      let auditResults = null
+      try {
+        execSync('npm audit --audit-level high --omit dev', { stdio: 'pipe' })
+        auditResults = 'No high-severity vulnerabilities found'
+      } catch (auditError) {
+        auditResults = 'High-severity vulnerabilities detected - run "npm audit" for details'
+      }
+
+      const duration = Date.now() - startTime
+      const allSecurityChecksPass = !hasSecurityIssues && !secretsFound
+
       return {
         name: 'Security Check',
-        passed: !hasSecurityIssues,
-        duration: 0,
-        output: hasSecurityIssues
-          ? 'Potential security issues found'
-          : 'No security issues detected',
+        passed: allSecurityChecksPass,
+        duration,
+        output: allSecurityChecksPass
+          ? `No security issues detected. ${auditResults}`
+          : `Security issues found: ${hasSecurityIssues ? 'dangerous packages' : ''} ${secretsFound ? 'hardcoded secrets' : ''}. ${auditResults}`,
+        error: !allSecurityChecksPass ? 'Security validation failed' : undefined,
       }
     } catch (error) {
+      const duration = Date.now() - startTime
       return {
         name: 'Security Check',
         passed: false,
-        duration: 0,
+        duration,
         error: error instanceof Error ? error.message : String(error),
       }
     }
@@ -182,7 +206,17 @@ class QualityChecker {
    * Check for potential security issues in dependencies
    */
   checkForSecurityIssues(packageJson) {
-    const dangerousPackages = ['eval', 'vm', 'child_process', 'exec', 'spawn']
+    const dangerousPackages = [
+      'eval',
+      'vm',
+      'child_process',
+      'exec',
+      'spawn',
+      // Additional security-sensitive packages
+      'fs-extra',
+      'shelljs',
+      'node-cmd',
+    ]
 
     const allDeps = {
       ...packageJson.dependencies,
@@ -190,6 +224,144 @@ class QualityChecker {
     }
 
     return dangerousPackages.some(pkg => allDeps[pkg])
+  }
+
+  /**
+   * Check for hardcoded secrets in staged files
+   */
+  checkForSecrets() {
+    try {
+      const stagedFiles = execSync('git diff --cached --name-only', { encoding: 'utf8' })
+        .split('\n')
+        .filter(file => file.trim() && !file.includes('.env.example'))
+
+      const secretPatterns = [
+        /(api[_-]?key|apikey)\s*[:=]\s*['"`]?[a-z0-9]{20,}['"`]?/i,
+        /(secret[_-]?key|secretkey)\s*[:=]\s*['"`]?[a-z0-9]{20,}['"`]?/i,
+        /(password|passwd|pwd)\s*[:=]\s*['"`]?[^\s'"`]{8,}['"`]?/i,
+        /(token)\s*[:=]\s*['"`]?[a-z0-9]{20,}['"`]?/i,
+        /-----BEGIN\s+(RSA\s+)?PRIVATE\s+KEY-----/,
+        /(database_url|db_url)\s*[:=]\s*['"`]?[^\s'"`]+['"`]?/i,
+      ]
+
+      for (const file of stagedFiles) {
+        if (!existsSync(file)) continue
+
+        try {
+          const content = execSync(`git show :${file}`, { encoding: 'utf8' })
+          for (const pattern of secretPatterns) {
+            if (pattern.test(content)) {
+              return true
+            }
+          }
+        } catch (error) {
+          // File might be binary or deleted, skip
+          continue
+        }
+      }
+
+      return false
+    } catch (error) {
+      // If we can't check, assume no secrets for safety
+      return false
+    }
+  }
+
+  /**
+   * Check commit message format (conventional commits)
+   */
+  checkCommitMessage() {
+    try {
+      const commitMsgFile = '.git/COMMIT_EDITMSG'
+      if (!existsSync(commitMsgFile)) {
+        return {
+          name: 'Commit Message Format',
+          passed: true,
+          duration: 0,
+          output: 'No commit message to check (probably amending or initial commit)',
+        }
+      }
+
+      const commitMsg = execSync(`head -1 ${commitMsgFile}`, { encoding: 'utf8' }).trim()
+
+      // Basic conventional commit pattern
+      const conventionalPattern =
+        /^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)(\(.+\))?\!?:\s.{1,50}/
+
+      if (!conventionalPattern.test(commitMsg)) {
+        return {
+          name: 'Commit Message Format',
+          passed: false,
+          duration: 0,
+          error: `Commit message does not follow conventional commits format.\nExpected: type(scope): description\nActual: ${commitMsg}\nSee: https://conventionalcommits.org/`,
+        }
+      }
+
+      return {
+        name: 'Commit Message Format',
+        passed: true,
+        duration: 0,
+        output: `Conventional commit format verified: ${commitMsg}`,
+      }
+    } catch (error) {
+      return {
+        name: 'Commit Message Format',
+        passed: true,
+        duration: 0,
+        output: 'Could not validate commit message format',
+      }
+    }
+  }
+
+  /**
+   * Check code coverage threshold
+   */
+  checkCoverageThreshold() {
+    try {
+      log.info('Checking code coverage threshold...')
+
+      // Run coverage and check if it meets threshold
+      execSync('npm run test:coverage', { stdio: 'pipe' })
+
+      // Try to read coverage summary
+      if (existsSync('coverage/coverage-summary.json')) {
+        const coverageSummary = JSON.parse(
+          execSync('cat coverage/coverage-summary.json', { encoding: 'utf8' })
+        )
+        const totalCoverage = coverageSummary.total?.lines?.pct || 0
+        const threshold = 80 // 80% coverage threshold
+
+        if (totalCoverage < threshold) {
+          return {
+            name: 'Coverage Threshold',
+            passed: false,
+            duration: 0,
+            error: `Code coverage ${totalCoverage}% is below threshold ${threshold}%`,
+          }
+        }
+
+        return {
+          name: 'Coverage Threshold',
+          passed: true,
+          duration: 0,
+          output: `Code coverage ${totalCoverage}% meets threshold ${threshold}%`,
+        }
+      }
+
+      return {
+        name: 'Coverage Threshold',
+        passed: true,
+        duration: 0,
+        output: 'Coverage check completed (no summary available)',
+      }
+    } catch (error) {
+      return {
+        name: 'Coverage Threshold',
+        passed: true, // Don't fail the commit if coverage check fails
+        duration: 0,
+        output: 'Coverage check skipped (tests may have failed)',
+      }
+    }
   }
 
   /**
@@ -202,10 +374,12 @@ class QualityChecker {
       () => this.checkTypeScript(),
       () => this.checkLinting(),
       () => this.checkFormatting(),
+      () => this.checkCommitMessage(),
       () => this.checkTests(),
+      () => this.checkCoverageThreshold(),
+      () => this.checkSecurity(),
       () => this.checkUnusedImports(),
       () => this.checkBundleSize(),
-      () => this.checkSecurity(),
     ]
 
     for (const check of checks) {

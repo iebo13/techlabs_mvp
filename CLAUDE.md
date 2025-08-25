@@ -1,6 +1,7 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with
+code in this repository.
 
 ## Essential Commands
 
@@ -52,9 +53,12 @@ npm run prepare           # Setup Husky hooks
 ## Architecture Overview
 
 ### Project Type
-**Frontend-only TechLabs website MVP** - No backend integration, uses local JSON mocks with Zod validation.
+
+**Frontend-only TechLabs website MVP** - No backend integration, uses local JSON
+mocks with Zod validation.
 
 ### Tech Stack
+
 - **Core**: React 19 + TypeScript + Vite
 - **UI Library**: MUI v7 + Emotion
 - **Routing**: React Router DOM v7
@@ -67,7 +71,9 @@ npm run prepare           # Setup Husky hooks
 - **Deployment**: Firebase hosting
 
 ### Key Features
-- **Performance Monitoring**: Custom performance utilities with Web Vitals tracking
+
+- **Performance Monitoring**: Custom performance utilities with Web Vitals
+  tracking
 - **Accessibility**: Built-in accessibility tester component and WCAG compliance
 - **Lazy Loading**: Route-based code splitting with manual chunk optimization
 - **Form Handling**: Track selection with session storage persistence
@@ -111,7 +117,9 @@ src/
 ```
 
 ### Feature Structure
+
 Each feature follows consistent organization:
+
 ```
 features/<feature>/
 ├── page/                   # Main page component
@@ -129,65 +137,74 @@ features/<feature>/
 ### React & TypeScript Patterns
 
 1. **Component Definition**:
+
 ```typescript
 type ButtonProps = {
-  readonly variant: 'primary' | 'secondary';
-  readonly onClick: () => void;
-  readonly disabled?: boolean;
-};
+  readonly variant: 'primary' | 'secondary'
+  readonly onClick: () => void
+  readonly disabled?: boolean
+}
 
-export const Button: React.FC<ButtonProps> = ({ variant, onClick, disabled = false }) => {
+export const Button: React.FC<ButtonProps> = ({
+  variant,
+  onClick,
+  disabled = false,
+}) => {
   // Implementation
-};
+}
 ```
 
 2. **Custom Hooks**:
+
 ```typescript
 export const useUserAuth = () => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  
+  const [user, setUser] = useState<User | null>(null)
+  const [loading, setLoading] = useState(true)
+
   // Hook logic
-  return { user, loading, login, logout };
-};
+  return { user, loading, login, logout }
+}
 ```
 
 3. **Context Providers**:
+
 ```typescript
 type AuthContextType = {
-  readonly user: User | null;
-  readonly login: (credentials: LoginCredentials) => Promise<void>;
-  readonly logout: () => void;
-};
+  readonly user: User | null
+  readonly login: (credentials: LoginCredentials) => Promise<void>
+  readonly logout: () => void
+}
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 ```
 
 ### Data Management Patterns
 
 1. **Mock Data with Validation**:
+
 ```typescript
 // mocks/tracks.json + schemas.ts
 const trackSchema = z.object({
   id: z.string(),
   name: z.string(),
   description: z.string(),
-  duration: z.string()
-});
+  duration: z.string(),
+})
 
-export const validateTracks = (data: unknown) => trackSchema.array().parse(data);
+export const validateTracks = (data: unknown) => trackSchema.array().parse(data)
 ```
 
 2. **Session Storage Persistence**:
+
 ```typescript
 // utils/persistence.ts
 export const persistTrackSelection = (trackId: string) => {
-  sessionStorage.setItem('selectedTrack', trackId);
-};
+  sessionStorage.setItem('selectedTrack', trackId)
+}
 
 export const getPersistedTrackSelection = (): string | null => {
-  return sessionStorage.getItem('selectedTrack');
-};
+  return sessionStorage.getItem('selectedTrack')
+}
 ```
 
 ### Validation with Zod
@@ -205,10 +222,12 @@ const CreateUserData = z.infer<typeof createUserSchema>;
 ## Code Quality Standards
 
 ### File Size Limits
+
 - **Maximum 220 lines per file** - split into smaller modules if exceeded
 - Prefer composition over large monolithic components/functions
 
 ### Naming Conventions
+
 - **Folders**: camelCase (`userProfile/`, `navBar/`)
 - **Variables/Functions**: camelCase (`isUserLoggedIn`, `fetchUserData`)
 - **Components/Files**: PascalCase (`UserProfile.tsx`, `NavBar.tsx`)
@@ -217,6 +236,7 @@ const CreateUserData = z.infer<typeof createUserSchema>;
 - **Constants**: UPPER_SNAKE_CASE (`MAX_RETRY_ATTEMPTS`)
 
 ### TypeScript Standards
+
 - **Strict mode enabled** - zero tolerance for `any`
 - **Prefer enums** for categorical values exposed in UI/logic
 - **Use `type` for props/unions**, `interface` only for extension
@@ -240,6 +260,7 @@ const CreateUserData = z.infer<typeof createUserSchema>;
 ## Testing Strategy
 
 ### Frontend Testing
+
 ```typescript
 // Component testing with vitest
 describe('Button Component', () => {
@@ -259,27 +280,29 @@ describe('useUserAuth', () => {
 ```
 
 ### Performance & Bundle Testing
+
 ```typescript
 // Performance utilities testing
 describe('Performance Utils', () => {
   it('should track Core Web Vitals', async () => {
-    const metrics = await performanceMonitor.getCoreWebVitals();
-    expect(metrics.lcp).toBeLessThan(2500);
-  });
-});
+    const metrics = await performanceMonitor.getCoreWebVitals()
+    expect(metrics.lcp).toBeLessThan(2500)
+  })
+})
 
 // Bundle analysis
 describe('Bundle Analysis', () => {
   it('should keep main bundle under size limit', async () => {
-    const stats = await getBundleStats();
-    expect(stats.mainBundle.size).toBeLessThan(500000); // 500KB
-  });
-});
+    const stats = await getBundleStats()
+    expect(stats.mainBundle.size).toBeLessThan(500000) // 500KB
+  })
+})
 ```
 
 ## Error Handling
 
 ### Frontend Error Boundaries
+
 ```typescript
 export const RouteErrorBoundary: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
@@ -294,29 +317,33 @@ export const RouteErrorBoundary: React.FC<{ children: ReactNode }> = ({ children
 ```
 
 ### Performance Error Handling
+
 ```typescript
 // Performance monitoring with error tracking
 export const performanceErrorHandler = (error: Error) => {
-  console.error('Performance tracking error:', error);
-  
+  console.error('Performance tracking error:', error)
+
   // Track performance issues without breaking user experience
   if (window.gtag) {
     window.gtag('event', 'exception', {
       description: error.message,
-      fatal: false
-    });
+      fatal: false,
+    })
   }
-};
+}
 ```
 
 ## Git Workflow
 
 ### Commit Standards
-- **Conventional Commits**: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`
+
+- **Conventional Commits**: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`,
+  `test:`
 - **Small PRs**: Focus on single feature/fix with tests and description
 - **Pre-commit checks**: Always run `npm run precommit` before commit
 
 ### CI/CD Gates
+
 - ✅ **Linting**: ESLint with Airbnb config passes
 - ✅ **Type checking**: Zero TypeScript errors
 - ✅ **Tests**: All test suites pass
@@ -324,6 +351,7 @@ export const performanceErrorHandler = (error: Error) => {
 - ✅ **Security**: No vulnerabilities in dependencies
 
 ### Workflow Steps
+
 1. **Identify** reusable pattern or insight
 2. **Validate** with user when non-obvious or high-impact
 3. **Implement** following architectural patterns
@@ -335,18 +363,21 @@ export const performanceErrorHandler = (error: Error) => {
 ## Performance & Bundle Optimization
 
 ### Bundle Optimization
+
 - **Manual chunk splitting** by feature and vendor libraries
 - **Lazy loading** for all main routes
 - **Bundle analysis** tools built-in (`npm run analyze`)
 - **Tree shaking** optimized for MUI and other libraries
 
 ### Runtime Performance
+
 - **Web Vitals monitoring** with performance utilities
 - **Optimized images** with lazy loading
 - **Carousel performance** with keyboard navigation and auto-play controls
 - **Memory leak prevention** in video components
 
 ### Accessibility Performance
+
 - **Skip links** for keyboard navigation
 - **Focus management** in modals and carousels
 - **Screen reader** optimizations
@@ -355,6 +386,7 @@ export const performanceErrorHandler = (error: Error) => {
 ## Firebase Integration
 
 The project is configured for Firebase hosting:
+
 - **Hosting**: Firebase hosting setup in `firebase.json`
 - **Config**: Firebase config in `src/config/firebase.ts`
 - **Build**: Optimized for Firebase deployment with proper routing
@@ -362,7 +394,7 @@ The project is configured for Firebase hosting:
 ## Performance Targets
 
 - **Lighthouse Performance**: ≥ 85
-- **Lighthouse Accessibility**: ≥ 95  
+- **Lighthouse Accessibility**: ≥ 95
 - **Lighthouse Best Practices**: ≥ 90
 - **Core Web Vitals**: LCP < 2.5s on 4G
 - **Bundle Size**: Monitor with built-in analysis tools
@@ -370,6 +402,7 @@ The project is configured for Firebase hosting:
 ## Common Development Tasks
 
 ### Adding a New Feature
+
 1. Create feature directory: `src/features/<feature>/`
 2. Add page component in `page/` directory
 3. Create feature-specific components in `components/`
@@ -377,12 +410,14 @@ The project is configured for Firebase hosting:
 5. Export from `index.ts` for clean imports
 
 ### Adding Form with Validation
+
 1. Use React Hook Form with Zod resolver
 2. Define schema in appropriate feature or shared location
 3. Implement error handling with MUI form helpers
 4. Add form validation tests
 
 ### Performance Optimization
+
 1. Use `npm run build:analyze` to check bundle size
 2. Check lazy loading implementation for large components
 3. Use `npm run lighthouse` for performance auditing

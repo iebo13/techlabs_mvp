@@ -8,7 +8,11 @@
       "format": "Part-time, 2 evenings per week",
       "skills": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Git"],
       "projects": ["Personal portfolio", "E-commerce site", "Social media app"],
-      "careerPaths": ["Frontend Developer", "Full-stack Developer", "Web Designer"],
+      "careerPaths": [
+        "Frontend Developer",
+        "Full-stack Developer",
+        "Web Designer"
+      ],
       "nextCohort": "March 2025",
       "applicationDeadline": "February 15, 2025",
       "spotsAvailable": 25,
@@ -20,9 +24,24 @@
       "description": "Master data analysis, machine learning, and statistical modeling. Work with real datasets and build predictive models.",
       "duration": "8 months",
       "format": "Part-time, 2 evenings per week",
-      "skills": ["Python", "Pandas", "NumPy", "Scikit-learn", "SQL", "Data Visualization"],
-      "projects": ["Customer segmentation", "Sales forecasting", "Sentiment analysis"],
-      "careerPaths": ["Data Analyst", "Data Scientist", "Business Intelligence"],
+      "skills": [
+        "Python",
+        "Pandas",
+        "NumPy",
+        "Scikit-learn",
+        "SQL",
+        "Data Visualization"
+      ],
+      "projects": [
+        "Customer segmentation",
+        "Sales forecasting",
+        "Sentiment analysis"
+      ],
+      "careerPaths": [
+        "Data Analyst",
+        "Data Scientist",
+        "Business Intelligence"
+      ],
       "nextCohort": "April 2025",
       "applicationDeadline": "March 20, 2025",
       "spotsAvailable": 20,
@@ -34,7 +53,13 @@
       "description": "Design user-centered digital products using modern design tools and methodologies. Learn UX/UI principles and prototyping.",
       "duration": "6 months",
       "format": "Part-time, 2 evenings per week",
-      "skills": ["Figma", "User Research", "Wireframing", "Prototyping", "Design Systems"],
+      "skills": [
+        "Figma",
+        "User Research",
+        "Wireframing",
+        "Prototyping",
+        "Design Systems"
+      ],
       "projects": ["Mobile app design", "Website redesign", "Design system"],
       "careerPaths": ["UX Designer", "UI Designer", "Product Designer"],
       "nextCohort": "May 2025",
@@ -48,9 +73,20 @@
       "description": "Explore AI fundamentals, machine learning algorithms, and neural networks. Build intelligent systems and applications.",
       "duration": "8 months",
       "format": "Part-time, 2 evenings per week",
-      "skills": ["Python", "TensorFlow", "PyTorch", "Deep Learning", "NLP", "Computer Vision"],
+      "skills": [
+        "Python",
+        "TensorFlow",
+        "PyTorch",
+        "Deep Learning",
+        "NLP",
+        "Computer Vision"
+      ],
       "projects": ["Chatbot", "Image classifier", "Recommendation system"],
-      "careerPaths": ["AI Engineer", "Machine Learning Engineer", "Research Scientist"],
+      "careerPaths": [
+        "AI Engineer",
+        "Machine Learning Engineer",
+        "Research Scientist"
+      ],
       "nextCohort": "June 2025",
       "applicationDeadline": "May 30, 2025",
       "spotsAvailable": 15,

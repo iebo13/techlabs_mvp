@@ -1,1 +1,54 @@
-npx --no -- commitlint --edit $1
+#!/usr/bin/env sh
+
+# TechLabs MVP Commit Message Hook
+# Validates commit messages against conventional commits standard
+# Based on commitlint best practices
+
+# Color codes for better output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Function to print colored output
+print_status() {
+    printf "${BLUE}🔍 $1${NC}\n"
+}
+
+print_success() {
+    printf "${GREEN}✅ $1${NC}\n"
+}
+
+print_warning() {
+    printf "${YELLOW}⚠️  $1${NC}\n"
+}
+
+print_error() {
+    printf "${RED}❌ $1${NC}\n"
+}
+
+# Check if commitlint is available
+if ! command -v npx > /dev/null 2>&1; then
+    print_error "npx is required but not installed"
+    exit 1
+fi
+
+print_status "Validating commit message format..."
+
+# Use commitlint to validate the commit message
+if npx commitlint --edit "$1"; then
+    print_success "Commit message format is valid! ✨"
+else
+    print_error "Commit message validation failed!"
+    print_warning "Please follow conventional commits format:"
+    print_warning "  type(scope): description"
+    print_warning ""
+    print_warning "Examples:"
+    print_warning "  feat: add user authentication"
+    print_warning "  fix(api): resolve data validation error"
+    print_warning "  docs(readme): update installation guide"
+    print_warning ""
+    print_warning "See docs/commit-message-examples.md for more examples"
+    exit 1
+fi

@@ -14,7 +14,10 @@
   "partners": [
     { "name": "O2", "logoUrl": "/img/partners/o2.svg" },
     { "name": "HUAWEI", "logoUrl": "/img/partners/huawei.svg" },
-    { "name": "Deutsche Telekom", "logoUrl": "/img/partners/deutsche-telekom.svg" },
+    {
+      "name": "Deutsche Telekom",
+      "logoUrl": "/img/partners/deutsche-telekom.svg"
+    },
     { "name": "Deutsche Post", "logoUrl": "/img/partners/deutsche-post.svg" }
   ],
   "video": {

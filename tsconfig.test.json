@@ -4,5 +4,10 @@
     "types": ["vitest/globals"],
     "skipLibCheck": true
   },
-  "include": ["src/**/__tests__/**/*", "src/**/*.test.*", "src/**/*.spec.*", "src/test/**/*"]
+  "include": [
+    "src/**/__tests__/**/*",
+    "src/**/*.test.*",
+    "src/**/*.spec.*",
+    "src/test/**/*"
+  ]
 }

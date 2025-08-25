@@ -12,10 +12,10 @@
   ],
   "applicationDeadlineISO": "2025-11-15T00:00:00Z",
   "partners": [
-    { "name": "arc", "logoUrl": "/img/partners/arc.svg" },
+    { "name": "O2", "logoUrl": "/img/partners/o2.svg" },
     { "name": "HUAWEI", "logoUrl": "/img/partners/huawei.svg" },
-    { "name": "Beiersdorf", "logoUrl": "/img/partners/beiersdorf.svg" },
-    { "name": "zeb", "logoUrl": "/img/partners/zeb.svg" }
+    { "name": "Deutsche Telekom", "logoUrl": "/img/partners/deutsche-telekom.svg" },
+    { "name": "Deutsche Post", "logoUrl": "/img/partners/deutsche-post.svg" }
   ],
   "video": {
     "posterUrl": "/img/video-poster.jpg",

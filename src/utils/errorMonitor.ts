@@ -31,7 +31,7 @@ const createErrorMonitor = (): ErrorMonitorInstance => {
   const _maxQueueSize = 50
 
   const _setupGlobalErrorHandlers = (): void => {
-    window.addEventListener('error', (event) => {
+    window.addEventListener('error', event => {
       captureError({
         message: event.message,
         stack: event.error?.stack,
@@ -41,13 +41,13 @@ const createErrorMonitor = (): ErrorMonitorInstance => {
         timestamp: Date.now(),
         userAgent: navigator.userAgent,
         route: window.location.pathname,
-        buildVersion: import.meta.env.VITE_BUILD_VERSION || 'unknown'
+        buildVersion: import.meta.env.VITE_BUILD_VERSION || 'unknown',
       })
     })
   }
 
   const _setupUnhandledRejectionHandler = (): void => {
-    window.addEventListener('unhandledrejection', (event) => {
+    window.addEventListener('unhandledrejection', event => {
       captureError({
         message: `Unhandled Promise Rejection: ${event.reason}`,
         stack: event.reason?.stack,
@@ -55,17 +55,20 @@ const createErrorMonitor = (): ErrorMonitorInstance => {
         timestamp: Date.now(),
         userAgent: navigator.userAgent,
         route: window.location.pathname,
-        buildVersion: import.meta.env.VITE_BUILD_VERSION || 'unknown'
+        buildVersion: import.meta.env.VITE_BUILD_VERSION || 'unknown',
       })
     })
   }
 
   const _setupReactErrorBoundary = (): void => {
     // This will be called by React error boundaries
-    ; (window as unknown as Record<string, unknown>).__errorMonitor = { captureError }
+    ;(window as unknown as Record<string, unknown>).__errorMonitor = { captureError }
   }
 
-  const captureError = (error: Partial<ErrorReport>, additionalData?: Record<string, unknown>): void => {
+  const captureError = (
+    error: Partial<ErrorReport>,
+    additionalData?: Record<string, unknown>
+  ): void => {
     const fullError: ErrorReport = {
       message: error.message || 'Unknown error',
       stack: error.stack,
@@ -76,7 +79,7 @@ const createErrorMonitor = (): ErrorMonitorInstance => {
       userAgent: error.userAgent || navigator.userAgent,
       route: error.route || window.location.pathname,
       buildVersion: error.buildVersion || import.meta.env.VITE_BUILD_VERSION || 'unknown',
-      additionalData
+      additionalData,
     }
 
     // Add to queue
@@ -114,7 +117,7 @@ const createErrorMonitor = (): ErrorMonitorInstance => {
       // Option 3: Log to console for now (can be viewed in browser dev tools)
       console.error('Production Error Report:', {
         ...error,
-        formattedTime: new Date(error.timestamp).toISOString()
+        formattedTime: new Date(error.timestamp).toISOString(),
       })
 
       // Store in localStorage for debugging
@@ -161,12 +164,19 @@ const createErrorMonitor = (): ErrorMonitorInstance => {
   }
 
   // Manual error reporting for components
-  const reportError = (message: string, error?: Error, additionalData?: Record<string, unknown>): void => {
-    captureError({
-      message,
-      stack: error?.stack,
+  const reportError = (
+    message: string,
+    error?: Error,
+    additionalData?: Record<string, unknown>
+  ): void => {
+    captureError(
+      {
+        message,
+        stack: error?.stack,
+        additionalData,
+      },
       additionalData
-    }, additionalData)
+    )
   }
 
   const init = (): void => {
@@ -187,7 +197,7 @@ const createErrorMonitor = (): ErrorMonitorInstance => {
     captureError,
     getStoredErrors,
     clearStoredErrors,
-    reportError
+    reportError,
   }
 }
 

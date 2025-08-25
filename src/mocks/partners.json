@@ -2,14 +2,6 @@
   "partners": [
     {
       "tier": "platinum",
-      "name": "Google.org",
-      "logoUrl": "/img/partners/google-org.svg",
-      "description": "Winner of the Google.org Impact Challenge Germany 2018",
-      "website": "https://www.google.org",
-      "category": "Technology & Innovation"
-    },
-    {
-      "tier": "gold",
       "name": "HUAWEI",
       "logoUrl": "/img/partners/huawei.svg",
       "description": "Global technology leader supporting digital transformation",
@@ -18,51 +10,27 @@
     },
     {
       "tier": "gold",
-      "name": "Beiersdorf",
-      "logoUrl": "/img/partners/beiersdorf.svg",
+      "name": "O2",
+      "logoUrl": "/img/partners/o2.svg",
       "description": "Consumer goods company driving digital innovation",
-      "website": "https://www.beiersdorf.com",
-      "category": "Consumer Goods"
+      "website": "https://www.o2.com",
+      "category": "Telecommunications"
     },
     {
       "tier": "silver",
-      "name": "arc",
-      "logoUrl": "/img/partners/arc.svg",
+      "name": "deutsche telekom",
+      "logoUrl": "/img/partners/deutsche-telekom.svg",
       "description": "Digital agency specializing in creative technology solutions",
-      "website": "https://www.arc.com",
+      "website": "https://www.deutsche-telekom.com",
       "category": "Digital Agency"
     },
     {
-      "tier": "silver",
-      "name": "zeb",
-      "logoUrl": "/img/partners/zeb.svg",
-      "description": "Management consultancy for financial services",
-      "website": "https://www.zeb.de",
-      "category": "Consulting"
-    },
-    {
       "tier": "bronze",
-      "name": "Microsoft",
-      "logoUrl": "/img/partners/microsoft.svg",
+      "name": "deutsche post",
+      "logoUrl": "/img/partners/deutsche-post.svg",
       "description": "Empowering digital transformation through technology",
-      "website": "https://www.microsoft.com",
-      "category": "Technology & Innovation"
-    },
-    {
-      "tier": "bronze",
-      "name": "SAP",
-      "logoUrl": "/img/partners/sap.svg",
-      "description": "Enterprise software solutions for digital business",
-      "website": "https://www.sap.com",
-      "category": "Technology & Innovation"
-    },
-    {
-      "tier": "bronze",
-      "name": "Volkswagen",
-      "logoUrl": "/img/partners/volkswagen.svg",
-      "description": "Automotive industry leader in digital innovation",
-      "website": "https://www.volkswagen.com",
-      "category": "Automotive"
+      "website": "https://www.deutsche-post.com",
+      "category": "Postal Services"
     }
   ],
   "tiers": [

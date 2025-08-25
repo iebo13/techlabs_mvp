@@ -17,6 +17,7 @@ const DefaultFallback = memo(() => {
     const timer = setInterval(() => {
       setProgress(prev => {
         if (prev >= 90) return prev
+
         return prev + Math.random() * 15
       })
     }, 200)
@@ -43,18 +44,18 @@ const DefaultFallback = memo(() => {
         px={2}
       >
         <Box sx={{ width: '100%', maxWidth: 400 }}>
-          <LinearProgress 
-            variant="determinate" 
+          <LinearProgress
+            variant="determinate"
             value={progress}
-            sx={{ 
-              height: 6, 
+            sx={{
+              height: 6,
               borderRadius: 3,
               backgroundColor: 'grey.200',
               '& .MuiLinearProgress-bar': {
                 borderRadius: 3,
-                background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)'
-              }
-            }} 
+                background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
+              },
+            }}
           />
         </Box>
         <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>

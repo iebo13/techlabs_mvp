@@ -4,17 +4,9 @@ import {
   Work as WorkIcon,
   School as SchoolIcon,
 } from '@mui/icons-material'
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Chip,
-  Grid,
-  Stack,
-  Typography,
-  useTheme,
-} from '@mui/material'
+import { Box, Card, CardContent, Chip, Grid, Stack, Typography, useTheme } from '@mui/material'
+import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
+import { getStoryImage } from '@/services/imageService'
 import type { Story } from '@/types/home'
 
 type StoryCardProps = {
@@ -51,12 +43,17 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
         }}
         aria-label={`View details for ${story.title}`}
       >
-        <CardMedia
-          component="img"
-          height="200"
-          image={story.imageUrl}
+        <OptimizedImage
+          src={getStoryImage(story.id)}
           alt={`${story.title} - ${story.excerpt}`}
-          sx={{ objectFit: 'cover' }}
+          width="100%"
+          height="200"
+          sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 400px"
+          lazy
+          style={{
+            borderTopLeftRadius: 'inherit',
+            borderTopRightRadius: 'inherit',
+          }}
         />
         <CardContent sx={{ flexGrow: 1 }}>
           <Stack spacing={2}>

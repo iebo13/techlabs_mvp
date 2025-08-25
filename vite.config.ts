@@ -81,10 +81,7 @@ export default defineConfig({
       // Router essentials
       'react-router-dom',
     ],
-    exclude: [
-      '@emotion/babel-plugin',
-      'firebase',
-    ],
+    exclude: ['@emotion/babel-plugin', 'firebase'],
     force: true,
     entries: ['src/main.tsx'],
   },

@@ -4,7 +4,7 @@ import {
   Close as CloseIcon,
   ExpandMore as ExpandMoreIcon,
   Download as DownloadIcon,
-  Delete as DeleteIcon
+  Delete as DeleteIcon,
 } from '@mui/icons-material'
 import {
   Box,
@@ -18,7 +18,7 @@ import {
   Chip,
   Accordion,
   AccordionSummary,
-  AccordionDetails
+  AccordionDetails,
 } from '@mui/material'
 import { errorMonitor } from '@/utils/errorMonitor'
 
@@ -57,7 +57,12 @@ export const DebugPanel: React.FC = () => {
   }
 
   const handleDownloadErrors = () => {
-    const errorData = { timestamp: new Date().toISOString(), url: window.location.href, userAgent: navigator.userAgent, errors }
+    const errorData = {
+      timestamp: new Date().toISOString(),
+      url: window.location.href,
+      userAgent: navigator.userAgent,
+      errors,
+    }
 
     const blob = new Blob([JSON.stringify(errorData, null, 2)], { type: 'application/json' })
 
@@ -89,7 +94,9 @@ export const DebugPanel: React.FC = () => {
 
   const renderErrorDetails = (error: ErrorData) => (
     <Box sx={{ fontSize: '0.875rem' }}>
-      <Typography variant="subtitle2" gutterBottom>Error Details:</Typography>
+      <Typography variant="subtitle2" gutterBottom>
+        Error Details:
+      </Typography>
       <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
         <strong>URL:</strong> {error.url}
       </Typography>
@@ -98,7 +105,8 @@ export const DebugPanel: React.FC = () => {
       </Typography>
       {error.line && (
         <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
-          <strong>Location:</strong> Line {error.line}{error.column ? `, Col ${error.column}` : ''}
+          <strong>Location:</strong> Line {error.line}
+          {error.column ? `, Col ${error.column}` : ''}
         </Typography>
       )}
       {error.buildVersion && (
@@ -109,7 +117,9 @@ export const DebugPanel: React.FC = () => {
 
       {error.stack && (
         <>
-          <Typography variant="subtitle2" gutterBottom sx={{ mt: 2 }}>Stack Trace:</Typography>
+          <Typography variant="subtitle2" gutterBottom sx={{ mt: 2 }}>
+            Stack Trace:
+          </Typography>
           <Typography
             variant="body2"
             sx={{
@@ -120,7 +130,7 @@ export const DebugPanel: React.FC = () => {
               p: 1,
               borderRadius: 1,
               maxHeight: 200,
-              overflow: 'auto'
+              overflow: 'auto',
             }}
           >
             {error.stack}
@@ -130,7 +140,9 @@ export const DebugPanel: React.FC = () => {
 
       {error.additionalData && (
         <>
-          <Typography variant="subtitle2" gutterBottom sx={{ mt: 2 }}>Additional Data:</Typography>
+          <Typography variant="subtitle2" gutterBottom sx={{ mt: 2 }}>
+            Additional Data:
+          </Typography>
           <Typography
             variant="body2"
             sx={{
@@ -139,7 +151,7 @@ export const DebugPanel: React.FC = () => {
               whiteSpace: 'pre-wrap',
               backgroundColor: 'grey.100',
               p: 1,
-              borderRadius: 1
+              borderRadius: 1,
             }}
           >
             {JSON.stringify(error.additionalData, null, 2)}
@@ -215,7 +227,7 @@ export const DebugPanel: React.FC = () => {
           <Typography color="text.secondary">No errors captured yet. This is good! 🎉</Typography>
         ) : (
           <List>
-            {errors.map((error) => (
+            {errors.map(error => (
               <Accordion key={`error-${error.timestamp}-${error.message}`} sx={{ mb: 1 }}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <Box sx={{ width: '100%' }}>
@@ -225,11 +237,11 @@ export const DebugPanel: React.FC = () => {
                         size="small"
                         color={getSeverityColor(error.message)}
                       />
-                      <Typography variant="caption">
-                        {formatTimestamp(error.timestamp)}
-                      </Typography>
+                      <Typography variant="caption">{formatTimestamp(error.timestamp)}</Typography>
                     </Box>
-                    <Typography variant="body2" noWrap>{error.message}</Typography>
+                    <Typography variant="body2" noWrap>
+                      {error.message}
+                    </Typography>
                   </Box>
                 </AccordionSummary>
                 <AccordionDetails>{renderErrorDetails(error)}</AccordionDetails>

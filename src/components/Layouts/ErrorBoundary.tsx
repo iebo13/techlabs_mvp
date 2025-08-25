@@ -1,6 +1,18 @@
 import React, { useState, useEffect, type ReactNode } from 'react'
-import { ExpandMore as ExpandMoreIcon, Refresh as RefreshIcon, ErrorOutline as ErrorIcon } from '@mui/icons-material'
-import { Box, Typography, Button, Alert, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
+import {
+  ExpandMore as ExpandMoreIcon,
+  Refresh as RefreshIcon,
+  ErrorOutline as ErrorIcon,
+} from '@mui/icons-material'
+import {
+  Box,
+  Typography,
+  Button,
+  Alert,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from '@mui/material'
 import { errorMonitor } from '@/utils/errorMonitor'
 
 type ErrorBoundaryProps = {
@@ -24,17 +36,20 @@ export const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children, fallback
       const errorId = `error_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`
 
       // Report to error monitor
-      errorMonitor.captureError({
-        message: `React Error Boundary: ${error.message}`,
-        stack: error.stack,
-        timestamp: Date.now(),
-        userAgent: navigator.userAgent,
-        route: window.location.pathname,
-      }, {
-        errorId,
-        componentStack: errorInfo.componentStack,
-        errorBoundary: 'ErrorBoundary'
-      })
+      errorMonitor.captureError(
+        {
+          message: `React Error Boundary: ${error.message}`,
+          stack: error.stack,
+          timestamp: Date.now(),
+          userAgent: navigator.userAgent,
+          route: window.location.pathname,
+        },
+        {
+          errorId,
+          componentStack: errorInfo.componentStack,
+          errorBoundary: 'ErrorBoundary',
+        }
+      )
 
       // Call custom error handler if provided
       onError?.(error, errorInfo)
@@ -58,7 +73,7 @@ export const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children, fallback
       return false
     }
 
-    window.onunhandledrejection = (event) => {
+    window.onunhandledrejection = event => {
       if (event.reason instanceof Error) {
         handleError(event.reason, { componentStack: '' })
       }
@@ -99,7 +114,7 @@ export const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children, fallback
           alignItems: 'center',
           justifyContent: 'center',
           p: 3,
-          textAlign: 'center'
+          textAlign: 'center',
         }}
       >
         <ErrorIcon sx={{ fontSize: 64, color: 'error.main', mb: 2 }} />
@@ -113,17 +128,10 @@ export const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children, fallback
         </Typography>
 
         <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
-          <Button
-            variant="contained"
-            startIcon={<RefreshIcon />}
-            onClick={_handleRetry}
-          >
+          <Button variant="contained" startIcon={<RefreshIcon />} onClick={_handleRetry}>
             Try Again
           </Button>
-          <Button
-            variant="outlined"
-            onClick={_handleReload}
-          >
+          <Button variant="outlined" onClick={_handleReload}>
             Reload Page
           </Button>
         </Box>
@@ -137,9 +145,7 @@ export const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children, fallback
         {isDev && error && (
           <Accordion sx={{ width: '100%', maxWidth: 800 }}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography variant="subtitle2">
-                Developer Information
-              </Typography>
+              <Typography variant="subtitle2">Developer Information</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Box sx={{ textAlign: 'left' }}>
@@ -161,7 +167,7 @@ export const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children, fallback
                         fontFamily: 'monospace',
                         whiteSpace: 'pre-wrap',
                         fontSize: '0.75rem',
-                        mb: 2
+                        mb: 2,
                       }}
                     >
                       {error.stack}
@@ -179,7 +185,7 @@ export const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children, fallback
                       sx={{
                         fontFamily: 'monospace',
                         whiteSpace: 'pre-wrap',
-                        fontSize: '0.75rem'
+                        fontSize: '0.75rem',
                       }}
                     >
                       {errorInfo.componentStack}

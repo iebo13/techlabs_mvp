@@ -22,7 +22,7 @@ export const addResourceHint = ({
   type,
   as,
   crossorigin,
-  media
+  media,
 }: ResourceHintOptions): void => {
   // Check if hint already exists
   const existing = document.querySelector(`link[rel="${type}"][href="${href}"]`)
@@ -50,14 +50,14 @@ export const preloadCriticalResources = (): void => {
     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
     type: 'preload',
     as: 'style',
-    crossorigin: 'anonymous'
+    crossorigin: 'anonymous',
   })
 
   // Preload hero images
   addResourceHint({
     href: '/img/hero-bg.jpg',
     type: 'preload',
-    as: 'image'
+    as: 'image',
   })
 }
 
@@ -71,7 +71,7 @@ export const prefetchLikelyPages = (): void => {
     addResourceHint({
       href: route,
       type: 'prefetch',
-      as: 'document'
+      as: 'document',
     })
   })
 }
@@ -80,15 +80,12 @@ export const prefetchLikelyPages = (): void => {
  * Add DNS prefetch for external domains
  */
 export const addDnsPrefetch = (): void => {
-  const domains = [
-    'https://fonts.googleapis.com',
-    'https://fonts.gstatic.com'
-  ]
+  const domains = ['https://fonts.googleapis.com', 'https://fonts.gstatic.com']
 
   domains.forEach(domain => {
     addResourceHint({
       href: domain,
-      type: 'dns-prefetch'
+      type: 'dns-prefetch',
     })
   })
 }

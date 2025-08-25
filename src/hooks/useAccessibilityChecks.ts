@@ -22,15 +22,18 @@ export const useAccessibilityChecks = () => {
 
     // Try to use a unique class combination
     if (element.classList.length > 0) {
-      const classes = Array.from(element.classList).slice(0, 2).join('.')
+      const classes = [...element.classList].slice(0, 2).join('.')
+
       return `${element.tagName.toLowerCase()}.${classes}`
     }
 
     // Use tag name with position and context
     const parent = element.parentElement
+
     if (parent) {
       const parentTag = parent.tagName.toLowerCase()
       const parentId = parent.id ? `#${parent.id}` : parentTag
+
       return `${parentId} > ${element.tagName.toLowerCase()}:nth-child(${index + 1})`
     }
 

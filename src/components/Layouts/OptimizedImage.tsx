@@ -14,6 +14,9 @@ type OptimizedImageProps = {
   style?: React.CSSProperties
   onLoad?: () => void
   onError?: () => void
+  // Props for responsive images
+  sizes?: string
+  srcSet?: string
 }
 
 /**
@@ -32,6 +35,8 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
     style,
     onLoad,
     onError,
+    sizes,
+    srcSet,
   }) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const [isInView, setIsInView] = useState(!lazy || priority)
@@ -84,7 +89,9 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
         document.head.appendChild(link)
 
         return () => {
-          document.head.removeChild(link)
+          if (document.head.contains(link)) {
+            document.head.removeChild(link)
+          }
         }
       }
     }, [priority, src])
@@ -154,6 +161,8 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
             onError={handleError}
             loading={lazy && !priority ? 'lazy' : 'eager'}
             decoding="async"
+            sizes={sizes}
+            srcSet={srcSet}
           />
         )}
 

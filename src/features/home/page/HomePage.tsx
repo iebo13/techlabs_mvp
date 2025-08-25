@@ -9,10 +9,20 @@ import { HeroSection } from '../components/HeroSection'
 import HeroVideo from '../components/HeroVideo'
 
 // Lazy load below-the-fold components for better initial loading
-const WhyTechlabs = lazy(() => import('../components/WhyTechlabs').then(m => ({ default: m.WhyTechlabs })))
-const StoriesCarousel = lazy(() => import('@/features/stories/components/StoriesCarousel').then(m => ({ default: m.StoriesCarousel })))
-const NumbersBand = lazy(() => import('../components/NumbersBand').then(m => ({ default: m.NumbersBand })))
-const SupportCta = lazy(() => import('@/features/stories/components/SupportCta').then(m => ({ default: m.SupportCta })))
+const WhyTechlabs = lazy(() =>
+  import('../components/WhyTechlabs').then(m => ({ default: m.WhyTechlabs }))
+)
+const StoriesCarousel = lazy(() =>
+  import('@/features/stories/components/StoriesCarousel').then(m => ({
+    default: m.StoriesCarousel,
+  }))
+)
+const NumbersBand = lazy(() =>
+  import('../components/NumbersBand').then(m => ({ default: m.NumbersBand }))
+)
+const SupportCta = lazy(() =>
+  import('@/features/stories/components/SupportCta').then(m => ({ default: m.SupportCta }))
+)
 const Faqs = lazy(() => import('@/components/Forms/Faqs').then(m => ({ default: m.Faqs })))
 
 // Optimized loading fallbacks

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Typography, Stack, Grid, useTheme } from '@mui/material'
+import googleOrgLogo from '@/assets/partners/google.svg'
 import { PartnerLogo } from '@/features/partners/components/PartnerLogo'
 import type { Partner } from '@/types/home'
 
@@ -38,7 +39,7 @@ export const TrustStripSection: React.FC<TrustStripSectionProps> = ({ partners }
         </Typography>
         <Box
           component="img"
-          src="https://www.google.org/static/images/google-org-logo.svg"
+          src={googleOrgLogo}
           alt="Google.org"
           sx={{
             height: { xs: 20, sm: 22 },

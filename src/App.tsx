@@ -14,13 +14,9 @@ import performanceMonitor from '@/utils/performance'
 import { initializeResourceHints } from '@/utils/resourceHints'
 
 // Optimized lazy loading with preloading hints and priority-based loading
-const HomePage = lazy(() => {
-  // Preload critical home page dependencies
-  import('@/features/home/components/HeroSection')
-  const homeImport = import('@/features/home/page/HomePage')
-
-  return homeImport.then(module => ({ default: module.HomePage }))
-})
+const HomePage = lazy(() =>
+  import('@/features/home/page/HomePage').then(module => ({ default: module.HomePage }))
+)
 
 const TracksPage = lazy(() =>
   import('@/features/tracks/page/TracksPage').then(module => ({ default: module.TracksPage }))
@@ -99,9 +95,11 @@ const App: React.FC = memo(() => {
       performanceMonitor.init()
     }
 
-
     // Preload likely-to-be-visited pages after initial load
     const preloadPages = () => {
+      // Preload critical home page dependencies immediately
+      import('@/features/home/components/HeroSection')
+
       // Preload tracks page (common next navigation)
       setTimeout(() => {
         import('@/features/tracks/page/TracksPage')

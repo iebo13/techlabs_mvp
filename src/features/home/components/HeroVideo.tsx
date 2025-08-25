@@ -2,7 +2,6 @@ import React, { useState, lazy, Suspense } from 'react'
 import { PlayArrow as PlayArrowIcon } from '@mui/icons-material'
 import {
   Card,
-  CardMedia,
   Box,
   IconButton,
   Chip,
@@ -10,6 +9,8 @@ import {
   useMediaQuery,
   CircularProgress,
 } from '@mui/material'
+import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
+import { getHeroImage } from '@/services/imageService'
 
 // Lazy load VideoEmbed component since it's only used when user clicks to watch video
 const VideoEmbed = lazy(() =>
@@ -80,15 +81,17 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
         }}
         aria-label={`Play ${title}, duration ${durationText}`}
       >
-        <CardMedia
-          component="img"
-          image={posterUrl}
+        <OptimizedImage
+          src={posterUrl || getHeroImage('video-poster')}
           alt={`${title} thumbnail`}
-          sx={{
+          width="100%"
+          height="auto"
+          sizes="(max-width: 600px) 100vw, (max-width: 900px) 80vw, 800px"
+          priority
+          style={{
             aspectRatio: '16/9',
             objectFit: 'cover',
-            width: '100%',
-            height: 'auto',
+            borderRadius: 'inherit',
           }}
         />
 

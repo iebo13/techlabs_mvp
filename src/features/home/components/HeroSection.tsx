@@ -66,26 +66,21 @@ export const HeroSection: React.FC<HeroSectionProps> = memo(({ className }) => {
     navigate(route)
   }, [selectedTracks, navigate])
 
-  // Memoize the section styles to prevent recalculation
-  const sectionStyles = useMemo(
-    () => ({
-      minHeight: { xs: '50vh', md: '60vh' },
-      display: 'flex',
-      alignItems: 'center',
-      textAlign: 'center',
-      backgroundColor: 'background.default',
-      pt: { xs: 6, md: 6 },
-      pb: { xs: 8, md: 8 },
-    }),
-    []
-  )
-
-  // Memoize the stack spacing to prevent recalculation
-  const stackSpacing = useMemo(() => ({ xs: 6, md: 8 }), [])
-
   return (
-    <Section className={className} component="section" sx={sectionStyles}>
-      <Stack spacing={stackSpacing} alignItems="center" sx={{ width: '100%' }}>
+    <Section
+      className={className}
+      component="section"
+      sx={{
+        minHeight: { xs: '50vh', md: '60vh' },
+        display: 'flex',
+        alignItems: 'center',
+        textAlign: 'center',
+        backgroundColor: 'background.default',
+        pt: { xs: 6, md: 6 },
+        pb: { xs: 8, md: 8 },
+      }}
+    >
+      <Stack spacing={2} alignItems="center" sx={{ width: '100%' }}>
         {/* Hero Content */}
         <Box sx={{ width: '100%', mx: 'auto' }}>
           {/* Main Heading */}

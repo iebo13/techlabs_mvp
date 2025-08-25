@@ -1,7 +1,9 @@
 import React from 'react'
 import { formatDistanceToNow } from 'date-fns'
 import { Link } from 'react-router-dom'
-import { Box, Card, CardContent, CardMedia, Chip, Stack, Typography } from '@mui/material'
+import { Box, Card, CardContent, Chip, Stack, Typography } from '@mui/material'
+import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
+import { getEventImage } from '@/services/imageService'
 
 export type Event = {
   id: string
@@ -43,12 +45,17 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
         },
       }}
     >
-      <CardMedia
-        component="img"
-        height="200"
-        image={event.imageUrl}
+      <OptimizedImage
+        src={getEventImage(event.id)}
         alt={`${event.title} event image`}
-        sx={{ objectFit: 'cover' }}
+        width="100%"
+        height="200"
+        sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 300px"
+        lazy
+        style={{
+          borderTopLeftRadius: 'inherit',
+          borderTopRightRadius: 'inherit',
+        }}
       />
       <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ mb: 2 }}>

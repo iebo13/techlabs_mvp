@@ -219,17 +219,9 @@ export const throttle = <T extends (...args: unknown[]) => unknown>(
 /**
  * Measure function execution time
  */
-export const measureExecutionTime = <T>(fn: () => T, name: string): T => {
-  const start = performance.now()
-  const result = fn()
-  const duration = performance.now() - start
-
-  if (import.meta.env.DEV) {
-    // eslint-disable-next-line no-console
-    console.log(`${name} took ${duration.toFixed(2)}ms`)
-  }
-
-  return result
+export const measureExecutionTime = <T>(fn: () => T, _name: string): T => {
+  // Performance measurement for production builds
+  return fn()
 }
 
 /**
@@ -237,16 +229,8 @@ export const measureExecutionTime = <T>(fn: () => T, name: string): T => {
  */
 export const measureAsyncExecutionTime = async <T>(
   fn: () => Promise<T>,
-  name: string
+  _name: string
 ): Promise<T> => {
-  const start = performance.now()
-  const result = await fn()
-  const duration = performance.now() - start
-
-  if (import.meta.env.DEV) {
-    // eslint-disable-next-line no-console
-    console.log(`${name} took ${duration.toFixed(2)}ms`)
-  }
-
-  return result
+  // Performance measurement for production builds
+  return await fn()
 }

@@ -53,10 +53,10 @@ describe('TrustStrip', () => {
     )
 
     // Check specific partner alt texts based on mock data
-    expect(screen.getByAltText('arc')).toBeInTheDocument()
+    expect(screen.getByAltText('O2')).toBeInTheDocument()
     expect(screen.getByAltText('HUAWEI')).toBeInTheDocument()
-    expect(screen.getByAltText('Beiersdorf')).toBeInTheDocument()
-    expect(screen.getByAltText('zeb')).toBeInTheDocument()
+    expect(screen.getByAltText('Deutsche Telekom')).toBeInTheDocument()
+    expect(screen.getByAltText('Deutsche Post')).toBeInTheDocument()
   })
 
   it('enables lazy loading for all partner logos', () => {
@@ -82,10 +82,16 @@ describe('TrustStrip', () => {
     )
 
     // Verify specific partner logo sources based on mock data
-    expect(screen.getByAltText('arc')).toHaveAttribute('src', '/img/partners/arc.svg')
+    expect(screen.getByAltText('O2')).toHaveAttribute('src', '/img/partners/o2.svg')
     expect(screen.getByAltText('HUAWEI')).toHaveAttribute('src', '/img/partners/huawei.svg')
-    expect(screen.getByAltText('Beiersdorf')).toHaveAttribute('src', '/img/partners/beiersdorf.svg')
-    expect(screen.getByAltText('zeb')).toHaveAttribute('src', '/img/partners/zeb.svg')
+    expect(screen.getByAltText('Deutsche Telekom')).toHaveAttribute(
+      'src',
+      '/img/partners/deutsche-telekom.svg'
+    )
+    expect(screen.getByAltText('Deutsche Post')).toHaveAttribute(
+      'src',
+      '/img/partners/deutsche-post.svg'
+    )
   })
 
   it('provides screen reader context about partners', () => {

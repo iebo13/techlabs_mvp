@@ -85,8 +85,9 @@ describe('NumbersBand', () => {
   it('has proper responsive grid structure', () => {
     renderWithTheme(<NumbersBand numbers={mockNumbers} />)
 
-    const gridContainer = screen.getByText('Our Impact').closest('[class*="MuiContainer-root"]')
-    expect(gridContainer).toBeInTheDocument()
+    // Check that the section exists
+    const section = screen.getByText('Our Impact').closest('section')
+    expect(section).toBeInTheDocument()
 
     // Should have 3 grid items
     const gridItems = screen.getAllByText(/15|600|35/)

@@ -36,26 +36,44 @@ export const generateUnsplashUrl = (
   // Base Unsplash random image URL
   const baseUrl = 'https://images.unsplash.com'
 
-  // Category-specific search terms for better relevance
-  const categoryQueries: Record<ImageCategory, string> = {
-    person: 'professional,portrait,person,headshot',
-    business: 'business,professional,office,corporate',
-    technology: 'technology,computer,coding,developer',
-    event: 'conference,meetup,event,presentation',
-    team: 'team,group,people,collaboration',
-    education: 'education,learning,study,university',
-    startup: 'startup,innovation,entrepreneurship,business',
-    conference: 'conference,speaker,audience,presentation',
-    office: 'office,workspace,modern,clean',
-    hero: 'technology,innovation,future,abstract',
-  }
-
   // Create a deterministic seed based on category for consistent images
   const seed = category + Date.now().toString().slice(-6)
 
   // Use Unsplash's Source API for simpler integration
   // Format: https://source.unsplash.com/{width}x{height}/?{query}
-  const query = categoryQueries[category] || category
+  let query: string
+
+  switch (category) {
+    case 'person':
+      query = 'portrait,people,professional'
+      break
+    case 'business':
+      query = 'business,office,corporate'
+      break
+    case 'technology':
+      query = 'technology,computer,digital'
+      break
+    case 'education':
+      query = 'education,learning,classroom'
+      break
+    case 'event':
+      query = 'event,conference,meeting'
+      break
+    case 'conference':
+      query = 'conference,meeting,professional'
+      break
+    case 'startup':
+      query = 'startup,innovation,entrepreneur'
+      break
+    case 'team':
+      query = 'team,group,people'
+      break
+    case 'hero':
+      query = 'technology,innovation,future,abstract'
+      break
+    default:
+      query = category
+  }
 
   return `${baseUrl}/${width}x${height}/?${query}&sig=${seed}`
 }
@@ -112,7 +130,7 @@ export const getStoryImage = (storyId: string): string => {
   // Use the story ID to create deterministic but varied images
   const categories: ImageCategory[] = ['person', 'business', 'technology']
   const categoryIndex = parseInt(storyId.slice(-1), 16) % categories.length
-  const category = categories[categoryIndex]
+  const category = categories.at(categoryIndex) ?? 'person'
 
   return generateUnsplashUrl(category, {
     width: 400,
@@ -127,7 +145,7 @@ export const getStoryImage = (storyId: string): string => {
 export const getEventImage = (eventId: string): string => {
   const categories: ImageCategory[] = ['event', 'conference', 'technology', 'education']
   const categoryIndex = parseInt(eventId.slice(-1), 16) % categories.length
-  const category = categories[categoryIndex]
+  const category = categories.at(categoryIndex) ?? 'event'
 
   return generateUnsplashUrl(category, {
     width: 600,
@@ -175,16 +193,30 @@ export const getSupportImage = (type = 'default'): string => {
  * Meta/OG image helper
  */
 export const getMetaImage = (page: string): string => {
-  const categoryMap: Record<string, ImageCategory> = {
-    home: 'technology',
-    about: 'team',
-    tracks: 'education',
-    events: 'conference',
-    stories: 'startup',
-    partners: 'business',
-  }
+  let category: ImageCategory = 'technology'
 
-  const category = categoryMap[page] || 'technology'
+  switch (page) {
+    case 'home':
+      category = 'technology'
+      break
+    case 'about':
+      category = 'team'
+      break
+    case 'tracks':
+      category = 'education'
+      break
+    case 'events':
+      category = 'conference'
+      break
+    case 'stories':
+      category = 'startup'
+      break
+    case 'partners':
+      category = 'business'
+      break
+    default:
+      category = 'technology'
+  }
 
   return generateUnsplashUrl(category, {
     width: 1200,

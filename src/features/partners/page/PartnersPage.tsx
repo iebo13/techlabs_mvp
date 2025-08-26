@@ -13,22 +13,26 @@ import type { DetailedPartner } from '@/types/home'
 export const PartnersPage: React.FC = () => {
   // Group partners by tier using a more type-safe approach
   const partnersByTier = (() => {
-    const grouped: Record<string, DetailedPartner[]> = {}
+    const grouped = new Map<string, DetailedPartner[]>()
 
     partnersData.partners.forEach(partner => {
       const tier = partner.tier
 
       // Validate tier is a string before using as key
       if (typeof tier === 'string' && tier.length > 0) {
-        if (!grouped[tier]) {
-          grouped[tier] = []
+        if (!grouped.has(tier)) {
+          grouped.set(tier, [])
         }
 
-        grouped[tier].push(partner)
+        const tierPartners = grouped.get(tier)
+
+        if (tierPartners) {
+          tierPartners.push(partner)
+        }
       }
     })
 
-    return grouped
+    return Object.fromEntries(grouped)
   })()
 
   // Sort tiers by priority (platinum, gold, silver, bronze)
@@ -52,7 +56,7 @@ export const PartnersPage: React.FC = () => {
       {/* Partners by Tier */}
       {tierOrder.map(tierId => {
         const tier = partnersData.tiers.find(t => t.id === tierId)
-        const partners = partnersByTier[tierId] || []
+        const partners = partnersByTier[tierId as keyof typeof partnersByTier] || []
 
         if (!tier || partners.length === 0) return null
 

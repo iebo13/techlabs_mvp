@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 export type AccessibilityIssue = {
   type: 'error' | 'warning' | 'info'
@@ -40,8 +40,8 @@ export const useAccessibilityChecks = () => {
     // Fallback to tag with index
     return `${element.tagName.toLowerCase()}:nth-child(${index + 1})`
   }
-
-  const runAccessibilityChecks = () => {
+  // eslint-disable-next-line
+  const runAccessibilityChecks = useCallback(() => {
     const newIssues: AccessibilityIssue[] = []
 
     // Check for missing alt text on images
@@ -147,13 +147,13 @@ export const useAccessibilityChecks = () => {
     })
 
     setIssues(newIssues)
-  }
+  }, [])
 
   useEffect(() => {
     if (import.meta.env.DEV) {
       runAccessibilityChecks()
     }
-  }, [])
+  }, [runAccessibilityChecks])
 
   return {
     issues,

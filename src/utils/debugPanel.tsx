@@ -2,37 +2,12 @@ import React, { useState, useEffect } from 'react'
 import {
   ErrorOutline as BugIcon,
   Close as CloseIcon,
-  ExpandMore as ExpandMoreIcon,
   Download as DownloadIcon,
   Delete as DeleteIcon,
 } from '@mui/icons-material'
-import {
-  Box,
-  Fab,
-  Drawer,
-  Typography,
-  List,
-  Button,
-  Divider,
-  Alert,
-  Chip,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from '@mui/material'
+import { Box, Fab, Drawer, Typography, Button, Divider, Alert } from '@mui/material'
 import { errorMonitor } from '@/utils/errorMonitor'
-
-type ErrorData = {
-  message: string
-  timestamp: number
-  url: string
-  route?: string
-  line?: number
-  column?: number
-  stack?: string
-  buildVersion?: string
-  additionalData?: Record<string, unknown>
-}
+import { ErrorList, type ErrorData } from './debugPanel/ErrorList'
 
 export const DebugPanel: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -65,9 +40,7 @@ export const DebugPanel: React.FC = () => {
     }
 
     const blob = new Blob([JSON.stringify(errorData, null, 2)], { type: 'application/json' })
-
     const url = URL.createObjectURL(blob)
-
     const a = document.createElement('a')
 
     a.href = url
@@ -82,84 +55,6 @@ export const DebugPanel: React.FC = () => {
     errorMonitor.clearStoredErrors()
     setErrors([])
   }
-
-  const formatTimestamp = (timestamp: number) => new Date(timestamp).toLocaleString()
-
-  const getSeverityColor = (message: string) => {
-    if (message.includes('Error') || message.includes('error')) return 'error'
-    if (message.includes('Warning') || message.includes('warning')) return 'warning'
-
-    return 'info'
-  }
-
-  const renderErrorDetails = (error: ErrorData) => (
-    <Box sx={{ fontSize: '0.875rem' }}>
-      <Typography variant="subtitle2" gutterBottom>
-        Error Details:
-      </Typography>
-      <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
-        <strong>URL:</strong> {error.url}
-      </Typography>
-      <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
-        <strong>Route:</strong> {error.route}
-      </Typography>
-      {error.line && (
-        <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
-          <strong>Location:</strong> Line {error.line}
-          {error.column ? `, Col ${error.column}` : ''}
-        </Typography>
-      )}
-      {error.buildVersion && (
-        <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
-          <strong>Build:</strong> {error.buildVersion}
-        </Typography>
-      )}
-
-      {error.stack && (
-        <>
-          <Typography variant="subtitle2" gutterBottom sx={{ mt: 2 }}>
-            Stack Trace:
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{
-              fontFamily: 'monospace',
-              fontSize: '0.75rem',
-              whiteSpace: 'pre-wrap',
-              backgroundColor: 'grey.100',
-              p: 1,
-              borderRadius: 1,
-              maxHeight: 200,
-              overflow: 'auto',
-            }}
-          >
-            {error.stack}
-          </Typography>
-        </>
-      )}
-
-      {error.additionalData && (
-        <>
-          <Typography variant="subtitle2" gutterBottom sx={{ mt: 2 }}>
-            Additional Data:
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{
-              fontFamily: 'monospace',
-              fontSize: '0.75rem',
-              whiteSpace: 'pre-wrap',
-              backgroundColor: 'grey.100',
-              p: 1,
-              borderRadius: 1,
-            }}
-          >
-            {JSON.stringify(error.additionalData, null, 2)}
-          </Typography>
-        </>
-      )}
-    </Box>
-  )
 
   return (
     <>
@@ -222,33 +117,7 @@ export const DebugPanel: React.FC = () => {
         </Box>
 
         <Divider sx={{ mb: 2 }} />
-
-        {errors.length === 0 ? (
-          <Typography color="text.secondary">No errors captured yet. This is good! 🎉</Typography>
-        ) : (
-          <List>
-            {errors.map(error => (
-              <Accordion key={`error-${error.timestamp}-${error.message}`} sx={{ mb: 1 }}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <Box sx={{ width: '100%' }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                      <Chip
-                        label={getSeverityColor(error.message)}
-                        size="small"
-                        color={getSeverityColor(error.message)}
-                      />
-                      <Typography variant="caption">{formatTimestamp(error.timestamp)}</Typography>
-                    </Box>
-                    <Typography variant="body2" noWrap>
-                      {error.message}
-                    </Typography>
-                  </Box>
-                </AccordionSummary>
-                <AccordionDetails>{renderErrorDetails(error)}</AccordionDetails>
-              </Accordion>
-            ))}
-          </List>
-        )}
+        <ErrorList errors={errors} />
       </Drawer>
     </>
   )

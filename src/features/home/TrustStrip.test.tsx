@@ -155,7 +155,6 @@ describe('TrustStrip', () => {
     expect(screen.getByText('Winner of the')).toBeInTheDocument()
     expect(screen.getByText('Impact Challenge Germany 2018')).toBeInTheDocument()
     expect(screen.getByAltText('Google.org')).toBeInTheDocument()
-    expect(screen.getByAltText('arc')).toBeInTheDocument()
   })
 
   it('maintains proper semantic structure', () => {

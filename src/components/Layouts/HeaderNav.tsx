@@ -20,11 +20,11 @@ export const HeaderNav: React.FC = memo(() => {
   const { mobileOpen, handleDrawerToggle, handleDrawerClose } = useMobileDrawer()
 
   const getResponsiveSpacing = () => {
-    if (isXs) return { px: 2, py: 1, minHeight: 64 }
-    if (isSm) return { px: 3, py: 1.5, minHeight: 68 }
-    if (isTablet) return { px: 4, py: 2, minHeight: 72 }
+    if (isXs) return { px: 0, py: 1, minHeight: 64 }
+    if (isSm) return { px: 0, py: 1.5, minHeight: 68 }
+    if (isTablet) return { px: 0, py: 2, minHeight: 72 }
 
-    return { px: 5, py: 2, minHeight: 76 }
+    return { px: 0, py: 1, minHeight: 76 }
   }
 
   const toolbarSpacing = getResponsiveSpacing()
@@ -48,6 +48,9 @@ export const HeaderNav: React.FC = memo(() => {
           },
           zIndex: theme.zIndex.appBar,
           userSelect: 'none',
+          width: '100vw',
+          left: 0,
+          right: 0,
           paddingTop: {
             xs: 'env(safe-area-inset-top, 0px)',
             md: 0,
@@ -58,12 +61,6 @@ export const HeaderNav: React.FC = memo(() => {
           sx={{
             ...toolbarSpacing,
             width: '100%',
-            maxWidth: {
-              xs: '100%',
-              lg: '1200px',
-              xl: '1400px',
-            },
-            mx: 'auto',
             minHeight: {
               xs: '64px !important',
               sm: '68px !important',
@@ -78,7 +75,7 @@ export const HeaderNav: React.FC = memo(() => {
               alignItems: 'center',
               width: '100%',
               justifyContent: 'space-between',
-              gap: { xs: 1, sm: 2, md: 3 },
+              gap: { xs: 1, sm: 2, md: 2 },
             }}
           >
             <Logo />

@@ -17,10 +17,10 @@ export const DesktopNavigation: React.FC = memo(() => {
 
   const getNavigationSpacing = () => {
     if (isTablet) return { gap: 2 }
-    if (isLarge) return { gap: 3 }
-    if (isXLarge) return { gap: 4 }
+    if (isLarge) return { gap: 2 }
+    if (isXLarge) return { gap: 3 }
 
-    return { gap: 2.5 }
+    return { gap: 2 }
   }
 
   const getCTASpacing = () => {
@@ -57,10 +57,6 @@ export const DesktopNavigation: React.FC = memo(() => {
             sx={{
               display: 'flex',
               alignItems: 'center',
-              minWidth: {
-                md: 'auto',
-                lg: '100px',
-              },
             }}
           >
             <NavLink to={item.path}>{item.label}</NavLink>

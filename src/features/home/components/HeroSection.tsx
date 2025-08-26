@@ -12,28 +12,16 @@ import homeData from '@/mocks/home.json'
 import { HomeDataSchema } from '@/mocks/schemas'
 import type { HomeData } from '@/types/home'
 import { saveTrackSelection, loadTrackSelection, trackIdsToQueryParam } from '@/utils/persistence'
+import { AwardLine } from './AwardLine'
 import { TrustStripSection } from './TrustStripSection'
 
-// Common color constant
 const SECONDARY_TEXT_COLOR = 'text.secondary' as const
 
-// Define TrackKey locally to avoid import issues
 type TrackKey = 'web-dev' | 'data-science' | 'product-design' | 'ai'
 
-/**
- * HeroSection component props
- */
-export type HeroSectionProps = {
-  className?: string
-}
-
-/**
- * HeroSection component - unified hero area with track selection and trust indicators
- */
-export const HeroSection: React.FC<HeroSectionProps> = memo(({ className }) => {
+export const HeroSection: React.FC = memo(() => {
   const navigate = useNavigate()
 
-  // Validate and parse mock data - memoized to prevent re-validation
   const validatedData: HomeData = useMemo(() => HomeDataSchema.parse(homeData), [])
   const { tracks, partners } = validatedData
 
@@ -68,7 +56,6 @@ export const HeroSection: React.FC<HeroSectionProps> = memo(({ className }) => {
 
   return (
     <Section
-      className={className}
       component="section"
       sx={{
         minHeight: { xs: '50vh', md: '60vh' },
@@ -137,6 +124,9 @@ export const HeroSection: React.FC<HeroSectionProps> = memo(({ className }) => {
           onTrackChange={handleTrackChange}
           onStartLearning={handleStartLearning}
         />
+
+        {/* Award Line */}
+        <AwardLine />
 
         {/* Trust Strip Content */}
         <TrustStripSection partners={partners} />

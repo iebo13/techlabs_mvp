@@ -122,7 +122,7 @@ const App: React.FC = memo(() => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter>
-          <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
             <SkipToContent />
             <HeaderNav />
             <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>

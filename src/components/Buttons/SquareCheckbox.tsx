@@ -4,14 +4,16 @@ import { Box } from '@mui/material'
 
 // Common styles for checkbox icons
 const CHECKBOX_BASE_STYLES = {
-  width: 20,
-  height: 20,
+  width: 24,
+  height: 24,
   borderRadius: '3px',
   border: '2px solid',
   borderColor: 'primary.main',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  boxSizing: 'border-box',
+  flexShrink: 0,
 } as const
 
 /**

@@ -1,6 +1,5 @@
 import React from 'react'
-import { Container, Box } from '@mui/material'
-import type { ContainerProps } from '@mui/material/Container'
+import { Box } from '@mui/material'
 
 export type SectionProps = {
   /** Background color variant */
@@ -11,7 +10,9 @@ export type SectionProps = {
   component?: 'section' | 'div' | 'main' | 'article' | 'aside'
   /** Children content */
   children: React.ReactNode
-} & Omit<ContainerProps, 'component'>
+  /** Additional styles */
+  sx?: React.ComponentProps<typeof Box>['sx']
+}
 
 /**
  * Section component provides consistent spacing and layout for page sections.
@@ -23,7 +24,6 @@ export const Section: React.FC<SectionProps> = ({
   component = 'section',
   children,
   sx,
-  ...containerProps
 }) => {
   const getBackgroundColor = () => {
     switch (variant) {
@@ -58,7 +58,7 @@ export const Section: React.FC<SectionProps> = ({
         ...sx,
       }}
     >
-      <Container {...containerProps}>{children}</Container>
+      {children}
     </Box>
   )
 }

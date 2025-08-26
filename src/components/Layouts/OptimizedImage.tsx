@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, memo, useCallback } from 'react'
+import React, { useState, useRef, useEffect, memo } from 'react'
 import { Box, Skeleton } from '@mui/material'
 import { createImageObserver } from '@/utils/performanceUtils'
 
@@ -45,16 +45,16 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
     const observerRef = useRef<IntersectionObserver | null>(null)
 
     // Handle image load
-    const handleLoad = useCallback(() => {
+    const handleLoad = () => {
       setIsLoaded(true)
       onLoad?.()
-    }, [onLoad])
+    }
 
     // Handle image error
-    const handleError = useCallback(() => {
+    const handleError = () => {
       setHasError(true)
       onError?.()
-    }, [onError])
+    }
 
     // Setup intersection observer for lazy loading
     useEffect(() => {
@@ -96,26 +96,20 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
       }
     }, [priority, src])
 
-    // Memoize the image styles to prevent recalculation
-    const imageStyles = useCallback(
-      () => ({
-        width: width || 'auto',
-        height: height || 'auto',
-        objectFit: 'cover' as const,
-        transition: 'opacity 0.3s ease-in-out',
-        opacity: isLoaded ? 1 : 0,
-      }),
-      [width, height, isLoaded]
-    )
+    // Image styles
+    const imageStyles = {
+      width: width || 'auto',
+      height: height || 'auto',
+      objectFit: 'cover' as const,
+      transition: 'opacity 0.3s ease-in-out',
+      opacity: isLoaded ? 1 : 0,
+    }
 
-    // Memoize the skeleton styles to prevent recalculation
-    const skeletonStyles = useCallback(
-      () => ({
-        width: width || '100%',
-        height: height || '200px',
-      }),
-      [width, height]
-    )
+    // Skeleton styles
+    const skeletonStyles = {
+      width: width || '100%',
+      height: height || '200px',
+    }
 
     if (hasError) {
       return (
@@ -149,14 +143,14 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
         }}
       >
         {/* Loading skeleton */}
-        {!isLoaded && <Skeleton variant="rectangular" sx={skeletonStyles()} animation="wave" />}
+        {!isLoaded && <Skeleton variant="rectangular" sx={skeletonStyles} animation="wave" />}
 
         {/* Actual image */}
         {isInView && (
           <img
             src={src}
             alt={alt}
-            style={imageStyles()}
+            style={imageStyles}
             onLoad={handleLoad}
             onError={handleError}
             loading={lazy && !priority ? 'lazy' : 'eager'}

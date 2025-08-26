@@ -1,4 +1,4 @@
-import React, { Suspense, memo, useMemo, useState, useEffect } from 'react'
+import React, { Suspense, memo, useState, useEffect } from 'react'
 import { Refresh as RefreshIcon } from '@mui/icons-material'
 import { Box, Typography, Alert, Button, Fade, LinearProgress } from '@mui/material'
 
@@ -121,13 +121,11 @@ const LazyPageErrorBoundary: React.FC<{
 
 export const LazyPage: React.FC<LazyPageProps> = memo(
   ({ children, fallback = <DefaultFallback />, errorFallback = <DefaultErrorFallback /> }) => {
-    // Memoize the error boundary to prevent unnecessary re-renders
-    const errorBoundary = useMemo(
-      () => <LazyPageErrorBoundary fallback={errorFallback}>{children}</LazyPageErrorBoundary>,
-      [children, errorFallback]
+    return (
+      <Suspense fallback={fallback}>
+        <LazyPageErrorBoundary fallback={errorFallback}>{children}</LazyPageErrorBoundary>
+      </Suspense>
     )
-
-    return <Suspense fallback={fallback}>{errorBoundary}</Suspense>
   }
 )
 

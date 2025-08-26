@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, memo } from 'react'
+import React, { memo } from 'react'
 import { HourglassEmpty } from '@mui/icons-material'
 import {
   Box,
@@ -33,55 +33,47 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = memo(
   ({ tracks, selectedTracks, onTrackChange, onStartLearning }) => {
     const theme = useTheme()
 
-    // Memoize the form group styles to prevent recalculation
-    const formGroupStyles = useMemo(
-      () => ({
-        gap: { xs: 2.5, sm: 3 },
-        width: '100%',
-        maxWidth: 400,
-      }),
-      []
-    )
+    // Form group styles
+    const formGroupStyles = {
+      gap: { xs: 2.5, sm: 3 },
+      width: '100%',
+      maxWidth: 400,
+    }
 
-    // Memoize the button styles to prevent recalculation
-    const buttonStyles = useMemo(
-      () => ({
-        height: 60,
-        minWidth: 140,
-        width: '100%',
-        px: 2,
-        fontSize: '1rem',
-        fontWeight: 800,
-        borderRadius: 1,
-        textTransform: 'none' as const,
+    // Button styles
+    const buttonStyles = {
+      height: 60,
+      minWidth: 140,
+      width: '100%',
+      px: 2,
+      fontSize: '1rem',
+      fontWeight: 800,
+      borderRadius: 1,
+      textTransform: 'none' as const,
+      boxShadow: 'none',
+      '&:hover': {
         boxShadow: 'none',
-        '&:hover': {
-          boxShadow: 'none',
-        },
-        '&:focus-visible': {
-          outline: `2px solid ${theme.palette.primary.main}`,
-          outlineOffset: 2,
-        },
-        '&:disabled': {
-          backgroundColor: theme.palette.action.disabled,
-          color: theme.palette.action.disabled,
-        },
-      }),
-      [theme.palette.primary.main, theme.palette.action.disabled]
-    )
+      },
+      '&:focus-visible': {
+        outline: `2px solid ${theme.palette.primary.main}`,
+        outlineOffset: 2,
+      },
+      '&:disabled': {
+        backgroundColor: theme.palette.action.disabled,
+        color: theme.palette.action.disabled,
+      },
+    }
 
-    // Memoize the track change handler to prevent unnecessary re-renders
-    const handleTrackChange = useCallback(
+    // Track change handler
+    const handleTrackChange =
       (trackId: TrackKey) => (event: React.ChangeEvent<HTMLInputElement>) => {
         onTrackChange(trackId, event.target.checked)
-      },
-      [onTrackChange]
-    )
+      }
 
-    // Memoize the start learning handler to prevent unnecessary re-renders
-    const handleStartLearningClick = useCallback(() => {
+    // Start learning handler
+    const handleStartLearningClick = () => {
       onStartLearning()
-    }, [onStartLearning])
+    }
 
     return (
       <Stack spacing={6} alignItems="center" sx={{ width: '100%' }}>

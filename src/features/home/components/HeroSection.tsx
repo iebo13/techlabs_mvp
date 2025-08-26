@@ -3,7 +3,7 @@
  * Features: main value proposition, track selection, and trust indicators
  */
 
-import React, { useState, useEffect, useMemo, useCallback, memo } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Typography, Stack } from '@mui/material'
 import { Section } from '@/components/Layouts/Section'
@@ -22,7 +22,7 @@ type TrackKey = 'web-dev' | 'data-science' | 'product-design' | 'ai'
 export const HeroSection: React.FC = memo(() => {
   const navigate = useNavigate()
 
-  const validatedData: HomeData = useMemo(() => HomeDataSchema.parse(homeData), [])
+  const validatedData: HomeData = HomeDataSchema.parse(homeData)
   const { tracks, partners } = validatedData
 
   // State for selected tracks
@@ -35,8 +35,8 @@ export const HeroSection: React.FC = memo(() => {
     setSelectedTracks(savedTracks)
   }, [])
 
-  // Handle track selection change - memoized to prevent unnecessary re-renders
-  const handleTrackChange = useCallback((trackId: TrackKey, checked: boolean) => {
+  // Handle track selection change
+  const handleTrackChange = (trackId: TrackKey, checked: boolean) => {
     setSelectedTracks(prev => {
       const newSelection = checked ? [...prev, trackId] : prev.filter(id => id !== trackId)
 
@@ -44,15 +44,15 @@ export const HeroSection: React.FC = memo(() => {
 
       return newSelection
     })
-  }, [])
+  }
 
-  // Handle "Start Learning" button click - memoized to prevent unnecessary re-renders
-  const handleStartLearning = useCallback(() => {
+  // Handle "Start Learning" button click
+  const handleStartLearning = () => {
     const queryParam = trackIdsToQueryParam(selectedTracks)
     const route = selectedTracks.length > 0 ? `/tracks?pref=${queryParam}` : '/tracks'
 
     navigate(route)
-  }, [selectedTracks, navigate])
+  }
 
   return (
     <Section

@@ -15,16 +15,9 @@ import { TrackChooserForm } from './TrackChooserForm'
 import { TrackChooserHeader } from './TrackChooserHeader'
 
 /**
- * TrackChooser component props
- */
-export type TrackChooserProps = {
-  className?: string
-}
-
-/**
  * TrackChooser component
  */
-export const TrackChooser: React.FC<TrackChooserProps> = ({ className }) => {
+export const TrackChooser: React.FC = () => {
   // Validate and parse mock data
   const validatedData: HomeData = HomeDataSchema.parse(homeData)
   const { tracks } = validatedData
@@ -33,7 +26,6 @@ export const TrackChooser: React.FC<TrackChooserProps> = ({ className }) => {
 
   return (
     <Section
-      className={className}
       sx={{
         pt: { xs: 7, md: 9 }, // 56-72px top spacing
         pb: { xs: 6, md: 8 },

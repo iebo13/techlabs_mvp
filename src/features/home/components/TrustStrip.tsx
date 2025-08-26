@@ -10,16 +10,6 @@ import homeData from '@/mocks/home.json'
 import { HomeDataSchema } from '@/mocks/schemas'
 import type { HomeData, Partner } from '@/types/home'
 
-/**
- * TrustStrip component props
- */
-export type TrustStripProps = {
-  className?: string
-}
-
-/**
- * Partner logo component with lazy loading and proper accessibility
- */
 const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
   return (
     <Box
@@ -44,13 +34,8 @@ const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
   )
 }
 
-/**
- * TrustStrip component
- */
-export const TrustStrip: React.FC<TrustStripProps> = ({ className }) => {
+export const TrustStrip: React.FC = () => {
   const theme = useTheme()
-  // Mobile breakpoint ready for future responsive features
-  // const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   // Validate and parse mock data
   const validatedData: HomeData = HomeDataSchema.parse(homeData)
@@ -58,7 +43,6 @@ export const TrustStrip: React.FC<TrustStripProps> = ({ className }) => {
 
   return (
     <Section
-      className={className}
       sx={{
         py: { xs: 3, md: 4 }, // Modest gap spacing
         backgroundColor: 'background.default', // Pure white background

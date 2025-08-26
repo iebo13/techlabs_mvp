@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback, memo } from 'react'
+import React, { useState, useRef, useEffect, memo } from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Button, Stack, useTheme, useMediaQuery } from '@mui/material'
 import { Section } from '@/components/Layouts/Section'
@@ -21,76 +21,69 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = memo(
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
     const isTablet = useMediaQuery(theme.breakpoints.down('md'))
 
-    // Calculate cards per view based on screen size - memoized to prevent recalculation
-    const cardsPerView = useMemo(() => (isMobile ? 1 : isTablet ? 2 : 3), [isMobile, isTablet])
-    const maxIndex = useMemo(
-      () => Math.max(0, stories.length - cardsPerView),
-      [stories.length, cardsPerView]
-    )
+    // Calculate cards per view based on screen size
+    const cardsPerView = isMobile ? 1 : isTablet ? 2 : 3
+    const maxIndex = Math.max(0, stories.length - cardsPerView)
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const carouselRef = useRef<HTMLDivElement>(null)
 
-    // Memoize navigation handlers to prevent unnecessary re-renders
-    const handlePrevious = useCallback(() => {
+    // Navigation handlers for UI buttons
+    const handlePrevious = () => {
       setCurrentIndex(prev => (prev - 1 + stories.length) % stories.length)
-    }, [stories.length])
+    }
 
-    const handleNext = useCallback(() => {
+    const handleNext = () => {
       setCurrentIndex(prev => (prev + 1) % stories.length)
-    }, [stories.length])
+    }
 
-    const handleGoToStart = useCallback(() => {
-      setCurrentIndex(0)
-    }, [])
+    // Visible stories
+    const visibleStories = stories.slice(currentIndex, currentIndex + cardsPerView)
 
-    const handleGoToEnd = useCallback(() => {
-      setCurrentIndex(maxIndex)
-    }, [maxIndex])
+    // Carousel styles
+    const carouselStyles = {
+      position: 'relative' as const,
+      overflow: 'hidden',
+      borderRadius: 2,
+    }
 
-    // Memoize visible stories to prevent recalculation
-    const visibleStories = useMemo(
-      () => stories.slice(currentIndex, currentIndex + cardsPerView),
-      [stories, currentIndex, cardsPerView]
-    )
-
-    // Memoize carousel styles to prevent recalculation
-    const carouselStyles = useMemo(
-      () => ({
-        position: 'relative' as const,
-        overflow: 'hidden',
-        borderRadius: 2,
-      }),
-      []
-    )
-
-    // Memoize grid styles to prevent recalculation
-    const gridStyles = useMemo(
-      () => ({
-        display: 'grid',
-        gridTemplateColumns: {
-          xs: '1fr',
-          sm: 'repeat(2, 1fr)',
-          md: 'repeat(3, 1fr)',
-        },
-        gap: 3,
-      }),
-      []
-    )
-
-    // Memoize story key down handler to prevent unnecessary re-renders
-    const handleStoryKeyDown = useCallback(
-      (storyId: string) => (event: React.KeyboardEvent) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault()
-          window.location.href = `/stories/${storyId}`
-        }
+    // Grid styles
+    const gridStyles = {
+      display: 'grid',
+      gridTemplateColumns: {
+        xs: '1fr',
+        sm: 'repeat(2, 1fr)',
+        md: 'repeat(3, 1fr)',
       },
-      []
-    )
+      gap: 3,
+    }
+
+    // Story key down handler
+    const handleStoryKeyDown = (storyId: string) => (event: React.KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        window.location.href = `/stories/${storyId}`
+      }
+    }
 
     // Keyboard navigation
     useEffect(() => {
+      const handlePrevious = () => {
+        setCurrentIndex(prev => (prev - 1 + stories.length) % stories.length)
+      }
+
+      const handleNext = () => {
+        setCurrentIndex(prev => (prev + 1) % stories.length)
+      }
+
+      const handleGoToStart = () => {
+        setCurrentIndex(0)
+      }
+
+      const handleGoToEnd = () => {
+        setCurrentIndex(maxIndex)
+      }
+
       const handleKeyDown = (event: KeyboardEvent) => {
         if (!carouselRef.current?.contains(event.target as Node)) return
 
@@ -117,7 +110,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = memo(
       document.addEventListener('keydown', handleKeyDown)
 
       return () => document.removeEventListener('keydown', handleKeyDown)
-    }, [handlePrevious, handleNext, handleGoToStart, handleGoToEnd])
+    }, [stories.length, maxIndex])
 
     return (
       <Section sx={{ py: { xs: 6, md: 8 } }}>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, useMemo } from 'react'
+import { useEffect, useRef } from 'react'
 import type { PerformanceMetric } from '@/utils/performanceTypes'
 
 type PerformanceOptions = {
@@ -21,18 +21,18 @@ export const usePerformance = (componentName: string, options: PerformanceOption
   const startTimeRef = useRef<number>(0)
   const isTrackingRef = useRef(false)
 
-  // Memoize the start tracking function to prevent unnecessary re-renders
-  const startTracking = useCallback(() => {
+  // Start tracking function
+  const startTracking = () => {
     if (!enabled || typeof window === 'undefined' || !('performance' in window)) {
       return
     }
 
     startTimeRef.current = performance.now()
     isTrackingRef.current = true
-  }, [enabled])
+  }
 
-  // Memoize the stop tracking function to prevent unnecessary re-renders
-  const stopTracking = useCallback(() => {
+  // Stop tracking function
+  const stopTracking = () => {
     if (!enabled || !isTrackingRef.current || typeof window === 'undefined') {
       return
     }
@@ -62,17 +62,14 @@ export const usePerformance = (componentName: string, options: PerformanceOption
         )
       }
     }
-  }, [enabled, threshold, onThresholdExceeded, componentName])
+  }
 
-  // Memoize the performance data to prevent unnecessary re-renders
-  const performanceData = useMemo(
-    () => ({
-      startTracking,
-      stopTracking,
-      isTracking: isTrackingRef.current,
-    }),
-    [startTracking, stopTracking]
-  )
+  // Performance data
+  const performanceData = {
+    startTracking,
+    stopTracking,
+    isTracking: isTrackingRef.current,
+  }
 
   // Auto-track on mount/unmount if enabled
   useEffect(() => {
@@ -85,7 +82,7 @@ export const usePerformance = (componentName: string, options: PerformanceOption
         }
       }
     }
-  }, [enabled, startTracking, stopTracking])
+  })
 
   return performanceData
 }

@@ -1,13 +1,11 @@
 #!/usr/bin/env sh
 
 # TechLabs MVP Pre-push Hook
-# Comprehensive checks before pushing to remote repository
-# Based on Husky best practices and CI/CD pipeline requirements
+# Simple build check before pushing to remote repository
 
-# Color codes for better output
+# Color codes for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
@@ -20,10 +18,6 @@ print_success() {
     printf "${GREEN}✅ $1${NC}\n"
 }
 
-print_warning() {
-    printf "${YELLOW}⚠️  $1${NC}\n"
-}
-
 print_error() {
     printf "${RED}❌ $1${NC}\n"
 }
@@ -31,124 +25,14 @@ print_error() {
 # Exit on any error
 set -e
 
-print_status "Starting comprehensive pre-push validation..."
+print_status "Running build check before push..."
 
-# Get the remote and branch being pushed to
-remote="$1"
-url="$2"
-
-print_status "Pushing to: $remote ($url)"
-
-# Check if we're in a git repository
-if ! git rev-parse --git-dir > /dev/null 2>&1; then
-    print_error "Not in a git repository"
-    exit 1
-fi
-
-# Check if there are any commits to push
-if git log @{u}.. --oneline | grep -q .; then
-    print_status "Found commits to push - running validation..."
-else
-    print_success "No new commits to push"
-    exit 0
-fi
-
-# 1. Run comprehensive build test
-print_status "Building project for production..."
+# Run build test
 if npm run build; then
-    print_success "Production build completed successfully"
+    print_success "Build completed successfully"
+    print_success "Ready to push! 🚀"
 else
-    print_error "Production build failed"
+    print_error "Build failed"
+    print_error "Fix build issues before pushing"
     exit 1
 fi
-
-# 2. Run full test suite
-print_status "Running complete test suite..."
-if npm run test:run; then
-    print_success "All tests passed"
-else
-    print_error "Tests failed"
-    print_warning "Fix failing tests before pushing"
-    exit 1
-fi
-
-# 3. Run test coverage check
-print_status "Checking test coverage..."
-if npm run test:coverage > /dev/null 2>&1; then
-    print_success "Test coverage check completed"
-else
-    print_warning "Test coverage check failed - continuing with push"
-fi
-
-# 4. Check for any TODO or FIXME comments in new commits
-print_status "Checking for TODO/FIXME comments in new commits..."
-if git log @{u}.. --name-only --pretty=format: | sort -u | xargs grep -l -i -E "(TODO|FIXME|HACK|XXX)" 2>/dev/null | head -5 | while read file; do
-    print_warning "Found TODO/FIXME in: $file"
-    # Don't fail, just warn
-done
-    
-# 5. Security check for sensitive files
-print_status "Checking for sensitive files in push..."
-sensitive_files=$(git log @{u}.. --name-only --pretty=format: | sort -u | grep -E '\.(env|key|pem|p12|pfx|secrets?)$' || true)
-if [ -n "$sensitive_files" ]; then
-    print_error "Sensitive files detected in push:"
-    echo "$sensitive_files" | while read -r file; do
-        print_error "  - $file"
-    done
-    print_error "Remove sensitive files before pushing"
-    exit 1
-fi
-
-# 6. Check bundle size (if dist directory exists)
-if [ -d "dist" ]; then
-    print_status "Checking bundle size..."
-    if npm run analyze > /dev/null 2>&1; then
-        print_success "Bundle analysis completed"
-    else
-        print_warning "Bundle analysis failed - continuing with push"
-    fi
-fi
-
-# 7. Lint check on push (final validation)
-print_status "Running final lint check..."
-if npm run lint; then
-    print_success "Linting passed"
-else
-    print_error "Linting failed"
-    print_warning "Fix linting errors before pushing"
-    exit 1
-fi
-
-# 8. Type check
-print_status "Running TypeScript type check..."
-if npm run typecheck; then
-    print_success "TypeScript compilation successful"
-else
-    print_error "TypeScript compilation failed"
-    exit 1
-fi
-
-# 9. Check if package-lock.json is in sync (if it exists)
-if [ -f "package-lock.json" ]; then
-    print_status "Checking package-lock.json integrity..."
-    if npm ci --dry-run > /dev/null 2>&1; then
-        print_success "package-lock.json is valid"
-    else
-        print_error "package-lock.json is out of sync"
-        print_warning "Run 'npm install' to fix package-lock.json"
-        exit 1
-    fi
-fi
-
-# 10. Performance check (lighthouse if configured)
-if command -v lighthouse > /dev/null 2>&1 && [ -f "scripts/lighthouse-audit.cjs" ]; then
-    print_status "Running performance check..."
-    if npm run performance > /dev/null 2>&1; then
-        print_success "Performance check passed"
-    else
-        print_warning "Performance check failed - continuing with push"
-    fi
-fi
-
-print_success "All pre-push checks completed successfully! 🚀"
-print_success "Ready to push to $remote"

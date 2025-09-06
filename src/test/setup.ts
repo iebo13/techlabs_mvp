@@ -16,6 +16,7 @@ vi.mock('@mui/icons-material', () => ({
   School: () => '🎓',
   ChevronLeft: () => '◀',
   ChevronRight: () => '▶',
+  Schedule: () => '🕐',
   // Add any other icons that might be used
   default: {
     PlayArrow: () => '▶',
@@ -31,6 +32,7 @@ vi.mock('@mui/icons-material', () => ({
     School: () => '🎓',
     ChevronLeft: () => '◀',
     ChevronRight: () => '▶',
+    Schedule: () => '🕐',
   },
 }))
 
@@ -58,6 +60,11 @@ vi.mock('@mui/icons-material/ArrowForward', () => ({
 vi.mock('@mui/icons-material/HourglassEmpty', () => ({
   __esModule: true,
   default: () => '⏳',
+}))
+
+vi.mock('@mui/icons-material/Schedule', () => ({
+  __esModule: true,
+  default: () => '🕐',
 }))
 
 // Mock JSON imports

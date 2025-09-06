@@ -10,21 +10,13 @@ import { NavLink } from './NavLink'
 export const FooterLinksSection: React.FC = () => {
   return (
     <Grid size={{ xs: 12, md: 8 }}>
-      <Grid container spacing={3}>
+      <Grid container>
         {footerSections.map(section => (
           <Grid size={{ xs: 6, sm: 3 }} key={section.title}>
-            <Typography
-              variant="subtitle2"
-              sx={{
-                fontWeight: 600,
-                mb: 2,
-                color: 'text.primary',
-                fontSize: '0.875rem',
-              }}
-            >
+            <Typography variant="subtitle1" color="text.primary">
               {section.title}
             </Typography>
-            <Stack spacing={1.5}>
+            <Stack>
               {section.links.map(link => (
                 <NavLink
                   key={link.label}
@@ -37,7 +29,6 @@ export const FooterLinksSection: React.FC = () => {
                     fontWeight: 400,
                     lineHeight: 1.5,
                     display: 'block',
-                    padding: 0,
                     '&:hover': {
                       color: 'primary.main',
                       textDecoration: 'none',

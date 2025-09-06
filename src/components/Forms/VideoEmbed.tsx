@@ -10,7 +10,6 @@ import {
   useMediaQuery,
 } from '@mui/material'
 
-// Common color constant
 const WHITE_COLOR = 'common.white' as const
 
 type VideoEmbedProps = {
@@ -71,10 +70,13 @@ const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, p
           bgcolor: 'common.black',
           color: WHITE_COLOR,
           borderRadius: isMobile ? 0 : 2,
+          maxHeight: '90vh',
+          overflow: 'hidden',
         },
       }}
       // Focus trap is handled by MUI Dialog
       disableRestoreFocus
+      keepMounted={false}
     >
       <DialogTitle
         id="video-dialog-title"
@@ -107,6 +109,8 @@ const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, p
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            maxHeight: '70vh',
+            overflow: 'hidden',
           }}
         >
           <video

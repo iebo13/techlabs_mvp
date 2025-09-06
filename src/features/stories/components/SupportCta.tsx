@@ -13,11 +13,14 @@ import {
 } from '@mui/material'
 import { Section } from '@/components/Layouts/Section'
 
+// Support section background image
+const SUPPORT_BACKGROUND_IMAGE = '/src/assets/img/background.png'
+
 export type SupportCtaProps = {
   /** Support section data */
   title: string
   body: string
-  imageUrl: string
+  imageUrl?: string
   cta: {
     label: string
     to: string
@@ -36,14 +39,16 @@ export const SupportCta: React.FC<SupportCtaProps> = ({ title, body, imageUrl, c
     navigate(cta.to)
   }
 
+  const displayImageUrl = imageUrl || SUPPORT_BACKGROUND_IMAGE
+
   return (
     <Section variant="paper" paddingScale={1.5}>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Card
           elevation={0}
           sx={{
-            borderRadius: 4,
             border: `2px solid ${theme.palette.primary.main}`,
+            borderRadius: 0,
             overflow: 'hidden',
             position: 'relative',
             '&:hover': {
@@ -58,7 +63,7 @@ export const SupportCta: React.FC<SupportCtaProps> = ({ title, body, imageUrl, c
             <Grid size={{ xs: 12, md: 5 }}>
               <CardMedia
                 component="img"
-                image={imageUrl}
+                image={displayImageUrl}
                 alt="Support Tech Education"
                 sx={{
                   height: { xs: 200, md: '100%' },

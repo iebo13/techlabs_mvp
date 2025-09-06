@@ -38,6 +38,7 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = memo(
       gap: { xs: 2.5, sm: 3 },
       width: '100%',
       maxWidth: 400,
+      pl: { sm: 2, md: 4 },
     }
 
     // Button styles
@@ -94,19 +95,6 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = memo(
           }}
         >
           <Stack spacing={3}>
-            <Typography
-              variant="body2"
-              textAlign="center"
-              sx={{
-                mb: { xs: 2.5, sm: 3 },
-                fontSize: '0.875rem',
-                color: SECONDARY_TEXT_COLOR,
-                fontWeight: 400,
-              }}
-            >
-              Select the tracks that interest you most
-            </Typography>
-
             <FormGroup role="group" aria-labelledby="track-chooser-heading" sx={formGroupStyles}>
               {tracks.map((track: Track) => (
                 <FormControlLabel

@@ -9,8 +9,8 @@ import { HeroSection } from '../components/HeroSection'
 import HeroVideo from '../components/HeroVideo'
 
 // Lazy load below-the-fold components for better initial loading
-const WhyTechlabs = lazy(() =>
-  import('../components/WhyTechlabs').then(m => ({ default: m.WhyTechlabs }))
+const WhyTechlabsSection = lazy(() =>
+  import('../components/WhyTechlabs').then(m => ({ default: m.WhyTechlabsSection }))
 )
 const StoriesCarousel = lazy(() =>
   import('@/features/stories/components/StoriesCarousel').then(m => ({
@@ -25,7 +25,6 @@ const SupportCta = lazy(() =>
 )
 const Faqs = lazy(() => import('@/components/Forms/Faqs').then(m => ({ default: m.Faqs })))
 
-// Optimized loading fallbacks
 const SectionSkeleton: React.FC<{ height?: number }> = ({ height = 200 }) => (
   <Section>
     <Box sx={{ py: 4 }}>
@@ -44,10 +43,6 @@ const CarouselSkeleton: React.FC = () => (
   </Section>
 )
 
-/**
- * HomePage component - main landing page for TechLabs website.
- * Contains unified Hero section with track selection and trust indicators, followed by additional sections.
- */
 export const HomePage: React.FC = () => {
   return (
     <main>
@@ -69,8 +64,7 @@ export const HomePage: React.FC = () => {
       />
       <HeroSection />
 
-      {/* Video Banner Section - MVP-08 */}
-      <Section sx={{ py: { xs: 6, md: 8 } }}>
+      <Section sx={{ py: 0 }}>
         <HeroVideo
           posterUrl={homeData.video.posterUrl}
           srcUrl={homeData.video.srcUrl}
@@ -79,37 +73,39 @@ export const HomePage: React.FC = () => {
         />
       </Section>
 
-      {/* Why TechLabs Section - MVP-09 */}
       <LazyIntersection fallback={<SectionSkeleton height={300} />} minHeight={300}>
-        <WhyTechlabs />
+        <Section sx={{ py: 0 }}>
+          <WhyTechlabsSection />
+        </Section>
       </LazyIntersection>
 
-      {/* Stories Carousel Section - MVP-10 */}
       <LazyIntersection fallback={<CarouselSkeleton />} minHeight={350}>
-        <StoriesCarousel stories={homeData.stories as HomeData['stories']} />
+        <Section sx={{ px: { xs: 2, md: 4 }, py: 0 }}>
+          <StoriesCarousel stories={homeData.stories as HomeData['stories']} />
+        </Section>
       </LazyIntersection>
 
-      {/* Numbers Band Section - MVP-11 */}
       <LazyIntersection fallback={<SectionSkeleton height={150} />} minHeight={150}>
-        <NumbersBand numbers={homeData.numbers} />
+        <Section sx={{ px: { xs: 2, md: 4 }, py: 0 }}>
+          <NumbersBand numbers={homeData.numbers} />
+        </Section>
       </LazyIntersection>
 
-      {/* Support CTA Section - MVP-12 */}
       <LazyIntersection fallback={<SectionSkeleton height={250} />} minHeight={250}>
-        <SupportCta
-          title={homeData.support.title}
-          body={homeData.support.body}
-          imageUrl={homeData.support.imageUrl}
-          cta={homeData.support.cta}
-        />
+        <Section sx={{ px: { xs: 2, md: 4 }, py: 0 }}>
+          <SupportCta
+            title={homeData.support.title}
+            body={homeData.support.body}
+            cta={homeData.support.cta}
+          />
+        </Section>
       </LazyIntersection>
 
-      {/* FAQs Section - MVP-13 */}
       <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>
-        <Faqs faqs={homeData.faqs} />
+        <Section sx={{ px: { xs: 2, md: 4 }, py: 0 }}>
+          <Faqs faqs={homeData.faqs} />
+        </Section>
       </LazyIntersection>
-
-      {/* Additional homepage sections will be added in subsequent MVP stories */}
     </main>
   )
 }

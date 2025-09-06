@@ -3,7 +3,9 @@ import { formatDistanceToNow } from 'date-fns'
 import { Link } from 'react-router-dom'
 import { Box, Card, CardContent, Chip, Stack, Typography } from '@mui/material'
 import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
-import { getEventImage } from '@/services/imageService'
+
+// Background image for event cards
+const EVENT_BACKGROUND_IMAGE = '/src/assets/img/background.png'
 
 export type Event = {
   id: string
@@ -46,7 +48,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
       }}
     >
       <OptimizedImage
-        src={getEventImage(event.id)}
+        src={EVENT_BACKGROUND_IMAGE}
         alt={`${event.title} event image`}
         width="100%"
         height="200"

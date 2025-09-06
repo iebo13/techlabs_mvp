@@ -91,7 +91,7 @@ describe('EventCard', () => {
 
       const image = screen.getByRole('img', { name: 'TechLabs Düsseldorf Meetup event image' })
       expect(image).toBeInTheDocument()
-      // Note: src comes from getEventImage(event.id), not event.imageUrl
+      // Note: src comes from static background image asset, not event.imageUrl
       expect(image).toHaveAttribute('alt', 'TechLabs Düsseldorf Meetup event image')
     })
 

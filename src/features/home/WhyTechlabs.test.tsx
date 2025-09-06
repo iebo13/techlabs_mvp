@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { theme } from '@/theme/theme'
-import { WhyTechlabs } from './components/WhyTechlabs'
+import { WhyTechlabsSection } from './components/WhyTechlabs'
 
 /**
  * Test wrapper component that provides MUI theme and router context
@@ -14,24 +14,26 @@ const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   </BrowserRouter>
 )
 
-describe('WhyTechlabs', () => {
+describe('WhyTechlabsSection', () => {
   it('renders section heading', () => {
     render(
       <TestWrapper>
-        <WhyTechlabs />
+        <WhyTechlabsSection />
       </TestWrapper>
     )
 
-    expect(screen.getByText('Why TechLabs?')).toBeInTheDocument()
+    expect(screen.getByText('Why Techlabs?')).toBeInTheDocument()
     expect(
-      screen.getByText('Discover what makes our programs unique and effective')
+      screen.getByText(
+        'We free your mind for what matters the most to the wold, unlocking your true potential'
+      )
     ).toBeInTheDocument()
   })
 
   it('renders all three feature card titles', () => {
     render(
       <TestWrapper>
-        <WhyTechlabs />
+        <WhyTechlabsSection />
       </TestWrapper>
     )
 
@@ -44,25 +46,31 @@ describe('WhyTechlabs', () => {
   it('renders card descriptions', () => {
     render(
       <TestWrapper>
-        <WhyTechlabs />
+        <WhyTechlabsSection />
       </TestWrapper>
     )
 
     expect(
-      screen.getByText('We cover tuition so you can focus on learning and outcomes.')
+      screen.getByText(
+        'We free your mind for what matters the most to the wold, unlocking your true potential'
+      )
     ).toBeInTheDocument()
     expect(
-      screen.getByText('Grow your network through mentors, peers, and partners.')
+      screen.getByText(
+        'Expand your network through our community for potential job opportunities or startups'
+      )
     ).toBeInTheDocument()
     expect(
-      screen.getByText('Build projects and a portfolio that accelerate your job search.')
+      screen.getByText(
+        'You create a project that build your portfolio as a fundamental step towards your dream job'
+      )
     ).toBeInTheDocument()
   })
 
   it('renders Start learning CTA button', () => {
     render(
       <TestWrapper>
-        <WhyTechlabs />
+        <WhyTechlabsSection />
       </TestWrapper>
     )
 
@@ -74,12 +82,12 @@ describe('WhyTechlabs', () => {
   it('has accessible structure with headings', () => {
     render(
       <TestWrapper>
-        <WhyTechlabs />
+        <WhyTechlabsSection />
       </TestWrapper>
     )
 
     // Section heading should be h2
-    expect(screen.getByRole('heading', { name: 'Why TechLabs?', level: 2 })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Why Techlabs?', level: 2 })).toBeInTheDocument()
 
     // Card titles should be h3 headings
     expect(screen.getByRole('heading', { name: 'Totally free', level: 3 })).toBeInTheDocument()

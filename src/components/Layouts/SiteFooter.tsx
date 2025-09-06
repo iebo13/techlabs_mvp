@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, Grid, Divider } from '@mui/material'
+import { Box, Grid, Divider } from '@mui/material'
 import { FooterBottom } from './FooterBottom'
 import { FooterBrandSection } from './FooterBrandSection'
 import { FooterLinksSection } from './FooterLinksSection'
@@ -10,20 +10,38 @@ import { FooterLinksSection } from './FooterLinksSection'
  */
 export const SiteFooter: React.FC = () => {
   return (
-    <Box component="footer" sx={{ backgroundColor: 'background.paper', mt: 'auto' }}>
-      <Container maxWidth="lg">
-        <Box sx={{ py: 6 }}>
-          {/* Main Footer Content */}
-          <Grid container spacing={4}>
-            <FooterBrandSection />
-            <FooterLinksSection />
-          </Grid>
-        </Box>
+    <Box
+      component="footer"
+      sx={{
+        backgroundColor: 'background.paper',
+        mt: 'auto',
+        width: '100%',
+      }}
+    >
+      <Box
+        sx={{
+          py: { xs: 4, md: 6 },
+          px: { xs: 2, sm: 3, md: 4 },
+        }}
+      >
+        {/* Main Footer Content */}
+        <Grid container spacing={4}>
+          <FooterBrandSection />
+          <FooterLinksSection />
+        </Grid>
+      </Box>
 
-        <Divider sx={{ borderColor: 'divider' }} />
+      <Divider sx={{ borderColor: 'divider' }} />
 
+      <Box
+        sx={{
+          maxWidth: '1200px',
+          mx: 'auto',
+          px: { xs: 2, sm: 3, md: 4 },
+        }}
+      >
         <FooterBottom />
-      </Container>
+      </Box>
     </Box>
   )
 }

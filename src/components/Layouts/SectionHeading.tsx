@@ -97,6 +97,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
           color="text.secondary"
           sx={{
             mt: 2,
+            pb: 4,
             fontSize: '1.125rem',
             lineHeight: 1.6,
           }}

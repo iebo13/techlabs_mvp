@@ -1,16 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Grid, Button, Box } from '@mui/material'
+import { Schedule as ClockIcon } from '@mui/icons-material'
+import { Container, Button, Box } from '@mui/material'
 import { Section } from '@/components/Layouts/Section'
 import { SectionHeading } from '@/components/Layouts/SectionHeading'
 import homeData from '@/mocks/home.json'
-import { ValuePropCard } from './ValuePropCard'
+import { FeatureItem } from './ValuePropCard'
 
 /**
- * WhyTechlabs component - showcases 3 key value propositions
+ * WhyTechlabsSection component - showcases 3 key value propositions
  * MVP-09: Displays "Totally free", "Networking", "Job Ready" cards with CTA
  */
-export const WhyTechlabs: React.FC = () => {
+export const WhyTechlabsSection: React.FC = () => {
   return (
     <Section sx={{ py: { xs: 8, md: 12 } }}>
       <Container maxWidth="lg">
@@ -18,45 +19,82 @@ export const WhyTechlabs: React.FC = () => {
         <SectionHeading
           level={2}
           centered={true}
-          subtitle="Discover what makes our programs unique and effective"
-          sx={{ mb: { xs: 6, md: 8 } }}
+          sx={{
+            mb: 5, // 40px spacing to features
+            fontSize: { xs: '48px', md: '56px' },
+            fontWeight: 800,
+            color: '#FF2D6C', // Brand pink
+            letterSpacing: '-0.02em', // Tight tracking
+          }}
         >
-          Why TechLabs?
+          Why Techlabs?
         </SectionHeading>
 
-        {/* Value Proposition Cards */}
-        <Grid container spacing={{ xs: 3, md: 4 }} sx={{ mb: { xs: 6, md: 8 } }}>
+        {/* Features Grid */}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+            gap: { xs: 5, md: '96px' }, // 72-96px between columns
+            maxWidth: '1140px',
+            mx: 'auto',
+            mb: 4, // 32px to CTA
+          }}
+        >
           {homeData.features.map(feature => (
-            <Grid size={{ xs: 12, md: 4 }} key={feature.title}>
-              <ValuePropCard icon={feature.icon} title={feature.title} body={feature.body} />
-            </Grid>
+            <FeatureItem
+              key={feature.title}
+              icon={feature.icon}
+              title={feature.title}
+              body={feature.body}
+            />
           ))}
-        </Grid>
+        </Box>
 
-        {/* Call to Action */}
+        {/* Start Learning CTA */}
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center',
+            flexDirection: 'column',
             alignItems: 'center',
+            gap: 1, // 8px spacing between button and note
           }}
         >
           <Button
             component={Link}
             to="/tracks"
             variant="contained"
-            size="large"
             sx={{
-              px: 4,
-              py: 1.5,
-              borderRadius: 28,
+              height: '48px', // Fixed height
+              px: 3, // ~24px horizontal padding
+              borderRadius: '8px', // Rectangular, not pill
               textTransform: 'none',
               fontWeight: 700,
-              fontSize: '1.1rem',
+              fontSize: '1rem',
+              bgcolor: '#FF2D6C', // Brand pink
+              color: '#FFFFFF',
+              '&:hover': {
+                bgcolor: '#AF1740', // Darker pink on hover
+              },
             }}
           >
             Start learning
           </Button>
+
+          {/* Application Deadline Note */}
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 0.5,
+              color: '#6B7280', // Medium grey
+              fontSize: '12px',
+            }}
+          >
+            {/* Clock Icon */}
+            <ClockIcon sx={{ fontSize: '16px' }} />
+            <Box>Application closes in 2 weeks for next batch</Box>
+          </Box>
         </Box>
       </Container>
     </Section>

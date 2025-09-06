@@ -12,43 +12,46 @@
   ],
   "applicationDeadlineISO": "2025-11-15T00:00:00Z",
   "partners": [
-    { "name": "O2", "logoUrl": "/img/partners/o2.svg" },
-    { "name": "HUAWEI", "logoUrl": "/img/partners/huawei.svg" },
+    { "name": "O2", "logoUrl": "/src/assets/partners/o2.svg" },
+    { "name": "HUAWEI", "logoUrl": "/src/assets/partners/huawei.svg" },
     {
       "name": "Deutsche Telekom",
-      "logoUrl": "/img/partners/deutsche-telekom.svg"
+      "logoUrl": "/src/assets/partners/deutsche-telekom.svg"
     },
-    { "name": "Deutsche Post", "logoUrl": "/img/partners/deutsche-post.svg" }
+    {
+      "name": "Deutsche Post",
+      "logoUrl": "/src/assets/partners/deutsche-post.svg"
+    }
   ],
   "video": {
-    "posterUrl": "/img/video-poster.jpg",
-    "srcUrl": "/video/intro.mp4",
+    "posterUrl": "/src/assets/videos/Intro-thumbnail.png",
+    "srcUrl": "/src/assets/videos/intro.mp4",
     "duration": 45
   },
   "features": [
     {
-      "icon": "VolunteerActivism",
+      "icon": "free",
       "title": "Totally free",
-      "body": "We cover tuition so you can focus on learning and outcomes."
+      "body": "We free your mind for what matters the most to the wold, unlocking your true potential"
     },
     {
-      "icon": "Groups",
+      "icon": "network",
       "title": "Networking",
-      "body": "Grow your network through mentors, peers, and partners."
+      "body": "Expand your network through our community for potential job opportunities or startups"
     },
     {
-      "icon": "WorkspacePremium",
+      "icon": "job",
       "title": "Job Ready",
-      "body": "Build projects and a portfolio that accelerate your job search."
+      "body": "You create a project that build your portfolio as a fundamental step towards your dream job"
     }
   ],
   "stories": [
     {
       "id": "1",
       "title": "Max Startup is Rocketing",
-      "excerpt": "From concept to seed funding in 6 months.",
+      "excerpt": "I built my MVP and secured seed funding in just 6 months",
       "fullDescription": "Max joined TechLabs with a background in business but no technical skills. Through the Web Development track, he learned to build his own MVP and validate his startup idea. Within 6 months of graduating, he secured seed funding and now leads a team of 5 developers.",
-      "imageUrl": "/img/stories/max.jpg",
+      "imageUrl": "/src/assets/img/person1.png",
       "href": "/stories/max-startup",
       "track": "web-dev",
       "trackLabel": "Web Development",
@@ -64,10 +67,10 @@
     },
     {
       "id": "2",
-      "title": "Lia just landed her first client",
-      "excerpt": "Freelance success after the DS track.",
+      "title": "Lia has just landed her first Client",
+      "excerpt": "From marketing to data science – my first client came within 2 weeks",
       "fullDescription": "Lia was a marketing professional looking to transition into data science. The Data Science track at TechLabs gave her the practical skills and portfolio she needed. She now works as a freelance data analyst, helping startups make data-driven decisions.",
-      "imageUrl": "/img/stories/lia.jpg",
+      "imageUrl": "/src/assets/img/person2.png",
       "href": "/stories/lia-first-client",
       "track": "data-science",
       "trackLabel": "Data Science",
@@ -83,10 +86,10 @@
     },
     {
       "id": "3",
-      "title": "Anna is now in the head of Tech",
-      "excerpt": "Rapid growth into leadership.",
+      "title": "Anna now is the head of Tech",
+      "excerpt": "From junior developer to Head of Technology in 8 months",
       "fullDescription": "Anna came to TechLabs as a junior developer looking to advance her career. The comprehensive curriculum and mentorship helped her develop both technical and leadership skills. She's now Head of Technology at a growing fintech company.",
-      "imageUrl": "/img/stories/anna.jpg",
+      "imageUrl": "/src/assets/img/person3.png",
       "href": "/stories/anna-lead",
       "track": "web-dev",
       "trackLabel": "Web Development",
@@ -109,7 +112,7 @@
   "support": {
     "title": "Support Tech Education",
     "body": "Help us empower the next generation by funding cohorts and resources.",
-    "imageUrl": "/img/support.jpg",
+    "imageUrl": "/src/assets/img/background.png",
     "cta": { "label": "Support Tech Education", "to": "/support" }
   },
   "faqs": [

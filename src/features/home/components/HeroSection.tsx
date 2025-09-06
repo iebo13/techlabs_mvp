@@ -64,7 +64,7 @@ export const HeroSection: React.FC = memo(() => {
         textAlign: 'center',
         backgroundColor: 'background.default',
         pt: { xs: 6, md: 6 },
-        pb: { xs: 8, md: 8 },
+        pb: 0,
       }}
     >
       <Stack spacing={2} alignItems="center" sx={{ width: '100%' }}>

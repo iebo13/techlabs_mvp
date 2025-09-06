@@ -2,7 +2,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { theme } from '@/theme/theme'
-import { ValuePropCard } from './components/ValuePropCard'
+import { FeatureItem } from './components/ValuePropCard'
 
 /**
  * Test wrapper component that provides MUI theme context
@@ -11,9 +11,9 @@ const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
 )
 
-describe('ValuePropCard', () => {
+describe('FeatureItem', () => {
   const mockProps = {
-    icon: 'VolunteerActivism',
+    icon: 'free',
     title: 'Totally free',
     body: 'We cover tuition so you can focus on learning and outcomes.',
   }
@@ -21,7 +21,7 @@ describe('ValuePropCard', () => {
   it('renders card title correctly', () => {
     render(
       <TestWrapper>
-        <ValuePropCard {...mockProps} />
+        <FeatureItem {...mockProps} />
       </TestWrapper>
     )
 
@@ -31,7 +31,7 @@ describe('ValuePropCard', () => {
   it('renders card body text correctly', () => {
     render(
       <TestWrapper>
-        <ValuePropCard {...mockProps} />
+        <FeatureItem {...mockProps} />
       </TestWrapper>
     )
 
@@ -42,14 +42,14 @@ describe('ValuePropCard', () => {
 
   it('renders with different props', () => {
     const networkingProps = {
-      icon: 'Groups',
+      icon: 'network',
       title: 'Networking',
       body: 'Grow your network through mentors, peers, and partners.',
     }
 
     render(
       <TestWrapper>
-        <ValuePropCard {...networkingProps} />
+        <FeatureItem {...networkingProps} />
       </TestWrapper>
     )
 
@@ -62,7 +62,7 @@ describe('ValuePropCard', () => {
   it('uses heading role for title', () => {
     render(
       <TestWrapper>
-        <ValuePropCard {...mockProps} />
+        <FeatureItem {...mockProps} />
       </TestWrapper>
     )
 

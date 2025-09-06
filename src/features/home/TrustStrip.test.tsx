@@ -39,7 +39,7 @@ describe('TrustStrip', () => {
 
     // Filter out the sr-only text and focus on actual logo images
     const partnerLogos = logos.filter(
-      img => img.getAttribute('alt') && img.getAttribute('src')?.includes('/img/partners/')
+      img => img.getAttribute('alt') && img.getAttribute('src')?.includes('/src/assets/partners/')
     )
 
     expect(partnerLogos.length).toBeGreaterThanOrEqual(4)
@@ -67,7 +67,9 @@ describe('TrustStrip', () => {
     )
 
     const logos = screen.getAllByRole('img')
-    const partnerLogos = logos.filter(img => img.getAttribute('src')?.includes('/img/partners/'))
+    const partnerLogos = logos.filter(img =>
+      img.getAttribute('src')?.includes('/src/assets/partners/')
+    )
 
     partnerLogos.forEach(logo => {
       expect(logo).toHaveAttribute('loading', 'lazy')
@@ -82,15 +84,15 @@ describe('TrustStrip', () => {
     )
 
     // Verify specific partner logo sources based on mock data
-    expect(screen.getByAltText('O2')).toHaveAttribute('src', '/img/partners/o2.svg')
-    expect(screen.getByAltText('HUAWEI')).toHaveAttribute('src', '/img/partners/huawei.svg')
+    expect(screen.getByAltText('O2')).toHaveAttribute('src', '/src/assets/partners/o2.svg')
+    expect(screen.getByAltText('HUAWEI')).toHaveAttribute('src', '/src/assets/partners/huawei.svg')
     expect(screen.getByAltText('Deutsche Telekom')).toHaveAttribute(
       'src',
-      '/img/partners/deutsche-telekom.svg'
+      '/src/assets/partners/deutsche-telekom.svg'
     )
     expect(screen.getByAltText('Deutsche Post')).toHaveAttribute(
       'src',
-      '/img/partners/deutsche-post.svg'
+      '/src/assets/partners/deutsche-post.svg'
     )
   })
 
@@ -119,7 +121,9 @@ describe('TrustStrip', () => {
 
     // Verify logos are rendered (even without links in current mock data)
     const logos = screen.getAllByRole('img')
-    const partnerLogos = logos.filter(img => img.getAttribute('src')?.includes('/img/partners/'))
+    const partnerLogos = logos.filter(img =>
+      img.getAttribute('src')?.includes('/src/assets/partners/')
+    )
 
     expect(partnerLogos.length).toBeGreaterThan(0)
   })
@@ -134,9 +138,11 @@ describe('TrustStrip', () => {
     // Check that the main container has the expected styling classes
     // This is more of a structure test since we can't easily test responsive breakpoints in JSDOM
     const logos = screen.getAllByRole('img')
-    const partnerLogos = logos.filter(img => img.getAttribute('src')?.includes('/img/partners/'))
 
     // Verify all logos have the expected CSS classes applied via sx prop
+    const partnerLogos = logos.filter(img =>
+      img.getAttribute('src')?.includes('/src/assets/partners/')
+    )
     partnerLogos.forEach(logo => {
       expect(logo).toHaveStyle('object-fit: contain')
       expect(logo).toHaveStyle('filter: grayscale(1)')

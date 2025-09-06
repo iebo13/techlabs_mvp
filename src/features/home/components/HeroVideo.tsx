@@ -10,9 +10,10 @@ import {
   CircularProgress,
 } from '@mui/material'
 import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
-import { getHeroImage } from '@/services/imageService'
 
-// Lazy load VideoEmbed component since it's only used when user clicks to watch video
+// Video thumbnail image
+const VIDEO_THUMBNAIL = '/src/assets/videos/Intro-thumbnail.png'
+
 const VideoEmbed = lazy(() =>
   import('@/components/Forms/VideoEmbed').then(module => ({ default: module.default }))
 )
@@ -42,7 +43,6 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
     setModalOpen(false)
   }
 
-  // Format duration to MM:SS
   const formatDuration = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60)
     const remainingSeconds = seconds % 60
@@ -53,18 +53,14 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
   const durationText = formatDuration(duration)
 
   return (
-    <>
+    <Box sx={{ width: '100%', overflow: 'hidden' }}>
       <Card
         sx={{
           position: 'relative',
-          maxWidth: { xs: '100%', sm: 600, md: 800 },
-          mx: 'auto',
           cursor: 'pointer',
           transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
-          '&:hover': {
-            transform: 'scale(1.02)',
-            boxShadow: theme.shadows[8],
-          },
+          overflow: 'hidden',
+          borderRadius: 0,
           '&:focus-within': {
             outline: `2px solid ${theme.palette.primary.main}`,
             outlineOffset: 2,
@@ -82,10 +78,10 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
         aria-label={`Play ${title}, duration ${durationText}`}
       >
         <OptimizedImage
-          src={posterUrl || getHeroImage('video-poster')}
+          src={posterUrl || VIDEO_THUMBNAIL}
           alt={`${title} thumbnail`}
           width="100%"
-          height="auto"
+          height="600px"
           sizes="(max-width: 600px) 100vw, (max-width: 900px) 80vw, 800px"
           priority
           style={{
@@ -170,7 +166,7 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
           />
         </Suspense>
       )}
-    </>
+    </Box>
   )
 }
 

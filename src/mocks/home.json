@@ -12,20 +12,20 @@
   ],
   "applicationDeadlineISO": "2025-11-15T00:00:00Z",
   "partners": [
-    { "name": "O2", "logoUrl": "/src/assets/partners/o2.svg" },
-    { "name": "HUAWEI", "logoUrl": "/src/assets/partners/huawei.svg" },
+    { "name": "O2", "logoUrl": "/img/partners/o2.svg" },
+    { "name": "HUAWEI", "logoUrl": "/img/partners/huawei.svg" },
     {
       "name": "Deutsche Telekom",
-      "logoUrl": "/src/assets/partners/deutsche-telekom.svg"
+      "logoUrl": "/img/partners/deutsche-telekom.svg"
     },
     {
       "name": "Deutsche Post",
-      "logoUrl": "/src/assets/partners/deutsche-post.svg"
+      "logoUrl": "/img/partners/deutsche-post.svg"
     }
   ],
   "video": {
-    "posterUrl": "/src/assets/videos/Intro-thumbnail.png",
-    "srcUrl": "/src/assets/videos/intro.mp4",
+    "posterUrl": "/img/Intro-thumbnail.png",
+    "srcUrl": "/video/intro.mp4",
     "duration": 45
   },
   "features": [
@@ -51,7 +51,7 @@
       "title": "Max Startup is Rocketing",
       "excerpt": "I built my MVP and secured seed funding in just 6 months",
       "fullDescription": "Max joined TechLabs with a background in business but no technical skills. Through the Web Development track, he learned to build his own MVP and validate his startup idea. Within 6 months of graduating, he secured seed funding and now leads a team of 5 developers.",
-      "imageUrl": "/src/assets/img/person1.png",
+      "imageUrl": "/img/stories/person1.png",
       "href": "/stories/max-startup",
       "track": "web-dev",
       "trackLabel": "Web Development",
@@ -70,7 +70,7 @@
       "title": "Lia has just landed her first Client",
       "excerpt": "From marketing to data science – my first client came within 2 weeks",
       "fullDescription": "Lia was a marketing professional looking to transition into data science. The Data Science track at TechLabs gave her the practical skills and portfolio she needed. She now works as a freelance data analyst, helping startups make data-driven decisions.",
-      "imageUrl": "/src/assets/img/person2.png",
+      "imageUrl": "/img/stories/person2.png",
       "href": "/stories/lia-first-client",
       "track": "data-science",
       "trackLabel": "Data Science",
@@ -89,7 +89,7 @@
       "title": "Anna now is the head of Tech",
       "excerpt": "From junior developer to Head of Technology in 8 months",
       "fullDescription": "Anna came to TechLabs as a junior developer looking to advance her career. The comprehensive curriculum and mentorship helped her develop both technical and leadership skills. She's now Head of Technology at a growing fintech company.",
-      "imageUrl": "/src/assets/img/person3.png",
+      "imageUrl": "/img/stories/person3.png",
       "href": "/stories/anna-lead",
       "track": "web-dev",
       "trackLabel": "Web Development",
@@ -112,7 +112,7 @@
   "support": {
     "title": "Support Tech Education",
     "body": "Help us empower the next generation by funding cohorts and resources.",
-    "imageUrl": "/src/assets/img/background.png",
+    "imageUrl": "/img/background.png",
     "cta": { "label": "Support Tech Education", "to": "/support" }
   },
   "faqs": [

@@ -18,8 +18,8 @@ describe('NumbersBand', () => {
   it('renders with default title and subtitle', () => {
     renderWithTheme(<NumbersBand numbers={mockNumbers} />)
 
-    expect(screen.getByText('Our Impact')).toBeInTheDocument()
-    expect(screen.getByText('Join thousands of learners building their future')).toBeInTheDocument()
+    expect(screen.getByText('Techlabs in Numbers')).toBeInTheDocument()
+    // Component doesn't have subtitle by default
   })
 
   it('renders custom title and subtitle when provided', () => {
@@ -50,13 +50,13 @@ describe('NumbersBand', () => {
     expect(screen.getByText('Mentors')).toBeInTheDocument()
   })
 
-  it('renders appropriate icons for each metric type', () => {
+  it('renders numbers without icons (current design)', () => {
     renderWithTheme(<NumbersBand numbers={mockNumbers} />)
 
-    // Check that emoji icons are rendered
-    expect(screen.getByText('🏙️')).toBeInTheDocument() // Cities icon
-    expect(screen.getByText('🎓')).toBeInTheDocument() // Graduates icon
-    expect(screen.getByText('👥')).toBeInTheDocument() // Mentors icon
+    // Current design doesn't include icons - just verify the numbers are rendered
+    expect(screen.getByText('15')).toBeInTheDocument()
+    expect(screen.getByText('+600')).toBeInTheDocument()
+    expect(screen.getByText('35')).toBeInTheDocument()
   })
 
   it('emphasizes the middle metric (Graduates)', () => {
@@ -70,7 +70,7 @@ describe('NumbersBand', () => {
   it('handles empty numbers array gracefully', () => {
     renderWithTheme(<NumbersBand numbers={[]} />)
 
-    expect(screen.getByText('Our Impact')).toBeInTheDocument()
+    expect(screen.getByText('Techlabs in Numbers')).toBeInTheDocument()
     // Should not crash with empty array
   })
 
@@ -86,7 +86,7 @@ describe('NumbersBand', () => {
     renderWithTheme(<NumbersBand numbers={mockNumbers} />)
 
     // Check that the section exists
-    const section = screen.getByText('Our Impact').closest('section')
+    const section = screen.getByText('Techlabs in Numbers').closest('section')
     expect(section).toBeInTheDocument()
 
     // Should have 3 grid items
@@ -97,7 +97,7 @@ describe('NumbersBand', () => {
   it('applies proper spacing and layout', () => {
     renderWithTheme(<NumbersBand numbers={mockNumbers} />)
 
-    const section = screen.getByText('Our Impact').closest('section')
+    const section = screen.getByText('Techlabs in Numbers').closest('section')
     expect(section).toBeInTheDocument()
     expect(section).toHaveAttribute('class', expect.stringContaining('MuiBox-root'))
   })

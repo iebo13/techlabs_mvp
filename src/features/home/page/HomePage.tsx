@@ -85,20 +85,12 @@ export const HomePage: React.FC = () => {
         </Section>
       </LazyIntersection>
 
-      <LazyIntersection fallback={<SectionSkeleton height={150} />} minHeight={150}>
-        <Section sx={{ px: { xs: 2, md: 4 }, py: 0 }}>
-          <NumbersBand numbers={homeData.numbers} />
-        </Section>
+      <LazyIntersection fallback={<SectionSkeleton height={200} />} minHeight={200}>
+        <NumbersBand numbers={homeData.numbers} />
       </LazyIntersection>
 
       <LazyIntersection fallback={<SectionSkeleton height={250} />} minHeight={250}>
-        <Section sx={{ px: { xs: 2, md: 4 }, py: 0 }}>
-          <SupportCta
-            title={homeData.support.title}
-            body={homeData.support.body}
-            cta={homeData.support.cta}
-          />
-        </Section>
+        <SupportCta body={homeData.support.body} cta={homeData.support.cta} />
       </LazyIntersection>
 
       <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>

@@ -11,9 +11,9 @@ const BRAND_PINK = '#FA1E5A' // Brand pink color
 
 // Image paths for story assets
 const STORY_IMAGES = {
-  '1': '/src/assets/img/person1.png',
-  '2': '/src/assets/img/person2.png',
-  '3': '/src/assets/img/person3.png',
+  '1': '/img/stories/person1.png',
+  '2': '/img/stories/person2.png',
+  '3': '/img/stories/person3.png',
 } as const
 
 export type CarouselNavigationProps = {

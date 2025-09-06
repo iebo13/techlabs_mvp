@@ -5,7 +5,7 @@ import { Box, Card, CardContent, Chip, Stack, Typography } from '@mui/material'
 import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
 
 // Background image for event cards
-const EVENT_BACKGROUND_IMAGE = '/src/assets/img/background.png'
+const EVENT_BACKGROUND_IMAGE = '/img/background.png'
 
 export type Event = {
   id: string
@@ -48,12 +48,13 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
       }}
     >
       <OptimizedImage
-        src={EVENT_BACKGROUND_IMAGE}
+        src={event.imageUrl || EVENT_BACKGROUND_IMAGE}
         alt={`${event.title} event image`}
         width="100%"
         height="200"
         sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 300px"
         lazy
+        placeholder={EVENT_BACKGROUND_IMAGE}
         style={{
           borderTopLeftRadius: 'inherit',
           borderTopRightRadius: 'inherit',

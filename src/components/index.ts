@@ -3,7 +3,7 @@ export { HeaderNav } from './Layouts/HeaderNav'
 export { LazyPage } from './Layouts/LazyPage'
 export { Section } from './Layouts/Section'
 export { SectionHeading } from './Layouts/SectionHeading'
-export { SiteFooter } from './Layouts/SiteFooter'
+export { SiteFooter } from './Layouts/footer/SiteFooter'
 export { SkipToContent } from './Layouts/SkipToContent'
 export { OptimizedImage } from './Layouts/OptimizedImage'
 

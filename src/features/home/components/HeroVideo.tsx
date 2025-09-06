@@ -12,7 +12,7 @@ import {
 import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
 
 // Video thumbnail image
-const VIDEO_THUMBNAIL = '/src/assets/videos/Intro-thumbnail.png'
+const VIDEO_THUMBNAIL = '/img/Intro-thumbnail.png'
 
 const VideoEmbed = lazy(() =>
   import('@/components/Forms/VideoEmbed').then(module => ({ default: module.default }))

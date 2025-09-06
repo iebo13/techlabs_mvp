@@ -1,24 +1,14 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Grid,
-  Typography,
-  useTheme,
-} from '@mui/material'
+import { Box, Card, Typography } from '@mui/material'
+import { CTAButton } from '@/components/Buttons/CtaButton'
+import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
 import { Section } from '@/components/Layouts/Section'
 
-// Support section background image
-const SUPPORT_BACKGROUND_IMAGE = '/src/assets/img/background.png'
+const SUPPORT_BACKGROUND_IMAGE = '/img/background.png'
 
 export type SupportCtaProps = {
-  /** Support section data */
-  title: string
+  title?: string
   body: string
   imageUrl?: string
   cta: {
@@ -27,116 +17,101 @@ export type SupportCtaProps = {
   }
 }
 
-/**
- * SupportCta component displays a highlight CTA block encouraging users to support tech education.
- * Features an image, compelling copy, and a prominent CTA button.
- */
-export const SupportCta: React.FC<SupportCtaProps> = ({ title, body, imageUrl, cta }) => {
+export const SupportCta: React.FC<SupportCtaProps> = ({
+  title = 'Support Tech Education',
+  body,
+  imageUrl,
+  cta,
+}) => {
   const navigate = useNavigate()
-  const theme = useTheme()
+  const displayImageUrl = imageUrl || SUPPORT_BACKGROUND_IMAGE
 
   const handleCtaClick = () => {
     navigate(cta.to)
   }
 
-  const displayImageUrl = imageUrl || SUPPORT_BACKGROUND_IMAGE
-
   return (
-    <Section variant="paper" paddingScale={1.5}>
-      <Container maxWidth="xl">
+    <Section sx={{ width: '100%' }}>
+      <Box
+        sx={{
+          position: 'relative',
+          width: '100%',
+          minHeight: { xs: 380, md: 440 },
+          display: 'flex',
+          alignItems: 'center',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Background image */}
+        <OptimizedImage
+          src={displayImageUrl}
+          alt={title}
+          width="100%"
+          height="100%"
+          priority
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: 1,
+          }}
+        />
         <Card
           elevation={0}
           sx={{
-            border: `2px solid ${theme.palette.primary.main}`,
-            borderRadius: 0,
-            overflow: 'hidden',
-            position: 'relative',
-            '&:hover': {
-              transform: 'translateY(-4px)',
-              transition: 'transform 0.3s ease-in-out',
-              boxShadow: theme.shadows[8],
-            },
+            position: 'absolute',
+            left: { xs: '5%', md: '64px' },
+            width: { xs: '90%', md: '420px' },
+            p: 4,
+            maxWidth: '90%',
+            borderRadius: '20px',
+            border: 'none',
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
+            backgroundColor: 'white',
+            zIndex: 3,
           }}
         >
-          <Grid container>
-            {/* Image Section */}
-            <Grid size={{ xs: 12, md: 5 }}>
-              <CardMedia
-                component="img"
-                image={displayImageUrl}
-                alt="Support Tech Education"
-                sx={{
-                  height: { xs: 200, md: '100%' },
-                  minHeight: { md: 300 },
-                  objectFit: 'cover',
-                }}
-              />
-            </Grid>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: { xs: '12px', md: '16px' },
+            }}
+          >
+            <Typography
+              variant="h4"
+              component="h2"
+              sx={{
+                color: 'primary.main',
+                fontWeight: 700,
+                fontSize: { xs: '1.75rem', md: '2rem' },
+                lineHeight: 1.2,
+                mb: 0,
+              }}
+            >
+              {title}
+            </Typography>
 
-            {/* Content Section */}
-            <Grid size={{ xs: 12, md: 7 }}>
-              <CardContent
-                sx={{
-                  p: { xs: 4, md: 6 },
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  height: '100%',
-                  minHeight: { md: 300 },
-                }}
-              >
-                <Box sx={{ mb: 4 }}>
-                  <Typography
-                    variant="h2"
-                    component="h2"
-                    sx={{
-                      mb: 2,
-                      color: 'primary.main',
-                      fontSize: { xs: '2rem', md: '2.5rem' },
-                      fontWeight: 800,
-                      lineHeight: 1.2,
-                    }}
-                  >
-                    {title}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      fontSize: { xs: '1.125rem', md: '1.25rem' },
-                      lineHeight: 1.6,
-                      color: 'text.secondary',
-                      maxWidth: '600px',
-                    }}
-                  >
-                    {body}
-                  </Typography>
-                </Box>
-
-                <Button
-                  variant="contained"
-                  size="large"
-                  onClick={handleCtaClick}
-                  sx={{
-                    py: 2,
-                    px: 4,
-                    fontSize: '1.125rem',
-                    fontWeight: 700,
-                    borderRadius: '56px',
-                    minHeight: '56px',
-                    alignSelf: 'flex-start',
-                    '&:hover': {
-                      transform: 'translateY(-2px)',
-                      boxShadow: theme => theme.shadows[8],
-                    },
-                  }}
-                >
-                  {cta.label}
-                </Button>
-              </CardContent>
-            </Grid>
-          </Grid>
+            <Typography
+              variant="body1"
+              sx={{
+                color: 'text.primary',
+                fontSize: '16px',
+                lineHeight: 1.5,
+                mb: { xs: '20px', md: '24px' },
+              }}
+            >
+              {body}
+            </Typography>
+            <CTAButton variant="outlined" size="large" onClick={handleCtaClick}>
+              {cta.label}
+            </CTAButton>
+          </Box>
         </Card>
-      </Container>
+      </Box>
     </Section>
   )
 }

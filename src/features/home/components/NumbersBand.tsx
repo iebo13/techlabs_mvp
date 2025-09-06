@@ -1,82 +1,111 @@
 import React from 'react'
-import { Grid, Box } from '@mui/material'
-import { Section } from '@/components/Layouts/Section'
-import { SectionHeading } from '@/components/Layouts/SectionHeading'
-import { KPIStat } from './KpiStat'
+import { Box, Typography, Container } from '@mui/material'
 
 export type NumbersBandProps = {
-  /** Array of metric data to display */
   numbers: Array<{
     label: string
     value: string
   }>
-  /** Optional section title */
   title?: string
-  /** Optional section subtitle */
   subtitle?: string
 }
 
-/**
- * NumbersBand component displays key metrics in a responsive grid layout.
- * Used for showing impact numbers like cities, graduates, and mentors.
- */
 export const NumbersBand: React.FC<NumbersBandProps> = ({
   numbers,
-  title = 'Our Impact',
-  subtitle = 'Join thousands of learners building their future',
+  title = 'Techlabs in Numbers',
+  subtitle,
 }) => {
-  // Map labels to appropriate icons (using simple text icons to avoid MUI import issues)
-  const getIconForLabel = (label: string) => {
-    const lowerLabel = label.toLowerCase()
-
-    if (lowerLabel.includes('cities') || lowerLabel.includes('city')) {
-      return <span style={{ fontSize: '2rem' }}>🏙️</span>
-    }
-
-    if (lowerLabel.includes('graduates') || lowerLabel.includes('graduate')) {
-      return <span style={{ fontSize: '2rem' }}>🎓</span>
-    }
-
-    if (lowerLabel.includes('mentors') || lowerLabel.includes('mentor')) {
-      return <span style={{ fontSize: '2rem' }}>👥</span>
-    }
+  const formatLabel = (label: string): string => {
+    return label
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ')
   }
 
   return (
-    <Section variant="paper" paddingScale={1}>
-      <Box sx={{ textAlign: 'center', mb: 6 }}>
-        <SectionHeading level={2} centered maxWidth="600px" sx={{ mb: 2 }}>
+    <Box
+      component="section"
+      sx={{
+        py: { xs: 8, md: 10 },
+        bgcolor: 'background.default',
+      }}
+    >
+      <Container
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          px: { xs: 3, md: 4 },
+        }}
+      >
+        <Typography variant="h2" component="h2" color="primary.main" padding={4}>
           {title}
-        </SectionHeading>
+        </Typography>
+
         {subtitle && (
-          <SectionHeading
-            level={3}
-            centered
-            maxWidth="500px"
-            sx={{
-              fontSize: '1.25rem',
-              fontWeight: 400,
-              color: 'text.secondary',
-            }}
+          <Typography
+            variant="subtitle1"
+            component="p"
+            color="text.secondary"
+            textAlign="center"
+            sx={{ mb: 2 }}
           >
             {subtitle}
-          </SectionHeading>
+          </Typography>
         )}
-      </Box>
 
-      <Grid container spacing={4} justifyContent="center">
-        {numbers.map(metric => (
-          <Grid key={metric.label} size={{ xs: 12, sm: 6, md: 4 }} sx={{ display: 'flex' }}>
-            <KPIStat
-              value={metric.value}
-              label={metric.label}
-              icon={getIconForLabel(metric.label)}
-              emphasized={metric.label === 'Graduates'} // Emphasize the Graduates metric
-              sx={{ width: '100%' }}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </Section>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: { xs: 6, md: 12 },
+            flexWrap: { xs: 'wrap', md: 'nowrap' },
+          }}
+        >
+          {numbers.map(metric => (
+            <Box
+              key={metric.label}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+                minWidth: { xs: '100px', md: '120px' },
+              }}
+            >
+              <Typography
+                variant="h1"
+                component="div"
+                sx={{
+                  fontSize: { xs: '4.5rem', md: '5.5rem' },
+                  fontWeight: 900,
+                  lineHeight: 1.05,
+                  color: 'primary.main',
+                  mb: { xs: 1, md: 1.5 },
+                  letterSpacing: 0,
+                }}
+              >
+                {metric.value}
+              </Typography>
+
+              <Typography
+                variant="body1"
+                component="div"
+                sx={{
+                  fontSize: { xs: '1.25rem', md: '1.5rem' },
+                  fontWeight: 600,
+                  color: 'primary.main',
+                  letterSpacing: 0,
+                }}
+              >
+                {formatLabel(metric.label)}
+              </Typography>
+            </Box>
+          ))}
+        </Box>
+      </Container>
+    </Box>
   )
 }

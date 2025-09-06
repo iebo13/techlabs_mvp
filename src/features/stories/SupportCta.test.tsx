@@ -93,7 +93,7 @@ describe('SupportCta', () => {
     expect(screen.getByText('Custom support message for testing.')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Custom CTA' })).toBeInTheDocument()
 
-    const image = screen.getByAltText('Support Tech Education')
+    const image = screen.getByAltText('Custom Support Title')
     expect(image).toHaveAttribute('src', '/img/custom-support.jpg')
   })
 

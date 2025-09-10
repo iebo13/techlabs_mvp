@@ -10,7 +10,7 @@ Refactor the existing TechLabs MVP React application to follow the standardized 
 - **State Management**: React Context (basic implementation)
 - **Form Handling**: React Hook Form 7.62.0 with Zod validation
 - **Data Fetching**: React Query (TanStack Query) 5.85.5
-- **Testing**: Vitest with React Testing Library
+- **Testing**: Jest
 - **Build Tool**: Vite 7.1.2
 
 ## Current Structure Issues

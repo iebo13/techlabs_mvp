@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
-import { SectionHeading } from '@/components/Layouts/SectionHeading'
+import { SectionHeading } from '@/components/Layouts'
 
 /**
  * TrackChooserHeader - Renders the header section of the track chooser

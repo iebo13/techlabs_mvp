@@ -1,8 +1,8 @@
 import React from 'react'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { Box, Button, Card, CardContent, Grid, Stack, Typography } from '@mui/material'
-import { Section } from '@/components/Layouts/Section'
-import { SectionHeading } from '@/components/Layouts/SectionHeading'
+import { Section } from '@/components/Layouts'
+import { SectionHeading } from '@/components/Layouts'
 import partnersData from '@/mocks/partners.json'
 import type { DetailedPartner } from '@/types/home'
 

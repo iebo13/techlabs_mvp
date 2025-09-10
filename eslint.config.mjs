@@ -60,7 +60,7 @@ export default [
       'temp/*',
     ],
   },
-  // Configuration for test files with vitest globals
+  // Configuration for test files with test frameworks globals
   {
     files: [
       'src/**/*.test.{js,jsx,ts,tsx}',
@@ -76,7 +76,7 @@ export default [
           jsx: true,
         },
         project: './tsconfig.test.json',
-        tsconfigRootDir: '.',
+        tsconfigRootDir: import.meta.dirname,
       },
       globals: {
         ...globals.browser,
@@ -127,7 +127,6 @@ export default [
 
       // Keep important TypeScript rules
       '@typescript-eslint/no-non-null-assertion': 'error',
-      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
       '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
 
       // React rules
@@ -179,7 +178,7 @@ export default [
           jsx: true,
         },
         project: './tsconfig.app.json',
-        tsconfigRootDir: '.',
+        tsconfigRootDir: import.meta.dirname,
       },
     },
     settings: {
@@ -238,7 +237,6 @@ export default [
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-non-null-assertion': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/consistent-type-definitions': ['error', 'type'], // prefer type aliases
       '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
       '@typescript-eslint/explicit-function-return-type': 'off', // allow inference for readability
       '@typescript-eslint/no-unnecessary-type-assertion': 'error',
@@ -384,7 +382,6 @@ export default [
       'sonarjs/prefer-object-literal': 'error',
       'sonarjs/no-element-overwrite': 'error',
       'sonarjs/no-extra-arguments': 'error',
-      'sonarjs/no-one-iteration-loop': 'error',
       'sonarjs/no-use-of-empty-return-value': 'error',
 
       /* =============================

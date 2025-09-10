@@ -5,7 +5,7 @@ import {
   School as SchoolIcon,
 } from '@mui/icons-material'
 import { Box, Card, CardContent, Chip, Grid, Stack, Typography, useTheme } from '@mui/material'
-import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
+import { OptimizedImage } from '@/components/Layouts'
 import type { Story } from '@/types/home'
 
 type StoryCardProps = {

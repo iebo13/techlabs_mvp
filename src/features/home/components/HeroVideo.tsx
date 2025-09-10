@@ -9,7 +9,7 @@ import {
   useMediaQuery,
   CircularProgress,
 } from '@mui/material'
-import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
+import { OptimizedImage } from '@/components/Layouts'
 
 // Video thumbnail image
 const VIDEO_THUMBNAIL = '/img/Intro-thumbnail.png'

@@ -21,10 +21,7 @@
 - **React Router**: 7.8.1 (client-side routing)
 
 ### Testing
-- **Vitest**: 3.2.4 (test runner)
-- **React Testing Library**: 16.3.0 (component testing)
-- **Jest DOM**: 6.8.0 (DOM testing utilities)
-- **User Event**: 14.6.1 (user interaction simulation)
+- **Jest**: 
 
 ### Development Tools
 - **ESLint**: 9.33.0 (linting)
@@ -109,7 +106,7 @@
 ### Compatibility
 - **All Dependencies**: Compatible with current setup
 - **Build Process**: Vite handles all modern features
-- **Testing**: Vitest provides fast test execution
+- **Testing**: Jest provides fast test execution
 
 ## Performance Optimizations
 

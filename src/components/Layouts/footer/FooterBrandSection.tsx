@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
-import { Logo } from '../Logo'
+import { Logo } from '../navigation/Logo'
 
 export const FooterBrandSection: React.FC = () => {
   return (

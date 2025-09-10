@@ -62,8 +62,7 @@ src/
 
 ### Testing
 
-- **React Testing Library**: For component tests
-- **Vitest**: For unit tests
+- **Jest**:
 - Focus on user behavior, not implementation
 
 ## Architecture

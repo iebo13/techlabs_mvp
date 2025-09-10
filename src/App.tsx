@@ -1,13 +1,15 @@
 import React, { lazy, Suspense, useEffect, memo } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider, CssBaseline, Box } from '@mui/material'
-import { ErrorBoundary } from '@/components/Layouts/ErrorBoundary'
-import { SiteFooter } from '@/components/Layouts/footer/SiteFooter'
-import { HeaderNav } from '@/components/Layouts/HeaderNav'
-import { LazyPage } from '@/components/Layouts/LazyPage'
-import { Section } from '@/components/Layouts/Section'
-import { SectionHeading } from '@/components/Layouts/SectionHeading'
-import { SkipToContent } from '@/components/Layouts/SkipToContent'
+import {
+  ErrorBoundary,
+  SiteFooter,
+  HeaderNav,
+  LazyPage,
+  Section,
+  SectionHeading,
+  SkipToContent,
+} from '@/components/Layouts'
 import { theme } from '@/theme/theme'
 import errorMonitor from '@/utils/errorMonitor'
 import performanceMonitor from '@/utils/performance'
@@ -36,7 +38,7 @@ const AboutPage = lazy(() =>
 
 // Lazy load AccessibilityTester since it's not immediately needed
 const AccessibilityTester = lazy(() =>
-  import('@/components/Layouts/AccessibilityTester').then(module => ({
+  import('@/components/Layouts/accessibility/AccessibilityTester').then(module => ({
     default: module.AccessibilityTester,
   }))
 )

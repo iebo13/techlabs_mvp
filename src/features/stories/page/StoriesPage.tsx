@@ -13,8 +13,8 @@ import {
   useTheme,
 } from '@mui/material'
 import type { SelectChangeEvent } from '@mui/material'
-import { Section } from '@/components/Layouts/Section'
-import { SectionHeading } from '@/components/Layouts/SectionHeading'
+import { Section } from '@/components/Layouts'
+import { SectionHeading } from '@/components/Layouts'
 import storiesData from '@/mocks/stories.json'
 import type { Story, TrackKey } from '@/types/home'
 import { StoryCard } from '../components/StoryCard'

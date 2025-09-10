@@ -49,7 +49,6 @@ The aliases are configured in:
 1. **TypeScript**: `tsconfig.app.json` - Path mapping for type checking and
    IntelliSense
 2. **Vite**: `vite.config.ts` - Build-time resolution
-3. **Vitest**: `vitest.config.ts` - Test-time resolution
 
 ## Benefits
 
@@ -94,6 +93,6 @@ If you encounter issues with aliases:
 2. **Check TypeScript errors**: Make sure there are no TypeScript compilation
    errors
 3. **Verify configuration**: Ensure all three config files (tsconfig, vite,
-   vitest) have the alias configuration
+   jest) have the alias configuration
 4. **Clear cache**: Try clearing your IDE's cache or restarting the development
    server

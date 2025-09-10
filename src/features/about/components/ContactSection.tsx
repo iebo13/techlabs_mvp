@@ -1,8 +1,7 @@
 import React from 'react'
 import { Email, GitHub, LinkedIn, LocationOn, Phone, Twitter } from '@mui/icons-material'
 import { Box, Button, Container, Grid, Link, Stack, Typography } from '@mui/material'
-import { Section } from '@/components/Layouts/Section'
-import { SectionHeading } from '@/components/Layouts/SectionHeading'
+import { Section, SectionHeading } from '@/components/Layouts'
 
 type ContactData = {
   title: string

@@ -11,7 +11,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-import { Section } from '../Layouts/Section'
+import { Section } from '../Layouts'
 
 type FAQ = {
   q: string

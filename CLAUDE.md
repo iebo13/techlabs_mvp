@@ -16,7 +16,7 @@ npm run preview           # Preview production build
 ### Testing
 
 ```bash
-npm run test              # Run all tests with vitest
+npm run test              # Run all tests with jest
 npm run test:ui           # Run tests with UI
 npm run test:run          # Run tests once (CI mode)
 npm run test:coverage     # Generate test coverage report
@@ -64,7 +64,7 @@ mocks with Zod validation.
 - **Routing**: React Router DOM v7
 - **Forms**: React Hook Form + Zod validation
 - **Data Fetching**: TanStack React Query v5
-- **Testing**: Vitest + React Testing Library
+- **Testing**: jest
 - **Styling**: MUI theme system + CSS-in-JS
 - **Performance**: Built-in performance monitoring
 - **Accessibility**: Built-in accessibility testing tools
@@ -262,7 +262,7 @@ const CreateUserData = z.infer<typeof createUserSchema>;
 ### Frontend Testing
 
 ```typescript
-// Component testing with vitest
+// Component testing with jest
 describe('Button Component', () => {
   it('should render with correct variant', () => {
     render(<Button variant="primary" onClick={mockFn} />);

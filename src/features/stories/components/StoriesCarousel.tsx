@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, memo } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronRight as ChevronRightIcon } from '@mui/icons-material'
 import { Box, Button, Stack, Container } from '@mui/material'
-import { Section } from '@/components/Layouts/Section'
+import { Section } from '@/components/Layouts'
 import type { Story } from '@/types/home'
 import { CarouselHeader, CarouselItem, CarouselNavigation } from './StoriesCarouselComponents'
 

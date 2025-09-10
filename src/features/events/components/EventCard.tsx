@@ -2,7 +2,7 @@ import React from 'react'
 import { formatDistanceToNow } from 'date-fns'
 import { Link } from 'react-router-dom'
 import { Box, Card, CardContent, Chip, Stack, Typography } from '@mui/material'
-import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
+import { OptimizedImage } from '@/components/Layouts'
 
 // Background image for event cards
 const EVENT_BACKGROUND_IMAGE = '/img/background.png'

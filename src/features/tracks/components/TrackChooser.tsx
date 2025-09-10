@@ -5,7 +5,7 @@
 
 import React from 'react'
 import { Paper, Stack } from '@mui/material'
-import { Section } from '@/components/Layouts/Section'
+import { Section } from '@/components/Layouts'
 import { useTrackSelection } from '@/hooks/useTrackSelection'
 import homeData from '@/mocks/home.json'
 import { HomeDataSchema } from '@/mocks/schemas'

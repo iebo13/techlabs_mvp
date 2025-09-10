@@ -5,7 +5,7 @@
 
 import React from 'react'
 import { Stack, Typography, Box, Grid, useTheme } from '@mui/material'
-import { Section } from '@/components/Layouts/Section'
+import { Section } from '@/components/Layouts'
 import homeData from '@/mocks/home.json'
 import { HomeDataSchema } from '@/mocks/schemas'
 import type { HomeData, Partner } from '@/types/home'

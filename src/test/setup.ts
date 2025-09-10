@@ -1,146 +1,67 @@
-import '@testing-library/jest-dom'
-import { vi } from 'vitest'
+/**
+ * Jest setup file for testing environment
+ * This file is run before each test file
+ */
 
-// Completely mock the entire @mui/icons-material module to prevent EMFILE errors
-vi.mock('@mui/icons-material', () => ({
-  PlayArrow: () => '▶',
-  Close: () => '✕',
-  ArrowBack: () => '←',
-  ArrowForward: () => '→',
-  HourglassEmpty: () => '⏳',
-  ExpandMore: () => '▼',
-  ExpandLess: () => '▲',
-  QuestionAnswer: () => '❓',
-  LocationOn: () => '📍',
-  Work: () => '💼',
-  School: () => '🎓',
-  ChevronLeft: () => '◀',
-  ChevronRight: () => '▶',
-  Schedule: () => '🕐',
-  // Add any other icons that might be used
-  default: {
-    PlayArrow: () => '▶',
-    Close: () => '✕',
-    ArrowBack: () => '←',
-    ArrowForward: () => '→',
-    HourglassEmpty: () => '⏳',
-    ExpandMore: () => '▼',
-    ExpandLess: () => '▲',
-    QuestionAnswer: () => '❓',
-    LocationOn: () => '📍',
-    Work: () => '💼',
-    School: () => '🎓',
-    ChevronLeft: () => '◀',
-    ChevronRight: () => '▶',
-    Schedule: () => '🕐',
-  },
+// Jest environment setup for jsdom
+import 'jest-environment-jsdom'
+
+// Mock IntersectionObserver for components that use it
+global.IntersectionObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn(),
 }))
 
-// Also mock specific icon imports to be extra safe
-vi.mock('@mui/icons-material/PlayArrow', () => ({
-  __esModule: true,
-  default: () => '▶',
+// Mock ResizeObserver for MUI components
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn(),
 }))
 
-vi.mock('@mui/icons-material/Close', () => ({
-  __esModule: true,
-  default: () => '✕',
-}))
-
-vi.mock('@mui/icons-material/ArrowBack', () => ({
-  __esModule: true,
-  default: () => '←',
-}))
-
-vi.mock('@mui/icons-material/ArrowForward', () => ({
-  __esModule: true,
-  default: () => '→',
-}))
-
-vi.mock('@mui/icons-material/HourglassEmpty', () => ({
-  __esModule: true,
-  default: () => '⏳',
-}))
-
-vi.mock('@mui/icons-material/Schedule', () => ({
-  __esModule: true,
-  default: () => '🕐',
-}))
-
-// Mock JSON imports
-vi.mock('../mocks/stories.json', () => ({
-  default: [
-    {
-      id: '1',
-      title: 'Max Startup is Rocketing',
-      excerpt: 'From concept to seed funding in 6 months.',
-      fullDescription: 'Max joined TechLabs with a background in business but no technical skills.',
-      imageUrl: '/img/stories/max.jpg',
-      href: '/stories/max-startup',
-      track: 'web-dev',
-      trackLabel: 'Web Development',
-      graduationDate: '2024-03',
-      location: 'Berlin',
-      currentRole: 'Founder & CEO',
-      company: 'TechFlow Solutions',
-      achievements: ['Secured €500K seed funding', 'Built MVP from scratch'],
-    },
-    {
-      id: '2',
-      title: 'Lia just landed her first client',
-      excerpt: 'Freelance success after the DS track.',
-      fullDescription: 'Lia was a marketing professional looking to transition into data science.',
-      imageUrl: '/img/stories/lia.jpg',
-      href: '/stories/lia-first-client',
-      track: 'data-science',
-      trackLabel: 'Data Science',
-      graduationDate: '2024-01',
-      location: 'Munich',
-      currentRole: 'Freelance Data Analyst',
-      company: 'Self-employed',
-      achievements: ['First client within 2 weeks', '€3K monthly revenue'],
-    },
-  ],
-}))
-
-vi.mock('../mocks/partners.json', () => ({
-  default: {
-    partners: [
-      {
-        tier: 'platinum',
-        name: 'Google.org',
-        logoUrl: '/img/partners/google-org.svg',
-        description: 'Winner of the Google.org Impact Challenge Germany 2018',
-        website: 'https://www.google.org',
-        category: 'Technology & Innovation',
-      },
-    ],
-    tiers: [
-      {
-        id: 'platinum',
-        name: 'Platinum Partners',
-        description: 'Our highest-level partners who provide significant support and resources',
-        color: '#E5E4E2',
-      },
-    ],
-  },
-}))
-
-// Mock IntersectionObserver for OptimizedImage component
-const mockIntersectionObserver = vi.fn(() => ({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
-}))
-
-Object.defineProperty(window, 'IntersectionObserver', {
+// Mock matchMedia for responsive design tests
+Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  configurable: true,
-  value: mockIntersectionObserver,
+  value: jest.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
 })
 
-Object.defineProperty(global, 'IntersectionObserver', {
-  writable: true,
-  configurable: true,
-  value: mockIntersectionObserver,
+// Extend Jest matchers if needed
+// import '@testing-library/jest-dom';
+
+// Configure console warnings for tests
+const originalConsoleError = console.error
+const originalConsoleWarn = console.warn
+
+beforeAll(() => {
+  console.error = (...args: any[]) => {
+    if (typeof args[0] === 'string' && args[0].includes('Warning: ReactDOM.render is deprecated')) {
+      return
+    }
+    originalConsoleError.call(console, ...args)
+  }
+
+  console.warn = (...args: any[]) => {
+    if (
+      typeof args[0] === 'string' &&
+      args[0].includes('componentWillReceiveProps has been renamed')
+    ) {
+      return
+    }
+    originalConsoleWarn.call(console, ...args)
+  }
+})
+
+afterAll(() => {
+  console.error = originalConsoleError
+  console.warn = originalConsoleWarn
 })

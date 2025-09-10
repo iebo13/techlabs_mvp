@@ -22,7 +22,6 @@ TechLabs MVP project.
 | `tsconfig.node.json`   | Node TypeScript config   | JSON   | Node.js-specific settings             |
 | `tsconfig.test.json`   | Test TypeScript config   | JSON   | Test-specific settings                |
 | `vite.config.ts`       | Vite build config        | TS     | Build optimization, dev server        |
-| `vitest.config.ts`     | Vitest test config       | TS     | Test execution settings               |
 
 ## Detailed Configuration
 
@@ -78,9 +77,7 @@ different contexts.
 ```json
 {
   "extends": "./tsconfig.app.json",
-  "compilerOptions": {
-    "types": ["vitest/globals"]
-  },
+  "compilerOptions": {},
   "include": [
     "src/**/__tests__/**/*",
     "src/**/*.test.*",
@@ -93,7 +90,6 @@ different contexts.
 **Key Features**:
 
 - **Extends App Config**: Inherits all app settings
-- **Vitest Globals**: Enables global test functions (describe, it, expect)
 - **Test File Patterns**: Includes common test file patterns
 
 ### Build Configuration
@@ -132,29 +128,6 @@ export default defineConfig({
 - **Path Aliases**: Consistent with TypeScript path mapping
 - **Build Optimization**: Modern ES2020 target with chunk optimization
 - **Dependency Optimization**: Pre-bundled common dependencies
-
-#### `vitest.config.ts`
-
-```typescript
-export default defineConfig({
-  plugins: [react()],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/test/setup.ts'],
-    pool: 'forks',
-    maxConcurrency: 1,
-    isolate: true,
-  },
-})
-```
-
-**Key Features**:
-
-- **jsdom Environment**: Browser-like testing environment
-- **Global Test Functions**: No need to import describe/it/expect
-- **Test Setup**: Centralized test configuration
-- **Resource Optimization**: Prevents EMFILE errors with sequential execution
 
 ### Code Quality Configuration
 
@@ -405,10 +378,8 @@ build: { target: 'es2020' }
 
 ### Test Configuration Issues
 
-1. **Check globals**: Ensure vitest globals are enabled in both vitest and
-   tsconfig
-2. **Check setup files**: Ensure test setup file exists and is properly imported
-3. **Check test patterns**: Ensure test files match the include patterns
+1. **Check setup files**: Ensure test setup file exists and is properly imported
+2. **Check test patterns**: Ensure test files match the include patterns
 
 ## Migration Notes
 

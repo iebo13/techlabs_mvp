@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
-import { Section } from '@/components/Layouts/Section'
+import { Section } from '@/components/Layouts'
 
 /**
  * Hero component provides the main landing section with primary value proposition.

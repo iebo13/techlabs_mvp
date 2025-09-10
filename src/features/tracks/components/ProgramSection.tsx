@@ -1,8 +1,8 @@
 import React from 'react'
 import { Assignment, Build, RocketLaunch, School } from '@mui/icons-material'
 import { Box, Card, CardContent, Chip, Container, Grid, Typography } from '@mui/material'
-import { Section } from '@/components/Layouts/Section'
-import { SectionHeading } from '@/components/Layouts/SectionHeading'
+import { Section } from '@/components/Layouts'
+import { SectionHeading } from '@/components/Layouts'
 
 type ProgramData = {
   title: string

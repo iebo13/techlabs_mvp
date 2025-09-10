@@ -77,7 +77,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 - **ESLint** with comprehensive rules (TypeScript, React, A11y, Security)
 - **Prettier** for consistent code formatting
-- **Vitest** for fast unit testing
+- **jest** for testing
 - **Husky** for Git hooks and quality gates
 
 ### Performance

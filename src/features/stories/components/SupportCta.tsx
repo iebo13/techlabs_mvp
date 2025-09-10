@@ -2,8 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Card, Typography } from '@mui/material'
 import { CTAButton } from '@/components/Buttons/CtaButton'
-import { OptimizedImage } from '@/components/Layouts/OptimizedImage'
-import { Section } from '@/components/Layouts/Section'
+import { OptimizedImage, Section } from '@/components/Layouts'
 
 const SUPPORT_BACKGROUND_IMAGE = '/img/background.png'
 

@@ -69,7 +69,6 @@ techlabs_mvp/
 ├── tsconfig.node.json     # Node.js TypeScript configuration
 ├── tsconfig.test.json     # Test TypeScript configuration
 ├── vite.config.ts         # Vite build configuration
-└── vitest.config.ts       # Vitest test configuration
 ```
 
 ### Source Structure
@@ -135,9 +134,7 @@ nano .env
 
 ### Testing
 
-- **Vitest**: Fast unit testing with Vite integration
-- **React Testing Library**: Component testing utilities
-- **jsdom**: DOM simulation for testing
+- **Jest**
 
 ### Performance
 

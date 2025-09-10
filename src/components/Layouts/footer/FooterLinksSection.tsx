@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Typography, Box } from '@mui/material'
-import { NavLink } from '../NavLink'
+import { NavLink } from '../navigation/NavLink'
 import { footerSections } from './footerData'
 
 export const FooterLinksSection: React.FC = () => {

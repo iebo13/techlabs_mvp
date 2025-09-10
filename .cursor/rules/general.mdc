@@ -16,7 +16,7 @@ Stack & Principles
 	- Form Handling: React Hook Form 7.x 
 	- Validation with zod.
 	- Data Fetching: React Query (TanStack Query) 5.x
-	- Testing: vitest 
+	- Testing: jest 
 	- Linting: ESLint with Airbnb config, typescript-eslint/eslint-plugin, eslint-plugin-react, eslint-plugin-react-hooks, eslint-plugin-unicorn
 	- Formatting: Prettier
 	- Package Manager: npm
@@ -26,7 +26,7 @@ Stack & Principles
 	- Express
 	- MongoDB (Mongoose)
 	- Validation with zod.
-	- Testing: vitest 
+	- Testing: jest 
 	- Linting: ESLint with Airbnb config
 	- Formatting: Prettier
 	- Package Manager: npm

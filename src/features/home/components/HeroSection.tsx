@@ -6,7 +6,7 @@
 import React, { useState, useEffect, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Typography, Stack } from '@mui/material'
-import { Section } from '@/components/Layouts/Section'
+import { Section } from '@/components/Layouts'
 import { TrackChooserSection } from '@/features/tracks/components/TrackChooserSection'
 import homeData from '@/mocks/home.json'
 import { HomeDataSchema } from '@/mocks/schemas'

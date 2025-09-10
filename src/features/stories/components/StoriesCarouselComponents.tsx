@@ -2,7 +2,7 @@ import React from 'react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Typography, IconButton } from '@mui/material'
-import { SectionHeading } from '@/components/Layouts/SectionHeading'
+import { SectionHeading } from '@/components/Layouts'
 import type { Story } from '@/types/home'
 
 // Constants

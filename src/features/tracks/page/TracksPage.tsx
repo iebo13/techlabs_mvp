@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Container, Grid, Typography, Box, Button, Alert } from '@mui/material'
-import { Section } from '@/components/Layouts/Section'
-import { SEO } from '@/components/Layouts/Seo'
+import { Section } from '@/components/Layouts'
+import { SEO } from '@/components/Layouts'
 import tracksData from '@/mocks/tracks.json'
 import { TrackCard, type Track } from '../components/TrackCard'
 

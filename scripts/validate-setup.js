@@ -188,11 +188,10 @@ class SetupValidator {
    */
   checkBuildConfig() {
     const viteConfig = this.checkFileExists('vite.config.ts', 'Vite Configuration')
-    const vitestConfig = this.checkFileExists('vitest.config.ts', 'Vitest Configuration')
     const eslintConfig = this.checkFileExists('eslint.config.mjs', 'ESLint Configuration')
     const prettierConfig = this.checkFileExists('.prettierrc.json', 'Prettier Configuration')
 
-    return viteConfig && vitestConfig && eslintConfig && prettierConfig
+    return viteConfig && eslintConfig && prettierConfig
   }
 
   /**

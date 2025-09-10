@@ -60,7 +60,6 @@ techlabs_mvp/
 │   ├── tsconfig.node.json     # ✅ Existing - Node TypeScript config
 │   ├── tsconfig.test.json     # ✅ Existing - Test TypeScript config
 │   ├── vite.config.ts         # ✅ Existing - Vite build config
-│   └── vitest.config.ts       # ✅ Existing - Vitest test config
 │
 ├── Documentation (docs/)
 │   ├── setup-guide.md               # ✨ NEW - Comprehensive setup guide
@@ -99,7 +98,7 @@ techlabs_mvp/
 2. **Commit Messages**: Strict conventional commit format enforcement
 3. **Code Quality**: TypeScript strict mode, ESLint comprehensive rules
 4. **Performance**: Bundle analysis and Lighthouse integration
-5. **Testing**: Vitest with optimal configuration for reliability
+5. **Testing**: Jest with optimal configuration for reliability
 
 ## New Scripts Available
 

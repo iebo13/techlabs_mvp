@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
-import './styles/global.css'
+import './theme/global.css'
 
 // Fix for MUI v7 locale initialization error
 // Set document language to English to prevent MUI from trying to access other locales

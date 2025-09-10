@@ -39,20 +39,7 @@ afterEach(() => {
   sessionStorage.clear()
 })
 
-// Mock window.matchMedia for responsive design tests
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: jest.fn(query => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: jest.fn(), // deprecated
-    removeListener: jest.fn(), // deprecated
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
-})
+// Note: matchMedia mock moved to jest.polyfills.ts to avoid being reset by clearMocks
 
 // Mock window.scrollTo for components that use it
 Object.defineProperty(window, 'scrollTo', {

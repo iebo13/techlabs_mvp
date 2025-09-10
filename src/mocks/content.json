@@ -53,47 +53,6 @@
         }
       ]
     },
-    "timeline": {
-      "title": "Our Journey",
-      "description": "From a small local initiative to a nationwide movement for accessible tech education.",
-      "milestones": [
-        {
-          "year": "2018",
-          "title": "Founded in Düsseldorf",
-          "description": "Started as a local initiative to provide free tech education to underserved communities."
-        },
-        {
-          "year": "2019",
-          "title": "Google.org Impact Challenge Winner",
-          "description": "Recognized for our innovative approach to tech education and community building."
-        },
-        {
-          "year": "2020",
-          "title": "Expanded to 5 Cities",
-          "description": "Launched programs in Berlin, Munich, Hamburg, Cologne, and Frankfurt."
-        },
-        {
-          "year": "2021",
-          "title": "Online Platform Launch",
-          "description": "Developed our blended learning platform to reach more students nationwide."
-        },
-        {
-          "year": "2022",
-          "title": "600+ Graduates",
-          "description": "Celebrated our first major milestone with over 600 successful graduates."
-        },
-        {
-          "year": "2023",
-          "title": "15 Cities Nationwide",
-          "description": "Expanded our reach to 15 cities across Germany with local community support."
-        },
-        {
-          "year": "2024",
-          "title": "Future Forward",
-          "description": "Continuing to innovate and expand our impact on tech education accessibility."
-        }
-      ]
-    },
     "team": {
       "title": "Meet Our Team",
       "description": "Our team combines expertise in education, technology, and community building to create the best possible learning experience.",

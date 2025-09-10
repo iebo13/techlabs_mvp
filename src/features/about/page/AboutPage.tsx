@@ -7,7 +7,6 @@ import faqData from '@/mocks/faq.json'
 import { ContactSection } from '../components/ContactSection'
 import { MissionSection } from '../components/MissionSection'
 import { TeamSection } from '../components/TeamSection'
-import { TimelineSection } from '../components/TimelineSection'
 
 // Type definitions for the content data
 type AboutData = typeof contentData.about
@@ -47,7 +46,6 @@ export const AboutPage: React.FC = () => {
       />
       <MissionSection data={aboutData.mission} />
       <ProgramSection data={aboutData.program} />
-      <TimelineSection data={aboutData.timeline} />
       <TeamSection data={aboutData.team} />
       <ContactSection data={aboutData.contact} />
 

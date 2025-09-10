@@ -55,7 +55,7 @@ export const preloadCriticalResources = (): void => {
 
   // Preload hero images
   addResourceHint({
-    href: '/img/hero-bg.jpg',
+    href: '/img/person1.jpg',
     type: 'preload',
     as: 'image',
   })

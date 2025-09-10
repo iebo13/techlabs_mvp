@@ -1,7 +1,6 @@
 {
   "partners": [
     {
-      "tier": "platinum",
       "name": "HUAWEI",
       "logoUrl": "/img/partners/huawei.svg",
       "description": "Global technology leader supporting digital transformation",
@@ -9,7 +8,6 @@
       "category": "Technology & Innovation"
     },
     {
-      "tier": "gold",
       "name": "O2",
       "logoUrl": "/img/partners/o2.svg",
       "description": "Consumer goods company driving digital innovation",
@@ -17,7 +15,6 @@
       "category": "Telecommunications"
     },
     {
-      "tier": "silver",
       "name": "deutsche telekom",
       "logoUrl": "/img/partners/deutsche-telekom.svg",
       "description": "Digital agency specializing in creative technology solutions",
@@ -25,38 +22,11 @@
       "category": "Digital Agency"
     },
     {
-      "tier": "bronze",
       "name": "deutsche post",
       "logoUrl": "/img/partners/deutsche-post.svg",
       "description": "Empowering digital transformation through technology",
       "website": "https://www.deutsche-post.com",
       "category": "Postal Services"
-    }
-  ],
-  "tiers": [
-    {
-      "id": "platinum",
-      "name": "Platinum Partners",
-      "description": "Our highest-level partners who provide significant support and resources",
-      "color": "#E5E4E2"
-    },
-    {
-      "id": "gold",
-      "name": "Gold Partners",
-      "description": "Strategic partners who contribute to our mission and growth",
-      "color": "#FFD700"
-    },
-    {
-      "id": "silver",
-      "name": "Silver Partners",
-      "description": "Valued partners supporting our programs and initiatives",
-      "color": "#C0C0C0"
-    },
-    {
-      "id": "bronze",
-      "name": "Bronze Partners",
-      "description": "Supporting partners helping us make tech education accessible",
-      "color": "#CD7F32"
     }
   ]
 }

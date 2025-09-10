@@ -20,8 +20,6 @@ export const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
           maxHeight: { xs: 24, sm: 28, md: 38 },
           objectFit: 'contain',
           flexShrink: 0,
-          // Keeping original colors - removed grayscale filter
-          opacity: 0.9,
         }}
       />
       <Typography

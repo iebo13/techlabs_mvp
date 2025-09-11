@@ -1,5 +1,3 @@
-// Partners Feature Components
-export { PartnerLogo } from './components/PartnerLogo'
+export * from './components'
 
-// Partners Feature Page
 export { PartnersPage } from './page/PartnersPage'

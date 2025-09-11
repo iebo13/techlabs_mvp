@@ -1,17 +1,15 @@
 import React, { lazy } from 'react'
-import { Box, Skeleton } from '@mui/material'
-import { LazyIntersection, Section, SEO } from '@/components/Layouts'
+import { LazyIntersection, SEO, SectionSkeleton, CarouselSkeleton } from '@/components/Layouts'
 import homeData from '@/mocks/home.json'
 import type { HomeData } from '@/types/home'
-import { HeroSection } from '../components/HeroSection'
-import HeroVideo from '../components/HeroVideo'
+import { HeroSection } from '../components'
+import { HeroVideo } from '../components'
 
-// Lazy load below-the-fold components for better initial loading
 const WhyTechlabsSection = lazy(() =>
-  import('../components/WhyTechlabs').then(m => ({ default: m.WhyTechlabsSection }))
+  import('../components/WhyTechlabs').then(m => ({ default: m.WhyTechlabs }))
 )
 const StoriesCarousel = lazy(() =>
-  import('@/features/stories/components/StoriesCarousel').then(m => ({
+  import('../components/storiesSection').then(m => ({
     default: m.StoriesCarousel,
   }))
 )
@@ -19,27 +17,9 @@ const NumbersBand = lazy(() =>
   import('../components/NumbersBand').then(m => ({ default: m.NumbersBand }))
 )
 const SupportCta = lazy(() =>
-  import('@/features/stories/components/SupportCta').then(m => ({ default: m.SupportCta }))
+  import('@/features/home/components/SupportCta').then(m => ({ default: m.SupportCta }))
 )
-const Faqs = lazy(() => import('@/components/Forms/Faqs').then(m => ({ default: m.Faqs })))
-
-const SectionSkeleton: React.FC<{ height?: number }> = ({ height = 200 }) => (
-  <Section>
-    <Box sx={{ py: 4 }}>
-      <Skeleton variant="rectangular" height={height} sx={{ borderRadius: 2 }} />
-    </Box>
-  </Section>
-)
-
-const CarouselSkeleton: React.FC = () => (
-  <Section>
-    <Box sx={{ py: 4, display: 'flex', gap: 2 }}>
-      {[1, 2, 3].map(i => (
-        <Skeleton key={i} variant="rectangular" height={300} sx={{ flex: 1, borderRadius: 2 }} />
-      ))}
-    </Box>
-  </Section>
-)
+const Faqs = lazy(() => import('@/features/home/components/Faqs').then(m => ({ default: m.Faqs })))
 
 export const HomePage: React.FC = () => {
   return (
@@ -61,26 +41,19 @@ export const HomePage: React.FC = () => {
         ]}
       />
       <HeroSection />
-
-      <Section sx={{ py: 0 }}>
-        <HeroVideo
-          posterUrl={homeData.video.posterUrl}
-          srcUrl={homeData.video.srcUrl}
-          duration={homeData.video.duration}
-          title="TechLabs Introduction Video"
-        />
-      </Section>
+      <HeroVideo
+        posterUrl={homeData.video.posterUrl}
+        srcUrl={homeData.video.srcUrl}
+        duration={homeData.video.duration}
+        title="TechLabs Introduction Video"
+      />
 
       <LazyIntersection fallback={<SectionSkeleton height={300} />} minHeight={300}>
-        <Section sx={{ py: 0 }}>
-          <WhyTechlabsSection />
-        </Section>
+        <WhyTechlabsSection />
       </LazyIntersection>
 
-      <LazyIntersection fallback={<CarouselSkeleton />} minHeight={350}>
-        <Section sx={{ px: { xs: 2, md: 4 }, py: 0 }}>
-          <StoriesCarousel stories={homeData.stories as HomeData['stories']} />
-        </Section>
+      <LazyIntersection fallback={<CarouselSkeleton cards={3} cardHeight={350} />} minHeight={350}>
+        <StoriesCarousel stories={homeData.stories as HomeData['stories']} />
       </LazyIntersection>
 
       <LazyIntersection fallback={<SectionSkeleton height={200} />} minHeight={200}>
@@ -92,9 +65,7 @@ export const HomePage: React.FC = () => {
       </LazyIntersection>
 
       <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>
-        <Section sx={{ px: { xs: 2, md: 4 }, py: 0 }}>
-          <Faqs faqs={homeData.faqs} />
-        </Section>
+        <Faqs faqs={homeData.faqs} />
       </LazyIntersection>
     </main>
   )

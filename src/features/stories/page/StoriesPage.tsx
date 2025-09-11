@@ -16,20 +16,17 @@ import type { SelectChangeEvent } from '@mui/material'
 import { Section } from '@/components/Layouts'
 import { SectionHeading } from '@/components/Layouts'
 import storiesData from '@/mocks/stories.json'
-import type { Story, TrackKey } from '@/types/home'
 import { StoryCard } from '../components/StoryCard'
+import type { Story, TrackKey } from '@/features/tracks/types/tracks.type'
 
-// Lazy load StoryModal component since it's only used when user clicks on a story
 const StoryModal = lazy(() =>
   import('@/components/Popups/StoryModal').then(module => ({ default: module.StoryModal }))
 )
 
-// Type assertion for the JSON data
 const typedStoriesData = storiesData as Story[]
 
 type StoriesPageProps = {}
 
-// Track options for filter
 const trackOptions = [
   { value: 'all', label: 'All Tracks' },
   { value: 'web-dev', label: 'Web Development' },
@@ -38,9 +35,7 @@ const trackOptions = [
   { value: 'ai', label: 'Artificial Intelligence' },
 ] as const
 
-/**
- * StoriesPage - Gallery of graduate success stories with filtering and detailed modals
- */
+
 export const StoriesPage: React.FC<StoriesPageProps> = () => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
@@ -126,7 +121,6 @@ export const StoriesPage: React.FC<StoriesPageProps> = () => {
         </Stack>
       </Section>
 
-      {/* StoryModal with lazy loading */}
       {selectedStory && (
         <Suspense fallback={<CircularProgress />}>
           <StoryModal story={selectedStory} onClose={handleCloseModal} isMobile={isMobile} />

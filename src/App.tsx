@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useEffect, memo } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider, CssBaseline, Box } from '@mui/material'
-import { ErrorBoundary, SiteFooter, HeaderNav, SkipToContent } from '@/components/Layouts'
+import { ErrorBoundary, SiteFooter, HeaderNav } from '@/components/Layouts'
 import { initializeApp } from '@/config/preload'
 import { routes } from '@/config/routes'
 import { theme } from '@/theme/theme'
@@ -37,7 +37,6 @@ const App: React.FC = memo(() => {
         <CssBaseline />
         <BrowserRouter>
           <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
-            <SkipToContent />
             <HeaderNav />
             <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>
               <Routes>
@@ -49,8 +48,6 @@ const App: React.FC = memo(() => {
             <SiteFooter />
             <Suspense fallback={null}>
               <AccessibilityTester />
-            </Suspense>
-            <Suspense fallback={null}>
               <DebugPanel />
             </Suspense>
           </Box>

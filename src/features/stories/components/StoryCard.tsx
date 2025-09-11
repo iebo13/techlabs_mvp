@@ -6,16 +6,8 @@ import {
 } from '@mui/icons-material'
 import { Box, Card, CardContent, Chip, Grid, Stack, Typography, useTheme } from '@mui/material'
 import { OptimizedImage } from '@/components/Layouts'
-import type { Story } from '@/types/home'
+import type { StoryCardProps } from '../types/stories.types'
 
-type StoryCardProps = {
-  story: Story
-  onClick: (story: Story) => void
-}
-
-/**
- * StoryCard component for individual story display
- */
 export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
   const theme = useTheme()
 

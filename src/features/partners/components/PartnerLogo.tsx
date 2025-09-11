@@ -1,10 +1,7 @@
 import React from 'react'
 import { Box, Typography, Stack } from '@mui/material'
-import type { Partner } from '@/types/home'
+import type { Partner } from '@/features/partners/types/partners.type'
 
-/**
- * Partner logo component with name, consistent sizing and proper accessibility
- */
 export const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
   return (
     <Stack direction="row" spacing={1.5} alignItems="center" sx={{ textAlign: 'left' }}>

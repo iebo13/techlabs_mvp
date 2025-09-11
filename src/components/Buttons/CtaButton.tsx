@@ -1,6 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, type ButtonProps } from '@mui/material'
+import { Button, type ButtonProps, Box, Typography, useTheme } from '@mui/material'
+
+type CTAButtonStyle = 'default' | 'track-chooser'
+
+type AdditionalContent = {
+  icon?: React.ReactNode
+  text?: string
+  textVariant?: 'caption' | 'body2'
+}
 
 type CTAButtonProps = Omit<ButtonProps, 'component'> & {
   to?: string
@@ -8,13 +16,11 @@ type CTAButtonProps = Omit<ButtonProps, 'component'> & {
   variant?: 'contained' | 'outlined' | 'text'
   size?: 'small' | 'medium' | 'large'
   children: React.ReactNode
+  ctaStyle?: CTAButtonStyle
+  fullWidth?: boolean
+  additionalContent?: AdditionalContent
 }
 
-/**
- * CTAButton - Reusable call-to-action button component
- * Supports internal routing (to), external links (href), and regular button behavior
- * Follows MUI design system with consistent styling and accessibility
- */
 export const CTAButton: React.FC<CTAButtonProps> = ({
   to,
   href,
@@ -22,49 +28,127 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
   size = 'large',
   children,
   sx,
+  ctaStyle = 'default',
+  fullWidth = false,
+  additionalContent,
   ...buttonProps
 }) => {
-  // Default styling for CTA buttons
-  const defaultSx = {
-    borderRadius: '28px', // Pill shape
-    px: 4, // Horizontal padding
-    py: 1.5, // Vertical padding
-    fontWeight: 600,
-    textTransform: 'none' as const,
-    boxShadow: variant === 'contained' ? 2 : 'none',
-    '&:hover': {
-      boxShadow: variant === 'contained' ? 4 : 'none',
-    },
+  const theme = useTheme()
+
+  const getButtonStyles = () => {
+    const baseStyles = {
+      textTransform: 'none' as const,
+    }
+
+    if (ctaStyle === 'track-chooser') {
+      return {
+        ...baseStyles,
+        height: 60,
+        minWidth: 140,
+        width: fullWidth ? '100%' : undefined,
+        px: 2,
+        fontSize: '1rem',
+        fontWeight: 800,
+        borderRadius: 1,
+        boxShadow: 'none',
+        '&:hover': {
+          boxShadow: 'none',
+        },
+        '&:focus-visible': {
+          outline: `2px solid ${theme.palette.primary.main}`,
+          outlineOffset: 2,
+        },
+        '&:disabled': {
+          backgroundColor: theme.palette.action.disabled,
+          color: theme.palette.action.disabled,
+        },
+      }
+    }
+
+    return {
+      ...baseStyles,
+      borderRadius: '28px',
+      px: 4,
+      py: 1.5,
+      fontWeight: 600,
+      boxShadow: variant === 'contained' ? 2 : 'none',
+      width: fullWidth ? '100%' : undefined,
+      '&:hover': {
+        boxShadow: variant === 'contained' ? 4 : 'none',
+      },
+    }
   }
 
-  const combinedSx = { ...defaultSx, ...sx }
+  const combinedSx = { ...getButtonStyles(), ...sx }
 
-  // Internal routing - use React Router Link
-  if (to) {
+  const renderAdditionalContent = () => {
+    if (!additionalContent) return null
+
     return (
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 1.5,
+          mt: 1,
+        }}
+      >
+        {additionalContent.icon && additionalContent.icon}
+        {additionalContent.text && (
+          <Typography
+            variant={additionalContent.textVariant || 'caption'}
+            sx={{
+              fontSize: { xs: '0.75rem', sm: '0.8125rem' },
+              color: 'text.secondary',
+              fontWeight: 400,
+            }}
+          >
+            {additionalContent.text}
+          </Typography>
+        )}
+      </Box>
+    )
+  }
+
+  const renderButton = (buttonElement: React.ReactNode) => {
+    if (additionalContent) {
+      return (
+        <Box sx={{ textAlign: 'center' }}>
+          {buttonElement}
+          {renderAdditionalContent()}
+        </Box>
+      )
+    }
+    return buttonElement
+  }
+
+  if (to) {
+    const buttonElement = (
       <Link to={to} style={{ textDecoration: 'none' }}>
         <Button variant={variant} size={size} sx={combinedSx} component="span" {...buttonProps}>
           {children}
         </Button>
       </Link>
     )
+    return renderButton(buttonElement)
   }
 
-  // External link - use anchor tag
   if (href) {
-    return (
+    const buttonElement = (
       <a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
         <Button variant={variant} size={size} sx={combinedSx} component="span" {...buttonProps}>
           {children}
         </Button>
       </a>
     )
+    return renderButton(buttonElement)
   }
 
-  // Regular button
-  return (
+  const buttonElement = (
     <Button variant={variant} size={size} sx={combinedSx} {...buttonProps}>
       {children}
     </Button>
   )
+  return renderButton(buttonElement)
 }

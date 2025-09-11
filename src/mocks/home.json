@@ -26,7 +26,7 @@
   "video": {
     "posterUrl": "/img/Intro-thumbnail.png",
     "srcUrl": "/video/intro.mp4",
-    "duration": 45
+    "duration": 9
   },
   "features": [
     {
@@ -123,6 +123,15 @@
     {
       "q": "Is it a full time program?",
       "a": "No. It is designed to fit alongside work or studies (part-time)."
+    },
+    {
+      "q": "Where does the TechLabs take place?",
+      "a": "We run in multiple cities and online. Check the application page for your city."
+    },
+    {
+      "q": "Is it a full time program?",
+      "a": "No. It is designed to fit alongside work or studies (part-time)."
     }
+    
   ]
 }

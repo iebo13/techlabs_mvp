@@ -1,7 +1,6 @@
 export * from './Layouts'
 
 // Forms
-export { Faqs } from './Forms/Faqs'
 export { FAQAccordion } from './Forms/FaqAccordion'
 export { default as VideoEmbed } from './Forms/VideoEmbed'
 

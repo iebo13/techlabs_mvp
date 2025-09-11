@@ -1,5 +1,5 @@
 export const preloadPages = () => {
-  import('@/features/home/components/HeroSection')
+  import('@/features/home/components/heroSection/HeroSection')
 
   setTimeout(() => {
     import('@/features/tracks/page/TracksPage')

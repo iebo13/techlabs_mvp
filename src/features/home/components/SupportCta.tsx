@@ -41,7 +41,6 @@ export const SupportCta: React.FC<SupportCtaProps> = ({
           overflow: 'hidden',
         }}
       >
-        {/* Background image */}
         <OptimizedImage
           src={displayImageUrl}
           alt={title}
@@ -80,29 +79,11 @@ export const SupportCta: React.FC<SupportCtaProps> = ({
               gap: { xs: '12px', md: '16px' },
             }}
           >
-            <Typography
-              variant="h4"
-              component="h2"
-              sx={{
-                color: 'primary.main',
-                fontWeight: 700,
-                fontSize: { xs: '1.75rem', md: '2rem' },
-                lineHeight: 1.2,
-                mb: 0,
-              }}
-            >
+            <Typography variant="h4" color="primary.main" fontWeight={700}>
               {title}
             </Typography>
 
-            <Typography
-              variant="body1"
-              sx={{
-                color: 'text.primary',
-                fontSize: '16px',
-                lineHeight: 1.5,
-                mb: { xs: '20px', md: '24px' },
-              }}
-            >
+            <Typography variant="body1" color="text.primary">
               {body}
             </Typography>
             <CTAButton variant="outlined" size="large" onClick={handleCtaClick}>

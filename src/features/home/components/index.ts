@@ -1,0 +1,7 @@
+export * from './heroSection'
+export { HeroVideo } from './HeroVideo'
+export { WhyTechlabs } from './WhyTechlabs'
+export * from './storiesSection'
+export { NumbersBand } from './NumbersBand'
+export { SupportCta } from './SupportCta'
+export { Faqs } from './Faqs'

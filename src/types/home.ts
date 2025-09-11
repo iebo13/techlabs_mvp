@@ -1,20 +1,8 @@
-/**
- * Type definitions for homepage data structure
- * Based on MVP.md specification
- */
+import type { TrackKey, Track } from "@/features/home/types/homePage.type"
+import type { Partner } from "@/features/partners/types/partners.type"
 
-export type TrackKey = 'web-dev' | 'data-science' | 'product-design' | 'ai'
 
-export type Track = {
-  id: TrackKey
-  label: string
-}
 
-export type Partner = {
-  name: string
-  logoUrl: string
-  href?: string
-}
 
 export type PartnerTier = {
   id: string

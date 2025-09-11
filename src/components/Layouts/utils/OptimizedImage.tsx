@@ -14,14 +14,11 @@ type OptimizedImageProps = {
   style?: React.CSSProperties
   onLoad?: () => void
   onError?: () => void
-  // Props for responsive images
   sizes?: string
   srcSet?: string
 }
 
-/**
- * OptimizedImage component with lazy loading and performance optimizations
- */
+
 export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
   ({
     src,
@@ -44,19 +41,16 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
     const imgRef = useRef<HTMLImageElement>(null)
     const observerRef = useRef<IntersectionObserver | null>(null)
 
-    // Handle image load
     const handleLoad = () => {
       setIsLoaded(true)
       onLoad?.()
     }
 
-    // Handle image error
     const handleError = () => {
       setHasError(true)
       onError?.()
     }
 
-    // Setup intersection observer for lazy loading
     useEffect(() => {
       if (!lazy || priority || !imgRef.current) return
 
@@ -78,7 +72,6 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
       }
     }, [lazy, priority])
 
-    // Preload image if priority is true
     useEffect(() => {
       if (priority && src) {
         const link = document.createElement('link')
@@ -96,7 +89,6 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
       }
     }, [priority, src])
 
-    // Image styles
     const imageStyles = {
       width: width || 'auto',
       height: height || 'auto',
@@ -105,7 +97,6 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
       opacity: isLoaded ? 1 : 0,
     }
 
-    // Skeleton styles
     const skeletonStyles = {
       width: width || '100%',
       height: height || '200px',
@@ -142,10 +133,8 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
           overflow: 'hidden',
         }}
       >
-        {/* Loading skeleton */}
         {!isLoaded && <Skeleton variant="rectangular" sx={skeletonStyles} animation="wave" />}
 
-        {/* Actual image */}
         {isInView && (
           <img
             src={src}
@@ -160,7 +149,6 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
           />
         )}
 
-        {/* Placeholder image */}
         {placeholder && !isLoaded && (
           <img
             src={placeholder}

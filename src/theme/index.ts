@@ -9,11 +9,3 @@ export { componentOverrides } from './components'
 
 // Design tokens
 export { PRIMARY, BLUE, GREY } from './colors'
-export {
-  SECTION_SPACING,
-  GRID_GAPS,
-  TYPOGRAPHY_WEIGHTS,
-  FONT_SIZES,
-  FOCUS_OUTLINE,
-  BUTTON_STYLES,
-} from './constants'

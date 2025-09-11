@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Button, Card, Stack, Typography } from '@mui/material'
 import { Section, SectionHeading } from '@/components/Layouts'
+import { PartnerLogo } from '@/features/home/components'
 import partnersData from '@/mocks/partners.json'
 import type { Partner } from '../types/partners.type'
-import { PartnerLogo } from '@/features/home/components'
 
 export const PartnersPage: React.FC = () => {
   return (

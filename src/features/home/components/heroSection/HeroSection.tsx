@@ -1,16 +1,16 @@
 import React, { useState, useEffect, memo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Stack } from '@mui/material'
 import { Section } from '@/components/Layouts'
 import { TrackChooserSection } from '@/features/home/components/heroSection/TrackChooserSection'
+import type { TrackKey } from '@/features/tracks/types/tracks.type'
 import homeData from '@/mocks/home.json'
 import { HomeDataSchema } from '@/mocks/schemas'
+import type { HomeData } from '@/types/home'
 import { saveTrackSelection, loadTrackSelection, trackIdsToQueryParam } from '@/utils/persistence'
 import { AwardLine } from './AwardLine'
-import { TrustStripSection } from './TrustStripSection'
 import { HeroHeading } from './HeroHeading'
-import type { TrackKey } from '@/features/tracks/types/tracks.type'
-import type { HomeData } from '@/types/home'
-import { useNavigate } from 'react-router-dom'
+import { TrustStripSection } from './TrustStripSection'
 
 export const HeroSection: React.FC = memo(() => {
   const [selectedTracks, setSelectedTracks] = useState<TrackKey[]>([])
@@ -18,15 +18,16 @@ export const HeroSection: React.FC = memo(() => {
   const validatedData: HomeData = HomeDataSchema.parse(homeData)
   const { tracks, partners } = validatedData
 
-
   useEffect(() => {
     const savedTracks = loadTrackSelection()
+
     setSelectedTracks(savedTracks)
   }, [])
 
   const handleTrackChange = (trackId: TrackKey, checked: boolean) => {
     setSelectedTracks(prev => {
       const newSelection = checked ? [...prev, trackId] : prev.filter(id => id !== trackId)
+
       saveTrackSelection(newSelection)
 
       return newSelection

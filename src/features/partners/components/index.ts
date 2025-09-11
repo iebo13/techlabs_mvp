@@ -1,3 +1,1 @@
 export { PartnerLogo } from './PartnerLogo'
-
-

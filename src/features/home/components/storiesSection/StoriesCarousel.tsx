@@ -7,7 +7,6 @@ import type { Story } from '@/types/home'
 import { CarouselItem } from './CarouselItem'
 import { CarouselNavigation } from './CarouselNavigation'
 
-
 type StoriesCarouselProps = {
   stories: Story[]
   sectionTitle?: string
@@ -33,8 +32,6 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = memo(
     }
 
     const visibleStories = stories.slice(currentIndex, currentIndex + cardsPerView)
-
-
 
     useEffect(() => {
       const handleKeyDown = (event: KeyboardEvent) => {
@@ -71,12 +68,14 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = memo(
           <Box sx={{ textAlign: 'center', color: 'primary.main' }}>
             <SectionHeading level={2}>{sectionTitle}</SectionHeading>
           </Box>
-          <Box sx={{
-            position: 'relative',
-            maxWidth: '1400px',
-            margin: '0 auto',
-            px: { xs: 3, md: 6 },
-          }}>
+          <Box
+            sx={{
+              position: 'relative',
+              maxWidth: '1400px',
+              margin: '0 auto',
+              px: { xs: 3, md: 6 },
+            }}
+          >
             <Box
               ref={carouselRef}
               role="region"
@@ -91,14 +90,16 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = memo(
                 onNext={handleNext}
               />
 
-              <Box sx={{
-                display: 'grid',
-                gridTemplateColumns: {
-                  xs: '1fr',
-                  md: 'repeat(3, 1fr)',
-                },
-                gap: 2.5,
-              }}>
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: {
+                    xs: '1fr',
+                    md: 'repeat(3, 1fr)',
+                  },
+                  gap: 2.5,
+                }}
+              >
                 {visibleStories.map(story => (
                   <Box key={story.id}>
                     <CarouselItem story={story} />
@@ -109,7 +110,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = memo(
           </Box>
 
           {showSeeAllLink && (
-            <Box sx={{ display: 'flex', justifyContent: 'center', }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <Button
                 component={Link}
                 to="/stories"

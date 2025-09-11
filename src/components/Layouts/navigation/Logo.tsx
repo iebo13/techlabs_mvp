@@ -2,9 +2,6 @@ import React from 'react'
 import { Typography } from '@mui/material'
 import { NavLink } from './NavLink'
 
-/**
- * Logo component with icon and wordmark
- */
 export const Logo: React.FC = () => {
   return (
     <NavLink
@@ -20,7 +17,6 @@ export const Logo: React.FC = () => {
         },
       }}
     >
-      {/* Logo SVG icon */}
       <img
         src="/Logo.svg"
         alt="TechLabs Logo"
@@ -29,7 +25,6 @@ export const Logo: React.FC = () => {
           height: 32,
         }}
       />
-      {/* TechLabs wordmark */}
       <Typography
         variant="h6"
         component="div"

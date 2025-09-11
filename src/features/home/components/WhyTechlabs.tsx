@@ -1,10 +1,10 @@
 import React from 'react'
 import { HourglassEmpty } from '@mui/icons-material'
 import { Box, Typography } from '@mui/material'
+import { CTAButton } from '@/components'
 import { Section } from '@/components/Layouts'
 import homeData from '@/mocks/home.json'
 import { ValuePropCard } from './ValuePropCard'
-import { CTAButton } from '@/components'
 
 export const WhyTechlabs: React.FC = () => {
   return (
@@ -18,15 +18,19 @@ export const WhyTechlabs: React.FC = () => {
           gap: 2,
         }}
       >
-        <Typography
-          variant="h2"
-          color="primary"
-          textAlign="center"
-          pb={6}
-        >
+        <Typography variant="h2" color="primary" textAlign="center" pb={6}>
           Why Techlabs ?
         </Typography>
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, px: 6, pb: 2, width: '100%' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: 4,
+            px: 6,
+            pb: 2,
+            width: '100%',
+          }}
+        >
           {homeData.features.map(feature => (
             <ValuePropCard
               key={feature.title}
@@ -52,6 +56,6 @@ export const WhyTechlabs: React.FC = () => {
           </CTAButton>
         </Box>
       </Box>
-    </Section >
+    </Section>
   )
 }

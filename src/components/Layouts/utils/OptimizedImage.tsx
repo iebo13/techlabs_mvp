@@ -18,7 +18,6 @@ type OptimizedImageProps = {
   srcSet?: string
 }
 
-
 export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
   ({
     src,

@@ -1,10 +1,9 @@
 import React, { memo } from 'react'
 import { HourglassEmpty } from '@mui/icons-material'
 import { Box, Typography, Stack, FormGroup, FormControlLabel, Checkbox } from '@mui/material'
-import { SquareCheckboxIcon, SquareCheckedIcon } from '@/components/Buttons/SquareCheckbox'
 import { CTAButton } from '@/components/Buttons/CtaButton'
+import { SquareCheckboxIcon, SquareCheckedIcon } from '@/components/Buttons/SquareCheckbox'
 import type { Track, TrackKey } from '@/features/tracks/types/tracks.type'
-
 
 export type TrackChooserSectionProps = {
   tracks: Track[]
@@ -13,10 +12,8 @@ export type TrackChooserSectionProps = {
   onStartLearning: () => void
 }
 
-
 export const TrackChooserSection: React.FC<TrackChooserSectionProps> = memo(
   ({ tracks, selectedTracks, onTrackChange, onStartLearning }) => {
-
     const formGroupStyles = {
       gap: { xs: 2.5, sm: 3 },
       width: '100%',
@@ -49,7 +46,7 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = memo(
             alignItems: 'center',
           }}
         >
-          <Stack sx={{ gap: 3, }}>
+          <Stack sx={{ gap: 3 }}>
             <FormGroup role="group" aria-labelledby="track-chooser-heading" sx={formGroupStyles}>
               {tracks.map((track: Track) => (
                 <FormControlLabel

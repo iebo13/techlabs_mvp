@@ -5,21 +5,14 @@ import { footerSections } from './footerData'
 
 export const FooterLinksSection: React.FC = () => {
   return (
-    <Grid size={{ xs: 12, md: 9 }}>
-      <Grid container spacing={{ xs: 3, md: 8 }}>
+    <Box
+      sx={{ display: 'flex', alignItems: 'center', justifyContent: 'end', flex: 2, width: '100%' }}
+    >
+      <Grid container spacing={{ xs: 3, md: 6 }} width="100%">
         {footerSections.map(section => (
           <Grid size={{ xs: 6, sm: 3 }} key={section.title}>
             <nav aria-label={section.title}>
-              <Typography
-                variant="h6"
-                component="h6"
-                color="textPrimary"
-                sx={{
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  lineHeight: 1.5,
-                }}
-              >
+              <Typography variant="body1" color="textPrimary" fontWeight={600}>
                 {section.title}
               </Typography>
               <Box
@@ -66,6 +59,6 @@ export const FooterLinksSection: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-    </Grid>
+    </Box>
   )
 }

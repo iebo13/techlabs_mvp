@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container } from '@mui/material'
+import { Box } from '@mui/material'
 import { FooterBrandSection } from './FooterBrandSection'
 import { FooterCopyRights } from './FooterCopyRights'
 import { FooterLinksSection } from './FooterLinksSection'
@@ -7,31 +7,41 @@ import { FooterSocialRow } from './FooterSocialRow'
 
 export const SiteFooter: React.FC = () => {
   return (
-    <Box
-      component="footer"
-      sx={{
-        backgroundColor: '#F7F7F8',
-        mt: 'auto',
-        width: '100%',
-      }}
-    >
-      <Container
-        maxWidth="xl"
+    <Box component="footer">
+      <Box
         sx={{
-          pt: { xs: 6, md: 8 },
-          pb: { xs: 4, md: 5 },
-          px: { xs: 3, sm: 3, md: 12 },
+          backgroundColor: '#F7F7F8',
+          width: '100%',
+          padding: 2,
+          pb: 1,
         }}
       >
-        <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+        <Box
+          display="flex"
+          flexDirection={{ xs: 'column', md: 'row' }}
+          justifyContent="space-between"
+          alignItems="flex-start"
+          px={2}
+          py={2}
+          width="100%"
+        >
           <FooterBrandSection />
           <FooterLinksSection />
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexDirection: { xs: 'column', md: 'row' },
+            px: { xs: 2, md: 6 },
+            py: { xs: 2, md: 0 },
+          }}
+        >
           <FooterCopyRights />
           <FooterSocialRow />
         </Box>
-      </Container>
+      </Box>
     </Box>
   )
 }

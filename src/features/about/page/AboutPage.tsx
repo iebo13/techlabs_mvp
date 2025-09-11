@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
-import { Faqs } from '@/features/home/components/Faqs'
 import { SEO } from '@/components/Layouts'
+import { Faqs } from '@/features/home/components/Faqs'
 import { ProgramSection } from '@/features/tracks/components/ProgramSection'
 import contentData from '@/mocks/content.json'
 import faqData from '@/mocks/faq.json'

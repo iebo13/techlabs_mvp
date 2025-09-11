@@ -120,6 +120,7 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
         </Box>
       )
     }
+
     return buttonElement
   }
 
@@ -131,6 +132,7 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
         </Button>
       </Link>
     )
+
     return renderButton(buttonElement)
   }
 
@@ -142,6 +144,7 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
         </Button>
       </a>
     )
+
     return renderButton(buttonElement)
   }
 
@@ -150,5 +153,6 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
       {children}
     </Button>
   )
+
   return renderButton(buttonElement)
 }

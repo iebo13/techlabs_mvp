@@ -8,7 +8,6 @@ type TrackChooserFormProps = {
   onTrackChange: (trackId: TrackKey, checked: boolean) => void
 }
 
-
 export const TrackChooserForm: React.FC<TrackChooserFormProps> = ({
   tracks,
   selectedTracks,

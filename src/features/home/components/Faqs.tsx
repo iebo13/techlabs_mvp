@@ -31,51 +31,49 @@ export const Faqs: React.FC<FaqsProps> = ({ faqs }) => {
   return (
     <Section sx={{ py: { xs: 6, md: 8 } }}>
       <Stack spacing={6} alignItems="center" p={2}>
-        <Typography
-          variant="h2"
-          component="h2"
-          gutterBottom
-          color="primary.main"
-          fontWeight={600}
-        >
+        <Typography variant="h2" component="h2" gutterBottom color="primary.main" fontWeight={600}>
           Frequently Asked Questions
         </Typography>
 
-
         <Box maxWidth="md" mx="auto" width="100%">
           <Stack spacing={2}>
-            {faqs.map((faq, index) => (
-              <Accordion
-                key={`faq-${faq.q.slice(0, 20).toLowerCase().replaceAll(/\s+/g, '-')}-${index}`}
-                expanded={expanded === `panel${index}`}
-                onChange={handleChange(`panel${index}`)}
-                sx={{
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  '&.Mui-expanded': {
-                    borderColor: 'primary.main',
-                  },
-                }}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMore />}
-                  aria-controls={`panel${index}bh-content`}
-                  id={`panel${index}bh-header`}
+            {faqs.map((faq, index) => {
+              const faqId = `faq-${faq.q.slice(0, 50).toLowerCase().replaceAll(/[^\w]/g, '-').replaceAll(/-+/g, '-').replaceAll(/^-|-$/g, '')}-${index}`
+              const panelId = `panel-${faqId}`
+
+              return (
+                <Accordion
+                  key={faqId}
+                  expanded={expanded === panelId}
+                  onChange={handleChange(panelId)}
                   sx={{
-                    pl: 2,
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    '&.Mui-expanded': {
+                      borderColor: 'primary.main',
+                    },
                   }}
                 >
-                  <Typography variant="subtitle1" fontWeight={600}>
-                    {faq.q}
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails sx={{ px: 3, pb: 3 }}>
-                  <Typography variant="body1" fontWeight={400}>
-                    {faq.a}
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            ))}
+                  <AccordionSummary
+                    expandIcon={<ExpandMore />}
+                    aria-controls={`${panelId}-content`}
+                    id={`${panelId}-header`}
+                    sx={{
+                      pl: 2,
+                    }}
+                  >
+                    <Typography variant="subtitle1" fontWeight={600}>
+                      {faq.q}
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails sx={{ px: 3, pb: 3 }}>
+                    <Typography variant="body1" fontWeight={400}>
+                      {faq.a}
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              )
+            })}
           </Stack>
         </Box>
 
@@ -90,7 +88,6 @@ export const Faqs: React.FC<FaqsProps> = ({ faqs }) => {
         >
           More Questions
         </Button>
-
       </Stack>
     </Section>
   )

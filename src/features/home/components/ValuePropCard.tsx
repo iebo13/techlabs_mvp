@@ -7,7 +7,6 @@ type ValuePropCardProps = {
   body: string
 }
 
-
 export const ValuePropCard: React.FC<ValuePropCardProps> = ({ icon, title, body }) => {
   return (
     <Box sx={{ textAlign: 'center', maxWidth: '300px', mx: 'auto' }}>
@@ -28,21 +27,11 @@ export const ValuePropCard: React.FC<ValuePropCardProps> = ({ icon, title, body 
         />
       </Box>
 
-      <Typography
-        variant="h3"
-        component="h3"
-        color="primary"
-        fontWeight={"600"}
-      >
+      <Typography variant="h3" component="h3" color="primary" fontWeight="600">
         {title}
       </Typography>
 
-      <Typography
-        variant="body1"
-        color="text.secondary"
-        maxWidth={'260px'}
-        mx={'auto'}
-      >
+      <Typography variant="body1" color="text.secondary" maxWidth="260px" mx="auto">
         {body}
       </Typography>
     </Box>

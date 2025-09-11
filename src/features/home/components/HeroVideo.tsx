@@ -9,10 +9,7 @@ import {
   useMediaQuery,
   CircularProgress,
 } from '@mui/material'
-import {
-  OptimizedImage,
-  Section,
-} from '@/components/Layouts'
+import { OptimizedImage, Section } from '@/components/Layouts'
 
 const VIDEO_THUMBNAIL = '/img/Intro-thumbnail.png'
 const VideoEmbed = lazy(() =>
@@ -165,4 +162,3 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
     </Section>
   )
 }
-

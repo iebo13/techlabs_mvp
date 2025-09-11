@@ -5,9 +5,12 @@ import type { SxProps, Theme } from '@mui/material'
  * Provides reusable mixins and utility functions for common styling needs
  */
 
+// Constants
+const PRIMARY_MAIN_COLOR = 'primary.main'
+
 // Focus outline utilities
 export const createFocusOutline = (
-  color: string = 'primary.main',
+  color: string = PRIMARY_MAIN_COLOR,
   width: number = 2,
   offset: number = 2
 ): SxProps<Theme> => ({
@@ -21,7 +24,7 @@ export const createFocusOutline = (
 // Hover and focus combined patterns
 export const interactiveFocus = (
   hoverColor: string = 'primary.dark',
-  focusColor: string = 'primary.main'
+  focusColor: string = PRIMARY_MAIN_COLOR
 ): SxProps<Theme> => ({
   transition: 'all 0.2s ease-in-out',
   '&:hover': {
@@ -38,7 +41,7 @@ export const interactiveFocus = (
 export const buttonFocusStyles: SxProps<Theme> = {
   '&:focus-visible': {
     outline: '3px solid',
-    outlineColor: 'primary.main',
+    outlineColor: PRIMARY_MAIN_COLOR,
     outlineOffset: 2,
   },
 }
@@ -69,8 +72,6 @@ export const createOverlayStyles = (opacity: number = 0.3): SxProps<Theme> => ({
     bgcolor: `rgba(0, 0, 0, ${Math.min(opacity + 0.1, 0.7)})`,
   },
 })
-
-
 
 // Responsive text truncation
 export const createTextTruncation = (lines: number = 1): SxProps<Theme> =>

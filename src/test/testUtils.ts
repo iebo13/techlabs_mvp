@@ -1,11 +1,13 @@
-export interface User {
+// Test Data Factories
+
+type User = {
   id: number
   name: string
   email: string
-  avatar?: string
+  avatar: string
 }
 
-export interface Story {
+type Story = {
   id: number
   title: string
   content: string
@@ -13,7 +15,7 @@ export interface Story {
   createdAt: string
 }
 
-export interface Event {
+type Event = {
   id: number
   title: string
   description: string
@@ -21,7 +23,6 @@ export interface Event {
   location: string
 }
 
-// Test Data Factories
 export const makeUser = (overrides: Partial<User> = {}): User => ({
   id: Math.floor(Math.random() * 1000),
   name: 'Test User',

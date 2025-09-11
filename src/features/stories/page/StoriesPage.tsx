@@ -15,10 +15,10 @@ import {
 import type { SelectChangeEvent } from '@mui/material'
 import { Section } from '@/components/Layouts'
 import { SectionHeading } from '@/components/Layouts'
-import storiesData from '@/mocks/stories.json'
-import { StoryCard } from '../components/StoryCard'
 import type { Story } from '@/features/stories/types/stories.types'
 import type { TrackKey } from '@/features/tracks/types/tracks.type'
+import storiesData from '@/mocks/stories.json'
+import { StoryCard } from '../components/StoryCard'
 
 const StoryModal = lazy(() =>
   import('@/components/Popups/StoryModal').then(module => ({ default: module.StoryModal }))
@@ -35,7 +35,6 @@ const trackOptions = [
   { value: 'product-design', label: 'Product Design' },
   { value: 'ai', label: 'Artificial Intelligence' },
 ] as const
-
 
 export const StoriesPage: React.FC<StoriesPageProps> = () => {
   const theme = useTheme()

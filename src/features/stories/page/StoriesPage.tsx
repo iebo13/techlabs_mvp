@@ -17,7 +17,8 @@ import { Section } from '@/components/Layouts'
 import { SectionHeading } from '@/components/Layouts'
 import storiesData from '@/mocks/stories.json'
 import { StoryCard } from '../components/StoryCard'
-import type { Story, TrackKey } from '@/features/tracks/types/tracks.type'
+import type { Story } from '@/features/stories/types/stories.types'
+import type { TrackKey } from '@/features/tracks/types/tracks.type'
 
 const StoryModal = lazy(() =>
   import('@/components/Popups/StoryModal').then(module => ({ default: module.StoryModal }))

@@ -1,9 +1,6 @@
 import React from 'react'
 import { FormGroup, FormControlLabel, Checkbox, Typography } from '@mui/material'
-import type { Track } from '@/types/home'
-
-// Define TrackKey locally to avoid import issues
-type TrackKey = 'web-dev' | 'data-science' | 'product-design' | 'ai'
+import type { Track, TrackKey } from '@/features/tracks/types/tracks.type'
 
 type TrackChooserFormProps = {
   tracks: Track[]
@@ -11,10 +8,7 @@ type TrackChooserFormProps = {
   onTrackChange: (trackId: TrackKey, checked: boolean) => void
 }
 
-/**
- * TrackChooserForm - Renders the track selection form
- * Extracted from TrackChooser for better separation of concerns
- */
+
 export const TrackChooserForm: React.FC<TrackChooserFormProps> = ({
   tracks,
   selectedTracks,
@@ -26,9 +20,9 @@ export const TrackChooserForm: React.FC<TrackChooserFormProps> = ({
         variant="body2"
         textAlign="center"
         sx={{
-          mb: { xs: 2.5, sm: 3 }, // 20px margin below
-          fontSize: { xs: '0.875rem', sm: '1rem' }, // 14-16px
-          color: 'text.secondary', // Muted gray
+          mb: { xs: 2.5, sm: 3 },
+          fontSize: { xs: '0.875rem', sm: '1rem' },
+          color: 'text.secondary',
           fontWeight: 400,
         }}
       >
@@ -38,7 +32,7 @@ export const TrackChooserForm: React.FC<TrackChooserFormProps> = ({
       <FormGroup
         role="group"
         aria-labelledby="track-chooser-heading"
-        sx={{ gap: { xs: 3, sm: 4 } }} // 24-32px vertical spacing for better readability
+        sx={{ gap: { xs: 3, sm: 4 } }}
       >
         {tracks.map((track: Track) => (
           <FormControlLabel
@@ -55,16 +49,16 @@ export const TrackChooserForm: React.FC<TrackChooserFormProps> = ({
               <Typography
                 variant="body1"
                 sx={{
-                  fontSize: { xs: '1rem', sm: '1.125rem' }, // 16-18px
-                  fontWeight: 700, // Bold labels per Figma
-                  ml: 1.5, // Increased space between checkbox and label
+                  fontSize: { xs: '1rem', sm: '1.125rem' },
+                  fontWeight: 700,
+                  ml: 1.5,
                 }}
               >
                 {track.label}
               </Typography>
             }
             sx={{
-              alignItems: 'flex-start', // Left align consistently
+              alignItems: 'flex-start',
               margin: 0,
               '& .MuiFormControlLabel-label': {
                 width: '100%',

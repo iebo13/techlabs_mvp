@@ -64,7 +64,7 @@ mocks with Zod validation.
 - **Routing**: React Router DOM v7
 - **Forms**: React Hook Form + Zod validation
 - **Data Fetching**: TanStack React Query v5
-- **Testing**: jest
+- **Testing**: jest + React test library
 - **Styling**: MUI theme system + CSS-in-JS
 - **Performance**: Built-in performance monitoring
 - **Accessibility**: Built-in accessibility testing tools

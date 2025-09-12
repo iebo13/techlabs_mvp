@@ -25,10 +25,10 @@ export const EventsPage: React.FC = () => {
       const dateB = new Date(b.date)
 
       if (selectedTab === 'past') {
-        return dateB.getTime() - dateA.getTime() // Most recent first
+        return dateB.getTime() - dateA.getTime()
       }
 
-      return dateA.getTime() - dateB.getTime() // Soonest first
+      return dateA.getTime() - dateB.getTime()
     })
   })()
 
@@ -37,7 +37,7 @@ export const EventsPage: React.FC = () => {
 
   const handleTabChange = (_: React.SyntheticEvent, newValue: EventType) => {
     setSelectedTab(newValue)
-    setVisibleCount(EVENTS_PER_PAGE) // Reset pagination when changing tabs
+    setVisibleCount(EVENTS_PER_PAGE)
   }
 
   const handleLoadMore = () => {

@@ -1,6 +1,5 @@
 import { Box, Grid, useTheme } from '@mui/material'
-import type { Partner } from '@/features/partners/types/partners.type'
-import { PartnerLogo } from '../../../partners/components/PartnerLogo'
+import { PartnerLogo, type Partner } from '@/features/partners'
 
 type TrustStripSectionProps = {
   partners: Partner[]

@@ -5,9 +5,9 @@ export const componentOverrides = {
   MuiButton: {
     styleOverrides: {
       root: {
-        borderRadius: 999, // Pill-shaped
-        boxShadow: 'none', // No elevation
-        fontWeight: 800, // Bold
+        borderRadius: 999,
+        boxShadow: 'none',
+        fontWeight: 800,
         '&:focus-visible': {
           outline: `3px solid ${alpha(PRIMARY[500], 0.25)}`,
           outlineOffset: 2,
@@ -16,18 +16,18 @@ export const componentOverrides = {
       containedPrimary: {
         ':hover': {
           boxShadow: 'none',
-          backgroundColor: PRIMARY[700], // Slight darken on hover
+          backgroundColor: PRIMARY[700],
         },
       },
       outlinedPrimary: {
-        borderWidth: '2px', // 2px border for outlined
+        borderWidth: '2px',
         ':hover': {
-          borderWidth: '2px', // Preserve border width on hover
+          borderWidth: '2px',
           backgroundColor: alpha(PRIMARY[500], 0.04),
         },
       },
       sizeMedium: { minHeight: 48, padding: '0 24px' },
-      sizeLarge: { minHeight: 56, padding: '0 32px' }, // For prominent CTAs
+      sizeLarge: { minHeight: 56, padding: '0 32px' },
     },
   },
   MuiChip: {
@@ -38,8 +38,8 @@ export const componentOverrides = {
   MuiCard: {
     styleOverrides: {
       root: {
-        borderRadius: 24, // Softer radius
-        boxShadow: '0px 4px 24px rgba(0,0,0,0.06)', // Softer shadow
+        borderRadius: 24,
+        boxShadow: '0px 4px 24px rgba(0,0,0,0.06)',
       },
     },
   },
@@ -66,10 +66,10 @@ export const componentOverrides = {
     styleOverrides: {
       root: {
         color: PRIMARY[500],
-        width: 28, // Larger checkbox size
+        width: 28,
         height: 28,
-        borderRadius: 6, // Square with slight corner radius
-        padding: '6px', // Better touch target
+        borderRadius: 6,
+        padding: '6px',
         '&.Mui-checked': {
           color: PRIMARY[500],
         },
@@ -78,7 +78,7 @@ export const componentOverrides = {
           outlineOffset: 2,
         },
         '& .MuiSvgIcon-root': {
-          fontSize: 24, // Larger icon
+          fontSize: 24,
         },
       },
     },
@@ -97,14 +97,14 @@ export const componentOverrides = {
       root: {
         backgroundColor: 'rgba(255, 255, 255, 0.95)',
         backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(0, 0, 0, 0.08)', // 1px hairline
-        boxShadow: 'none', // Remove shadows
+        borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+        boxShadow: 'none',
       },
     },
   },
   MuiContainer: {
     defaultProps: {
-      maxWidth: 'lg' as const, // Default to wide layout
+      maxWidth: 'lg' as const,
     },
     styleOverrides: {
       root: {

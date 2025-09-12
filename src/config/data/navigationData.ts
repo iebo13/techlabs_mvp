@@ -1,7 +1,3 @@
-/**
- * Navigation data for HeaderNav component
- */
-
 export type NavigationItem = {
   label: string
   path: string

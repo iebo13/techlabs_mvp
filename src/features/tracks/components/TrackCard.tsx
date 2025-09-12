@@ -12,33 +12,12 @@ import {
   Grid,
   useTheme,
 } from '@mui/material'
-
-export type Track = {
-  id: string
-  label: string
-  description: string
-  duration: string
-  format: string
-  skills: string[]
-  projects: string[]
-  careerPaths: string[]
-  nextCohort: string
-  applicationDeadline: string
-  spotsAvailable: number
-  icon: string
-}
-
-type TrackCardProps = {
-  track: Track
-  isExpanded?: boolean
-  onToggle?: (trackId: string) => void
-}
+import type { TrackCardProps } from '../types/tracks.types'
 
 export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false, onToggle }) => {
   const [expanded, setExpanded] = useState(isExpanded)
   const theme = useTheme()
 
-  // Sync local state with prop changes
   useEffect(() => {
     setExpanded(isExpanded)
   }, [isExpanded])
@@ -72,7 +51,6 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
       }}
     >
       <CardContent sx={{ flexGrow: 1, p: 3 }}>
-        {/* Header */}
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
           <Typography variant="h2" sx={{ fontSize: '2.5rem', mr: 2 }}>
             {track.icon}
@@ -87,7 +65,6 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
           </Box>
         </Box>
 
-        {/* Key Info */}
         <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
           <Chip label={track.duration} size="small" color="primary" variant="outlined" />
           <Chip label={track.format} size="small" color="secondary" variant="outlined" />
@@ -99,10 +76,8 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
           />
         </Stack>
 
-        {/* Expandable Content */}
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <Box sx={{ mt: 2 }}>
-            {/* Skills */}
             <Box sx={{ mb: 3 }}>
               <Typography variant="h6" gutterBottom>
                 Skills You'll Learn
@@ -114,7 +89,6 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
               </Box>
             </Box>
 
-            {/* Projects */}
             <Box sx={{ mb: 3 }}>
               <Typography variant="h6" gutterBottom>
                 Projects You'll Build
@@ -140,7 +114,6 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
               </Grid>
             </Box>
 
-            {/* Career Paths */}
             <Box sx={{ mb: 3 }}>
               <Typography variant="h6" gutterBottom>
                 Career Paths
@@ -152,7 +125,6 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
               </Box>
             </Box>
 
-            {/* Application Info */}
             <Box sx={{ mb: 2 }}>
               <Typography variant="h6" gutterBottom>
                 Application Details
@@ -169,7 +141,6 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
           </Box>
         </Collapse>
 
-        {/* Actions */}
         <Box sx={{ mt: 'auto', pt: 2 }}>
           <Button
             variant="outlined"

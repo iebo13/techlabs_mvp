@@ -1,4 +1,4 @@
-import type { TrackKey } from '@/features/home/types/homePage.type'
+import type { TrackKey } from '@/features/tracks'
 
 export type Story = {
   id: string

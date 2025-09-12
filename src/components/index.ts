@@ -1,12 +1,7 @@
 export * from './Layouts'
+export * from './Forms'
+export * from './Buttons'
 
-// Forms
-export { FAQAccordion } from './Forms/FaqAccordion'
-export { default as VideoEmbed } from './Forms/VideoEmbed'
+export * from './ErrorHandling'
 
-// Buttons
-export { CTAButton } from './Buttons/CtaButton'
-export { SquareCheckboxIcon, SquareCheckedIcon } from './Buttons/SquareCheckbox'
-
-// Popups
-export { StoryModal } from './Popups/StoryModal'
+export * from './PerformanceMonitoring'

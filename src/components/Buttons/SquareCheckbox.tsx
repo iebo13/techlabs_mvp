@@ -2,7 +2,6 @@ import React from 'react'
 import { Check } from '@mui/icons-material'
 import { Box } from '@mui/material'
 
-// Common styles for checkbox icons
 const CHECKBOX_BASE_STYLES = {
   width: 24,
   height: 24,
@@ -16,9 +15,6 @@ const CHECKBOX_BASE_STYLES = {
   flexShrink: 0,
 } as const
 
-/**
- * Custom square checkbox icons for Figma design consistency
- */
 export const SquareCheckboxIcon: React.FC = () => (
   <Box
     sx={{

@@ -15,10 +15,10 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig)
+const fireBaseApp = initializeApp(firebaseConfig)
 
 // Initialize Analytics only in production and if measurementId exists
-const analytics = import.meta.env.PROD && firebaseConfig.measurementId ? getAnalytics(app) : null
+const analytics =
+  import.meta.env.PROD && firebaseConfig.measurementId ? getAnalytics(fireBaseApp) : null
 
-export { app, analytics }
-export default app
+export { fireBaseApp, analytics }

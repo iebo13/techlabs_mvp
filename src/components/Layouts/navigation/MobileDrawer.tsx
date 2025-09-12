@@ -66,6 +66,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = memo(({ onClose }) => {
         }}
       >
         <Typography
+          id="mobile-drawer-title"
           variant={headerTypography.variant}
           component="div"
           sx={{
@@ -76,6 +77,18 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = memo(({ onClose }) => {
           }}
         >
           TechLabs
+        </Typography>
+        <Typography
+          id="mobile-drawer-description"
+          sx={{
+            position: 'absolute',
+            left: '-10000px',
+            width: '1px',
+            height: '1px',
+            overflow: 'hidden',
+          }}
+        >
+          Main navigation menu with links to different sections of the TechLabs website
         </Typography>
         <IconButton
           edge="end"

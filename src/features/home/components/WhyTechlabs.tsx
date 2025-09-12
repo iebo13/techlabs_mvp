@@ -3,7 +3,9 @@ import { HourglassEmpty } from '@mui/icons-material'
 import { Box, Typography } from '@mui/material'
 import { CTAButton } from '@/components'
 import { Section } from '@/components/Layouts'
+import { APPLICATION_CONFIG } from '@/config/application'
 import homeData from '@/mocks/home.json'
+import { formatDeadlineText } from '@/utils/date'
 import { ValuePropCard } from './ValuePropCard'
 
 export const WhyTechlabs: React.FC = () => {
@@ -49,7 +51,7 @@ export const WhyTechlabs: React.FC = () => {
             sx={{ borderRadius: '16px' }}
             additionalContent={{
               icon: <HourglassEmpty />,
-              text: 'Application closes in 2 weeks for next batch',
+              text: formatDeadlineText(APPLICATION_CONFIG.deadline),
             }}
           >
             Start learning

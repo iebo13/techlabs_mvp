@@ -1,10 +1,6 @@
-// Tracks Feature Components
-export { TrackCard } from './components/TrackCard'
-export { TrackChooser } from './components/TrackChooser'
-export { TrackChooserHeader } from './components/TrackChooserHeader'
-export { TrackChooserForm } from './components/TrackChooserForm'
-export { TrackChooserActions } from './components/TrackChooserActions'
-export { ProgramSection } from './components/ProgramSection'
+export * from './components'
+export * from './hooks'
+export type * from './types/tracks.types'
+export * from './utils/tracksUtils'
 
-// Tracks Feature Page
 export { TracksPage } from './page/TracksPage'

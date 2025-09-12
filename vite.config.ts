@@ -5,10 +5,6 @@ import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vite.dev/config/
 export default defineConfig({
-  define: {
-    // Make environment variables available to the client
-    __DEV__: JSON.stringify(process.env.NODE_ENV === 'development'),
-  },
   plugins: [
     react({
       // Optimize React for production
@@ -17,12 +13,17 @@ export default defineConfig({
         plugins: ['@emotion/babel-plugin'],
       },
     }),
-    visualizer({
-      filename: 'dist/stats.html',
-      open: false,
-      gzipSize: true,
-      brotliSize: true,
-    }),
+    // Only include bundle analyzer when explicitly requested
+    ...(process.env.ANALYZE === 'true'
+      ? [
+          visualizer({
+            filename: 'dist/stats.html',
+            open: false,
+            gzipSize: true,
+            brotliSize: true,
+          }),
+        ]
+      : []),
   ],
   resolve: {
     alias: {
@@ -41,7 +42,7 @@ export default defineConfig({
     },
   },
   build: {
-    target: 'es2020', // Target more modern browsers for better compatibility
+    target: 'es2022', // Target more modern browsers for better compatibility
     minify: 'esbuild', // Use esbuild for better compatibility
     rollupOptions: {
       output: {
@@ -60,30 +61,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: [
-      // Core React dependencies - pre-bundle for faster dev
-      'react',
-      'react-dom',
-      'react-dom/client',
-      'react/jsx-runtime',
-      'react/jsx-dev-runtime',
-      // MUI core components and icons
-      '@mui/material/styles',
-      '@mui/material/Button',
-      '@mui/material/Typography',
-      '@mui/material/Box',
-      '@mui/material/Container',
-      '@mui/icons-material',
-      // Emotion core
-      '@emotion/react',
-      '@emotion/styled',
-      '@emotion/cache',
-      // Router essentials
-      'react-router-dom',
-    ],
-    exclude: ['@emotion/babel-plugin', 'firebase'],
-    force: true,
-    entries: ['src/main.tsx'],
+    exclude: ['@emotion/babel-plugin'],
   },
   // Performance optimizations
   server: {
@@ -91,22 +69,20 @@ export default defineConfig({
     host: true,
     hmr: {
       overlay: false,
-      port: 24678,
+      port: process.env.VITE_HMR_PORT ? parseInt(process.env.VITE_HMR_PORT) : 24678,
       protocol: 'ws',
-      host: '127.0.0.1',
+      host: process.env.VITE_HMR_HOST || 'localhost',
       timeout: 30000,
-    },
-    fs: {
-      allow: ['..'],
+      clientPort: process.env.VITE_HMR_PORT ? parseInt(process.env.VITE_HMR_PORT) : 24678,
     },
     strictPort: false,
     open: false,
+    watch: {
+      usePolling: false,
+      interval: 100,
+    },
     ...(process.env.NODE_ENV === 'development' && {
       cors: true,
-      hmr: {
-        ...(process.env.VITE_HMR_HOST && { host: process.env.VITE_HMR_HOST }),
-        ...(process.env.VITE_HMR_PORT && { port: parseInt(process.env.VITE_HMR_PORT) }),
-      },
     }),
   },
 

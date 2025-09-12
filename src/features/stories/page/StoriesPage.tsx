@@ -11,17 +11,18 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  type SelectChangeEvent,
 } from '@mui/material'
-import type { SelectChangeEvent } from '@mui/material'
-import { Section } from '@/components/Layouts'
-import { SectionHeading } from '@/components/Layouts'
-import type { Story } from '@/features/stories/types/stories.types'
-import type { TrackKey } from '@/features/tracks/types/tracks.type'
+import { Section, SectionHeading } from '@/components/Layouts'
+import type { TrackKey } from '@/features/tracks'
 import storiesData from '@/mocks/stories.json'
 import { StoryCard } from '../components/StoryCard'
+import type { Story } from '../types/stories.types'
 
 const StoryModal = lazy(() =>
-  import('@/components/Popups/StoryModal').then(module => ({ default: module.StoryModal }))
+  import('@/features/stories/components/StoryModal').then(module => ({
+    default: module.StoryModal,
+  }))
 )
 
 const typedStoriesData = storiesData as Story[]

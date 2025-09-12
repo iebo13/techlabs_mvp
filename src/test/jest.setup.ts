@@ -69,7 +69,7 @@ const originalConsoleWarn = console.warn
 
 beforeAll(() => {
   // Filter out common React/MUI warnings that don't affect test validity
-  console.error = (...args: any[]) => {
+  console.error = (...args: unknown[]) => {
     const message = typeof args[0] === 'string' ? args[0] : ''
 
     // Skip known warnings that are safe to ignore in tests
@@ -84,10 +84,10 @@ beforeAll(() => {
       return
     }
 
-    originalConsoleError.call(console, ...args)
+    originalConsoleError(...args)
   }
 
-  console.warn = (...args: any[]) => {
+  console.warn = (...args: unknown[]) => {
     const message = typeof args[0] === 'string' ? args[0] : ''
 
     // Skip common MUI warnings in test environment
@@ -100,7 +100,7 @@ beforeAll(() => {
       return
     }
 
-    originalConsoleWarn.call(console, ...args)
+    originalConsoleWarn(...args)
   }
 })
 

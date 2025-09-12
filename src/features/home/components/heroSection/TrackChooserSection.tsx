@@ -1,9 +1,20 @@
 import React, { memo } from 'react'
 import { HourglassEmpty } from '@mui/icons-material'
-import { Box, Typography, Stack, FormGroup, FormControlLabel, Checkbox } from '@mui/material'
+import {
+  Box,
+  Typography,
+  Stack,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  useMediaQuery,
+} from '@mui/material'
 import { CTAButton } from '@/components/Buttons/CtaButton'
 import { SquareCheckboxIcon, SquareCheckedIcon } from '@/components/Buttons/SquareCheckbox'
-import type { Track, TrackKey } from '@/features/tracks/types/tracks.type'
+import { APPLICATION_CONFIG } from '@/config/application'
+import type { Track, TrackKey } from '@/features/tracks'
+import { theme } from '@/theme'
+import { formatDeadlineText } from '@/utils/date'
 
 export type TrackChooserSectionProps = {
   tracks: Track[]
@@ -14,11 +25,13 @@ export type TrackChooserSectionProps = {
 
 export const TrackChooserSection: React.FC<TrackChooserSectionProps> = memo(
   ({ tracks, selectedTracks, onTrackChange, onStartLearning }) => {
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
     const formGroupStyles = {
       gap: { xs: 2.5, sm: 3 },
-      width: '100%',
+      width: isMobile ? '100%' : '400px',
       maxWidth: 400,
-      pl: 4,
+      pl: isMobile ? 0 : 12,
     }
 
     const handleTrackChange =
@@ -31,11 +44,21 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = memo(
     }
 
     return (
-      <Stack spacing={6} p={2} alignItems="center" sx={{ width: '100%' }}>
-        <Box sx={{ textAlign: 'center' }}>
-          <Typography variant="h3" color="primary">
-            Choose your Journey Now <br /> & Become a digital shaper of tomorrow
+      <Stack spacing={6} p={2} sx={{ width: isMobile ? '100%' : 'auto' }}>
+        <Box>
+          <Typography
+            variant="h3"
+            color="primary"
+            fontSize={isMobile ? '24px' : '40px'}
+            textAlign={isMobile ? 'start' : 'center'}
+          >
+            Choose your Journey Now
           </Typography>
+          {!isMobile && (
+            <Typography variant="h3" color="primary">
+              & Become a digital shaper of tomorrow
+            </Typography>
+          )}
         </Box>
 
         <Box
@@ -43,10 +66,10 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = memo(
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
+            alignItems: isMobile ? 'start' : 'center',
           }}
         >
-          <Stack sx={{ gap: 3 }}>
+          <Stack sx={{ gap: 3, width: isMobile ? '100%' : '400px' }}>
             <FormGroup role="group" aria-labelledby="track-chooser-heading" sx={formGroupStyles}>
               {tracks.map((track: Track) => (
                 <FormControlLabel
@@ -87,7 +110,7 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = memo(
               ))}
             </FormGroup>
 
-            <Box sx={{ textAlign: 'center', mt: 3 }}>
+            <Box sx={{ textAlign: 'center', mt: 3, width: isMobile ? '100%' : '400px' }}>
               <CTAButton
                 variant="contained"
                 size="large"
@@ -104,7 +127,7 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = memo(
                       }}
                     />
                   ),
-                  text: 'Application closes in 2 weeks for next batch',
+                  text: formatDeadlineText(APPLICATION_CONFIG.deadline),
                 }}
               >
                 Start learning

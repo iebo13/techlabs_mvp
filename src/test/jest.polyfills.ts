@@ -14,25 +14,33 @@ Object.assign(global, { TextEncoder, TextDecoder })
 // MSW will provide fetch polyfill when needed for HTTP mocking
 
 // Mock IntersectionObserver for components that use it (common with MUI)
-global.IntersectionObserver = jest
-  .fn()
-  .mockImplementation((callback: IntersectionObserverCallback) => ({
-    callback,
-    root: null,
-    rootMargin: '0px',
-    thresholds: [0],
-    observe: jest.fn(),
-    unobserve: jest.fn(),
-    disconnect: jest.fn(),
-  })) as any
+global.IntersectionObserver = class MockIntersectionObserver {
+  callback: IntersectionObserverCallback
+  root: Element | null = null
+  rootMargin: string = '0px'
+  thresholds: readonly number[] = [0]
+
+  observe = jest.fn()
+  unobserve = jest.fn()
+  disconnect = jest.fn()
+
+  constructor(callback: IntersectionObserverCallback) {
+    this.callback = callback
+  }
+} as any
 
 // Mock ResizeObserver for MUI components and responsive design
-global.ResizeObserver = jest.fn().mockImplementation((callback: ResizeObserverCallback) => ({
-  callback,
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
-})) as any
+global.ResizeObserver = class MockResizeObserver {
+  callback: ResizeObserverCallback
+
+  observe = jest.fn()
+  unobserve = jest.fn()
+  disconnect = jest.fn()
+
+  constructor(callback: ResizeObserverCallback) {
+    this.callback = callback
+  }
+} as any
 
 // Mock window.matchMedia for responsive design tests
 // This needs to be in polyfills to avoid being reset by clearMocks

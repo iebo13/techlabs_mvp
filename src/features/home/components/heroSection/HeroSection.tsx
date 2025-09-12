@@ -2,14 +2,18 @@ import React, { useState, useEffect, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Stack } from '@mui/material'
 import { Section } from '@/components/Layouts'
-import { TrackChooserSection } from '@/features/home/components/heroSection/TrackChooserSection'
-import type { TrackKey } from '@/features/tracks/types/tracks.type'
+import type { TrackKey } from '@/features/tracks'
+import {
+  saveTrackSelection,
+  loadTrackSelection,
+  trackIdsToQueryParam,
+} from '@/features/tracks/utils/tracksUtils'
 import homeData from '@/mocks/home.json'
 import { HomeDataSchema } from '@/mocks/schemas'
-import type { HomeData } from '@/types/home'
-import { saveTrackSelection, loadTrackSelection, trackIdsToQueryParam } from '@/utils/persistence'
+import type { HomeData } from '../../types/homePage.type'
 import { AwardLine } from './AwardLine'
 import { HeroHeading } from './HeroHeading'
+import { TrackChooserSection } from './TrackChooserSection'
 import { TrustStripSection } from './TrustStripSection'
 
 export const HeroSection: React.FC = memo(() => {

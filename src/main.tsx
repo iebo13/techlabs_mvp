@@ -1,10 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { errorReportingService } from '@/components/ErrorHandling'
 import App from './App.tsx'
+import './theme/fonts'
 import './theme/global.css'
 
+errorReportingService.initialize()
+
 document.documentElement.lang = 'en'
-document.documentElement.setAttribute('data-mui-color-scheme', 'light')
+// Theme attribute is now managed by ThemeContext
 
 const rootElement = document.getElementById('root')
 

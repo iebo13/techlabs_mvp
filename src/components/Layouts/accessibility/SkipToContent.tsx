@@ -8,7 +8,7 @@ import { Box } from '@mui/material'
  */
 export const SkipToContent: React.FC = () => {
   const handleClick = () => {
-    const mainContent = document.querySelector('main')
+    const mainContent = document.getElementById('main-content')
 
     if (mainContent) {
       mainContent.focus()

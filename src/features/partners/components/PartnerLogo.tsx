@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography, Stack } from '@mui/material'
-import type { Partner } from '@/features/partners/types/partners.type'
+import type { Partner } from '../types/partners.type'
 
 export const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
   return (

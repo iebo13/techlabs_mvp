@@ -8,11 +8,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-
-type FAQ = {
-  q: string
-  a: string
-}
+import type { FAQ } from '@/features/home/types/homePage.type'
 
 type FAQAccordionProps = {
   faqs: FAQ[]
@@ -21,10 +17,6 @@ type FAQAccordionProps = {
   singleOpen?: boolean
 }
 
-/**
- * FAQAccordion - Reusable FAQ accordion component
- * Supports single-open behavior, customizable styling, and accessibility features
- */
 export const FAQAccordion: React.FC<FAQAccordionProps> = ({
   faqs,
   maxWidth = 'md',
@@ -35,10 +27,8 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
 
   const handleChange = (panel: string) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
     if (singleOpen) {
-      // If clicking the same panel, toggle it. If clicking a different panel, open it and close others
       setExpanded(isExpanded ? panel : false)
     } else {
-      // For multiple open, toggle the current panel
       setExpanded(prev => (prev === panel ? false : panel))
     }
   }

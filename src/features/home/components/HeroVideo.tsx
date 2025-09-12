@@ -13,7 +13,7 @@ import { OptimizedImage, Section } from '@/components/Layouts'
 
 const VIDEO_THUMBNAIL = '/img/Intro-thumbnail.png'
 const VideoEmbed = lazy(() =>
-  import('@/components/Forms/VideoEmbed').then(module => ({ default: module.default }))
+  import('@/components/Forms/VideoEmbed').then(module => ({ default: module.VideoEmbed }))
 )
 
 type HeroVideoProps = {

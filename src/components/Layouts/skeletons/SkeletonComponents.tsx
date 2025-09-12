@@ -2,17 +2,24 @@ import React from 'react'
 import { Box, Skeleton } from '@mui/material'
 import { Section } from '../sections/Section'
 
-export type SectionSkeletonProps = {
-  /** Height of the skeleton in pixels */
+type SectionSkeletonProps = {
   height?: number
-  /** Custom padding for the section */
   padding?: number
 }
 
-/**
- * SectionSkeleton - Loading state for section content
- * Used in lazy loading scenarios for consistent loading experience
- */
+type GridSkeletonProps = {
+  items?: number
+  itemHeight?: number
+  columns?: { xs?: number; sm?: number; md?: number; lg?: number }
+  gap?: number
+}
+
+type CarouselSkeletonProps = {
+  cards?: number
+  cardHeight?: number
+  padding?: number
+}
+
 export const SectionSkeleton: React.FC<SectionSkeletonProps> = ({ height = 200, padding = 4 }) => (
   <Section>
     <Box sx={{ py: padding }}>
@@ -26,19 +33,6 @@ export const SectionSkeleton: React.FC<SectionSkeletonProps> = ({ height = 200, 
   </Section>
 )
 
-export type CarouselSkeletonProps = {
-  /** Number of skeleton cards to show */
-  cards?: number
-  /** Height of each skeleton card */
-  cardHeight?: number
-  /** Custom padding for the section */
-  padding?: number
-}
-
-/**
- * CarouselSkeleton - Loading state for carousel/grid content
- * Used for stories carousel, testimonials, or similar grid layouts
- */
 export const CarouselSkeleton: React.FC<CarouselSkeletonProps> = ({
   cards = 3,
   cardHeight = 300,
@@ -59,21 +53,6 @@ export const CarouselSkeleton: React.FC<CarouselSkeletonProps> = ({
   </Section>
 )
 
-export type GridSkeletonProps = {
-  /** Number of skeleton items */
-  items?: number
-  /** Height of each skeleton item */
-  itemHeight?: number
-  /** Grid columns configuration */
-  columns?: { xs?: number; sm?: number; md?: number; lg?: number }
-  /** Gap between items */
-  gap?: number
-}
-
-/**
- * GridSkeleton - Loading state for grid layouts
- * Flexible skeleton for various grid-based content
- */
 export const GridSkeleton: React.FC<GridSkeletonProps> = ({
   items = 6,
   itemHeight = 200,

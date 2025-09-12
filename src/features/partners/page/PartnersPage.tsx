@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box, Button, Card, Stack, Typography } from '@mui/material'
 import { Section, SectionHeading } from '@/components/Layouts'
-import { PartnerLogo } from '@/features/home/components'
 import partnersData from '@/mocks/partners.json'
+import { PartnerLogo } from '../components/PartnerLogo'
 import type { Partner } from '../types/partners.type'
 
 export const PartnersPage: React.FC = () => {
@@ -27,7 +27,7 @@ export const PartnersPage: React.FC = () => {
             }}
           >
             {partnersData.partners.map((partner: Partner) => (
-              <PartnerLogo partner={partner} />
+              <PartnerLogo key={partner.name} partner={partner} />
             ))}
           </Box>
         </Stack>

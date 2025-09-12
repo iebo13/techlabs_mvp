@@ -49,7 +49,7 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
         px: 2,
         fontSize: '1rem',
         fontWeight: 800,
-        borderRadius: 1,
+        borderRadius: '16px',
         boxShadow: 'none',
         '&:hover': {
           boxShadow: 'none',
@@ -59,8 +59,9 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
           outlineOffset: 2,
         },
         '&:disabled': {
-          backgroundColor: theme.palette.action.disabled,
-          color: theme.palette.action.disabled,
+          opacity: 0.5,
+          backgroundColor: theme.palette.primary.main,
+          color: theme.palette.common.white,
         },
       }
     }

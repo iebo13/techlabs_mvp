@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box, Card, CardContent, Container, Grid, Typography } from '@mui/material'
-import { Section } from '@/components/Layouts'
-import { SectionHeading } from '@/components/Layouts'
+import { Section, SectionHeading } from '@/components/Layouts'
 
 type TeamData = {
   title: string
@@ -14,9 +13,6 @@ type TeamData = {
   }>
 }
 
-/**
- * Team section component with member cards
- */
 export const TeamSection: React.FC<{ data: TeamData }> = ({ data }) => (
   <Section variant="paper">
     <Container maxWidth="lg">

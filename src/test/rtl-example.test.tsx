@@ -75,7 +75,7 @@ const LoginForm: React.FC = () => {
 describe('React Testing Library Integration', () => {
   describe('Basic Rendering', () => {
     test('renders simple components', () => {
-      render(<Button onClick={() => { }}>Click me</Button>)
+      render(<Button onClick={() => {}}>Click me</Button>)
       expect(screen.getByRole('button', { name: /click me/i })).toBeInTheDocument()
     })
 

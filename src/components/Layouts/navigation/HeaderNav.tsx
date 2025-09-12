@@ -1,14 +1,13 @@
 import React, { memo } from 'react'
 import { AppBar, Toolbar, Box, Drawer, useTheme, useMediaQuery } from '@mui/material'
-import { useMobileDrawer } from '@/hooks/useMobileDrawer'
+import { DevThemeToggle } from '@/components/DevThemeToggle'
+import { SkipToContent } from '../accessibility/SkipToContent'
 import { DesktopNavigation } from './DesktopNavigation'
 import { Logo } from './Logo'
 import { MobileDrawer } from './MobileDrawer'
 import { MobileMenuButton } from './MobileMenuButton'
+import { useMobileDrawer } from './useMobileDrawer'
 
-/**
- * HeaderNav component provides sticky navigation with responsive mobile drawer.
- */
 export const HeaderNav: React.FC = memo(() => {
   const theme = useTheme()
 
@@ -17,10 +16,10 @@ export const HeaderNav: React.FC = memo(() => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'))
 
-  const { mobileOpen, handleDrawerToggle, handleDrawerClose } = useMobileDrawer()
+  const { mobileOpen, handleDrawerToggle, handleDrawerClose, triggerButtonRef } = useMobileDrawer()
 
   const getResponsiveSpacing = () => {
-    if (isXs) return { px: 0, py: 1, minHeight: 64 }
+    if (isXs) return { px: 2, py: 1, minHeight: 64 }
     if (isSm) return { px: 0, py: 1.5, minHeight: 68 }
     if (isTablet) return { px: 0, py: 2, minHeight: 72 }
 
@@ -31,6 +30,7 @@ export const HeaderNav: React.FC = memo(() => {
 
   return (
     <>
+      <SkipToContent />
       <AppBar
         position="sticky"
         elevation={0}
@@ -38,13 +38,26 @@ export const HeaderNav: React.FC = memo(() => {
         role="navigation"
         aria-label="Main navigation"
         sx={{
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          backgroundColor:
+            theme.palette.mode === 'dark' ? 'rgba(26, 26, 26, 0.95)' : 'rgba(255, 255, 255, 0.95)',
           backdropFilter: 'blur(10px)',
-          borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+          borderBottom:
+            theme.palette.mode === 'dark'
+              ? '1px solid rgba(255, 255, 255, 0.12)'
+              : '1px solid rgba(0, 0, 0, 0.08)',
           boxShadow: {
-            xs: '0px 1px 3px rgba(0, 0, 0, 0.15)',
-            sm: '0px 2px 4px rgba(0, 0, 0, 0.18)',
-            md: '0px 2px 4px rgba(0, 0, 0, 0.2)',
+            xs:
+              theme.palette.mode === 'dark'
+                ? '0px 1px 3px rgba(0, 0, 0, 0.3)'
+                : '0px 1px 3px rgba(0, 0, 0, 0.15)',
+            sm:
+              theme.palette.mode === 'dark'
+                ? '0px 2px 4px rgba(0, 0, 0, 0.4)'
+                : '0px 2px 4px rgba(0, 0, 0, 0.18)',
+            md:
+              theme.palette.mode === 'dark'
+                ? '0px 2px 4px rgba(0, 0, 0, 0.5)'
+                : '0px 2px 4px rgba(0, 0, 0, 0.2)',
           },
           zIndex: theme.zIndex.appBar,
           userSelect: 'none',
@@ -80,10 +93,26 @@ export const HeaderNav: React.FC = memo(() => {
           >
             <Logo />
 
-            {!isMobile && <DesktopNavigation />}
-          </Box>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: { xs: 1, sm: 1.5, md: 2 },
+              }}
+            >
+              <DevThemeToggle />
 
-          {isMobile && <MobileMenuButton mobileOpen={mobileOpen} onToggle={handleDrawerToggle} />}
+              {!isMobile && <DesktopNavigation />}
+
+              {isMobile && (
+                <MobileMenuButton
+                  ref={triggerButtonRef}
+                  mobileOpen={mobileOpen}
+                  onToggle={handleDrawerToggle}
+                />
+              )}
+            </Box>
+          </Box>
         </Toolbar>
       </AppBar>
 
@@ -93,9 +122,17 @@ export const HeaderNav: React.FC = memo(() => {
         open={mobileOpen}
         onClose={handleDrawerClose}
         id="mobile-navigation-drawer"
+        sx={{
+          padding: 0,
+          margin: 0,
+        }}
         ModalProps={{
           keepMounted: true,
           disableScrollLock: false,
+          'aria-modal': true,
+          role: 'dialog',
+          'aria-labelledby': 'mobile-drawer-title',
+          'aria-describedby': 'mobile-drawer-description',
         }}
       >
         <MobileDrawer onClose={handleDrawerClose} />

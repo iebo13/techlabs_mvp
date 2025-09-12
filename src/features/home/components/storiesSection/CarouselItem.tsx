@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
-import type { Story } from '@/types/home'
+import type { Story } from '@/features/stories'
 
 const STORY_IMAGES = {
   '1': '/img/stories/person1.png',
@@ -40,14 +40,6 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
           outlineColor: 'primary.main',
           outlineOffset: '2px',
         },
-      }}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(event: React.KeyboardEvent) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault()
-          window.location.href = `/stories/${story.id}`
-        }
       }}
     >
       <Box component="img" src={getStoryImage(story.id)} alt={story.title} />

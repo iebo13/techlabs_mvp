@@ -1,9 +1,8 @@
 import React, { lazy } from 'react'
 import { LazyIntersection, SEO, SectionSkeleton, CarouselSkeleton } from '@/components/Layouts'
 import homeData from '@/mocks/home.json'
-import type { HomeData } from '@/types/home'
-import { HeroSection } from '../components'
-import { HeroVideo } from '../components'
+import { HeroSection, HeroVideo } from '../components'
+import type { HomeData } from '../types/homePage.type'
 
 const WhyTechlabsSection = lazy(() =>
   import('../components/WhyTechlabs').then(m => ({ default: m.WhyTechlabs }))
@@ -19,7 +18,9 @@ const NumbersBand = lazy(() =>
 const SupportCta = lazy(() =>
   import('@/features/home/components/SupportCta').then(m => ({ default: m.SupportCta }))
 )
-const Faqs = lazy(() => import('@/features/home/components/Faqs').then(m => ({ default: m.Faqs })))
+const FaqsSection = lazy(() =>
+  import('@/features/about/components/FaqsSection').then(m => ({ default: m.FaqsSection }))
+)
 
 export const HomePage: React.FC = () => {
   return (
@@ -65,7 +66,7 @@ export const HomePage: React.FC = () => {
       </LazyIntersection>
 
       <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>
-        <Faqs faqs={homeData.faqs} />
+        <FaqsSection faqs={homeData.faqs} />
       </LazyIntersection>
     </main>
   )

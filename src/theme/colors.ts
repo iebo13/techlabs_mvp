@@ -10,6 +10,7 @@ export const BLUE = {
   700: '#336FDB',
   500: '#6A9EF6',
   300: '#91B8F8',
+  100: '#C1D7FB',
 }
 
 export const GREY = {

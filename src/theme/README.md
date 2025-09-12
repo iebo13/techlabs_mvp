@@ -51,6 +51,13 @@ The theme system provides:
 
 **Font Family:** Inter, Poppins, Roboto, Helvetica Neue, Arial, sans-serif
 
+**Font Loading Strategy:**
+
+- Inter and Poppins are loaded via @fontsource packages (weights: 400, 500, 600,
+  700, 800, 900)
+- Roboto serves as system fallback (no custom loading needed)
+- Helvetica Neue and Arial are system fallbacks
+
 **Fixed Typography Scale:**
 
 - H1: `3.5rem` (56px), weight 800, line-height 1.15 - Hero text

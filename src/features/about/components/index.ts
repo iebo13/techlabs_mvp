@@ -1,0 +1,5 @@
+export { MissionSection } from './MissionSection'
+export { TeamSection } from './TeamSection'
+export { ContactSection } from './ContactSection'
+export { ProgramSection } from './ProgramSection'
+export { FaqsSection } from './FaqsSection'

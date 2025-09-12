@@ -15,7 +15,7 @@ export const FooterBrandSection: React.FC = () => {
     >
       <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
         <Logo />
-        <Typography variant="body1" color="textSecondary" padding={0}>
+        <Typography variant="body1" color="text.secondary" sx={{ p: 0 }}>
           Düsseldorf
         </Typography>
       </Box>

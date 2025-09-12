@@ -45,13 +45,8 @@ export const addResourceHint = ({
  * Preload critical resources
  */
 export const preloadCriticalResources = (): void => {
-  // Preload critical fonts
-  addResourceHint({
-    href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
-    type: 'preload',
-    as: 'style',
-    crossorigin: 'anonymous',
-  })
+  // Note: Font preloading removed - fonts are now loaded via @fontsource
+  // packages bundled with the application for better performance and reliability
 
   // Preload hero images
   addResourceHint({

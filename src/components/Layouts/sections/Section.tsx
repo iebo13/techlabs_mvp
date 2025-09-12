@@ -2,22 +2,13 @@ import React from 'react'
 import { Box } from '@mui/material'
 
 export type SectionProps = {
-  /** Background color variant */
   variant?: 'default' | 'paper' | 'primary' | 'secondary'
-  /** Additional padding multiplier (default: 1) */
   paddingScale?: number
-  /** Whether to render as a semantic section element */
   component?: 'section' | 'div' | 'main' | 'article' | 'aside'
-  /** Children content */
   children: React.ReactNode
-  /** Additional styles */
   sx?: React.ComponentProps<typeof Box>['sx']
 }
 
-/**
- * Section component provides consistent spacing and layout for page sections.
- * Uses MUI Container with semantic HTML and consistent padding.
- */
 export const Section: React.FC<SectionProps> = ({
   variant = 'default',
   paddingScale = 1,

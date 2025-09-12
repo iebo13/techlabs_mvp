@@ -1,5 +1,6 @@
 import React, { Suspense, useRef, useEffect, useState, memo } from 'react'
 import { Box, Skeleton, Fade } from '@mui/material'
+import { createObserverManager } from '@/utils/intersectionObserver'
 
 type LazyIntersectionProps = {
   children: React.ReactNode
@@ -36,26 +37,25 @@ export const LazyIntersection: React.FC<LazyIntersectionProps> = memo(
   ({ children, fallback, rootMargin = '100px', threshold = 0.1, minHeight = 200 }) => {
     const [isVisible, setIsVisible] = useState(false)
     const ref = useRef<HTMLDivElement>(null)
+    const observerManager = useRef(createObserverManager())
 
     useEffect(() => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-            observer.disconnect()
-          }
-        },
-        {
-          rootMargin,
-          threshold,
-        }
-      )
-
       if (ref.current) {
-        observer.observe(ref.current)
-      }
+        const manager = observerManager.current
 
-      return () => observer.disconnect()
+        manager.observe(
+          ref.current,
+          () => {
+            setIsVisible(true)
+          },
+          {
+            rootMargin,
+            threshold,
+          }
+        )
+
+        return () => manager.cleanup()
+      }
     }, [rootMargin, threshold])
 
     const defaultFallback = fallback || <DefaultSkeleton minHeight={minHeight} />

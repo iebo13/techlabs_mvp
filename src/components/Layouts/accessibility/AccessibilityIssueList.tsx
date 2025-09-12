@@ -1,11 +1,6 @@
 import React from 'react'
 import { Alert, List, ListItem, ListItemText, Typography } from '@mui/material'
-import type { AccessibilityIssue } from '@/hooks/useAccessibilityChecks'
-
-type AccessibilityIssueListProps = {
-  issues: AccessibilityIssue[]
-  onIssueClick: (issue: AccessibilityIssue) => void
-}
+import type { AccessibilityIssueListProps } from './types/accessibility.types'
 
 /**
  * AccessibilityIssueList - Renders the list of accessibility issues

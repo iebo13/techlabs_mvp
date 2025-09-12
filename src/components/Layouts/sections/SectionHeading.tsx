@@ -3,24 +3,14 @@ import { Typography, Box } from '@mui/material'
 import type { TypographyProps } from '@mui/material/Typography'
 
 export type SectionHeadingProps = {
-  /** Heading level for semantic HTML and styling */
   level?: 1 | 2 | 3 | 4 | 5 | 6
-  /** Visual emphasis style */
   emphasis?: 'primary' | 'secondary' | 'gradient'
-  /** Optional subtitle text */
   subtitle?: string
-  /** Whether to center align the heading */
   centered?: boolean
-  /** Maximum width for centered headings */
   maxWidth?: string | number
-  /** Children content (heading text) */
   children: React.ReactNode
 } & Omit<TypographyProps, 'variant'>
 
-/**
- * SectionHeading component provides consistent heading typography and styling.
- * Supports semantic heading levels with optional emphasis and subtitles.
- */
 export const SectionHeading: React.FC<SectionHeadingProps> = ({
   level = 2,
   emphasis,

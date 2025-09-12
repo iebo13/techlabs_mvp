@@ -1,21 +1,18 @@
 import React from 'react'
-import { Box, IconButton } from '@mui/material'
+import { Box, IconButton, useTheme } from '@mui/material'
 import { socialLinks } from './footerData'
 
-/**
- * FooterSocialRow - Renders centered social media icons row
- * 40×40px circular buttons with brand pink background per Figma design
- * Order: Instagram → YouTube → X → LinkedIn → Facebook → Email
- */
 export const FooterSocialRow: React.FC = () => {
+  const theme = useTheme()
+
   return (
     <Box
       sx={{
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        gap: 2, // 16px spacing between circles
-        mt: 3, // 24px top margin
+        gap: 2,
+        mt: 3,
         mb: 3,
       }}
     >
@@ -31,11 +28,11 @@ export const FooterSocialRow: React.FC = () => {
             rel={social.name === 'Email' ? undefined : 'noopener noreferrer'}
             aria-label={social.ariaLabel}
             sx={{
-              width: 40, // 40×40px per specification
+              width: 40,
               height: 40,
-              backgroundColor: 'primary.main', // Brand pink fill
-              color: 'white', // White glyphs
-              borderRadius: '50%', // Fully rounded
+              backgroundColor: 'primary.main',
+              color: 'white',
+              borderRadius: '50%',
               border: 'none',
               '&:hover': {
                 backgroundColor: 'primary.main',
@@ -43,7 +40,7 @@ export const FooterSocialRow: React.FC = () => {
                 transition: 'transform 0.2s ease-in-out',
               },
               '&:focus-visible': {
-                outline: '3px solid rgba(250, 33, 92, 0.25)',
+                outline: `3px solid ${theme.palette.primary.main}40`,
                 outlineOffset: 2,
               },
             }}

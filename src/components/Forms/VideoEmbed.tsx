@@ -10,8 +10,6 @@ import {
   useMediaQuery,
 } from '@mui/material'
 
-const WHITE_COLOR = 'common.white' as const
-
 type VideoEmbedProps = {
   open: boolean
   onClose: () => void
@@ -20,13 +18,18 @@ type VideoEmbedProps = {
   posterUrl: string
 }
 
-const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, posterUrl }) => {
+export const VideoEmbed: React.FC<VideoEmbedProps> = ({
+  open,
+  onClose,
+  title,
+  srcUrl,
+  posterUrl,
+}) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const videoRef = useRef<HTMLVideoElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
 
-  // Handle keyboard events
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -36,7 +39,7 @@ const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, p
 
     if (open) {
       document.addEventListener('keydown', handleKeyDown)
-      // Focus the close button when modal opens for keyboard accessibility
+
       setTimeout(() => {
         closeButtonRef.current?.focus()
       }, 100)
@@ -47,15 +50,11 @@ const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, p
     }
   }, [open, onClose])
 
-  // Pause video when modal closes
   useEffect(() => {
     if (!open && videoRef.current) {
       videoRef.current.pause()
     }
   }, [open])
-
-  // Respect prefers-reduced-motion (ready for future animation features)
-  // const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
 
   return (
     <Dialog
@@ -68,13 +67,12 @@ const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, p
       PaperProps={{
         sx: {
           bgcolor: 'common.black',
-          color: WHITE_COLOR,
+          color: 'text.primary',
           borderRadius: isMobile ? 0 : 2,
           maxHeight: '90vh',
           overflow: 'hidden',
         },
       }}
-      // Focus trap is handled by MUI Dialog
       disableRestoreFocus
       keepMounted={false}
     >
@@ -84,7 +82,7 @@ const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, p
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          color: WHITE_COLOR,
+          color: 'common.white',
           pb: 1,
         }}
       >
@@ -93,7 +91,7 @@ const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, p
           ref={closeButtonRef}
           onClick={onClose}
           aria-label="Close video"
-          sx={{ color: WHITE_COLOR }}
+          sx={{ color: 'common.white' }}
         >
           <CloseIcon />
         </IconButton>
@@ -142,5 +140,3 @@ const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, p
     </Dialog>
   )
 }
-
-export default VideoEmbed

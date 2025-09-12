@@ -12,7 +12,7 @@ export const FooterLinksSection: React.FC = () => {
         {footerSections.map(section => (
           <Grid size={{ xs: 6, sm: 3 }} key={section.title}>
             <nav aria-label={section.title}>
-              <Typography variant="body1" color="textPrimary" fontWeight={600}>
+              <Typography variant="body1" color="text.primary" fontWeight={600}>
                 {section.title}
               </Typography>
               <Box

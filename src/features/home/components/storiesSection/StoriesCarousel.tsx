@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { ChevronRight as ChevronRightIcon } from '@mui/icons-material'
 import { Box, Button, useTheme, useMediaQuery } from '@mui/material'
 import { Section, SectionHeading } from '@/components/Layouts'
-import type { Story } from '@/types/home'
+import type { Story } from '@/features/stories'
 import { CarouselItem } from './CarouselItem'
 import { CarouselNavigation } from './CarouselNavigation'
 
@@ -79,6 +79,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = memo(
             <Box
               ref={carouselRef}
               role="region"
+              aria-roledescription="carousel"
               aria-label="Stories carousel"
               aria-live="polite"
               sx={{ position: 'relative' }}

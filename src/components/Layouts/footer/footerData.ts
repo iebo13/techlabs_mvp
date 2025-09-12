@@ -1,8 +1,3 @@
-/**
- * Footer data for SiteFooter component
- * Updated for Düsseldorf chapter parity with Figma design
- */
-
 import { LinkedIn, X as Twitter, Instagram, Facebook, Email, YouTube } from '@mui/icons-material'
 
 export type FooterSection = {

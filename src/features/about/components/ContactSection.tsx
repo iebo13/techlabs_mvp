@@ -16,9 +16,6 @@ type ContactData = {
   }
 }
 
-/**
- * Contact section component with contact info and social links
- */
 export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => (
   <Section>
     <Container maxWidth="lg">

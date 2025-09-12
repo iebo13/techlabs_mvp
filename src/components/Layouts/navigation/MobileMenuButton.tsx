@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo, forwardRef } from 'react'
 import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material'
 import { IconButton, useTheme, useMediaQuery } from '@mui/material'
 
@@ -7,8 +7,8 @@ type MobileMenuButtonProps = {
   onToggle: () => void
 }
 
-export const MobileMenuButton: React.FC<MobileMenuButtonProps> = memo(
-  ({ mobileOpen, onToggle }) => {
+export const MobileMenuButton = memo(
+  forwardRef<HTMLButtonElement, MobileMenuButtonProps>(({ mobileOpen, onToggle }, ref) => {
     const theme = useTheme()
 
     const isXs = useMediaQuery(theme.breakpoints.only('xs'))
@@ -25,6 +25,7 @@ export const MobileMenuButton: React.FC<MobileMenuButtonProps> = memo(
 
     return (
       <IconButton
+        ref={ref}
         edge="end"
         onClick={onToggle}
         aria-label={mobileOpen ? 'close navigation menu' : 'open navigation menu'}
@@ -38,6 +39,8 @@ export const MobileMenuButton: React.FC<MobileMenuButtonProps> = memo(
           minWidth: '44px',
           minHeight: '44px',
           borderRadius: 2,
+          m: 0,
+          p: 0,
           transition: theme.transitions.create(['background-color', 'transform', 'color'], {
             duration: theme.transitions.duration.short,
           }),
@@ -54,14 +57,6 @@ export const MobileMenuButton: React.FC<MobileMenuButtonProps> = memo(
           '&:active': {
             transform: 'scale(0.95)',
             backgroundColor: 'rgba(0, 0, 0, 0.12)',
-          },
-          mr: {
-            xs: 0.5,
-            sm: 1,
-          },
-          marginRight: {
-            xs: 'max(0.5rem, env(safe-area-inset-right, 0.5rem))',
-            sm: 'max(1rem, env(safe-area-inset-right, 1rem))',
           },
         }}
       >
@@ -89,7 +84,7 @@ export const MobileMenuButton: React.FC<MobileMenuButtonProps> = memo(
         />
       </IconButton>
     )
-  }
+  })
 )
 
 MobileMenuButton.displayName = 'MobileMenuButton'

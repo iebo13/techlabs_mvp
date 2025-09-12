@@ -1,16 +1,18 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, useTheme } from '@mui/material'
 import { FooterBrandSection } from './FooterBrandSection'
 import { FooterCopyRights } from './FooterCopyRights'
 import { FooterLinksSection } from './FooterLinksSection'
 import { FooterSocialRow } from './FooterSocialRow'
 
 export const SiteFooter: React.FC = () => {
+  const theme = useTheme()
+
   return (
     <Box component="footer">
       <Box
         sx={{
-          backgroundColor: '#F7F7F8',
+          backgroundColor: theme.palette.mode === 'dark' ? '#1a1a1a' : '#F7F7F8',
           width: '100%',
           padding: 2,
           pb: 1,

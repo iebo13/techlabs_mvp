@@ -1,0 +1,78 @@
+{
+  "navigation": {
+    "home": "Home",
+    "tracks": "Tracks",
+    "events": "Events",
+    "stories": "Stories",
+    "about": "About",
+    "partners": "Partners"
+  },
+  "hero": {
+    "title": "Learn {{tech}} Skills for Free",
+    "subtitle": {
+      "blended": "Blended learning",
+      "community": "Local Community",
+      "projects": "Practical Projects"
+    },
+    "cta": {
+      "chooseTracks": "Choose Your Tracks",
+      "learnMore": "Learn More"
+    }
+  },
+  "tracks": {
+    "title": "Choose Your Track",
+    "description": "Select the technology track that matches your interests and career goals",
+    "webDevelopment": "Web Development",
+    "dataScience": "Data Science",
+    "aiMachineLearning": "AI & Machine Learning",
+    "cloudComputing": "Cloud Computing",
+    "cybersecurity": "Cybersecurity",
+    "mobile": "Mobile Development"
+  },
+  "about": {
+    "title": "About TechLabs",
+    "mission": "Our Mission",
+    "team": "Our Team",
+    "contact": "Contact Us",
+    "program": "Our Program",
+    "faqs": "Frequently Asked Questions"
+  },
+  "events": {
+    "title": "Events",
+    "upcoming": "Upcoming Events",
+    "past": "Past Events",
+    "noEvents": "No events available"
+  },
+  "stories": {
+    "title": "Success Stories",
+    "readMore": "Read More",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "partners": {
+    "title": "Our Partners",
+    "description": "Companies and organizations that support our mission"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try Again",
+    "close": "Close",
+    "open": "Open",
+    "menu": "Menu",
+    "skipToContent": "Skip to main content",
+    "language": "Language"
+  },
+  "footer": {
+    "copyright": "© {{year}} TechLabs. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact",
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram"
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { errorReportingService } from '@/components/ErrorHandling'
 import App from './App.tsx'
 import './theme/fonts'
 import './theme/global.css'
+import './internationalization'
 
 errorReportingService.initialize()
 

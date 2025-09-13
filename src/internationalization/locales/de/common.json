@@ -1,0 +1,78 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "tracks": "Tracks",
+    "events": "Veranstaltungen",
+    "stories": "Erfolgsgeschichten",
+    "about": "Über uns",
+    "partners": "Partner"
+  },
+  "hero": {
+    "title": "Lerne {{tech}} Skills kostenlos",
+    "subtitle": {
+      "blended": "Blended Learning",
+      "community": "Lokale Gemeinschaft",
+      "projects": "Praktische Projekte"
+    },
+    "cta": {
+      "chooseTracks": "Wähle deine Tracks",
+      "learnMore": "Mehr erfahren"
+    }
+  },
+  "tracks": {
+    "title": "Wähle deinen Track",
+    "description": "Wähle den Technologie-Track, der zu deinen Interessen und Karrierezielen passt",
+    "webDevelopment": "Webentwicklung",
+    "dataScience": "Data Science",
+    "aiMachineLearning": "KI & Machine Learning",
+    "cloudComputing": "Cloud Computing",
+    "cybersecurity": "Cybersicherheit",
+    "mobile": "Mobile Entwicklung"
+  },
+  "about": {
+    "title": "Über TechLabs",
+    "mission": "Unsere Mission",
+    "team": "Unser Team",
+    "contact": "Kontakt",
+    "program": "Unser Programm",
+    "faqs": "Häufig gestellte Fragen"
+  },
+  "events": {
+    "title": "Veranstaltungen",
+    "upcoming": "Kommende Veranstaltungen",
+    "past": "Vergangene Veranstaltungen",
+    "noEvents": "Keine Veranstaltungen verfügbar"
+  },
+  "stories": {
+    "title": "Erfolgsgeschichten",
+    "readMore": "Mehr lesen",
+    "previous": "Vorherige",
+    "next": "Nächste"
+  },
+  "partners": {
+    "title": "Unsere Partner",
+    "description": "Unternehmen und Organisationen, die unsere Mission unterstützen"
+  },
+  "common": {
+    "loading": "Lädt...",
+    "error": "Ein Fehler ist aufgetreten",
+    "retry": "Erneut versuchen",
+    "close": "Schließen",
+    "open": "Öffnen",
+    "menu": "Menü",
+    "skipToContent": "Zum Hauptinhalt springen",
+    "language": "Sprache"
+  },
+  "footer": {
+    "copyright": "© {{year}} TechLabs. Alle Rechte vorbehalten.",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen",
+    "contact": "Kontakt",
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram"
+    }
+  }
+}

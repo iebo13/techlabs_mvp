@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { AppBar, Toolbar, Box, Drawer, useTheme, useMediaQuery } from '@mui/material'
 import { DevThemeToggle } from '@/components/DevThemeToggle'
+import { LanguageToggle } from '@/components/LanguageToggle'
 import { SkipToContent } from '../accessibility/SkipToContent'
 import { DesktopNavigation } from './DesktopNavigation'
 import { Logo } from './Logo'
@@ -100,9 +101,9 @@ export const HeaderNav: React.FC = memo(() => {
                 gap: { xs: 1, sm: 1.5, md: 2 },
               }}
             >
-              <DevThemeToggle />
-
               {!isMobile && <DesktopNavigation />}
+              <LanguageToggle />
+              <DevThemeToggle />
 
               {isMobile && (
                 <MobileMenuButton

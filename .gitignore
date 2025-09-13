@@ -102,6 +102,8 @@ Thumbs.db
 tmp/
 temp/
 
+.claude/
+
 # Lighthouse reports
 lighthouseReport.json
 

@@ -10,13 +10,11 @@ export const TracksPage: React.FC = () => {
   const [searchParams] = useSearchParams()
   const [expandedTrack, setExpandedTrack] = useState<string | null>(null)
 
-
   useEffect(() => {
     const urlPrefs = searchParams.get('pref')
 
     if (urlPrefs) {
       const trackIds = queryParamToTrackIds(urlPrefs)
-
 
       if (trackIds.length === 1) {
         setExpandedTrack(trackIds[0])

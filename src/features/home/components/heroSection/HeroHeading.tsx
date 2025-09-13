@@ -1,8 +1,10 @@
 import React, { memo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Box, Typography, useMediaQuery } from '@mui/material'
 import { theme } from '@/theme'
 
 export const HeroHeading: React.FC = memo(() => {
+  const { t } = useTranslation()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   return (
@@ -23,11 +25,7 @@ export const HeroHeading: React.FC = memo(() => {
           },
         }}
       >
-        Learn{' '}
-        <Box component="span" className="emphasis">
-          Tech
-        </Box>{' '}
-        Skills for Free
+        {t('hero.title', { tech: 'Tech' })}
       </Typography>
 
       <Typography
@@ -46,15 +44,15 @@ export const HeroHeading: React.FC = memo(() => {
           },
         }}
       >
-        Blended learning
+        {t('hero.subtitle.blended')}
         <Box component="span" className="separator">
           ·
         </Box>
-        Local Community
+        {t('hero.subtitle.community')}
         <Box component="span" className="separator">
           ·
         </Box>
-        Practical Projects
+        {t('hero.subtitle.projects')}
       </Typography>
     </Box>
   )

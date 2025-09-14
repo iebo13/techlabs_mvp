@@ -1,7 +1,7 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { Section, SectionHeading } from '@/components/Layouts'
 
-export const CareersPage: React.FC = memo(() => (
+export const CareersPage: React.FC = () => (
   <main>
     <Section>
       <SectionHeading level={1} centered>
@@ -10,9 +10,9 @@ export const CareersPage: React.FC = memo(() => (
       <p>Careers page placeholder</p>
     </Section>
   </main>
-))
+)
 
-export const PrivacyPage: React.FC = memo(() => (
+export const PrivacyPage: React.FC = () => (
   <main>
     <Section>
       <SectionHeading level={1} centered>
@@ -21,9 +21,9 @@ export const PrivacyPage: React.FC = memo(() => (
       <p>Privacy Policy page placeholder - will contain data protection information</p>
     </Section>
   </main>
-))
+)
 
-export const ImprintPage: React.FC = memo(() => (
+export const ImprintPage: React.FC = () => (
   <main>
     <Section>
       <SectionHeading level={1} centered>
@@ -32,7 +32,7 @@ export const ImprintPage: React.FC = memo(() => (
       <p>Imprint page placeholder - will contain legal information</p>
     </Section>
   </main>
-))
+)
 
 CareersPage.displayName = 'CareersPage'
 PrivacyPage.displayName = 'PrivacyPage'

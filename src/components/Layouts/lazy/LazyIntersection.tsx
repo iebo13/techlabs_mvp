@@ -10,7 +10,7 @@ type LazyIntersectionProps = {
   minHeight?: number
 }
 
-const DefaultSkeleton: React.FC<{ minHeight: number }> = memo(({ minHeight }) => (
+const DefaultSkeleton: React.FC<{ minHeight: number }> = ({ minHeight }) => (
   <Fade in timeout={500}>
     <Box sx={{ py: 2 }}>
       <Skeleton
@@ -29,7 +29,7 @@ const DefaultSkeleton: React.FC<{ minHeight: number }> = memo(({ minHeight }) =>
       />
     </Box>
   </Fade>
-))
+)
 
 DefaultSkeleton.displayName = 'DefaultSkeleton'
 

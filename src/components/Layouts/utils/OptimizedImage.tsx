@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, memo } from 'react'
 import { Box, Skeleton } from '@mui/material'
-import { useImageErrorReporting } from '@/components/ErrorHandling/hooks/useErrorReporting'
-import { createObserverManager } from '@/utils/intersectionObserver'
+import { createImageObserver } from '@/components/PerformanceMonitoring/PerformanceUtils'
 
 type OptimizedImageProps = {
   src: string
@@ -18,6 +17,7 @@ type OptimizedImageProps = {
   sizes?: string
   srcSet?: string
 }
+
 
 export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
   ({
@@ -39,49 +39,36 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
     const [isInView, setIsInView] = useState(!lazy || priority)
     const [hasError, setHasError] = useState(false)
     const imgRef = useRef<HTMLImageElement>(null)
-    const mountedRef = useRef(true)
-    const observerManager = useRef(createObserverManager())
-
-    // Use unified error reporting for image load failures
-    const { createImageErrorHandler } = useImageErrorReporting()
+    const observerRef = useRef<IntersectionObserver | null>(null)
 
     const handleLoad = () => {
-      if (mountedRef.current) {
-        setIsLoaded(true)
-      }
-
-      observerManager.current.cleanup()
-
+      setIsLoaded(true)
       onLoad?.()
     }
 
-    const handleError = createImageErrorHandler(src, () => {
-      if (mountedRef.current) {
-        setHasError(true)
-      }
-
-      observerManager.current.cleanup()
-
+    const handleError = () => {
+      setHasError(true)
       onError?.()
-    })
+    }
 
     useEffect(() => {
       if (!lazy || priority || !imgRef.current) return
 
-      const manager = observerManager.current
-
-      manager.observe(
-        imgRef.current,
-        () => {
-          if (mountedRef.current) {
+      const observer = createImageObserver(
+        entry => {
+          if (entry.isIntersecting) {
             setIsInView(true)
+            observer?.disconnect()
           }
         },
         { rootMargin: '50px' }
       )
 
+      observerRef.current = observer
+      observer.observe(imgRef.current)
+
       return () => {
-        manager.cleanup()
+        observer.disconnect()
       }
     }, [lazy, priority])
 
@@ -92,13 +79,6 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
         link.rel = 'preload'
         link.as = 'image'
         link.href = src
-
-        link.onerror = createImageErrorHandler(src, () => {
-          if (document.head.contains(link)) {
-            document.head.removeChild(link)
-          }
-        })
-
         document.head.appendChild(link)
 
         return () => {
@@ -107,17 +87,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
           }
         }
       }
-    }, [priority, src, createImageErrorHandler])
-
-    useEffect(() => {
-      const manager = observerManager.current
-
-      return () => {
-        mountedRef.current = false
-
-        manager.cleanup()
-      }
-    }, [])
+    }, [priority, src])
 
     const imageStyles = {
       width: width || 'auto',

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Stack } from '@mui/material'
 import { Section } from '@/components/Layouts'
@@ -16,7 +16,8 @@ import { HeroHeading } from './HeroHeading'
 import { TrackChooserSection } from './TrackChooserSection'
 import { TrustStripSection } from './TrustStripSection'
 
-export const HeroSection: React.FC = memo(() => {
+export const HeroSection: React.FC = () => {
+
   const [selectedTracks, setSelectedTracks] = useState<TrackKey[]>([])
   const navigate = useNavigate()
   const validatedData: HomeData = HomeDataSchema.parse(homeData)
@@ -74,6 +75,6 @@ export const HeroSection: React.FC = memo(() => {
       </Stack>
     </Section>
   )
-})
+}
 
 HeroSection.displayName = 'HeroSection'

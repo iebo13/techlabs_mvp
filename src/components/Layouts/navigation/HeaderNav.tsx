@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { AppBar, Toolbar, Box, Drawer, useTheme, useMediaQuery } from '@mui/material'
 import { DevThemeToggle } from '@/components/DevThemeToggle'
 import { LanguageToggle } from '@/components/LanguageToggle'
@@ -9,7 +9,7 @@ import { MobileDrawer } from './MobileDrawer'
 import { MobileMenuButton } from './MobileMenuButton'
 import { useMobileDrawer } from './useMobileDrawer'
 
-export const HeaderNav: React.FC = memo(() => {
+export const HeaderNav: React.FC = () => {
   const theme = useTheme()
 
   const isXs = useMediaQuery(theme.breakpoints.only('xs'))
@@ -140,6 +140,6 @@ export const HeaderNav: React.FC = memo(() => {
       </Drawer>
     </>
   )
-})
+}
 
 HeaderNav.displayName = 'HeaderNav'

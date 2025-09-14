@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { Close as CloseIcon } from '@mui/icons-material'
 import {
   Box,
@@ -26,7 +26,7 @@ type MobileDrawerProps = {
   onClose: () => void
 }
 
-export const MobileDrawer: React.FC<MobileDrawerProps> = memo(({ onClose }) => {
+export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
   const theme = useTheme()
 
   const isXs = useMediaQuery(theme.breakpoints.only('xs'))
@@ -135,7 +135,6 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = memo(({ onClose }) => {
           px: spacing.px,
           mt: spacing.ctaMt,
           flexShrink: 0,
-          // Safe area padding for bottom
           pb: {
             xs: `max(${spacing.py * 8}px, env(safe-area-inset-bottom, ${spacing.py * 8}px))`,
           },
@@ -160,6 +159,6 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = memo(({ onClose }) => {
       </Box>
     </Box>
   )
-})
+}
 
 MobileDrawer.displayName = 'MobileDrawer'

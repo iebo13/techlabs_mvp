@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, memo } from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider as MuiThemeProvider, CssBaseline, Box } from '@mui/material'
@@ -20,7 +20,7 @@ const DebugPanel = lazy(() =>
   import('@/components/ErrorHandling').then(module => ({ default: module.DebugPanel }))
 )
 
-const AppContent: React.FC = memo(() => {
+const AppContent: React.FC = () => {
   const { currentTheme } = useTheme()
 
   useEffect(() => {
@@ -61,13 +61,13 @@ const AppContent: React.FC = memo(() => {
       </ErrorBoundary>
     </HelmetProvider>
   )
-})
+}
 
-const App: React.FC = memo(() => (
+const App: React.FC = () => (
   <ThemeProvider>
     <AppContent />
   </ThemeProvider>
-))
+)
 
 App.displayName = 'App'
 

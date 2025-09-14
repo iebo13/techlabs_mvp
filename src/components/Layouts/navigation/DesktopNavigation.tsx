@@ -1,14 +1,10 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { KeyboardArrowDown } from '@mui/icons-material'
 import { Box, Button, useTheme, useMediaQuery } from '@mui/material'
 import { navigationItems, ctaButtons } from '@/config/data/navigationData'
 import { NavLink } from './NavLink'
 
-/**
- * DesktopNavigation - Renders the desktop navigation menu
- */
-
-export const DesktopNavigation: React.FC = memo(() => {
+export const DesktopNavigation: React.FC = () => {
   const theme = useTheme()
 
   const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'))
@@ -36,7 +32,6 @@ export const DesktopNavigation: React.FC = memo(() => {
 
   return (
     <>
-      {/* Main Navigation Links */}
       <Box
         sx={{
           display: 'flex',
@@ -64,7 +59,6 @@ export const DesktopNavigation: React.FC = memo(() => {
         ))}
       </Box>
 
-      {/* Right cluster: City Selector + CTA Buttons */}
       <Box
         sx={{
           display: 'flex',
@@ -77,7 +71,6 @@ export const DesktopNavigation: React.FC = memo(() => {
           flexShrink: 0,
         }}
       >
-        {/* City Selector Button */}
         <Button
           variant="text"
           endIcon={<KeyboardArrowDown />}
@@ -123,7 +116,6 @@ export const DesktopNavigation: React.FC = memo(() => {
           Düsseldorf
         </Button>
 
-        {/* CTA Buttons */}
         <Box
           sx={{
             display: 'flex',
@@ -206,6 +198,6 @@ export const DesktopNavigation: React.FC = memo(() => {
       </Box>
     </>
   )
-})
+}
 
 DesktopNavigation.displayName = 'DesktopNavigation'

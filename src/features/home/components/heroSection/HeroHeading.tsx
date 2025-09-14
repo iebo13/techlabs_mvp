@@ -1,10 +1,10 @@
-import React, { memo } from 'react'
-import { useTranslation } from 'react-i18next'
+import React from 'react'
+import { useTranslation, Trans } from 'react-i18next'
 import { Box, Typography, useMediaQuery } from '@mui/material'
 import { theme } from '@/theme'
 
-export const HeroHeading: React.FC = memo(() => {
-  const { t } = useTranslation()
+export const HeroHeading: React.FC = () => {
+  const { t } = useTranslation('components')
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   return (
@@ -25,7 +25,13 @@ export const HeroHeading: React.FC = memo(() => {
           },
         }}
       >
-        {t('hero.title', { tech: 'Tech' })}
+        <Trans
+          i18nKey="hero.title"
+          ns="components"
+          components={{
+            tech: <span className="emphasis" />
+          }}
+        />
       </Typography>
 
       <Typography
@@ -56,6 +62,6 @@ export const HeroHeading: React.FC = memo(() => {
       </Typography>
     </Box>
   )
-})
+}
 
 HeroHeading.displayName = 'HeroHeading'

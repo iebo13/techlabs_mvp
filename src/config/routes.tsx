@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react'
-import { Box, CircularProgress, Typography } from '@mui/material'
+import { LoadingFallback } from '@/components'
 import { CareersPage, PrivacyPage, ImprintPage } from '@/config/placeholderPages'
 
 const HomePage = lazy(() =>
@@ -26,22 +26,6 @@ const AboutPage = lazy(() =>
   import('@/features/about/page/AboutPage').then(module => ({ default: module.AboutPage }))
 )
 
-// Simple loading fallback for routes
-const RouteFallback: React.FC = () => (
-  <Box
-    display="flex"
-    flexDirection="column"
-    alignItems="center"
-    justifyContent="center"
-    minHeight="50vh"
-    gap={2}
-  >
-    <CircularProgress size={40} />
-    <Typography variant="body2" color="text.secondary">
-      Loading page...
-    </Typography>
-  </Box>
-)
 
 export type RouteConfig = {
   path: string
@@ -53,7 +37,7 @@ export const routes: RouteConfig[] = [
   {
     path: '/',
     element: (
-      <Suspense fallback={<RouteFallback />}>
+      <Suspense fallback={<LoadingFallback variant="page" />}>
         <HomePage />
       </Suspense>
     ),
@@ -62,7 +46,7 @@ export const routes: RouteConfig[] = [
   {
     path: '/tracks',
     element: (
-      <Suspense fallback={<RouteFallback />}>
+      <Suspense fallback={<LoadingFallback variant="page" />}>
         <TracksPage />
       </Suspense>
     ),
@@ -71,7 +55,7 @@ export const routes: RouteConfig[] = [
   {
     path: '/events',
     element: (
-      <Suspense fallback={<RouteFallback />}>
+      <Suspense fallback={<LoadingFallback variant="page" />}>
         <EventsPage />
       </Suspense>
     ),
@@ -80,7 +64,7 @@ export const routes: RouteConfig[] = [
   {
     path: '/stories',
     element: (
-      <Suspense fallback={<RouteFallback />}>
+      <Suspense fallback={<LoadingFallback variant="page" />}>
         <StoriesPage />
       </Suspense>
     ),
@@ -89,7 +73,7 @@ export const routes: RouteConfig[] = [
   {
     path: '/partners',
     element: (
-      <Suspense fallback={<RouteFallback />}>
+      <Suspense fallback={<LoadingFallback variant="page" />}>
         <PartnersPage />
       </Suspense>
     ),
@@ -98,7 +82,7 @@ export const routes: RouteConfig[] = [
   {
     path: '/about',
     element: (
-      <Suspense fallback={<RouteFallback />}>
+      <Suspense fallback={<LoadingFallback variant="page" />}>
         <AboutPage />
       </Suspense>
     ),

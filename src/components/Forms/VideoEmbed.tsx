@@ -1,14 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { Close as CloseIcon } from '@mui/icons-material'
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-  Box,
-  useTheme,
-  useMediaQuery,
-} from '@mui/material'
+import { Dialog, DialogContent, DialogTitle, IconButton, Box, useTheme, useMediaQuery } from '@mui/material'
 
 type VideoEmbedProps = {
   open: boolean
@@ -18,13 +10,7 @@ type VideoEmbedProps = {
   posterUrl: string
 }
 
-export const VideoEmbed: React.FC<VideoEmbedProps> = ({
-  open,
-  onClose,
-  title,
-  srcUrl,
-  posterUrl,
-}) => {
+export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, posterUrl }) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -74,8 +60,7 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({
         },
       }}
       disableRestoreFocus
-      keepMounted={false}
-    >
+      keepMounted={false}>
       <DialogTitle
         id="video-dialog-title"
         sx={{
@@ -84,15 +69,9 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({
           alignItems: 'center',
           color: 'common.white',
           pb: 1,
-        }}
-      >
+        }}>
         {title}
-        <IconButton
-          ref={closeButtonRef}
-          onClick={onClose}
-          aria-label="Close video"
-          sx={{ color: 'common.white' }}
-        >
+        <IconButton ref={closeButtonRef} onClick={onClose} aria-label="Close video" sx={{ color: 'common.white' }}>
           <CloseIcon />
         </IconButton>
       </DialogTitle>
@@ -109,8 +88,7 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({
             justifyContent: 'center',
             maxHeight: '70vh',
             overflow: 'hidden',
-          }}
-        >
+          }}>
           <video
             ref={videoRef}
             width="100%"
@@ -123,16 +101,9 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({
               maxHeight: '100%',
               objectFit: 'contain',
             }}
-            aria-label={`${title} video player`}
-          >
+            aria-label={`${title} video player`}>
             <source src={srcUrl} type="video/mp4" />
-            <track
-              kind="captions"
-              src="/captions/intro.vtt"
-              srcLang="en"
-              label="English captions"
-              default
-            />
+            <track kind="captions" src="/captions/intro.vtt" srcLang="en" label="English captions" default />
             Your browser does not support the video tag.
           </video>
         </Box>

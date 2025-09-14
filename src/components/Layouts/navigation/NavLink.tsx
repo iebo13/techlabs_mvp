@@ -12,10 +12,7 @@ export type NavLinkProps = {
 } & Omit<LinkProps, 'component'>
 
 export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
-  (
-    { to, external = false, showActive = true, children, variant = 'desktop', sx, ...linkProps },
-    ref
-  ) => {
+  ({ to, external = false, showActive = true, children, variant = 'desktop', sx, ...linkProps }, ref) => {
     const location = useLocation()
     const theme = useTheme()
 
@@ -144,22 +141,14 @@ export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
           rel="noopener noreferrer"
           sx={linkStyles}
           {...accessibilityProps}
-          {...linkProps}
-        >
+          {...linkProps}>
           {children}
         </Link>
       )
     }
 
     return (
-      <Link
-        ref={ref}
-        component={RouterLink}
-        to={to}
-        sx={linkStyles}
-        {...linkProps}
-        {...accessibilityProps}
-      >
+      <Link ref={ref} component={RouterLink} to={to} sx={linkStyles} {...linkProps} {...accessibilityProps}>
         {children}
       </Link>
     )

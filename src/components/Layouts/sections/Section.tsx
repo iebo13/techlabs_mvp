@@ -47,8 +47,7 @@ export const Section: React.FC<SectionProps> = ({
         color: getTextColor(),
         py: theme => theme.spacing(8 * paddingScale),
         ...sx,
-      }}
-    >
+      }}>
       {children}
     </Box>
   )

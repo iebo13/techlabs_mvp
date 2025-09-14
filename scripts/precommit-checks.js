@@ -57,10 +57,7 @@ class QualityChecker {
       this.currentCheck++
     }
 
-    const percentage = Math.max(
-      0,
-      Math.min(100, Math.round((this.currentCheck / this.totalChecks) * 100))
-    )
+    const percentage = Math.max(0, Math.min(100, Math.round((this.currentCheck / this.totalChecks) * 100)))
     const remaining = Math.max(0, this.totalChecks - this.currentCheck)
 
     const progressBar = this.createProgressBar(percentage)
@@ -75,10 +72,7 @@ class QualityChecker {
    */
   createProgressBar(percentage) {
     const barLength = 30
-    const filledLength = Math.max(
-      0,
-      Math.min(barLength, Math.round((percentage / 100) * barLength))
-    )
+    const filledLength = Math.max(0, Math.min(barLength, Math.round((percentage / 100) * barLength)))
     const emptyLength = Math.max(0, barLength - filledLength)
 
     const filled = '█'.repeat(filledLength)
@@ -147,16 +141,14 @@ class QualityChecker {
     // TypeScript errors
     if (checkName === 'TypeScript Compilation') {
       if (errorMessage.includes('TS2307')) {
-        analysis.explanation =
-          'TypeScript found import/export errors - missing modules or incorrect paths.'
+        analysis.explanation = 'TypeScript found import/export errors - missing modules or incorrect paths.'
         analysis.suggestions = [
           'Check that all imported modules exist',
           'Verify import paths are correct',
           'Run "npm install" if dependencies are missing',
         ]
       } else if (errorMessage.includes('TS2322')) {
-        analysis.explanation =
-          "TypeScript type mismatch - variable types don't match expected types."
+        analysis.explanation = "TypeScript type mismatch - variable types don't match expected types."
         analysis.suggestions = [
           'Check variable types and assignments',
           'Use type assertions if needed',
@@ -189,12 +181,8 @@ class QualityChecker {
           'Use ESLint disable comment for debugging',
         ]
       } else if (errorMessage.includes('prefer-const')) {
-        analysis.explanation =
-          "ESLint suggests using const instead of let for variables that aren't reassigned."
-        analysis.suggestions = [
-          "Change let to const where variables aren't reassigned",
-          'Review variable declarations',
-        ]
+        analysis.explanation = "ESLint suggests using const instead of let for variables that aren't reassigned."
+        analysis.suggestions = ["Change let to const where variables aren't reassigned", 'Review variable declarations']
       }
     }
 
@@ -211,16 +199,14 @@ class QualityChecker {
     // Test errors
     if (checkName === 'Unit Tests') {
       if (errorMessage.includes('FAIL')) {
-        analysis.explanation =
-          'Some unit tests are failing - code changes may have broken existing functionality.'
+        analysis.explanation = 'Some unit tests are failing - code changes may have broken existing functionality.'
         analysis.suggestions = [
           'Review failing test output above',
           "Fix the code that's causing test failures",
           'Update tests if requirements have changed',
         ]
       } else if (errorMessage.includes('timeout')) {
-        analysis.explanation =
-          'Tests are timing out - may be due to slow operations or infinite loops.'
+        analysis.explanation = 'Tests are timing out - may be due to slow operations or infinite loops.'
         analysis.suggestions = [
           'Check for infinite loops in code',
           'Optimize slow operations',
@@ -247,11 +233,7 @@ class QualityChecker {
    * Check if ESLint passes
    */
   checkLinting() {
-    return this.runCommand(
-      'npm run lint',
-      'ESLint',
-      'ESLint found code quality issues that need to be fixed.'
-    )
+    return this.runCommand('npm run lint', 'ESLint', 'ESLint found code quality issues that need to be fixed.')
   }
 
   /**
@@ -512,9 +494,7 @@ class QualityChecker {
 
       // Try to read coverage summary
       if (existsSync('coverage/coverage-summary.json')) {
-        const coverageSummary = JSON.parse(
-          execSync('cat coverage/coverage-summary.json', { encoding: 'utf8' })
-        )
+        const coverageSummary = JSON.parse(execSync('cat coverage/coverage-summary.json', { encoding: 'utf8' }))
         const totalCoverage = coverageSummary.total?.lines?.pct || 0
         const threshold = 80 // 80% coverage threshold
 

@@ -39,26 +39,14 @@ export const HeaderNav: React.FC = () => {
         role="navigation"
         aria-label="Main navigation"
         sx={{
-          backgroundColor:
-            theme.palette.mode === 'dark' ? 'rgba(26, 26, 26, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+          backgroundColor: theme.palette.mode === 'dark' ? 'rgba(26, 26, 26, 0.95)' : 'rgba(255, 255, 255, 0.95)',
           backdropFilter: 'blur(10px)',
           borderBottom:
-            theme.palette.mode === 'dark'
-              ? '1px solid rgba(255, 255, 255, 0.12)'
-              : '1px solid rgba(0, 0, 0, 0.08)',
+            theme.palette.mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(0, 0, 0, 0.08)',
           boxShadow: {
-            xs:
-              theme.palette.mode === 'dark'
-                ? '0px 1px 3px rgba(0, 0, 0, 0.3)'
-                : '0px 1px 3px rgba(0, 0, 0, 0.15)',
-            sm:
-              theme.palette.mode === 'dark'
-                ? '0px 2px 4px rgba(0, 0, 0, 0.4)'
-                : '0px 2px 4px rgba(0, 0, 0, 0.18)',
-            md:
-              theme.palette.mode === 'dark'
-                ? '0px 2px 4px rgba(0, 0, 0, 0.5)'
-                : '0px 2px 4px rgba(0, 0, 0, 0.2)',
+            xs: theme.palette.mode === 'dark' ? '0px 1px 3px rgba(0, 0, 0, 0.3)' : '0px 1px 3px rgba(0, 0, 0, 0.15)',
+            sm: theme.palette.mode === 'dark' ? '0px 2px 4px rgba(0, 0, 0, 0.4)' : '0px 2px 4px rgba(0, 0, 0, 0.18)',
+            md: theme.palette.mode === 'dark' ? '0px 2px 4px rgba(0, 0, 0, 0.5)' : '0px 2px 4px rgba(0, 0, 0, 0.2)',
           },
           zIndex: theme.zIndex.appBar,
           userSelect: 'none',
@@ -69,8 +57,7 @@ export const HeaderNav: React.FC = () => {
             xs: 'env(safe-area-inset-top, 0px)',
             md: 0,
           },
-        }}
-      >
+        }}>
         <Toolbar
           sx={{
             ...toolbarSpacing,
@@ -81,8 +68,7 @@ export const HeaderNav: React.FC = () => {
               md: '72px !important',
               lg: '76px !important',
             },
-          }}
-        >
+          }}>
           <Box
             sx={{
               display: 'flex',
@@ -90,8 +76,7 @@ export const HeaderNav: React.FC = () => {
               width: '100%',
               justifyContent: 'space-between',
               gap: { xs: 1, sm: 2, md: 2 },
-            }}
-          >
+            }}>
             <Logo />
 
             <Box
@@ -99,18 +84,13 @@ export const HeaderNav: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: { xs: 1, sm: 1.5, md: 2 },
-              }}
-            >
+              }}>
               {!isMobile && <DesktopNavigation />}
               <LanguageToggle />
               <DevThemeToggle />
 
               {isMobile && (
-                <MobileMenuButton
-                  ref={triggerButtonRef}
-                  mobileOpen={mobileOpen}
-                  onToggle={handleDrawerToggle}
-                />
+                <MobileMenuButton ref={triggerButtonRef} mobileOpen={mobileOpen} onToggle={handleDrawerToggle} />
               )}
             </Box>
           </Box>
@@ -134,8 +114,7 @@ export const HeaderNav: React.FC = () => {
           role: 'dialog',
           'aria-labelledby': 'mobile-drawer-title',
           'aria-describedby': 'mobile-drawer-description',
-        }}
-      >
+        }}>
         <MobileDrawer onClose={handleDrawerClose} />
       </Drawer>
     </>

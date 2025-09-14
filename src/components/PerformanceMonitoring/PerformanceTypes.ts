@@ -1,13 +1,5 @@
 // Web Vitals types - we'll implement our own lightweight version
-export type MetricName =
-  | 'CLS'
-  | 'FID'
-  | 'FCP'
-  | 'LCP'
-  | 'TTFB'
-  | 'API_CALL'
-  | 'BUNDLE_LOAD'
-  | 'COMPONENT_RENDER'
+export type MetricName = 'CLS' | 'FID' | 'FCP' | 'LCP' | 'TTFB' | 'API_CALL' | 'BUNDLE_LOAD' | 'COMPONENT_RENDER'
 
 export type PerformanceMetric = {
   name: MetricName

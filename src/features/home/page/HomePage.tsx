@@ -4,20 +4,14 @@ import homeData from '@/mocks/home.json'
 import { HeroSection, HeroVideo } from '../components'
 import type { HomeData } from '../types/homePage.type'
 
-const WhyTechlabsSection = lazy(() =>
-  import('../components/WhyTechlabs').then(m => ({ default: m.WhyTechlabs }))
-)
+const WhyTechlabsSection = lazy(() => import('../components/WhyTechlabs').then(m => ({ default: m.WhyTechlabs })))
 const StoriesCarousel = lazy(() =>
   import('../components/storiesSection').then(m => ({
     default: m.StoriesCarousel,
   }))
 )
-const NumbersBand = lazy(() =>
-  import('../components/NumbersBand').then(m => ({ default: m.NumbersBand }))
-)
-const SupportCta = lazy(() =>
-  import('@/features/home/components/SupportCta').then(m => ({ default: m.SupportCta }))
-)
+const NumbersBand = lazy(() => import('../components/NumbersBand').then(m => ({ default: m.NumbersBand })))
+const SupportCta = lazy(() => import('@/features/home/components/SupportCta').then(m => ({ default: m.SupportCta })))
 const FaqsSection = lazy(() =>
   import('@/features/about/components/FaqsSection').then(m => ({ default: m.FaqsSection }))
 )
@@ -32,14 +26,7 @@ export const HomePage: React.FC = () => {
         image="/img/techlabs-og-image.jpg"
         url="/"
         type="website"
-        tags={[
-          'tech education',
-          'free coding',
-          'web development',
-          'data science',
-          'product design',
-          'AI',
-        ]}
+        tags={['tech education', 'free coding', 'web development', 'data science', 'product design', 'AI']}
       />
       <HeroSection />
       <HeroVideo

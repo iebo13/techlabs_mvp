@@ -33,8 +33,7 @@ export const LanguageToggle: React.FC = memo(() => {
         onClick={handleClick}
         startIcon={<LanguageIcon />}
         variant="outlined"
-        size="small"
-      >
+        size="small">
         {currentLang?.flag}
       </Button>
       <Menu
@@ -50,14 +49,12 @@ export const LanguageToggle: React.FC = memo(() => {
         transformOrigin={{
           vertical: 'top',
           horizontal: 'right',
-        }}
-      >
+        }}>
         {availableLanguages.map(language => (
           <MenuItem
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
-            selected={language.code === currentLanguage}
-          >
+            selected={language.code === currentLanguage}>
             <ListItemIcon sx={{ minWidth: 36, p: 0, display: 'flex', alignItems: 'center' }}>
               {language.flag}
             </ListItemIcon>

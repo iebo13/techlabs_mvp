@@ -44,16 +44,14 @@ export const DesktopNavigation: React.FC = () => {
           '& > *': {
             flexShrink: 0,
           },
-        }}
-      >
+        }}>
         {navigationItems.map(item => (
           <Box
             key={item.path}
             sx={{
               display: 'flex',
               alignItems: 'center',
-            }}
-          >
+            }}>
             <NavLink to={item.path}>{item.label}</NavLink>
           </Box>
         ))}
@@ -69,8 +67,7 @@ export const DesktopNavigation: React.FC = () => {
             xl: 4,
           },
           flexShrink: 0,
-        }}
-      >
+        }}>
         <Button
           variant="text"
           endIcon={<KeyboardArrowDown />}
@@ -111,8 +108,7 @@ export const DesktopNavigation: React.FC = () => {
             '&:active': {
               transform: 'scale(0.98)',
             },
-          }}
-        >
+          }}>
           Düsseldorf
         </Button>
 
@@ -124,8 +120,7 @@ export const DesktopNavigation: React.FC = () => {
             '& .MuiButton-root': {
               flexShrink: 0,
             },
-          }}
-        >
+          }}>
           {ctaButtons.map(button => (
             <Button
               key={button.path}
@@ -162,17 +157,12 @@ export const DesktopNavigation: React.FC = () => {
                 fontWeight: 600,
                 textTransform: 'none',
                 boxShadow: 'none',
-                transition: theme.transitions.create(
-                  ['box-shadow', 'transform', 'background-color'],
-                  {
-                    duration: theme.transitions.duration.short,
-                  }
-                ),
+                transition: theme.transitions.create(['box-shadow', 'transform', 'background-color'], {
+                  duration: theme.transitions.duration.short,
+                }),
                 '&:hover': {
                   boxShadow:
-                    button.variant === 'contained'
-                      ? `0 4px 12px ${theme.palette.primary.main}25`
-                      : '0 0 0 1px',
+                    button.variant === 'contained' ? `0 4px 12px ${theme.palette.primary.main}25` : '0 0 0 1px',
                   transform: 'translateY(-1px)',
                 },
                 '&:focus-visible': {
@@ -189,8 +179,7 @@ export const DesktopNavigation: React.FC = () => {
                     borderColor: theme.palette.primary.main,
                   },
                 }),
-              }}
-            >
+              }}>
               {button.label}
             </Button>
           ))}

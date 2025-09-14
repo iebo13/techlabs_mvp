@@ -15,8 +15,7 @@ export const Logo: React.FC = () => {
         '&:hover': {
           backgroundColor: 'transparent',
         },
-      }}
-    >
+      }}>
       <img
         src="/Logo.svg"
         alt="TechLabs Logo"
@@ -33,8 +32,7 @@ export const Logo: React.FC = () => {
           fontSize: '1.5rem',
           color: 'primary.main',
           letterSpacing: '-0.02em',
-        }}
-      >
+        }}>
         TechLabs
       </Typography>
     </NavLink>

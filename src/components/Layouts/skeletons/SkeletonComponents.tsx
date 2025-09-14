@@ -23,21 +23,12 @@ type CarouselSkeletonProps = {
 export const SectionSkeleton: React.FC<SectionSkeletonProps> = ({ height = 200, padding = 4 }) => (
   <Section>
     <Box sx={{ py: padding }}>
-      <Skeleton
-        variant="rectangular"
-        height={height}
-        sx={{ borderRadius: 2 }}
-        aria-label="Loading content"
-      />
+      <Skeleton variant="rectangular" height={height} sx={{ borderRadius: 2 }} aria-label="Loading content" />
     </Box>
   </Section>
 )
 
-export const CarouselSkeleton: React.FC<CarouselSkeletonProps> = ({
-  cards = 3,
-  cardHeight = 300,
-  padding = 4,
-}) => (
+export const CarouselSkeleton: React.FC<CarouselSkeletonProps> = ({ cards = 3, cardHeight = 300, padding = 4 }) => (
   <Section>
     <Box sx={{ py: padding, display: 'flex', gap: 2, overflow: 'hidden' }}>
       {Array.from({ length: cards }, (_, i) => (
@@ -71,8 +62,7 @@ export const GridSkeleton: React.FC<GridSkeletonProps> = ({
             lg: `repeat(${columns.lg || columns.md || 3}, 1fr)`,
           },
           gap,
-        }}
-      >
+        }}>
         {Array.from({ length: items }, (_, i) => (
           <Skeleton
             key={i}

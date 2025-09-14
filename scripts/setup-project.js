@@ -140,13 +140,7 @@ class ProjectSetup {
   validateProjectStructure() {
     log.info('Validating project structure...')
 
-    const requiredFiles = [
-      'package.json',
-      'tsconfig.json',
-      'vite.config.ts',
-      'src/main.tsx',
-      'src/App.tsx',
-    ]
+    const requiredFiles = ['package.json', 'tsconfig.json', 'vite.config.ts', 'src/main.tsx', 'src/App.tsx']
 
     const requiredDirs = ['src/components', 'src/features', 'src/hooks', 'src/utils', 'src/theme']
 

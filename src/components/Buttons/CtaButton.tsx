@@ -93,8 +93,7 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
           justifyContent: 'center',
           gap: 1.5,
           mt: 1,
-        }}
-      >
+        }}>
         {additionalContent.icon && additionalContent.icon}
         {additionalContent.text && (
           <Typography
@@ -103,8 +102,7 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
               fontSize: { xs: '0.75rem', sm: '0.8125rem' },
               color: 'text.secondary',
               fontWeight: 400,
-            }}
-          >
+            }}>
             {additionalContent.text}
           </Typography>
         )}

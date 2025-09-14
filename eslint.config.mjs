@@ -62,11 +62,7 @@ export default [
   },
   // Configuration for test files with test frameworks globals
   {
-    files: [
-      'src/**/*.test.{js,jsx,ts,tsx}',
-      'src/**/__tests__/**/*.{js,jsx,ts,tsx}',
-      'src/test/**/*.{js,jsx,ts,tsx}',
-    ],
+    files: ['src/**/*.test.{js,jsx,ts,tsx}', 'src/**/__tests__/**/*.{js,jsx,ts,tsx}', 'src/test/**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -145,10 +141,7 @@ export default [
         },
       ],
       'unused-imports/no-unused-imports': 'error',
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
-      ],
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
 
       // Accessibility rules for test files
       'jsx-a11y/alt-text': 'error',
@@ -217,8 +210,7 @@ export default [
       'no-restricted-syntax': [
         'warn',
         {
-          selector:
-            "CallExpression[callee.name='useCallback'], CallExpression[callee.name='useMemo']",
+          selector: "CallExpression[callee.name='useCallback'], CallExpression[callee.name='useMemo']",
           message:
             'Avoid speculative memoization. Only use useCallback/useMemo with proven perf needs (document in code review).',
         },
@@ -240,10 +232,7 @@ export default [
       '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
       '@typescript-eslint/explicit-function-return-type': 'off', // allow inference for readability
       '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-      '@typescript-eslint/consistent-type-exports': [
-        'error',
-        { fixMixedExportsWithInlineTypeSpecifier: true },
-      ],
+      '@typescript-eslint/consistent-type-exports': ['error', { fixMixedExportsWithInlineTypeSpecifier: true }],
       '@typescript-eslint/naming-convention': [
         'error',
         { selector: 'typeLike', format: ['PascalCase'] },
@@ -303,10 +292,7 @@ export default [
         },
       ],
       'unused-imports/no-unused-imports': 'error',
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
-      ],
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
 
       /* Block direct axios + legacy MUI styles; enforce feature boundaries */
       'no-restricted-imports': [

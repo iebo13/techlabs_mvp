@@ -40,17 +40,13 @@ export const ProgramSection: React.FC<{ data: ProgramData }> = ({ data }) => {
           variant="body1"
           color="text.secondary"
           textAlign="center"
-          sx={{ mt: 3, maxWidth: '600px', mx: 'auto', mb: 6 }}
-        >
+          sx={{ mt: 3, maxWidth: '600px', mx: 'auto', mb: 6 }}>
           {data.description}
         </Typography>
 
         <Grid container spacing={4}>
           {data.phases.map(phase => (
-            <Grid
-              key={phase.title.toLowerCase().replaceAll(/\s+/g, '-')}
-              size={{ xs: 12, sm: 6, md: 3 }}
-            >
+            <Grid key={phase.title.toLowerCase().replaceAll(/\s+/g, '-')} size={{ xs: 12, sm: 6, md: 3 }}>
               <Card
                 sx={{
                   height: '100%',
@@ -65,8 +61,7 @@ export const ProgramSection: React.FC<{ data: ProgramData }> = ({ data }) => {
                     boxShadow: 4,
                     transition: 'all 0.3s ease',
                   },
-                }}
-              >
+                }}>
                 <CardContent>
                   <Box
                     sx={{
@@ -75,8 +70,7 @@ export const ProgramSection: React.FC<{ data: ProgramData }> = ({ data }) => {
                       mb: 2,
                       color: 'primary.main',
                       fontSize: '2.5rem',
-                    }}
-                  >
+                    }}>
                     {getPhaseIcon(phase.icon)}
                   </Box>
                   <Typography variant="h6" component="h3" gutterBottom fontWeight={600}>

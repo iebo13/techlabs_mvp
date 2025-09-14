@@ -69,8 +69,7 @@ export const EventsPage: React.FC = () => {
             fontSize: { xs: '2.5rem', md: '3.5rem' },
             lineHeight: 1.2,
             color: 'text.primary',
-          }}
-        >
+          }}>
           TechLabs Events
         </Typography>
         <Typography
@@ -81,8 +80,7 @@ export const EventsPage: React.FC = () => {
             maxWidth: '600px',
             mx: 'auto',
             lineHeight: 1.4,
-          }}
-        >
+          }}>
           Join our community events, workshops, and networking opportunities
         </Typography>
       </Box>
@@ -102,8 +100,7 @@ export const EventsPage: React.FC = () => {
             '& .Mui-selected': {
               color: 'primary.main',
             },
-          }}
-        >
+          }}>
           <Tab value="all" label={getTabLabel('all')} />
           <Tab value="upcoming" label={getTabLabel('upcoming')} />
           <Tab value="past" label={getTabLabel('past')} />
@@ -144,8 +141,7 @@ export const EventsPage: React.FC = () => {
                   textTransform: 'none',
                   fontWeight: 600,
                   fontSize: '1rem',
-                }}
-              >
+                }}>
                 Load More Events
               </Button>
             </Box>
@@ -171,8 +167,7 @@ export const EventsPage: React.FC = () => {
             textTransform: 'none',
             fontWeight: 600,
             fontSize: '1rem',
-          }}
-        >
+          }}>
           Get in Touch
         </Button>
       </Box>

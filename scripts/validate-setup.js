@@ -45,11 +45,7 @@ class SetupValidator {
    */
   checkFileExists(filePath, description) {
     const exists = existsSync(join(this.rootDir, filePath))
-    this.addResult(
-      `File: ${description}`,
-      exists,
-      exists ? `Found at ${filePath}` : `Missing: ${filePath}`
-    )
+    this.addResult(`File: ${description}`, exists, exists ? `Found at ${filePath}` : `Missing: ${filePath}`)
     return exists
   }
 
@@ -71,9 +67,7 @@ class SetupValidator {
       this.addResult(
         'Node.js Version',
         matches,
-        matches
-          ? `${currentVersion} matches ${expectedVersion}`
-          : `${currentVersion} does not match ${expectedVersion}`
+        matches ? `${currentVersion} matches ${expectedVersion}` : `${currentVersion} does not match ${expectedVersion}`
       )
       return matches
     } catch (error) {
@@ -107,12 +101,7 @@ class SetupValidator {
    * Check TypeScript configuration
    */
   checkTypeScriptConfig() {
-    const configs = [
-      'tsconfig.json',
-      'tsconfig.app.json',
-      'tsconfig.node.json',
-      'tsconfig.test.json',
-    ]
+    const configs = ['tsconfig.json', 'tsconfig.app.json', 'tsconfig.node.json', 'tsconfig.test.json']
 
     let allValid = true
     for (const config of configs) {
@@ -142,17 +131,9 @@ class SetupValidator {
     const envExample = existsSync(join(this.rootDir, '.env.example'))
     const envFile = existsSync(join(this.rootDir, '.env'))
 
-    this.addResult(
-      'Environment Template',
-      envExample,
-      envExample ? '.env.example found' : '.env.example missing'
-    )
+    this.addResult('Environment Template', envExample, envExample ? '.env.example found' : '.env.example missing')
 
-    this.addResult(
-      'Environment File',
-      envFile,
-      envFile ? '.env found' : '.env missing - copy from .env.example'
-    )
+    this.addResult('Environment File', envFile, envFile ? '.env found' : '.env missing - copy from .env.example')
 
     return envExample
   }
@@ -221,11 +202,7 @@ class SetupValidator {
 
     for (const dir of requiredDirs) {
       const exists = existsSync(join(this.rootDir, dir.path))
-      this.addResult(
-        `Directory: ${dir.desc}`,
-        exists,
-        exists ? `Found at ${dir.path}` : `Missing: ${dir.path}`
-      )
+      this.addResult(`Directory: ${dir.desc}`, exists, exists ? `Found at ${dir.path}` : `Missing: ${dir.path}`)
       if (!exists) allValid = false
     }
 
@@ -287,11 +264,7 @@ class SetupValidator {
 
       // Check if it's a module
       const isModule = packageJson.type === 'module'
-      this.addResult(
-        'ES Modules',
-        isModule,
-        isModule ? 'type: module configured' : 'type: module missing'
-      )
+      this.addResult('ES Modules', isModule, isModule ? 'type: module configured' : 'type: module missing')
 
       return allFieldsPresent && isModule
     } catch (error) {

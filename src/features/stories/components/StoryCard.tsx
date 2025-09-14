@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  LocationOn as LocationIcon,
-  Work as WorkIcon,
-  School as SchoolIcon,
-} from '@mui/icons-material'
+import { LocationOn as LocationIcon, Work as WorkIcon, School as SchoolIcon } from '@mui/icons-material'
 import { Box, Card, CardContent, Chip, Grid, Stack, Typography, useTheme } from '@mui/material'
 import { OptimizedImage } from '@/components/Layouts'
 import type { StoryCardProps } from '../types/stories.types'
@@ -32,8 +28,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
             outlineColor: 'primary.main',
             outlineOffset: '2px',
           },
-        }}
-      >
+        }}>
         <Card
           sx={{
             height: '100%',
@@ -46,8 +41,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
               transform: 'translateY(-4px)',
               boxShadow: theme.shadows[8],
             },
-          }}
-        >
+          }}>
           <OptimizedImage
             src={story.imageUrl}
             alt={`${story.title} - ${story.excerpt}`}

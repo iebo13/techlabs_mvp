@@ -265,8 +265,7 @@ export default {
         description: 'Are there any breaking changes?',
       },
       breakingBody: {
-        description:
-          'A BREAKING CHANGE commit requires a body. Please enter a longer description of the commit itself',
+        description: 'A BREAKING CHANGE commit requires a body. Please enter a longer description of the commit itself',
       },
       breaking: {
         description: 'Describe the breaking changes',

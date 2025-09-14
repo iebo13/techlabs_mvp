@@ -14,8 +14,8 @@ export const PartnersPage: React.FC = () => {
             Our Partners
           </SectionHeading>
           <Typography variant="h5" color="text.secondary" maxWidth="600px">
-            Together with our partners, we're making tech education accessible to everyone. Join us
-            in shaping the future of digital learning.
+            Together with our partners, we're making tech education accessible to everyone. Join us in shaping the
+            future of digital learning.
           </Typography>
           <Box
             sx={{
@@ -24,8 +24,7 @@ export const PartnersPage: React.FC = () => {
               alignItems: 'center',
               flexDirection: 'row',
               gap: 4,
-            }}
-          >
+            }}>
             {partnersData.partners.map((partner: Partner) => (
               <PartnerLogo key={partner.name} partner={partner} />
             ))}
@@ -40,15 +39,14 @@ export const PartnersPage: React.FC = () => {
             color: 'white',
             textAlign: 'center',
             p: 4,
-          }}
-        >
+          }}>
           <Stack spacing={3} alignItems="center">
             <Typography variant="h4" component="h2" fontWeight={700}>
               Become a Partner
             </Typography>
             <Typography variant="h6" maxWidth="600px">
-              Join our mission to make tech education accessible to everyone. Partner with us to
-              shape the future of digital learning.
+              Join our mission to make tech education accessible to everyone. Partner with us to shape the future of
+              digital learning.
             </Typography>
             <Button
               variant="outlined"
@@ -57,8 +55,7 @@ export const PartnersPage: React.FC = () => {
               sx={{
                 color: 'white',
                 borderColor: 'white',
-              }}
-            >
+              }}>
               Get in Touch
             </Button>
           </Stack>

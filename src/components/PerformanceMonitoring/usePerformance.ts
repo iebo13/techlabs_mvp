@@ -57,9 +57,7 @@ export const usePerformance = (componentName: string, options: PerformanceOption
 
       // Only log in development
       if (import.meta.env.DEV) {
-        console.warn(
-          `Performance warning: ${componentName} took ${duration.toFixed(2)}ms to render`
-        )
+        console.warn(`Performance warning: ${componentName} took ${duration.toFixed(2)}ms to render`)
       }
     }
   }

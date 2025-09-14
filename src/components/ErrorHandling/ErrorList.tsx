@@ -1,14 +1,6 @@
 import React from 'react'
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material'
-import {
-  Box,
-  Typography,
-  List,
-  Chip,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from '@mui/material'
+import { Box, Typography, List, Chip, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 import type { ErrorReport } from './ErrorReportingService'
 
 // Legacy type alias for backward compatibility
@@ -53,8 +45,7 @@ const ErrorDetails: React.FC<{ error: ErrorReport }> = ({ error }) => (
             borderRadius: 1,
             maxHeight: 200,
             overflow: 'auto',
-          }}
-        >
+          }}>
           {error.stack}
         </Typography>
       </>
@@ -74,8 +65,7 @@ const ErrorDetails: React.FC<{ error: ErrorReport }> = ({ error }) => (
             backgroundColor: 'grey.100',
             p: 1,
             borderRadius: 1,
-          }}
-        >
+          }}>
           {JSON.stringify(error.additionalData, null, 2)}
         </Typography>
       </>

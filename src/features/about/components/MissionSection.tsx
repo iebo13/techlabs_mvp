@@ -25,16 +25,14 @@ export const MissionSection: React.FC<{ data: MissionData }> = ({ data }) => {
             component="p"
             color="white"
             textAlign="center"
-            sx={{ mt: 3, maxWidth: '700px', mx: 'auto', lineHeight: 1.4 }}
-          >
+            sx={{ mt: 3, maxWidth: '700px', mx: 'auto', lineHeight: 1.4 }}>
             {data.subtitle}
           </Typography>
           <Typography
             variant="body1"
             color="white"
             textAlign="center"
-            sx={{ mt: 3, maxWidth: '600px', mx: 'auto', opacity: 0.9, lineHeight: 1.6 }}
-          >
+            sx={{ mt: 3, maxWidth: '600px', mx: 'auto', opacity: 0.9, lineHeight: 1.6 }}>
             {data.description}
           </Typography>
         </Container>
@@ -44,10 +42,7 @@ export const MissionSection: React.FC<{ data: MissionData }> = ({ data }) => {
         <Container maxWidth="lg">
           <Grid container spacing={4}>
             {data.values.map(value => (
-              <Grid
-                key={value.title.toLowerCase().replaceAll(/\s+/g, '-')}
-                size={{ xs: 12, sm: 6, md: 3 }}
-              >
+              <Grid key={value.title.toLowerCase().replaceAll(/\s+/g, '-')} size={{ xs: 12, sm: 6, md: 3 }}>
                 <Card
                   sx={{
                     height: '100%',
@@ -61,8 +56,7 @@ export const MissionSection: React.FC<{ data: MissionData }> = ({ data }) => {
                       boxShadow: 4,
                       transition: 'all 0.3s ease',
                     },
-                  }}
-                >
+                  }}>
                   <CardContent>
                     <Typography variant="h6" component="h3" gutterBottom fontWeight={600}>
                       {value.title}

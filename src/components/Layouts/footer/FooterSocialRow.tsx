@@ -14,8 +14,7 @@ export const FooterSocialRow: React.FC = () => {
         gap: 2,
         mt: 3,
         mb: 3,
-      }}
-    >
+      }}>
       {socialLinks.map(social => {
         const IconComponent = social.icon
 
@@ -43,8 +42,7 @@ export const FooterSocialRow: React.FC = () => {
                 outline: `3px solid ${theme.palette.primary.main}40`,
                 outlineOffset: 2,
               },
-            }}
-          >
+            }}>
             <IconComponent fontSize="small" />
           </IconButton>
         )

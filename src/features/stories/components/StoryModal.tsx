@@ -35,8 +35,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
       maxWidth="md"
       fullWidth
       fullScreen={isMobile}
-      aria-labelledby="story-dialog-title"
-    >
+      aria-labelledby="story-dialog-title">
       <DialogTitle
         id="story-dialog-title"
         sx={{
@@ -44,8 +43,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
           justifyContent: 'space-between',
           alignItems: 'flex-start',
           gap: 2,
-        }}
-      >
+        }}>
         <Box sx={{ flex: 1 }}>
           <Typography variant="h4" component="h2" gutterBottom>
             {story.title}
@@ -65,8 +63,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
               height: { xs: 200, sm: 300 },
               borderRadius: 2,
               overflow: 'hidden',
-            }}
-          >
+            }}>
             <img
               src={story.imageUrl}
               alt={`${story.title} - Success story`}
@@ -139,8 +136,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
                     p: 1.5,
                     bgcolor: 'action.hover',
                     borderRadius: 1,
-                  }}
-                >
+                  }}>
                   <Box
                     sx={{
                       width: 8,

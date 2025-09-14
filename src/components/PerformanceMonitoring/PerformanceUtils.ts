@@ -13,10 +13,7 @@ const PERFORMANCE_THRESHOLDS = {
 /**
  * Get performance rating based on metric name and value
  */
-export const getPerformanceRating = (
-  value: number,
-  metricName: string
-): 'good' | 'needs-improvement' | 'poor' => {
+export const getPerformanceRating = (value: number, metricName: string): 'good' | 'needs-improvement' | 'poor' => {
   const thresholds = PERFORMANCE_THRESHOLDS[metricName as keyof typeof PERFORMANCE_THRESHOLDS]
 
   if (!thresholds) {
@@ -227,10 +224,7 @@ export const measureExecutionTime = <T>(fn: () => T, _name: string): T => {
 /**
  * Async version of measureExecutionTime
  */
-export const measureAsyncExecutionTime = async <T>(
-  fn: () => Promise<T>,
-  _name: string
-): Promise<T> => {
+export const measureAsyncExecutionTime = async <T>(fn: () => Promise<T>, _name: string): Promise<T> => {
   // Performance measurement for production builds
   return await fn()
 }

@@ -23,17 +23,13 @@ export const TeamSection: React.FC<{ data: TeamData }> = ({ data }) => (
         variant="body1"
         color="text.secondary"
         textAlign="center"
-        sx={{ mt: 3, maxWidth: '600px', mx: 'auto', mb: 6 }}
-      >
+        sx={{ mt: 3, maxWidth: '600px', mx: 'auto', mb: 6 }}>
         {data.description}
       </Typography>
 
       <Grid container spacing={4}>
         {data.members.map(member => (
-          <Grid
-            key={member.name.toLowerCase().replaceAll(/\s+/g, '-')}
-            size={{ xs: 12, sm: 6, md: 4 }}
-          >
+          <Grid key={member.name.toLowerCase().replaceAll(/\s+/g, '-')} size={{ xs: 12, sm: 6, md: 4 }}>
             <Card
               sx={{
                 height: '100%',
@@ -47,8 +43,7 @@ export const TeamSection: React.FC<{ data: TeamData }> = ({ data }) => (
                   boxShadow: 4,
                   transition: 'all 0.3s ease',
                 },
-              }}
-            >
+              }}>
               <CardContent>
                 <Box
                   sx={{
@@ -64,8 +59,7 @@ export const TeamSection: React.FC<{ data: TeamData }> = ({ data }) => (
                     color: 'white',
                     fontSize: '2rem',
                     fontWeight: 600,
-                  }}
-                >
+                  }}>
                   {member.name
                     .split(' ')
                     .map(n => n[0])

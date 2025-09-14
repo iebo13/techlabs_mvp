@@ -18,8 +18,7 @@ export const TrustStripSection: React.FC<TrustStripSectionProps> = ({ partners }
           flex: 1,
           justifyContent: 'space-between',
           alignItems: 'center',
-        }}
-      >
+        }}>
         {partners.map((partner: Partner) => (
           <Grid
             size={{ xs: 12, sm: 6, md: 3 }}
@@ -29,8 +28,7 @@ export const TrustStripSection: React.FC<TrustStripSectionProps> = ({ partners }
               justifyContent: 'center',
               alignItems: 'center',
               minHeight: { xs: 60, sm: 70, md: 80 },
-            }}
-          >
+            }}>
             <PartnerLogo partner={partner} />
           </Grid>
         ))}

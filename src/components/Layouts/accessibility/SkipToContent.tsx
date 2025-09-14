@@ -44,8 +44,7 @@ export const SkipToContent: React.FC = () => {
         '&:hover': {
           backgroundColor: 'primary.dark',
         },
-      }}
-    >
+      }}>
       Skip to main content
     </Box>
   )

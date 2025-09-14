@@ -12,10 +12,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/src/test/jest.setup.ts'],
 
   // Test file patterns
-  testMatch: [
-    '<rootDir>/src/**/__tests__/**/*.(ts|tsx)',
-    '<rootDir>/src/**/*.(test|spec).(ts|tsx)',
-  ],
+  testMatch: ['<rootDir>/src/**/__tests__/**/*.(ts|tsx)', '<rootDir>/src/**/*.(test|spec).(ts|tsx)'],
 
   // Coverage collection
   collectCoverageFrom: [
@@ -33,8 +30,7 @@ module.exports = {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
 
     // Handle image and other asset imports
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      'jest-transform-stub',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': 'jest-transform-stub',
 
     // Handle absolute imports (if using path mapping)
     '^@/(.*)$': '<rootDir>/src/$1',

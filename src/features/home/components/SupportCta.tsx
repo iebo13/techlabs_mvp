@@ -16,12 +16,7 @@ export type SupportCtaProps = {
   }
 }
 
-export const SupportCta: React.FC<SupportCtaProps> = ({
-  title = 'Support Tech Education',
-  body,
-  imageUrl,
-  cta,
-}) => {
+export const SupportCta: React.FC<SupportCtaProps> = ({ title = 'Support Tech Education', body, imageUrl, cta }) => {
   const navigate = useNavigate()
   const displayImageUrl = imageUrl || SUPPORT_BACKGROUND_IMAGE
 
@@ -39,8 +34,7 @@ export const SupportCta: React.FC<SupportCtaProps> = ({
           display: 'flex',
           alignItems: 'center',
           overflow: 'hidden',
-        }}
-      >
+        }}>
         <OptimizedImage
           src={displayImageUrl}
           alt={title}
@@ -70,15 +64,13 @@ export const SupportCta: React.FC<SupportCtaProps> = ({
             boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
             backgroundColor: 'white',
             zIndex: 3,
-          }}
-        >
+          }}>
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
               gap: { xs: '12px', md: '16px' },
-            }}
-          >
+            }}>
             <Typography variant="h4" color="primary.main" fontWeight={700}>
               {title}
             </Typography>

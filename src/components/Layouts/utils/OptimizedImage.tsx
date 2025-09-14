@@ -18,7 +18,6 @@ type OptimizedImageProps = {
   srcSet?: string
 }
 
-
 export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
   ({
     src,
@@ -114,8 +113,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
             backgroundColor: 'grey.200',
             color: 'text.secondary',
             fontSize: '0.875rem',
-          }}
-        >
+          }}>
           Failed to load image
         </Box>
       )
@@ -131,8 +129,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
           width: width || '100%',
           height: height || 'auto',
           overflow: 'hidden',
-        }}
-      >
+        }}>
         {!isLoaded && <Skeleton variant="rectangular" sx={skeletonStyles} animation="wave" />}
 
         {isInView && (

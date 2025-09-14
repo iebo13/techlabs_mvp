@@ -28,8 +28,7 @@ export const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
           lineHeight: 1.2,
           maxWidth: 100,
           wordBreak: 'break-word',
-        }}
-      >
+        }}>
         {partner.name}
       </Typography>
     </Stack>

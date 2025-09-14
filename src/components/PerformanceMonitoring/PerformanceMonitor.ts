@@ -1,15 +1,5 @@
-import type {
-  MetricName,
-  PerformanceMetric,
-  PerformanceConfig,
-  PerformanceMonitor,
-} from './PerformanceTypes'
-import {
-  getPerformanceRating,
-  sendMetric,
-  monitorBundlePerformance,
-  monitorApiCalls,
-} from './PerformanceUtils'
+import type { MetricName, PerformanceMetric, PerformanceConfig, PerformanceMonitor } from './PerformanceTypes'
+import { getPerformanceRating, sendMetric, monitorBundlePerformance, monitorApiCalls } from './PerformanceUtils'
 import { setupWebVitals } from './PerformanceWebVitals'
 
 // Create performance monitor using factory function
@@ -63,11 +53,7 @@ const createPerformanceMonitor = (config: PerformanceConfig = {}): PerformanceMo
    * Mark component render start - only if component tracking is enabled
    */
   const markComponentRender = (componentName: string): void => {
-    if (
-      !_config.enableComponentTracking ||
-      typeof window === 'undefined' ||
-      !('performance' in window)
-    ) {
+    if (!_config.enableComponentTracking || typeof window === 'undefined' || !('performance' in window)) {
       return
     }
 
@@ -78,20 +64,12 @@ const createPerformanceMonitor = (config: PerformanceConfig = {}): PerformanceMo
    * Mark component render end and measure - only if component tracking is enabled
    */
   const measureComponentRender = (componentName: string): void => {
-    if (
-      !_config.enableComponentTracking ||
-      typeof window === 'undefined' ||
-      !('performance' in window)
-    ) {
+    if (!_config.enableComponentTracking || typeof window === 'undefined' || !('performance' in window)) {
       return
     }
 
     performance.mark(`${componentName}-render-end`)
-    performance.measure(
-      `${componentName}-render`,
-      `${componentName}-render-start`,
-      `${componentName}-render-end`
-    )
+    performance.measure(`${componentName}-render`, `${componentName}-render-start`, `${componentName}-render-end`)
 
     const measure = performance.getEntriesByName(`${componentName}-render`)[0]
 
@@ -105,11 +83,7 @@ const createPerformanceMonitor = (config: PerformanceConfig = {}): PerformanceMo
   /**
    * Record custom performance metric with throttling
    */
-  const recordCustomMetric = (
-    name: string,
-    value: number,
-    metadata: Record<string, unknown> = {}
-  ): void => {
+  const recordCustomMetric = (name: string, value: number, metadata: Record<string, unknown> = {}): void => {
     // Throttle metric recording to reduce overhead
     const metricId = `${name}-${Math.floor(Date.now() / 1000)}` // Group by second
 

@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
 import { ExpandMore } from '@mui/icons-material'
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Stack,
-  Typography,
-} from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Box, Stack, Typography } from '@mui/material'
 import type { FAQ } from '@/features/home/types/homePage.type'
 
 type FAQAccordionProps = {
@@ -52,8 +45,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
                 borderColor: showBorder ? 'primary.main' : 'transparent',
                 boxShadow: showBorder ? 2 : 'none',
               },
-            }}
-          >
+            }}>
             <AccordionSummary
               expandIcon={<ExpandMore />}
               aria-controls={`panel${index}bh-content`}
@@ -62,16 +54,14 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
                 '& .MuiAccordionSummary-content': {
                   margin: 2,
                 },
-              }}
-            >
+              }}>
               <Typography
                 variant="h6"
                 component="div"
                 sx={{
                   fontWeight: 600,
                   color: 'text.primary',
-                }}
-              >
+                }}>
                 {faq.q}
               </Typography>
             </AccordionSummary>

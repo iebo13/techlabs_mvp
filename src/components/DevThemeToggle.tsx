@@ -13,10 +13,7 @@ export const DevThemeToggle: React.FC = () => {
   }
 
   return (
-    <Tooltip
-      title={`Switch to ${isDarkMode ? 'light' : 'dark'} mode (Dev only)`}
-      placement="bottom"
-    >
+    <Tooltip title={`Switch to ${isDarkMode ? 'light' : 'dark'} mode (Dev only)`} placement="bottom">
       <IconButton
         onClick={toggleTheme}
         size="medium"
@@ -31,8 +28,7 @@ export const DevThemeToggle: React.FC = () => {
             display: 'none',
           },
         }}
-        aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
-      >
+        aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}>
         {isDarkMode ? <Brightness7 /> : <Brightness4 />}
       </IconButton>
     </Tooltip>

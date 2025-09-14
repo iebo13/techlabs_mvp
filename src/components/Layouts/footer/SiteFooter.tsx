@@ -16,8 +16,7 @@ export const SiteFooter: React.FC = () => {
           width: '100%',
           padding: 2,
           pb: 1,
-        }}
-      >
+        }}>
         <Box
           display="flex"
           flexDirection={{ xs: 'column', md: 'row' }}
@@ -25,8 +24,7 @@ export const SiteFooter: React.FC = () => {
           alignItems="flex-start"
           px={2}
           py={2}
-          width="100%"
-        >
+          width="100%">
           <FooterBrandSection />
           <FooterLinksSection />
         </Box>
@@ -38,8 +36,7 @@ export const SiteFooter: React.FC = () => {
             flexDirection: { xs: 'column', md: 'row' },
             px: { xs: 2, md: 6 },
             py: { xs: 2, md: 0 },
-          }}
-        >
+          }}>
           <FooterCopyRights />
           <FooterSocialRow />
         </Box>

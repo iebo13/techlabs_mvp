@@ -26,8 +26,7 @@ export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => (
         variant="body1"
         color="text.secondary"
         textAlign="center"
-        sx={{ mt: 3, maxWidth: '600px', mx: 'auto', mb: 6 }}
-      >
+        sx={{ mt: 3, maxWidth: '600px', mx: 'auto', mb: 6 }}>
         {data.description}
       </Typography>
 
@@ -85,8 +84,7 @@ export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => (
                 rel="noopener noreferrer"
                 variant="outlined"
                 startIcon={<LinkedIn />}
-                sx={{ borderRadius: 2 }}
-              >
+                sx={{ borderRadius: 2 }}>
                 LinkedIn
               </Button>
               <Button
@@ -96,8 +94,7 @@ export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => (
                 rel="noopener noreferrer"
                 variant="outlined"
                 startIcon={<Twitter />}
-                sx={{ borderRadius: 2 }}
-              >
+                sx={{ borderRadius: 2 }}>
                 Twitter
               </Button>
               <Button
@@ -107,8 +104,7 @@ export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => (
                 rel="noopener noreferrer"
                 variant="outlined"
                 startIcon={<GitHub />}
-                sx={{ borderRadius: 2 }}
-              >
+                sx={{ borderRadius: 2 }}>
                 GitHub
               </Button>
             </Stack>

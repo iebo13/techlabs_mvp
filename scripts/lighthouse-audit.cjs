@@ -41,9 +41,7 @@ async function runLighthouseAudit() {
   console.log('================================')
   console.log(`🎯 Performance Score: ${(metrics.performanceScore * 100).toFixed(0)}/100`)
   console.log(`⚡ First Contentful Paint: ${(metrics.firstContentfulPaint / 1000).toFixed(2)}s`)
-  console.log(
-    `🖼️  Largest Contentful Paint: ${(metrics.largestContentfulPaint / 1000).toFixed(2)}s`
-  )
+  console.log(`🖼️  Largest Contentful Paint: ${(metrics.largestContentfulPaint / 1000).toFixed(2)}s`)
   console.log(`📐 Cumulative Layout Shift: ${metrics.cumulativeLayoutShift.toFixed(3)}`)
   console.log(`📈 Speed Index: ${(metrics.speedIndex / 1000).toFixed(2)}s`)
   console.log(`⏱️  Total Blocking Time: ${metrics.totalBlockingTime.toFixed(0)}ms`)
@@ -62,23 +60,15 @@ async function runLighthouseAudit() {
   console.log('========================')
 
   const improvements = {
-    performanceScore:
-      ((metrics.performanceScore - baseline.performanceScore) / baseline.performanceScore) * 100,
+    performanceScore: ((metrics.performanceScore - baseline.performanceScore) / baseline.performanceScore) * 100,
     firstContentfulPaint:
-      ((baseline.firstContentfulPaint - metrics.firstContentfulPaint) /
-        baseline.firstContentfulPaint) *
-      100,
+      ((baseline.firstContentfulPaint - metrics.firstContentfulPaint) / baseline.firstContentfulPaint) * 100,
     largestContentfulPaint:
-      ((baseline.largestContentfulPaint - metrics.largestContentfulPaint) /
-        baseline.largestContentfulPaint) *
-      100,
+      ((baseline.largestContentfulPaint - metrics.largestContentfulPaint) / baseline.largestContentfulPaint) * 100,
     cumulativeLayoutShift:
-      ((baseline.cumulativeLayoutShift - metrics.cumulativeLayoutShift) /
-        baseline.cumulativeLayoutShift) *
-      100,
+      ((baseline.cumulativeLayoutShift - metrics.cumulativeLayoutShift) / baseline.cumulativeLayoutShift) * 100,
     speedIndex: ((baseline.speedIndex - metrics.speedIndex) / baseline.speedIndex) * 100,
-    totalBlockingTime:
-      ((baseline.totalBlockingTime - metrics.totalBlockingTime) / baseline.totalBlockingTime) * 100,
+    totalBlockingTime: ((baseline.totalBlockingTime - metrics.totalBlockingTime) / baseline.totalBlockingTime) * 100,
   }
 
   console.log(
@@ -93,9 +83,7 @@ async function runLighthouseAudit() {
   console.log(
     `📐 CLS Improvement: ${improvements.cumulativeLayoutShift > 0 ? '+' : ''}${improvements.cumulativeLayoutShift.toFixed(1)}%`
   )
-  console.log(
-    `📈 Speed Index: ${improvements.speedIndex > 0 ? '+' : ''}${improvements.speedIndex.toFixed(1)}%`
-  )
+  console.log(`📈 Speed Index: ${improvements.speedIndex > 0 ? '+' : ''}${improvements.speedIndex.toFixed(1)}%`)
   console.log(
     `⏱️  TBT Improvement: ${improvements.totalBlockingTime > 0 ? '+' : ''}${improvements.totalBlockingTime.toFixed(1)}%`
   )
@@ -146,9 +134,7 @@ async function runLighthouseAudit() {
   } else if (targetsAchieved >= 2) {
     console.log('👍 Good progress! Consider Phase 2 optimizations for better results.')
   } else {
-    console.log(
-      '⚠️  More optimization needed. Review implementation and consider advanced techniques.'
-    )
+    console.log('⚠️  More optimization needed. Review implementation and consider advanced techniques.')
   }
 
   return {

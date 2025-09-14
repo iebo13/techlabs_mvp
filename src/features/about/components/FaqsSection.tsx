@@ -27,8 +27,7 @@ export const FaqsSection: React.FC<FaqsSectionProps> = ({ faqs }) => {
           startIcon={<QuestionAnswer />}
           sx={{
             fontWeight: 600,
-          }}
-        >
+          }}>
           More Questions
         </Button>
       </Stack>

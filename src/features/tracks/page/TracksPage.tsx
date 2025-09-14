@@ -44,11 +44,7 @@ export const TracksPage: React.FC = () => {
           <Grid container spacing={4}>
             {tracksData.tracks.map(track => (
               <Grid size={{ xs: 12, md: 6 }} key={track.id}>
-                <TrackCard
-                  track={track}
-                  isExpanded={expandedTrack === track.id}
-                  onToggle={handleTrackToggle}
-                />
+                <TrackCard track={track} isExpanded={expandedTrack === track.id} onToggle={handleTrackToggle} />
               </Grid>
             ))}
           </Grid>

@@ -24,13 +24,12 @@ export const HeroHeading: React.FC = () => {
             color: 'primary.main',
             fontWeight: 'inherit',
           },
-        }}
-      >
+        }}>
         <Trans
           i18nKey="hero.title"
           ns="common"
           components={{
-            tech: <Box component="span" sx={{ display: 'inline', color: 'primary.main' }} />
+            tech: <Box component="span" sx={{ display: 'inline', color: 'primary.main' }} />,
           }}
         />
       </Typography>
@@ -49,8 +48,7 @@ export const HeroHeading: React.FC = () => {
             fontSize: '0.8em',
             userSelect: 'none',
           },
-        }}
-      >
+        }}>
         {t('hero.subtitle.blended')}
         <Box component="span" className="separator">
           ·

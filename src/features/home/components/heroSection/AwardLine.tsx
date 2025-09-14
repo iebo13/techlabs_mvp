@@ -11,8 +11,7 @@ export const AwardLine: React.FC = () => {
         gap: 1.5,
         flexWrap: 'wrap',
         py: { xs: 2, sm: 3 },
-      }}
-    >
+      }}>
       <Typography variant="body2" color="textPrimary" textAlign="center">
         Winner of the
       </Typography>

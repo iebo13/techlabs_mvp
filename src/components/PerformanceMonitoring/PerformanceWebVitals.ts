@@ -3,9 +3,7 @@ import type { PerformanceMonitor } from './PerformanceTypes'
 /**
  * Setup Web Vitals monitoring
  */
-export const setupWebVitals = (
-  recordCustomMetric: PerformanceMonitor['recordCustomMetric']
-): void => {
+export const setupWebVitals = (recordCustomMetric: PerformanceMonitor['recordCustomMetric']): void => {
   setupCLS(recordCustomMetric)
   setupFID(recordCustomMetric)
   setupFCP(recordCustomMetric)
@@ -20,10 +18,7 @@ const setupCLS = (recordCustomMetric: PerformanceMonitor['recordCustomMetric']):
   if ('PerformanceObserver' in window) {
     const observer = new PerformanceObserver(list => {
       for (const entry of list.getEntries()) {
-        if (
-          entry.entryType === 'layout-shift' &&
-          !(entry as unknown as { hadRecentInput: boolean }).hadRecentInput
-        ) {
+        if (entry.entryType === 'layout-shift' && !(entry as unknown as { hadRecentInput: boolean }).hadRecentInput) {
           recordCustomMetric('CLS', (entry as unknown as { value: number }).value)
         }
       }

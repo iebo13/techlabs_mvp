@@ -17,13 +17,7 @@ type ResourceHintOptions = {
 /**
  * Add a resource hint to the document head
  */
-export const addResourceHint = ({
-  href,
-  type,
-  as,
-  crossorigin,
-  media,
-}: ResourceHintOptions): void => {
+export const addResourceHint = ({ href, type, as, crossorigin, media }: ResourceHintOptions): void => {
   // Check if hint already exists
   const existing = document.querySelector(`link[rel="${type}"][href="${href}"]`)
 

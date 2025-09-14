@@ -61,9 +61,7 @@ export const LazyIntersection: React.FC<LazyIntersectionProps> = memo(
     const defaultFallback = fallback || <DefaultSkeleton minHeight={minHeight} />
 
     return (
-      <div ref={ref}>
-        {isVisible ? <Suspense fallback={defaultFallback}>{children}</Suspense> : defaultFallback}
-      </div>
+      <div ref={ref}>{isVisible ? <Suspense fallback={defaultFallback}>{children}</Suspense> : defaultFallback}</div>
     )
   }
 )

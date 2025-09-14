@@ -91,10 +91,7 @@ beforeAll(() => {
     const message = typeof args[0] === 'string' ? args[0] : ''
 
     // Skip common MUI warnings in test environment
-    const ignoredWarnings = [
-      'Material-UI: the `css` function is deprecated',
-      'MUI: The `css` function is deprecated',
-    ]
+    const ignoredWarnings = ['Material-UI: the `css` function is deprecated', 'MUI: The `css` function is deprecated']
 
     if (ignoredWarnings.some(warning => message.includes(warning))) {
       return

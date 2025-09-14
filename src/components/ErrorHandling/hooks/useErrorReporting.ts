@@ -72,10 +72,7 @@ export const useAsyncErrorReporting = () => {
   const { reportError } = useErrorReporting()
 
   const withErrorReporting = useCallback(
-    <T extends unknown[], R>(
-      asyncFn: (...args: T) => Promise<R>,
-      errorOptions?: ErrorReportingOptions
-    ) => {
+    <T extends unknown[], R>(asyncFn: (...args: T) => Promise<R>, errorOptions?: ErrorReportingOptions) => {
       return async (...args: T): Promise<R> => {
         try {
           return await asyncFn(...args)
@@ -102,10 +99,7 @@ export const useNetworkErrorReporting = () => {
   }, [])
 
   const withNetworkErrorReporting = useCallback(
-    <T extends unknown[], R>(
-      networkFn: (...args: T) => Promise<Response | R>,
-      getUrl: (...args: T) => string
-    ) => {
+    <T extends unknown[], R>(networkFn: (...args: T) => Promise<Response | R>, getUrl: (...args: T) => string) => {
       return async (...args: T): Promise<Response | R> => {
         try {
           const result = await networkFn(...args)
@@ -179,12 +173,9 @@ export const useValidationErrorReporting = () => {
 
 // Hook for error boundary integration
 export const useErrorBoundaryReporting = () => {
-  const reportComponentError = useCallback(
-    (error: Error, componentName: string, componentStack?: string | null) => {
-      return errorReportingService.reportComponentError(error, componentName, componentStack)
-    },
-    []
-  )
+  const reportComponentError = useCallback((error: Error, componentName: string, componentStack?: string | null) => {
+    return errorReportingService.reportComponentError(error, componentName, componentStack)
+  }, [])
 
   return { reportComponentError }
 }

@@ -44,8 +44,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
           outlineColor: theme => theme.palette.primary.main,
           outlineOffset: '2px',
         },
-      }}
-    >
+      }}>
       <OptimizedImage
         src={event.imageUrl || EVENT_BACKGROUND_IMAGE}
         alt={`${event.title} event image`}
@@ -75,17 +74,12 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
               fontWeight: 600,
               color: 'text.primary',
               lineHeight: 1.3,
-            }}
-          >
+            }}>
             {event.title}
           </Typography>
         </Box>
 
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ mb: 2, flexGrow: 1, lineHeight: 1.5 }}
-        >
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 2, flexGrow: 1, lineHeight: 1.5 }}>
           {event.blurb}
         </Typography>
 

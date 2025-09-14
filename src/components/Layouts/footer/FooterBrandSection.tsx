@@ -11,8 +11,7 @@ export const FooterBrandSection: React.FC = () => {
         justifyContent: 'start',
         flex: 1,
         py: { xs: 2, md: 0 },
-      }}
-    >
+      }}>
       <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
         <Logo />
         <Typography variant="body1" color="text.secondary" sx={{ p: 0 }}>

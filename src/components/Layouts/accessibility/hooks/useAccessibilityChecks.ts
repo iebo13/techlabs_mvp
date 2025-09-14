@@ -123,9 +123,7 @@ export const useAccessibilityChecks = () => {
     })
 
     // Check for keyboard navigation
-    const interactiveElements = document.querySelectorAll(
-      'button, a, input, select, textarea, [tabindex]'
-    )
+    const interactiveElements = document.querySelectorAll('button, a, input, select, textarea, [tabindex]')
 
     interactiveElements.forEach((element, index) => {
       const tabIndex = element.getAttribute('tabindex')

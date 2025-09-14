@@ -24,9 +24,7 @@ export const loadTrackSelection = (): TrackKey[] => {
     if (Array.isArray(parsed)) {
       const validTrackKeys: TrackKey[] = ['web-dev', 'data-science', 'product-design', 'ai']
 
-      return parsed.filter(
-        (id): id is TrackKey => typeof id === 'string' && validTrackKeys.includes(id as TrackKey)
-      )
+      return parsed.filter((id): id is TrackKey => typeof id === 'string' && validTrackKeys.includes(id as TrackKey))
     }
 
     return []

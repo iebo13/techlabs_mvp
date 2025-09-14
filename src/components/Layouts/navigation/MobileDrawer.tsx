@@ -53,8 +53,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
         '& > *': {
           width: '100%',
         },
-      }}
-    >
+      }}>
       <Box
         sx={{
           display: 'flex',
@@ -63,8 +62,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
           px: spacing.px,
           mb: spacing.headerMb,
           flexShrink: 0,
-        }}
-      >
+        }}>
         <Typography
           id="mobile-drawer-title"
           variant={headerTypography.variant}
@@ -74,8 +72,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
             color: 'primary.main',
             fontSize: headerTypography.fontSize,
             lineHeight: 1.2,
-          }}
-        >
+          }}>
           TechLabs
         </Typography>
         <Typography
@@ -86,16 +83,10 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
             width: '1px',
             height: '1px',
             overflow: 'hidden',
-          }}
-        >
+          }}>
           Main navigation menu with links to different sections of the TechLabs website
         </Typography>
-        <IconButton
-          edge="end"
-          onClick={onClose}
-          aria-label="close navigation menu"
-          sx={closeButtonStyles}
-        >
+        <IconButton edge="end" onClick={onClose} aria-label="close navigation menu" sx={closeButtonStyles}>
           <CloseIcon
             sx={{
               fontSize: {
@@ -120,8 +111,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
                       sm: '1.1rem',
                     },
                     lineHeight: 1.3,
-                  }}
-                >
+                  }}>
                   {item.label}
                 </Typography>
               </NavLink>
@@ -138,8 +128,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
           pb: {
             xs: `max(${spacing.py * 8}px, env(safe-area-inset-bottom, ${spacing.py * 8}px))`,
           },
-        }}
-      >
+        }}>
         <Divider sx={{ mb: spacing.dividerMb }} />
         <Stack spacing={{ xs: 2, sm: 2.5 }}>
           {ctaButtons.map(button => (
@@ -150,8 +139,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
               variant={button.variant}
               fullWidth
               onClick={onClose}
-              sx={getCtaStyles(button.variant)}
-            >
+              sx={getCtaStyles(button.variant)}>
               {button.label}
             </Button>
           ))}

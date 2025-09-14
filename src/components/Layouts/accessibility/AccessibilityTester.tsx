@@ -38,8 +38,7 @@ export const AccessibilityTester: React.FC = () => {
         borderColor: 'divider',
         borderRadius: 2,
         boxShadow: 3,
-      }}
-    >
+      }}>
       <Box
         sx={{
           p: 2,
@@ -48,8 +47,7 @@ export const AccessibilityTester: React.FC = () => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-        }}
-      >
+        }}>
         <Typography variant="h6" component="h2">
           A11y Checker
         </Typography>

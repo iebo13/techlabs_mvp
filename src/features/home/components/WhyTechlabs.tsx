@@ -18,8 +18,7 @@ export const WhyTechlabs: React.FC = () => {
           alignItems: 'center',
           justifyContent: 'center',
           gap: 2,
-        }}
-      >
+        }}>
         <Typography variant="h2" color="primary" textAlign="center" pb={6}>
           Why Techlabs ?
         </Typography>
@@ -31,15 +30,9 @@ export const WhyTechlabs: React.FC = () => {
             px: 6,
             pb: 2,
             width: '100%',
-          }}
-        >
+          }}>
           {homeData.features.map(feature => (
-            <ValuePropCard
-              key={feature.title}
-              icon={feature.icon}
-              title={feature.title}
-              body={feature.body}
-            />
+            <ValuePropCard key={feature.title} icon={feature.icon} title={feature.title} body={feature.body} />
           ))}
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -52,8 +45,7 @@ export const WhyTechlabs: React.FC = () => {
             additionalContent={{
               icon: <HourglassEmpty />,
               text: formatDeadlineText(APPLICATION_CONFIG.deadline),
-            }}
-          >
+            }}>
             Start learning
           </CTAButton>
         </Box>

@@ -75,20 +75,12 @@ export type ErrorHandler = (report: ErrorReport) => void | Promise<void>
 export type ErrorReportingService = {
   // Core reporting methods
   reportError: (error: Error | string, options?: ErrorReportingOptions) => string
-  reportErrorWithContext: (
-    message: string,
-    context: ErrorContext,
-    options?: ErrorReportingOptions
-  ) => string
+  reportErrorWithContext: (message: string, context: ErrorContext, options?: ErrorReportingOptions) => string
 
   // Specialized reporting methods
   reportJavaScriptError: (event: ErrorEvent) => string
   reportUnhandledRejection: (event: PromiseRejectionEvent) => string
-  reportComponentError: (
-    error: Error,
-    componentName: string,
-    componentStack?: string | null
-  ) => string
+  reportComponentError: (error: Error, componentName: string, componentStack?: string | null) => string
   reportNetworkError: (url: string, status: number, error: Error) => string
   reportImageLoadError: (src: string, error?: Error) => string
   reportValidationError: (field: string, value: unknown, rule: string) => string
@@ -326,11 +318,7 @@ const createErrorReportingService = (): ErrorReportingService => {
     return report.id
   }
 
-  const reportComponentError = (
-    error: Error,
-    componentName: string,
-    componentStack?: string | null
-  ): string => {
+  const reportComponentError = (error: Error, componentName: string, componentStack?: string | null): string => {
     const report = createErrorReport(error, 'react_component', {
       severity: 'high',
       context: {

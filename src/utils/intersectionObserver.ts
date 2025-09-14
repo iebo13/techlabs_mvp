@@ -3,10 +3,7 @@
  * Consolidates observer logic from OptimizedImage, LazyIntersection, and other components
  */
 
-export type ObserverCallback = (
-  entry: IntersectionObserverEntry,
-  observer: IntersectionObserver
-) => void
+export type ObserverCallback = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => void
 
 export type ObserverOptions = IntersectionObserverInit & {
   /** Auto-disconnect after first intersection (default: true) */

@@ -1,20 +1,8 @@
 /* eslint-disable */
 // Error Boundaries must be class components - React doesn't support functional error boundaries
 import React, { Component, type ReactNode } from 'react'
-import {
-  ExpandMore as ExpandMoreIcon,
-  Refresh as RefreshIcon,
-  ErrorOutline as ErrorIcon,
-} from '@mui/icons-material'
-import {
-  Box,
-  Typography,
-  Button,
-  Alert,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from '@mui/material'
+import { ExpandMore as ExpandMoreIcon, Refresh as RefreshIcon, ErrorOutline as ErrorIcon } from '@mui/icons-material'
+import { Box, Typography, Button, Alert, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 import { errorReportingService } from './ErrorReportingService'
 
 type ErrorBoundaryProps = {
@@ -94,8 +82,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             justifyContent: 'center',
             p: 3,
             textAlign: 'center',
-          }}
-        >
+          }}>
           <ErrorIcon sx={{ fontSize: 64, color: 'error.main', mb: 2 }} />
 
           <Typography variant="h4" component="h1" gutterBottom>
@@ -103,8 +90,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
           </Typography>
 
           <Typography variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 600 }}>
-            We apologize for the inconvenience. The error has been automatically reported to our
-            team.
+            We apologize for the inconvenience. The error has been automatically reported to our team.
           </Typography>
 
           <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
@@ -148,8 +134,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                           whiteSpace: 'pre-wrap',
                           fontSize: '0.75rem',
                           mb: 2,
-                        }}
-                      >
+                        }}>
                         {error.stack}
                       </Typography>
                     </>
@@ -166,8 +151,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                           fontFamily: 'monospace',
                           whiteSpace: 'pre-wrap',
                           fontSize: '0.75rem',
-                        }}
-                      >
+                        }}>
                         {errorInfo.componentStack}
                       </Typography>
                     </>

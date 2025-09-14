@@ -10,10 +10,7 @@ type NumbersBandProps = {
   title?: string
 }
 
-export const NumbersBand: React.FC<NumbersBandProps> = ({
-  numbers,
-  title = 'Techlabs in Numbers',
-}) => {
+export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title = 'Techlabs in Numbers' }) => {
   const formatLabel = (label: string): string => {
     return label
       .split(' ')
@@ -30,8 +27,7 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({
           alignItems: 'center',
           justifyContent: 'center',
           px: { xs: 3, md: 4 },
-        }}
-      >
+        }}>
         <Typography variant="h2" color="primary.main" textAlign="center" pb={4}>
           {title}
         </Typography>
@@ -44,8 +40,7 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({
             alignItems: 'center',
             width: '100%',
             gap: 3,
-          }}
-        >
+          }}>
           {numbers.map(metric => (
             <Box
               key={metric.label}
@@ -54,8 +49,7 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({
                 flexDirection: 'column',
                 alignItems: 'center',
                 textAlign: 'center',
-              }}
-            >
+              }}>
               <Typography variant="h2" color="primary.main" fontWeight={600}>
                 {metric.value}
               </Typography>

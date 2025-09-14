@@ -73,16 +73,14 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
             maxWidth: '1400px',
             margin: '0 auto',
             px: { xs: 3, md: 6 },
-          }}
-        >
+          }}>
           <Box
             ref={carouselRef}
             role="region"
             aria-roledescription="carousel"
             aria-label="Stories carousel"
             aria-live="polite"
-            sx={{ position: 'relative' }}
-          >
+            sx={{ position: 'relative' }}>
             <CarouselNavigation
               currentIndex={currentIndex}
               maxIndex={maxIndex}
@@ -98,8 +96,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
                   md: 'repeat(3, 1fr)',
                 },
                 gap: 2.5,
-              }}
-            >
+              }}>
               {visibleStories.map(story => (
                 <Box key={story.id}>
                   <CarouselItem story={story} />
@@ -128,8 +125,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
                   color: 'primary.main',
                   backgroundColor: 'transparent',
                 },
-              }}
-            >
+              }}>
               See all stories
             </Button>
           </Box>
@@ -138,6 +134,5 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
     </Section>
   )
 }
-
 
 StoriesCarousel.displayName = 'StoriesCarousel'

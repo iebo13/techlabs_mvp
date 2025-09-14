@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { TrackKey } from '@/features/tracks'
-import {
-  saveTrackSelection,
-  loadTrackSelection,
-  trackIdsToQueryParam,
-} from '@/features/tracks/utils/tracksUtils'
+import { saveTrackSelection, loadTrackSelection, trackIdsToQueryParam } from '@/features/tracks/utils/tracksUtils'
 
 export const useTrackSelection = () => {
   const navigate = useNavigate()
@@ -18,9 +14,7 @@ export const useTrackSelection = () => {
   }, [])
 
   const handleTrackChange = (trackId: TrackKey, checked: boolean) => {
-    const newSelection = checked
-      ? [...selectedTracks, trackId]
-      : selectedTracks.filter(id => id !== trackId)
+    const newSelection = checked ? [...selectedTracks, trackId] : selectedTracks.filter(id => id !== trackId)
 
     setSelectedTracks(newSelection)
     saveTrackSelection(newSelection)

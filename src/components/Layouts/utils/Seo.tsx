@@ -55,12 +55,8 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:locale" content="en_US" />
 
       {/* Article-specific Open Graph tags */}
-      {type === 'article' && publishedTime && (
-        <meta property="article:published_time" content={publishedTime} />
-      )}
-      {type === 'article' && modifiedTime && (
-        <meta property="article:modified_time" content={modifiedTime} />
-      )}
+      {type === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+      {type === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
       {type === 'article' && section && <meta property="article:section" content={section} />}
       {type === 'article' &&
         tags.length > 0 &&

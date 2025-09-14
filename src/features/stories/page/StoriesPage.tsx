@@ -70,8 +70,7 @@ export const StoriesPage: React.FC<StoriesPageProps> = () => {
             <SectionHeading
               title="Our Graduates' Stories"
               subtitle="Discover how TechLabs alumni are transforming their careers and making an impact in the tech industry"
-              align="center"
-            >
+              align="center">
               Our Graduates' Stories
             </SectionHeading>
           </Box>
@@ -84,8 +83,7 @@ export const StoriesPage: React.FC<StoriesPageProps> = () => {
                 value={selectedTrack}
                 label="Filter by Track"
                 onChange={handleTrackChange}
-                size="medium"
-              >
+                size="medium">
                 {trackOptions.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
@@ -98,8 +96,7 @@ export const StoriesPage: React.FC<StoriesPageProps> = () => {
           <Box sx={{ textAlign: 'center' }}>
             <Typography variant="body1" color="text.secondary">
               Showing {filteredStories.length} of {storiesData.length} stories
-              {selectedTrack !== 'all' &&
-                ` in ${trackOptions.find(t => t.value === selectedTrack)?.label}`}
+              {selectedTrack !== 'all' && ` in ${trackOptions.find(t => t.value === selectedTrack)?.label}`}
             </Typography>
           </Box>
 

@@ -1,20 +1,10 @@
 import React, { useState, lazy, Suspense } from 'react'
 import { PlayArrow as PlayArrowIcon } from '@mui/icons-material'
-import {
-  Card,
-  Box,
-  IconButton,
-  Chip,
-  useTheme,
-  useMediaQuery,
-  CircularProgress,
-} from '@mui/material'
+import { Card, Box, IconButton, Chip, useTheme, useMediaQuery, CircularProgress } from '@mui/material'
 import { OptimizedImage, Section } from '@/components/Layouts'
 
 const VIDEO_THUMBNAIL = '/img/Intro-thumbnail.png'
-const VideoEmbed = lazy(() =>
-  import('@/components/Forms/VideoEmbed').then(module => ({ default: module.VideoEmbed }))
-)
+const VideoEmbed = lazy(() => import('@/components/Forms/VideoEmbed').then(module => ({ default: module.VideoEmbed })))
 
 type HeroVideoProps = {
   posterUrl: string
@@ -75,8 +65,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               handlePlayClick()
             }
           }}
-          aria-label={`Play ${title}, duration ${durationText}`}
-        >
+          aria-label={`Play ${title}, duration ${durationText}`}>
           <OptimizedImage
             src={posterUrl || VIDEO_THUMBNAIL}
             alt={`${title} thumbnail`}
@@ -106,8 +95,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               '&:hover': {
                 bgcolor: 'rgba(0, 0, 0, 0.4)',
               },
-            }}
-          >
+            }}>
             <IconButton
               size="large"
               aria-label={`Play introduction video, duration ${durationText}`}
@@ -124,8 +112,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               onClick={event => {
                 event.stopPropagation()
                 handlePlayClick()
-              }}
-            >
+              }}>
               <PlayArrowIcon sx={{ fontSize: { xs: 32, sm: 40 } }} />
             </IconButton>
           </Box>

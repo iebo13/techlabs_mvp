@@ -18,7 +18,6 @@ const firebaseConfig = {
 const fireBaseApp = initializeApp(firebaseConfig)
 
 // Initialize Analytics only in production and if measurementId exists
-const analytics =
-  import.meta.env.PROD && firebaseConfig.measurementId ? getAnalytics(fireBaseApp) : null
+const analytics = import.meta.env.PROD && firebaseConfig.measurementId ? getAnalytics(fireBaseApp) : null
 
 export { fireBaseApp, analytics }

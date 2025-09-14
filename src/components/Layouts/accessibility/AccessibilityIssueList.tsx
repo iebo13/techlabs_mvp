@@ -6,10 +6,7 @@ import type { AccessibilityIssueListProps } from './types/accessibility.types'
  * AccessibilityIssueList - Renders the list of accessibility issues
  * Extracted from AccessibilityTester for better separation of concerns
  */
-export const AccessibilityIssueList: React.FC<AccessibilityIssueListProps> = ({
-  issues,
-  onIssueClick,
-}) => {
+export const AccessibilityIssueList: React.FC<AccessibilityIssueListProps> = ({ issues, onIssueClick }) => {
   if (issues.length === 0) {
     return (
       <Alert severity="success" sx={{ mb: 2 }}>
@@ -33,27 +30,18 @@ export const AccessibilityIssueList: React.FC<AccessibilityIssueListProps> = ({
               sx={{
                 border: '1px solid',
                 borderColor:
-                  issue.type === 'error'
-                    ? 'error.main'
-                    : issue.type === 'warning'
-                      ? 'warning.main'
-                      : 'info.main',
+                  issue.type === 'error' ? 'error.main' : issue.type === 'warning' ? 'warning.main' : 'info.main',
                 borderRadius: 1,
                 mb: 1,
                 cursor: 'pointer',
-              }}
-            >
+              }}>
               <ListItemText
                 primary={issue.message}
                 secondary={issue.selector}
                 primaryTypographyProps={{
                   variant: 'body2',
                   color:
-                    issue.type === 'error'
-                      ? 'error.main'
-                      : issue.type === 'warning'
-                        ? 'warning.main'
-                        : 'info.main',
+                    issue.type === 'error' ? 'error.main' : issue.type === 'warning' ? 'warning.main' : 'info.main',
                 }}
                 secondaryTypographyProps={{
                   variant: 'caption',

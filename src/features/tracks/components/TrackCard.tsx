@@ -1,17 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ExpandMore, ExpandLess } from '@mui/icons-material'
-import {
-  Card,
-  CardContent,
-  Typography,
-  Box,
-  Chip,
-  Button,
-  Collapse,
-  Stack,
-  Grid,
-  useTheme,
-} from '@mui/material'
+import { Card, CardContent, Typography, Box, Chip, Button, Collapse, Stack, Grid, useTheme } from '@mui/material'
 import type { TrackCardProps } from '../types/tracks.types'
 
 export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false, onToggle }) => {
@@ -48,8 +37,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
           transform: 'translateY(-4px)',
           boxShadow: theme.shadows[8],
         },
-      }}
-    >
+      }}>
       <CardContent sx={{ flexGrow: 1, p: 3 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
           <Typography variant="h2" sx={{ fontSize: '2.5rem', mr: 2 }}>
@@ -149,8 +137,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
             fullWidth
             sx={{ mb: 2 }}
             aria-expanded={expanded}
-            aria-label={expanded ? 'Show less details' : 'Show more details'}
-          >
+            aria-label={expanded ? 'Show less details' : 'Show more details'}>
             {expanded ? 'Show Less' : 'Show Details'}
           </Button>
 
@@ -164,8 +151,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
               '&:hover': {
                 bgcolor: 'primary.dark',
               },
-            }}
-          >
+            }}>
             Apply Now
           </Button>
         </Box>

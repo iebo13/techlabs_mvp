@@ -16,9 +16,7 @@ const AccessibilityTester = lazy(() =>
   }))
 )
 
-const DebugPanel = lazy(() =>
-  import('@/components/ErrorHandling').then(module => ({ default: module.DebugPanel }))
-)
+const DebugPanel = lazy(() => import('@/components/ErrorHandling').then(module => ({ default: module.DebugPanel })))
 
 const AppContent: React.FC = () => {
   const { currentTheme } = useTheme()
@@ -39,9 +37,7 @@ const AppContent: React.FC = () => {
         <MuiThemeProvider theme={currentTheme}>
           <CssBaseline />
           <BrowserRouter>
-            <Box
-              sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}
-            >
+            <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
               <HeaderNav />
               <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>
                 <Routes>

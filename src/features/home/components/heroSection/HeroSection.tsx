@@ -3,11 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Stack } from '@mui/material'
 import { Section } from '@/components/Layouts'
 import type { TrackKey } from '@/features/tracks'
-import {
-  saveTrackSelection,
-  loadTrackSelection,
-  trackIdsToQueryParam,
-} from '@/features/tracks/utils/tracksUtils'
+import { saveTrackSelection, loadTrackSelection, trackIdsToQueryParam } from '@/features/tracks/utils/tracksUtils'
 import homeData from '@/mocks/home.json'
 import { HomeDataSchema } from '@/mocks/schemas'
 import type { HomeData } from '../../types/homePage.type'
@@ -17,7 +13,6 @@ import { TrackChooserSection } from './TrackChooserSection'
 import { TrustStripSection } from './TrustStripSection'
 
 export const HeroSection: React.FC = () => {
-
   const [selectedTracks, setSelectedTracks] = useState<TrackKey[]>([])
   const navigate = useNavigate()
   const validatedData: HomeData = HomeDataSchema.parse(homeData)
@@ -57,8 +52,7 @@ export const HeroSection: React.FC = () => {
         backgroundColor: 'background.default',
         p: 0,
         pt: { xs: 6, md: 6 },
-      }}
-    >
+      }}>
       <Stack spacing={2} alignItems="center" sx={{ width: '100%' }}>
         <HeroHeading />
 

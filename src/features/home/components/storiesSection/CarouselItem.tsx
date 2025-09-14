@@ -40,8 +40,7 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
           outlineColor: 'primary.main',
           outlineOffset: '2px',
         },
-      }}
-    >
+      }}>
       <Box component="img" src={getStoryImage(story.id)} alt={story.title} />
       <Box
         sx={{
@@ -63,8 +62,7 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
           right: 20,
           color: '#FFFFFF',
           pointerEvents: 'none',
-        }}
-      >
+        }}>
         <Typography variant="h3" component="h3">
           {story.title}
         </Typography>

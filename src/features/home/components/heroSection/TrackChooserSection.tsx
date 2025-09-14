@@ -1,14 +1,6 @@
 import React from 'react'
 import { HourglassEmpty } from '@mui/icons-material'
-import {
-  Box,
-  Typography,
-  Stack,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  useMediaQuery,
-} from '@mui/material'
+import { Box, Typography, Stack, FormGroup, FormControlLabel, Checkbox, useMediaQuery } from '@mui/material'
 import { CTAButton, SquareCheckboxIcon, SquareCheckedIcon } from '@/components/Buttons'
 import { APPLICATION_CONFIG } from '@/config/application'
 import type { Track, TrackKey } from '@/features/tracks'
@@ -22,7 +14,12 @@ export type TrackChooserSectionProps = {
   onStartLearning: () => void
 }
 
-export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({ tracks, selectedTracks, onTrackChange, onStartLearning }) => {
+export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({
+  tracks,
+  selectedTracks,
+  onTrackChange,
+  onStartLearning,
+}) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   const formGroupStyles = {
@@ -32,10 +29,9 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({ tracks
     pl: isMobile ? 0 : 12,
   }
 
-  const handleTrackChange =
-    (trackId: TrackKey) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      onTrackChange(trackId, event.target.checked)
-    }
+  const handleTrackChange = (trackId: TrackKey) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    onTrackChange(trackId, event.target.checked)
+  }
 
   const handleStartLearningClick = () => {
     onStartLearning()
@@ -48,8 +44,7 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({ tracks
           variant="h3"
           color="primary"
           fontSize={isMobile ? '24px' : '40px'}
-          textAlign={isMobile ? 'start' : 'center'}
-        >
+          textAlign={isMobile ? 'start' : 'center'}>
           Choose your Journey Now
         </Typography>
         {!isMobile && (
@@ -65,8 +60,7 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({ tracks
           display: 'flex',
           flexDirection: 'column',
           alignItems: isMobile ? 'start' : 'center',
-        }}
-      >
+        }}>
         <Stack sx={{ gap: 3, width: isMobile ? '100%' : '400px' }}>
           <FormGroup role="group" aria-labelledby="track-chooser-heading" sx={formGroupStyles}>
             {tracks.map((track: Track) => (
@@ -90,8 +84,7 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({ tracks
                       fontSize: { xs: '1rem', sm: '1.125rem' },
                       fontWeight: 600,
                       ml: 1.5,
-                    }}
-                  >
+                    }}>
                     {track.label}
                   </Typography>
                 }
@@ -126,8 +119,7 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({ tracks
                   />
                 ),
                 text: formatDeadlineText(APPLICATION_CONFIG.deadline),
-              }}
-            >
+              }}>
               Start learning
             </CTAButton>
           </Box>

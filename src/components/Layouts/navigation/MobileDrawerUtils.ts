@@ -144,9 +144,7 @@ export const createCtaButtonStyles = (theme: Theme, buttonVariant: 'contained' |
   '&:hover': {
     transform: 'translateY(-2px)',
     boxShadow:
-      buttonVariant === 'contained'
-        ? `0 6px 16px ${theme.palette.primary.main}25`
-        : '0 2px 8px rgba(0, 0, 0, 0.15)',
+      buttonVariant === 'contained' ? `0 6px 16px ${theme.palette.primary.main}25` : '0 2px 8px rgba(0, 0, 0, 0.15)',
   },
   '&:focus-visible': {
     outline: `3px solid ${theme.palette.primary.main}${PRIMARY_COLOR_OPACITY}`,

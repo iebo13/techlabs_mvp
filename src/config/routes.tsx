@@ -2,9 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import { LoadingFallback } from '@/components'
 import { CareersPage, PrivacyPage, ImprintPage } from '@/config/placeholderPages'
 
-const HomePage = lazy(() =>
-  import('@/features/home/page/HomePage').then(module => ({ default: module.HomePage }))
-)
+const HomePage = lazy(() => import('@/features/home/page/HomePage').then(module => ({ default: module.HomePage })))
 
 const TracksPage = lazy(() =>
   import('@/features/tracks/page/TracksPage').then(module => ({ default: module.TracksPage }))
@@ -22,10 +20,7 @@ const PartnersPage = lazy(() =>
   import('@/features/partners/page/PartnersPage').then(module => ({ default: module.PartnersPage }))
 )
 
-const AboutPage = lazy(() =>
-  import('@/features/about/page/AboutPage').then(module => ({ default: module.AboutPage }))
-)
-
+const AboutPage = lazy(() => import('@/features/about/page/AboutPage').then(module => ({ default: module.AboutPage })))
 
 export type RouteConfig = {
   path: string

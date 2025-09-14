@@ -45,8 +45,7 @@ export const CarouselNavigation: React.FC<CarouselNavigationProps> = ({
             color: 'white',
             opacity: 0.4,
           },
-        }}
-      >
+        }}>
         <ArrowBackIcon sx={{ fontSize: { xs: 20, md: 24 } }} />
       </IconButton>
       <IconButton
@@ -75,8 +74,7 @@ export const CarouselNavigation: React.FC<CarouselNavigationProps> = ({
             color: 'white',
             opacity: 0.4,
           },
-        }}
-      >
+        }}>
         <ArrowForwardIcon sx={{ fontSize: { xs: 20, md: 24 } }} />
       </IconButton>
     </Box>

@@ -64,8 +64,7 @@ export const DebugPanel: React.FC = () => {
         color="secondary"
         aria-label="debug"
         sx={{ position: 'fixed', bottom: 16, left: 16, zIndex: 9998 }}
-        onClick={() => setIsOpen(true)}
-      >
+        onClick={() => setIsOpen(true)}>
         <BugIcon />
       </Fab>
 
@@ -73,8 +72,7 @@ export const DebugPanel: React.FC = () => {
         anchor="right"
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        sx={{ '& .MuiDrawer-paper': { width: 400, p: 2 } }}
-      >
+        sx={{ '& .MuiDrawer-paper': { width: 400, p: 2 } }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
           <Typography variant="h6">Debug Panel</Typography>
           <Button startIcon={<CloseIcon />} onClick={() => setIsOpen(false)} size="small">
@@ -95,8 +93,7 @@ export const DebugPanel: React.FC = () => {
               onClick={handleDownloadErrors}
               size="small"
               variant="outlined"
-              disabled={errors.length === 0}
-            >
+              disabled={errors.length === 0}>
               Download Errors
             </Button>
             <Button
@@ -105,8 +102,7 @@ export const DebugPanel: React.FC = () => {
               size="small"
               variant="outlined"
               color="error"
-              disabled={errors.length === 0}
-            >
+              disabled={errors.length === 0}>
               Clear All
             </Button>
           </Box>

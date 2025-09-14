@@ -5,9 +5,7 @@ import { footerSections } from './footerData'
 
 export const FooterLinksSection: React.FC = () => {
   return (
-    <Box
-      sx={{ display: 'flex', alignItems: 'center', justifyContent: 'end', flex: 2, width: '100%' }}
-    >
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'end', flex: 2, width: '100%' }}>
       <Grid container spacing={{ xs: 3, md: 6 }} width="100%">
         {footerSections.map(section => (
           <Grid size={{ xs: 6, sm: 3 }} key={section.title}>
@@ -24,8 +22,7 @@ export const FooterLinksSection: React.FC = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 1,
-                }}
-              >
+                }}>
                 {section.links.map(link => (
                   <Box component="li" key={link.label}>
                     <NavLink
@@ -48,8 +45,7 @@ export const FooterLinksSection: React.FC = () => {
                           outlineOffset: 2,
                           borderRadius: '4px',
                         },
-                      }}
-                    >
+                      }}>
                       {link.label}
                     </NavLink>
                   </Box>

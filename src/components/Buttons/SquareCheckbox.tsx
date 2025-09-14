@@ -29,8 +29,7 @@ export const SquareCheckedIcon: React.FC = () => (
     sx={{
       ...CHECKBOX_BASE_STYLES,
       backgroundColor: 'primary.main',
-    }}
-  >
+    }}>
     <Check
       sx={{
         color: 'white',

@@ -88,7 +88,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
       }
     }, [priority, src])
 
-    const imageStyles = {
+    const defaultImageStyles = {
       width: width || 'auto',
       height: height || 'auto',
       objectFit: 'cover' as const,
@@ -136,7 +136,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
           <img
             src={src}
             alt={alt}
-            style={imageStyles}
+            style={defaultImageStyles}
             onLoad={handleLoad}
             onError={handleError}
             loading={lazy && !priority ? 'lazy' : 'eager'}

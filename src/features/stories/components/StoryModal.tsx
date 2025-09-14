@@ -27,6 +27,7 @@ type StoryModalProps = {
 
 export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile }) => {
   if (!story) return null
+  const storyImage = '/img/background.png'
 
   return (
     <Dialog
@@ -65,7 +66,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
               overflow: 'hidden',
             }}>
             <img
-              src={story.imageUrl}
+              src={storyImage}
               alt={`${story.title} - Success story`}
               style={{
                 width: '100%',

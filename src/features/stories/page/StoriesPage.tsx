@@ -24,10 +24,7 @@ const StoryModal = lazy(() =>
     default: module.StoryModal,
   }))
 )
-
 const typedStoriesData = storiesData as Story[]
-
-type StoriesPageProps = {}
 
 const trackOptions = [
   { value: 'all', label: 'All Tracks' },
@@ -37,7 +34,7 @@ const trackOptions = [
   { value: 'ai', label: 'Artificial Intelligence' },
 ] as const
 
-export const StoriesPage: React.FC<StoriesPageProps> = () => {
+export const StoriesPage: React.FC = () => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 

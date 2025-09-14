@@ -49,7 +49,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
         src={event.imageUrl || EVENT_BACKGROUND_IMAGE}
         alt={`${event.title} event image`}
         width="100%"
-        height="200"
+        height="200px"
         sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 300px"
         lazy
         placeholder={EVENT_BACKGROUND_IMAGE}

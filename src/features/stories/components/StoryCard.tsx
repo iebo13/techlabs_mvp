@@ -6,6 +6,7 @@ import type { StoryCardProps } from '../types/stories.types'
 
 export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
   const theme = useTheme()
+  const storyImage = '/img/background.png'
 
   return (
     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={story.id}>
@@ -43,16 +44,13 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
             },
           }}>
           <OptimizedImage
-            src={story.imageUrl}
+            src={storyImage}
             alt={`${story.title} - ${story.excerpt}`}
             width="100%"
-            height="200"
+            height="200px"
             sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 400px"
             lazy
-            style={{
-              borderTopLeftRadius: 'inherit',
-              borderTopRightRadius: 'inherit',
-            }}
+            placeholder='/img/stories/person2.png'
           />
           <CardContent sx={{ flexGrow: 1 }}>
             <Stack spacing={2}>

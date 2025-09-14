@@ -1,15 +1,10 @@
 import React, { memo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Language as LanguageIcon } from '@mui/icons-material'
 import { Button, Menu, MenuItem, ListItemIcon } from '@mui/material'
-
-const languages = [
-  { code: 'en', flag: 'US' },
-  { code: 'de', flag: 'DE' },
-]
+import { useI18n } from '../../hooks'
 
 export const LanguageToggle: React.FC = memo(() => {
-  const { i18n } = useTranslation()
+  const { currentLanguage, availableLanguages, changeLanguage } = useI18n()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
 
@@ -21,12 +16,12 @@ export const LanguageToggle: React.FC = memo(() => {
     setAnchorEl(null)
   }
 
-  const handleLanguageChange = (languageCode: string) => {
-    i18n.changeLanguage(languageCode)
+  const handleLanguageChange = async (languageCode: string) => {
+    await changeLanguage(languageCode)
     handleClose()
   }
 
-  const currentLanguage = languages.find(lang => lang.code === i18n.language)
+  const currentLang = availableLanguages.find(lang => lang.code === currentLanguage)
 
   return (
     <>
@@ -40,13 +35,14 @@ export const LanguageToggle: React.FC = memo(() => {
         variant="outlined"
         size="small"
       >
-        {currentLanguage?.flag}
+        {currentLang?.flag}
       </Button>
       <Menu
         id="language-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
+        disableScrollLock
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'right',
@@ -56,11 +52,11 @@ export const LanguageToggle: React.FC = memo(() => {
           horizontal: 'right',
         }}
       >
-        {languages.map(language => (
+        {availableLanguages.map(language => (
           <MenuItem
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
-            selected={language.code === i18n.language}
+            selected={language.code === currentLanguage}
           >
             <ListItemIcon sx={{ minWidth: 36, p: 0, display: 'flex', alignItems: 'center' }}>
               {language.flag}

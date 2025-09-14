@@ -1,11 +1,12 @@
 import React from 'react'
-import { useTranslation, Trans } from 'react-i18next'
+import { Trans } from 'react-i18next'
 import { Box, Typography, useMediaQuery } from '@mui/material'
+import { useI18n } from '@/hooks'
 import { theme } from '@/theme'
 
 export const HeroHeading: React.FC = () => {
-  const { t } = useTranslation('components')
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const { t } = useI18n()
 
   return (
     <Box sx={{ width: '100%', mx: 'auto' }}>
@@ -27,9 +28,9 @@ export const HeroHeading: React.FC = () => {
       >
         <Trans
           i18nKey="hero.title"
-          ns="components"
+          ns="common"
           components={{
-            tech: <span className="emphasis" />
+            tech: <Box component="span" sx={{ display: 'inline', color: 'primary.main' }} />
           }}
         />
       </Typography>

@@ -8,7 +8,7 @@
     "partners": "Partners"
   },
   "hero": {
-    "title": "Learn {{tech}} Skills for Free",
+    "title": "Learn <tech>Tech</tech> Skills for Free",
     "subtitle": {
       "blended": "Blended learning",
       "community": "Local Community",

@@ -68,6 +68,19 @@ export const StorySchema = z.object({
   achievements: z.array(z.string().min(1)),
 })
 
+export const EventTypeSchema = z.enum(['upcoming', 'past'])
+
+export const EventSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  blurb: z.string().min(1),
+  date: z.string().min(1), // ISO date string
+  location: z.string().min(1),
+  type: EventTypeSchema,
+  imageUrl: z.string().min(1), // Allow relative paths for MVP
+  href: z.string().min(1),
+})
+
 export const NumberStatSchema = z.object({
   label: z.string().min(1),
   value: z.string().min(1),
@@ -185,6 +198,8 @@ export type HomeDataValidated = z.infer<typeof HomeDataSchema>
 export type TrackKeyValidated = z.infer<typeof TrackKeySchema>
 export type TrackValidated = z.infer<typeof TrackSchema>
 export type StoryValidated = z.infer<typeof StorySchema>
+export type EventTypeValidated = z.infer<typeof EventTypeSchema>
+export type EventValidated = z.infer<typeof EventSchema>
 export type PartnerValidated = z.infer<typeof PartnerSchema>
 export type PartnerTierValidated = z.infer<typeof PartnerTierSchema>
 export type DetailedPartnerValidated = z.infer<typeof DetailedPartnerSchema>

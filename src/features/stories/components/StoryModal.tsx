@@ -17,6 +17,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
+import { useI18n } from '@/hooks'
 import type { Story } from '../types/stories.types'
 
 type StoryModalProps = {
@@ -26,6 +27,8 @@ type StoryModalProps = {
 }
 
 export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile }) => {
+  const { t } = useI18n()
+
   if (!story) return null
   const storyImage = '/img/background.png'
 
@@ -51,7 +54,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
           </Typography>
           <Chip label={story.trackLabel} color="primary" variant="outlined" sx={{ mb: 1 }} />
         </Box>
-        <IconButton onClick={onClose} aria-label="Close story details" sx={{ flexShrink: 0 }}>
+        <IconButton onClick={onClose} aria-label={t('common:stories.modal.closeDetails')} sx={{ flexShrink: 0 }}>
           <CloseIcon />
         </IconButton>
       </DialogTitle>
@@ -67,7 +70,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
             }}>
             <img
               src={storyImage}
-              alt={`${story.title} - Success story`}
+              alt={t('common:stories.modal.successStoryAlt', { title: story.title })}
               style={{
                 width: '100%',
                 height: '100%',
@@ -85,7 +88,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                 <LocationIcon color="primary" />
                 <Typography variant="subtitle2" color="text.secondary">
-                  Location
+                  {t('common:stories.modal.location')}
                 </Typography>
               </Box>
               <Typography variant="body1">{story.location}</Typography>
@@ -95,7 +98,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                 <WorkIcon color="primary" />
                 <Typography variant="subtitle2" color="text.secondary">
-                  Current Role
+                  {t('common:stories.modal.currentRole')}
                 </Typography>
               </Box>
               <Typography variant="body1">{story.currentRole}</Typography>
@@ -105,7 +108,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                 <SchoolIcon color="primary" />
                 <Typography variant="subtitle2" color="text.secondary">
-                  Graduation Date
+                  {t('common:stories.modal.graduationDate')}
                 </Typography>
               </Box>
               <Typography variant="body1">{story.graduationDate}</Typography>
@@ -115,7 +118,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                 <WorkIcon color="primary" />
                 <Typography variant="subtitle2" color="text.secondary">
-                  Company
+                  {t('common:stories.modal.company')}
                 </Typography>
               </Box>
               <Typography variant="body1">{story.company}</Typography>
@@ -124,7 +127,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
 
           <Box>
             <Typography variant="h6" gutterBottom>
-              Key Achievements
+              {t('common:stories.modal.achievements')}
             </Typography>
             <Stack spacing={1}>
               {story.achievements.map(achievement => (
@@ -155,7 +158,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
 
           <Box sx={{ textAlign: 'center', pt: 2 }}>
             <Button variant="contained" size="large" onClick={onClose} sx={{ px: 4 }}>
-              Close
+              {t('common:common.close')}
             </Button>
           </Box>
         </Stack>

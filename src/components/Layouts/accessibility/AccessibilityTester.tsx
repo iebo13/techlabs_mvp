@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Button, Collapse, Typography } from '@mui/material'
+import { useI18n } from '@/hooks'
 import { AccessibilityIssueList } from './AccessibilityIssueList'
 import { useAccessibilityChecks, useIssueHighlighting } from './hooks'
 
@@ -10,6 +11,7 @@ import { useAccessibilityChecks, useIssueHighlighting } from './hooks'
  */
 export const AccessibilityTester: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false)
+  const { t } = useI18n()
   const { issues, runAccessibilityChecks } = useAccessibilityChecks()
   const { highlightIssue } = useIssueHighlighting()
 
@@ -49,10 +51,10 @@ export const AccessibilityTester: React.FC = () => {
           alignItems: 'center',
         }}>
         <Typography variant="h6" component="h2">
-          A11y Checker
+          {t('accessibility.title')}
         </Typography>
         <Button size="small" onClick={() => setIsExpanded(!isExpanded)} variant="outlined">
-          {isExpanded ? 'Hide' : 'Show'}
+          {isExpanded ? t('common.hide') : t('common.show')}
         </Button>
       </Box>
 
@@ -60,10 +62,10 @@ export const AccessibilityTester: React.FC = () => {
         <Box sx={{ p: 2 }}>
           <Box sx={{ mb: 2, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
             <Button size="small" onClick={handleRetest} variant="contained" color="primary">
-              Retest
+              {t('debug.retest')}
             </Button>
             <Typography variant="body2" color="text.secondary">
-              {errorCount} errors, {warningCount} warnings, {infoCount} info
+              {errorCount} {t('common.errors')}, {warningCount} {t('common.warnings')}, {infoCount} {t('common.info')}
             </Typography>
           </Box>
 

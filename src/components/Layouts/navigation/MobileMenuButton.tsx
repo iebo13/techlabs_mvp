@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material'
 import { IconButton, useTheme, useMediaQuery } from '@mui/material'
+import { useI18n } from '@/hooks'
 
 type MobileMenuButtonProps = {
   mobileOpen: boolean
@@ -10,6 +11,7 @@ type MobileMenuButtonProps = {
 export const MobileMenuButton = forwardRef<HTMLButtonElement, MobileMenuButtonProps>(
   ({ mobileOpen, onToggle }, ref) => {
     const theme = useTheme()
+    const { t } = useI18n()
     const isXs = useMediaQuery(theme.breakpoints.only('xs'))
     const isSm = useMediaQuery(theme.breakpoints.only('sm'))
 
@@ -27,7 +29,7 @@ export const MobileMenuButton = forwardRef<HTMLButtonElement, MobileMenuButtonPr
         ref={ref}
         edge="end"
         onClick={onToggle}
-        aria-label={mobileOpen ? 'close navigation menu' : 'open navigation menu'}
+        aria-label={mobileOpen ? t('navigation.closeMenu') : t('navigation.openMenu')}
         aria-expanded={mobileOpen}
         aria-controls="mobile-navigation-drawer"
         aria-haspopup="true"

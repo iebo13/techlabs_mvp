@@ -1,6 +1,7 @@
 import React from 'react'
 import { ArrowBack as ArrowBackIcon, ArrowForward as ArrowForwardIcon } from '@mui/icons-material'
 import { Box, IconButton, useTheme } from '@mui/material'
+import { useI18n } from '@/hooks'
 
 type CarouselNavigationProps = {
   currentIndex: number
@@ -16,13 +17,14 @@ export const CarouselNavigation: React.FC<CarouselNavigationProps> = ({
   onNext,
 }) => {
   const theme = useTheme()
+  const { t } = useI18n()
 
   return (
     <Box sx={{ position: 'relative', height: 0 }}>
       <IconButton
         onClick={onPrevious}
         disabled={currentIndex === 0}
-        aria-label="Previous stories"
+        aria-label={t('stories.carousel.previousAriaLabel')}
         sx={{
           width: { xs: 48, md: 60 },
           height: { xs: 48, md: 60 },
@@ -51,7 +53,7 @@ export const CarouselNavigation: React.FC<CarouselNavigationProps> = ({
       <IconButton
         onClick={onNext}
         disabled={currentIndex >= maxIndex}
-        aria-label="Next stories"
+        aria-label={t('stories.carousel.nextAriaLabel')}
         sx={{
           width: { xs: 48, md: 60 },
           height: { xs: 48, md: 60 },

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Alert, Box, Button, Container, Grid, Tab, Tabs, Typography } from '@mui/material'
+import { useI18n } from '@/hooks'
 import eventsData from '@/mocks/events.json'
 import { EventCard, type Event } from '../components/EventCard'
 
@@ -8,6 +9,7 @@ type EventType = 'upcoming' | 'past' | 'all'
 const EVENTS_PER_PAGE = 6
 
 export const EventsPage: React.FC = () => {
+  const { t } = useI18n()
   const [selectedTab, setSelectedTab] = useState<EventType>('all')
   const [visibleCount, setVisibleCount] = useState(EVENTS_PER_PAGE)
 
@@ -49,11 +51,11 @@ export const EventsPage: React.FC = () => {
 
     switch (type) {
       case 'upcoming':
-        return `Upcoming (${events.filter(e => e.type === 'upcoming').length})`
+        return t('events.tabs.upcoming', { count: events.filter(e => e.type === 'upcoming').length })
       case 'past':
-        return `Past (${events.filter(e => e.type === 'past').length})`
+        return t('events.tabs.past', { count: events.filter(e => e.type === 'past').length })
       default:
-        return `All Events (${events.length})`
+        return t('events.tabs.all', { count: events.length })
     }
   }
 
@@ -70,7 +72,7 @@ export const EventsPage: React.FC = () => {
             lineHeight: 1.2,
             color: 'text.primary',
           }}>
-          TechLabs Events
+          {t('events.page.title')}
         </Typography>
         <Typography
           variant="h5"
@@ -81,7 +83,7 @@ export const EventsPage: React.FC = () => {
             mx: 'auto',
             lineHeight: 1.4,
           }}>
-          Join our community events, workshops, and networking opportunities
+          {t('events.page.subtitle')}
         </Typography>
       </Box>
 
@@ -110,12 +112,10 @@ export const EventsPage: React.FC = () => {
       {visibleEvents.length === 0 ? (
         <Alert severity="info" sx={{ textAlign: 'center', py: 4 }}>
           <Typography variant="h6" gutterBottom>
-            No events found
+            {t('events.emptyState.title')}
           </Typography>
           <Typography variant="body1">
-            {selectedTab === 'upcoming'
-              ? 'Check back soon for upcoming events!'
-              : 'No past events available at the moment.'}
+            {selectedTab === 'upcoming' ? t('events.emptyState.upcomingMessage') : t('events.emptyState.pastMessage')}
           </Typography>
         </Alert>
       ) : (
@@ -142,7 +142,7 @@ export const EventsPage: React.FC = () => {
                   fontWeight: 600,
                   fontSize: '1rem',
                 }}>
-                Load More Events
+                {t('events.page.loadMore')}
               </Button>
             </Box>
           )}
@@ -151,10 +151,10 @@ export const EventsPage: React.FC = () => {
 
       <Box sx={{ mt: 8, textAlign: 'center' }}>
         <Typography variant="h6" gutterBottom color="text.secondary">
-          Want to host an event?
+          {t('events.hostEvent.title')}
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-          Partner with us to create meaningful learning experiences for our community.
+          {t('events.hostEvent.description')}
         </Typography>
         <Button
           variant="contained"
@@ -168,7 +168,7 @@ export const EventsPage: React.FC = () => {
             fontWeight: 600,
             fontSize: '1rem',
           }}>
-          Get in Touch
+          {t('events.hostEvent.cta')}
         </Button>
       </Box>
     </Container>

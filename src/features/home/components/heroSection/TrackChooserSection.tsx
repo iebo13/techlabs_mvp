@@ -4,6 +4,7 @@ import { Box, Typography, Stack, FormGroup, FormControlLabel, Checkbox, useMedia
 import { CTAButton, SquareCheckboxIcon, SquareCheckedIcon } from '@/components/Buttons'
 import { APPLICATION_CONFIG } from '@/config/application'
 import type { Track, TrackKey } from '@/features/tracks'
+import { useI18n } from '@/hooks'
 import { theme } from '@/theme'
 import { formatDeadlineText } from '@/utils/date'
 
@@ -21,6 +22,7 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({
   onStartLearning,
 }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const { t } = useI18n()
 
   const formGroupStyles = {
     gap: { xs: 2.5, sm: 3 },
@@ -45,11 +47,11 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({
           color="primary"
           fontSize={isMobile ? '24px' : '40px'}
           textAlign={isMobile ? 'start' : 'center'}>
-          Choose your Journey Now
+          {t('hero.trackChooser.title')}
         </Typography>
         {!isMobile && (
           <Typography variant="h3" color="primary">
-            & Become a digital shaper of tomorrow
+            {t('hero.trackChooser.subtitle')}
           </Typography>
         )}
       </Box>
@@ -120,7 +122,7 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({
                 ),
                 text: formatDeadlineText(APPLICATION_CONFIG.deadline),
               }}>
-              Start learning
+              {t('hero.trackChooser.startLearning')}
             </CTAButton>
           </Box>
         </Stack>

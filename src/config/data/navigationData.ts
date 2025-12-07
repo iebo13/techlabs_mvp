@@ -1,24 +1,24 @@
 export type NavigationItem = {
-  label: string
+  labelKey: string
   path: string
   external?: boolean
 }
 
 export type CTAButton = {
-  label: string
+  labelKey: string
   path: string
   variant: 'contained' | 'outlined'
 }
 
 export const navigationItems: NavigationItem[] = [
-  { label: 'Tracks', path: '/tracks' },
-  { label: 'Stories', path: '/stories' },
-  { label: 'Events', path: '/events' },
-  { label: 'Be a Partner', path: '/partners' },
-  { label: 'About us', path: '/about' },
+  { labelKey: 'navigation.tracks', path: '/tracks' },
+  { labelKey: 'navigation.stories', path: '/stories' },
+  { labelKey: 'navigation.events', path: '/events' },
+  { labelKey: 'navigation.partners', path: '/partners' },
+  { labelKey: 'navigation.about', path: '/about' },
 ]
 
 export const ctaButtons: CTAButton[] = [
-  { label: 'Join our team', path: '/careers', variant: 'outlined' },
-  { label: 'Start Learning', path: '/tracks', variant: 'contained' },
+  { labelKey: 'navigation.cta.joinTeam', path: '/careers', variant: 'outlined' },
+  { labelKey: 'navigation.cta.startLearning', path: '/tracks', variant: 'contained' },
 ]

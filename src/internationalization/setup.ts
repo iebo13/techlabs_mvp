@@ -1,8 +1,8 @@
 import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
-import deTranslations from './locales/de/common.json'
-import enTranslations from './locales/en/common.json'
+import deTranslations from './locales/deutsch.json'
+import enTranslations from './locales/english.json'
 
 const resources = {
   en: {
@@ -18,7 +18,6 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en',
     fallbackLng: 'en',
     defaultNS: 'common',
     ns: ['common'],
@@ -27,6 +26,8 @@ i18n
       order: ['localStorage', 'navigator', 'htmlTag'],
       lookupLocalStorage: 'i18nextLng',
       caches: ['localStorage'],
+      lookupFromPathIndex: 0,
+      lookupFromSubdomainIndex: 0,
     },
 
     interpolation: {

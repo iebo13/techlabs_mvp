@@ -2,10 +2,12 @@ import React from 'react'
 import { LocationOn as LocationIcon, Work as WorkIcon, School as SchoolIcon } from '@mui/icons-material'
 import { Box, Card, CardContent, Chip, Grid, Stack, Typography, useTheme } from '@mui/material'
 import { OptimizedImage } from '@/components/Layouts'
+import { useI18n } from '@/hooks'
 import type { StoryCardProps } from '../types/stories.types'
 
 export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
   const theme = useTheme()
+  const { t } = useI18n()
   const storyImage = '/img/background.png'
 
   return (
@@ -13,7 +15,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
       <Box
         component="button"
         onClick={() => onClick(story)}
-        aria-label={`View details for ${story.title}`}
+        aria-label={t('common:stories.card.viewDetails', { title: story.title })}
         sx={{
           border: 'none',
           background: 'none',
@@ -50,7 +52,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
             height="200px"
             sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 400px"
             lazy
-            placeholder='/img/stories/person2.png'
+            placeholder="/img/stories/person2.png"
           />
           <CardContent sx={{ flexGrow: 1 }}>
             <Stack spacing={2}>
@@ -84,7 +86,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                 <SchoolIcon fontSize="small" color="action" />
                 <Typography variant="caption" color="text.secondary">
-                  Graduated {story.graduationDate}
+                  {t('common:stories.card.graduated', { date: story.graduationDate })}
                 </Typography>
               </Box>
             </Stack>

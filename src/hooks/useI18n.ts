@@ -1,3 +1,4 @@
+import type { TFunction } from 'i18next'
 import { useTranslation } from 'react-i18next'
 
 export interface Language {
@@ -7,7 +8,7 @@ export interface Language {
 }
 
 export interface UseI18nReturn {
-  t: (key: string, options?: Record<string, unknown>) => string
+  t: TFunction
   tWithFallback: (key: string, fallback: string, options?: Record<string, unknown>) => string
   currentLanguage: string
   availableLanguages: Language[]
@@ -42,6 +43,7 @@ export const useI18n = (): UseI18nReturn => {
     if (isLanguageSupported(languageCode)) {
       await i18n.changeLanguage(languageCode)
       document.documentElement.lang = languageCode
+      localStorage.setItem('i18nextLng', languageCode)
     }
   }
 

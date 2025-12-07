@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Close as CloseIcon } from '@mui/icons-material'
 import { Dialog, DialogContent, DialogTitle, IconButton, Box, useTheme, useMediaQuery } from '@mui/material'
+import { useI18n } from '@/hooks'
 
 type VideoEmbedProps = {
   open: boolean
@@ -12,6 +13,7 @@ type VideoEmbedProps = {
 
 export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, srcUrl, posterUrl }) => {
   const theme = useTheme()
+  const { t } = useI18n()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const videoRef = useRef<HTMLVideoElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
@@ -71,7 +73,11 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, sr
           pb: 1,
         }}>
         {title}
-        <IconButton ref={closeButtonRef} onClick={onClose} aria-label="Close video" sx={{ color: 'common.white' }}>
+        <IconButton
+          ref={closeButtonRef}
+          onClick={onClose}
+          aria-label={t('video.closeVideo')}
+          sx={{ color: 'common.white' }}>
           <CloseIcon />
         </IconButton>
       </DialogTitle>
@@ -101,10 +107,10 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, sr
               maxHeight: '100%',
               objectFit: 'contain',
             }}
-            aria-label={`${title} video player`}>
+            aria-label={t('video.player', { title })}>
             <source src={srcUrl} type="video/mp4" />
             <track kind="captions" src="/captions/intro.vtt" srcLang="en" label="English captions" default />
-            Your browser does not support the video tag.
+            {t('video.unsupportedBrowser')}
           </video>
         </Box>
       </DialogContent>

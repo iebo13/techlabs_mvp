@@ -13,6 +13,7 @@ import {
   useMediaQuery,
 } from '@mui/material'
 import { navigationItems, ctaButtons } from '@/config/data/navigationData'
+import { useI18n } from '@/hooks'
 import {
   getDrawerSpacing,
   getHeaderTypography,
@@ -28,6 +29,7 @@ type MobileDrawerProps = {
 
 export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
   const theme = useTheme()
+  const { t } = useI18n()
 
   const isXs = useMediaQuery(theme.breakpoints.only('xs'))
   const isSm = useMediaQuery(theme.breakpoints.only('sm'))
@@ -84,7 +86,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
             height: '1px',
             overflow: 'hidden',
           }}>
-          Main navigation menu with links to different sections of the TechLabs website
+          {t('navigation.mobileMenuDescription')}
         </Typography>
         <IconButton edge="end" onClick={onClose} aria-label="close navigation menu" sx={closeButtonStyles}>
           <CloseIcon
@@ -111,8 +113,13 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
                       sm: '1.1rem',
                     },
                     lineHeight: 1.3,
+                    width: '100%',
+                    textAlign: 'left',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
                   }}>
-                  {item.label}
+                  {t(item.labelKey)}
                 </Typography>
               </NavLink>
             </ListItem>
@@ -140,7 +147,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
               fullWidth
               onClick={onClose}
               sx={getCtaStyles(button.variant)}>
-              {button.label}
+              {t(button.labelKey)}
             </Button>
           ))}
         </Stack>

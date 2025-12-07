@@ -1,38 +1,51 @@
 import React from 'react'
 import { Section, SectionHeading } from '@/components/Layouts'
+import { useI18n } from '@/hooks'
 
-export const CareersPage: React.FC = () => (
-  <main>
-    <Section>
-      <SectionHeading level={1} centered>
-        Join our team
-      </SectionHeading>
-      <p>Careers page placeholder</p>
-    </Section>
-  </main>
-)
+export const CareersPage: React.FC = () => {
+  const { t } = useI18n()
 
-export const PrivacyPage: React.FC = () => (
-  <main>
-    <Section>
-      <SectionHeading level={1} centered>
-        Privacy Policy
-      </SectionHeading>
-      <p>Privacy Policy page placeholder - will contain data protection information</p>
-    </Section>
-  </main>
-)
+  return (
+    <main>
+      <Section>
+        <SectionHeading level={1} centered>
+          {t('pages.careers.title')}
+        </SectionHeading>
+        <p>{t('pages.careers.placeholder')}</p>
+      </Section>
+    </main>
+  )
+}
 
-export const ImprintPage: React.FC = () => (
-  <main>
-    <Section>
-      <SectionHeading level={1} centered>
-        Imprint
-      </SectionHeading>
-      <p>Imprint page placeholder - will contain legal information</p>
-    </Section>
-  </main>
-)
+export const PrivacyPage: React.FC = () => {
+  const { t } = useI18n()
+
+  return (
+    <main>
+      <Section>
+        <SectionHeading level={1} centered>
+          {t('pages.privacy.title')}
+        </SectionHeading>
+        <p>{t('pages.privacy.placeholder')}</p>
+      </Section>
+    </main>
+  )
+}
+
+export const ImprintPage: React.FC = () => {
+  const { t } = useI18n()
+
+  return (
+    <main>
+      <Section>
+        <SectionHeading level={1} centered>
+          {t('pages.imprint.title')}
+        </SectionHeading>
+        <p>{t('pages.imprint.placeholder')}</p>
+      </Section>
+    </main>
+  )
+}
 
 CareersPage.displayName = 'CareersPage'
 PrivacyPage.displayName = 'PrivacyPage'

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
+import { useI18n } from '@/hooks'
 
 /**
  * SkipToContent - Accessibility component for keyboard navigation
@@ -7,6 +8,8 @@ import { Box } from '@mui/material'
  * and go directly to the main content area
  */
 export const SkipToContent: React.FC = () => {
+  const { t } = useI18n()
+
   const handleClick = () => {
     const mainContent = document.getElementById('main-content')
 
@@ -45,7 +48,7 @@ export const SkipToContent: React.FC = () => {
           backgroundColor: 'primary.dark',
         },
       }}>
-      Skip to main content
+      {t('common.skipToContent')}
     </Box>
   )
 }

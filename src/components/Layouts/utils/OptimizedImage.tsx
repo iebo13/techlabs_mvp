@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, memo } from 'react'
 import { Box, Skeleton } from '@mui/material'
 import { createImageObserver } from '@/components/PerformanceMonitoring/PerformanceUtils'
+import { useI18n } from '@/hooks'
 
 type OptimizedImageProps = {
   src: string
@@ -37,6 +38,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
     const [isLoaded, setIsLoaded] = useState(false)
     const [isInView, setIsInView] = useState(!lazy || priority)
     const [hasError, setHasError] = useState(false)
+    const { t } = useI18n()
     const imgRef = useRef<HTMLImageElement>(null)
     const observerRef = useRef<IntersectionObserver | null>(null)
 
@@ -114,7 +116,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
             color: 'text.secondary',
             fontSize: '0.875rem',
           }}>
-          Failed to load image
+          {t('image.failedToLoad')}
         </Box>
       )
     }

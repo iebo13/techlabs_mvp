@@ -1,6 +1,8 @@
+/* eslint-disable security/detect-object-injection */
 import React from 'react'
 import { Box, Typography, Container } from '@mui/material'
 import { Section } from '@/components'
+import { useI18n } from '@/hooks'
 
 type NumbersBandProps = {
   numbers: Array<{
@@ -10,8 +12,24 @@ type NumbersBandProps = {
   title?: string
 }
 
-export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title = 'Techlabs in Numbers' }) => {
-  const formatLabel = (label: string): string => {
+export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
+  const { t } = useI18n()
+  const displayTitle = title || t('hero.numbersSection.title')
+
+  const translationKeyMap: Record<string, string> = {
+    cities: 'hero.numbersSection.cities',
+    graduates: 'hero.numbersSection.graduates',
+    mentors: 'hero.numbersSection.mentors',
+  }
+
+  const getTranslatedLabel = (label: string): string => {
+    const normalizedLabel = label.toLowerCase().trim()
+    const translationKey = translationKeyMap[normalizedLabel]
+
+    if (translationKey) {
+      return t(translationKey)
+    }
+
     return label
       .split(' ')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
@@ -29,7 +47,7 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title = 'Tech
           px: { xs: 3, md: 4 },
         }}>
         <Typography variant="h2" color="primary.main" textAlign="center" pb={4}>
-          {title}
+          {displayTitle}
         </Typography>
 
         <Box
@@ -55,7 +73,7 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title = 'Tech
               </Typography>
 
               <Typography variant="h6" color="primary.main" fontWeight={600}>
-                {formatLabel(metric.label)}
+                {getTranslatedLabel(metric.label)}
               </Typography>
             </Box>
           ))}

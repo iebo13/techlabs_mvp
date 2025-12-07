@@ -4,11 +4,31 @@ import { Box, Typography } from '@mui/material'
 import { CTAButton } from '@/components'
 import { Section } from '@/components/Layouts'
 import { APPLICATION_CONFIG } from '@/config/application'
-import homeData from '@/mocks/home.json'
+import { useI18n } from '@/hooks'
 import { formatDeadlineText } from '@/utils/date'
 import { ValuePropCard } from './ValuePropCard'
 
 export const WhyTechlabs: React.FC = () => {
+  const { t } = useI18n()
+
+  const features = [
+    {
+      icon: 'free',
+      title: t('hero.features.free.title'),
+      body: t('hero.features.free.body'),
+    },
+    {
+      icon: 'network',
+      title: t('hero.features.network.title'),
+      body: t('hero.features.network.body'),
+    },
+    {
+      icon: 'job',
+      title: t('hero.features.job.title'),
+      body: t('hero.features.job.body'),
+    },
+  ]
+
   return (
     <Section sx={{ py: { xs: 4, md: 6 } }}>
       <Box
@@ -20,7 +40,7 @@ export const WhyTechlabs: React.FC = () => {
           gap: 2,
         }}>
         <Typography variant="h2" color="primary" textAlign="center" pb={6}>
-          Why Techlabs ?
+          {t('hero.whyTechlabs.title')}
         </Typography>
         <Box
           sx={{
@@ -31,7 +51,7 @@ export const WhyTechlabs: React.FC = () => {
             pb: 2,
             width: '100%',
           }}>
-          {homeData.features.map(feature => (
+          {features.map(feature => (
             <ValuePropCard key={feature.title} icon={feature.icon} title={feature.title} body={feature.body} />
           ))}
         </Box>
@@ -46,7 +66,7 @@ export const WhyTechlabs: React.FC = () => {
               icon: <HourglassEmpty />,
               text: formatDeadlineText(APPLICATION_CONFIG.deadline),
             }}>
-            Start learning
+            {t('hero.whyTechlabs.startLearning')}
           </CTAButton>
         </Box>
       </Box>

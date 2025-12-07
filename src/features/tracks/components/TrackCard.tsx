@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { ExpandMore, ExpandLess } from '@mui/icons-material'
 import { Card, CardContent, Typography, Box, Chip, Button, Collapse, Stack, Grid, useTheme } from '@mui/material'
+import { useI18n } from '@/hooks'
 import type { TrackCardProps } from '../types/tracks.types'
 
 export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false, onToggle }) => {
   const [expanded, setExpanded] = useState(isExpanded)
   const theme = useTheme()
+  const { t, formatDate } = useI18n()
 
   useEffect(() => {
     setExpanded(isExpanded)
@@ -16,14 +18,6 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
 
     setExpanded(newExpanded)
     onToggle?.(track.id)
-  }
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-    })
   }
 
   return (
@@ -57,7 +51,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
           <Chip label={track.duration} size="small" color="primary" variant="outlined" />
           <Chip label={track.format} size="small" color="secondary" variant="outlined" />
           <Chip
-            label={`${track.spotsAvailable} spots left`}
+            label={t('tracks.card.spotsLeft', { count: track.spotsAvailable })}
             size="small"
             color={track.spotsAvailable < 10 ? 'error' : 'success'}
             variant="outlined"
@@ -68,7 +62,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
           <Box sx={{ mt: 2 }}>
             <Box sx={{ mb: 3 }}>
               <Typography variant="h6" gutterBottom>
-                Skills You'll Learn
+                {t('tracks.card.skillsTitle')}
               </Typography>
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                 {track.skills.map(skill => (
@@ -79,7 +73,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
 
             <Box sx={{ mb: 3 }}>
               <Typography variant="h6" gutterBottom>
-                Projects You'll Build
+                {t('tracks.card.projectsTitle')}
               </Typography>
               <Grid container spacing={1}>
                 {track.projects.map(project => (
@@ -104,7 +98,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
 
             <Box sx={{ mb: 3 }}>
               <Typography variant="h6" gutterBottom>
-                Career Paths
+                {t('tracks.card.careerPathsTitle')}
               </Typography>
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                 {track.careerPaths.map(career => (
@@ -115,14 +109,14 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
 
             <Box sx={{ mb: 2 }}>
               <Typography variant="h6" gutterBottom>
-                Application Details
+                {t('tracks.card.applicationDetailsTitle')}
               </Typography>
               <Stack spacing={1}>
                 <Typography variant="body2">
-                  <strong>Next Cohort:</strong> {track.nextCohort}
+                  <strong>{t('tracks.card.nextCohort')}:</strong> {track.nextCohort}
                 </Typography>
                 <Typography variant="body2">
-                  <strong>Application Deadline:</strong> {formatDate(track.applicationDeadline)}
+                  <strong>{t('tracks.card.applicationDeadline')}:</strong> {formatDate(track.applicationDeadline)}
                 </Typography>
               </Stack>
             </Box>
@@ -137,8 +131,8 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
             fullWidth
             sx={{ mb: 2 }}
             aria-expanded={expanded}
-            aria-label={expanded ? 'Show less details' : 'Show more details'}>
-            {expanded ? 'Show Less' : 'Show Details'}
+            aria-label={expanded ? t('tracks.card.showLessAriaLabel') : t('tracks.card.showMoreAriaLabel')}>
+            {expanded ? t('tracks.card.showLess') : t('tracks.card.showDetails')}
           </Button>
 
           <Button
@@ -152,7 +146,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
                 bgcolor: 'primary.dark',
               },
             }}>
-            Apply Now
+            {t('tracks.card.applyNow')}
           </Button>
         </Box>
       </CardContent>

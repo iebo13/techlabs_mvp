@@ -1,80 +1,88 @@
 import React from 'react'
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material'
 import { Box, Typography, List, Chip, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
+import { useI18n } from '@/hooks'
 import type { ErrorReport } from './ErrorReportingService'
 
 // Legacy type alias for backward compatibility
 export type ErrorData = ErrorReport
 
-const ErrorDetails: React.FC<{ error: ErrorReport }> = ({ error }) => (
-  <Box sx={{ fontSize: '0.875rem' }}>
-    <Typography variant="subtitle2" gutterBottom>
-      Error Details:
-    </Typography>
-    <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
-      <strong>URL:</strong> {error.url}
-    </Typography>
-    <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
-      <strong>Route:</strong> {error.route}
-    </Typography>
-    {error.line && (
-      <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
-        <strong>Location:</strong> Line {error.line}
-        {error.column ? `, Col ${error.column}` : ''}
-      </Typography>
-    )}
-    {error.buildVersion && (
-      <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
-        <strong>Build:</strong> {error.buildVersion}
-      </Typography>
-    )}
+const ErrorDetails: React.FC<{ error: ErrorReport }> = ({ error }) => {
+  const { t } = useI18n()
 
-    {error.stack && (
-      <>
-        <Typography variant="subtitle2" gutterBottom sx={{ mt: 2 }}>
-          Stack Trace:
+  return (
+    <Box sx={{ fontSize: '0.875rem' }}>
+      <Typography variant="subtitle2" gutterBottom>
+        {t('errorBoundary.errorMessage')}:
+      </Typography>
+      <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
+        <strong>URL:</strong> {error.url}
+      </Typography>
+      <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
+        <strong>Route:</strong> {error.route}
+      </Typography>
+      {error.line && (
+        <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
+          <strong>Location:</strong> Line {error.line}
+          {error.column ? `, Col ${error.column}` : ''}
         </Typography>
-        <Typography
-          variant="body2"
-          sx={{
-            fontFamily: 'monospace',
-            fontSize: '0.75rem',
-            whiteSpace: 'pre-wrap',
-            backgroundColor: 'grey.100',
-            p: 1,
-            borderRadius: 1,
-            maxHeight: 200,
-            overflow: 'auto',
-          }}>
-          {error.stack}
+      )}
+      {error.buildVersion && (
+        <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 1 }}>
+          <strong>Build:</strong> {error.buildVersion}
         </Typography>
-      </>
-    )}
+      )}
 
-    {error.additionalData && (
-      <>
-        <Typography variant="subtitle2" gutterBottom sx={{ mt: 2 }}>
-          Additional Data:
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{
-            fontFamily: 'monospace',
-            fontSize: '0.75rem',
-            whiteSpace: 'pre-wrap',
-            backgroundColor: 'grey.100',
-            p: 1,
-            borderRadius: 1,
-          }}>
-          {JSON.stringify(error.additionalData, null, 2)}
-        </Typography>
-      </>
-    )}
-  </Box>
-)
+      {error.stack && (
+        <>
+          <Typography variant="subtitle2" gutterBottom sx={{ mt: 2 }}>
+            {t('errorBoundary.stackTrace')}:
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              fontFamily: 'monospace',
+              fontSize: '0.75rem',
+              whiteSpace: 'pre-wrap',
+              backgroundColor: 'grey.100',
+              p: 1,
+              borderRadius: 1,
+              maxHeight: 200,
+              overflow: 'auto',
+            }}>
+            {error.stack}
+          </Typography>
+        </>
+      )}
+
+      {error.additionalData && (
+        <>
+          <Typography variant="subtitle2" gutterBottom sx={{ mt: 2 }}>
+            Additional Data:
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              fontFamily: 'monospace',
+              fontSize: '0.75rem',
+              whiteSpace: 'pre-wrap',
+              backgroundColor: 'grey.100',
+              p: 1,
+              borderRadius: 1,
+            }}>
+            {JSON.stringify(error.additionalData, null, 2)}
+          </Typography>
+        </>
+      )}
+    </Box>
+  )
+}
 
 export const ErrorList: React.FC<{ errors: ErrorReport[] }> = ({ errors }) => {
-  const formatTimestamp = (timestamp: number) => new Date(timestamp).toLocaleString()
+  const { t, formatDate } = useI18n()
+
+  const formatTimestamp = (timestamp: number) =>
+    formatDate(new Date(timestamp), { dateStyle: 'short', timeStyle: 'short' } as Intl.DateTimeFormatOptions)
 
   const getSeverityColor = (message: string) => {
     if (message.includes('Error') || message.includes('error')) return 'error'
@@ -84,7 +92,7 @@ export const ErrorList: React.FC<{ errors: ErrorReport[] }> = ({ errors }) => {
   }
 
   if (errors.length === 0) {
-    return <Typography color="text.secondary">No errors captured yet. This is good! 🎉</Typography>
+    return <Typography color="text.secondary">{t('debug.noErrorsYet')}</Typography>
   }
 
   return (

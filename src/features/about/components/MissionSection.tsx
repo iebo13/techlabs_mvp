@@ -1,24 +1,40 @@
 import React from 'react'
 import { Card, CardContent, Container, Grid, Typography } from '@mui/material'
 import { Section, SectionHeading } from '@/components/Layouts'
+import { useI18n } from '@/hooks'
 
-type MissionData = {
-  title: string
-  subtitle: string
-  description: string
-  values: Array<{
-    title: string
-    description: string
-  }>
-}
+export const MissionSection: React.FC = () => {
+  const { t } = useI18n()
 
-export const MissionSection: React.FC<{ data: MissionData }> = ({ data }) => {
+  const values = [
+    {
+      key: 'accessibility',
+      title: t('about.missionSection.values.accessibility.title'),
+      description: t('about.missionSection.values.accessibility.description'),
+    },
+    {
+      key: 'community',
+      title: t('about.missionSection.values.community.title'),
+      description: t('about.missionSection.values.community.description'),
+    },
+    {
+      key: 'practicality',
+      title: t('about.missionSection.values.practicality.title'),
+      description: t('about.missionSection.values.practicality.description'),
+    },
+    {
+      key: 'innovation',
+      title: t('about.missionSection.values.innovation.title'),
+      description: t('about.missionSection.values.innovation.description'),
+    },
+  ]
+
   return (
     <>
       <Section variant="primary" paddingScale={1.5}>
         <Container maxWidth="lg">
           <SectionHeading level={1} centered emphasis="gradient" maxWidth="800px">
-            {data.title}
+            {t('about.missionSection.title')}
           </SectionHeading>
           <Typography
             variant="h5"
@@ -26,14 +42,14 @@ export const MissionSection: React.FC<{ data: MissionData }> = ({ data }) => {
             color="white"
             textAlign="center"
             sx={{ mt: 3, maxWidth: '700px', mx: 'auto', lineHeight: 1.4 }}>
-            {data.subtitle}
+            {t('about.missionSection.subtitle')}
           </Typography>
           <Typography
             variant="body1"
             color="white"
             textAlign="center"
             sx={{ mt: 3, maxWidth: '600px', mx: 'auto', opacity: 0.9, lineHeight: 1.6 }}>
-            {data.description}
+            {t('about.missionSection.description')}
           </Typography>
         </Container>
       </Section>
@@ -41,8 +57,8 @@ export const MissionSection: React.FC<{ data: MissionData }> = ({ data }) => {
       <Section>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
-            {data.values.map(value => (
-              <Grid key={value.title.toLowerCase().replaceAll(/\s+/g, '-')} size={{ xs: 12, sm: 6, md: 3 }}>
+            {values.map(value => (
+              <Grid key={value.key} size={{ xs: 12, sm: 6, md: 3 }}>
                 <Card
                   sx={{
                     height: '100%',

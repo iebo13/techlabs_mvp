@@ -4,6 +4,7 @@ import { ChevronRight as ChevronRightIcon } from '@mui/icons-material'
 import { Box, Button, useTheme, useMediaQuery } from '@mui/material'
 import { Section, SectionHeading } from '@/components/Layouts'
 import type { Story } from '@/features/stories'
+import { useI18n } from '@/hooks'
 import { CarouselItem } from './CarouselItem'
 import { CarouselNavigation } from './CarouselNavigation'
 
@@ -16,6 +17,7 @@ type StoriesCarouselProps = {
 export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, sectionTitle, showSeeAllLink = true }) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const { t } = useI18n()
   const cardsPerView = isMobile ? 1 : 3
   const maxIndex = Math.max(0, stories.length - cardsPerView)
 
@@ -78,7 +80,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
             ref={carouselRef}
             role="region"
             aria-roledescription="carousel"
-            aria-label="Stories carousel"
+            aria-label={t('stories.carousel.ariaLabel')}
             aria-live="polite"
             sx={{ position: 'relative' }}>
             <CarouselNavigation
@@ -126,7 +128,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
                   backgroundColor: 'transparent',
                 },
               }}>
-              See all stories
+              {t('stories.seeAll')}
             </Button>
           </Box>
         )}

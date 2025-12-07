@@ -1,0 +1,506 @@
+{
+  "navigation": {
+    "home": "Home",
+    "tracks": "Tracks",
+    "events": "Events",
+    "stories": "Stories",
+    "about": "About",
+    "partners": "Be a Partner",
+    "mobileMenuDescription": "Main navigation menu with links to different sections of the TechLabs website",
+    "openMenu": "open navigation menu",
+    "closeMenu": "close navigation menu",
+    "selectCity": "Select city",
+    "mainNavigation": "Main navigation",
+    "opensInNewTab": "(opens in new tab)",
+    "logoAlt": "TechLabs Logo",
+    "cta": {
+      "joinTeam": "Join our team",
+      "startLearning": "Start Learning"
+    }
+  },
+  "hero": {
+    "title": "Learn <tech>Tech</tech> Skills for Free",
+    "subtitle": {
+      "blended": "Blended learning",
+      "community": "Local Community",
+      "projects": "Practical Projects"
+    },
+    "cta": {
+      "chooseTracks": "Choose Your Tracks",
+      "learnMore": "Learn More"
+    },
+    "award": {
+      "winnerOf": "Winner of the",
+      "impactChallenge": "Impact Challenge Germany 2018"
+    },
+    "trackChooser": {
+      "title": "Choose your Journey Now",
+      "subtitle": "& Become a digital shaper of tomorrow",
+      "startLearning": "Start learning"
+    },
+    "whyTechlabs": {
+      "title": "Why Techlabs ?",
+      "startLearning": "Start learning"
+    },
+    "numbersSection": {
+      "title": "Techlabs in Numbers",
+      "cities": "Cities",
+      "graduates": "Graduates",
+      "mentors": "Mentors"
+    },
+    "support": {
+      "title": "Support Tech Education",
+      "body": "Help us empower the next generation by funding cohorts and resources.",
+      "ctaLabel": "Support Tech Education"
+    },
+    "video": {
+      "introTitle": "TechLabs Introduction Video"
+    },
+    "features": {
+      "free": {
+        "title": "Totally free",
+        "body": "We free your mind for what matters the most to the wold, unlocking your true potential"
+      },
+      "network": {
+        "title": "Networking",
+        "body": "Expand your network through our community for potential job opportunities or startups"
+      },
+      "job": {
+        "title": "Job Ready",
+        "body": "You create a project that build your portfolio as a fundamental step towards your dream job"
+      }
+    }
+  },
+  "tracks": {
+    "title": "Choose Your Track",
+    "description": "Select the technology track that matches your interests and career goals",
+    "webDevelopment": "Web Development",
+    "dataScience": "Data Science",
+    "aiMachineLearning": "AI & Machine Learning",
+    "cloudComputing": "Cloud Computing",
+    "cybersecurity": "Cybersecurity",
+    "mobile": "Mobile Development",
+    "card": {
+      "skillsTitle": "Skills You'll Learn",
+      "projectsTitle": "Projects You'll Build",
+      "careerPathsTitle": "Career Paths",
+      "applicationDetailsTitle": "Application Details",
+      "nextCohort": "Next Cohort",
+      "applicationDeadline": "Application Deadline",
+      "showLess": "Show Less",
+      "showDetails": "Show Details",
+      "applyNow": "Apply Now",
+      "showLessAriaLabel": "Show less details",
+      "showMoreAriaLabel": "Show more details",
+      "spotsLeft": "{{count}} spot left",
+      "spotsLeft_other": "{{count}} spots left"
+    },
+    "page": {
+      "title": "Learning Tracks - TechLabs",
+      "description": "Explore our learning tracks: Web Development, Data Science, Product Design, and AI. Choose the path that fits your career goals and start learning for free.",
+      "keywords": "learning tracks, web development, data science, product design, AI, tech education, free courses",
+      "tags": [
+        "learning tracks",
+        "web development",
+        "data science",
+        "product design",
+        "AI"
+      ]
+    },
+    "items": {
+      "web-dev": {
+        "label": "Web Development",
+        "description": "Learn modern web development with HTML, CSS, JavaScript, and popular frameworks. Build responsive websites and web applications.",
+        "duration": "6 months",
+        "format": "Part-time, 2 evenings per week",
+        "skills": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Git"],
+        "projects": [
+          "Personal portfolio",
+          "E-commerce site",
+          "Social media app"
+        ],
+        "careerPaths": [
+          "Frontend Developer",
+          "Full-stack Developer",
+          "Web Designer"
+        ],
+        "nextCohort": "March 2025"
+      },
+      "data-science": {
+        "label": "Data Science",
+        "description": "Master data analysis, machine learning, and statistical modeling. Work with real datasets and build predictive models.",
+        "duration": "8 months",
+        "format": "Part-time, 2 evenings per week",
+        "skills": [
+          "Python",
+          "Pandas",
+          "NumPy",
+          "Scikit-learn",
+          "SQL",
+          "Data Visualization"
+        ],
+        "projects": [
+          "Customer segmentation",
+          "Sales forecasting",
+          "Sentiment analysis"
+        ],
+        "careerPaths": [
+          "Data Analyst",
+          "Data Scientist",
+          "Business Intelligence"
+        ],
+        "nextCohort": "April 2025"
+      },
+      "product-design": {
+        "label": "Product Design",
+        "description": "Design user-centered digital products using modern design tools and methodologies. Learn UX/UI principles and prototyping.",
+        "duration": "6 months",
+        "format": "Part-time, 2 evenings per week",
+        "skills": [
+          "Figma",
+          "User Research",
+          "Wireframing",
+          "Prototyping",
+          "Design Systems"
+        ],
+        "projects": ["Mobile app design", "Website redesign", "Design system"],
+        "careerPaths": ["UX Designer", "UI Designer", "Product Designer"],
+        "nextCohort": "May 2025"
+      },
+      "ai": {
+        "label": "Artificial Intelligence",
+        "description": "Explore AI fundamentals, machine learning algorithms, and neural networks. Build intelligent systems and applications.",
+        "duration": "8 months",
+        "format": "Part-time, 2 evenings per week",
+        "skills": [
+          "Python",
+          "TensorFlow",
+          "PyTorch",
+          "Deep Learning",
+          "NLP",
+          "Computer Vision"
+        ],
+        "projects": ["Chatbot", "Image classifier", "Recommendation system"],
+        "careerPaths": [
+          "AI Engineer",
+          "Machine Learning Engineer",
+          "Research Scientist"
+        ],
+        "nextCohort": "June 2025"
+      }
+    }
+  },
+  "about": {
+    "title": "About TechLabs",
+    "mission": "Our Mission",
+    "team": "Our Team",
+    "contact": "Contact Us",
+    "program": "Our Program",
+    "faqs": "Frequently Asked Questions",
+    "page": {
+      "title": "About Us - TechLabs",
+      "description": "Learn about TechLabs mission to provide free tech education, our program approach, timeline, team, and frequently asked questions.",
+      "keywords": "about techlabs, mission, program, team, timeline, FAQ, tech education",
+      "tags": ["about", "mission", "program", "team", "timeline", "FAQ"]
+    },
+    "missionSection": {
+      "title": "Empowering the Next Generation of Tech Leaders",
+      "subtitle": "TechLabs is a non-profit organization dedicated to making technology education accessible to everyone, regardless of their background or financial situation.",
+      "description": "We believe that everyone deserves the opportunity to learn in-demand tech skills and build a career in the digital economy. Through our innovative blended learning approach, we combine online resources with local community support to create a unique learning experience that prepares students for real-world success.",
+      "values": {
+        "accessibility": {
+          "title": "Accessibility",
+          "description": "Free education for all, breaking down financial barriers to tech careers"
+        },
+        "community": {
+          "title": "Community",
+          "description": "Local networks of learners, mentors, and industry professionals"
+        },
+        "practicality": {
+          "title": "Practicality",
+          "description": "Real-world projects and skills that employers actually need"
+        },
+        "innovation": {
+          "title": "Innovation",
+          "description": "Blended learning that combines the best of online and offline education"
+        }
+      }
+    },
+    "programSection": {
+      "title": "How Our Program Works",
+      "description": "TechLabs offers a unique blended learning experience that combines the flexibility of online learning with the support of a local community.",
+      "phases": {
+        "application": {
+          "title": "Application & Selection",
+          "description": "Apply online with your background and goals. We select candidates based on motivation and potential, not prior experience.",
+          "duration": "2 weeks"
+        },
+        "foundation": {
+          "title": "Foundation Learning",
+          "description": "Build core skills through our online platform with support from mentors and peers.",
+          "duration": "8 weeks"
+        },
+        "project": {
+          "title": "Project Development",
+          "description": "Work on real-world projects that build your portfolio and demonstrate your skills.",
+          "duration": "6 weeks"
+        },
+        "career": {
+          "title": "Career Launch",
+          "description": "Get support with job applications, networking, and career planning.",
+          "duration": "4 weeks"
+        }
+      }
+    },
+    "teamSection": {
+      "title": "Meet Our Team",
+      "description": "Our team combines expertise in education, technology, and community building to create the best possible learning experience.",
+      "members": {
+        "sarah": {
+          "name": "Dr. Sarah Chen",
+          "role": "Executive Director",
+          "bio": "Former Google engineer with 15+ years in tech education and community development."
+        },
+        "marcus": {
+          "name": "Marcus Weber",
+          "role": "Head of Learning",
+          "bio": "Curriculum designer with expertise in adult education and skill development."
+        },
+        "lisa": {
+          "name": "Lisa Müller",
+          "role": "Community Manager",
+          "bio": "Passionate about building inclusive communities and connecting people through technology."
+        }
+      }
+    },
+    "contactSection": {
+      "title": "Get in Touch",
+      "description": "Have questions about our program or want to get involved? We'd love to hear from you.",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "followUs": "Follow Us",
+      "socialMedia": {
+        "linkedin": "LinkedIn",
+        "twitter": "Twitter",
+        "github": "GitHub"
+      },
+      "contactInfo": {
+        "email": "hello@techlabs.org",
+        "phone": "+49 211 123 4567",
+        "address": "TechLabs e.V., Königsallee 92, 40212 Düsseldorf, Germany"
+      }
+    },
+    "faqSection": {
+      "title": "Frequently Asked Questions",
+      "moreQuestions": "More Questions"
+    }
+  },
+  "events": {
+    "title": "Events",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "all": "All Events",
+    "noEvents": "No events available",
+    "page": {
+      "title": "TechLabs Events",
+      "subtitle": "Join our community events, workshops, and networking opportunities",
+      "loadMore": "Load More Events"
+    },
+    "card": {
+      "upcomingLabel": "Upcoming",
+      "pastLabel": "Past",
+      "eventImageAlt": "{{title}} event image"
+    },
+    "emptyState": {
+      "title": "No events found",
+      "upcomingMessage": "Check back soon for upcoming events!",
+      "pastMessage": "No past events available at the moment."
+    },
+    "hostEvent": {
+      "title": "Want to host an event?",
+      "description": "Partner with us to create meaningful learning experiences for our community.",
+      "cta": "Get in Touch"
+    },
+    "tabs": {
+      "all": "All Events ({{count}})",
+      "upcoming": "Upcoming ({{count}})",
+      "past": "Past ({{count}})"
+    }
+  },
+  "stories": {
+    "title": "Success Stories",
+    "readMore": "Read More",
+    "previous": "Previous",
+    "next": "Next",
+    "seeAll": "See all stories",
+    "carousel": {
+      "previousAriaLabel": "Previous stories",
+      "nextAriaLabel": "Next stories",
+      "ariaLabel": "Stories carousel"
+    },
+    "page": {
+      "title": "Our Graduates' Stories",
+      "subtitle": "Discover how TechLabs alumni are transforming their careers and making an impact in the tech industry",
+      "filterByTrack": "Filter by Track",
+      "showingCount": "Showing {{count}} of {{total}} stories",
+      "inTrack": "in {{track}}",
+      "noStoriesFound": "No stories found for this track",
+      "tryDifferentTrack": "Try selecting a different track or check back later for new stories."
+    },
+    "card": {
+      "viewDetails": "View details for {{title}}",
+      "graduated": "Graduated {{date}}"
+    },
+    "modal": {
+      "closeDetails": "Close story details",
+      "location": "Location",
+      "currentRole": "Current Role",
+      "graduationDate": "Graduation Date",
+      "company": "Company",
+      "achievements": "Key Achievements",
+      "successStoryAlt": "{{title}} - Success story"
+    },
+    "filter": {
+      "allTracks": "All Tracks"
+    }
+  },
+  "partners": {
+    "title": "Our Partners",
+    "description": "Companies and organizations that support our mission"
+  },
+  "common": {
+    "loading": "Loading...",
+    "loadingPage": "Loading page...",
+    "loadingContent": "Loading content",
+    "loadingCard": "Loading card {{current}} of {{total}}",
+    "loadingItem": "Loading item {{current}} of {{total}}",
+    "error": "An error occurred",
+    "unexpectedError": "An unexpected error occurred",
+    "retry": "Try Again",
+    "close": "Close",
+    "open": "Open",
+    "menu": "Menu",
+    "skipToContent": "Skip to main content",
+    "language": "Language",
+    "hide": "Hide",
+    "show": "Show",
+    "reloadPage": "Reload Page",
+    "download": "Download",
+    "clearAll": "Clear All",
+    "errors": "errors",
+    "warnings": "warnings",
+    "info": "info",
+    "totalErrors": "Total Errors"
+  },
+  "footer": {
+    "copyright": "© 2024 by TechLabs.",
+    "boardMembers": "Board: Sabrina Engling, Ranjini Kishen Kumar, Carolina Constant Sanchez",
+    "city": "Düsseldorf",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "imprint": "Imprint",
+    "contact": "Contact",
+    "programs": {
+      "title": "Programs",
+      "digitalShaper": "Digital Shaper Program",
+      "codeathome": "#codeathome Bootcamp",
+      "summit": "Digital Shaper Summit"
+    },
+    "tracks": {
+      "title": "Tracks",
+      "dataScience": "Data Science",
+      "ai": "Artificial Intelligence",
+      "ux": "UX Design",
+      "webDev": "Web Development"
+    },
+    "getInvolved": {
+      "title": "Get Involved",
+      "volunteer": "Become a volunteer",
+      "support": "Support Tech Education"
+    },
+    "aboutUs": {
+      "title": "About Us"
+    },
+    "social": {
+      "instagram": "TechLabs on Instagram",
+      "youtube": "TechLabs on YouTube",
+      "x": "TechLabs on X",
+      "linkedin": "TechLabs on LinkedIn",
+      "facebook": "TechLabs on Facebook",
+      "email": "Contact TechLabs by Email"
+    }
+  },
+  "theme": {
+    "switchTo": "Switch to {{mode}} mode",
+    "devOnly": "(Dev only)",
+    "light": "light",
+    "dark": "dark"
+  },
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "description": "We apologize for the inconvenience. The error has been automatically reported to our team.",
+    "errorId": "Error ID",
+    "developerInfo": "Developer Information",
+    "errorMessage": "Error Message",
+    "stackTrace": "Stack Trace",
+    "componentStack": "Component Stack"
+  },
+  "debug": {
+    "title": "Debug Panel",
+    "description": "This panel shows captured errors and performance metrics for debugging purposes.",
+    "downloadErrors": "Download Errors",
+    "noErrorsYet": "No errors captured yet. This is good! 🎉",
+    "retest": "Retest"
+  },
+  "accessibility": {
+    "title": "A11y Checker",
+    "noIssues": "No accessibility issues found! 🎉",
+    "clickToHighlight": "Click on issues to highlight them on the page"
+  },
+  "video": {
+    "closeVideo": "Close video",
+    "unsupportedBrowser": "Your browser does not support the video tag.",
+    "player": "{{title}} video player"
+  },
+  "image": {
+    "failedToLoad": "Failed to load image",
+    "loading": "Loading image"
+  },
+  "pages": {
+    "home": {
+      "title": "TechLabs - Learn Tech Skills for Free",
+      "description": "Learn tech skills for free with TechLabs. Blended learning, local community, practical projects. Winner of Google.org Impact Challenge Germany 2018.",
+      "keywords": "tech education, free coding, web development, data science, product design, AI, digital skills, Germany",
+      "tags": [
+        "tech education",
+        "free coding",
+        "web development",
+        "data science",
+        "product design",
+        "AI"
+      ]
+    },
+    "careers": {
+      "title": "Join our team",
+      "placeholder": "Careers page placeholder"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "placeholder": "Privacy Policy page placeholder - will contain data protection information"
+    },
+    "imprint": {
+      "title": "Imprint",
+      "placeholder": "Imprint page placeholder - will contain legal information"
+    }
+  },
+  "applications": {
+    "closed": "Applications are currently closed",
+    "closeIn": {
+      "weeks": "Applications close in {{count}} week for next batch",
+      "weeks_other": "Applications close in {{count}} weeks for next batch",
+      "days": "Applications close in {{count}} day for next batch",
+      "days_other": "Applications close in {{count}} days for next batch"
+    }
+  }
+}

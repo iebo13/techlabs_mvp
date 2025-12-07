@@ -3,25 +3,31 @@ import { useNavigate } from 'react-router-dom'
 import { Box, Card, Typography } from '@mui/material'
 import { CTAButton } from '@/components/Buttons/CtaButton'
 import { OptimizedImage, Section } from '@/components/Layouts'
+import { useI18n } from '@/hooks'
 
 const SUPPORT_BACKGROUND_IMAGE = '/img/background.png'
 
 export type SupportCtaProps = {
   title?: string
-  body: string
+  body?: string
   imageUrl?: string
-  cta: {
-    label: string
+  cta?: {
+    label?: string
     to: string
   }
 }
 
-export const SupportCta: React.FC<SupportCtaProps> = ({ title = 'Support Tech Education', body, imageUrl, cta }) => {
+export const SupportCta: React.FC<SupportCtaProps> = ({ title, body, imageUrl, cta }) => {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const displayImageUrl = imageUrl || SUPPORT_BACKGROUND_IMAGE
+  const displayTitle = title || t('hero.support.title')
+  const displayBody = body || t('hero.support.body')
+  const displayCtaLabel = cta?.label || t('hero.support.ctaLabel')
+  const ctaTo = cta?.to || '/support'
 
   const handleCtaClick = () => {
-    navigate(cta.to)
+    navigate(ctaTo)
   }
 
   return (
@@ -37,7 +43,7 @@ export const SupportCta: React.FC<SupportCtaProps> = ({ title = 'Support Tech Ed
         }}>
         <OptimizedImage
           src={displayImageUrl}
-          alt={title}
+          alt={displayTitle}
           width="100%"
           height="100%"
           priority
@@ -72,14 +78,14 @@ export const SupportCta: React.FC<SupportCtaProps> = ({ title = 'Support Tech Ed
               gap: { xs: '12px', md: '16px' },
             }}>
             <Typography variant="h4" color="primary.main" fontWeight={700}>
-              {title}
+              {displayTitle}
             </Typography>
 
             <Typography variant="body1" color="text.primary">
-              {body}
+              {displayBody}
             </Typography>
             <CTAButton variant="outlined" size="large" onClick={handleCtaClick}>
-              {cta.label}
+              {displayCtaLabel}
             </CTAButton>
           </Box>
         </Card>

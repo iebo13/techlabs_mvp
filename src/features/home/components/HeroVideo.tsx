@@ -2,6 +2,7 @@ import React, { useState, lazy, Suspense } from 'react'
 import { PlayArrow as PlayArrowIcon } from '@mui/icons-material'
 import { Card, Box, IconButton, Chip, useTheme, useMediaQuery, CircularProgress } from '@mui/material'
 import { OptimizedImage, Section } from '@/components/Layouts'
+import { useI18n } from '@/hooks'
 
 const VIDEO_THUMBNAIL = '/img/Intro-thumbnail.png'
 const VideoEmbed = lazy(() => import('@/components/Forms/VideoEmbed').then(module => ({ default: module.VideoEmbed })))
@@ -13,15 +14,12 @@ type HeroVideoProps = {
   title?: string
 }
 
-export const HeroVideo: React.FC<HeroVideoProps> = ({
-  posterUrl,
-  srcUrl,
-  duration,
-  title = 'TechLabs Introduction Video',
-}) => {
+export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duration, title }) => {
   const [modalOpen, setModalOpen] = useState(false)
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const { t } = useI18n()
+  const displayTitle = title || t('hero.video.introTitle')
 
   const handlePlayClick = () => {
     setModalOpen(true)
@@ -65,10 +63,10 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               handlePlayClick()
             }
           }}
-          aria-label={`Play ${title}, duration ${durationText}`}>
+          aria-label={`Play ${displayTitle}, duration ${durationText}`}>
           <OptimizedImage
             src={posterUrl || VIDEO_THUMBNAIL}
-            alt={`${title} thumbnail`}
+            alt={`${displayTitle} thumbnail`}
             width="100%"
             height="600px"
             sizes="(max-width: 600px) 100vw, (max-width: 900px) 80vw, 800px"
@@ -139,7 +137,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
             <VideoEmbed
               open={modalOpen}
               onClose={handleCloseModal}
-              title={title}
+              title={displayTitle}
               srcUrl={srcUrl}
               posterUrl={posterUrl}
             />

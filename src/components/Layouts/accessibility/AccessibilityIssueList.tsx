@@ -1,5 +1,6 @@
 import React from 'react'
 import { Alert, List, ListItem, ListItemText, Typography } from '@mui/material'
+import { useI18n } from '@/hooks'
 import type { AccessibilityIssueListProps } from './types/accessibility.types'
 
 /**
@@ -7,10 +8,12 @@ import type { AccessibilityIssueListProps } from './types/accessibility.types'
  * Extracted from AccessibilityTester for better separation of concerns
  */
 export const AccessibilityIssueList: React.FC<AccessibilityIssueListProps> = ({ issues, onIssueClick }) => {
+  const { t } = useI18n()
+
   if (issues.length === 0) {
     return (
       <Alert severity="success" sx={{ mb: 2 }}>
-        No accessibility issues found! 🎉
+        {t('accessibility.noIssues')}
       </Alert>
     )
   }
@@ -54,7 +57,7 @@ export const AccessibilityIssueList: React.FC<AccessibilityIssueListProps> = ({ 
       </List>
 
       <Typography variant="caption" color="text.secondary">
-        Click on issues to highlight them on the page
+        {t('accessibility.clickToHighlight')}
       </Typography>
     </>
   )

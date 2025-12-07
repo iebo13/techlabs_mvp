@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, CircularProgress, Typography, type SxProps, type Theme } from '@mui/material'
+import { useI18n } from '@/hooks'
 
 type LoadingFallbackVariant = 'component' | 'page'
 
@@ -13,12 +14,10 @@ type LoadingFallbackProps = {
 
 const VARIANT_CONFIGS: Record<LoadingFallbackVariant, Partial<LoadingFallbackProps>> = {
   component: {
-    text: 'Loading...',
     size: 24,
     minHeight: '200px',
   },
   page: {
-    text: 'Loading page...',
     size: 40,
     minHeight: '50vh',
   },
@@ -31,9 +30,12 @@ export const LoadingFallback: React.FC<LoadingFallbackProps> = ({
   minHeight,
   sx,
 }) => {
+  const { t } = useI18n()
+  // eslint-disable-next-line security/detect-object-injection
   const config = VARIANT_CONFIGS[variant]
 
-  const finalText = text ?? config.text ?? 'Loading...'
+  const defaultText = variant === 'page' ? t('common.loadingPage') : t('common.loading')
+  const finalText = text ?? defaultText
   const finalSize = size ?? config.size ?? 24
   const finalMinHeight = minHeight ?? config.minHeight ?? '200px'
 

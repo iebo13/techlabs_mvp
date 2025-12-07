@@ -3,6 +3,7 @@ import { formatDistanceToNow } from 'date-fns'
 import { Link } from 'react-router-dom'
 import { Box, Card, CardContent, Chip, Stack, Typography } from '@mui/material'
 import { OptimizedImage } from '@/components/Layouts'
+import { useI18n } from '@/hooks'
 
 const EVENT_BACKGROUND_IMAGE = '/img/background.png'
 
@@ -22,6 +23,7 @@ type EventCardProps = {
 }
 
 export const EventCard: React.FC<EventCardProps> = ({ event }) => {
+  const { t } = useI18n()
   const isUpcoming = event.type === 'upcoming'
   const dateDistance = formatDistanceToNow(new Date(event.date), { addSuffix: true })
 
@@ -47,7 +49,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
       }}>
       <OptimizedImage
         src={event.imageUrl || EVENT_BACKGROUND_IMAGE}
-        alt={`${event.title} event image`}
+        alt={t('events.card.eventImageAlt', { title: event.title })}
         width="100%"
         height="200px"
         sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 300px"
@@ -61,7 +63,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
       <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ mb: 2 }}>
           <Chip
-            label={isUpcoming ? 'Upcoming' : 'Past'}
+            label={isUpcoming ? t('events.card.upcomingLabel') : t('events.card.pastLabel')}
             color={isUpcoming ? 'primary' : 'default'}
             size="small"
             sx={{ mb: 1 }}

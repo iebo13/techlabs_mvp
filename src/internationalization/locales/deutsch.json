@@ -1,0 +1,506 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "tracks": "Tracks",
+    "events": "Veranstaltungen",
+    "stories": "Geschichten",
+    "about": "Über uns",
+    "partners": "Partner",
+    "mobileMenuDescription": "Hauptnavigationsmenü mit Links zu verschiedenen Bereichen der TechLabs-Website",
+    "openMenu": "Navigationsmenü öffnen",
+    "closeMenu": "Navigationsmenü schließen",
+    "selectCity": "Stadt auswählen",
+    "mainNavigation": "Hauptnavigation",
+    "opensInNewTab": "(öffnet in neuem Tab)",
+    "logoAlt": "TechLabs Logo",
+    "cta": {
+      "joinTeam": "Volunteer werden",
+      "startLearning": "Jetzt lernen"
+    }
+  },
+  "hero": {
+    "title": "Lerne <tech>Tech</tech> Skills kostenlos",
+    "subtitle": {
+      "blended": "Blended Learning",
+      "community": "Lokale Gemeinschaft",
+      "projects": "Praktische Projekte"
+    },
+    "cta": {
+      "chooseTracks": "Wähle deine Tracks",
+      "learnMore": "Mehr erfahren"
+    },
+    "award": {
+      "winnerOf": "Gewinner des",
+      "impactChallenge": "Impact Challenge Deutschland 2018"
+    },
+    "trackChooser": {
+      "title": "Wähle jetzt deine Reise",
+      "subtitle": "& Werde ein digitaler Gestalter von morgen",
+      "startLearning": "Jetzt lernen"
+    },
+    "whyTechlabs": {
+      "title": "Warum Techlabs ?",
+      "startLearning": "Jetzt lernen"
+    },
+    "numbersSection": {
+      "title": "Techlabs in Zahlen",
+      "cities": "Städte",
+      "graduates": "Absolventen",
+      "mentors": "Mentoren"
+    },
+    "support": {
+      "title": "Tech-Bildung unterstützen",
+      "body": "Helfen Sie uns, die nächste Generation zu fördern, indem Sie Kohorten und Ressourcen finanzieren.",
+      "ctaLabel": "Tech-Bildung unterstützen"
+    },
+    "video": {
+      "introTitle": "TechLabs Einführungsvideo"
+    },
+    "features": {
+      "free": {
+        "title": "Völlig kostenlos",
+        "body": "Wir befreien deinen Geist für das, was der Welt am meisten wichtig ist, und entfalten dein wahres Potenzial"
+      },
+      "network": {
+        "title": "Netzwerken",
+        "body": "Erweitere dein Netzwerk durch unsere Community für potenzielle Jobmöglichkeiten oder Startups"
+      },
+      "job": {
+        "title": "Job-bereit",
+        "body": "Du erstellst ein Projekt, das dein Portfolio aufbaut, als grundlegenden Schritt zu deinem Traumjob"
+      }
+    }
+  },
+  "tracks": {
+    "title": "Wähle deinen Track",
+    "description": "Wähle den Technologie-Track, der zu deinen Interessen und Karrierezielen passt",
+    "webDevelopment": "Webentwicklung",
+    "dataScience": "Data Science",
+    "aiMachineLearning": "KI & Machine Learning",
+    "cloudComputing": "Cloud Computing",
+    "cybersecurity": "Cybersicherheit",
+    "mobile": "Mobile Entwicklung",
+    "card": {
+      "skillsTitle": "Fähigkeiten, die du lernen wirst",
+      "projectsTitle": "Projekte, die du bauen wirst",
+      "careerPathsTitle": "Karrierewege",
+      "applicationDetailsTitle": "Bewerbungsdetails",
+      "nextCohort": "Nächste Kohorte",
+      "applicationDeadline": "Bewerbungsfrist",
+      "showLess": "Weniger anzeigen",
+      "showDetails": "Details anzeigen",
+      "applyNow": "Jetzt bewerben",
+      "showLessAriaLabel": "Weniger Details anzeigen",
+      "showMoreAriaLabel": "Mehr Details anzeigen",
+      "spotsLeft": "{{count}} Platz verfügbar",
+      "spotsLeft_other": "{{count}} Plätze verfügbar"
+    },
+    "page": {
+      "title": "Lern-Tracks - TechLabs",
+      "description": "Entdecke unsere Lern-Tracks: Webentwicklung, Data Science, Produktdesign und KI. Wähle den Pfad, der zu deinen Karrierezielen passt, und beginne kostenlos zu lernen.",
+      "keywords": "Lern-Tracks, Webentwicklung, Data Science, Produktdesign, KI, Tech-Bildung, kostenlose Kurse",
+      "tags": [
+        "Lern-Tracks",
+        "Webentwicklung",
+        "Data Science",
+        "Produktdesign",
+        "KI"
+      ]
+    },
+    "items": {
+      "web-dev": {
+        "label": "Webentwicklung",
+        "description": "Lerne moderne Webentwicklung mit HTML, CSS, JavaScript und beliebten Frameworks. Erstelle responsive Websites und Webanwendungen.",
+        "duration": "6 Monate",
+        "format": "Teilzeit, 2 Abende pro Woche",
+        "skills": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Git"],
+        "projects": [
+          "Persönliches Portfolio",
+          "E-Commerce-Website",
+          "Social-Media-App"
+        ],
+        "careerPaths": [
+          "Frontend-Entwickler",
+          "Full-Stack-Entwickler",
+          "Webdesigner"
+        ],
+        "nextCohort": "März 2025"
+      },
+      "data-science": {
+        "label": "Data Science",
+        "description": "Meistere Datenanalyse, maschinelles Lernen und statistische Modellierung. Arbeite mit echten Datensätzen und erstelle Vorhersagemodelle.",
+        "duration": "8 Monate",
+        "format": "Teilzeit, 2 Abende pro Woche",
+        "skills": [
+          "Python",
+          "Pandas",
+          "NumPy",
+          "Scikit-learn",
+          "SQL",
+          "Datenvisualisierung"
+        ],
+        "projects": [
+          "Kundensegmentierung",
+          "Verkaufsprognose",
+          "Sentimentanalyse"
+        ],
+        "careerPaths": [
+          "Datenanalyst",
+          "Data Scientist",
+          "Business Intelligence"
+        ],
+        "nextCohort": "April 2025"
+      },
+      "product-design": {
+        "label": "Produktdesign",
+        "description": "Entwerfe nutzerzentrierte digitale Produkte mit modernen Design-Tools und Methoden. Lerne UX/UI-Prinzipien und Prototyping.",
+        "duration": "6 Monate",
+        "format": "Teilzeit, 2 Abende pro Woche",
+        "skills": [
+          "Figma",
+          "User Research",
+          "Wireframing",
+          "Prototyping",
+          "Design-Systeme"
+        ],
+        "projects": ["Mobile-App-Design", "Website-Redesign", "Design-System"],
+        "careerPaths": ["UX-Designer", "UI-Designer", "Produktdesigner"],
+        "nextCohort": "Mai 2025"
+      },
+      "ai": {
+        "label": "Künstliche Intelligenz",
+        "description": "Erkunde KI-Grundlagen, Machine-Learning-Algorithmen und neuronale Netze. Baue intelligente Systeme und Anwendungen.",
+        "duration": "8 Monate",
+        "format": "Teilzeit, 2 Abende pro Woche",
+        "skills": [
+          "Python",
+          "TensorFlow",
+          "PyTorch",
+          "Deep Learning",
+          "NLP",
+          "Computer Vision"
+        ],
+        "projects": ["Chatbot", "Bildklassifikator", "Empfehlungssystem"],
+        "careerPaths": [
+          "KI-Ingenieur",
+          "Machine-Learning-Ingenieur",
+          "Forschungswissenschaftler"
+        ],
+        "nextCohort": "Juni 2025"
+      }
+    }
+  },
+  "about": {
+    "title": "Über TechLabs",
+    "mission": "Unsere Mission",
+    "team": "Unser Team",
+    "contact": "Kontakt",
+    "program": "Unser Programm",
+    "faqs": "Häufig gestellte Fragen",
+    "page": {
+      "title": "Über uns - TechLabs",
+      "description": "Erfahren Sie mehr über TechLabs Mission, kostenlose Tech-Bildung bereitzustellen, unseren Programmansatz, Zeitplan, Team und häufig gestellte Fragen.",
+      "keywords": "über techlabs, mission, programm, team, zeitplan, FAQ, tech-bildung",
+      "tags": ["über uns", "mission", "programm", "team", "zeitplan", "FAQ"]
+    },
+    "missionSection": {
+      "title": "Die nächste Generation von Tech-Führungskräften fördern",
+      "subtitle": "TechLabs ist eine gemeinnützige Organisation, die sich dafür einsetzt, technologische Bildung für alle zugänglich zu machen, unabhängig von Hintergrund oder finanzieller Situation.",
+      "description": "Wir glauben, dass jeder die Möglichkeit verdient, gefragte Tech-Fähigkeiten zu erlernen und eine Karriere in der digitalen Wirtschaft aufzubauen. Durch unseren innovativen Blended-Learning-Ansatz kombinieren wir Online-Ressourcen mit lokaler Community-Unterstützung, um eine einzigartige Lernerfahrung zu schaffen, die Studierende auf realen Erfolg vorbereitet.",
+      "values": {
+        "accessibility": {
+          "title": "Zugänglichkeit",
+          "description": "Kostenlose Bildung für alle, Abbau finanzieller Barrieren für Tech-Karrieren"
+        },
+        "community": {
+          "title": "Gemeinschaft",
+          "description": "Lokale Netzwerke von Lernenden, Mentoren und Branchenprofis"
+        },
+        "practicality": {
+          "title": "Praxisnähe",
+          "description": "Reale Projekte und Fähigkeiten, die Arbeitgeber tatsächlich benötigen"
+        },
+        "innovation": {
+          "title": "Innovation",
+          "description": "Blended Learning, das das Beste aus Online- und Offline-Bildung kombiniert"
+        }
+      }
+    },
+    "programSection": {
+      "title": "Wie unser Programm funktioniert",
+      "description": "TechLabs bietet eine einzigartige Blended-Learning-Erfahrung, die die Flexibilität des Online-Lernens mit der Unterstützung einer lokalen Gemeinschaft kombiniert.",
+      "phases": {
+        "application": {
+          "title": "Bewerbung & Auswahl",
+          "description": "Bewerben Sie sich online mit Ihrem Hintergrund und Ihren Zielen. Wir wählen Kandidaten basierend auf Motivation und Potenzial aus, nicht auf Vorerfahrung.",
+          "duration": "2 Wochen"
+        },
+        "foundation": {
+          "title": "Grundlagenlernen",
+          "description": "Bauen Sie Kernfähigkeiten über unsere Online-Plattform mit Unterstützung von Mentoren und Peers auf.",
+          "duration": "8 Wochen"
+        },
+        "project": {
+          "title": "Projektentwicklung",
+          "description": "Arbeiten Sie an realen Projekten, die Ihr Portfolio aufbauen und Ihre Fähigkeiten demonstrieren.",
+          "duration": "6 Wochen"
+        },
+        "career": {
+          "title": "Karrierestart",
+          "description": "Erhalten Sie Unterstützung bei Bewerbungen, Networking und Karriereplanung.",
+          "duration": "4 Wochen"
+        }
+      }
+    },
+    "teamSection": {
+      "title": "Lernen Sie unser Team kennen",
+      "description": "Unser Team vereint Expertise in Bildung, Technologie und Community-Aufbau, um die bestmögliche Lernerfahrung zu schaffen.",
+      "members": {
+        "sarah": {
+          "name": "Dr. Sarah Chen",
+          "role": "Geschäftsführerin",
+          "bio": "Ehemalige Google-Ingenieurin mit über 15 Jahren Erfahrung in Tech-Bildung und Community-Entwicklung."
+        },
+        "marcus": {
+          "name": "Marcus Weber",
+          "role": "Leiter Lernen",
+          "bio": "Lehrplandesigner mit Expertise in Erwachsenenbildung und Kompetenzentwicklung."
+        },
+        "lisa": {
+          "name": "Lisa Müller",
+          "role": "Community-Managerin",
+          "bio": "Leidenschaftlich daran interessiert, inklusive Gemeinschaften aufzubauen und Menschen durch Technologie zu verbinden."
+        }
+      }
+    },
+    "contactSection": {
+      "title": "Kontakt aufnehmen",
+      "description": "Haben Sie Fragen zu unserem Programm oder möchten Sie sich engagieren? Wir freuen uns auf Ihre Nachricht.",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "address": "Adresse",
+      "followUs": "Folgen Sie uns",
+      "socialMedia": {
+        "linkedin": "LinkedIn",
+        "twitter": "Twitter",
+        "github": "GitHub"
+      },
+      "contactInfo": {
+        "email": "hello@techlabs.org",
+        "phone": "+49 211 123 4567",
+        "address": "TechLabs e.V., Königsallee 92, 40212 Düsseldorf, Deutschland"
+      }
+    },
+    "faqSection": {
+      "title": "Häufig gestellte Fragen",
+      "moreQuestions": "Weitere Fragen"
+    }
+  },
+  "events": {
+    "title": "Veranstaltungen",
+    "upcoming": "Kommende",
+    "past": "Vergangene",
+    "all": "Alle Veranstaltungen",
+    "noEvents": "Keine Veranstaltungen verfügbar",
+    "page": {
+      "title": "TechLabs Veranstaltungen",
+      "subtitle": "Nehmen Sie an unseren Community-Veranstaltungen, Workshops und Networking-Gelegenheiten teil",
+      "loadMore": "Weitere Veranstaltungen laden"
+    },
+    "card": {
+      "upcomingLabel": "Kommend",
+      "pastLabel": "Vergangen",
+      "eventImageAlt": "{{title}} Veranstaltungsbild"
+    },
+    "emptyState": {
+      "title": "Keine Veranstaltungen gefunden",
+      "upcomingMessage": "Schauen Sie bald wieder vorbei für kommende Veranstaltungen!",
+      "pastMessage": "Momentan sind keine vergangenen Veranstaltungen verfügbar."
+    },
+    "hostEvent": {
+      "title": "Möchten Sie eine Veranstaltung ausrichten?",
+      "description": "Arbeiten Sie mit uns zusammen, um sinnvolle Lernerfahrungen für unsere Community zu schaffen.",
+      "cta": "Kontakt aufnehmen"
+    },
+    "tabs": {
+      "all": "Alle Veranstaltungen ({{count}})",
+      "upcoming": "Kommende ({{count}})",
+      "past": "Vergangene ({{count}})"
+    }
+  },
+  "stories": {
+    "title": "Erfolgsgeschichten",
+    "readMore": "Mehr lesen",
+    "previous": "Vorherige",
+    "next": "Nächste",
+    "seeAll": "Alle Geschichten ansehen",
+    "carousel": {
+      "previousAriaLabel": "Vorherige Geschichten",
+      "nextAriaLabel": "Nächste Geschichten",
+      "ariaLabel": "Geschichten-Karussell"
+    },
+    "page": {
+      "title": "Geschichten unserer Absolventen",
+      "subtitle": "Erfahren Sie, wie TechLabs-Alumni ihre Karriere transformieren und in der Tech-Branche Wirkung erzielen",
+      "filterByTrack": "Nach Track filtern",
+      "showingCount": "{{count}} von {{total}} Geschichten werden angezeigt",
+      "inTrack": "in {{track}}",
+      "noStoriesFound": "Keine Geschichten für diesen Track gefunden",
+      "tryDifferentTrack": "Versuchen Sie, einen anderen Track auszuwählen oder schauen Sie später wieder vorbei."
+    },
+    "card": {
+      "viewDetails": "Details für {{title}} anzeigen",
+      "graduated": "Abschluss {{date}}"
+    },
+    "modal": {
+      "closeDetails": "Geschichtendetails schließen",
+      "location": "Standort",
+      "currentRole": "Aktuelle Rolle",
+      "graduationDate": "Abschlussdatum",
+      "company": "Unternehmen",
+      "achievements": "Wichtigste Erfolge",
+      "successStoryAlt": "{{title}} - Erfolgsgeschichte"
+    },
+    "filter": {
+      "allTracks": "Alle Tracks"
+    }
+  },
+  "partners": {
+    "title": "Unsere Partner",
+    "description": "Unternehmen und Organisationen, die unsere Mission unterstützen"
+  },
+  "common": {
+    "loading": "Lädt...",
+    "loadingPage": "Seite wird geladen...",
+    "loadingContent": "Inhalt wird geladen",
+    "loadingCard": "Karte {{current}} von {{total}} wird geladen",
+    "loadingItem": "Element {{current}} von {{total}} wird geladen",
+    "error": "Ein Fehler ist aufgetreten",
+    "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten",
+    "retry": "Erneut versuchen",
+    "close": "Schließen",
+    "open": "Öffnen",
+    "menu": "Menü",
+    "skipToContent": "Zum Hauptinhalt springen",
+    "language": "Sprache",
+    "hide": "Verbergen",
+    "show": "Anzeigen",
+    "reloadPage": "Seite neu laden",
+    "download": "Herunterladen",
+    "clearAll": "Alle löschen",
+    "errors": "Fehler",
+    "warnings": "Warnungen",
+    "info": "Info",
+    "totalErrors": "Fehler insgesamt"
+  },
+  "footer": {
+    "copyright": "© 2024 by TechLabs.",
+    "boardMembers": "Vorstand: Sabrina Engling, Ranjini Kishen Kumar, Carolina Constant Sanchez",
+    "city": "Düsseldorf",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen",
+    "imprint": "Impressum",
+    "contact": "Kontakt",
+    "programs": {
+      "title": "Programme",
+      "digitalShaper": "Digital Shaper Programm",
+      "codeathome": "#codeathome Bootcamp",
+      "summit": "Digital Shaper Summit"
+    },
+    "tracks": {
+      "title": "Tracks",
+      "dataScience": "Data Science",
+      "ai": "Künstliche Intelligenz",
+      "ux": "UX Design",
+      "webDev": "Webentwicklung"
+    },
+    "getInvolved": {
+      "title": "Mitmachen",
+      "volunteer": "Werde freiwilliger Helfer",
+      "support": "Tech-Bildung unterstützen"
+    },
+    "aboutUs": {
+      "title": "Über uns"
+    },
+    "social": {
+      "instagram": "TechLabs auf Instagram",
+      "youtube": "TechLabs auf YouTube",
+      "x": "TechLabs auf X",
+      "linkedin": "TechLabs auf LinkedIn",
+      "facebook": "TechLabs auf Facebook",
+      "email": "TechLabs per E-Mail kontaktieren"
+    }
+  },
+  "theme": {
+    "switchTo": "Zu {{mode}} Modus wechseln",
+    "devOnly": "(Nur Entwicklermodus)",
+    "light": "hell",
+    "dark": "dunkel"
+  },
+  "errorBoundary": {
+    "title": "Etwas ist schiefgelaufen",
+    "description": "Wir entschuldigen uns für die Unannehmlichkeiten. Der Fehler wurde automatisch an unser Team gemeldet.",
+    "errorId": "Fehler-ID",
+    "developerInfo": "Entwicklerinformationen",
+    "errorMessage": "Fehlermeldung",
+    "stackTrace": "Stack-Trace",
+    "componentStack": "Komponenten-Stack"
+  },
+  "debug": {
+    "title": "Debug-Panel",
+    "description": "Dieses Panel zeigt erfasste Fehler und Leistungsmetriken zu Debugging-Zwecken.",
+    "downloadErrors": "Fehler herunterladen",
+    "noErrorsYet": "Noch keine Fehler erfasst. Das ist gut! 🎉",
+    "retest": "Erneut testen"
+  },
+  "accessibility": {
+    "title": "Barrierefreiheits-Checker",
+    "noIssues": "Keine Barrierefreiheitsprobleme gefunden! 🎉",
+    "clickToHighlight": "Klicken Sie auf Probleme, um sie auf der Seite hervorzuheben"
+  },
+  "video": {
+    "closeVideo": "Video schließen",
+    "unsupportedBrowser": "Ihr Browser unterstützt das Video-Tag nicht.",
+    "player": "{{title}} Video-Player"
+  },
+  "image": {
+    "failedToLoad": "Bild konnte nicht geladen werden",
+    "loading": "Bild wird geladen"
+  },
+  "pages": {
+    "home": {
+      "title": "TechLabs - Lerne Tech Skills kostenlos",
+      "description": "Lerne Tech Skills kostenlos mit TechLabs. Blended Learning, lokale Gemeinschaft, praktische Projekte. Gewinner der Google.org Impact Challenge Deutschland 2018.",
+      "keywords": "Tech-Bildung, kostenloses Programmieren, Webentwicklung, Data Science, Produktdesign, KI, digitale Fähigkeiten, Deutschland",
+      "tags": [
+        "Tech-Bildung",
+        "kostenloses Programmieren",
+        "Webentwicklung",
+        "Data Science",
+        "Produktdesign",
+        "KI"
+      ]
+    },
+    "careers": {
+      "title": "Tritt unserem Team bei",
+      "placeholder": "Karriereseite Platzhalter"
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "placeholder": "Datenschutzerklärung Platzhalter - wird Informationen zum Datenschutz enthalten"
+    },
+    "imprint": {
+      "title": "Impressum",
+      "placeholder": "Impressum Platzhalter - wird rechtliche Informationen enthalten"
+    }
+  },
+  "applications": {
+    "closed": "Bewerbungen sind derzeit geschlossen",
+    "closeIn": {
+      "weeks": "Bewerbungen schließen in {{count}} Woche für den nächsten Batch",
+      "weeks_other": "Bewerbungen schließen in {{count}} Wochen für den nächsten Batch",
+      "days": "Bewerbungen schließen in {{count}} Tag für den nächsten Batch",
+      "days_other": "Bewerbungen schließen in {{count}} Tagen für den nächsten Batch"
+    }
+  }
+}

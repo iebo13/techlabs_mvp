@@ -1,7 +1,10 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
+import { useI18n } from '@/hooks'
 
 export const AwardLine: React.FC = () => {
+  const { t } = useI18n()
+
   return (
     <Box
       sx={{
@@ -13,7 +16,7 @@ export const AwardLine: React.FC = () => {
         py: { xs: 2, sm: 3 },
       }}>
       <Typography variant="body2" color="textPrimary" textAlign="center">
-        Winner of the
+        {t('hero.award.winnerOf')}
       </Typography>
       <Box
         component="img"
@@ -26,7 +29,7 @@ export const AwardLine: React.FC = () => {
         }}
       />
       <Typography variant="body2" color="textPrimary" textAlign="center">
-        Impact Challenge Germany 2018
+        {t('hero.award.impactChallenge')}
       </Typography>
     </Box>
   )

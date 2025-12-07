@@ -3,6 +3,7 @@
 import React, { Component, type ReactNode } from 'react'
 import { ExpandMore as ExpandMoreIcon, Refresh as RefreshIcon, ErrorOutline as ErrorIcon } from '@mui/icons-material'
 import { Box, Typography, Button, Alert, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
+import { i18n } from '@/internationalization'
 import { errorReportingService } from './ErrorReportingService'
 
 type ErrorBoundaryProps = {
@@ -86,37 +87,37 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
           <ErrorIcon sx={{ fontSize: 64, color: 'error.main', mb: 2 }} />
 
           <Typography variant="h4" component="h1" gutterBottom>
-            Something went wrong
+            {i18n.t('common:errorBoundary.title')}
           </Typography>
 
           <Typography variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 600 }}>
-            We apologize for the inconvenience. The error has been automatically reported to our team.
+            {i18n.t('common:errorBoundary.description')}
           </Typography>
 
           <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
             <Button variant="contained" startIcon={<RefreshIcon />} onClick={this.handleRetry}>
-              Try Again
+              {i18n.t('common:common.retry')}
             </Button>
             <Button variant="outlined" onClick={this.handleReload}>
-              Reload Page
+              {i18n.t('common:common.reloadPage')}
             </Button>
           </Box>
 
           {errorId && (
             <Alert severity="info" sx={{ mb: 2 }}>
-              Error ID: <code>{errorId}</code>
+              {i18n.t('common:errorBoundary.errorId')}: <code>{errorId}</code>
             </Alert>
           )}
 
           {isDev && error && (
             <Accordion sx={{ width: '100%', maxWidth: 800 }}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="subtitle2">Developer Information</Typography>
+                <Typography variant="subtitle2">{i18n.t('common:errorBoundary.developerInfo')}</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Box sx={{ textAlign: 'left' }}>
                   <Typography variant="subtitle2" gutterBottom>
-                    Error Message:
+                    {i18n.t('common:errorBoundary.errorMessage')}:
                   </Typography>
                   <Typography variant="body2" sx={{ fontFamily: 'monospace', mb: 2 }}>
                     {error.message}
@@ -125,7 +126,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                   {error.stack && (
                     <>
                       <Typography variant="subtitle2" gutterBottom>
-                        Stack Trace:
+                        {i18n.t('common:errorBoundary.stackTrace')}:
                       </Typography>
                       <Typography
                         variant="body2"
@@ -143,7 +144,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                   {errorInfo?.componentStack && (
                     <>
                       <Typography variant="subtitle2" gutterBottom>
-                        Component Stack:
+                        {i18n.t('common:errorBoundary.componentStack')}:
                       </Typography>
                       <Typography
                         variant="body2"

@@ -5,17 +5,20 @@ import { Button, Stack, Typography } from '@mui/material'
 import { FAQAccordion } from '@/components/Forms/FaqAccordion'
 import { Section } from '@/components/Layouts'
 import type { FAQ } from '@/features/home/types/homePage.type'
+import { useI18n } from '@/hooks'
 
 type FaqsSectionProps = {
   faqs: FAQ[]
 }
 
 export const FaqsSection: React.FC<FaqsSectionProps> = ({ faqs }) => {
+  const { t } = useI18n()
+
   return (
     <Section sx={{ py: { xs: 6, md: 8 } }}>
       <Stack spacing={6} alignItems="center" p={2}>
         <Typography variant="h2" component="h2" gutterBottom color="primary.main" fontWeight={600}>
-          Frequently Asked Questions
+          {t('about.faqSection.title')}
         </Typography>
 
         <FAQAccordion faqs={faqs} maxWidth="md" showBorder singleOpen />
@@ -28,7 +31,7 @@ export const FaqsSection: React.FC<FaqsSectionProps> = ({ faqs }) => {
           sx={{
             fontWeight: 600,
           }}>
-          More Questions
+          {t('about.faqSection.moreQuestions')}
         </Button>
       </Stack>
     </Section>

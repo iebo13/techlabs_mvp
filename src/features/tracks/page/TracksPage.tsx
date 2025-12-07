@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Container, Grid } from '@mui/material'
 import { Section, SEO } from '@/components/Layouts'
-import { loadTrackSelection, queryParamToTrackIds } from '@/features/tracks/utils/tracksUtils'
+import { loadTrackSelection, queryParamToTrackIds, getLocalizedTrack } from '@/features/tracks/utils/tracksUtils'
+import { useI18n } from '@/hooks'
 import tracksData from '@/mocks/tracks.json'
 import { TrackCard } from '../components/TrackCard'
 
 export const TracksPage: React.FC = () => {
   const [searchParams] = useSearchParams()
   const [expandedTrack, setExpandedTrack] = useState<string | null>(null)
+  const i18n = useI18n()
+
+  const localizedTracks = useMemo(() => {
+    return tracksData.tracks.map(track => getLocalizedTrack(track, i18n.t))
+  }, [i18n.t])
 
   useEffect(() => {
     const urlPrefs = searchParams.get('pref')
@@ -31,18 +37,18 @@ export const TracksPage: React.FC = () => {
   return (
     <main>
       <SEO
-        title="Learning Tracks - TechLabs"
-        description="Explore our learning tracks: Web Development, Data Science, Product Design, and AI. Choose the path that fits your career goals and start learning for free."
-        keywords="learning tracks, web development, data science, product design, AI, tech education, free courses"
+        title={i18n.t('tracks.page.title')}
+        description={i18n.t('tracks.page.description')}
+        keywords={i18n.t('tracks.page.keywords')}
         image="/img/tracks-og-image.jpg"
         url="/tracks"
         type="website"
-        tags={['learning tracks', 'web development', 'data science', 'product design', 'AI']}
+        tags={i18n.t('tracks.page.tags') as unknown as string[]}
       />
       <Section sx={{ py: { xs: 4, md: 6 } }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
-            {tracksData.tracks.map(track => (
+            {localizedTracks.map(track => (
               <Grid size={{ xs: 12, md: 6 }} key={track.id}>
                 <TrackCard track={track} isExpanded={expandedTrack === track.id} onToggle={handleTrackToggle} />
               </Grid>

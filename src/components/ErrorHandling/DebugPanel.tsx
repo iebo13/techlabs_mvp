@@ -6,6 +6,7 @@ import {
   Delete as DeleteIcon,
 } from '@mui/icons-material'
 import { Box, Fab, Drawer, Typography, Button, Divider, Alert } from '@mui/material'
+import { useI18n } from '@/hooks'
 import { ErrorList } from './ErrorList'
 import type { ErrorReport } from './ErrorReportingService'
 import { useErrorManagement } from './hooks/useErrorReporting'
@@ -13,6 +14,7 @@ import { useErrorManagement } from './hooks/useErrorReporting'
 export const DebugPanel: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [errors, setErrors] = useState<ErrorReport[]>([])
+  const { t } = useI18n()
   const { getStoredErrors, clearStoredErrors } = useErrorManagement()
 
   useEffect(() => {
@@ -62,7 +64,7 @@ export const DebugPanel: React.FC = () => {
     <>
       <Fab
         color="secondary"
-        aria-label="debug"
+        aria-label={t('debug.title')}
         sx={{ position: 'fixed', bottom: 16, left: 16, zIndex: 9998 }}
         onClick={() => setIsOpen(true)}>
         <BugIcon />
@@ -74,9 +76,9 @@ export const DebugPanel: React.FC = () => {
         onClose={() => setIsOpen(false)}
         sx={{ '& .MuiDrawer-paper': { width: 400, p: 2 } }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-          <Typography variant="h6">Debug Panel</Typography>
+          <Typography variant="h6">{t('debug.title')}</Typography>
           <Button startIcon={<CloseIcon />} onClick={() => setIsOpen(false)} size="small">
-            Close
+            {t('common.close')}
           </Button>
         </Box>
 
@@ -84,7 +86,7 @@ export const DebugPanel: React.FC = () => {
 
         <Box sx={{ mb: 2 }}>
           <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-            This panel shows captured errors and performance metrics for debugging purposes.
+            {t('debug.description')}
           </Typography>
 
           <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
@@ -94,7 +96,7 @@ export const DebugPanel: React.FC = () => {
               size="small"
               variant="outlined"
               disabled={errors.length === 0}>
-              Download Errors
+              {t('debug.downloadErrors')}
             </Button>
             <Button
               startIcon={<DeleteIcon />}
@@ -103,13 +105,13 @@ export const DebugPanel: React.FC = () => {
               variant="outlined"
               color="error"
               disabled={errors.length === 0}>
-              Clear All
+              {t('common.clearAll')}
             </Button>
           </Box>
 
           <Alert severity="info" sx={{ mb: 2 }}>
             <Typography variant="body2">
-              <strong>Total Errors:</strong> {errors.length}
+              <strong>{t('common.totalErrors')}:</strong> {errors.length}
             </Typography>
           </Alert>
         </Box>

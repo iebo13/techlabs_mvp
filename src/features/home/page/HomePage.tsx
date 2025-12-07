@@ -1,5 +1,6 @@
 import React, { lazy } from 'react'
 import { LazyIntersection, SEO, SectionSkeleton, CarouselSkeleton } from '@/components/Layouts'
+import { useI18n } from '@/hooks'
 import homeData from '@/mocks/home.json'
 import { HeroSection, HeroVideo } from '../components'
 import type { HomeData } from '../types/homePage.type'
@@ -17,23 +18,24 @@ const FaqsSection = lazy(() =>
 )
 
 export const HomePage: React.FC = () => {
+  const { t } = useI18n()
+
   return (
     <main>
       <SEO
-        title="TechLabs - Learn Tech Skills for Free"
-        description="Learn tech skills for free with TechLabs. Blended learning, local community, practical projects. Winner of Google.org Impact Challenge Germany 2018."
-        keywords="tech education, free coding, web development, data science, product design, AI, digital skills, Germany"
+        title={t('pages.home.title')}
+        description={t('pages.home.description')}
+        keywords={t('pages.home.keywords')}
         image="/img/techlabs-og-image.jpg"
         url="/"
         type="website"
-        tags={['tech education', 'free coding', 'web development', 'data science', 'product design', 'AI']}
+        tags={t('pages.home.tags', { returnObjects: true }) as string[]}
       />
       <HeroSection />
       <HeroVideo
         posterUrl={homeData.video.posterUrl}
         srcUrl={homeData.video.srcUrl}
         duration={homeData.video.duration}
-        title="TechLabs Introduction Video"
       />
 
       <LazyIntersection fallback={<SectionSkeleton height={300} />} minHeight={300}>
@@ -49,7 +51,7 @@ export const HomePage: React.FC = () => {
       </LazyIntersection>
 
       <LazyIntersection fallback={<SectionSkeleton height={250} />} minHeight={250}>
-        <SupportCta body={homeData.support.body} cta={homeData.support.cta} />
+        <SupportCta cta={homeData.support.cta} />
       </LazyIntersection>
 
       <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>

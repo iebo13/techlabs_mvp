@@ -1,8 +1,11 @@
 import React from 'react'
 import { Typography } from '@mui/material'
+import { useI18n } from '@/hooks'
 import { NavLink } from './NavLink'
 
 export const Logo: React.FC = () => {
+  const { t } = useI18n()
+
   return (
     <NavLink
       to="/"
@@ -11,14 +14,13 @@ export const Logo: React.FC = () => {
         display: 'flex',
         alignItems: 'center',
         gap: 1.5,
-        padding: '8px 0',
         '&:hover': {
           backgroundColor: 'transparent',
         },
       }}>
       <img
         src="/Logo.svg"
-        alt="TechLabs Logo"
+        alt={t('navigation.logoAlt')}
         style={{
           width: 32,
           height: 32,

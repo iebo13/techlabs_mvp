@@ -1,7 +1,8 @@
 import React, { forwardRef } from 'react'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
-import { Link, useTheme, useMediaQuery } from '@mui/material'
+import { Link, useTheme } from '@mui/material'
 import type { LinkProps } from '@mui/material/Link'
+import { useI18n } from '@/hooks'
 
 export type NavLinkProps = {
   to: string
@@ -15,16 +16,20 @@ export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
   ({ to, external = false, showActive = true, children, variant = 'desktop', sx, ...linkProps }, ref) => {
     const location = useLocation()
     const theme = useTheme()
-
-    const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'))
+    const { t } = useI18n()
 
     const isActive = showActive && location.pathname === to
 
     const getResponsiveStyles = () => {
       const baseStyles = {
+        p: 1,
+        display: 'flex',
+        alignItems: 'center',
+        borderRadius: 1,
         color: isActive ? 'primary.main' : 'text.primary',
         textDecoration: 'none',
         fontWeight: isActive ? 700 : 600,
+        fontSize: '1rem',
         position: 'relative' as const,
         transition: theme.transitions.create(['color', 'background-color', 'transform'], {
           duration: theme.transitions.duration.short,
@@ -96,24 +101,8 @@ export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
         default:
           return {
             ...baseStyles,
-            fontSize: {
-              md: '0.95rem',
-              lg: '1rem',
-              xl: '1.05rem',
-            },
-            px: {
-              md: isTablet ? 1 : 1.5,
-              lg: 2,
-              xl: 2.5,
-            },
-            py: {
-              md: 0.75,
-              lg: 1,
-            },
             minHeight: '44px',
-            display: 'flex',
-            alignItems: 'center',
-            borderRadius: 1,
+
             '&:hover': {
               ...baseStyles['&:hover'],
               backgroundColor: 'rgba(0, 0, 0, 0.04)',
@@ -129,7 +118,7 @@ export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
 
     const accessibilityProps = {
       'aria-current': isActive ? ('page' as const) : undefined,
-      'aria-label': external ? `${children} (opens in new tab)` : undefined,
+      'aria-label': external ? `${children} ${t('navigation.opensInNewTab')}` : undefined,
     }
 
     if (external) {

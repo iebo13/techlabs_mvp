@@ -20,14 +20,10 @@ export const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
         }}
       />
       <Typography
-        variant="caption"
+        variant="body1"
         color="text.secondary"
         sx={{
-          fontSize: { xs: '0.75rem', sm: '0.8rem' },
-          fontWeight: 500,
-          lineHeight: 1.2,
-          maxWidth: 100,
-          wordBreak: 'break-word',
+          fontWeight: 600,
         }}>
         {partner.name}
       </Typography>

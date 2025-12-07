@@ -68,7 +68,7 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
                 alignItems: 'center',
                 textAlign: 'center',
               }}>
-              <Typography variant="h2" color="primary.main" fontWeight={600}>
+              <Typography variant="h2" fontWeight={600}>
                 {metric.value}
               </Typography>
 

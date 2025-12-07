@@ -13,11 +13,20 @@ const resources = {
   },
 }
 
+const SUPPORTED_LANGUAGES = ['en', 'de']
+
+const normalizeLanguage = (lng: string): string => {
+  const baseLanguage = lng.split('-')[0].toLowerCase()
+
+  return SUPPORTED_LANGUAGES.includes(baseLanguage) ? baseLanguage : 'en'
+}
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,
+    supportedLngs: SUPPORTED_LANGUAGES,
     fallbackLng: 'en',
     defaultNS: 'common',
     ns: ['common'],
@@ -26,8 +35,7 @@ i18n
       order: ['localStorage', 'navigator', 'htmlTag'],
       lookupLocalStorage: 'i18nextLng',
       caches: ['localStorage'],
-      lookupFromPathIndex: 0,
-      lookupFromSubdomainIndex: 0,
+      convertDetectedLanguage: normalizeLanguage,
     },
 
     interpolation: {

@@ -4,6 +4,8 @@ import { CareersPage, PrivacyPage, ImprintPage } from '@/config/placeholderPages
 
 const HomePage = lazy(() => import('@/features/home/page/HomePage').then(module => ({ default: module.HomePage })))
 
+const AdminPage = lazy(() => import('@/features/admin/page/AdminPage').then(module => ({ default: module.AdminPage })))
+
 const TracksPage = lazy(() =>
   import('@/features/tracks/page/TracksPage').then(module => ({ default: module.TracksPage }))
 )
@@ -94,5 +96,14 @@ export const routes: RouteConfig[] = [
   {
     path: '/imprint',
     element: <ImprintPage />,
+  },
+  {
+    path: '/admin',
+    element: (
+      <Suspense fallback={<LoadingFallback variant="page" />}>
+        <AdminPage />
+      </Suspense>
+    ),
+    lazy: true,
   },
 ]

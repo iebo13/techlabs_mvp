@@ -1,6 +1,6 @@
 /* eslint-disable security/detect-object-injection */
 import React from 'react'
-import { Box, Typography, Container } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { Section } from '@/components'
 import { useI18n } from '@/hooks'
 
@@ -38,13 +38,13 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
 
   return (
     <Section sx={{ py: { xs: 6, md: 8 } }}>
-      <Container
+      <Box
         sx={{
+          width: '100%',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          px: { xs: 3, md: 4 },
         }}>
         <Typography variant="h2" color="primary.main" textAlign="center" pb={4}>
           {displayTitle}
@@ -68,17 +68,17 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
                 alignItems: 'center',
                 textAlign: 'center',
               }}>
-              <Typography variant="h2" fontWeight={600}>
+              <Typography variant="h1" color="text.primary" fontWeight={900} sx={{ fontSize: '4rem' }}>
                 {metric.value}
               </Typography>
 
-              <Typography variant="h6" color="primary.main" fontWeight={600}>
+              <Typography variant="h6" color="text.primary" fontWeight={600} sx={{ fontSize: '1.5rem' }}>
                 {getTranslatedLabel(metric.label)}
               </Typography>
             </Box>
           ))}
         </Box>
-      </Container>
+      </Box>
     </Section>
   )
 }

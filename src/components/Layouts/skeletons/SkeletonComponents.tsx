@@ -26,13 +26,8 @@ export const SectionSkeleton: React.FC<SectionSkeletonProps> = ({ height = 200, 
 
   return (
     <Section>
-      <Box sx={{ py: padding }}>
-        <Skeleton
-          variant="rectangular"
-          height={height}
-          sx={{ borderRadius: 2 }}
-          aria-label={t('common.loadingContent')}
-        />
+      <Box sx={{ py: padding }} role="status" aria-label={t('common.loadingContent')}>
+        <Skeleton variant="rectangular" height={height} sx={{ borderRadius: 2 }} aria-hidden="true" />
       </Box>
     </Section>
   )
@@ -43,14 +38,17 @@ export const CarouselSkeleton: React.FC<CarouselSkeletonProps> = ({ cards = 3, c
 
   return (
     <Section>
-      <Box sx={{ py: padding, display: 'flex', gap: 2, overflow: 'hidden' }}>
+      <Box
+        sx={{ py: padding, display: 'flex', gap: 2, overflow: 'hidden' }}
+        role="status"
+        aria-label={t('common.loadingCards', { count: cards })}>
         {Array.from({ length: cards }, (_, i) => (
           <Skeleton
             key={i}
             variant="rectangular"
             height={cardHeight}
             sx={{ flex: 1, borderRadius: 2, minWidth: 200 }}
-            aria-label={t('common.loadingCard', { current: i + 1, total: cards })}
+            aria-hidden="true"
           />
         ))}
       </Box>
@@ -68,7 +66,7 @@ export const GridSkeleton: React.FC<GridSkeletonProps> = ({
 
   return (
     <Section>
-      <Box sx={{ py: 4 }}>
+      <Box sx={{ py: 4 }} role="status" aria-label={t('common.loadingItems', { count: items })}>
         <Box
           sx={{
             display: 'grid',
@@ -81,13 +79,7 @@ export const GridSkeleton: React.FC<GridSkeletonProps> = ({
             gap,
           }}>
           {Array.from({ length: items }, (_, i) => (
-            <Skeleton
-              key={i}
-              variant="rectangular"
-              height={itemHeight}
-              sx={{ borderRadius: 2 }}
-              aria-label={t('common.loadingItem', { current: i + 1, total: items })}
-            />
+            <Skeleton key={i} variant="rectangular" height={itemHeight} sx={{ borderRadius: 2 }} aria-hidden="true" />
           ))}
         </Box>
       </Box>

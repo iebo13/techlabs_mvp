@@ -15,7 +15,7 @@ import {
   type SelectChangeEvent,
 } from '@mui/material'
 import { CTAButton } from '@/components/Buttons'
-import { Section, SectionHeading } from '@/components/Layouts'
+import { Section } from '@/components/Layouts'
 import type { TrackKey } from '@/features/tracks'
 import { useI18n } from '@/hooks'
 import storiesData from '@/mocks/stories.json'
@@ -62,6 +62,7 @@ export const StoriesPage: React.FC = () => {
 
   const visibleStories = isMobile ? filteredStories.slice(0, mobileVisibleCount) : filteredStories
   const hasMoreStories = isMobile && mobileVisibleCount < filteredStories.length
+  const filterByTrackLabel = t('common:stories.page.filterByTrack')
 
   const handleStoryClick = (story: Story) => {
     setSelectedStory(story)
@@ -83,25 +84,40 @@ export const StoriesPage: React.FC = () => {
   return (
     <>
       <Section sx={{ py: { xs: 4, md: 6 } }}>
-        <Stack spacing={4}>
-          <Box sx={{ textAlign: 'center' }}>
-            <SectionHeading
-              title={t('common:stories.page.title')}
-              subtitle={t('common:stories.page.subtitle')}
-              align="center">
-              {t('common:stories.page.title')}
-            </SectionHeading>
-          </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            px: { xs: 1, md: 0 },
+            maxWidth: '720px',
+            textAlign: 'center',
+            mx: 'auto',
+          }}>
+          <Typography component="h1" variant="h2" sx={{ color: 'primary.main' }}>
+            {t('common:stories.page.title')}
+          </Typography>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{ mt: 2, pb: 4, fontSize: '1.125rem', lineHeight: 1.6 }}>
+            {t('common:stories.page.subtitle')}
+          </Typography>
+        </Box>
 
+        <Stack spacing={4}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <FormControl sx={{ minWidth: 200 }}>
-              <InputLabel id="track-filter-label">{t('common:stories.page.filterByTrack')}</InputLabel>
+              <InputLabel id="track-filter-label">{filterByTrackLabel}</InputLabel>
               <Select
+                id="track-filter-select"
                 labelId="track-filter-label"
                 value={selectedTrack}
-                label={t('common:stories.page.filterByTrack')}
+                label={filterByTrackLabel}
                 onChange={handleTrackChange}
-                size="medium">
+                size="medium"
+                SelectDisplayProps={{ role: 'button', 'aria-haspopup': 'listbox' }}
+                inputProps={{ 'aria-hidden': true, 'aria-labelledby': 'track-filter-label' }}>
                 {trackOptions.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
@@ -122,7 +138,7 @@ export const StoriesPage: React.FC = () => {
             </Typography>
           </Box>
 
-          <Grid container spacing={3}>
+          <Grid container spacing={3} px={{ xs: 2, md: 4 }}>
             {visibleStories.map(story => (
               <StoryCard key={story.id} story={story} onClick={handleStoryClick} />
             ))}

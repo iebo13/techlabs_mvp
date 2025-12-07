@@ -13,7 +13,7 @@ export const HeroHeading: React.FC = () => {
       <Typography
         variant={isMobile ? 'h1' : 'h2'}
         id="hero-heading"
-        component={isMobile ? 'h1' : 'h2'}
+        component="h1"
         color="text.primary"
         sx={{
           pb: 2,

@@ -43,7 +43,9 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({
     <Stack spacing={6} p={2} sx={{ width: isMobile ? '100%' : 'auto' }}>
       <Box>
         <Typography
+          id="track-chooser-heading"
           variant="h3"
+          component="h2"
           color="primary"
           fontSize={isMobile ? '24px' : '40px'}
           textAlign={isMobile ? 'start' : 'center'}>
@@ -77,6 +79,9 @@ export const TrackChooserSection: React.FC<TrackChooserSectionProps> = ({
                     icon={<SquareCheckboxIcon />}
                     checkedIcon={<SquareCheckedIcon />}
                     size="medium"
+                    inputProps={{
+                      'aria-label': track.label,
+                    }}
                   />
                 }
                 label={

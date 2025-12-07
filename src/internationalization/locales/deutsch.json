@@ -54,7 +54,8 @@
       "ctaLabel": "Tech-Bildung unterstützen"
     },
     "video": {
-      "introTitle": "TechLabs Einführungsvideo"
+      "introTitle": "TechLabs Einführungsvideo",
+      "playLabel": "{{duration}} - {{title}} abspielen"
     },
     "features": {
       "free": {
@@ -375,7 +376,9 @@
     "loadingPage": "Seite wird geladen...",
     "loadingContent": "Inhalt wird geladen",
     "loadingCard": "Karte {{current}} von {{total}} wird geladen",
+    "loadingCards": "{{count}} Karten werden geladen",
     "loadingItem": "Element {{current}} von {{total}} wird geladen",
+    "loadingItems": "{{count}} Elemente werden geladen",
     "error": "Ein Fehler ist aufgetreten",
     "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten",
     "retry": "Erneut versuchen",
@@ -457,7 +460,9 @@
   "accessibility": {
     "title": "Barrierefreiheits-Checker",
     "noIssues": "Keine Barrierefreiheitsprobleme gefunden! 🎉",
-    "clickToHighlight": "Klicken Sie auf Probleme, um sie auf der Seite hervorzuheben"
+    "clickToHighlight": "Klicken Sie auf Probleme, um sie auf der Seite hervorzuheben",
+    "selectLanguage": "Sprache auswählen, aktuell: {{current}}",
+    "languageOptions": "Verfügbare Sprachen"
   },
   "video": {
     "closeVideo": "Video schließen",

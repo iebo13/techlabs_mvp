@@ -14,6 +14,7 @@ export const Logo: React.FC = () => {
         display: 'flex',
         alignItems: 'center',
         gap: 1.5,
+        p: { xs: 2, md: 0 },
         '&:hover': {
           backgroundColor: 'transparent',
         },

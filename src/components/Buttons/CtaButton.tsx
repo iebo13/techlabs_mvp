@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, type ButtonProps, Box, Typography, useTheme } from '@mui/material'
+import { Button, type ButtonProps, Box, Typography, useTheme, type SxProps, type Theme } from '@mui/material'
 
 type CTAButtonStyle = 'default' | 'track-chooser'
 
@@ -10,7 +10,7 @@ type AdditionalContent = {
   textVariant?: 'caption' | 'body2'
 }
 
-type CTAButtonProps = Omit<ButtonProps, 'component'> & {
+type CTAButtonProps = {
   to?: string
   href?: string
   variant?: 'contained' | 'outlined' | 'text'
@@ -19,6 +19,11 @@ type CTAButtonProps = Omit<ButtonProps, 'component'> & {
   ctaStyle?: CTAButtonStyle
   fullWidth?: boolean
   additionalContent?: AdditionalContent
+  'aria-label'?: string
+  sx?: SxProps<Theme>
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  disabled?: boolean
+  color?: ButtonProps['color']
 }
 
 export const CTAButton: React.FC<CTAButtonProps> = ({
@@ -31,13 +36,20 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
   ctaStyle = 'default',
   fullWidth = false,
   additionalContent,
-  ...buttonProps
+  'aria-label': ariaLabel,
+  onClick,
+  disabled,
+  color,
 }) => {
   const theme = useTheme()
 
   const getButtonStyles = () => {
     const baseStyles = {
       textTransform: 'none' as const,
+      '&:focus-visible': {
+        outline: `2px solid ${theme.palette.primary.main}`,
+        outlineOffset: 2,
+      },
     }
 
     if (ctaStyle === 'track-chooser') {
@@ -53,10 +65,6 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
         boxShadow: 'none',
         '&:hover': {
           boxShadow: 'none',
-        },
-        '&:focus-visible': {
-          outline: `2px solid ${theme.palette.primary.main}`,
-          outlineOffset: 2,
         },
         '&:disabled': {
           opacity: 0.5,
@@ -93,7 +101,8 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
           justifyContent: 'center',
           gap: 1.5,
           mt: 1,
-        }}>
+        }}
+        aria-hidden="true">
         {additionalContent.icon && additionalContent.icon}
         {additionalContent.text && (
           <Typography
@@ -123,32 +132,39 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
     return buttonElement
   }
 
+  // Use Button with Link component for internal navigation (accessible pattern)
   if (to) {
     const buttonElement = (
-      <Link to={to} style={{ textDecoration: 'none' }}>
-        <Button variant={variant} size={size} sx={combinedSx} component="span" {...buttonProps}>
-          {children}
-        </Button>
-      </Link>
+      <Button component={Link} to={to} variant={variant} size={size} color={color} sx={combinedSx} aria-label={ariaLabel}>
+        {children}
+      </Button>
     )
 
     return renderButton(buttonElement)
   }
 
+  // Use Button with 'a' component for external links
   if (href) {
     const buttonElement = (
-      <a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-        <Button variant={variant} size={size} sx={combinedSx} component="span" {...buttonProps}>
-          {children}
-        </Button>
-      </a>
+      <Button
+        component="a"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        variant={variant}
+        size={size}
+        color={color}
+        sx={combinedSx}
+        aria-label={ariaLabel ? `${ariaLabel} (opens in new tab)` : undefined}>
+        {children}
+      </Button>
     )
 
     return renderButton(buttonElement)
   }
 
   const buttonElement = (
-    <Button variant={variant} size={size} sx={combinedSx} {...buttonProps}>
+    <Button variant={variant} size={size} color={color} disabled={disabled} sx={combinedSx} aria-label={ariaLabel} onClick={onClick}>
       {children}
     </Button>
   )

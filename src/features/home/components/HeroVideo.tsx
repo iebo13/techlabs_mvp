@@ -63,7 +63,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
               handlePlayClick()
             }
           }}
-          aria-label={`Play ${displayTitle}, duration ${durationText}`}>
+          aria-label={t('hero.video.playLabel', { title: displayTitle, duration: durationText })}>
           <OptimizedImage
             src={posterUrl || VIDEO_THUMBNAIL}
             alt={`${displayTitle} thumbnail`}

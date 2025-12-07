@@ -1,10 +1,10 @@
 import React, { memo } from 'react'
 import { Language as LanguageIcon } from '@mui/icons-material'
-import { Button, Menu, MenuItem, ListItemIcon } from '@mui/material'
+import { Button, Menu, MenuItem, ListItemIcon, Typography } from '@mui/material'
 import { useI18n } from '../../hooks'
 
 export const LanguageToggle: React.FC = memo(() => {
-  const { currentLanguage, availableLanguages, changeLanguage } = useI18n()
+  const { currentLanguage, availableLanguages, changeLanguage, t } = useI18n()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
 
@@ -28,13 +28,14 @@ export const LanguageToggle: React.FC = memo(() => {
       <Button
         id="language-button"
         aria-controls={open ? 'language-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-label={t('accessibility.selectLanguage', { current: currentLang?.name || currentLanguage })}
         onClick={handleClick}
-        startIcon={<LanguageIcon />}
+        startIcon={<LanguageIcon aria-hidden="true" />}
         variant="outlined"
         size="small">
-        {currentLang?.flag}
+        <span aria-hidden="true">{currentLang?.flag}</span>
       </Button>
       <Menu
         id="language-menu"
@@ -54,10 +55,14 @@ export const LanguageToggle: React.FC = memo(() => {
           <MenuItem
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
-            selected={language.code === currentLanguage}>
-            <ListItemIcon sx={{ minWidth: 36, p: 0, display: 'flex', alignItems: 'center' }}>
+            selected={language.code === currentLanguage}
+            aria-current={language.code === currentLanguage ? 'true' : undefined}>
+            <ListItemIcon sx={{ minWidth: 36, p: 0, display: 'flex', alignItems: 'center' }} aria-hidden="true">
               {language.flag}
             </ListItemIcon>
+            <Typography variant="body2" sx={{ ml: 1 }}>
+              {language.name}
+            </Typography>
           </MenuItem>
         ))}
       </Menu>

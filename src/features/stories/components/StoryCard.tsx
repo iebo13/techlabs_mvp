@@ -10,7 +10,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
   const storyImage = '/img/background.png'
 
   return (
-    <Grid size={{ xs: 12, sm: 6, md: 4 }} px={2} key={story.id}>
+    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={story.id}>
       <Box
         component="button"
         onClick={() => onClick(story)}
@@ -71,7 +71,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
             {/* Title */}
             <Typography
               variant="subtitle1"
-              component="h3"
+              component="h2"
               sx={{
                 fontWeight: 600,
                 mb: 0.5,

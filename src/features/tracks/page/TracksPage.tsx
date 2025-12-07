@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Container, Grid } from '@mui/material'
+import { Container, Grid, Typography } from '@mui/material'
 import { Section, SEO } from '@/components/Layouts'
 import { loadTrackSelection, queryParamToTrackIds, getLocalizedTrack } from '@/features/tracks/utils/tracksUtils'
 import { useI18n } from '@/hooks'
@@ -47,6 +47,9 @@ export const TracksPage: React.FC = () => {
       />
       <Section sx={{ py: { xs: 4, md: 6 } }}>
         <Container maxWidth="lg">
+          <Typography variant="h1" sx={{ mb: 4, textAlign: 'center' }}>
+            {i18n.t('tracks.page.title')}
+          </Typography>
           <Grid container spacing={4}>
             {localizedTracks.map(track => (
               <Grid size={{ xs: 12, md: 6 }} key={track.id}>

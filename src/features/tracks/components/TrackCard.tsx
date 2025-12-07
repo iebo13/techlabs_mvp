@@ -34,7 +34,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
       }}>
       <CardContent sx={{ flexGrow: 1, p: 3 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          <Typography variant="h2" sx={{ fontSize: '2.5rem', mr: 2 }}>
+          <Typography component="span" sx={{ fontSize: '2.5rem', mr: 2 }} aria-hidden="true">
             {track.icon}
           </Typography>
           <Box sx={{ flexGrow: 1 }}>

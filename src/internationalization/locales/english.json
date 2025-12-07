@@ -54,7 +54,8 @@
       "ctaLabel": "Support Tech Education"
     },
     "video": {
-      "introTitle": "TechLabs Introduction Video"
+      "introTitle": "TechLabs Introduction Video",
+      "playLabel": "{{duration}} - Play {{title}}"
     },
     "features": {
       "free": {
@@ -375,7 +376,9 @@
     "loadingPage": "Loading page...",
     "loadingContent": "Loading content",
     "loadingCard": "Loading card {{current}} of {{total}}",
+    "loadingCards": "Loading {{count}} cards",
     "loadingItem": "Loading item {{current}} of {{total}}",
+    "loadingItems": "Loading {{count}} items",
     "error": "An error occurred",
     "unexpectedError": "An unexpected error occurred",
     "retry": "Try Again",
@@ -457,7 +460,9 @@
   "accessibility": {
     "title": "A11y Checker",
     "noIssues": "No accessibility issues found! 🎉",
-    "clickToHighlight": "Click on issues to highlight them on the page"
+    "clickToHighlight": "Click on issues to highlight them on the page",
+    "selectLanguage": "Select language, current: {{current}}",
+    "languageOptions": "Available languages"
   },
   "video": {
     "closeVideo": "Close video",

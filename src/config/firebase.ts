@@ -1,6 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { getAnalytics } from 'firebase/analytics'
 import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -20,4 +23,13 @@ const fireBaseApp = initializeApp(firebaseConfig)
 // Initialize Analytics only in production and if measurementId exists
 const analytics = import.meta.env.PROD && firebaseConfig.measurementId ? getAnalytics(fireBaseApp) : null
 
-export { fireBaseApp, analytics }
+// Initialize Firebase Auth
+const auth = getAuth(fireBaseApp)
+
+// Initialize Firestore
+const db = getFirestore(fireBaseApp)
+
+// Initialize Firebase Storage
+const storage = getStorage(fireBaseApp)
+
+export { fireBaseApp, analytics, auth, db, storage }

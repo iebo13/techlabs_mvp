@@ -346,7 +346,8 @@
       "showingCount": "{{count}} von {{total}} Geschichten werden angezeigt",
       "inTrack": "in {{track}}",
       "noStoriesFound": "Keine Geschichten für diesen Track gefunden",
-      "tryDifferentTrack": "Versuchen Sie, einen anderen Track auszuwählen oder schauen Sie später wieder vorbei."
+      "tryDifferentTrack": "Versuchen Sie, einen anderen Track auszuwählen oder schauen Sie später wieder vorbei.",
+      "showMore": "Mehr anzeigen >"
     },
     "card": {
       "viewDetails": "Details für {{title}} anzeigen",

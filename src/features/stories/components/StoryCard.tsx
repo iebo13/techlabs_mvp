@@ -1,6 +1,5 @@
 import React from 'react'
-import { LocationOn as LocationIcon, Work as WorkIcon, School as SchoolIcon } from '@mui/icons-material'
-import { Box, Card, CardContent, Chip, Grid, Stack, Typography, useTheme } from '@mui/material'
+import { Box, Card, CardContent, Chip, Grid, Typography, useTheme } from '@mui/material'
 import { OptimizedImage } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
 import type { StoryCardProps } from '../types/stories.types'
@@ -11,7 +10,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
   const storyImage = '/img/background.png'
 
   return (
-    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={story.id}>
+    <Grid size={{ xs: 12, sm: 6, md: 4 }} px={2} key={story.id}>
       <Box
         component="button"
         onClick={() => onClick(story)}
@@ -25,7 +24,6 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
           width: '100%',
           height: '100%',
           display: 'block',
-
           '&:focus-visible': {
             outline: '2px solid',
             outlineColor: 'primary.main',
@@ -36,60 +34,76 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
           sx={{
             height: '100%',
             transition: 'all 0.2s ease-in-out',
+            borderRadius: 0.5,
+            boxShadow: '8px 12px 12px rgba(44, 42, 42, 0.3)',
             '&:hover': {
               transform: 'translateY(-4px)',
               boxShadow: theme.shadows[8],
             },
-            'button:hover &': {
-              transform: 'translateY(-4px)',
-              boxShadow: theme.shadows[8],
-            },
           }}>
-          <OptimizedImage
-            src={storyImage}
-            alt={`${story.title} - ${story.excerpt}`}
-            width="100%"
-            height="200px"
-            sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 400px"
-            lazy
-            placeholder="/img/stories/person2.png"
-          />
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Stack spacing={2}>
-              <Chip
-                label={story.trackLabel}
-                size="small"
-                color="primary"
-                variant="outlined"
-                sx={{ alignSelf: 'flex-start' }}
-              />
-              <Typography variant="h6" component="h3" gutterBottom>
-                {story.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ flexGrow: 1 }}>
-                {story.excerpt}
-              </Typography>
-              <Stack direction="row" spacing={2} alignItems="center">
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                  <LocationIcon fontSize="small" color="action" />
-                  <Typography variant="caption" color="text.secondary">
-                    {story.location}
-                  </Typography>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                  <WorkIcon fontSize="small" color="action" />
-                  <Typography variant="caption" color="text.secondary">
-                    {story.currentRole}
-                  </Typography>
-                </Box>
-              </Stack>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                <SchoolIcon fontSize="small" color="action" />
-                <Typography variant="caption" color="text.secondary">
-                  {t('common:stories.card.graduated', { date: story.graduationDate })}
-                </Typography>
+          {/* Image container with overlaying tag */}
+          <Box sx={{ position: 'relative' }}>
+            <OptimizedImage
+              src={storyImage}
+              alt={`${story.title} - ${story.excerpt}`}
+              width="100%"
+              height="180px"
+              sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 400px"
+              lazy
+              placeholder="/img/stories/person2.png"
+            />
+            <Chip
+              label={story.trackLabel}
+              size="small"
+              sx={{
+                position: 'absolute',
+                top: 12,
+                left: 12,
+                backgroundColor: theme.palette.primary.main,
+                color: theme.palette.primary.contrastText,
+                fontWeight: 500,
+                borderRadius: 1,
+              }}
+            />
+          </Box>
+
+          <CardContent sx={{ pt: 2, pb: 2.5 }}>
+            {/* Title */}
+            <Typography
+              variant="subtitle1"
+              component="h3"
+              sx={{
+                fontWeight: 600,
+                mb: 0.5,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}>
+              {story.title}
+            </Typography>
+
+            {/* Date and Category */}
+            <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1.5 }}>
+              {story.graduationDate}
+              <Box component="span" sx={{ mx: 1 }}>
+                •
               </Box>
-            </Stack>
+              {story.trackLabel}
+            </Typography>
+
+            {/* Description */}
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                lineHeight: 1.6,
+              }}>
+              {story.excerpt}
+            </Typography>
           </CardContent>
         </Card>
       </Box>

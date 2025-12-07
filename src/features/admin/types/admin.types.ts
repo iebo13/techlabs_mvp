@@ -1,14 +1,14 @@
 /**
  * Admin module type definitions
- * Provides types for CRUD operations on Events, Stories, and Partners
+ * Provides types for CRUD operations on Events and Blog Posts
  */
 
 import { z } from 'zod'
 
 // Entity status as const object (compatible with erasableSyntaxOnly)
 export const EntityStatus = {
-  ACTIVE: 'active',
   DRAFT: 'draft',
+  PUBLISHED: 'published',
   ARCHIVED: 'archived',
 } as const
 
@@ -41,64 +41,49 @@ export type AdminEvent = z.infer<typeof AdminEventSchema>
 export type CreateEventInput = z.infer<typeof CreateEventSchema>
 export type UpdateEventInput = z.infer<typeof UpdateEventSchema>
 
-// Track key as const object
-export const TrackKey = {
-  WEB_DEV: 'web-dev',
-  DATA_SCIENCE: 'data-science',
-  PRODUCT_DESIGN: 'product-design',
-  AI: 'ai',
+// Blog Post status
+export const BlogPostStatus = {
+  DRAFT: 'draft',
+  PUBLISHED: 'published',
 } as const
 
-export type TrackKeyValue = (typeof TrackKey)[keyof typeof TrackKey]
+export type BlogPostStatusValue = (typeof BlogPostStatus)[keyof typeof BlogPostStatus]
 
-// Admin Story schema and type
-export const AdminStorySchema = z.object({
+// Blog Post schema and type
+export const BlogPostSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1, 'Title is required'),
+  slug: z.string().min(1, 'Slug is required'),
   excerpt: z.string().min(1, 'Excerpt is required'),
-  fullDescription: z.string().min(1, 'Full description is required'),
-  imageUrl: z.string().min(1, 'Image URL is required'),
-  href: z.string().min(1, 'Link is required'),
-  track: z.enum(['web-dev', 'data-science', 'product-design', 'ai']),
-  trackLabel: z.string().min(1, 'Track label is required'),
-  graduationDate: z.string().min(1, 'Graduation date is required'),
-  location: z.string().min(1, 'Location is required'),
-  currentRole: z.string().min(1, 'Current role is required'),
-  company: z.string().min(1, 'Company is required'),
-  achievements: z.array(z.string().min(1)).min(1, 'At least one achievement is required'),
+  content: z.string().min(1, 'Content is required'),
+  featuredImage: z.string().optional(),
+  author: z.string().min(1, 'Author is required'),
+  tags: z.array(z.string()),
+  status: z.enum(['draft', 'published']),
+  publishedAt: z.string().optional(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
 })
 
-export const CreateStorySchema = AdminStorySchema.omit({ id: true })
-export const UpdateStorySchema = AdminStorySchema.partial().required({ id: true })
-
-export type AdminStory = z.infer<typeof AdminStorySchema>
-export type CreateStoryInput = z.infer<typeof CreateStorySchema>
-export type UpdateStoryInput = z.infer<typeof UpdateStorySchema>
-
-// Admin Partner schema and type
-export const AdminPartnerSchema = z.object({
-  id: z.string().min(1),
-  tier: z.string().min(1, 'Tier is required'),
-  name: z.string().min(1, 'Name is required'),
-  logoUrl: z.string().min(1, 'Logo URL is required'),
-  description: z.string().min(1, 'Description is required'),
-  website: z.string().url('Valid URL is required'),
-  category: z.string().min(1, 'Category is required'),
+export const CreateBlogPostSchema = BlogPostSchema.omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+  publishedAt: true,
 })
 
-export const CreatePartnerSchema = AdminPartnerSchema.omit({ id: true })
-export const UpdatePartnerSchema = AdminPartnerSchema.partial().required({ id: true })
+export const UpdateBlogPostSchema = BlogPostSchema.partial().required({ id: true })
 
-export type AdminPartner = z.infer<typeof AdminPartnerSchema>
-export type CreatePartnerInput = z.infer<typeof CreatePartnerSchema>
-export type UpdatePartnerInput = z.infer<typeof UpdatePartnerSchema>
+export type BlogPost = z.infer<typeof BlogPostSchema>
+export type CreateBlogPostInput = z.infer<typeof CreateBlogPostSchema>
+export type UpdateBlogPostInput = z.infer<typeof UpdateBlogPostSchema>
 
 // Generic CRUD operation types
-export type EntityType = 'event' | 'story' | 'partner'
+export type EntityType = 'event' | 'blogPost'
 
 export type CrudOperation = 'create' | 'read' | 'update' | 'delete'
 
-export type AdminEntity = AdminEvent | AdminStory | AdminPartner
+export type AdminEntity = AdminEvent | BlogPost
 
 // Table column definition
 export type TableColumn<T> = {
@@ -112,8 +97,7 @@ export type TableColumn<T> = {
 // Admin state type
 export type AdminState = {
   events: AdminEvent[]
-  stories: AdminStory[]
-  partners: AdminPartner[]
+  blogPosts: BlogPost[]
   loading: boolean
   error: string | null
 }
@@ -126,11 +110,7 @@ export type AdminAction =
   | { type: 'ADD_EVENT'; payload: AdminEvent }
   | { type: 'UPDATE_EVENT'; payload: AdminEvent }
   | { type: 'DELETE_EVENT'; payload: string }
-  | { type: 'SET_STORIES'; payload: AdminStory[] }
-  | { type: 'ADD_STORY'; payload: AdminStory }
-  | { type: 'UPDATE_STORY'; payload: AdminStory }
-  | { type: 'DELETE_STORY'; payload: string }
-  | { type: 'SET_PARTNERS'; payload: AdminPartner[] }
-  | { type: 'ADD_PARTNER'; payload: AdminPartner }
-  | { type: 'UPDATE_PARTNER'; payload: AdminPartner }
-  | { type: 'DELETE_PARTNER'; payload: string }
+  | { type: 'SET_BLOG_POSTS'; payload: BlogPost[] }
+  | { type: 'ADD_BLOG_POST'; payload: BlogPost }
+  | { type: 'UPDATE_BLOG_POST'; payload: BlogPost }
+  | { type: 'DELETE_BLOG_POST'; payload: string }

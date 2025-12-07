@@ -1,16 +1,15 @@
 /**
  * AdminPage component
- * Main admin dashboard with tabs for managing Events, Stories, and Partners
+ * Main admin dashboard with tabs for managing Events and Blog Posts
  */
 
 import React, { useState } from 'react'
 import { Alert, Box, Container, Tab, Tabs, Typography } from '@mui/material'
 import { AdminProvider } from '../contexts'
+import { BlogPostsTab } from './BlogPostsTab'
 import { EventsTab } from './EventsTab'
-import { PartnersTab } from './PartnersTab'
-import { StoriesTab } from './StoriesTab'
 
-type TabValue = 'events' | 'stories' | 'partners'
+type TabValue = 'events' | 'blog'
 
 type TabPanelProps = {
   readonly children: React.ReactNode
@@ -50,7 +49,7 @@ const AdminPageContent: React.FC = () => {
           Admin Dashboard
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          Manage events, stories, and partners for the TechLabs website.
+          Manage events and blog posts for the TechLabs website.
         </Typography>
       </Box>
 
@@ -72,8 +71,7 @@ const AdminPageContent: React.FC = () => {
             },
           }}>
           <Tab value="events" label="Events" {...a11yProps('events')} />
-          <Tab value="stories" label="Stories" {...a11yProps('stories')} />
-          <Tab value="partners" label="Partners" {...a11yProps('partners')} />
+          <Tab value="blog" label="Blog Posts" {...a11yProps('blog')} />
         </Tabs>
       </Box>
 
@@ -81,12 +79,8 @@ const AdminPageContent: React.FC = () => {
         <EventsTab />
       </TabPanel>
 
-      <TabPanel value={currentTab} index="stories">
-        <StoriesTab />
-      </TabPanel>
-
-      <TabPanel value={currentTab} index="partners">
-        <PartnersTab />
+      <TabPanel value={currentTab} index="blog">
+        <BlogPostsTab />
       </TabPanel>
     </Container>
   )

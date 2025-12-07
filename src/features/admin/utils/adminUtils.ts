@@ -5,15 +5,13 @@
 
 import {
   type AdminEvent,
-  type AdminStory,
-  type AdminPartner,
+  type BlogPost,
   type CreateEventInput,
-  type CreateStoryInput,
-  type CreatePartnerInput,
+  type CreateBlogPostInput,
   type EventTypeValue,
-  type TrackKeyValue,
+  type BlogPostStatusValue,
   EventType,
-  TrackKey,
+  BlogPostStatus,
 } from '../types'
 
 /**
@@ -25,6 +23,18 @@ export const generateId = (): string => {
   const randomPart = Math.random().toString(36).slice(2, 11)
 
   return `${timestamp}-${randomPart}`
+}
+
+/**
+ * Generate a slug from a title
+ */
+export const generateSlug = (title: string): string => {
+  return title
+    .toLowerCase()
+    .replaceAll(/[^\w\s-]/g, '')
+    .replaceAll(/\s+/g, '-')
+    .replaceAll(/-+/g, '-')
+    .trim()
 }
 
 /**
@@ -58,20 +68,19 @@ export const createEventWithId = (input: CreateEventInput): AdminEvent => ({
 })
 
 /**
- * Create a new story with generated ID
+ * Create a new blog post with generated ID and timestamps
  */
-export const createStoryWithId = (input: CreateStoryInput): AdminStory => ({
-  ...input,
-  id: generateId(),
-})
+export const createBlogPostWithId = (input: CreateBlogPostInput): BlogPost => {
+  const now = new Date().toISOString()
 
-/**
- * Create a new partner with generated ID
- */
-export const createPartnerWithId = (input: CreatePartnerInput): AdminPartner => ({
-  ...input,
-  id: generateId(),
-})
+  return {
+    ...input,
+    id: generateId(),
+    createdAt: now,
+    updatedAt: now,
+    publishedAt: input.status === BlogPostStatus.PUBLISHED ? now : undefined,
+  }
+}
 
 /**
  * Get default event form values
@@ -87,33 +96,17 @@ export const getDefaultEventValues = (): CreateEventInput => ({
 })
 
 /**
- * Get default story form values
+ * Get default blog post form values
  */
-export const getDefaultStoryValues = (): CreateStoryInput => ({
+export const getDefaultBlogPostValues = (): CreateBlogPostInput => ({
   title: '',
+  slug: '',
   excerpt: '',
-  fullDescription: '',
-  imageUrl: '/public/stories/person1.png',
-  href: '/stories/',
-  track: TrackKey.WEB_DEV,
-  trackLabel: 'Web Development',
-  graduationDate: '',
-  location: '',
-  currentRole: '',
-  company: '',
-  achievements: [''],
-})
-
-/**
- * Get default partner form values
- */
-export const getDefaultPartnerValues = (): CreatePartnerInput => ({
-  tier: 'gold',
-  name: '',
-  logoUrl: '/img/partners/',
-  description: '',
-  website: 'https://',
-  category: 'Technology',
+  content: '',
+  featuredImage: '',
+  author: '',
+  tags: [],
+  status: BlogPostStatus.DRAFT,
 })
 
 /**
@@ -126,17 +119,14 @@ export const truncateText = (text: string, maxLength = 50): string => {
 }
 
 /**
- * Get track label from track key
+ * Strip HTML tags from content for excerpt
  */
-export const getTrackLabel = (track: TrackKeyValue): string => {
-  const labels: Record<TrackKeyValue, string> = {
-    [TrackKey.WEB_DEV]: 'Web Development',
-    [TrackKey.DATA_SCIENCE]: 'Data Science',
-    [TrackKey.PRODUCT_DESIGN]: 'Product Design',
-    [TrackKey.AI]: 'Artificial Intelligence',
-  }
+export const stripHtml = (html: string): string => {
+  const tmp = document.createElement('div')
 
-  return labels[track]
+  tmp.innerHTML = html
+
+  return tmp.textContent ?? tmp.innerText ?? ''
 }
 
 /**
@@ -149,4 +139,16 @@ export const getEventTypeLabel = (type: EventTypeValue): string => {
   }
 
   return labels[type]
+}
+
+/**
+ * Get blog post status label
+ */
+export const getBlogPostStatusLabel = (status: BlogPostStatusValue): string => {
+  const labels: Record<BlogPostStatusValue, string> = {
+    [BlogPostStatus.DRAFT]: 'Draft',
+    [BlogPostStatus.PUBLISHED]: 'Published',
+  }
+
+  return labels[status]
 }

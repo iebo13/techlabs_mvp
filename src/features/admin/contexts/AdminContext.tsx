@@ -1,35 +1,76 @@
 /**
  * Admin Context Provider
- * Manages state for admin CRUD operations on Events, Stories, and Partners
+ * Manages state for admin CRUD operations on Events and Blog Posts
  */
 
 import React, { createContext, useContext, useReducer, type ReactNode } from 'react'
 import eventsData from '@/mocks/events.json'
-import partnersData from '@/mocks/partners.json'
-import storiesArray from '@/mocks/stories.json'
 import {
   type AdminEvent,
-  type AdminStory,
-  type AdminPartner,
+  type BlogPost,
   type AdminState,
   type AdminAction,
   type CreateEventInput,
-  type CreateStoryInput,
-  type CreatePartnerInput,
+  type CreateBlogPostInput,
   type UpdateEventInput,
-  type UpdateStoryInput,
-  type UpdatePartnerInput,
+  type UpdateBlogPostInput,
+  BlogPostStatus,
 } from '../types'
-import { createEventWithId, createStoryWithId, createPartnerWithId } from '../utils'
+import { createEventWithId, createBlogPostWithId } from '../utils'
+
+// Constants
+const DEFAULT_AUTHOR = 'TechLabs Team'
+
+// Sample blog posts for initial state
+const sampleBlogPosts: BlogPost[] = [
+  {
+    id: '1',
+    title: 'Getting Started with Web Development',
+    slug: 'getting-started-with-web-development',
+    excerpt: 'Learn the fundamentals of web development and start your journey into tech.',
+    content:
+      '<h2>Introduction</h2><p>Web development is one of the most in-demand skills in the tech industry today...</p>',
+    featuredImage: '/img/stories/person1.png',
+    author: DEFAULT_AUTHOR,
+    tags: ['web-dev', 'beginner', 'tutorial'],
+    status: BlogPostStatus.PUBLISHED,
+    publishedAt: '2024-01-15T10:00:00Z',
+    createdAt: '2024-01-10T08:00:00Z',
+    updatedAt: '2024-01-15T10:00:00Z',
+  },
+  {
+    id: '2',
+    title: 'Data Science Career Paths in 2024',
+    slug: 'data-science-career-paths-2024',
+    excerpt: 'Explore the various career opportunities in data science and AI.',
+    content: '<h2>The Data Science Landscape</h2><p>Data science continues to evolve rapidly...</p>',
+    featuredImage: '/img/stories/person2.png',
+    author: DEFAULT_AUTHOR,
+    tags: ['data-science', 'career', 'ai'],
+    status: BlogPostStatus.PUBLISHED,
+    publishedAt: '2024-02-01T12:00:00Z',
+    createdAt: '2024-01-28T09:00:00Z',
+    updatedAt: '2024-02-01T12:00:00Z',
+  },
+  {
+    id: '3',
+    title: 'UX Design Best Practices',
+    slug: 'ux-design-best-practices',
+    excerpt: 'Draft article about user experience design principles.',
+    content: '<h2>Draft</h2><p>This is a work in progress...</p>',
+    featuredImage: '',
+    author: DEFAULT_AUTHOR,
+    tags: ['design', 'ux'],
+    status: BlogPostStatus.DRAFT,
+    createdAt: '2024-02-10T14:00:00Z',
+    updatedAt: '2024-02-10T14:00:00Z',
+  },
+]
 
 // Initial state from mock data
 const initialState: AdminState = {
   events: eventsData.events as AdminEvent[],
-  stories: storiesArray as AdminStory[],
-  partners: partnersData.partners.map((p, index) => ({
-    ...p,
-    id: `partner-${index + 1}`,
-  })) as AdminPartner[],
+  blogPosts: sampleBlogPosts,
   loading: false,
   error: null,
 }
@@ -52,28 +93,17 @@ const adminReducer = (state: AdminState, action: AdminAction): AdminState => {
       }
     case 'DELETE_EVENT':
       return { ...state, events: state.events.filter(e => e.id !== action.payload) }
-    case 'SET_STORIES':
-      return { ...state, stories: action.payload }
-    case 'ADD_STORY':
-      return { ...state, stories: [...state.stories, action.payload] }
-    case 'UPDATE_STORY':
+    case 'SET_BLOG_POSTS':
+      return { ...state, blogPosts: action.payload }
+    case 'ADD_BLOG_POST':
+      return { ...state, blogPosts: [...state.blogPosts, action.payload] }
+    case 'UPDATE_BLOG_POST':
       return {
         ...state,
-        stories: state.stories.map(s => (s.id === action.payload.id ? action.payload : s)),
+        blogPosts: state.blogPosts.map(p => (p.id === action.payload.id ? action.payload : p)),
       }
-    case 'DELETE_STORY':
-      return { ...state, stories: state.stories.filter(s => s.id !== action.payload) }
-    case 'SET_PARTNERS':
-      return { ...state, partners: action.payload }
-    case 'ADD_PARTNER':
-      return { ...state, partners: [...state.partners, action.payload] }
-    case 'UPDATE_PARTNER':
-      return {
-        ...state,
-        partners: state.partners.map(p => (p.id === action.payload.id ? action.payload : p)),
-      }
-    case 'DELETE_PARTNER':
-      return { ...state, partners: state.partners.filter(p => p.id !== action.payload) }
+    case 'DELETE_BLOG_POST':
+      return { ...state, blogPosts: state.blogPosts.filter(p => p.id !== action.payload) }
     default:
       return state
   }
@@ -86,14 +116,10 @@ type AdminContextType = {
   createEvent: (input: CreateEventInput) => void
   updateEvent: (input: UpdateEventInput) => void
   deleteEvent: (id: string) => void
-  // Story operations
-  createStory: (input: CreateStoryInput) => void
-  updateStory: (input: UpdateStoryInput) => void
-  deleteStory: (id: string) => void
-  // Partner operations
-  createPartner: (input: CreatePartnerInput) => void
-  updatePartner: (input: UpdatePartnerInput) => void
-  deletePartner: (id: string) => void
+  // Blog Post operations
+  createBlogPost: (input: CreateBlogPostInput) => void
+  updateBlogPost: (input: UpdateBlogPostInput) => void
+  deleteBlogPost: (id: string) => void
   // Utility
   clearError: () => void
 }
@@ -128,46 +154,32 @@ export const AdminProvider: React.FC<AdminProviderProps> = ({ children }) => {
     dispatch({ type: 'DELETE_EVENT', payload: id })
   }
 
-  // Story operations
-  const createStory = (input: CreateStoryInput): void => {
-    const newStory = createStoryWithId(input)
+  // Blog Post operations
+  const createBlogPost = (input: CreateBlogPostInput): void => {
+    const newPost = createBlogPostWithId(input)
 
-    dispatch({ type: 'ADD_STORY', payload: newStory })
+    dispatch({ type: 'ADD_BLOG_POST', payload: newPost })
   }
 
-  const updateStory = (input: UpdateStoryInput): void => {
-    const existingStory = state.stories.find(s => s.id === input.id)
+  const updateBlogPost = (input: UpdateBlogPostInput): void => {
+    const existingPost = state.blogPosts.find(p => p.id === input.id)
 
-    if (existingStory) {
-      const updatedStory: AdminStory = { ...existingStory, ...input }
+    if (existingPost) {
+      const now = new Date().toISOString()
+      const updatedPost: BlogPost = {
+        ...existingPost,
+        ...input,
+        updatedAt: now,
+        publishedAt:
+          input.status === BlogPostStatus.PUBLISHED && !existingPost.publishedAt ? now : existingPost.publishedAt,
+      }
 
-      dispatch({ type: 'UPDATE_STORY', payload: updatedStory })
+      dispatch({ type: 'UPDATE_BLOG_POST', payload: updatedPost })
     }
   }
 
-  const deleteStory = (id: string): void => {
-    dispatch({ type: 'DELETE_STORY', payload: id })
-  }
-
-  // Partner operations
-  const createPartner = (input: CreatePartnerInput): void => {
-    const newPartner = createPartnerWithId(input)
-
-    dispatch({ type: 'ADD_PARTNER', payload: newPartner })
-  }
-
-  const updatePartner = (input: UpdatePartnerInput): void => {
-    const existingPartner = state.partners.find(p => p.id === input.id)
-
-    if (existingPartner) {
-      const updatedPartner: AdminPartner = { ...existingPartner, ...input }
-
-      dispatch({ type: 'UPDATE_PARTNER', payload: updatedPartner })
-    }
-  }
-
-  const deletePartner = (id: string): void => {
-    dispatch({ type: 'DELETE_PARTNER', payload: id })
+  const deleteBlogPost = (id: string): void => {
+    dispatch({ type: 'DELETE_BLOG_POST', payload: id })
   }
 
   // Utility
@@ -180,12 +192,9 @@ export const AdminProvider: React.FC<AdminProviderProps> = ({ children }) => {
     createEvent,
     updateEvent,
     deleteEvent,
-    createStory,
-    updateStory,
-    deleteStory,
-    createPartner,
-    updatePartner,
-    deletePartner,
+    createBlogPost,
+    updateBlogPost,
+    deleteBlogPost,
     clearError,
   }
 

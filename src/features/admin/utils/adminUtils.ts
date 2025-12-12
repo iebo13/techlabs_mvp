@@ -4,8 +4,6 @@
  */
 
 import {
-  type AdminEvent,
-  type BlogPost,
   type CreateEventInput,
   type CreateBlogPostInput,
   type EventTypeValue,
@@ -13,17 +11,6 @@ import {
   EventType,
   BlogPostStatus,
 } from '../types'
-
-/**
- * Generate a unique ID for new entities
- * Uses timestamp + random string for uniqueness
- */
-export const generateId = (): string => {
-  const timestamp = Date.now().toString(36)
-  const randomPart = Math.random().toString(36).slice(2, 11)
-
-  return `${timestamp}-${randomPart}`
-}
 
 /**
  * Generate a slug from a title
@@ -57,29 +44,6 @@ export const formatDateForInput = (dateString: string): string => {
   const date = new Date(dateString)
 
   return date.toISOString().slice(0, 16)
-}
-
-/**
- * Create a new event with generated ID
- */
-export const createEventWithId = (input: CreateEventInput): AdminEvent => ({
-  ...input,
-  id: generateId(),
-})
-
-/**
- * Create a new blog post with generated ID and timestamps
- */
-export const createBlogPostWithId = (input: CreateBlogPostInput): BlogPost => {
-  const now = new Date().toISOString()
-
-  return {
-    ...input,
-    id: generateId(),
-    createdAt: now,
-    updatedAt: now,
-    publishedAt: input.status === BlogPostStatus.PUBLISHED ? now : undefined,
-  }
 }
 
 /**

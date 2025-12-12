@@ -1,4 +1,4 @@
-import { EventModel, IEvent } from '../models/Event';
+import { EventModel, IEvent } from './event.model';
 
 export const getAllEvents = async (): Promise<IEvent[]> => {
   return EventModel.find().sort({ date: 1 });

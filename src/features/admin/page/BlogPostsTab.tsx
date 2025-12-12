@@ -1,12 +1,8 @@
-/**
- * BlogPostsTab component
- * Admin tab for managing blog posts with CRUD operations
- */
-
 import React, { useState } from 'react'
+import { Alert, CircularProgress, Box } from '@mui/material'
 import { AdminDataTable, ConfirmDialog } from '../components'
 import { BlogPostForm } from '../components/BlogPostForm'
-import { useAdmin } from '../contexts'
+import { useBlogPosts } from '../hooks'
 import { useAdminTable } from '../hooks'
 import { type BlogPost, type CreateBlogPostInput, type TableColumn } from '../types'
 import { formatDate, getBlogPostStatusLabel, truncateText } from '../utils'
@@ -21,7 +17,7 @@ const BLOG_POST_COLUMNS: Array<TableColumn<BlogPost>> = [
 ]
 
 export const BlogPostsTab: React.FC = () => {
-  const { state, createBlogPost, updateBlogPost, deleteBlogPost } = useAdmin()
+  const { blogPosts, createBlogPost, updateBlogPost, deleteBlogPost, isLoading, isError, error } = useBlogPosts()
   const table = useAdminTable<BlogPost>()
 
   const [formOpen, setFormOpen] = useState(false)
@@ -30,7 +26,7 @@ export const BlogPostsTab: React.FC = () => {
   const [postToDelete, setPostToDelete] = useState<BlogPost | null>(null)
 
   // Get processed data
-  const filteredData = table.getFilteredData(state.blogPosts, ['title', 'author', 'excerpt'])
+  const filteredData = table.getFilteredData(blogPosts, ['title', 'author', 'excerpt'])
   const sortedData = table.getSortedData(filteredData)
   const paginatedData = table.getPaginatedData(sortedData)
 
@@ -49,21 +45,46 @@ export const BlogPostsTab: React.FC = () => {
     setDeleteDialogOpen(true)
   }
 
-  const handleFormSubmit = (data: CreateBlogPostInput): void => {
-    if (selectedPost) {
-      updateBlogPost({ id: selectedPost.id, ...data })
-    } else {
-      createBlogPost(data)
+  const handleFormSubmit = async (data: CreateBlogPostInput): Promise<void> => {
+    try {
+      if (selectedPost) {
+        await updateBlogPost({ id: selectedPost.id, ...data })
+      } else {
+        await createBlogPost(data)
+      }
+      setFormOpen(false)
+    } catch (err) {
+      console.error('Failed to save blog post:', err)
     }
   }
 
-  const handleConfirmDelete = (): void => {
+  const handleConfirmDelete = async (): Promise<void> => {
     if (postToDelete) {
-      deleteBlogPost(postToDelete.id)
-      setPostToDelete(null)
+      try {
+        await deleteBlogPost(postToDelete.id)
+        setPostToDelete(null)
+      } catch (err) {
+        console.error('Failed to delete blog post:', err)
+      }
     }
 
     setDeleteDialogOpen(false)
+  }
+
+  if (isLoading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', p: 4 }}>
+        <CircularProgress />
+      </Box>
+    )
+  }
+
+  if (isError) {
+    return (
+      <Alert severity="error" sx={{ mb: 3 }}>
+        Error loading blog posts: {(error as Error).message}
+      </Alert>
+    )
   }
 
   return (

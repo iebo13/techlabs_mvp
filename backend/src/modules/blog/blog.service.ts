@@ -1,4 +1,4 @@
-import { BlogPostModel, IBlogPost } from '../models/BlogPost';
+import { BlogPostModel, IBlogPost } from './blog.model';
 
 export const getAllBlogPosts = async (): Promise<IBlogPost[]> => {
   return BlogPostModel.find().sort({ createdAt: -1 });

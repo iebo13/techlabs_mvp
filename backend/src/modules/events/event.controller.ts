@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import * as eventService from '../services/eventService';
-import { AppError } from '../utils/AppError';
+import * as eventService from './event.service';
+import { AppError } from '../../shared/utils/AppError';
 
 export const getEvents = async (req: Request, res: Response, next: NextFunction) => {
   try {

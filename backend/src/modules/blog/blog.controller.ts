@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import * as blogService from '../services/blogService';
-import { AppError } from '../utils/AppError';
+import * as blogService from './blog.service';
+import { AppError } from '../../shared/utils/AppError';
 
 export const getBlogPosts = async (req: Request, res: Response, next: NextFunction) => {
   try {

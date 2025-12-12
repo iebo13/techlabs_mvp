@@ -1,11 +1,5 @@
-/**
- * AdminPage component
- * Main admin dashboard with tabs for managing Events and Blog Posts
- */
-
 import React, { useState } from 'react'
-import { Alert, Box, Container, Tab, Tabs, Typography } from '@mui/material'
-import { AdminProvider } from '../contexts'
+import { Box, Container, Tab, Tabs, Typography } from '@mui/material'
 import { BlogPostsTab } from './BlogPostsTab'
 import { EventsTab } from './EventsTab'
 
@@ -53,11 +47,6 @@ const AdminPageContent: React.FC = () => {
         </Typography>
       </Box>
 
-      <Alert severity="info" sx={{ mb: 3 }}>
-        Changes made here are stored in memory only. They will be lost when the page refreshes. For production, connect
-        to a backend API for persistent storage.
-      </Alert>
-
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
           value={currentTab}
@@ -88,8 +77,6 @@ const AdminPageContent: React.FC = () => {
 
 export const AdminPage: React.FC = () => {
   return (
-    <AdminProvider>
-      <AdminPageContent />
-    </AdminProvider>
+    <AdminPageContent />
   )
 }

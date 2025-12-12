@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Alert, Box, Button, Container, Grid, Tab, Tabs, Typography } from '@mui/material'
+import { VisuallyHidden } from '@/components/Layouts/accessibility/VisuallyHidden'
 import { useI18n } from '@/hooks'
 import eventsData from '@/mocks/events.json'
 import { EventCard, type Event } from '../components/EventCard'
@@ -76,6 +77,7 @@ export const EventsPage: React.FC = () => {
         </Typography>
         <Typography
           variant="h5"
+          component="p"
           color="text.secondary"
           sx={{
             fontWeight: 400,
@@ -120,6 +122,7 @@ export const EventsPage: React.FC = () => {
         </Alert>
       ) : (
         <>
+          <VisuallyHidden component="h2">Event List</VisuallyHidden>
           <Grid container spacing={3} sx={{ mb: 4 }}>
             {visibleEvents.map(event => (
               <Grid key={event.id} size={{ xs: 12, sm: 6, md: 4 }}>
@@ -150,7 +153,7 @@ export const EventsPage: React.FC = () => {
       )}
 
       <Box sx={{ mt: 8, textAlign: 'center' }}>
-        <Typography variant="h6" gutterBottom color="text.secondary">
+        <Typography variant="h4" component="h2" gutterBottom color="text.secondary">
           {t('events.hostEvent.title')}
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>

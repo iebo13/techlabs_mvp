@@ -8,6 +8,14 @@
 - **Critical Issues**: Slow initial load (FCP: 4.4s, LCP: 5.5s), poor CLS (0.42), missing images causing 404s
 - **Target**: Achieve 0.9+ performance score with <2.5s LCP
 
+## Recent Changes (Latest - Accessibility Improvements - Dec 2025)
+- **Accessibility Audit**: Evaluated all major pages with `axe-core`
+- **Fixed Accessibility Issues**:
+  - **HomePage**: Fixed nested interactive controls in `HeroVideo`
+  - **AboutPage**: Fixed heading hierarchy in `MissionSection` (h1 -> h2)
+  - **EventsPage**: Fixed heading hierarchy by adding hidden h2 for list and fixing host event heading
+  - **PartnersPage**: Fixed heading hierarchy (h1 -> h2)
+
 ## Recent Changes (Latest - Lighthouse Performance Audit - August 2024)
 - **Lighthouse Performance Audit**: Completed comprehensive performance analysis
 - **Performance Baseline Established**: Current scores and metrics documented

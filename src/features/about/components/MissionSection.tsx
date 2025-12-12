@@ -74,7 +74,7 @@ export const MissionSection: React.FC = () => {
                     },
                   }}>
                   <CardContent>
-                    <Typography variant="h6" component="h3" gutterBottom fontWeight={600}>
+                    <Typography variant="h6" component="h2" gutterBottom fontWeight={600}>
                       {value.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" lineHeight={1.6}>

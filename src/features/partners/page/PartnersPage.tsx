@@ -10,10 +10,10 @@ export const PartnersPage: React.FC = () => {
     <main>
       <Section>
         <Stack spacing={4} alignItems="center" textAlign="center">
-          <SectionHeading level={2} centered>
+          <SectionHeading level={1} centered>
             Our Partners
           </SectionHeading>
-          <Typography variant="h5" color="text.secondary" maxWidth="600px">
+          <Typography variant="h5" component="p" color="text.secondary" maxWidth="600px">
             Together with our partners, we're making tech education accessible to everyone. Join us in shaping the
             future of digital learning.
           </Typography>
@@ -44,7 +44,7 @@ export const PartnersPage: React.FC = () => {
             <Typography variant="h4" component="h2" fontWeight={700}>
               Become a Partner
             </Typography>
-            <Typography variant="h6" maxWidth="600px">
+            <Typography variant="h6" component="p" maxWidth="600px">
               Join our mission to make tech education accessible to everyone. Partner with us to shape the future of
               digital learning.
             </Typography>

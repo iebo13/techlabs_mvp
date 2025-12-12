@@ -5,8 +5,6 @@
 
 // Import jest-dom custom matchers
 import '@testing-library/jest-dom'
-
-// Import userEvent for test utilities
 import userEvent from '@testing-library/user-event'
 
 // Note: MSW setup is available but commented out until needed in specific tests

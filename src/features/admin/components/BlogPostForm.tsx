@@ -29,7 +29,7 @@ import { TagsInput } from './TagsInput'
 type BlogPostFormProps = {
   readonly open: boolean
   readonly post: BlogPost | null
-  readonly onSubmit: (data: CreateBlogPostInput) => void
+  readonly onSubmit: (data: CreateBlogPostInput) => Promise<void>
   readonly onClose: () => void
 }
 
@@ -81,8 +81,8 @@ export const BlogPostForm: React.FC<BlogPostFormProps> = ({ open, post, onSubmit
     setValue('tags', tags)
   }, [tags, setValue])
 
-  const handleFormSubmit = (data: CreateBlogPostInput): void => {
-    onSubmit({ ...data, content, tags })
+  const handleFormSubmit = async (data: CreateBlogPostInput): Promise<void> => {
+    await onSubmit({ ...data, content, tags })
     onClose()
   }
 

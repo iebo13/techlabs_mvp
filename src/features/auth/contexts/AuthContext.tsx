@@ -1,9 +1,10 @@
-import React, { createContext, type ReactNode, useState, useEffect, useContext } from 'react'
-import { type User, onAuthStateChanged, signInWithEmailAndPassword, signOut as firebaseSignOut } from 'firebase/auth'
-import { auth } from '@/config/firebase'
+import React, { createContext, type ReactNode, useEffect, useContext, useState } from 'react'
+import { clearAuthToken, getAuthToken, setAuthToken } from '@/config/authToken'
+import { getMe, login } from '../api/authApi'
+import type { AuthUser } from '../types/auth.types'
 
 type AuthContextType = {
-  user: User | null
+  user: AuthUser | null
   loading: boolean
   error: string | null
   signIn: (email: string, password: string) => Promise<void>
@@ -18,17 +19,33 @@ type AuthProviderProps = {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<AuthUser | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, firebaseUser => {
-      setUser(firebaseUser)
-      setLoading(false)
-    })
+    const token = getAuthToken()
 
-    return () => unsubscribe()
+    if (!token) {
+      setLoading(false)
+
+      return
+    }
+
+    const run = async (): Promise<void> => {
+      try {
+        const me = await getMe()
+
+        setUser(me.user)
+      } catch {
+        clearAuthToken()
+        setUser(null)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    void run()
   }, [])
 
   const signIn = async (email: string, password: string): Promise<void> => {
@@ -36,7 +53,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setLoading(true)
 
     try {
-      await signInWithEmailAndPassword(auth, email, password)
+      const res = await login(email, password)
+
+      setAuthToken(res.token)
+      setUser(res.user)
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to sign in'
 
@@ -47,31 +67,28 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }
 
-  const signOut = async (): Promise<void> => {
+  const signOut = (): Promise<void> => {
     setError(null)
 
     try {
-      await firebaseSignOut(auth)
+      clearAuthToken()
+      setUser(null)
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to sign out'
 
       setError(errorMessage)
-      throw err
+
+      return Promise.reject(err)
     }
+
+    return Promise.resolve()
   }
 
   const clearError = (): void => {
     setError(null)
   }
 
-  const value: AuthContextType = {
-    user,
-    loading,
-    error,
-    signIn,
-    signOut,
-    clearError,
-  }
+  const value: AuthContextType = { user, loading, error, signIn, signOut, clearError }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

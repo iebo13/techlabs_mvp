@@ -49,17 +49,13 @@ export const BlogPostsTab: React.FC = () => {
     setDeleteDialogOpen(true)
   }
 
-  const handleFormSubmit = (data: CreateBlogPostInput): void => {
-    if (selectedPost) {
-      updateBlogPost({ id: selectedPost.id, ...data })
-    } else {
-      createBlogPost(data)
-    }
+  const handleFormSubmit = async (data: CreateBlogPostInput): Promise<void> => {
+    await (selectedPost ? updateBlogPost({ id: selectedPost.id, ...data }) : createBlogPost(data))
   }
 
-  const handleConfirmDelete = (): void => {
+  const handleConfirmDelete = async (): Promise<void> => {
     if (postToDelete) {
-      deleteBlogPost(postToDelete.id)
+      await deleteBlogPost(postToDelete.id)
       setPostToDelete(null)
     }
 
@@ -71,7 +67,9 @@ export const BlogPostsTab: React.FC = () => {
       <AdminDataTable<BlogPost>
         title="Blog Posts"
         data={paginatedData}
+        totalCount={sortedData.length}
         columns={BLOG_POST_COLUMNS}
+        loading={state.loading}
         searchQuery={table.searchQuery}
         page={table.page}
         rowsPerPage={table.rowsPerPage}

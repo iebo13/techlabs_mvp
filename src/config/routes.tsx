@@ -1,10 +1,14 @@
 import React, { lazy, Suspense } from 'react'
 import { LoadingFallback } from '@/components'
 import { CareersPage, PrivacyPage, ImprintPage } from '@/config/placeholderPages'
+import { RequireAdmin } from '@/features/auth/components/RequireAdmin'
 
 const HomePage = lazy(() => import('@/features/home/page/HomePage').then(module => ({ default: module.HomePage })))
 
 const AdminPage = lazy(() => import('@/features/admin/page/AdminPage').then(module => ({ default: module.AdminPage })))
+const AdminLoginPage = lazy(() =>
+  import('@/features/admin/page/AdminLoginPage').then(module => ({ default: module.AdminLoginPage }))
+)
 
 const TracksPage = lazy(() =>
   import('@/features/tracks/page/TracksPage').then(module => ({ default: module.TracksPage }))
@@ -101,7 +105,18 @@ export const routes: RouteConfig[] = [
     path: '/admin',
     element: (
       <Suspense fallback={<LoadingFallback variant="page" />}>
-        <AdminPage />
+        <RequireAdmin>
+          <AdminPage />
+        </RequireAdmin>
+      </Suspense>
+    ),
+    lazy: true,
+  },
+  {
+    path: '/admin/login',
+    element: (
+      <Suspense fallback={<LoadingFallback variant="page" />}>
+        <AdminLoginPage />
       </Suspense>
     ),
     lazy: true,

@@ -7,9 +7,13 @@ import React from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
+import SearchIcon from '@mui/icons-material/Search'
 import {
   Box,
+  Button,
   IconButton,
+  InputAdornment,
+  LinearProgress,
   Paper,
   Table,
   TableBody,
@@ -29,7 +33,9 @@ import { truncateText } from '../utils'
 type AdminDataTableProps<T extends AdminEntity> = {
   readonly title: string
   readonly data: T[]
+  readonly totalCount: number
   readonly columns: Array<TableColumn<T>>
+  readonly loading?: boolean
   readonly searchQuery: string
   readonly page: number
   readonly rowsPerPage: number
@@ -47,7 +53,9 @@ type AdminDataTableProps<T extends AdminEntity> = {
 export const AdminDataTable = <T extends AdminEntity>({
   title,
   data,
+  totalCount,
   columns,
+  loading = false,
   searchQuery,
   page,
   rowsPerPage,
@@ -72,6 +80,7 @@ export const AdminDataTable = <T extends AdminEntity>({
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+      {loading ? <LinearProgress aria-label="Loading" /> : null}
       <Box
         sx={{
           p: 2,
@@ -79,23 +88,40 @@ export const AdminDataTable = <T extends AdminEntity>({
           justifyContent: 'space-between',
           alignItems: 'center',
           gap: 2,
+          flexWrap: 'wrap',
         }}>
-        <Typography variant="h6" component="h2">
-          {title}
-        </Typography>
+        <Box sx={{ minWidth: 240 }}>
+          <Typography variant="h6" component="h2">
+            {title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {totalCount} total
+          </Typography>
+        </Box>
         <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
           <TextField
             size="small"
             placeholder="Search..."
             value={searchQuery}
             onChange={e => onSearchChange(e.target.value)}
-            sx={{ minWidth: 200 }}
+            sx={{ minWidth: { xs: '100%', sm: 280 } }}
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon fontSize="small" />
+                  </InputAdornment>
+                ),
+              },
+            }}
           />
-          <Tooltip title={`Add new ${title.toLowerCase().slice(0, -1)}`}>
-            <IconButton color="primary" onClick={onAdd} aria-label={`Add new ${title}`}>
-              <AddIcon />
-            </IconButton>
-          </Tooltip>
+          <Button
+            variant="contained"
+            startIcon={<AddIcon />}
+            onClick={onAdd}
+            aria-label={`Add new ${title.toLowerCase().slice(0, -1)}`}>
+            Add
+          </Button>
         </Box>
       </Box>
 
@@ -124,7 +150,7 @@ export const AdminDataTable = <T extends AdminEntity>({
               <TableRow>
                 <TableCell colSpan={columns.length} align="center">
                   <Typography variant="body2" color="text.secondary" sx={{ py: 4 }}>
-                    No items found
+                    {loading ? 'Loading…' : 'No items found'}
                   </Typography>
                 </TableCell>
               </TableRow>
@@ -176,7 +202,7 @@ export const AdminDataTable = <T extends AdminEntity>({
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={data.length}
+        count={totalCount}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

@@ -47,17 +47,13 @@ export const EventsTab: React.FC = () => {
     setDeleteDialogOpen(true)
   }
 
-  const handleFormSubmit = (data: CreateEventInput): void => {
-    if (selectedEvent) {
-      updateEvent({ id: selectedEvent.id, ...data })
-    } else {
-      createEvent(data)
-    }
+  const handleFormSubmit = async (data: CreateEventInput): Promise<void> => {
+    await (selectedEvent ? updateEvent({ id: selectedEvent.id, ...data }) : createEvent(data))
   }
 
-  const handleConfirmDelete = (): void => {
+  const handleConfirmDelete = async (): Promise<void> => {
     if (eventToDelete) {
-      deleteEvent(eventToDelete.id)
+      await deleteEvent(eventToDelete.id)
       setEventToDelete(null)
     }
 
@@ -69,7 +65,9 @@ export const EventsTab: React.FC = () => {
       <AdminDataTable<AdminEvent>
         title="Events"
         data={paginatedData}
+        totalCount={sortedData.length}
         columns={EVENT_COLUMNS}
+        loading={state.loading}
         searchQuery={table.searchQuery}
         page={table.page}
         rowsPerPage={table.rowsPerPage}

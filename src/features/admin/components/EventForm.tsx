@@ -26,7 +26,7 @@ import { getDefaultEventValues } from '../utils'
 type EventFormProps = {
   readonly open: boolean
   readonly event: AdminEvent | null
-  readonly onSubmit: (data: CreateEventInput) => void
+  readonly onSubmit: (data: CreateEventInput) => Promise<void>
   readonly onClose: () => void
 }
 
@@ -50,8 +50,8 @@ export const EventForm: React.FC<EventFormProps> = ({ open, event, onSubmit, onC
     }
   }, [open, event, reset])
 
-  const handleFormSubmit = (data: CreateEventInput): void => {
-    onSubmit(data)
+  const handleFormSubmit = async (data: CreateEventInput): Promise<void> => {
+    await onSubmit(data)
     onClose()
   }
 

@@ -1,4 +1,5 @@
 import { QueryClient } from '@tanstack/react-query'
+import { getAuthToken } from '@/config/authToken'
 
 // HTTP client configuration
 export const queryClient = new QueryClient({
@@ -34,6 +35,36 @@ export type ApiErrorResponse = {
 // HTTP client utilities
 export const createApiUrl = (endpoint: string): string => {
   return `${API_BASE_URL}${endpoint}`
+}
+
+export const apiFetch = async <T>(endpoint: string, init?: RequestInit): Promise<T> => {
+  const token = getAuthToken()
+  const headers = new Headers(init?.headers)
+
+  if (token) {
+    headers.set('authorization', `Bearer ${token}`)
+  }
+
+  if (!headers.has('content-type') && init?.body) {
+    headers.set('content-type', 'application/json')
+  }
+
+  const res = await fetch(createApiUrl(endpoint), {
+    ...init,
+    headers,
+  })
+
+  if (res.status === 204) {
+    return undefined as unknown as T
+  }
+
+  const json = (await res.json()) as unknown
+
+  if (!res.ok) {
+    throw json
+  }
+
+  return (json as ApiResponse<T>).data
 }
 
 // Error mapping utilities

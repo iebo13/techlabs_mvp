@@ -1,4 +1,6 @@
 export { AdminDataTable } from './AdminDataTable'
+export { AdminDashboard } from './AdminDashboard'
+export { AdminHeader } from './AdminHeader'
 export { BlogEditor } from './BlogEditor'
 export { BlogPostForm } from './BlogPostForm'
 export { BlogPostMetadata } from './BlogPostMetadata'

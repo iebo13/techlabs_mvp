@@ -8,6 +8,7 @@ import { performanceMonitor } from '@/components/PerformanceMonitoring'
 import { initializeApp } from '@/config/preload'
 import { routes } from '@/config/routes'
 import { ThemeProvider, useTheme } from '@/contexts/ThemeContext'
+import { AuthProvider } from '@/features/auth'
 import { initializeResourceHints } from '@/utils/resourceHints'
 
 const AccessibilityTester = lazy(() =>
@@ -37,21 +38,23 @@ const AppContent: React.FC = () => {
         <MuiThemeProvider theme={currentTheme}>
           <CssBaseline />
           <BrowserRouter>
-            <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
-              <HeaderNav />
-              <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>
-                <Routes>
-                  {routes.map(({ path, element }) => (
-                    <Route key={path} path={path} element={element} />
-                  ))}
-                </Routes>
+            <AuthProvider>
+              <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
+                <HeaderNav />
+                <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>
+                  <Routes>
+                    {routes.map(({ path, element }) => (
+                      <Route key={path} path={path} element={element} />
+                    ))}
+                  </Routes>
+                </Box>
+                <SiteFooter />
+                <Suspense fallback={null}>
+                  <AccessibilityTester />
+                  <DebugPanel />
+                </Suspense>
               </Box>
-              <SiteFooter />
-              <Suspense fallback={null}>
-                <AccessibilityTester />
-                <DebugPanel />
-              </Suspense>
-            </Box>
+            </AuthProvider>
           </BrowserRouter>
         </MuiThemeProvider>
       </ErrorBoundary>

@@ -1,8 +1,10 @@
 import React, { lazy, Suspense } from 'react'
-import { LoadingFallback } from '@/components'
+import { LoadingFallback, ProtectedRoute } from '@/components'
 import { CareersPage, PrivacyPage, ImprintPage } from '@/config/placeholderPages'
 
 const HomePage = lazy(() => import('@/features/home/page/HomePage').then(module => ({ default: module.HomePage })))
+
+const LoginPage = lazy(() => import('@/features/auth/page/LoginPage').then(module => ({ default: module.LoginPage })))
 
 const AdminPage = lazy(() => import('@/features/admin/page/AdminPage').then(module => ({ default: module.AdminPage })))
 
@@ -98,11 +100,22 @@ export const routes: RouteConfig[] = [
     element: <ImprintPage />,
   },
   {
-    path: '/admin',
+    path: '/login',
     element: (
       <Suspense fallback={<LoadingFallback variant="page" />}>
-        <AdminPage />
+        <LoginPage />
       </Suspense>
+    ),
+    lazy: true,
+  },
+  {
+    path: '/admin',
+    element: (
+      <ProtectedRoute requireAdmin>
+        <Suspense fallback={<LoadingFallback variant="page" />}>
+          <AdminPage />
+        </Suspense>
+      </ProtectedRoute>
     ),
     lazy: true,
   },

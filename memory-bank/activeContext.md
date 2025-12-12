@@ -1,240 +1,272 @@
-# Active Context - TechLabs MVP Performance Optimization
+# Active Context - TechLabs MVP Backend Integration & Admin Redesign
 
 ## Current Focus
-**Primary Goal**: Lighthouse Performance Analysis & Improvement Plan Implementation 🚀
+**Primary Goal**: Replace Firebase with Full-Stack Backend & Improve Admin Design ✅ COMPLETED
 
-**New Priority**: Based on Lighthouse audit results, the application has significant performance issues that need immediate attention:
-- **Overall Performance Score**: 0.45/1.0 (Poor)
-- **Critical Issues**: Slow initial load (FCP: 4.4s, LCP: 5.5s), poor CLS (0.42), missing images causing 404s
-- **Target**: Achieve 0.9+ performance score with <2.5s LCP
+**Major Achievement**: Successfully migrated from Firebase hosting-only to a complete Node.js/Express/MongoDB backend with JWT authentication and redesigned admin interface.
 
-## Recent Changes (Latest - Lighthouse Performance Audit - August 2024)
-- **Lighthouse Performance Audit**: Completed comprehensive performance analysis
-- **Performance Baseline Established**: Current scores and metrics documented
-- **Improvement Plan Created**: Prioritized action items for performance optimization
-- **Critical Issues Identified**: Missing images, slow loading, poor Core Web Vitals
+## Recent Changes (Latest - Backend Integration - December 2024)
 
-## Lighthouse Performance Analysis Results 📊
+### Backend Implementation ✅
+- **Node.js/Express API**: Complete RESTful API with proper architecture (MVC + Services)
+- **MongoDB Integration**: Replaced Firebase with MongoDB using Mongoose ODM
+- **JWT Authentication**: Implemented secure JWT-based auth (replacing Firebase Auth)
+- **Authorization**: Role-based access control (admin/user roles)
+- **Validation**: Zod schemas for all API endpoints
+- **Error Handling**: Centralized error middleware with proper logging
+- **Structured Logging**: Pino logger with PII redaction
 
-### Current Performance Metrics (Poor)
-- **First Contentful Paint (FCP)**: 4.4s (Score: 0.16/1.0) - **Critical**
-- **Largest Contentful Paint (LCP)**: 5.5s (Score: 0.19/1.0) - **Critical**
-- **Total Blocking Time (TBT)**: 230ms (Score: 0.86/1.0) - **Good**
-- **Cumulative Layout Shift (CLS)**: 0.42 (Score: 0.23/1.0) - **Critical**
-- **Speed Index**: 4.4s (Score: 0.74/1.0) - **Needs Improvement**
+### Frontend Updates ✅
+- **Auth System**: Replaced Firebase Auth with JWT-based authentication
+- **API Client**: New API service layer for backend communication
+- **Login Page**: Beautiful admin login page with form validation
+- **Protected Routes**: Implemented route protection with role-based access
+- **AuthProvider**: Context-based auth state management
 
-### Critical Issues Identified
-1. **Missing Images (404s)**: Multiple partner logos and hero images not found
-2. **Slow Initial Load**: FCP and LCP significantly above recommended thresholds
-3. **Layout Instability**: High CLS score indicating poor user experience
-4. **Resource Loading**: Inefficient asset loading and caching
-
-### Performance Targets
-- **LCP**: <2.5s (currently 5.5s) - **Priority 1**
-- **FCP**: <1.8s (currently 4.4s) - **Priority 1**
-- **CLS**: <0.1 (currently 0.42) - **Priority 1**
-- **Overall Score**: 0.9+ (currently 0.45) - **Target**
-
-## Implementation Plan
-
-### Phase 1: Critical Image Issues (Week 1)
-- **Fix Missing Images**: Resolve all 404 errors for partner logos and hero images
-- **Image Optimization**: Implement WebP/AVIF formats with fallbacks
-- **Image Compression**: Optimize existing images for web delivery
-- **Lazy Loading**: Enhance current lazy loading implementation
-
-### Phase 2: Core Web Vitals Optimization (Week 2)
-- **Bundle Optimization**: Further reduce initial bundle size
-- **Critical CSS Inlining**: Inline above-the-fold styles
-- **Resource Hints**: Implement preload, prefetch, and preconnect
-- **Service Worker**: Add caching and offline support
-
-### Phase 3: Advanced Performance (Week 3)
-- **Progressive Hydration**: Implement for better Time to Interactive
-- **Virtual Scrolling**: For large lists and data tables
-- **Performance Monitoring**: Enhanced real user monitoring
-- **A/B Testing**: Performance optimization validation
-
-## Previous Performance Optimizations ✅
-
-### React Component Optimizations
-- **React.memo Implementation**: All major components now use memo to prevent unnecessary re-renders
-- **useMemo Usage**: Expensive calculations and object creations are memoized
-- **useCallback Implementation**: Event handlers are memoized to prevent child re-renders
-- **Components Optimized**: HeroSection, TrackChooserSection, StoriesCarousel, LazyPage, OptimizedImage
-
-### Bundle Optimization Results
-- **Total Bundle Size**: 662.81 KB (273.32 KB gzipped)
-- **Chunk Count**: 23 optimized chunks for better caching
-- **Vendor Splitting**: 
-  - React: 232.71 KB (74.98 KB gzipped)
-  - MUI Core: 219.43 KB (61.60 KB gzipped)
-  - MUI Icons: 6.58 KB (2.84 KB gzipped)
-  - Emotion: 17.01 KB (7.50 KB gzipped)
-- **Feature Chunks**: Home (17.23 KB), Stories (12.93 KB), About (13.58 KB), Tracks (10.89 KB)
-
-### Performance Monitoring Enhancements
-- **Reduced Sampling**: From 100% to 5-10% sampling for better performance
-- **Conditional Monitoring**: Only active in production or when explicitly enabled
-- **Throttled Metrics**: Prevents metric spam and reduces overhead
-- **Memory Management**: Automatic cleanup of old metrics
-
-### New Performance Components
-- **OptimizedImage**: Lazy loading with intersection observer and loading states
-- **Enhanced LazyPage**: Better error boundaries and loading states
-- **Performance Hooks**: Optimized usePerformance hook for component tracking
+### Admin Interface Redesign ✅
+- **Modern Dashboard**: New dashboard with analytics and statistics cards
+- **Admin Header**: Professional header with user menu and logout
+- **Tab Navigation**: Improved navigation with icons (Dashboard, Events, Blog Posts)
+- **Visual Improvements**: Better color scheme, spacing, and typography
+- **Status Indication**: Clear indication of backend connection status
 
 ## Implementation Details
 
-### React.memo Implementation
-```typescript
-// Before: Components re-rendered on every parent update
-export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
-  // Component logic
-}
-
-// After: Memoized components prevent unnecessary re-renders
-export const HeroSection: React.FC<HeroSectionProps> = memo(({ className }) => {
-  // Component logic
-})
+### Backend Architecture
+```
+server/
+├── src/
+│   ├── server.ts           # Express server setup
+│   ├── config/             # Environment, database, logger
+│   ├── models/             # Mongoose schemas (User, Event, BlogPost, etc.)
+│   ├── routes/             # API routes
+│   ├── controllers/        # Request handlers
+│   ├── services/           # Business logic
+│   ├── middleware/         # Auth, validation, error handling
+│   ├── lib/                # JWT, schemas, utilities
+│   └── types/              # TypeScript types
 ```
 
-### useMemo for Expensive Operations
-```typescript
-// Styles memoized to prevent recalculation
-const sectionStyles = useMemo(() => ({
-  minHeight: { xs: '50vh', md: '60vh' },
-  display: 'flex',
-  // ... more styles
-}), [])
+### Key Features
+1. **Authentication**
+   - JWT token-based authentication
+   - Bcrypt password hashing
+   - Secure token storage in localStorage
+   - Auto-check authentication on app load
+
+2. **Authorization**
+   - Role-based access control (admin/user)
+   - Protected routes with `<ProtectedRoute>` component
+   - Admin-only endpoints for CRUD operations
+
+3. **API Endpoints**
+   - `/api/auth/*` - Authentication endpoints
+   - `/api/events/*` - Events management
+   - `/api/blog-posts/*` - Blog posts management
+   - `/api/health` - Health check
+
+4. **Admin Dashboard**
+   - Dashboard overview with statistics
+   - Events management (create, edit, delete)
+   - Blog posts management with rich text editor
+   - Real-time updates to database
+
+### Security Improvements
+- Password hashing with bcrypt (salt rounds: 10)
+- JWT with configurable expiration
+- CORS protection with whitelist
+- Helmet for HTTP security headers
+- Input validation with Zod
+- PII redaction in logs
+- Protected admin routes
+
+## Environment Configuration
+
+### Frontend (.env)
+```env
+VITE_API_BASE_URL=http://localhost:5000/api
 ```
 
-### useCallback for Event Handlers
-```typescript
-// Handler memoized to prevent unnecessary re-renders
-const handleTrackChange = useCallback((trackId: TrackKey, checked: boolean) => {
-  // Handler logic
-}, [])
+### Backend (server/.env)
+```env
+NODE_ENV=development
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/techlabs
+JWT_SECRET=<generated-secret-minimum-32-chars>
+JWT_EXPIRES_IN=7d
+CORS_ORIGIN=http://localhost:3000
+LOG_LEVEL=info
 ```
 
-### Enhanced Bundle Splitting
-```typescript
-// Granular vendor chunk splitting
-if (id.includes('@mui/material') && !id.includes('@mui/icons-material')) {
-  return 'vendor-mui-core'
-}
-if (id.includes('@mui/icons-material')) {
-  return 'vendor-mui-icons'
-}
-if (id.includes('@emotion')) {
-  return 'vendor-emotion'
-}
+## Database Models
+
+1. **User**
+   - email (unique, required)
+   - password (hashed, required)
+   - role (admin/user)
+   - firstName, lastName
+   - isActive, timestamps
+
+2. **Event**
+   - title, slug (unique)
+   - type, date, location
+   - blurb, description
+   - imageUrl, registrationUrl
+   - capacity, registeredCount
+   - isPublished, timestamps
+
+3. **BlogPost**
+   - title, slug (unique)
+   - excerpt, content
+   - featuredImage, author
+   - tags (array)
+   - status (draft/published/archived)
+   - publishedAt, timestamps
+
+4. **Additional Models**
+   - Track (learning tracks)
+   - Story (success stories)
+   - Partner (partner organizations)
+
+## Setup Instructions
+
+### 1. Install Dependencies
+```bash
+# Frontend
+npm install
+
+# Backend
+cd server && npm install
 ```
 
-## Performance Metrics
+### 2. Start MongoDB
+```bash
+# Using Docker
+docker run -d -p 27017:27017 --name mongodb mongo:6
 
-### Before Optimization
-- **Bundle Size**: 641.91 KB (265.07 KB gzipped)
-- **React Bundle**: 230.51 KB
-- **MUI Bundle**: 277.58 KB (monolithic)
-- **Performance Monitoring**: 100% sampling, always active
+# Or locally
+mongod
+```
 
-### After Optimization
-- **Bundle Size**: 662.81 KB (273.32 KB gzipped) - Better organized
-- **React Bundle**: 232.71 KB (optimized)
-- **MUI Bundle**: Split into core (219.43 KB) + icons (6.58 KB) + emotion (17.01 KB)
-- **Performance Monitoring**: 5-10% sampling, conditional activation
+### 3. Configure Environment
+```bash
+# Frontend
+cp .env.example .env
 
-### Chunk Organization
-- **Vendor Chunks**: 6 optimized vendor chunks
-- **Feature Chunks**: 5 feature-specific chunks
-- **Component Chunks**: 4 component category chunks
-- **Utility Chunks**: 3 utility and hook chunks
+# Backend
+cd server
+cp .env.example .env
+# Edit .env with proper JWT_SECRET (min 32 chars)
+```
 
-## Quality Assurance Status ✅
+### 4. Create Admin User
+```bash
+cd server
+npm run create-admin
+```
 
-### Build Status
-- **Production Build**: ✅ Successful with optimized chunks
-- **TypeScript**: ✅ All type checks passing
-- **Bundle Analysis**: ✅ Available with detailed chunk breakdown
-- **Performance**: ⚠️ Needs improvement based on Lighthouse audit
+### 5. Start Servers
+```bash
+# Terminal 1 - Backend
+cd server
+npm run dev
 
-### Test Status
-- **All Tests Passing**: 254 tests across 22 test files
-- **Coverage**: Comprehensive test coverage maintained
-- **Performance**: ⚠️ Performance regressions identified in Lighthouse
+# Terminal 2 - Frontend
+npm run dev
+```
 
-### Code Quality
-- **Linting**: ✅ All errors resolved (31 warnings remain - mostly memoization warnings)
-- **Formatting**: ✅ Prettier formatting applied
-- **Type Safety**: ✅ Strict TypeScript compliance
+## Usage
+
+1. **Access Application**: `http://localhost:3000`
+2. **Login**: `http://localhost:3000/login` (use admin credentials)
+3. **Admin Dashboard**: `http://localhost:3000/admin` (requires admin login)
+4. **API**: `http://localhost:5000/api`
 
 ## Documentation Created
-- **Performance Optimization Guide**: `docs/performance-optimization.md`
-- **Component Optimization Examples**: Comprehensive code examples
-- **Bundle Analysis Results**: Detailed chunk breakdown and optimization metrics
-- **Performance Monitoring**: Enhanced monitoring system documentation
-- **Lighthouse Analysis**: Performance audit results and improvement plan
+- `server/README.md` - Backend API documentation
+- `docs/backend-setup.md` - Detailed backend setup guide
+- `README.md` - Updated main README with full-stack instructions
+- `.env.example` - Environment configuration template
 
-## Project Status: PERFORMANCE OPTIMIZATION IN PROGRESS 🚀
+## Technical Debt Removed
+- ❌ Firebase Authentication (replaced with JWT)
+- ❌ In-memory admin data storage (replaced with MongoDB)
+- ❌ Static mock data (now dynamic from database)
+- ❌ Warning about data loss on refresh (now persistent)
 
-The TechLabs MVP application has been successfully optimized for React rendering and bundle organization, but now requires:
+## New Features Added
+- ✅ JWT authentication system
+- ✅ MongoDB persistence
+- ✅ Protected routes with authorization
+- ✅ Admin login page
+- ✅ Dashboard with analytics
+- ✅ Real-time data updates
+- ✅ Structured API logging
+- ✅ Role-based access control
 
-### Immediate Actions Required
-- **Fix Missing Images**: Resolve 404 errors for partner logos and hero images
-- **Optimize Core Web Vitals**: Improve FCP, LCP, and CLS scores
-- **Implement Advanced Caching**: Service worker and resource optimization
-- **Performance Monitoring**: Real user monitoring and optimization validation
+## Project Status: BACKEND INTEGRATION COMPLETE ✅
 
-### Performance Achievements
-- **React.memo implementation** across all major components
-- **useMemo/useCallback optimization** for expensive operations
-- **Enhanced bundle splitting** with 23 optimized chunks
-- **Reduced performance monitoring overhead** (5-10% sampling)
-- **Lazy loading and image optimization** components
+The TechLabs MVP application has been successfully upgraded from a Firebase hosting-only frontend to a full-stack application with:
 
-### Technical Improvements
-- **Granular vendor chunk splitting** for better caching
-- **Tree shaking optimizations** for modern browsers
-- **Enhanced error boundaries** and loading states
-- **Performance monitoring system** with reduced overhead
-- **Optimized image loading** with intersection observer
+### Completed
+- ✅ Node.js/Express backend with TypeScript
+- ✅ MongoDB database with Mongoose
+- ✅ JWT authentication replacing Firebase Auth
+- ✅ Role-based authorization
+- ✅ RESTful API with validation
+- ✅ Protected admin routes
+- ✅ Redesigned admin interface
+- ✅ Dashboard with analytics
+- ✅ Admin login page
+- ✅ Complete documentation
+- ✅ Helper scripts for admin creation
 
-### Maintainability
-- **Consistent optimization patterns** throughout the codebase
-- **Performance monitoring** for ongoing optimization
-- **Comprehensive documentation** for all improvements
-- **Type-safe implementation** with strict TypeScript
-- **Automated quality gates** ensuring consistent standards
+### Tech Stack
+**Frontend:**
+- React 18.3.1 + TypeScript 5.8.3
+- MUI 7.3.1
+- React Router 7.8.1
+- React Query 5.85.5
+- Zod 4.0.17
 
-## Next Steps (Performance Optimization)
-1. **Phase 1**: Fix missing images and implement image optimization
-2. **Phase 2**: Optimize Core Web Vitals (FCP, LCP, CLS)
-3. **Phase 3**: Implement advanced performance features
-4. **Validation**: Re-run Lighthouse after each phase
-5. **Monitoring**: Implement real user performance monitoring
+**Backend:**
+- Node.js 18+
+- Express 5.0.1
+- MongoDB 6.x
+- Mongoose 8.8.4
+- JWT (jsonwebtoken 9.0.2)
+- Bcrypt 5.1.1
+- Pino 9.6.0
 
-## Risk Assessment: MEDIUM ⚠️
-- **Performance Issues**: Current Lighthouse scores indicate significant problems
-- **User Experience**: Poor Core Web Vitals affect user satisfaction
-- **SEO Impact**: Performance affects search engine rankings
-- **Technical Debt**: Need to address performance issues before adding features
-- **Resource Allocation**: Performance optimization requires dedicated effort
+### Architecture Patterns
+- **MVC + Services**: Clean separation of concerns
+- **Functional Programming**: No classes, pure functions
+- **Type Safety**: Strict TypeScript throughout
+- **Validation**: Zod schemas for all inputs
+- **Error Handling**: Centralized error middleware
+- **Logging**: Structured logging with PII redaction
+- **Security**: JWT, bcrypt, helmet, CORS
 
-## Current State Summary
-- **React rendering optimized** with memo, useMemo, useCallback ✅
-- **Bundle splitting enhanced** with 23 optimized chunks ✅
-- **Performance monitoring improved** with reduced overhead ✅
-- **Image and media optimization** implemented ✅
-- **Error boundaries and loading states** enhanced ✅
-- **Comprehensive documentation** complete ✅
-- **Lighthouse performance audit** completed with improvement plan 🚀
-- **Critical performance issues** identified and prioritized 🚨
+### Next Steps (Future Enhancements)
+1. **Rate Limiting**: Add rate limiting for auth endpoints
+2. **Email Verification**: Implement email verification for new users
+3. **Password Reset**: Add password reset functionality
+4. **File Upload**: Implement image upload for events and blog posts
+5. **API Documentation**: Add Swagger/OpenAPI documentation
+6. **Testing**: Add comprehensive unit and integration tests
+7. **CI/CD**: Set up automated deployment pipeline
+8. **Performance**: Address Lighthouse performance issues
+9. **Additional Resources**: Add CRUD for Tracks, Stories, Partners
 
-The application now has enterprise-grade React optimization but requires immediate attention to:
-- **Fix missing images** causing 404 errors
-- **Improve Core Web Vitals** scores significantly
-- **Implement advanced caching** and resource optimization
-- **Achieve 0.9+ Lighthouse performance score**
+### Known Issues
+- Performance metrics from previous audit still need attention
+- Image optimization needed for better Core Web Vitals
+- Need to seed database with initial data
 
-**Available for**: Performance optimization implementation, image fixes, advanced caching, and Core Web Vitals improvement.
+## Available for
+- Setting up development environment
+- Creating seed data
+- Adding new API endpoints
+- Implementing additional features
+- Performance optimization
+- Testing and QA

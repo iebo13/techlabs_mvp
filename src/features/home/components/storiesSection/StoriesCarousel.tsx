@@ -99,8 +99,15 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
                 },
                 gap: 2.5,
               }}>
-              {visibleStories.map(story => (
-                <Box key={story.id}>
+              {visibleStories.map((story, index) => (
+                <Box
+                  key={story.id}
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label={t('stories.carousel.slideLabel', {
+                    current: currentIndex + index + 1,
+                    total: stories.length,
+                  })}>
                   <CarouselItem story={story} />
                 </Box>
               ))}

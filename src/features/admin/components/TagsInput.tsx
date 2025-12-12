@@ -48,6 +48,11 @@ export const TagsInput: React.FC<TagsInputProps> = ({ tags, onTagsChange }) => {
           onChange={e => setTagInput(e.target.value)}
           onKeyDown={handleKeyDown}
           sx={{ flexGrow: 1 }}
+          slotProps={{
+            input: {
+              'aria-label': 'Add a tag',
+            },
+          }}
         />
         <Button variant="outlined" onClick={handleAddTag} disabled={!tagInput.trim()}>
           Add

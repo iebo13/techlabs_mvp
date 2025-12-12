@@ -7,7 +7,7 @@ import type { Partner } from '../types/partners.type'
 
 export const PartnersPage: React.FC = () => {
   return (
-    <main>
+    <>
       <Section>
         <Stack spacing={4} alignItems="center" textAlign="center">
           <SectionHeading level={2} centered>
@@ -61,6 +61,6 @@ export const PartnersPage: React.FC = () => {
           </Stack>
         </Card>
       </Section>
-    </main>
+    </>
   )
 }

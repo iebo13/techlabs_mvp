@@ -338,7 +338,8 @@
     "carousel": {
       "previousAriaLabel": "Previous stories",
       "nextAriaLabel": "Next stories",
-      "ariaLabel": "Stories carousel"
+      "ariaLabel": "Stories carousel",
+      "slideLabel": "Story {{current}} of {{total}}"
     },
     "page": {
       "title": "Our Graduates' Stories",

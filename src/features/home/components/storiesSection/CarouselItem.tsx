@@ -41,7 +41,7 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
           outlineOffset: '2px',
         },
       }}>
-      <Box component="img" src={getStoryImage(story.id)} alt={story.title} />
+      <Box component="img" src={getStoryImage(story.id)} alt="" />
       <Box
         sx={{
           position: 'absolute',

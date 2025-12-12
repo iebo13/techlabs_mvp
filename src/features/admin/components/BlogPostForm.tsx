@@ -119,6 +119,7 @@ export const BlogPostForm: React.FC<BlogPostFormProps> = ({ open, post, onSubmit
                 slotProps={{
                   input: {
                     sx: { fontSize: '2.5rem', fontWeight: 700, '&::before, &::after': { display: 'none' } },
+                    'aria-label': 'Post title',
                   },
                 }}
                 sx={{ mb: 3 }}
@@ -140,6 +141,11 @@ export const BlogPostForm: React.FC<BlogPostFormProps> = ({ open, post, onSubmit
                 variant="outlined"
                 error={Boolean(errors.excerpt)}
                 helperText={errors.excerpt?.message}
+                slotProps={{
+                  input: {
+                    'aria-label': 'Post excerpt',
+                  },
+                }}
                 sx={{ mb: 3 }}
               />
             )}

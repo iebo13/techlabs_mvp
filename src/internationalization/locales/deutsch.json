@@ -338,7 +338,8 @@
     "carousel": {
       "previousAriaLabel": "Vorherige Geschichten",
       "nextAriaLabel": "Nächste Geschichten",
-      "ariaLabel": "Geschichten-Karussell"
+      "ariaLabel": "Geschichten-Karussell",
+      "slideLabel": "Geschichte {{current}} von {{total}}"
     },
     "page": {
       "title": "Geschichten unserer Absolventen",

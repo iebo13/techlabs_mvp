@@ -35,7 +35,7 @@ export const TracksPage: React.FC = () => {
   }
 
   return (
-    <main>
+    <>
       <SEO
         title={i18n.t('tracks.page.title')}
         description={i18n.t('tracks.page.description')}
@@ -59,6 +59,6 @@ export const TracksPage: React.FC = () => {
           </Grid>
         </Container>
       </Section>
-    </main>
+    </>
   )
 }

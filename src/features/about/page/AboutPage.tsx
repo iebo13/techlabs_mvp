@@ -21,7 +21,7 @@ export const AboutPage: React.FC = () => {
   }, [])
 
   return (
-    <main>
+    <>
       <SEO
         title={t('about.page.title')}
         description={t('about.page.description')}
@@ -38,6 +38,6 @@ export const AboutPage: React.FC = () => {
       <Box ref={faqRef} tabIndex={-1}>
         <FaqsSection faqs={faqData.faqs} />
       </Box>
-    </main>
+    </>
   )
 }

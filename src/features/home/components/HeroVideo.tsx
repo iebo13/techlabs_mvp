@@ -1,6 +1,6 @@
 import React, { useState, lazy, Suspense } from 'react'
 import { PlayArrow as PlayArrowIcon } from '@mui/icons-material'
-import { Card, Box, IconButton, Chip, useTheme, useMediaQuery, CircularProgress } from '@mui/material'
+import { Card, Box, Chip, useTheme, useMediaQuery, CircularProgress } from '@mui/material'
 import { OptimizedImage, Section } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
 
@@ -94,25 +94,26 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
                 bgcolor: 'rgba(0, 0, 0, 0.4)',
               },
             }}>
-            <IconButton
-              size="large"
-              aria-label={`Play introduction video, duration ${durationText}`}
+            <Box
+              aria-hidden="true"
               sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 bgcolor: 'primary.main',
                 color: 'primary.contrastText',
                 width: { xs: 64, sm: 80 },
                 height: { xs: 64, sm: 80 },
+                borderRadius: '50%',
                 '&:hover': {
                   bgcolor: 'primary.dark',
                   transform: 'scale(1.1)',
                 },
-              }}
-              onClick={event => {
-                event.stopPropagation()
-                handlePlayClick()
+                transition:
+                  'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 0.2s ease-in-out',
               }}>
               <PlayArrowIcon sx={{ fontSize: { xs: 32, sm: 40 } }} />
-            </IconButton>
+            </Box>
           </Box>
 
           <Chip

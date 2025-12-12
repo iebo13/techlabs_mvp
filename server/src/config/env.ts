@@ -1,9 +1,10 @@
 import { z } from 'zod'
 
 const envSchema = z.object({
-  NODE_ENV: z.enum(['development', 'test', 'production']).optional(),
+  NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.coerce.number().int().positive().default(4000),
   JWT_SECRET: z.string().min(16).default('dev-secret-change-me-now'),
+  CORS_ORIGINS: z.string().optional(),
   ADMIN_EMAIL: z.string().email().default('admin@techlabs.local'),
   ADMIN_PASSWORD: z.string().min(8).default('adminadmin'),
   ADMIN_PASSWORD_HASH: z.string().min(1).optional(),
@@ -11,4 +12,17 @@ const envSchema = z.object({
 
 export type Env = z.infer<typeof envSchema>
 
-export const env = envSchema.parse(process.env)
+const parsed = envSchema.parse(process.env)
+
+// Fail fast for insecure production defaults
+if (parsed.NODE_ENV === 'production') {
+  if (parsed.JWT_SECRET === 'dev-secret-change-me-now') {
+    throw new Error('JWT_SECRET must be set in production')
+  }
+
+  if (!parsed.ADMIN_PASSWORD_HASH) {
+    throw new Error('ADMIN_PASSWORD_HASH must be set in production')
+  }
+}
+
+export const env = parsed

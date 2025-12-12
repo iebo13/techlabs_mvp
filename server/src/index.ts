@@ -1,7 +1,7 @@
 import { env } from './config/env'
 import { logger } from './lib/logger'
 import { createApp } from './app'
-import { createMemoryStore } from './store/memoryStore'
+import { createMemoryStore } from './store/memory/memoryStore'
 
 const start = async (): Promise<void> => {
   const store = await createMemoryStore()

@@ -7,7 +7,16 @@ import { logger } from './lib/logger'
 import { mapUnknownError } from './lib/errors'
 import { authRoutes } from './routes/authRoutes'
 import { createAdminRoutes } from './routes/adminRoutes'
-import type { MemoryStore } from './store/memoryStore'
+import type { MemoryStore } from './store/memory/memoryStore'
+
+const parseCorsOrigins = (value: string | undefined): string[] => {
+  if (!value) return []
+
+  return value
+    .split(',')
+    .map(v => v.trim())
+    .filter(Boolean)
+}
 
 export const createApp = (store: MemoryStore): express.Express => {
   const app = express()
@@ -25,9 +34,10 @@ export const createApp = (store: MemoryStore): express.Express => {
   )
 
   app.use(helmet())
+  const allowlist = parseCorsOrigins(env.CORS_ORIGINS)
   app.use(
     cors({
-      origin: env.NODE_ENV === 'production' ? false : true,
+      origin: env.NODE_ENV === 'production' ? allowlist : true,
       credentials: true,
     })
   )

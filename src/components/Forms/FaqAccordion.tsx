@@ -34,6 +34,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
             key={`faq-${faq.q.slice(0, 20).toLowerCase().replaceAll(/\s+/g, '-')}`}
             expanded={expanded === `panel${index}`}
             onChange={handleChange(`panel${index}`)}
+            aria-expanded={expanded === `panel${index}`}
             sx={{
               border: showBorder ? '1px solid' : 'none',
               borderColor: showBorder ? 'divider' : 'transparent',
@@ -47,9 +48,10 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
               },
             }}>
             <AccordionSummary
-              expandIcon={<ExpandMore />}
+              expandIcon={<ExpandMore aria-hidden="true" />}
               aria-controls={`panel${index}bh-content`}
               id={`panel${index}bh-header`}
+              aria-expanded={expanded === `panel${index}`}
               sx={{
                 '& .MuiAccordionSummary-content': {
                   margin: 2,
@@ -65,7 +67,11 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
                 {faq.q}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails sx={{ px: 3, pb: 3 }}>
+            <AccordionDetails
+              id={`panel${index}bh-content`}
+              role="region"
+              aria-labelledby={`panel${index}bh-header`}
+              sx={{ px: 3, pb: 3 }}>
               <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
                 {faq.a}
               </Typography>

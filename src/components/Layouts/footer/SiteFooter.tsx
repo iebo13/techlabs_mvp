@@ -9,7 +9,7 @@ export const SiteFooter: React.FC = () => {
   const theme = useTheme()
 
   return (
-    <Box component="footer">
+    <Box component="footer" role="contentinfo" aria-label="Site footer">
       <Box
         sx={{
           backgroundColor: theme.palette.mode === 'dark' ? '#1a1a1a' : '#F7F7F8',

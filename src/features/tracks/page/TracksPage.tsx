@@ -34,10 +34,12 @@ export const TracksPage: React.FC = () => {
     setExpandedTrack(expandedTrack === trackId ? null : trackId)
   }
 
+  const pageTitle = i18n.t('tracks.page.title')
+
   return (
-    <main>
+    <main role="main" aria-label={i18n.t('tracks.page.mainLabel', { defaultValue: pageTitle })}>
       <SEO
-        title={i18n.t('tracks.page.title')}
+        title={pageTitle}
         description={i18n.t('tracks.page.description')}
         keywords={i18n.t('tracks.page.keywords')}
         image="/img/tracks-og-image.jpg"
@@ -48,7 +50,7 @@ export const TracksPage: React.FC = () => {
       <Section sx={{ py: { xs: 4, md: 6 } }}>
         <Container maxWidth="lg">
           <Typography variant="h1" sx={{ mb: 4, textAlign: 'center' }}>
-            {i18n.t('tracks.page.title')}
+            {pageTitle}
           </Typography>
           <Grid container spacing={4}>
             {localizedTracks.map(track => (

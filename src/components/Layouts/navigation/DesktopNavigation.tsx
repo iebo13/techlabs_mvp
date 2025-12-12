@@ -11,7 +11,10 @@ export const DesktopNavigation: React.FC = () => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, width: '100%' }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1, pl: 4, width: '100%' }}>
+      <Box
+        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1, pl: 4, width: '100%' }}
+        role="navigation"
+        aria-label={t('navigation.desktopNavigation')}>
         {navigationItems.map(item => (
           <NavLink
             key={item.path}
@@ -31,9 +34,10 @@ export const DesktopNavigation: React.FC = () => {
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         <Button
           variant="text"
-          endIcon={<KeyboardArrowDown />}
+          endIcon={<KeyboardArrowDown aria-hidden="true" />}
           aria-label={t('navigation.selectCity')}
           aria-haspopup="true"
+          disabled
           sx={{
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -49,6 +53,7 @@ export const DesktopNavigation: React.FC = () => {
             variant={button.variant}
             component={NavLink}
             to={button.path}
+            aria-label={t(`${button.labelKey}AriaLabel`, { defaultValue: t(button.labelKey) })}
             sx={{
               borderRadius: '6px',
               fontWeight: 600,

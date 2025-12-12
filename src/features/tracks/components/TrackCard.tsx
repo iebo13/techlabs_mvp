@@ -34,11 +34,16 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
       }}>
       <CardContent sx={{ flexGrow: 1, p: 3 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          <Typography component="span" sx={{ fontSize: '2.5rem', mr: 2 }} aria-hidden="true">
+          <Typography
+            component="span"
+            sx={{ fontSize: '2.5rem', mr: 2 }}
+            aria-hidden="true"
+            role="img"
+            aria-label={t('tracks.card.trackIcon', { track: track.label })}>
             {track.icon}
           </Typography>
           <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="h3" component="h2" gutterBottom>
+            <Typography variant="h3" component="h2" gutterBottom id={`track-${track.id}-header`}>
               {track.label}
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 1 }}>
@@ -59,7 +64,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
         </Stack>
 
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Box sx={{ mt: 2 }}>
+          <Box sx={{ mt: 2 }} role="region" aria-labelledby={`track-${track.id}-header`}>
             <Box sx={{ mb: 3 }}>
               <Typography variant="h6" gutterBottom>
                 {t('tracks.card.skillsTitle')}
@@ -140,6 +145,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
             fullWidth
             size="large"
             href={`/apply?track=${track.id}`}
+            aria-label={t('tracks.card.applyNowAriaLabel', { track: track.label })}
             sx={{
               bgcolor: 'primary.main',
               '&:hover': {

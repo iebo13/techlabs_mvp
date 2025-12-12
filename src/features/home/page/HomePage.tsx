@@ -21,7 +21,7 @@ export const HomePage: React.FC = () => {
   const { t } = useI18n()
 
   return (
-    <main>
+    <main role="main" aria-label={t('pages.home.mainLabel', { defaultValue: t('pages.home.title') })}>
       <SEO
         title={t('pages.home.title')}
         description={t('pages.home.description')}

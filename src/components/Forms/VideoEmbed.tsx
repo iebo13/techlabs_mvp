@@ -72,13 +72,13 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, sr
           color: 'common.white',
           pb: 1,
         }}>
-        {title}
+        <Box component="span">{title}</Box>
         <IconButton
           ref={closeButtonRef}
           onClick={onClose}
           aria-label={t('video.closeVideo')}
           sx={{ color: 'common.white' }}>
-          <CloseIcon />
+          <CloseIcon aria-hidden="true" />
         </IconButton>
       </DialogTitle>
 
@@ -107,9 +107,11 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, sr
               maxHeight: '100%',
               objectFit: 'contain',
             }}
-            aria-label={t('video.player', { title })}>
+            aria-label={t('video.player', { title })}
+            aria-describedby="video-dialog-title">
             <source src={srcUrl} type="video/mp4" />
             <track kind="captions" src="/captions/intro.vtt" srcLang="en" label="English captions" default />
+            <track kind="descriptions" srcLang="en" label="English descriptions" />
             {t('video.unsupportedBrowser')}
           </video>
         </Box>

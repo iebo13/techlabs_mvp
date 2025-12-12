@@ -25,7 +25,7 @@ export const FooterSocialRow: React.FC = () => {
             href={social.url}
             target={social.name === 'Email' ? '_self' : '_blank'}
             rel={social.name === 'Email' ? undefined : 'noopener noreferrer'}
-            aria-label={social.ariaLabel}
+            aria-label={social.name === 'Email' ? social.ariaLabel : `${social.ariaLabel} (opens in new tab)`}
             sx={{
               width: 40,
               height: 40,
@@ -43,7 +43,7 @@ export const FooterSocialRow: React.FC = () => {
                 outlineOffset: 2,
               },
             }}>
-            <IconComponent fontSize="small" />
+            <IconComponent fontSize="small" aria-hidden="true" />
           </IconButton>
         )
       })}

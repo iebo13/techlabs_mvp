@@ -22,6 +22,8 @@ export const Logo: React.FC = () => {
       <img
         src="/Logo.svg"
         alt={t('navigation.logoAlt')}
+        width="32"
+        height="32"
         style={{
           width: 32,
           height: 32,

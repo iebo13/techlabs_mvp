@@ -31,6 +31,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
     <Card
       component={Link}
       to={event.href}
+      aria-label={t('events.card.eventCardAriaLabel', { title: event.title, location: event.location })}
       sx={{
         height: '100%',
         display: 'flex',
@@ -87,14 +88,29 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
         <Stack spacing={1}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
-              📅 {dateDistance}
+            <Typography
+              variant="caption"
+              color="text.secondary"
+              sx={{ fontWeight: 500 }}
+              component="time"
+              dateTime={event.date}>
+              <Box component="span" aria-hidden="true">
+                📅
+              </Box>
+              <Box component="span" sx={{ ml: 0.5 }}>
+                {dateDistance}
+              </Box>
             </Typography>
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
-              📍 {event.location}
+              <Box component="span" aria-hidden="true">
+                📍
+              </Box>
+              <Box component="span" sx={{ ml: 0.5 }}>
+                {event.location}
+              </Box>
             </Typography>
           </Box>
         </Stack>

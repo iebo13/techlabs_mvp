@@ -7,7 +7,7 @@ import type { Partner } from '../types/partners.type'
 
 export const PartnersPage: React.FC = () => {
   return (
-    <main>
+    <main role="main" aria-label="Partners page">
       <Section>
         <Stack spacing={4} alignItems="center" textAlign="center">
           <SectionHeading level={2} centered>
@@ -52,6 +52,7 @@ export const PartnersPage: React.FC = () => {
               variant="outlined"
               size="large"
               href="/about#contact"
+              aria-label="Get in touch to become a partner"
               sx={{
                 color: 'white',
                 borderColor: 'white',

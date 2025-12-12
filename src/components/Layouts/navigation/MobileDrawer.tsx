@@ -88,7 +88,12 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
           }}>
           {t('navigation.mobileMenuDescription')}
         </Typography>
-        <IconButton edge="end" onClick={onClose} aria-label="close navigation menu" sx={closeButtonStyles}>
+        <IconButton
+          edge="end"
+          onClick={onClose}
+          aria-label={t('navigation.closeMenu')}
+          aria-controls="mobile-navigation-drawer"
+          sx={closeButtonStyles}>
           <CloseIcon
             sx={{
               fontSize: {
@@ -100,10 +105,10 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
         </IconButton>
       </Box>
 
-      <Box sx={{ flex: 1, overflowY: 'auto' }}>
-        <List sx={{ px: spacing.listPx }}>
+      <Box sx={{ flex: 1, overflowY: 'auto' }} role="navigation" aria-label={t('navigation.mobileNavigation')}>
+        <List sx={{ px: spacing.listPx }} role="list">
           {navigationItems.map(item => (
-            <ListItem key={item.path} disablePadding>
+            <ListItem key={item.path} disablePadding role="listitem">
               <NavLink to={item.path} onClick={onClose} sx={navLinkStyles}>
                 <Typography
                   sx={{
@@ -137,7 +142,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
           },
         }}>
         <Divider sx={{ mb: spacing.dividerMb }} />
-        <Stack spacing={{ xs: 2, sm: 2.5 }}>
+        <Stack spacing={{ xs: 2, sm: 2.5 }} role="group" aria-label={t('navigation.ctaButtons')}>
           {ctaButtons.map(button => (
             <Button
               key={button.path}
@@ -146,6 +151,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
               variant={button.variant}
               fullWidth
               onClick={onClose}
+              aria-label={t(`${button.labelKey}AriaLabel`, { defaultValue: t(button.labelKey) })}
               sx={getCtaStyles(button.variant)}>
               {t(button.labelKey)}
             </Button>

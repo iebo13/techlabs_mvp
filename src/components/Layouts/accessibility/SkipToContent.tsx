@@ -24,6 +24,7 @@ export const SkipToContent: React.FC = () => {
       component="a"
       href="#main-content"
       onClick={handleClick}
+      aria-label={t('common.skipToContent')}
       sx={{
         position: 'absolute',
         top: '-40px',

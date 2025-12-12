@@ -21,7 +21,7 @@ export const AboutPage: React.FC = () => {
   }, [])
 
   return (
-    <main>
+    <main role="main" aria-label={t('about.page.mainLabel', { defaultValue: t('about.page.title') })}>
       <SEO
         title={t('about.page.title')}
         description={t('about.page.description')}

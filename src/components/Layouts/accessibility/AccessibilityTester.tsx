@@ -50,18 +50,28 @@ export const AccessibilityTester: React.FC = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
         }}>
-        <Typography variant="h6" component="h2">
+        <Typography variant="h6" component="h2" id="accessibility-tester-title">
           {t('accessibility.title')}
         </Typography>
-        <Button size="small" onClick={() => setIsExpanded(!isExpanded)} variant="outlined">
+        <Button
+          size="small"
+          onClick={() => setIsExpanded(!isExpanded)}
+          variant="outlined"
+          aria-expanded={isExpanded}
+          aria-controls="accessibility-tester-content">
           {isExpanded ? t('common.hide') : t('common.show')}
         </Button>
       </Box>
 
       <Collapse in={isExpanded}>
-        <Box sx={{ p: 2 }}>
+        <Box id="accessibility-tester-content" sx={{ p: 2 }} role="region" aria-labelledby="accessibility-tester-title">
           <Box sx={{ mb: 2, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-            <Button size="small" onClick={handleRetest} variant="contained" color="primary">
+            <Button
+              size="small"
+              onClick={handleRetest}
+              variant="contained"
+              color="primary"
+              aria-label={t('debug.retestAriaLabel', { defaultValue: t('debug.retest') })}>
               {t('debug.retest')}
             </Button>
             <Typography variant="body2" color="text.secondary">

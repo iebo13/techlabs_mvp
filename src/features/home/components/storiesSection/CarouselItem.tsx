@@ -21,6 +21,7 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
     <Box
       component="a"
       href={`/stories/${story.id}`}
+      aria-label={story.title}
       sx={{
         position: 'relative',
         display: 'block',
@@ -41,7 +42,7 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
           outlineOffset: '2px',
         },
       }}>
-      <Box component="img" src={getStoryImage(story.id)} alt={story.title} />
+      <Box component="img" src={getStoryImage(story.id)} alt="" role="presentation" aria-hidden="true" />
       <Box
         sx={{
           position: 'absolute',
@@ -63,11 +64,11 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
           color: '#FFFFFF',
           pointerEvents: 'none',
         }}>
-        <Typography variant="h3" component="h3">
+        <Typography variant="h3" component="h3" id={`story-title-${story.id}`}>
           {story.title}
         </Typography>
-        <Typography variant="body2" color="white">
-          {'“ ' + story.excerpt + '”'}
+        <Typography variant="body2" color="white" aria-describedby={`story-title-${story.id}`}>
+          {'" ' + story.excerpt + '"'}
         </Typography>
       </Box>
     </Box>

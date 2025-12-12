@@ -82,7 +82,7 @@ export const StoriesPage: React.FC = () => {
   }
 
   return (
-    <>
+    <main role="main" aria-label={t('common:stories.page.mainLabel', { defaultValue: t('common:stories.page.title') })}>
       <Section sx={{ py: { xs: 4, md: 6 } }}>
         <Box
           sx={{
@@ -106,7 +106,10 @@ export const StoriesPage: React.FC = () => {
         </Box>
 
         <Stack spacing={4}>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Box
+            sx={{ display: 'flex', justifyContent: 'center' }}
+            role="search"
+            aria-label={t('common:stories.page.filterLabel', { defaultValue: filterByTrackLabel })}>
             <FormControl sx={{ minWidth: 200 }}>
               <InputLabel id="track-filter-label">{filterByTrackLabel}</InputLabel>
               <Select
@@ -116,8 +119,13 @@ export const StoriesPage: React.FC = () => {
                 label={filterByTrackLabel}
                 onChange={handleTrackChange}
                 size="medium"
-                SelectDisplayProps={{ role: 'button', 'aria-haspopup': 'listbox' }}
-                inputProps={{ 'aria-hidden': true, 'aria-labelledby': 'track-filter-label' }}>
+                aria-label={filterByTrackLabel}
+                SelectDisplayProps={{
+                  role: 'button',
+                  'aria-haspopup': 'listbox',
+                  'aria-labelledby': 'track-filter-label',
+                }}
+                inputProps={{ 'aria-labelledby': 'track-filter-label' }}>
                 {trackOptions.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
@@ -127,7 +135,7 @@ export const StoriesPage: React.FC = () => {
             </FormControl>
           </Box>
 
-          <Box sx={{ textAlign: 'center' }}>
+          <Box sx={{ textAlign: 'center' }} role="status" aria-live="polite" aria-atomic="true">
             <Typography variant="body1" color="text.secondary">
               {t('common:stories.page.showingCount', {
                 count: visibleStories.length,
@@ -146,7 +154,14 @@ export const StoriesPage: React.FC = () => {
 
           {hasMoreStories && (
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-              <Button variant="text" sx={{ textDecoration: 'underline' }} onClick={handleShowMore}>
+              <Button
+                variant="text"
+                sx={{ textDecoration: 'underline' }}
+                onClick={handleShowMore}
+                aria-label={t('common:stories.page.showMoreAriaLabel', {
+                  remaining: filteredStories.length - mobileVisibleCount,
+                  defaultValue: t('common:stories.page.showMore'),
+                })}>
                 {t('common:stories.page.showMore')}
               </Button>
             </Box>
@@ -176,6 +191,6 @@ export const StoriesPage: React.FC = () => {
           <StoryModal story={selectedStory} onClose={handleCloseModal} isMobile={isMobile} />
         </Suspense>
       )}
-    </>
+    </main>
   )
 }

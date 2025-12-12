@@ -82,6 +82,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
             aria-roledescription="carousel"
             aria-label={t('stories.carousel.ariaLabel')}
             aria-live="polite"
+            id="stories-carousel-content"
             sx={{ position: 'relative' }}>
             <CarouselNavigation
               currentIndex={currentIndex}
@@ -91,6 +92,8 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
             />
 
             <Box
+              role="group"
+              aria-label={t('stories.carousel.itemsGroup', { current: currentIndex + 1, total: stories.length })}
               sx={{
                 display: 'grid',
                 gridTemplateColumns: {
@@ -99,8 +102,12 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
                 },
                 gap: 2.5,
               }}>
-              {visibleStories.map(story => (
-                <Box key={story.id}>
+              {visibleStories.map((story, index) => (
+                <Box
+                  key={story.id}
+                  role="article"
+                  aria-posinset={currentIndex + index + 1}
+                  aria-setsize={stories.length}>
                   <CarouselItem story={story} />
                 </Box>
               ))}

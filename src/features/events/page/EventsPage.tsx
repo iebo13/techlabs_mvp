@@ -60,7 +60,7 @@ export const EventsPage: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ py: 6 }}>
+    <Container maxWidth="lg" component="main" role="main" sx={{ py: 6 }}>
       <Box sx={{ mb: 6, textAlign: 'center' }}>
         <Typography
           variant="h2"
@@ -87,11 +87,12 @@ export const EventsPage: React.FC = () => {
         </Typography>
       </Box>
 
-      <Box sx={{ mb: 4 }}>
+      <Box sx={{ mb: 4 }} role="tablist" aria-label={t('events.tabs.ariaLabel')}>
         <Tabs
           value={selectedTab}
           onChange={handleTabChange}
           variant="fullWidth"
+          aria-label={t('events.tabs.ariaLabel')}
           sx={{
             '& .MuiTab-root': {
               fontSize: '1rem',
@@ -103,9 +104,14 @@ export const EventsPage: React.FC = () => {
               color: 'primary.main',
             },
           }}>
-          <Tab value="all" label={getTabLabel('all')} />
-          <Tab value="upcoming" label={getTabLabel('upcoming')} />
-          <Tab value="past" label={getTabLabel('past')} />
+          <Tab value="all" label={getTabLabel('all')} aria-controls="events-panel-all" id="events-tab-all" />
+          <Tab
+            value="upcoming"
+            label={getTabLabel('upcoming')}
+            aria-controls="events-panel-upcoming"
+            id="events-tab-upcoming"
+          />
+          <Tab value="past" label={getTabLabel('past')} aria-controls="events-panel-past" id="events-tab-past" />
         </Tabs>
       </Box>
 
@@ -120,13 +126,20 @@ export const EventsPage: React.FC = () => {
         </Alert>
       ) : (
         <>
-          <Grid container spacing={3} sx={{ mb: 4 }}>
-            {visibleEvents.map(event => (
-              <Grid key={event.id} size={{ xs: 12, sm: 6, md: 4 }}>
-                <EventCard event={event} />
-              </Grid>
-            ))}
-          </Grid>
+          <Box
+            role="region"
+            id={`events-panel-${selectedTab}`}
+            aria-labelledby={`events-tab-${selectedTab}`}
+            aria-live="polite"
+            aria-atomic="true">
+            <Grid container spacing={3} sx={{ mb: 4 }}>
+              {visibleEvents.map(event => (
+                <Grid key={event.id} size={{ xs: 12, sm: 6, md: 4 }}>
+                  <EventCard event={event} />
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
 
           {hasMoreEvents && (
             <Box sx={{ textAlign: 'center' }}>
@@ -134,6 +147,7 @@ export const EventsPage: React.FC = () => {
                 variant="outlined"
                 size="large"
                 onClick={handleLoadMore}
+                aria-label={t('events.page.loadMoreAriaLabel', { remaining: sortedEvents.length - visibleCount })}
                 sx={{
                   px: 4,
                   py: 1.5,

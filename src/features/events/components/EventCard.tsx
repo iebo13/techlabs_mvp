@@ -1,6 +1,7 @@
 import React from 'react'
 import { formatDistanceToNow } from 'date-fns'
 import { Link } from 'react-router-dom'
+import { AccessTime, LocationOn } from '@mui/icons-material'
 import { Box, Card, CardContent, Chip, Stack, Typography } from '@mui/material'
 import { OptimizedImage } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
@@ -87,14 +88,16 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
         <Stack spacing={1}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <AccessTime sx={{ fontSize: 16, color: 'text.secondary' }} aria-hidden="true" />
             <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
-              📅 {dateDistance}
+              {dateDistance}
             </Typography>
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <LocationOn sx={{ fontSize: 16, color: 'text.secondary' }} aria-hidden="true" />
             <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
-              📍 {event.location}
+              {event.location}
             </Typography>
           </Box>
         </Stack>

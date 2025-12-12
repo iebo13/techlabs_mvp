@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
 import type { Story } from '@/features/stories'
+import { useI18n } from '@/hooks'
 
 const STORY_IMAGES = {
   '1': '/img/stories/person1.png',
@@ -13,14 +15,17 @@ type CarouselItemProps = {
 }
 
 export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
+  const { t } = useI18n()
+
   const getStoryImage = (storyId: string) => {
     return STORY_IMAGES[storyId as keyof typeof STORY_IMAGES] || STORY_IMAGES['1']
   }
 
   return (
     <Box
-      component="a"
-      href={`/stories/${story.id}`}
+      component={Link}
+      to={`/stories/${story.id}`}
+      aria-label={t('stories.carousel.viewStory', { title: story.title })}
       sx={{
         position: 'relative',
         display: 'block',
@@ -41,7 +46,12 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
           outlineOffset: '2px',
         },
       }}>
-      <Box component="img" src={getStoryImage(story.id)} alt={story.title} />
+      <Box
+        component="img"
+        src={getStoryImage(story.id)}
+        alt={t('stories.carousel.storyImageAlt', { title: story.title })}
+        loading="lazy"
+      />
       <Box
         sx={{
           position: 'absolute',

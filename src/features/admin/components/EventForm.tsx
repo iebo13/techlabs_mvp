@@ -71,6 +71,8 @@ export const EventForm: React.FC<EventFormProps> = ({ open, event, onSubmit, onC
                   fullWidth
                   error={Boolean(errors.title)}
                   helperText={errors.title?.message}
+                  aria-invalid={Boolean(errors.title)}
+                  aria-describedby={errors.title ? 'title-error' : undefined}
                 />
               )}
             />
@@ -87,6 +89,8 @@ export const EventForm: React.FC<EventFormProps> = ({ open, event, onSubmit, onC
                   rows={3}
                   error={Boolean(errors.blurb)}
                   helperText={errors.blurb?.message}
+                  aria-invalid={Boolean(errors.blurb)}
+                  aria-describedby={errors.blurb ? 'blurb-error' : undefined}
                 />
               )}
             />
@@ -126,12 +130,17 @@ export const EventForm: React.FC<EventFormProps> = ({ open, event, onSubmit, onC
               control={control}
               render={({ field }) => (
                 <FormControl fullWidth error={Boolean(errors.type)}>
-                  <InputLabel>Event Type</InputLabel>
-                  <Select {...field} label="Event Type">
+                  <InputLabel id="event-type-label">Event Type</InputLabel>
+                  <Select
+                    {...field}
+                    labelId="event-type-label"
+                    label="Event Type"
+                    aria-invalid={Boolean(errors.type)}
+                    aria-describedby={errors.type ? 'type-error' : undefined}>
                     <MenuItem value={EventType.UPCOMING}>Upcoming</MenuItem>
                     <MenuItem value={EventType.PAST}>Past</MenuItem>
                   </Select>
-                  {errors.type && <FormHelperText>{errors.type.message}</FormHelperText>}
+                  {errors.type && <FormHelperText id="type-error">{errors.type.message}</FormHelperText>}
                 </FormControl>
               )}
             />

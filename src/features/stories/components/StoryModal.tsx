@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import {
   Close as CloseIcon,
   LocationOn as LocationIcon,
@@ -17,6 +17,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
+import { useFocusTrap } from '@/components/Layouts/accessibility/hooks/useFocusTrap'
 import { useI18n } from '@/hooks'
 import type { Story } from '../types/stories.types'
 
@@ -28,18 +29,27 @@ type StoryModalProps = {
 
 export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile }) => {
   const { t } = useI18n()
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const dialogRef = useFocusTrap<HTMLDivElement>({
+    enabled: !!story,
+    autoFocus: true,
+    restoreFocus: true,
+    initialFocus: closeButtonRef.current || undefined,
+  })
 
   if (!story) return null
   const storyImage = '/img/background.png'
 
   return (
     <Dialog
+      ref={dialogRef}
       open={!!story}
       onClose={onClose}
       maxWidth="md"
       fullWidth
       fullScreen={isMobile}
-      aria-labelledby="story-dialog-title">
+      aria-labelledby="story-dialog-title"
+      aria-modal="true">
       <DialogTitle
         id="story-dialog-title"
         sx={{
@@ -54,7 +64,11 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
           </Typography>
           <Chip label={story.trackLabel} color="primary" variant="outlined" sx={{ mb: 1 }} />
         </Box>
-        <IconButton onClick={onClose} aria-label={t('common:stories.modal.closeDetails')} sx={{ flexShrink: 0 }}>
+        <IconButton
+          ref={closeButtonRef}
+          onClick={onClose}
+          aria-label={t('common:stories.modal.closeDetails')}
+          sx={{ flexShrink: 0 }}>
           <CloseIcon />
         </IconButton>
       </DialogTitle>

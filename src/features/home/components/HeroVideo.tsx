@@ -1,6 +1,6 @@
 import React, { useState, lazy, Suspense } from 'react'
 import { PlayArrow as PlayArrowIcon } from '@mui/icons-material'
-import { Card, Box, IconButton, Chip, useTheme, useMediaQuery, CircularProgress } from '@mui/material'
+import { Box, IconButton, Chip, useTheme, useMediaQuery, CircularProgress } from '@mui/material'
 import { OptimizedImage, Section } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
 
@@ -41,29 +41,13 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
   return (
     <Section sx={{ py: 0 }}>
       <Box sx={{ width: '100%', overflow: 'hidden' }}>
-        <Card
+        <Box
+          component="div"
           sx={{
             position: 'relative',
-            cursor: 'pointer',
-            transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
             overflow: 'hidden',
             borderRadius: 0,
-            '&:focus-within': {
-              outline: '2px solid',
-              outlineColor: 'primary.main',
-              outlineOffset: 2,
-            },
-          }}
-          onClick={handlePlayClick}
-          role="button"
-          tabIndex={0}
-          onKeyDown={event => {
-            if (event.key === 'Enter' || event.key === ' ') {
-              event.preventDefault()
-              handlePlayClick()
-            }
-          }}
-          aria-label={t('hero.video.playLabel', { title: displayTitle, duration: durationText })}>
+          }}>
           <OptimizedImage
             src={posterUrl || VIDEO_THUMBNAIL}
             alt={`${displayTitle} thumbnail`}
@@ -79,6 +63,15 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
           />
 
           <Box
+            component="button"
+            onClick={handlePlayClick}
+            onKeyDown={event => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                handlePlayClick()
+              }
+            }}
+            aria-label={t('hero.video.playLabel', { title: displayTitle, duration: durationText })}
             sx={{
               position: 'absolute',
               top: 0,
@@ -90,26 +83,33 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
               justifyContent: 'center',
               bgcolor: 'rgba(0, 0, 0, 0.3)',
               transition: 'background-color 0.2s ease-in-out',
+              border: 'none',
+              cursor: 'pointer',
+              width: '100%',
+              height: '100%',
               '&:hover': {
                 bgcolor: 'rgba(0, 0, 0, 0.4)',
+              },
+              '&:focus-visible': {
+                outline: '2px solid',
+                outlineColor: 'primary.main',
+                outlineOffset: 2,
               },
             }}>
             <IconButton
               size="large"
-              aria-label={`Play introduction video, duration ${durationText}`}
+              aria-hidden="true"
+              tabIndex={-1}
               sx={{
                 bgcolor: 'primary.main',
                 color: 'primary.contrastText',
                 width: { xs: 64, sm: 80 },
                 height: { xs: 64, sm: 80 },
+                pointerEvents: 'none',
                 '&:hover': {
                   bgcolor: 'primary.dark',
                   transform: 'scale(1.1)',
                 },
-              }}
-              onClick={event => {
-                event.stopPropagation()
-                handlePlayClick()
               }}>
               <PlayArrowIcon sx={{ fontSize: { xs: 32, sm: 40 } }} />
             </IconButton>
@@ -128,9 +128,9 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
                 px: 1.5,
               },
             }}
-            aria-label={`Video duration ${durationText}`}
+            aria-label={t('hero.video.duration', { duration: durationText })}
           />
-        </Card>
+        </Box>
 
         {modalOpen && (
           <Suspense fallback={<CircularProgress />}>

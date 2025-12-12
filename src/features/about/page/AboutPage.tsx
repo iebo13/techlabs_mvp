@@ -31,6 +31,11 @@ export const AboutPage: React.FC = () => {
         type="website"
         tags={t('about.page.tags', { returnObjects: true }) as string[]}
       />
+      <Box
+        component="h1"
+        sx={{ position: 'absolute', left: '-10000px', width: '1px', height: '1px', overflow: 'hidden' }}>
+        {t('about.page.title')}
+      </Box>
       <MissionSection />
       <ProgramSection />
       <TeamSection />

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Close as CloseIcon } from '@mui/icons-material'
 import { Dialog, DialogContent, DialogTitle, IconButton, Box, useTheme, useMediaQuery } from '@mui/material'
+import { useFocusTrap } from '@/components/Layouts/accessibility/hooks/useFocusTrap'
 import { useI18n } from '@/hooks'
 
 type VideoEmbedProps = {
@@ -17,6 +18,12 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, sr
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const videoRef = useRef<HTMLVideoElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const dialogRef = useFocusTrap<HTMLDivElement>({
+    enabled: open,
+    autoFocus: true,
+    restoreFocus: true,
+    initialFocus: closeButtonRef.current || undefined,
+  })
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -27,10 +34,6 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, sr
 
     if (open) {
       document.addEventListener('keydown', handleKeyDown)
-
-      setTimeout(() => {
-        closeButtonRef.current?.focus()
-      }, 100)
     }
 
     return () => {
@@ -46,12 +49,14 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, sr
 
   return (
     <Dialog
+      ref={dialogRef}
       open={open}
       onClose={onClose}
       maxWidth="lg"
       fullWidth
       fullScreen={isMobile}
       aria-labelledby="video-dialog-title"
+      aria-modal="true"
       PaperProps={{
         sx: {
           bgcolor: 'common.black',
@@ -61,7 +66,6 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, sr
           overflow: 'hidden',
         },
       }}
-      disableRestoreFocus
       keepMounted={false}>
       <DialogTitle
         id="video-dialog-title"

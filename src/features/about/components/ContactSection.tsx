@@ -82,7 +82,8 @@ export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="outlined"
-                  startIcon={<LinkedIn />}
+                  startIcon={<LinkedIn aria-hidden="true" />}
+                  aria-label={t('about.contactSection.socialMedia.linkedinAriaLabel')}
                   sx={{ borderRadius: 2 }}>
                   {t('about.contactSection.socialMedia.linkedin')}
                 </Button>
@@ -92,7 +93,8 @@ export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="outlined"
-                  startIcon={<Twitter />}
+                  startIcon={<Twitter aria-hidden="true" />}
+                  aria-label={t('about.contactSection.socialMedia.twitterAriaLabel')}
                   sx={{ borderRadius: 2 }}>
                   {t('about.contactSection.socialMedia.twitter')}
                 </Button>
@@ -102,7 +104,8 @@ export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="outlined"
-                  startIcon={<GitHub />}
+                  startIcon={<GitHub aria-hidden="true" />}
+                  aria-label={t('about.contactSection.socialMedia.githubAriaLabel')}
                   sx={{ borderRadius: 2 }}>
                   {t('about.contactSection.socialMedia.github')}
                 </Button>

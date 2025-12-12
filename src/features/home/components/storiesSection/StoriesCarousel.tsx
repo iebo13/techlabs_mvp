@@ -82,6 +82,7 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
             aria-roledescription="carousel"
             aria-label={t('stories.carousel.ariaLabel')}
             aria-live="polite"
+            aria-atomic="false"
             sx={{ position: 'relative' }}>
             <CarouselNavigation
               currentIndex={currentIndex}

@@ -139,7 +139,9 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false,
             variant="contained"
             fullWidth
             size="large"
+            component="a"
             href={`/apply?track=${track.id}`}
+            aria-label={t('tracks.card.applyNowAriaLabel', { track: track.label })}
             sx={{
               bgcolor: 'primary.main',
               '&:hover': {

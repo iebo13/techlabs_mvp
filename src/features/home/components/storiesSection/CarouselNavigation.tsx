@@ -24,7 +24,10 @@ export const CarouselNavigation: React.FC<CarouselNavigationProps> = ({
       <IconButton
         onClick={onPrevious}
         disabled={currentIndex === 0}
-        aria-label={t('stories.carousel.previousAriaLabel')}
+        aria-label={t('stories.carousel.previousAriaLabel', {
+          current: currentIndex + 1,
+          total: maxIndex + 1,
+        })}
         sx={{
           width: { xs: 48, md: 60 },
           height: { xs: 48, md: 60 },
@@ -53,7 +56,10 @@ export const CarouselNavigation: React.FC<CarouselNavigationProps> = ({
       <IconButton
         onClick={onNext}
         disabled={currentIndex >= maxIndex}
-        aria-label={t('stories.carousel.nextAriaLabel')}
+        aria-label={t('stories.carousel.nextAriaLabel', {
+          current: currentIndex + 1,
+          total: maxIndex + 1,
+        })}
         sx={{
           width: { xs: 48, md: 60 },
           height: { xs: 48, md: 60 },

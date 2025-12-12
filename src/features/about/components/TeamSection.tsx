@@ -60,6 +60,11 @@ export const TeamSection: React.FC = () => {
                 }}>
                 <CardContent>
                   <Box
+                    role="img"
+                    aria-label={t('about.teamSection.avatarAlt', {
+                      name: member.name,
+                      defaultValue: `Avatar for ${member.name}`,
+                    })}
                     sx={{
                       width: '80px',
                       height: '80px',
@@ -74,10 +79,12 @@ export const TeamSection: React.FC = () => {
                       fontSize: '2rem',
                       fontWeight: 600,
                     }}>
-                    {member.name
-                      .split(' ')
-                      .map(n => n[0])
-                      .join('')}
+                    <Box component="span" aria-hidden="true">
+                      {member.name
+                        .split(' ')
+                        .map(n => n[0])
+                        .join('')}
+                    </Box>
                   </Box>
                   <Typography variant="h6" component="h3" gutterBottom fontWeight={600}>
                     {member.name}

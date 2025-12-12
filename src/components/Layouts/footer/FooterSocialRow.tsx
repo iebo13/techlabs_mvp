@@ -1,12 +1,16 @@
 import React from 'react'
 import { Box, IconButton, useTheme } from '@mui/material'
+import { useI18n } from '@/hooks'
 import { socialLinks } from './footerData'
 
 export const FooterSocialRow: React.FC = () => {
   const theme = useTheme()
+  const { t } = useI18n()
 
   return (
     <Box
+      component="nav"
+      aria-label={t('footer.social.navigation', { defaultValue: 'Social media links' })}
       sx={{
         display: 'flex',
         justifyContent: 'center',

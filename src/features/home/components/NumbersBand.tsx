@@ -51,6 +51,7 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
         </Typography>
 
         <Box
+          component="dl"
           sx={{
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
@@ -58,6 +59,7 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
             alignItems: 'center',
             width: '100%',
             gap: 3,
+            m: 0,
           }}>
           {numbers.map(metric => (
             <Box
@@ -68,11 +70,16 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
                 alignItems: 'center',
                 textAlign: 'center',
               }}>
-              <Typography variant="h1" color="text.primary" fontWeight={900} sx={{ fontSize: '4rem' }}>
+              <Typography
+                component="dd"
+                color="text.primary"
+                fontWeight={900}
+                sx={{ fontSize: '4rem', m: 0, lineHeight: 1.2 }}
+                aria-label={`${metric.value} ${getTranslatedLabel(metric.label)}`}>
                 {metric.value}
               </Typography>
 
-              <Typography variant="h6" color="text.primary" fontWeight={600} sx={{ fontSize: '1.5rem' }}>
+              <Typography component="dt" color="text.primary" fontWeight={600} sx={{ fontSize: '1.5rem', order: -1 }}>
                 {getTranslatedLabel(metric.label)}
               </Typography>
             </Box>

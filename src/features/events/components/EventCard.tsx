@@ -87,14 +87,30 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
         <Stack spacing={1}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography component="span" aria-hidden="true" sx={{ fontSize: '0.875rem' }}>
+              📅
+            </Typography>
             <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
-              📅 {dateDistance}
+              <Box
+                component="span"
+                sx={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)' }}>
+                {t('events.card.dateLabel', { defaultValue: 'Date:' })}{' '}
+              </Box>
+              {dateDistance}
             </Typography>
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography component="span" aria-hidden="true" sx={{ fontSize: '0.875rem' }}>
+              📍
+            </Typography>
             <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
-              📍 {event.location}
+              <Box
+                component="span"
+                sx={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)' }}>
+                {t('events.card.locationLabel', { defaultValue: 'Location:' })}{' '}
+              </Box>
+              {event.location}
             </Typography>
           </Box>
         </Stack>

@@ -1,6 +1,6 @@
 # Accessibility Audit Report - TechLabs MVP
 
-**Date**: December 7, 2025  
+**Date**: December 12, 2025 (Updated)  
 **Standard**: WCAG 2.1 AA  
 **Status**: ✅ Remediated
 
@@ -349,6 +349,118 @@ Add the following keys to your i18n files:
     "selectLanguage": "Select language, current: {{current}}",
     "languageOptions": "Language options"
   }
+}
+```
+
+---
+
+## December 2025 Accessibility Improvements
+
+### New Accessibility Enhancements
+
+#### 1. Semantic HTML Improvements
+
+**Pages with `<main>` wrapper**:
+
+- EventsPage - Added proper `<main>` wrapper around content
+- StoriesPage - Added proper `<main>` wrapper around content
+
+**Heading Hierarchy Fixes**:
+
+- NumbersBand - Changed from multiple `<h1>` to proper `<dl>` (definition list)
+  semantic structure for statistics
+- EventsPage - Added proper heading hierarchy with `<h2>` for sections
+- PartnersPage - Fixed heading level from h2 to h1 for page title
+
+#### 2. ARIA Enhancements
+
+**Footer Social Row** (`FooterSocialRow.tsx`):
+
+- Added `nav` role with `aria-label` for social media links navigation
+
+**Events Tabs** (`EventsPage.tsx`):
+
+- Added `aria-label` for tabs filter description
+- Added proper `id` and `aria-controls` attributes for tab/tabpanel association
+
+**Team Section** (`TeamSection.tsx`):
+
+- Added `role="img"` and `aria-label` for avatar initials
+- Made initials text `aria-hidden` since the label provides context
+
+**Trust Strip** (`TrustStripSection.tsx`):
+
+- Added `role="region"` with `aria-label`
+- Respects `prefers-reduced-motion` for auto-scrolling animation
+- Pauses on hover/focus for accessibility
+
+#### 3. Image Accessibility
+
+**Decorative Images**:
+
+- `SupportCta.tsx` - Background image marked decorative with `alt=""` and
+  `aria-hidden`
+- `StoryCard.tsx` - Card images marked decorative since button has descriptive
+  aria-label
+- `CarouselItem.tsx` - Image marked decorative with aria-label on the link
+- `ValuePropCard.tsx` - Icons marked decorative with `aria-hidden`
+
+**OptimizedImage Component**:
+
+- Added support for `aria-hidden` prop for marking decorative images
+
+#### 4. Interactive Element Improvements
+
+**Event Cards** (`EventCard.tsx`):
+
+- Added visually hidden labels for emoji date and location icons
+- Screen readers now properly announce "Date:" and "Location:" before values
+
+**Carousel Navigation**:
+
+- `CarouselItem.tsx` - Added proper `aria-label` for story links
+
+**Form Controls**:
+
+- `StoriesPage.tsx` - Removed conflicting ARIA attributes from Select component
+
+#### 5. Motion/Animation Accessibility
+
+**Trust Strip Animation**:
+
+- Respects `prefers-reduced-motion` media query
+- Animation pauses when users hover or focus within the component
+- Users with vestibular disorders are not affected by continuous motion
+
+#### 6. Heading Separators
+
+**Hero Heading** (`HeroHeading.tsx`):
+
+- Decorative dot separators marked with `aria-hidden="true"`
+
+#### 7. FAQ Accordion
+
+**FaqAccordion** (`FaqAccordion.tsx`):
+
+- Added configurable `headingLevel` prop for proper heading hierarchy
+- Expand icons marked with `aria-hidden="true"`
+
+### i18n Accessibility Translations Added
+
+Added new accessibility-related translation keys in both English and German:
+
+```json
+{
+  "partners": {
+    "logoListLabel": "Partner organizations",
+    "becomePartner": { ... },
+    "trustStrip": { "ariaLabel": "Our trusted partners" }
+  },
+  "footer.social.navigation": "Social media links",
+  "events.card.dateLabel": "Date:",
+  "events.card.locationLabel": "Location:",
+  "events.tabs.filterLabel": "Filter events by status",
+  "about.teamSection.avatarAlt": "Avatar for {{name}}"
 }
 ```
 

@@ -8,6 +8,7 @@ type FAQAccordionProps = {
   maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   showBorder?: boolean
   singleOpen?: boolean
+  headingLevel?: 'h3' | 'h4' | 'h5' | 'h6'
 }
 
 export const FAQAccordion: React.FC<FAQAccordionProps> = ({
@@ -15,6 +16,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
   maxWidth = 'md',
   showBorder = true,
   singleOpen = true,
+  headingLevel = 'h3',
 }) => {
   const [expanded, setExpanded] = useState<string | false>(false)
 
@@ -47,7 +49,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
               },
             }}>
             <AccordionSummary
-              expandIcon={<ExpandMore />}
+              expandIcon={<ExpandMore aria-hidden="true" />}
               aria-controls={`panel${index}bh-content`}
               id={`panel${index}bh-header`}
               sx={{
@@ -57,7 +59,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
               }}>
               <Typography
                 variant="h6"
-                component="div"
+                component={headingLevel}
                 sx={{
                   fontWeight: 600,
                   color: 'text.primary',

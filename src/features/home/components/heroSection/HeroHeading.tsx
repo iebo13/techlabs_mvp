@@ -50,11 +50,11 @@ export const HeroHeading: React.FC = () => {
           },
         }}>
         {t('hero.subtitle.blended')}
-        <Box component="span" className="separator">
+        <Box component="span" className="separator" aria-hidden="true">
           ·
         </Box>
         {t('hero.subtitle.community')}
-        <Box component="span" className="separator">
+        <Box component="span" className="separator" aria-hidden="true">
           ·
         </Box>
         {t('hero.subtitle.projects')}

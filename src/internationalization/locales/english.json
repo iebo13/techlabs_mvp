@@ -256,6 +256,7 @@
     "teamSection": {
       "title": "Meet Our Team",
       "description": "Our team combines expertise in education, technology, and community building to create the best possible learning experience.",
+      "avatarAlt": "Avatar for {{name}}",
       "members": {
         "sarah": {
           "name": "Dr. Sarah Chen",
@@ -311,7 +312,15 @@
     "card": {
       "upcomingLabel": "Upcoming",
       "pastLabel": "Past",
-      "eventImageAlt": "{{title}} event image"
+      "eventImageAlt": "{{title}} event image",
+      "dateLabel": "Date:",
+      "locationLabel": "Location:"
+    },
+    "tabs": {
+      "all": "All Events ({{count}})",
+      "upcoming": "Upcoming ({{count}})",
+      "past": "Past ({{count}})",
+      "filterLabel": "Filter events by status"
     },
     "emptyState": {
       "title": "No events found",
@@ -322,11 +331,6 @@
       "title": "Want to host an event?",
       "description": "Partner with us to create meaningful learning experiences for our community.",
       "cta": "Get in Touch"
-    },
-    "tabs": {
-      "all": "All Events ({{count}})",
-      "upcoming": "Upcoming ({{count}})",
-      "past": "Past ({{count}})"
     }
   },
   "stories": {
@@ -369,7 +373,16 @@
   },
   "partners": {
     "title": "Our Partners",
-    "description": "Companies and organizations that support our mission"
+    "description": "Companies and organizations that support our mission",
+    "logoListLabel": "Partner organizations",
+    "becomePartner": {
+      "title": "Become a Partner",
+      "description": "Join our mission to make tech education accessible to everyone. Partner with us to shape the future of digital learning.",
+      "cta": "Get in Touch"
+    },
+    "trustStrip": {
+      "ariaLabel": "Our trusted partners"
+    }
   },
   "common": {
     "loading": "Loading...",
@@ -427,6 +440,7 @@
       "title": "About Us"
     },
     "social": {
+      "navigation": "Social media links",
       "instagram": "TechLabs on Instagram",
       "youtube": "TechLabs on YouTube",
       "x": "TechLabs on X",

@@ -256,6 +256,7 @@
     "teamSection": {
       "title": "Lernen Sie unser Team kennen",
       "description": "Unser Team vereint Expertise in Bildung, Technologie und Community-Aufbau, um die bestmögliche Lernerfahrung zu schaffen.",
+      "avatarAlt": "Avatar für {{name}}",
       "members": {
         "sarah": {
           "name": "Dr. Sarah Chen",
@@ -311,7 +312,15 @@
     "card": {
       "upcomingLabel": "Kommend",
       "pastLabel": "Vergangen",
-      "eventImageAlt": "{{title}} Veranstaltungsbild"
+      "eventImageAlt": "{{title}} Veranstaltungsbild",
+      "dateLabel": "Datum:",
+      "locationLabel": "Ort:"
+    },
+    "tabs": {
+      "all": "Alle Veranstaltungen ({{count}})",
+      "upcoming": "Kommende ({{count}})",
+      "past": "Vergangene ({{count}})",
+      "filterLabel": "Veranstaltungen nach Status filtern"
     },
     "emptyState": {
       "title": "Keine Veranstaltungen gefunden",
@@ -322,11 +331,6 @@
       "title": "Möchten Sie eine Veranstaltung ausrichten?",
       "description": "Arbeiten Sie mit uns zusammen, um sinnvolle Lernerfahrungen für unsere Community zu schaffen.",
       "cta": "Kontakt aufnehmen"
-    },
-    "tabs": {
-      "all": "Alle Veranstaltungen ({{count}})",
-      "upcoming": "Kommende ({{count}})",
-      "past": "Vergangene ({{count}})"
     }
   },
   "stories": {
@@ -369,7 +373,16 @@
   },
   "partners": {
     "title": "Unsere Partner",
-    "description": "Unternehmen und Organisationen, die unsere Mission unterstützen"
+    "description": "Unternehmen und Organisationen, die unsere Mission unterstützen",
+    "logoListLabel": "Partnerorganisationen",
+    "becomePartner": {
+      "title": "Partner werden",
+      "description": "Unterstützen Sie unsere Mission, Tech-Bildung für alle zugänglich zu machen. Werden Sie unser Partner und gestalten Sie die Zukunft des digitalen Lernens.",
+      "cta": "Kontakt aufnehmen"
+    },
+    "trustStrip": {
+      "ariaLabel": "Unsere vertrauenswürdigen Partner"
+    }
   },
   "common": {
     "loading": "Lädt...",
@@ -427,6 +440,7 @@
       "title": "Über uns"
     },
     "social": {
+      "navigation": "Links zu sozialen Medien",
       "instagram": "TechLabs auf Instagram",
       "youtube": "TechLabs auf YouTube",
       "x": "TechLabs auf X",

@@ -14,7 +14,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
       <Box
         component="button"
         onClick={() => onClick(story)}
-        aria-label={t('common:stories.card.viewDetails', { title: story.title })}
+        aria-label={t('stories.card.viewDetails', { title: story.title })}
         sx={{
           border: 'none',
           background: 'none',
@@ -45,7 +45,8 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
           <Box sx={{ position: 'relative' }}>
             <OptimizedImage
               src={storyImage}
-              alt={`${story.title} - ${story.excerpt}`}
+              alt=""
+              aria-hidden
               width="100%"
               height="180px"
               sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 400px"

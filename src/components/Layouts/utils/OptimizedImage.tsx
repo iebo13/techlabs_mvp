@@ -17,6 +17,7 @@ type OptimizedImageProps = {
   onError?: () => void
   sizes?: string
   srcSet?: string
+  'aria-hidden'?: boolean
 }
 
 export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
@@ -34,6 +35,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
     onError,
     sizes,
     srcSet,
+    'aria-hidden': ariaHidden,
   }) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const [isInView, setIsInView] = useState(!lazy || priority)
@@ -138,6 +140,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
           <img
             src={src}
             alt={alt}
+            aria-hidden={ariaHidden}
             style={defaultImageStyles}
             onLoad={handleLoad}
             onError={handleError}

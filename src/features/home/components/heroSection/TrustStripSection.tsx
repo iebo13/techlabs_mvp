@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react'
-import { Box, useTheme } from '@mui/material'
+import { useEffect, useRef, useState } from 'react'
+import { Box, useMediaQuery, useTheme } from '@mui/material'
 import { PartnerLogo, type Partner } from '@/features/partners'
+import { useI18n } from '@/hooks'
 
 type TrustStripSectionProps = {
   readonly partners: Partner[]
@@ -11,11 +12,18 @@ const SPEED = 1
 
 export const TrustStripSection: React.FC<TrustStripSectionProps> = ({ partners }) => {
   const theme = useTheme()
+  const { t } = useI18n()
+  const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
+  const [isPaused, setIsPaused] = useState(prefersReducedMotion)
   const containerRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<Array<HTMLDivElement | null>>([])
   const positionsRef = useRef<number[]>([])
   const animationRef = useRef<number>(0)
   const itemWidthRef = useRef<number>(0)
+
+  useEffect(() => {
+    setIsPaused(prefersReducedMotion)
+  }, [prefersReducedMotion])
 
   useEffect(() => {
     if (partners.length === 0) return
@@ -77,15 +85,21 @@ export const TrustStripSection: React.FC<TrustStripSectionProps> = ({ partners }
       animationRef.current = requestAnimationFrame(animate)
     }
 
+    const startAnimation = () => {
+      if (!isPaused) {
+        animationRef.current = requestAnimationFrame(animate)
+      }
+    }
+
     const initTimeout = setTimeout(() => {
       initializePositions()
-      animationRef.current = requestAnimationFrame(animate)
+      startAnimation()
     }, 50)
 
     const handleResize = () => {
       cancelAnimationFrame(animationRef.current)
       initializePositions()
-      animationRef.current = requestAnimationFrame(animate)
+      startAnimation()
     }
 
     window.addEventListener('resize', handleResize)
@@ -95,11 +109,18 @@ export const TrustStripSection: React.FC<TrustStripSectionProps> = ({ partners }
       cancelAnimationFrame(animationRef.current)
       window.removeEventListener('resize', handleResize)
     }
-  }, [partners])
+  }, [partners, isPaused])
 
   return (
     <Box
       ref={containerRef}
+      role="region"
+      aria-label={t('partners.trustStrip.ariaLabel', { defaultValue: 'Our trusted partners' })}
+      aria-live={isPaused ? 'off' : 'polite'}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => !prefersReducedMotion && setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={() => !prefersReducedMotion && setIsPaused(false)}
       sx={{
         backgroundColor: theme.palette.grey[300],
         width: '100%',
@@ -122,7 +143,7 @@ export const TrustStripSection: React.FC<TrustStripSectionProps> = ({ partners }
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            willChange: 'transform',
+            willChange: isPaused ? 'auto' : 'transform',
           }}>
           <PartnerLogo partner={partner} />
         </Box>

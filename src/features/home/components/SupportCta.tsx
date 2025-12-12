@@ -43,7 +43,8 @@ export const SupportCta: React.FC<SupportCtaProps> = ({ title, body, imageUrl, c
         }}>
         <OptimizedImage
           src={displayImageUrl}
-          alt={displayTitle}
+          alt=""
+          aria-hidden
           width="100%"
           height="100%"
           priority

@@ -82,7 +82,7 @@ export const StoriesPage: React.FC = () => {
   }
 
   return (
-    <>
+    <main>
       <Section sx={{ py: { xs: 4, md: 6 } }}>
         <Box
           sx={{
@@ -115,9 +115,7 @@ export const StoriesPage: React.FC = () => {
                 value={selectedTrack}
                 label={filterByTrackLabel}
                 onChange={handleTrackChange}
-                size="medium"
-                SelectDisplayProps={{ role: 'button', 'aria-haspopup': 'listbox' }}
-                inputProps={{ 'aria-hidden': true, 'aria-labelledby': 'track-filter-label' }}>
+                size="medium">
                 {trackOptions.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
@@ -176,6 +174,6 @@ export const StoriesPage: React.FC = () => {
           <StoryModal story={selectedStory} onClose={handleCloseModal} isMobile={isMobile} />
         </Suspense>
       )}
-    </>
+    </main>
   )
 }

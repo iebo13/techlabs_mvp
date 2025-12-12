@@ -61,7 +61,6 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, sr
           overflow: 'hidden',
         },
       }}
-      disableRestoreFocus
       keepMounted={false}>
       <DialogTitle
         id="video-dialog-title"

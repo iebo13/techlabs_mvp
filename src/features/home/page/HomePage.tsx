@@ -21,7 +21,7 @@ export const HomePage: React.FC = () => {
   const { t } = useI18n()
 
   return (
-    <main>
+    <>
       <SEO
         title={t('pages.home.title')}
         description={t('pages.home.description')}
@@ -57,6 +57,6 @@ export const HomePage: React.FC = () => {
       <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>
         <FaqsSection faqs={homeData.faqs} />
       </LazyIntersection>
-    </main>
+    </>
   )
 }

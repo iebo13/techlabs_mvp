@@ -3,6 +3,8 @@
 ## Current Focus
 **Primary Goal**: Lighthouse Performance Analysis & Improvement Plan Implementation 🚀
 
+**Accessibility (new)**: Improve WCAG 2.1 AA alignment across shared layouts/pages/components (landmarks, keyboard, focus, labels).
+
 **New Priority**: Based on Lighthouse audit results, the application has significant performance issues that need immediate attention:
 - **Overall Performance Score**: 0.45/1.0 (Poor)
 - **Critical Issues**: Slow initial load (FCP: 4.4s, LCP: 5.5s), poor CLS (0.42), missing images causing 404s

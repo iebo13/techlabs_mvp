@@ -115,9 +115,7 @@ export const StoriesPage: React.FC = () => {
                 value={selectedTrack}
                 label={filterByTrackLabel}
                 onChange={handleTrackChange}
-                size="medium"
-                SelectDisplayProps={{ role: 'button', 'aria-haspopup': 'listbox' }}
-                inputProps={{ 'aria-hidden': true, 'aria-labelledby': 'track-filter-label' }}>
+                size="medium">
                 {trackOptions.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}

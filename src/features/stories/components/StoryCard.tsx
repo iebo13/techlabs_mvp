@@ -13,6 +13,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={story.id}>
       <Box
         component="button"
+        type="button"
         onClick={() => onClick(story)}
         aria-label={t('common:stories.card.viewDetails', { title: story.title })}
         sx={{

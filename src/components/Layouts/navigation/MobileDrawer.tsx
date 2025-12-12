@@ -14,6 +14,7 @@ import {
 } from '@mui/material'
 import { navigationItems, ctaButtons } from '@/config/data/navigationData'
 import { useI18n } from '@/hooks'
+import { VisuallyHidden } from '../accessibility/VisuallyHidden'
 import {
   getDrawerSpacing,
   getHeaderTypography,
@@ -77,18 +78,10 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
           }}>
           TechLabs
         </Typography>
-        <Typography
-          id="mobile-drawer-description"
-          sx={{
-            position: 'absolute',
-            left: '-10000px',
-            width: '1px',
-            height: '1px',
-            overflow: 'hidden',
-          }}>
-          {t('navigation.mobileMenuDescription')}
-        </Typography>
-        <IconButton edge="end" onClick={onClose} aria-label="close navigation menu" sx={closeButtonStyles}>
+        <VisuallyHidden component="p">
+          <span id="mobile-drawer-description">{t('navigation.mobileMenuDescription')}</span>
+        </VisuallyHidden>
+        <IconButton edge="end" onClick={onClose} aria-label={t('navigation.closeMenu')} sx={closeButtonStyles}>
           <CloseIcon
             sx={{
               fontSize: {

@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useEffect } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { ThemeProvider as MuiThemeProvider, CssBaseline, Box } from '@mui/material'
 import { ErrorBoundary } from '@/components/ErrorHandling'
 import { SiteFooter, HeaderNav } from '@/components/Layouts'
@@ -17,6 +17,18 @@ const AccessibilityTester = lazy(() =>
 )
 
 const DebugPanel = lazy(() => import('@/components/ErrorHandling').then(module => ({ default: module.DebugPanel })))
+
+const RouteFocusManager: React.FC = () => {
+  const location = useLocation()
+
+  useEffect(() => {
+    const mainContent = document.getElementById('main-content')
+
+    mainContent?.focus()
+  }, [location.pathname])
+
+  return null
+}
 
 const AppContent: React.FC = () => {
   const { currentTheme } = useTheme()
@@ -37,6 +49,7 @@ const AppContent: React.FC = () => {
         <MuiThemeProvider theme={currentTheme}>
           <CssBaseline />
           <BrowserRouter>
+            <RouteFocusManager />
             <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
               <HeaderNav />
               <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>

@@ -1,6 +1,6 @@
 import React, { useState, lazy, Suspense } from 'react'
 import { PlayArrow as PlayArrowIcon } from '@mui/icons-material'
-import { Card, Box, IconButton, Chip, useTheme, useMediaQuery, CircularProgress } from '@mui/material'
+import { ButtonBase, Card, Box, Chip, useTheme, useMediaQuery, CircularProgress } from '@mui/material'
 import { OptimizedImage, Section } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
 
@@ -44,26 +44,10 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
         <Card
           sx={{
             position: 'relative',
-            cursor: 'pointer',
             transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
             overflow: 'hidden',
             borderRadius: 0,
-            '&:focus-within': {
-              outline: '2px solid',
-              outlineColor: 'primary.main',
-              outlineOffset: 2,
-            },
-          }}
-          onClick={handlePlayClick}
-          role="button"
-          tabIndex={0}
-          onKeyDown={event => {
-            if (event.key === 'Enter' || event.key === ' ') {
-              event.preventDefault()
-              handlePlayClick()
-            }
-          }}
-          aria-label={t('hero.video.playLabel', { title: displayTitle, duration: durationText })}>
+          }}>
           <OptimizedImage
             src={posterUrl || VIDEO_THUMBNAIL}
             alt={`${displayTitle} thumbnail`}
@@ -78,42 +62,51 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
             }}
           />
 
-          <Box
+          <ButtonBase
+            component="button"
+            type="button"
+            onClick={handlePlayClick}
+            aria-label={t('hero.video.playLabel', { title: displayTitle, duration: durationText })}
             sx={{
               position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
+              inset: 0,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               bgcolor: 'rgba(0, 0, 0, 0.3)',
-              transition: 'background-color 0.2s ease-in-out',
+              transition: 'background-color 0.2s ease-in-out, transform 0.2s ease-in-out',
+              cursor: 'pointer',
+              zIndex: 1,
               '&:hover': {
                 bgcolor: 'rgba(0, 0, 0, 0.4)',
               },
+              '&:hover .playCircle': {
+                transform: 'scale(1.1)',
+                backgroundColor: theme => theme.palette.primary.dark,
+              },
+              '&:focus-visible': {
+                outline: '2px solid',
+                outlineColor: 'primary.main',
+                outlineOffset: 2,
+              },
             }}>
-            <IconButton
-              size="large"
-              aria-label={`Play introduction video, duration ${durationText}`}
+            <Box
+              aria-hidden="true"
+              className="playCircle"
               sx={{
                 bgcolor: 'primary.main',
                 color: 'primary.contrastText',
                 width: { xs: 64, sm: 80 },
                 height: { xs: 64, sm: 80 },
-                '&:hover': {
-                  bgcolor: 'primary.dark',
-                  transform: 'scale(1.1)',
-                },
-              }}
-              onClick={event => {
-                event.stopPropagation()
-                handlePlayClick()
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'transform 0.2s ease-in-out, background-color 0.2s ease-in-out',
               }}>
               <PlayArrowIcon sx={{ fontSize: { xs: 32, sm: 40 } }} />
-            </IconButton>
-          </Box>
+            </Box>
+          </ButtonBase>
 
           <Chip
             label={durationText}
@@ -122,6 +115,8 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
               position: 'absolute',
               bottom: 16,
               right: 16,
+              zIndex: 2,
+              pointerEvents: 'none',
               bgcolor: 'rgba(0, 0, 0, 0.8)',
               color: 'common.white',
               '& .MuiChip-label': {

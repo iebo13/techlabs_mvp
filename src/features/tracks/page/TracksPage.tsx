@@ -35,7 +35,7 @@ export const TracksPage: React.FC = () => {
   }
 
   return (
-    <main>
+    <>
       <SEO
         title={i18n.t('tracks.page.title')}
         description={i18n.t('tracks.page.description')}
@@ -47,7 +47,7 @@ export const TracksPage: React.FC = () => {
       />
       <Section sx={{ py: { xs: 4, md: 6 } }}>
         <Container maxWidth="lg">
-          <Typography variant="h1" sx={{ mb: 4, textAlign: 'center' }}>
+          <Typography variant="h1" component="h1" sx={{ mb: 4, textAlign: 'center' }}>
             {i18n.t('tracks.page.title')}
           </Typography>
           <Grid container spacing={4}>
@@ -59,6 +59,6 @@ export const TracksPage: React.FC = () => {
           </Grid>
         </Container>
       </Section>
-    </main>
+    </>
   )
 }

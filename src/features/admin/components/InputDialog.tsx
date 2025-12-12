@@ -3,7 +3,7 @@
  * Reusable dialog for text input (replaces window.prompt)
  */
 
-import React, { useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, useId } from 'react'
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material'
 
 type InputDialogProps = {
@@ -24,12 +24,23 @@ export const InputDialog: React.FC<InputDialogProps> = ({
   onCancel,
 }) => {
   const [value, setValue] = useState(defaultValue)
+  const titleId = useId()
+  const inputId = useId()
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (open) {
       setValue(defaultValue)
     }
   }, [open, defaultValue])
+
+  useEffect(() => {
+    if (!open) return
+
+    window.setTimeout(() => {
+      inputRef.current?.focus()
+    }, 0)
+  }, [open])
 
   const handleConfirm = (): void => {
     onConfirm(value)
@@ -43,15 +54,17 @@ export const InputDialog: React.FC<InputDialogProps> = ({
   }
 
   return (
-    <Dialog open={open} onClose={onCancel} maxWidth="sm" fullWidth>
-      <DialogTitle>{title}</DialogTitle>
+    <Dialog open={open} onClose={onCancel} maxWidth="sm" fullWidth aria-labelledby={titleId}>
+      <DialogTitle id={titleId}>{title}</DialogTitle>
       <DialogContent>
         <TextField
+          id={inputId}
           fullWidth
           label={label}
           value={value}
           onChange={e => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
+          inputRef={inputRef}
           sx={{ mt: 1 }}
         />
       </DialogContent>

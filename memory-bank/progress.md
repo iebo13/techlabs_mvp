@@ -2,6 +2,13 @@
 
 ## Current Phase: Lighthouse Performance Optimization 🚀
 
+## Accessibility Updates (Dec 2025) ✅
+- Removed nested `<main>` landmarks from pages (single `main` in `App.tsx`)
+- Added route-change focus management for `#main-content` and improved skip-nav behavior
+- Fixed nested interactive controls in `HeroVideo` (single real `<button>` target)
+- Improved mobile drawer dialog semantics (`aria-describedby`, `aria-controls` target id, localized close label)
+- Restored focus behavior for video modal and improved admin dialog/tag input labeling
+
 ### Lighthouse Performance Audit Results 📊
 - **Overall Performance Score**: 0.45/1.0 (Poor)
 - **Critical Issues Identified**: Slow loading, missing images, poor Core Web Vitals

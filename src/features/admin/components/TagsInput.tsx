@@ -42,14 +42,18 @@ export const TagsInput: React.FC<TagsInputProps> = ({ tags, onTagsChange }) => {
       </Typography>
       <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
         <TextField
+          id="tags-input"
           size="small"
-          placeholder="Add a tag..."
+          label="Add a tag"
+          helperText="Press Enter to add the tag."
+          FormHelperTextProps={{ id: 'tags-helper-text' }}
           value={tagInput}
           onChange={e => setTagInput(e.target.value)}
           onKeyDown={handleKeyDown}
+          aria-describedby="tags-helper-text"
           sx={{ flexGrow: 1 }}
         />
-        <Button variant="outlined" onClick={handleAddTag} disabled={!tagInput.trim()}>
+        <Button type="button" variant="outlined" onClick={handleAddTag} disabled={!tagInput.trim()}>
           Add
         </Button>
       </Box>

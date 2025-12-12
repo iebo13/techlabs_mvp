@@ -56,10 +56,16 @@ export const HeaderNav: React.FC = () => {
         anchor="right"
         open={mobileOpen}
         onClose={handleDrawerClose}
+        PaperProps={{
+          id: 'mobile-navigation-drawer',
+          role: 'dialog',
+          'aria-describedby': 'mobile-drawer-description',
+        }}
         ModalProps={{
           keepMounted: true,
           'aria-modal': true,
           'aria-labelledby': 'mobile-drawer-title',
+          'aria-describedby': 'mobile-drawer-description',
         }}>
         <MobileDrawer onClose={handleDrawerClose} />
       </Drawer>

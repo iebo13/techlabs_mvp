@@ -7,10 +7,10 @@ import type { Partner } from '../types/partners.type'
 
 export const PartnersPage: React.FC = () => {
   return (
-    <main>
+    <>
       <Section>
         <Stack spacing={4} alignItems="center" textAlign="center">
-          <SectionHeading level={2} centered>
+          <SectionHeading level={1} centered>
             Our Partners
           </SectionHeading>
           <Typography variant="h5" color="text.secondary" maxWidth="600px">
@@ -18,15 +18,21 @@ export const PartnersPage: React.FC = () => {
             future of digital learning.
           </Typography>
           <Box
+            component="ul"
             sx={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               flexDirection: 'row',
               gap: 4,
+              p: 0,
+              m: 0,
+              listStyle: 'none',
             }}>
             {partnersData.partners.map((partner: Partner) => (
-              <PartnerLogo key={partner.name} partner={partner} />
+              <Box key={partner.name} component="li">
+                <PartnerLogo partner={partner} />
+              </Box>
             ))}
           </Box>
         </Stack>
@@ -61,6 +67,6 @@ export const PartnersPage: React.FC = () => {
           </Stack>
         </Card>
       </Section>
-    </main>
+    </>
   )
 }

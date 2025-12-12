@@ -256,6 +256,7 @@
     "teamSection": {
       "title": "Lernen Sie unser Team kennen",
       "description": "Unser Team vereint Expertise in Bildung, Technologie und Community-Aufbau, um die bestmögliche Lernerfahrung zu schaffen.",
+      "avatarAlt": "Profilfoto von {{name}}",
       "members": {
         "sarah": {
           "name": "Dr. Sarah Chen",
@@ -306,12 +307,15 @@
     "page": {
       "title": "TechLabs Veranstaltungen",
       "subtitle": "Nehmen Sie an unseren Community-Veranstaltungen, Workshops und Networking-Gelegenheiten teil",
-      "loadMore": "Weitere Veranstaltungen laden"
+      "loadMore": "Weitere Veranstaltungen laden",
+      "loadMoreAriaLabel": "{{count}} weitere Veranstaltungen laden"
     },
     "card": {
       "upcomingLabel": "Kommend",
       "pastLabel": "Vergangen",
-      "eventImageAlt": "{{title}} Veranstaltungsbild"
+      "eventImageAlt": "{{title}} Veranstaltungsbild",
+      "dateLabel": "Datum",
+      "locationLabel": "Ort"
     },
     "emptyState": {
       "title": "Keine Veranstaltungen gefunden",
@@ -326,7 +330,8 @@
     "tabs": {
       "all": "Alle Veranstaltungen ({{count}})",
       "upcoming": "Kommende ({{count}})",
-      "past": "Vergangene ({{count}})"
+      "past": "Vergangene ({{count}})",
+      "ariaLabel": "Veranstaltungen nach Status filtern"
     }
   },
   "stories": {
@@ -348,7 +353,8 @@
       "inTrack": "in {{track}}",
       "noStoriesFound": "Keine Geschichten für diesen Track gefunden",
       "tryDifferentTrack": "Versuchen Sie, einen anderen Track auszuwählen oder schauen Sie später wieder vorbei.",
-      "showMore": "Mehr anzeigen >"
+      "showMore": "Mehr anzeigen >",
+      "storiesListAriaLabel": "Erfolgsgeschichten"
     },
     "card": {
       "viewDetails": "Details für {{title}} anzeigen",
@@ -369,7 +375,20 @@
   },
   "partners": {
     "title": "Unsere Partner",
-    "description": "Unternehmen und Organisationen, die unsere Mission unterstützen"
+    "description": "Unternehmen und Organisationen, die unsere Mission unterstützen",
+    "page": {
+      "title": "Unsere Partner",
+      "description": "Gemeinsam mit unseren Partnern machen wir Tech-Bildung für alle zugänglich.",
+      "keywords": "Partner, Sponsoren, Tech-Bildung, Zusammenarbeit",
+      "subtitle": "Gemeinsam mit unseren Partnern machen wir Tech-Bildung für alle zugänglich. Gestalten Sie mit uns die Zukunft des digitalen Lernens.",
+      "partnersListAriaLabel": "Partnerorganisationen",
+      "becomePartner": {
+        "title": "Partner werden",
+        "description": "Unterstützen Sie unsere Mission, Tech-Bildung für alle zugänglich zu machen. Gestalten Sie mit uns die Zukunft des digitalen Lernens.",
+        "cta": "Kontakt aufnehmen",
+        "ctaAriaLabel": "Kontaktieren Sie uns, um Partner zu werden"
+      }
+    }
   },
   "common": {
     "loading": "Lädt...",
@@ -398,6 +417,7 @@
     "totalErrors": "Fehler insgesamt"
   },
   "footer": {
+    "ariaLabel": "Fußzeile mit Navigationslinks und sozialen Medien",
     "copyright": "© 2024 by TechLabs.",
     "boardMembers": "Vorstand: Sabrina Engling, Ranjini Kishen Kumar, Carolina Constant Sanchez",
     "city": "Düsseldorf",
@@ -462,7 +482,8 @@
     "noIssues": "Keine Barrierefreiheitsprobleme gefunden! 🎉",
     "clickToHighlight": "Klicken Sie auf Probleme, um sie auf der Seite hervorzuheben",
     "selectLanguage": "Sprache auswählen, aktuell: {{current}}",
-    "languageOptions": "Verfügbare Sprachen"
+    "languageOptions": "Verfügbare Sprachen",
+    "opensInNewTab": "(öffnet in neuem Tab)"
   },
   "video": {
     "closeVideo": "Video schließen",

@@ -6,7 +6,7 @@ export const CareersPage: React.FC = () => {
   const { t } = useI18n()
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Section>
         <SectionHeading level={1} centered>
           {t('pages.careers.title')}
@@ -21,7 +21,7 @@ export const PrivacyPage: React.FC = () => {
   const { t } = useI18n()
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Section>
         <SectionHeading level={1} centered>
           {t('pages.privacy.title')}
@@ -36,7 +36,7 @@ export const ImprintPage: React.FC = () => {
   const { t } = useI18n()
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Section>
         <SectionHeading level={1} centered>
           {t('pages.imprint.title')}

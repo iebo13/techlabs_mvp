@@ -82,7 +82,7 @@ export const StoriesPage: React.FC = () => {
   }
 
   return (
-    <>
+    <main id="main-content" tabIndex={-1}>
       <Section sx={{ py: { xs: 4, md: 6 } }}>
         <Box
           sx={{
@@ -116,8 +116,7 @@ export const StoriesPage: React.FC = () => {
                 label={filterByTrackLabel}
                 onChange={handleTrackChange}
                 size="medium"
-                SelectDisplayProps={{ role: 'button', 'aria-haspopup': 'listbox' }}
-                inputProps={{ 'aria-hidden': true, 'aria-labelledby': 'track-filter-label' }}>
+                inputProps={{ 'aria-describedby': 'stories-filter-description' }}>
                 {trackOptions.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
@@ -128,7 +127,7 @@ export const StoriesPage: React.FC = () => {
           </Box>
 
           <Box sx={{ textAlign: 'center' }}>
-            <Typography variant="body1" color="text.secondary">
+            <Typography id="stories-filter-description" variant="body1" color="text.secondary" aria-live="polite">
               {t('common:stories.page.showingCount', {
                 count: visibleStories.length,
                 total: filteredStories.length,
@@ -138,7 +137,12 @@ export const StoriesPage: React.FC = () => {
             </Typography>
           </Box>
 
-          <Grid container spacing={3} px={{ xs: 2, md: 4 }}>
+          <Grid
+            container
+            spacing={3}
+            px={{ xs: 2, md: 4 }}
+            role="list"
+            aria-label={t('common:stories.page.storiesListAriaLabel')}>
             {visibleStories.map(story => (
               <StoryCard key={story.id} story={story} onClick={handleStoryClick} />
             ))}
@@ -172,10 +176,10 @@ export const StoriesPage: React.FC = () => {
       </Section>
 
       {selectedStory && (
-        <Suspense fallback={<CircularProgress />}>
+        <Suspense fallback={<CircularProgress aria-label={t('common:common.loading')} />}>
           <StoryModal story={selectedStory} onClose={handleCloseModal} isMobile={isMobile} />
         </Suspense>
       )}
-    </>
+    </main>
   )
 }

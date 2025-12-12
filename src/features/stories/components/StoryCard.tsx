@@ -10,7 +10,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onClick }) => {
   const storyImage = '/img/background.png'
 
   return (
-    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={story.id}>
+    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={story.id} component="li" sx={{ listStyle: 'none' }}>
       <Box
         component="button"
         onClick={() => onClick(story)}

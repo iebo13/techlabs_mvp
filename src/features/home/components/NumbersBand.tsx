@@ -37,7 +37,7 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
   }
 
   return (
-    <Section sx={{ py: { xs: 6, md: 8 } }}>
+    <Section sx={{ py: { xs: 6, md: 8 } }} component="section" aria-labelledby="numbers-band-heading">
       <Box
         sx={{
           width: '100%',
@@ -46,11 +46,18 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <Typography variant="h2" color="primary.main" textAlign="center" pb={4}>
+        <Typography
+          id="numbers-band-heading"
+          variant="h2"
+          component="h2"
+          color="primary.main"
+          textAlign="center"
+          pb={4}>
           {displayTitle}
         </Typography>
 
         <Box
+          component="dl"
           sx={{
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
@@ -58,6 +65,7 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
             alignItems: 'center',
             width: '100%',
             gap: 3,
+            m: 0,
           }}>
           {numbers.map(metric => (
             <Box
@@ -68,11 +76,16 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
                 alignItems: 'center',
                 textAlign: 'center',
               }}>
-              <Typography variant="h1" color="text.primary" fontWeight={900} sx={{ fontSize: '4rem' }}>
+              <Typography
+                component="dd"
+                variant="h3"
+                color="text.primary"
+                fontWeight={900}
+                sx={{ fontSize: '4rem', m: 0 }}>
                 {metric.value}
               </Typography>
 
-              <Typography variant="h6" color="text.primary" fontWeight={600} sx={{ fontSize: '1.5rem' }}>
+              <Typography component="dt" variant="h6" color="text.primary" fontWeight={600} sx={{ fontSize: '1.5rem' }}>
                 {getTranslatedLabel(metric.label)}
               </Typography>
             </Box>

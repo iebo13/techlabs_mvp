@@ -125,13 +125,14 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
             </Grid>
           </Grid>
 
-          <Box>
-            <Typography variant="h6" gutterBottom>
+          <Box component="section" aria-labelledby="achievements-heading">
+            <Typography id="achievements-heading" variant="h6" gutterBottom>
               {t('common:stories.modal.achievements')}
             </Typography>
-            <Stack spacing={1}>
+            <Stack component="ul" spacing={1} sx={{ listStyle: 'none', p: 0, m: 0 }}>
               {story.achievements.map(achievement => (
                 <Box
+                  component="li"
                   key={`achievement-${story.id}-${achievement}`}
                   sx={{
                     display: 'flex',
@@ -142,6 +143,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ story, onClose, isMobile
                     borderRadius: 1,
                   }}>
                   <Box
+                    aria-hidden="true"
                     sx={{
                       width: 8,
                       height: 8,

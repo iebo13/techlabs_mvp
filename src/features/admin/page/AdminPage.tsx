@@ -43,46 +43,48 @@ const AdminPageContent: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="xl" sx={{ py: 4 }}>
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700, color: 'text.primary' }}>
-          Admin Dashboard
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Manage events and blog posts for the TechLabs website.
-        </Typography>
-      </Box>
+    <main id="main-content" tabIndex={-1}>
+      <Container maxWidth="xl" sx={{ py: 4 }}>
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700, color: 'text.primary' }}>
+            Admin Dashboard
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            Manage events and blog posts for the TechLabs website.
+          </Typography>
+        </Box>
 
-      <Alert severity="info" sx={{ mb: 3 }}>
-        Changes made here are stored in memory only. They will be lost when the page refreshes. For production, connect
-        to a backend API for persistent storage.
-      </Alert>
+        <Alert severity="info" sx={{ mb: 3 }}>
+          Changes made here are stored in memory only. They will be lost when the page refreshes. For production,
+          connect to a backend API for persistent storage.
+        </Alert>
 
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs
-          value={currentTab}
-          onChange={handleTabChange}
-          aria-label="Admin management tabs"
-          sx={{
-            '& .MuiTab-root': {
-              textTransform: 'none',
-              fontWeight: 600,
-              fontSize: '1rem',
-            },
-          }}>
-          <Tab value="events" label="Events" {...a11yProps('events')} />
-          <Tab value="blog" label="Blog Posts" {...a11yProps('blog')} />
-        </Tabs>
-      </Box>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs
+            value={currentTab}
+            onChange={handleTabChange}
+            aria-label="Admin management tabs"
+            sx={{
+              '& .MuiTab-root': {
+                textTransform: 'none',
+                fontWeight: 600,
+                fontSize: '1rem',
+              },
+            }}>
+            <Tab value="events" label="Events" {...a11yProps('events')} />
+            <Tab value="blog" label="Blog Posts" {...a11yProps('blog')} />
+          </Tabs>
+        </Box>
 
-      <TabPanel value={currentTab} index="events">
-        <EventsTab />
-      </TabPanel>
+        <TabPanel value={currentTab} index="events">
+          <EventsTab />
+        </TabPanel>
 
-      <TabPanel value={currentTab} index="blog">
-        <BlogPostsTab />
-      </TabPanel>
-    </Container>
+        <TabPanel value={currentTab} index="blog">
+          <BlogPostsTab />
+        </TabPanel>
+      </Container>
+    </main>
   )
 }
 

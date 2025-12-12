@@ -21,7 +21,7 @@ export const AboutPage: React.FC = () => {
   }, [])
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <SEO
         title={t('about.page.title')}
         description={t('about.page.description')}

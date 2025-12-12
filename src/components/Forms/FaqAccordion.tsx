@@ -8,6 +8,7 @@ type FAQAccordionProps = {
   maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   showBorder?: boolean
   singleOpen?: boolean
+  ariaLabel?: string
 }
 
 export const FAQAccordion: React.FC<FAQAccordionProps> = ({
@@ -15,6 +16,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
   maxWidth = 'md',
   showBorder = true,
   singleOpen = true,
+  ariaLabel = 'Frequently Asked Questions',
 }) => {
   const [expanded, setExpanded] = useState<string | false>(false)
 
@@ -27,7 +29,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
   }
 
   return (
-    <Box maxWidth={maxWidth} mx="auto" width="100%">
+    <Box maxWidth={maxWidth} mx="auto" width="100%" role="region" aria-label={ariaLabel}>
       <Stack spacing={2}>
         {faqs.map((faq, index) => (
           <Accordion

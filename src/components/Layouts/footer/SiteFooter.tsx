@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, useTheme } from '@mui/material'
+import { useI18n } from '@/hooks'
 import { FooterBrandSection } from './FooterBrandSection'
 import { FooterCopyRights } from './FooterCopyRights'
 import { FooterLinksSection } from './FooterLinksSection'
@@ -7,9 +8,10 @@ import { FooterSocialRow } from './FooterSocialRow'
 
 export const SiteFooter: React.FC = () => {
   const theme = useTheme()
+  const { t } = useI18n()
 
   return (
-    <Box component="footer">
+    <Box component="footer" role="contentinfo" aria-label={t('common:footer.ariaLabel')}>
       <Box
         sx={{
           backgroundColor: theme.palette.mode === 'dark' ? '#1a1a1a' : '#F7F7F8',

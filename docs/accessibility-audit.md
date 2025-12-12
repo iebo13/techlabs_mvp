@@ -1,7 +1,6 @@
 # Accessibility Audit Report - TechLabs MVP
 
-**Date**: December 7, 2025  
-**Standard**: WCAG 2.1 AA  
+**Date**: December 12, 2025 (Updated) **Standard**: WCAG 2.1 AA  
 **Status**: ✅ Remediated
 
 ## Executive Summary
@@ -353,6 +352,54 @@ Add the following keys to your i18n files:
 ```
 
 ---
+
+## Latest Updates (December 12, 2025)
+
+### Skip-to-Content Integration
+
+All pages now have proper `main` element with `id="main-content"` and
+`tabIndex={-1}` to support the skip-to-content functionality:
+
+- HomePage, AboutPage, TracksPage, EventsPage, StoriesPage, PartnersPage
+- AdminPage, CareersPage, PrivacyPage, ImprintPage
+
+### Page-Level Improvements
+
+| Page                  | Improvements                                                                |
+| --------------------- | --------------------------------------------------------------------------- |
+| EventsPage            | Added `main` wrapper, tabs aria-label, tabpanel with aria-live              |
+| StoriesPage           | Added `main` wrapper, fixed Select accessibility, stories list aria-label   |
+| PartnersPage          | Added `main` wrapper, H1 heading, i18n translations, partner list semantics |
+| AdminPage             | Added `main` wrapper                                                        |
+| All Placeholder Pages | Added `main` wrapper with proper id                                         |
+
+### Component Improvements
+
+| Component      | Improvements                                                          |
+| -------------- | --------------------------------------------------------------------- |
+| EventCard      | Emojis now have VisuallyHidden labels for screen readers              |
+| StoryCard      | Added proper list item role                                           |
+| StoryModal     | Achievement list uses semantic ul/li with aria-hidden bullets         |
+| ContactSection | External links announce "opens in new tab"                            |
+| NumbersBand    | Uses semantic dl/dt/dd structure, proper h2 instead of h1 for numbers |
+| TeamSection    | Avatar initials have proper aria-label                                |
+| ValuePropCard  | Decorative icons marked with aria-hidden                              |
+| SiteFooter     | Added aria-label for footer landmark                                  |
+| FAQAccordion   | Added region landmark with aria-label                                 |
+
+### Translation Keys Added
+
+New accessibility-related translation keys added to both English and German
+locales:
+
+- `events.tabs.ariaLabel` - Tab navigation label
+- `events.card.dateLabel` / `locationLabel` - Screen reader labels for emojis
+- `events.page.loadMoreAriaLabel` - Descriptive load more label
+- `stories.page.storiesListAriaLabel` - Stories list label
+- `partners.page.*` - All partner page translations
+- `footer.ariaLabel` - Footer landmark label
+- `accessibility.opensInNewTab` - External link indicator
+- `about.teamSection.avatarAlt` - Avatar alt text template
 
 ## Resources
 

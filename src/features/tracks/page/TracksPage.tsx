@@ -35,7 +35,7 @@ export const TracksPage: React.FC = () => {
   }
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <SEO
         title={i18n.t('tracks.page.title')}
         description={i18n.t('tracks.page.description')}

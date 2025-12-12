@@ -12,8 +12,11 @@ type ContactData = {
   }
 }
 
+const SOCIAL_BUTTON_SX = { borderRadius: 2 }
+
 export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => {
   const { t } = useI18n()
+  const opensInNewTab = t('common:accessibility.opensInNewTab')
 
   return (
     <Section>
@@ -75,15 +78,16 @@ export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => {
               <Typography variant="h6" component="h3" gutterBottom fontWeight={600}>
                 {t('about.contactSection.followUs')}
               </Typography>
-              <Stack direction="row" spacing={2} justifyContent={{ xs: 'center', md: 'flex-start' }}>
+              <Stack direction="row" spacing={2} justifyContent={{ xs: 'center', md: 'flex-start' }} flexWrap="wrap">
                 <Button
                   component={Link}
                   href={data.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="outlined"
-                  startIcon={<LinkedIn />}
-                  sx={{ borderRadius: 2 }}>
+                  startIcon={<LinkedIn aria-hidden="true" />}
+                  aria-label={`${t('about.contactSection.socialMedia.linkedin')} ${opensInNewTab}`}
+                  sx={SOCIAL_BUTTON_SX}>
                   {t('about.contactSection.socialMedia.linkedin')}
                 </Button>
                 <Button
@@ -92,8 +96,9 @@ export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="outlined"
-                  startIcon={<Twitter />}
-                  sx={{ borderRadius: 2 }}>
+                  startIcon={<Twitter aria-hidden="true" />}
+                  aria-label={`${t('about.contactSection.socialMedia.twitter')} ${opensInNewTab}`}
+                  sx={SOCIAL_BUTTON_SX}>
                   {t('about.contactSection.socialMedia.twitter')}
                 </Button>
                 <Button
@@ -102,8 +107,9 @@ export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="outlined"
-                  startIcon={<GitHub />}
-                  sx={{ borderRadius: 2 }}>
+                  startIcon={<GitHub aria-hidden="true" />}
+                  aria-label={`${t('about.contactSection.socialMedia.github')} ${opensInNewTab}`}
+                  sx={SOCIAL_BUTTON_SX}>
                   {t('about.contactSection.socialMedia.github')}
                 </Button>
               </Stack>

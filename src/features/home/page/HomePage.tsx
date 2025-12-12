@@ -21,7 +21,7 @@ export const HomePage: React.FC = () => {
   const { t } = useI18n()
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <SEO
         title={t('pages.home.title')}
         description={t('pages.home.description')}

@@ -2,7 +2,7 @@ import React from 'react'
 import { formatDistanceToNow } from 'date-fns'
 import { Link } from 'react-router-dom'
 import { Box, Card, CardContent, Chip, Stack, Typography } from '@mui/material'
-import { OptimizedImage } from '@/components/Layouts'
+import { OptimizedImage, VisuallyHidden } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
 
 const EVENT_BACKGROUND_IMAGE = '/img/background.png'
@@ -88,13 +88,19 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
         <Stack spacing={1}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
-              📅 {dateDistance}
+              <Box component="span" aria-hidden="true">
+                📅
+              </Box>
+              <VisuallyHidden>{t('events.card.dateLabel')}:</VisuallyHidden> {dateDistance}
             </Typography>
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
-              📍 {event.location}
+              <Box component="span" aria-hidden="true">
+                📍
+              </Box>
+              <VisuallyHidden>{t('events.card.locationLabel')}:</VisuallyHidden> {event.location}
             </Typography>
           </Box>
         </Stack>

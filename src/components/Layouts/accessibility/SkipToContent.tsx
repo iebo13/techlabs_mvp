@@ -10,12 +10,14 @@ import { useI18n } from '@/hooks'
 export const SkipToContent: React.FC = () => {
   const { t } = useI18n()
 
-  const handleClick = () => {
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
     const mainContent = document.getElementById('main-content')
 
     if (mainContent) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
       mainContent.focus()
-      mainContent.scrollIntoView({ behavior: 'smooth' })
+      mainContent.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' })
     }
   }
 

@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronRight as ChevronRightIcon } from '@mui/icons-material'
 import { Box, Button, useTheme, useMediaQuery } from '@mui/material'
 import { Section, SectionHeading } from '@/components/Layouts'
+import { VisuallyHidden } from '@/components/Layouts/accessibility/VisuallyHidden'
 import type { Story } from '@/features/stories'
 import { useI18n } from '@/hooks'
 import { CarouselItem } from './CarouselItem'
@@ -17,7 +18,7 @@ type StoriesCarouselProps = {
 export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, sectionTitle, showSeeAllLink = true }) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
-  const { t } = useI18n()
+  const { t, tWithFallback } = useI18n()
   const cardsPerView = isMobile ? 1 : 3
   const maxIndex = Math.max(0, stories.length - cardsPerView)
 
@@ -33,35 +34,28 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
   }
 
   const visibleStories = stories.slice(currentIndex, currentIndex + cardsPerView)
+  const instructionsId = 'stories-carousel-instructions'
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (!carouselRef.current?.contains(event.target as Node)) return
-
-      switch (event.key) {
-        case 'ArrowLeft':
-          event.preventDefault()
-          setCurrentIndex(prev => Math.max(0, prev - 1))
-          break
-        case 'ArrowRight':
-          event.preventDefault()
-          setCurrentIndex(prev => Math.min(maxIndex, prev + 1))
-          break
-        case 'Home':
-          event.preventDefault()
-          setCurrentIndex(0)
-          break
-        case 'End':
-          event.preventDefault()
-          setCurrentIndex(maxIndex)
-          break
-      }
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    switch (event.key) {
+      case 'ArrowLeft':
+        event.preventDefault()
+        setCurrentIndex(prev => Math.max(0, prev - 1))
+        break
+      case 'ArrowRight':
+        event.preventDefault()
+        setCurrentIndex(prev => Math.min(maxIndex, prev + 1))
+        break
+      case 'Home':
+        event.preventDefault()
+        setCurrentIndex(0)
+        break
+      case 'End':
+        event.preventDefault()
+        setCurrentIndex(maxIndex)
+        break
     }
-
-    document.addEventListener('keydown', handleKeyDown)
-
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [maxIndex])
+  }
 
   return (
     <Section sx={{ py: { xs: 4, md: 6 }, position: 'relative' }}>
@@ -81,8 +75,17 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
             role="region"
             aria-roledescription="carousel"
             aria-label={t('stories.carousel.ariaLabel')}
-            aria-live="polite"
+            aria-describedby={instructionsId}
+            onKeyDown={handleKeyDown}
             sx={{ position: 'relative' }}>
+            <VisuallyHidden component="p">
+              <span id={instructionsId}>
+                {tWithFallback(
+                  'stories.carousel.keyboardInstructions',
+                  'Use Left and Right arrow keys to navigate the carousel.'
+                )}
+              </span>
+            </VisuallyHidden>
             <CarouselNavigation
               currentIndex={currentIndex}
               maxIndex={maxIndex}

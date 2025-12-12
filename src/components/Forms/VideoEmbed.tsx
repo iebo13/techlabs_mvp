@@ -28,9 +28,9 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, sr
     if (open) {
       document.addEventListener('keydown', handleKeyDown)
 
-      setTimeout(() => {
+      window.requestAnimationFrame(() => {
         closeButtonRef.current?.focus()
-      }, 100)
+      })
     }
 
     return () => {

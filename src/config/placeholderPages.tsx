@@ -6,14 +6,14 @@ export const CareersPage: React.FC = () => {
   const { t } = useI18n()
 
   return (
-    <main>
+    <>
       <Section>
         <SectionHeading level={1} centered>
           {t('pages.careers.title')}
         </SectionHeading>
         <p>{t('pages.careers.placeholder')}</p>
       </Section>
-    </main>
+    </>
   )
 }
 
@@ -21,14 +21,14 @@ export const PrivacyPage: React.FC = () => {
   const { t } = useI18n()
 
   return (
-    <main>
+    <>
       <Section>
         <SectionHeading level={1} centered>
           {t('pages.privacy.title')}
         </SectionHeading>
         <p>{t('pages.privacy.placeholder')}</p>
       </Section>
-    </main>
+    </>
   )
 }
 
@@ -36,14 +36,14 @@ export const ImprintPage: React.FC = () => {
   const { t } = useI18n()
 
   return (
-    <main>
+    <>
       <Section>
         <SectionHeading level={1} centered>
           {t('pages.imprint.title')}
         </SectionHeading>
         <p>{t('pages.imprint.placeholder')}</p>
       </Section>
-    </main>
+    </>
   )
 }
 

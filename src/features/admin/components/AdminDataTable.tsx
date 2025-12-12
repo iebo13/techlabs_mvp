@@ -89,6 +89,7 @@ export const AdminDataTable = <T extends AdminEntity>({
             placeholder="Search..."
             value={searchQuery}
             onChange={e => onSearchChange(e.target.value)}
+            inputProps={{ 'aria-label': `Search ${title}` }}
             sx={{ minWidth: 200 }}
           />
           <Tooltip title={`Add new ${title.toLowerCase().slice(0, -1)}`}>

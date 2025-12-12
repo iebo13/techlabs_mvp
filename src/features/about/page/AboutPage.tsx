@@ -13,15 +13,17 @@ export const AboutPage: React.FC = () => {
 
   useEffect(() => {
     if (window.location.hash === '#faq' && faqRef.current) {
-      setTimeout(() => {
-        faqRef.current?.scrollIntoView({ behavior: 'smooth' })
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+      window.requestAnimationFrame(() => {
+        faqRef.current?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' })
         faqRef.current?.focus()
-      }, 100)
+      })
     }
   }, [])
 
   return (
-    <main>
+    <>
       <SEO
         title={t('about.page.title')}
         description={t('about.page.description')}
@@ -38,6 +40,6 @@ export const AboutPage: React.FC = () => {
       <Box ref={faqRef} tabIndex={-1}>
         <FaqsSection faqs={faqData.faqs} />
       </Box>
-    </main>
+    </>
   )
 }

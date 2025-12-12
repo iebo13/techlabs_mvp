@@ -46,7 +46,8 @@
       "title": "Techlabs in Numbers",
       "cities": "Cities",
       "graduates": "Graduates",
-      "mentors": "Mentors"
+      "mentors": "Mentors",
+      "valueLabel": "{{value}}"
     },
     "support": {
       "title": "Support Tech Education",
@@ -256,6 +257,7 @@
     "teamSection": {
       "title": "Meet Our Team",
       "description": "Our team combines expertise in education, technology, and community building to create the best possible learning experience.",
+      "avatarLabel": "{{name}} profile avatar",
       "members": {
         "sarah": {
           "name": "Dr. Sarah Chen",
@@ -306,12 +308,19 @@
     "page": {
       "title": "TechLabs Events",
       "subtitle": "Join our community events, workshops, and networking opportunities",
-      "loadMore": "Load More Events"
+      "loadMore": "Load More Events",
+      "loadMoreAriaLabel": "Load {{count}} more event",
+      "loadMoreAriaLabel_other": "Load {{count}} more events",
+      "description": "Join our community events, workshops, and networking opportunities. Discover upcoming and past events at TechLabs.",
+      "keywords": "TechLabs events, workshops, networking, tech events, community events, tech meetups",
+      "tags": ["events", "workshops", "networking", "community", "tech meetups"]
     },
     "card": {
       "upcomingLabel": "Upcoming",
       "pastLabel": "Past",
-      "eventImageAlt": "{{title}} event image"
+      "eventImageAlt": "{{title}} event image",
+      "dateLabel": "Date",
+      "locationLabel": "Location"
     },
     "emptyState": {
       "title": "No events found",
@@ -326,7 +335,8 @@
     "tabs": {
       "all": "All Events ({{count}})",
       "upcoming": "Upcoming ({{count}})",
-      "past": "Past ({{count}})"
+      "past": "Past ({{count}})",
+      "ariaLabel": "Filter events by time period"
     }
   },
   "stories": {
@@ -348,7 +358,12 @@
       "inTrack": "in {{track}}",
       "noStoriesFound": "No stories found for this track",
       "tryDifferentTrack": "Try selecting a different track or check back later for new stories.",
-      "showMore": "Show More >"
+      "showMore": "Show More >",
+      "showMoreAriaLabel": "Show {{count}} more story",
+      "showMoreAriaLabel_other": "Show {{count}} more stories",
+      "description": "Discover how TechLabs alumni are transforming their careers and making an impact in the tech industry. Read success stories from our graduates.",
+      "keywords": "TechLabs success stories, alumni stories, graduate testimonials, career transformation, tech careers",
+      "tags": ["success stories", "alumni", "graduates", "career transformation", "testimonials"]
     },
     "card": {
       "viewDetails": "View details for {{title}}",
@@ -369,7 +384,20 @@
   },
   "partners": {
     "title": "Our Partners",
-    "description": "Companies and organizations that support our mission"
+    "description": "Companies and organizations that support our mission",
+    "page": {
+      "title": "Our Partners - TechLabs",
+      "subtitle": "Together with our partners, we're making tech education accessible to everyone. Join us in shaping the future of digital learning.",
+      "description": "Companies and organizations that support TechLabs mission to make tech education accessible to everyone.",
+      "keywords": "TechLabs partners, sponsors, partnerships, tech education partners, corporate sponsors",
+      "tags": ["partners", "sponsors", "partnerships", "collaboration"]
+    },
+    "becomePartner": {
+      "title": "Become a Partner",
+      "description": "Join our mission to make tech education accessible to everyone. Partner with us to shape the future of digital learning.",
+      "cta": "Get in Touch",
+      "ctaAriaLabel": "Contact us to become a partner"
+    }
   },
   "common": {
     "loading": "Loading...",

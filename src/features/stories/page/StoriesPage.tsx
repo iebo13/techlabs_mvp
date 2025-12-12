@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense, useMemo } from 'react'
+import React, { useState, lazy, Suspense, useMemo, useRef } from 'react'
 import {
   Box,
   Button,
@@ -15,7 +15,7 @@ import {
   type SelectChangeEvent,
 } from '@mui/material'
 import { CTAButton } from '@/components/Buttons'
-import { Section } from '@/components/Layouts'
+import { Section, SEO } from '@/components/Layouts'
 import type { TrackKey } from '@/features/tracks'
 import { useI18n } from '@/hooks'
 import storiesData from '@/mocks/stories.json'
@@ -52,6 +52,7 @@ export const StoriesPage: React.FC = () => {
   const [selectedTrack, setSelectedTrack] = useState<TrackKey | 'all'>('all')
   const [selectedStory, setSelectedStory] = useState<Story | null>(null)
   const [mobileVisibleCount, setMobileVisibleCount] = useState(MOBILE_PAGE_SIZE)
+  const resultsRef = useRef<HTMLDivElement>(null)
 
   // eslint-disable-next-line no-restricted-syntax
   const filteredStories = useMemo(() => {
@@ -75,6 +76,11 @@ export const StoriesPage: React.FC = () => {
   const handleTrackChange = (event: SelectChangeEvent<TrackKey | 'all'>) => {
     setSelectedTrack(event.target.value as TrackKey | 'all')
     setMobileVisibleCount(MOBILE_PAGE_SIZE) // Reset pagination on filter change
+    
+    // Announce to screen readers
+    setTimeout(() => {
+      resultsRef.current?.focus()
+    }, 100)
   }
 
   const handleShowMore = () => {
@@ -82,7 +88,16 @@ export const StoriesPage: React.FC = () => {
   }
 
   return (
-    <>
+    <main>
+      <SEO
+        title={t('common:stories.page.title')}
+        description={t('common:stories.page.subtitle')}
+        keywords={t('common:stories.page.keywords')}
+        image="/img/stories-og-image.jpg"
+        url="/stories"
+        type="website"
+        tags={t('common:stories.page.tags', { returnObjects: true }) as string[]}
+      />
       <Section sx={{ py: { xs: 4, md: 6 } }}>
         <Box
           sx={{
@@ -116,8 +131,7 @@ export const StoriesPage: React.FC = () => {
                 label={filterByTrackLabel}
                 onChange={handleTrackChange}
                 size="medium"
-                SelectDisplayProps={{ role: 'button', 'aria-haspopup': 'listbox' }}
-                inputProps={{ 'aria-hidden': true, 'aria-labelledby': 'track-filter-label' }}>
+                aria-label={filterByTrackLabel}>
                 {trackOptions.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
@@ -127,43 +141,55 @@ export const StoriesPage: React.FC = () => {
             </FormControl>
           </Box>
 
-          <Box sx={{ textAlign: 'center' }}>
-            <Typography variant="body1" color="text.secondary">
-              {t('common:stories.page.showingCount', {
-                count: visibleStories.length,
-                total: filteredStories.length,
-              })}
-              {selectedTrack !== 'all' &&
-                ` ${t('common:stories.page.inTrack', { track: trackOptions.find(track => track.value === selectedTrack)?.label })}`}
-            </Typography>
+          <Box
+            ref={resultsRef}
+            role="region"
+            aria-live="polite"
+            aria-atomic="false"
+            tabIndex={-1}
+            sx={{ outline: 'none' }}>
+            <Box sx={{ textAlign: 'center', mb: 2 }}>
+              <Typography variant="body1" color="text.secondary">
+                {t('common:stories.page.showingCount', {
+                  count: visibleStories.length,
+                  total: filteredStories.length,
+                })}
+                {selectedTrack !== 'all' &&
+                  ` ${t('common:stories.page.inTrack', { track: trackOptions.find(track => track.value === selectedTrack)?.label })}`}
+              </Typography>
+            </Box>
+
+            <Grid container spacing={3} px={{ xs: 2, md: 4 }}>
+              {visibleStories.map(story => (
+                <StoryCard key={story.id} story={story} onClick={handleStoryClick} />
+              ))}
+            </Grid>
+
+            {hasMoreStories && (
+              <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+                <Button
+                  variant="text"
+                  sx={{ textDecoration: 'underline' }}
+                  onClick={handleShowMore}
+                  aria-label={t('common:stories.page.showMoreAriaLabel', { count: Math.min(MOBILE_PAGE_SIZE, filteredStories.length - mobileVisibleCount) })}>
+                  {t('common:stories.page.showMore')}
+                </Button>
+              </Box>
+            )}
+
+            {filteredStories.length === 0 && (
+              <Box sx={{ textAlign: 'center', py: 8 }}>
+                <Typography variant="h6" color="text.secondary" gutterBottom>
+                  {t('common:stories.page.noStoriesFound')}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {t('common:stories.page.tryDifferentTrack')}
+                </Typography>
+              </Box>
+            )}
           </Box>
 
-          <Grid container spacing={3} px={{ xs: 2, md: 4 }}>
-            {visibleStories.map(story => (
-              <StoryCard key={story.id} story={story} onClick={handleStoryClick} />
-            ))}
-          </Grid>
-
-          {hasMoreStories && (
-            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-              <Button variant="text" sx={{ textDecoration: 'underline' }} onClick={handleShowMore}>
-                {t('common:stories.page.showMore')}
-              </Button>
-            </Box>
-          )}
-
-          {filteredStories.length === 0 && (
-            <Box sx={{ textAlign: 'center', py: 8 }}>
-              <Typography variant="h6" color="text.secondary" gutterBottom>
-                {t('common:stories.page.noStoriesFound')}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {t('common:stories.page.tryDifferentTrack')}
-              </Typography>
-            </Box>
-          )}
-
-          <Box sx={{ px: 2 }}>
+          <Box sx={{ px: 2, mt: 4 }}>
             <CTAButton to="/tracks" fullWidth sx={{ borderRadius: 0.5 }}>
               {t('common:navigation.cta.startLearning')}
             </CTAButton>
@@ -176,6 +202,6 @@ export const StoriesPage: React.FC = () => {
           <StoryModal story={selectedStory} onClose={handleCloseModal} isMobile={isMobile} />
         </Suspense>
       )}
-    </>
+    </main>
   )
 }

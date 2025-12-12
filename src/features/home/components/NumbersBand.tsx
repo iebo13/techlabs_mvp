@@ -37,7 +37,10 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
   }
 
   return (
-    <Section sx={{ py: { xs: 6, md: 8 } }}>
+    <Section
+      sx={{ py: { xs: 6, md: 8 } }}
+      component="section"
+      aria-labelledby="numbers-section-title">
       <Box
         sx={{
           width: '100%',
@@ -46,11 +49,17 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <Typography variant="h2" color="primary.main" textAlign="center" pb={4}>
+        <Typography
+          id="numbers-section-title"
+          variant="h2"
+          color="primary.main"
+          textAlign="center"
+          pb={4}>
           {displayTitle}
         </Typography>
 
         <Box
+          component="dl"
           sx={{
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
@@ -58,21 +67,36 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
             alignItems: 'center',
             width: '100%',
             gap: 3,
+            margin: 0,
           }}>
           {numbers.map(metric => (
             <Box
               key={metric.label}
+              component="div"
+              role="group"
+              aria-label={`${metric.value} ${getTranslatedLabel(metric.label)}`}
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 textAlign: 'center',
               }}>
-              <Typography variant="h1" color="text.primary" fontWeight={900} sx={{ fontSize: '4rem' }}>
+              <Typography
+                component="dd"
+                variant="h1"
+                color="text.primary"
+                fontWeight={900}
+                sx={{ fontSize: '4rem', margin: 0 }}
+                aria-label={t('hero.numbersSection.valueLabel', { value: metric.value })}>
                 {metric.value}
               </Typography>
 
-              <Typography variant="h6" color="text.primary" fontWeight={600} sx={{ fontSize: '1.5rem' }}>
+              <Typography
+                component="dt"
+                variant="h6"
+                color="text.primary"
+                fontWeight={600}
+                sx={{ fontSize: '1.5rem' }}>
                 {getTranslatedLabel(metric.label)}
               </Typography>
             </Box>

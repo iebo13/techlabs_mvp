@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Alert, Box, Button, Container, Grid, Tab, Tabs, Typography } from '@mui/material'
+import { SEO } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
 import eventsData from '@/mocks/events.json'
 import { EventCard, type Event } from '../components/EventCard'
@@ -12,6 +13,7 @@ export const EventsPage: React.FC = () => {
   const { t } = useI18n()
   const [selectedTab, setSelectedTab] = useState<EventType>('all')
   const [visibleCount, setVisibleCount] = useState(EVENTS_PER_PAGE)
+  const resultsRef = useRef<HTMLDivElement>(null)
 
   const filteredEvents = (() => {
     if (selectedTab === 'all') {
@@ -40,6 +42,11 @@ export const EventsPage: React.FC = () => {
   const handleTabChange = (_: React.SyntheticEvent, newValue: EventType) => {
     setSelectedTab(newValue)
     setVisibleCount(EVENTS_PER_PAGE)
+    
+    // Announce to screen readers
+    setTimeout(() => {
+      resultsRef.current?.focus()
+    }, 100)
   }
 
   const handleLoadMore = () => {
@@ -60,56 +67,74 @@ export const EventsPage: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ py: 6 }}>
-      <Box sx={{ mb: 6, textAlign: 'center' }}>
-        <Typography
-          variant="h2"
-          component="h1"
-          gutterBottom
-          sx={{
-            fontWeight: 800,
-            fontSize: { xs: '2.5rem', md: '3.5rem' },
-            lineHeight: 1.2,
-            color: 'text.primary',
-          }}>
-          {t('events.page.title')}
-        </Typography>
-        <Typography
-          variant="h5"
-          color="text.secondary"
-          sx={{
-            fontWeight: 400,
-            maxWidth: '600px',
-            mx: 'auto',
-            lineHeight: 1.4,
-          }}>
-          {t('events.page.subtitle')}
-        </Typography>
-      </Box>
+    <main>
+      <SEO
+        title={t('events.page.title')}
+        description={t('events.page.subtitle')}
+        keywords={t('events.page.keywords')}
+        image="/img/events-og-image.jpg"
+        url="/events"
+        type="website"
+        tags={t('events.page.tags', { returnObjects: true }) as string[]}
+      />
+      <Container maxWidth="lg" sx={{ py: 6 }}>
+        <Box sx={{ mb: 6, textAlign: 'center' }}>
+          <Typography
+            variant="h2"
+            component="h1"
+            gutterBottom
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: '2.5rem', md: '3.5rem' },
+              lineHeight: 1.2,
+              color: 'text.primary',
+            }}>
+            {t('events.page.title')}
+          </Typography>
+          <Typography
+            variant="h5"
+            color="text.secondary"
+            sx={{
+              fontWeight: 400,
+              maxWidth: '600px',
+              mx: 'auto',
+              lineHeight: 1.4,
+            }}>
+            {t('events.page.subtitle')}
+          </Typography>
+        </Box>
 
-      <Box sx={{ mb: 4 }}>
-        <Tabs
-          value={selectedTab}
-          onChange={handleTabChange}
-          variant="fullWidth"
-          sx={{
-            '& .MuiTab-root': {
-              fontSize: '1rem',
-              fontWeight: 600,
-              textTransform: 'none',
-              minHeight: '56px',
-            },
-            '& .Mui-selected': {
-              color: 'primary.main',
-            },
-          }}>
-          <Tab value="all" label={getTabLabel('all')} />
-          <Tab value="upcoming" label={getTabLabel('upcoming')} />
-          <Tab value="past" label={getTabLabel('past')} />
-        </Tabs>
-      </Box>
+        <Box sx={{ mb: 4 }}>
+          <Tabs
+            value={selectedTab}
+            onChange={handleTabChange}
+            variant="fullWidth"
+            aria-label={t('events.tabs.ariaLabel')}
+            sx={{
+              '& .MuiTab-root': {
+                fontSize: '1rem',
+                fontWeight: 600,
+                textTransform: 'none',
+                minHeight: '56px',
+              },
+              '& .Mui-selected': {
+                color: 'primary.main',
+              },
+            }}>
+            <Tab value="all" label={getTabLabel('all')} id="tab-all" aria-controls="tabpanel-all" />
+            <Tab value="upcoming" label={getTabLabel('upcoming')} id="tab-upcoming" aria-controls="tabpanel-upcoming" />
+            <Tab value="past" label={getTabLabel('past')} id="tab-past" aria-controls="tabpanel-past" />
+          </Tabs>
+        </Box>
 
-      {visibleEvents.length === 0 ? (
+        <Box
+          ref={resultsRef}
+          role="region"
+          aria-live="polite"
+          aria-atomic="true"
+          tabIndex={-1}
+          sx={{ outline: 'none' }}>
+          {visibleEvents.length === 0 ? (
         <Alert severity="info" sx={{ textAlign: 'center', py: 4 }}>
           <Typography variant="h6" gutterBottom>
             {t('events.emptyState.title')}
@@ -118,59 +143,62 @@ export const EventsPage: React.FC = () => {
             {selectedTab === 'upcoming' ? t('events.emptyState.upcomingMessage') : t('events.emptyState.pastMessage')}
           </Typography>
         </Alert>
-      ) : (
-        <>
-          <Grid container spacing={3} sx={{ mb: 4 }}>
-            {visibleEvents.map(event => (
-              <Grid key={event.id} size={{ xs: 12, sm: 6, md: 4 }}>
-                <EventCard event={event} />
+          ) : (
+            <>
+              <Grid container spacing={3} sx={{ mb: 4 }}>
+                {visibleEvents.map(event => (
+                  <Grid key={event.id} size={{ xs: 12, sm: 6, md: 4 }}>
+                    <EventCard event={event} />
+                  </Grid>
+                ))}
               </Grid>
-            ))}
-          </Grid>
 
-          {hasMoreEvents && (
-            <Box sx={{ textAlign: 'center' }}>
-              <Button
-                variant="outlined"
-                size="large"
-                onClick={handleLoadMore}
-                sx={{
-                  px: 4,
-                  py: 1.5,
-                  borderRadius: '28px',
-                  textTransform: 'none',
-                  fontWeight: 600,
-                  fontSize: '1rem',
-                }}>
-                {t('events.page.loadMore')}
-              </Button>
-            </Box>
+              {hasMoreEvents && (
+                <Box sx={{ textAlign: 'center' }}>
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    onClick={handleLoadMore}
+                    aria-label={t('events.page.loadMoreAriaLabel', { count: Math.min(EVENTS_PER_PAGE, sortedEvents.length - visibleCount) })}
+                    sx={{
+                      px: 4,
+                      py: 1.5,
+                      borderRadius: '28px',
+                      textTransform: 'none',
+                      fontWeight: 600,
+                      fontSize: '1rem',
+                    }}>
+                    {t('events.page.loadMore')}
+                  </Button>
+                </Box>
+              )}
+            </>
           )}
-        </>
-      )}
+        </Box>
 
-      <Box sx={{ mt: 8, textAlign: 'center' }}>
-        <Typography variant="h6" gutterBottom color="text.secondary">
-          {t('events.hostEvent.title')}
-        </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-          {t('events.hostEvent.description')}
-        </Typography>
-        <Button
-          variant="contained"
-          size="large"
-          href="/about#contact"
-          sx={{
-            px: 4,
-            py: 1.5,
-            borderRadius: '28px',
-            textTransform: 'none',
-            fontWeight: 600,
-            fontSize: '1rem',
-          }}>
-          {t('events.hostEvent.cta')}
-        </Button>
-      </Box>
-    </Container>
+        <Box sx={{ mt: 8, textAlign: 'center' }}>
+          <Typography variant="h6" gutterBottom color="text.secondary">
+            {t('events.hostEvent.title')}
+          </Typography>
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+            {t('events.hostEvent.description')}
+          </Typography>
+          <Button
+            variant="contained"
+            size="large"
+            href="/about#contact"
+            sx={{
+              px: 4,
+              py: 1.5,
+              borderRadius: '28px',
+              textTransform: 'none',
+              fontWeight: 600,
+              fontSize: '1rem',
+            }}>
+            {t('events.hostEvent.cta')}
+          </Button>
+        </Box>
+      </Container>
+    </main>
   )
 }

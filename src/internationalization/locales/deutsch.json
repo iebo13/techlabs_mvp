@@ -46,7 +46,8 @@
       "title": "Techlabs in Zahlen",
       "cities": "Städte",
       "graduates": "Absolventen",
-      "mentors": "Mentoren"
+      "mentors": "Mentoren",
+      "valueLabel": "{{value}}"
     },
     "support": {
       "title": "Tech-Bildung unterstützen",
@@ -256,6 +257,7 @@
     "teamSection": {
       "title": "Lernen Sie unser Team kennen",
       "description": "Unser Team vereint Expertise in Bildung, Technologie und Community-Aufbau, um die bestmögliche Lernerfahrung zu schaffen.",
+      "avatarLabel": "{{name}} Profilbild",
       "members": {
         "sarah": {
           "name": "Dr. Sarah Chen",
@@ -306,12 +308,19 @@
     "page": {
       "title": "TechLabs Veranstaltungen",
       "subtitle": "Nehmen Sie an unseren Community-Veranstaltungen, Workshops und Networking-Gelegenheiten teil",
-      "loadMore": "Weitere Veranstaltungen laden"
+      "loadMore": "Weitere Veranstaltungen laden",
+      "loadMoreAriaLabel": "{{count}} weitere Veranstaltung laden",
+      "loadMoreAriaLabel_other": "{{count}} weitere Veranstaltungen laden",
+      "description": "Nehmen Sie an unseren Community-Veranstaltungen, Workshops und Networking-Gelegenheiten teil. Entdecken Sie kommende und vergangene Veranstaltungen bei TechLabs.",
+      "keywords": "TechLabs Veranstaltungen, Workshops, Networking, Tech-Events, Community-Events, Tech-Meetups",
+      "tags": ["Veranstaltungen", "Workshops", "Networking", "Community", "Tech-Meetups"]
     },
     "card": {
       "upcomingLabel": "Kommend",
       "pastLabel": "Vergangen",
-      "eventImageAlt": "{{title}} Veranstaltungsbild"
+      "eventImageAlt": "{{title}} Veranstaltungsbild",
+      "dateLabel": "Datum",
+      "locationLabel": "Ort"
     },
     "emptyState": {
       "title": "Keine Veranstaltungen gefunden",
@@ -326,7 +335,8 @@
     "tabs": {
       "all": "Alle Veranstaltungen ({{count}})",
       "upcoming": "Kommende ({{count}})",
-      "past": "Vergangene ({{count}})"
+      "past": "Vergangene ({{count}})",
+      "ariaLabel": "Veranstaltungen nach Zeitraum filtern"
     }
   },
   "stories": {
@@ -348,7 +358,12 @@
       "inTrack": "in {{track}}",
       "noStoriesFound": "Keine Geschichten für diesen Track gefunden",
       "tryDifferentTrack": "Versuchen Sie, einen anderen Track auszuwählen oder schauen Sie später wieder vorbei.",
-      "showMore": "Mehr anzeigen >"
+      "showMore": "Mehr anzeigen >",
+      "showMoreAriaLabel": "{{count}} weitere Geschichte anzeigen",
+      "showMoreAriaLabel_other": "{{count}} weitere Geschichten anzeigen",
+      "description": "Erfahren Sie, wie TechLabs-Alumni ihre Karriere transformieren und in der Tech-Branche Wirkung erzielen. Lesen Sie Erfolgsgeschichten unserer Absolventen.",
+      "keywords": "TechLabs Erfolgsgeschichten, Alumni-Geschichten, Absolventen-Testimonials, Karrieretransformation, Tech-Karrieren",
+      "tags": ["Erfolgsgeschichten", "Alumni", "Absolventen", "Karrieretransformation", "Testimonials"]
     },
     "card": {
       "viewDetails": "Details für {{title}} anzeigen",
@@ -369,7 +384,20 @@
   },
   "partners": {
     "title": "Unsere Partner",
-    "description": "Unternehmen und Organisationen, die unsere Mission unterstützen"
+    "description": "Unternehmen und Organisationen, die unsere Mission unterstützen",
+    "page": {
+      "title": "Unsere Partner - TechLabs",
+      "subtitle": "Gemeinsam mit unseren Partnern machen wir Tech-Bildung für alle zugänglich. Gestalten Sie mit uns die Zukunft des digitalen Lernens.",
+      "description": "Unternehmen und Organisationen, die die Mission von TechLabs unterstützen, Tech-Bildung für alle zugänglich zu machen.",
+      "keywords": "TechLabs Partner, Sponsoren, Partnerschaften, Tech-Bildung Partner, Unternehmenssponsoren",
+      "tags": ["Partner", "Sponsoren", "Partnerschaften", "Zusammenarbeit"]
+    },
+    "becomePartner": {
+      "title": "Werden Sie Partner",
+      "description": "Schließen Sie sich unserer Mission an, Tech-Bildung für alle zugänglich zu machen. Werden Sie Partner und gestalten Sie die Zukunft des digitalen Lernens mit uns.",
+      "cta": "Kontakt aufnehmen",
+      "ctaAriaLabel": "Kontaktieren Sie uns, um Partner zu werden"
+    }
   },
   "common": {
     "loading": "Lädt...",

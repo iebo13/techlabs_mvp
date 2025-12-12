@@ -60,6 +60,8 @@ export const TeamSection: React.FC = () => {
                 }}>
                 <CardContent>
                   <Box
+                    role="img"
+                    aria-label={t('about.teamSection.avatarLabel', { name: member.name })}
                     sx={{
                       width: '80px',
                       height: '80px',

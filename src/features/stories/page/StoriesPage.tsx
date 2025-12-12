@@ -15,7 +15,7 @@ import {
   type SelectChangeEvent,
 } from '@mui/material'
 import { CTAButton } from '@/components/Buttons'
-import { Section } from '@/components/Layouts'
+import { Section, SEO } from '@/components/Layouts'
 import type { TrackKey } from '@/features/tracks'
 import { useI18n } from '@/hooks'
 import storiesData from '@/mocks/stories.json'
@@ -82,7 +82,16 @@ export const StoriesPage: React.FC = () => {
   }
 
   return (
-    <>
+    <main>
+      <SEO
+        title={t('common:stories.page.title')}
+        description={t('common:stories.page.subtitle')}
+        keywords={t('common:stories.page.keywords')}
+        image="/img/stories-og-image.jpg"
+        url="/stories"
+        type="website"
+        tags={t('common:stories.page.tags', { returnObjects: true }) as string[]}
+      />
       <Section sx={{ py: { xs: 4, md: 6 } }}>
         <Box
           sx={{
@@ -115,9 +124,7 @@ export const StoriesPage: React.FC = () => {
                 value={selectedTrack}
                 label={filterByTrackLabel}
                 onChange={handleTrackChange}
-                size="medium"
-                SelectDisplayProps={{ role: 'button', 'aria-haspopup': 'listbox' }}
-                inputProps={{ 'aria-hidden': true, 'aria-labelledby': 'track-filter-label' }}>
+                size="medium">
                 {trackOptions.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
@@ -176,6 +183,6 @@ export const StoriesPage: React.FC = () => {
           <StoryModal story={selectedStory} onClose={handleCloseModal} isMobile={isMobile} />
         </Suspense>
       )}
-    </>
+    </main>
   )
 }

@@ -29,49 +29,53 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
   return (
     <Box maxWidth={maxWidth} mx="auto" width="100%">
       <Stack spacing={2}>
-        {faqs.map((faq, index) => (
-          <Accordion
-            key={`faq-${faq.q.slice(0, 20).toLowerCase().replaceAll(/\s+/g, '-')}`}
-            expanded={expanded === `panel${index}`}
-            onChange={handleChange(`panel${index}`)}
-            sx={{
-              border: showBorder ? '1px solid' : 'none',
-              borderColor: showBorder ? 'divider' : 'transparent',
-              borderRadius: 2,
-              '&:before': {
-                display: 'none',
-              },
-              '&.Mui-expanded': {
-                borderColor: showBorder ? 'primary.main' : 'transparent',
-                boxShadow: showBorder ? 2 : 'none',
-              },
-            }}>
-            <AccordionSummary
-              expandIcon={<ExpandMore />}
-              aria-controls={`panel${index}bh-content`}
-              id={`panel${index}bh-header`}
+        {faqs.map((faq, index) => {
+          const faqId = `faq-${index}-${faq.q.slice(0, 20).toLowerCase().replaceAll(/\s+/g, '-')}`
+
+          return (
+            <Accordion
+              key={faqId}
+              expanded={expanded === `panel${index}`}
+              onChange={handleChange(`panel${index}`)}
               sx={{
-                '& .MuiAccordionSummary-content': {
-                  margin: 2,
+                border: showBorder ? '1px solid' : 'none',
+                borderColor: showBorder ? 'divider' : 'transparent',
+                borderRadius: 2,
+                '&:before': {
+                  display: 'none',
+                },
+                '&.Mui-expanded': {
+                  borderColor: showBorder ? 'primary.main' : 'transparent',
+                  boxShadow: showBorder ? 2 : 'none',
                 },
               }}>
-              <Typography
-                variant="h6"
-                component="div"
+              <AccordionSummary
+                expandIcon={<ExpandMore />}
+                aria-controls={`panel${index}bh-content`}
+                id={`panel${index}bh-header`}
                 sx={{
-                  fontWeight: 600,
-                  color: 'text.primary',
+                  '& .MuiAccordionSummary-content': {
+                    margin: 2,
+                  },
                 }}>
-                {faq.q}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails sx={{ px: 3, pb: 3 }}>
-              <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-                {faq.a}
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
+                <Typography
+                  variant="h6"
+                  component="h3"
+                  sx={{
+                    fontWeight: 600,
+                    color: 'text.primary',
+                  }}>
+                  {faq.q}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails sx={{ px: 3, pb: 3 }}>
+                <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                  {faq.a}
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+          )
+        })}
       </Stack>
     </Box>
   )

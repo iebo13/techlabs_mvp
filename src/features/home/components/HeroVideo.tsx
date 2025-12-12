@@ -44,29 +44,12 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
         <Card
           sx={{
             position: 'relative',
-            cursor: 'pointer',
-            transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
             overflow: 'hidden',
             borderRadius: 0,
-            '&:focus-within': {
-              outline: '2px solid',
-              outlineColor: 'primary.main',
-              outlineOffset: 2,
-            },
-          }}
-          onClick={handlePlayClick}
-          role="button"
-          tabIndex={0}
-          onKeyDown={event => {
-            if (event.key === 'Enter' || event.key === ' ') {
-              event.preventDefault()
-              handlePlayClick()
-            }
-          }}
-          aria-label={t('hero.video.playLabel', { title: displayTitle, duration: durationText })}>
+          }}>
           <OptimizedImage
             src={posterUrl || VIDEO_THUMBNAIL}
-            alt={`${displayTitle} thumbnail`}
+            alt=""
             width="100%"
             height="600px"
             sizes="(max-width: 600px) 100vw, (max-width: 900px) 80vw, 800px"
@@ -89,27 +72,26 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
               alignItems: 'center',
               justifyContent: 'center',
               bgcolor: 'rgba(0, 0, 0, 0.3)',
-              transition: 'background-color 0.2s ease-in-out',
-              '&:hover': {
-                bgcolor: 'rgba(0, 0, 0, 0.4)',
-              },
             }}>
             <IconButton
               size="large"
-              aria-label={`Play introduction video, duration ${durationText}`}
+              aria-label={t('hero.video.playLabel', { title: displayTitle, duration: durationText })}
+              onClick={handlePlayClick}
               sx={{
                 bgcolor: 'primary.main',
                 color: 'primary.contrastText',
                 width: { xs: 64, sm: 80 },
                 height: { xs: 64, sm: 80 },
+                transition: 'all 0.2s ease-in-out',
                 '&:hover': {
                   bgcolor: 'primary.dark',
                   transform: 'scale(1.1)',
                 },
-              }}
-              onClick={event => {
-                event.stopPropagation()
-                handlePlayClick()
+                '&:focus-visible': {
+                  outline: '3px solid',
+                  outlineColor: 'primary.light',
+                  outlineOffset: 4,
+                },
               }}>
               <PlayArrowIcon sx={{ fontSize: { xs: 32, sm: 40 } }} />
             </IconButton>

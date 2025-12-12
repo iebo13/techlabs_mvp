@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Button, Card, Stack, Typography } from '@mui/material'
-import { Section, SectionHeading } from '@/components/Layouts'
+import { Section } from '@/components/Layouts'
 import partnersData from '@/mocks/partners.json'
 import { PartnerLogo } from '../components/PartnerLogo'
 import type { Partner } from '../types/partners.type'
@@ -10,9 +10,9 @@ export const PartnersPage: React.FC = () => {
     <main>
       <Section>
         <Stack spacing={4} alignItems="center" textAlign="center">
-          <SectionHeading level={2} centered>
+          <Typography variant="h2" component="h1" sx={{ fontWeight: 700, color: 'primary.main' }}>
             Our Partners
-          </SectionHeading>
+          </Typography>
           <Typography variant="h5" color="text.secondary" maxWidth="600px">
             Together with our partners, we're making tech education accessible to everyone. Join us in shaping the
             future of digital learning.

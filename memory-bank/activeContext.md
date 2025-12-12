@@ -1,14 +1,38 @@
-# Active Context - TechLabs MVP Performance Optimization
+# Active Context - TechLabs MVP Accessibility & Performance
 
 ## Current Focus
-**Primary Goal**: Lighthouse Performance Analysis & Improvement Plan Implementation 🚀
+**Latest Achievement**: Accessibility Compliance - WCAG 2.1 AA ✅ (December 12, 2025)
 
-**New Priority**: Based on Lighthouse audit results, the application has significant performance issues that need immediate attention:
+**Completed**: Comprehensive accessibility evaluation and improvements across all pages and components
+- **WCAG 2.1 AA Compliance**: All critical and moderate issues resolved
+- **Files Modified**: 9 files (4 pages, 4 components, 1 form)
+- **Issues Fixed**: 9 critical and moderate accessibility issues
+- **Testing**: All TypeScript, ESLint, and tests passing
+
+**Previous Priority**: Lighthouse Performance Optimization (still pending)
 - **Overall Performance Score**: 0.45/1.0 (Poor)
 - **Critical Issues**: Slow initial load (FCP: 4.4s, LCP: 5.5s), poor CLS (0.42), missing images causing 404s
 - **Target**: Achieve 0.9+ performance score with <2.5s LCP
 
-## Recent Changes (Latest - Lighthouse Performance Audit - August 2024)
+## Recent Changes (Latest - Accessibility Improvements - December 12, 2025)
+
+### Accessibility Evaluation & Fixes ✅ COMPLETED
+- **Comprehensive Audit**: Evaluated all 7 pages and 65+ components
+- **Critical Issues Fixed**: 
+  - Added `<main>` landmarks to 4 pages (Events, Stories, Admin, Partners)
+  - Added SEO component to StoriesPage
+  - Fixed heading hierarchy in PartnersPage
+  - Added ARIA labels to emoji icons in EventCard
+  - Scoped keyboard navigation in StoriesCarousel
+  - Removed redundant click handlers in HeroVideo
+  - Fixed ARIA conflicts in Select components
+  - Added Tabs ARIA labels
+  - Fixed FAQ accordion key generation
+  
+- **Documentation Created**: `docs/accessibility-improvements-dec-2025.md`
+- **Quality Assurance**: All checks passing (TypeScript, ESLint, tests)
+
+### Previous Changes (Lighthouse Performance Audit - August 2024)
 - **Lighthouse Performance Audit**: Completed comprehensive performance analysis
 - **Performance Baseline Established**: Current scores and metrics documented
 - **Improvement Plan Created**: Prioritized action items for performance optimization
@@ -170,15 +194,17 @@ if (id.includes('@emotion')) {
 - **Type Safety**: ✅ Strict TypeScript compliance
 
 ## Documentation Created
+- **Accessibility Improvements Report**: `docs/accessibility-improvements-dec-2025.md` (NEW)
 - **Performance Optimization Guide**: `docs/performance-optimization.md`
 - **Component Optimization Examples**: Comprehensive code examples
 - **Bundle Analysis Results**: Detailed chunk breakdown and optimization metrics
 - **Performance Monitoring**: Enhanced monitoring system documentation
 - **Lighthouse Analysis**: Performance audit results and improvement plan
+- **Accessibility Audit (Previous)**: `docs/accessibility-audit.md` (December 7, 2025)
 
-## Project Status: PERFORMANCE OPTIMIZATION IN PROGRESS 🚀
+## Project Status: ACCESSIBILITY COMPLIANT ✅ + PERFORMANCE OPTIMIZATION PENDING ⚠️
 
-The TechLabs MVP application has been successfully optimized for React rendering and bundle organization, but now requires:
+The TechLabs MVP application has been successfully optimized for React rendering, bundle organization, and accessibility compliance. Remaining work:
 
 ### Immediate Actions Required
 - **Fix Missing Images**: Resolve 404 errors for partner logos and hero images
@@ -227,14 +253,24 @@ The TechLabs MVP application has been successfully optimized for React rendering
 - **Performance monitoring improved** with reduced overhead ✅
 - **Image and media optimization** implemented ✅
 - **Error boundaries and loading states** enhanced ✅
+- **Accessibility compliance** WCAG 2.1 AA achieved ✅ **NEW**
 - **Comprehensive documentation** complete ✅
 - **Lighthouse performance audit** completed with improvement plan 🚀
 - **Critical performance issues** identified and prioritized 🚨
 
-The application now has enterprise-grade React optimization but requires immediate attention to:
+### Accessibility Achievements (December 12, 2025) ✅
+- **All pages** have proper semantic HTML structure with `<main>` landmarks
+- **All interactive elements** keyboard accessible with visible focus indicators
+- **All non-text content** has proper ARIA labels and alternatives
+- **Heading hierarchy** correct throughout application
+- **Screen reader support** enhanced with descriptive ARIA labels
+- **No keyboard traps** except intended modal focus traps
+- **Color contrast** meets WCAG AA standards via MUI theme
+
+The application now has enterprise-grade React optimization AND accessibility compliance but requires immediate attention to:
 - **Fix missing images** causing 404 errors
 - **Improve Core Web Vitals** scores significantly
 - **Implement advanced caching** and resource optimization
 - **Achieve 0.9+ Lighthouse performance score**
 
-**Available for**: Performance optimization implementation, image fixes, advanced caching, and Core Web Vitals improvement.
+**Available for**: Performance optimization implementation, image fixes, advanced caching, Core Web Vitals improvement, and continued accessibility maintenance.

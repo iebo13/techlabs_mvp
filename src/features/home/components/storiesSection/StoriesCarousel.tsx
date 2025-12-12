@@ -35,8 +35,14 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
   const visibleStories = stories.slice(currentIndex, currentIndex + cardsPerView)
 
   useEffect(() => {
+    const carouselElement = carouselRef.current
+
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (!carouselRef.current?.contains(event.target as Node)) return
+      // Only handle keyboard events when carousel is focused
+      if (!carouselElement?.contains(event.target as Node)) return
+
+      // Only handle keyboard events when focus is within carousel
+      if (document.activeElement && !carouselElement.contains(document.activeElement)) return
 
       switch (event.key) {
         case 'ArrowLeft':
@@ -58,9 +64,15 @@ export const StoriesCarousel: React.FC<StoriesCarouselProps> = ({ stories, secti
       }
     }
 
-    document.addEventListener('keydown', handleKeyDown)
+    if (carouselElement) {
+      carouselElement.addEventListener('keydown', handleKeyDown as EventListener)
+    }
 
-    return () => document.removeEventListener('keydown', handleKeyDown)
+    return () => {
+      if (carouselElement) {
+        carouselElement.removeEventListener('keydown', handleKeyDown as EventListener)
+      }
+    }
   }, [maxIndex])
 
   return (

@@ -1,35 +1,39 @@
 import React from 'react'
 import { Box, Button, Card, Stack, Typography } from '@mui/material'
-import { Section, SectionHeading } from '@/components/Layouts'
-import partnersData from '@/mocks/partners.json'
+import { DataLoadingState, Section, SectionHeading } from '@/components/Layouts'
 import { PartnerLogo } from '../components/PartnerLogo'
+import { usePartners } from '../hooks/usePartners'
 import type { Partner } from '../types/partners.type'
 
 export const PartnersPage: React.FC = () => {
+  const { data: partners, isLoading, error } = usePartners()
+
   return (
     <main>
       <Section>
-        <Stack spacing={4} alignItems="center" textAlign="center">
-          <SectionHeading level={2} centered>
-            Our Partners
-          </SectionHeading>
-          <Typography variant="h5" color="text.secondary" maxWidth="600px">
-            Together with our partners, we're making tech education accessible to everyone. Join us in shaping the
-            future of digital learning.
-          </Typography>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'row',
-              gap: 4,
-            }}>
-            {partnersData.partners.map((partner: Partner) => (
-              <PartnerLogo key={partner.name} partner={partner} />
-            ))}
-          </Box>
-        </Stack>
+        <DataLoadingState isLoading={isLoading} error={error}>
+          <Stack spacing={4} alignItems="center" textAlign="center">
+            <SectionHeading level={2} centered>
+              Our Partners
+            </SectionHeading>
+            <Typography variant="h5" color="text.secondary" maxWidth="600px">
+              Together with our partners, we're making tech education accessible to everyone. Join us in shaping the
+              future of digital learning.
+            </Typography>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'row',
+                gap: 4,
+              }}>
+              {(partners ?? []).map((partner: Partner) => (
+                <PartnerLogo key={partner.name} partner={partner} />
+              ))}
+            </Box>
+          </Stack>
+        </DataLoadingState>
       </Section>
 
       <Section>

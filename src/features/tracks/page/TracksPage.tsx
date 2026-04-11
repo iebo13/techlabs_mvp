@@ -1,20 +1,23 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Container, Grid, Typography } from '@mui/material'
-import { Section, SEO } from '@/components/Layouts'
+import { DataLoadingState, Section, SEO } from '@/components/Layouts'
 import { loadTrackSelection, queryParamToTrackIds, getLocalizedTrack } from '@/features/tracks/utils/tracksUtils'
 import { useI18n } from '@/hooks'
-import tracksData from '@/mocks/tracks.json'
 import { TrackCard } from '../components/TrackCard'
+import { useTracks } from '../hooks/useTracks'
 
 export const TracksPage: React.FC = () => {
   const [searchParams] = useSearchParams()
   const [expandedTrack, setExpandedTrack] = useState<string | null>(null)
   const i18n = useI18n()
+  const { data: tracks, isLoading, error } = useTracks()
 
   const localizedTracks = useMemo(() => {
-    return tracksData.tracks.map(track => getLocalizedTrack(track, i18n.t))
-  }, [i18n.t])
+    if (!tracks) return []
+
+    return tracks.map(track => getLocalizedTrack(track, i18n.t))
+  }, [tracks, i18n.t])
 
   useEffect(() => {
     const urlPrefs = searchParams.get('pref')
@@ -46,18 +49,20 @@ export const TracksPage: React.FC = () => {
         tags={i18n.t('tracks.page.tags') as unknown as string[]}
       />
       <Section sx={{ py: { xs: 4, md: 6 } }}>
-        <Container maxWidth="lg">
-          <Typography variant="h1" sx={{ mb: 4, textAlign: 'center' }}>
-            {i18n.t('tracks.page.title')}
-          </Typography>
-          <Grid container spacing={4}>
-            {localizedTracks.map(track => (
-              <Grid size={{ xs: 12, md: 6 }} key={track.id}>
-                <TrackCard track={track} isExpanded={expandedTrack === track.id} onToggle={handleTrackToggle} />
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
+        <DataLoadingState isLoading={isLoading} error={error}>
+          <Container maxWidth="lg">
+            <Typography variant="h1" sx={{ mb: 4, textAlign: 'center' }}>
+              {i18n.t('tracks.page.title')}
+            </Typography>
+            <Grid container spacing={4}>
+              {localizedTracks.map(track => (
+                <Grid size={{ xs: 12, md: 6 }} key={track.id}>
+                  <TrackCard track={track} isExpanded={expandedTrack === track.id} onToggle={handleTrackToggle} />
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </DataLoadingState>
       </Section>
     </main>
   )

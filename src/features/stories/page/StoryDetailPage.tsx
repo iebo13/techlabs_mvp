@@ -2,9 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Box, Container, Grid } from '@mui/material'
 import { CTAButton } from '@/components/Buttons'
-import { LazyIntersection, Section, SectionHeading, SEO } from '@/components/Layouts'
+import { DataLoadingState, LazyIntersection, Section, SectionHeading, SEO } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
-import storiesData from '@/mocks/stories.json'
 import { StoryAchievements } from '../components/StoryAchievements'
 import { StoryBottomCta } from '../components/StoryBottomCta'
 import { StoryHero } from '../components/StoryHero'
@@ -12,18 +11,26 @@ import { StoryImpactMetrics } from '../components/StoryImpactMetrics'
 import { StoryNarrative } from '../components/StoryNarrative'
 import { StoryProfileCard } from '../components/StoryProfileCard'
 import { StoryPullQuote } from '../components/StoryPullQuote'
+import { useStoryById } from '../hooks/useStories'
 import type { Story } from '../types/stories.types'
 import { getStoryCoverImageUrl } from '../utils/storyCoverImage'
-
-const typedStoriesData = storiesData as Story[]
 
 export const StoryDetailPage: React.FC = () => {
   const { storyId } = useParams<{ storyId: string }>()
   const { t } = useI18n()
+  const { data: storyData, isLoading, error } = useStoryById(storyId ?? '')
 
-  const story = typedStoriesData.find(s => s.id === storyId)
+  if (isLoading) {
+    return (
+      <DataLoadingState isLoading error={null}>
+        {null}
+      </DataLoadingState>
+    )
+  }
 
-  if (!story) {
+  const story = storyData as Story | null | undefined
+
+  if (error || !story) {
     return (
       <Section sx={{ py: 12, textAlign: 'center' }}>
         <SectionHeading level={2}>{t('common:stories.detail.notFound')}</SectionHeading>

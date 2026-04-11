@@ -1,7 +1,7 @@
 export type Partner = {
   name: string
   logoUrl: string
-  href?: string
+  href?: string | null
 }
 
 export type PartnerTier = {

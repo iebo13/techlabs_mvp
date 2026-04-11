@@ -1,10 +1,12 @@
 import React, { lazy, Suspense, useEffect } from 'react'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider as MuiThemeProvider, CssBaseline, Box } from '@mui/material'
 import { ErrorBoundary } from '@/components/ErrorHandling'
 import { SiteFooter, HeaderNav } from '@/components/Layouts'
 import { performanceMonitor } from '@/components/PerformanceMonitoring'
+import { queryClient } from '@/config/http'
 import { initializeApp } from '@/config/preload'
 import { routes } from '@/config/routes'
 import { ThemeProvider, useTheme } from '@/contexts/ThemeContext'
@@ -32,30 +34,32 @@ const AppContent: React.FC = () => {
   }, [])
 
   return (
-    <HelmetProvider>
-      <ErrorBoundary>
-        <MuiThemeProvider theme={currentTheme}>
-          <CssBaseline />
-          <BrowserRouter>
-            <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
-              <HeaderNav />
-              <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>
-                <Routes>
-                  {routes.map(({ path, element }) => (
-                    <Route key={path} path={path} element={element} />
-                  ))}
-                </Routes>
+    <QueryClientProvider client={queryClient}>
+      <HelmetProvider>
+        <ErrorBoundary>
+          <MuiThemeProvider theme={currentTheme}>
+            <CssBaseline />
+            <BrowserRouter>
+              <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
+                <HeaderNav />
+                <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>
+                  <Routes>
+                    {routes.map(({ path, element }) => (
+                      <Route key={path} path={path} element={element} />
+                    ))}
+                  </Routes>
+                </Box>
+                <SiteFooter />
+                <Suspense fallback={null}>
+                  <AccessibilityTester />
+                  <DebugPanel />
+                </Suspense>
               </Box>
-              <SiteFooter />
-              <Suspense fallback={null}>
-                <AccessibilityTester />
-                <DebugPanel />
-              </Suspense>
-            </Box>
-          </BrowserRouter>
-        </MuiThemeProvider>
-      </ErrorBoundary>
-    </HelmetProvider>
+            </BrowserRouter>
+          </MuiThemeProvider>
+        </ErrorBoundary>
+      </HelmetProvider>
+    </QueryClientProvider>
   )
 }
 

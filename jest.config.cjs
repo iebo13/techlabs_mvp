@@ -32,6 +32,10 @@ module.exports = {
     // Handle image and other asset imports
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': 'jest-transform-stub',
 
+    // Mock modules that use import.meta (not supported in Jest/CommonJS)
+    '^@/config/dataSource$': '<rootDir>/src/test/mocks/dataSource.ts',
+    '^@/config/sanity$': '<rootDir>/src/test/mocks/sanity.ts',
+
     // Handle absolute imports (if using path mapping)
     '^@/(.*)$': '<rootDir>/src/$1',
   },

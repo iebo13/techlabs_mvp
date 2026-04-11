@@ -16,7 +16,7 @@ export const TrackSchema = z.object({
 export const PartnerSchema = z.object({
   name: z.string().min(1),
   logoUrl: z.string().min(1), // Allow relative paths for MVP
-  href: z.string().optional(),
+  href: z.string().nullish(),
 })
 
 export const PartnerTierSchema = z.object({
@@ -73,12 +73,12 @@ export const StoryPhotoCreditSchema = z.object({
 
 export const StorySchema = z.object({
   id: z.string().min(1),
-  name: z.string().min(1).optional(),
+  name: z.string().min(1).nullish(),
   title: z.string().min(1),
   excerpt: z.string().min(1),
   fullDescription: z.string().min(1),
   imageUrl: z.string().min(1),
-  coverImageUrl: z.string().url().optional(),
+  coverImageUrl: z.string().url().nullish(),
   href: z.string().min(1),
   track: TrackKeySchema,
   trackLabel: z.string().min(1),
@@ -86,12 +86,12 @@ export const StorySchema = z.object({
   location: z.string().min(1),
   currentRole: z.string().min(1),
   company: z.string().min(1),
-  beforeRole: z.string().min(1).optional(),
+  beforeRole: z.string().min(1).nullish(),
   achievements: z.array(z.string().min(1)),
-  quote: z.string().min(1).optional(),
-  narrative: StoryNarrativeSchema.optional(),
-  metrics: z.array(StoryMetricSchema).optional(),
-  photoCredit: StoryPhotoCreditSchema.optional(),
+  quote: z.string().min(1).nullish(),
+  narrative: StoryNarrativeSchema.nullish(),
+  metrics: z.array(StoryMetricSchema).nullish(),
+  photoCredit: StoryPhotoCreditSchema.nullish(),
 })
 
 export const EventTypeSchema = z.enum(['upcoming', 'past'])
@@ -111,9 +111,9 @@ export const EventSchema = z.object({
   imageUrl: z.string().min(1),
   href: z.string().min(1),
   description: z.array(z.string().min(1)).min(1),
-  highlights: z.array(z.string().min(1)).optional(),
-  agenda: z.array(EventAgendaItemSchema).optional(),
-  externalUrl: z.string().url().optional(),
+  highlights: z.array(z.string().min(1)).nullish(),
+  agenda: z.array(EventAgendaItemSchema).nullish(),
+  externalUrl: z.string().url().nullish(),
 })
 
 export const NumberStatSchema = z.object({

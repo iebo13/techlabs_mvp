@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormatQuote as QuoteIcon } from '@mui/icons-material'
 import { Avatar, Box, Stack, Typography } from '@mui/material'
+import { PORTRAIT_IMAGE_OBJECT_POSITION } from '../utils/portraitObjectPosition'
 
 type StoryPullQuoteProps = {
   readonly quote: string
@@ -72,7 +73,17 @@ export const StoryPullQuote: React.FC<StoryPullQuoteProps> = ({ quote, attributi
 
     {/* Attribution */}
     <Stack direction="row" alignItems="center" spacing={1.5} sx={{ position: 'relative', zIndex: 1 }}>
-      {avatarUrl && <Avatar src={avatarUrl} alt={attribution} sx={{ width: 36, height: 36 }} />}
+      {avatarUrl && (
+        <Avatar
+          src={avatarUrl}
+          alt={attribution}
+          sx={{
+            width: 36,
+            height: 36,
+            '& .MuiAvatar-img': { objectPosition: PORTRAIT_IMAGE_OBJECT_POSITION },
+          }}
+        />
+      )}
       <Box>
         <Typography variant="subtitle2" fontWeight={700} color="text.primary" lineHeight={1.3}>
           {attribution}

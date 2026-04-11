@@ -13,6 +13,13 @@ export type StoryMetric = {
   readonly value: string
 }
 
+/** Attribution for hotlinked Unsplash portraits (see Unsplash API guidelines). */
+export type StoryPhotoCredit = {
+  readonly photographer: string
+  readonly profileUrl: string
+  readonly photoPageUrl: string
+}
+
 export type Story = {
   id: string
   name?: string
@@ -20,6 +27,8 @@ export type Story = {
   excerpt: string
   fullDescription: string
   imageUrl: string
+  /** Wide / landscape image for the detail-page hero (cards/avatars use {@link imageUrl}). */
+  coverImageUrl?: string
   href: string
   track: TrackKey
   trackLabel: string
@@ -32,6 +41,7 @@ export type Story = {
   quote?: string
   narrative?: StoryNarrative
   metrics?: StoryMetric[]
+  photoCredit?: StoryPhotoCredit
 }
 
 export type StoryCardProps = {

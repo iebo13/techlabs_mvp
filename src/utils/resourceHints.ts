@@ -69,7 +69,7 @@ export const prefetchLikelyPages = (): void => {
  * Add DNS prefetch for external domains
  */
 export const addDnsPrefetch = (): void => {
-  const domains = ['https://fonts.googleapis.com', 'https://fonts.gstatic.com']
+  const domains = ['https://fonts.googleapis.com', 'https://fonts.gstatic.com', 'https://images.unsplash.com']
 
   domains.forEach(domain => {
     addResourceHint({

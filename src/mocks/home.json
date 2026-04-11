@@ -5,15 +5,33 @@
     "subtitle": "Blended learning · Local Community · Practical Projects"
   },
   "tracks": [
-    { "id": "web-dev", "label": "Web Development" },
-    { "id": "data-science", "label": "Data Science" },
-    { "id": "product-design", "label": "Product Design" },
-    { "id": "ai", "label": "Artificial Intelligence" }
+    {
+      "id": "web-dev",
+      "label": "Web Development"
+    },
+    {
+      "id": "data-science",
+      "label": "Data Science"
+    },
+    {
+      "id": "product-design",
+      "label": "Product Design"
+    },
+    {
+      "id": "ai",
+      "label": "Artificial Intelligence"
+    }
   ],
   "applicationDeadlineISO": "2025-11-15T00:00:00Z",
   "partners": [
-    { "name": "O2", "logoUrl": "/img/partners/o2.svg" },
-    { "name": "HUAWEI", "logoUrl": "/img/partners/huawei.svg" },
+    {
+      "name": "O2",
+      "logoUrl": "/img/partners/o2.svg"
+    },
+    {
+      "name": "HUAWEI",
+      "logoUrl": "/img/partners/huawei.svg"
+    },
     {
       "name": "Deutsche Telekom",
       "logoUrl": "/img/partners/deutsche-telekom.svg"
@@ -51,7 +69,7 @@
       "title": "Max Startup is Rocketing",
       "excerpt": "I built my MVP and secured seed funding in just 6 months",
       "fullDescription": "Max joined TechLabs with a background in business but no technical skills. Through the Web Development track, he learned to build his own MVP and validate his startup idea. Within 6 months of graduating, he secured seed funding and now leads a team of 5 developers.",
-      "imageUrl": "/img/stories/person1.png",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1080&q=80",
       "href": "/stories/max-startup",
       "track": "web-dev",
       "trackLabel": "Web Development",
@@ -63,14 +81,19 @@
         "Secured €500K seed funding",
         "Built MVP from scratch",
         "Hired 5-person development team"
-      ]
+      ],
+      "photoCredit": {
+        "photographer": "Jurica Koletić",
+        "profileUrl": "https://unsplash.com/@juricakoletic",
+        "photoPageUrl": "https://unsplash.com/photos/man-wearing-henley-top-portrait-7YVZYZeITc8"
+      }
     },
     {
       "id": "2",
       "title": "Lia has just landed her first Client",
       "excerpt": "From marketing to data science – my first client came within 2 weeks",
       "fullDescription": "Lia was a marketing professional looking to transition into data science. The Data Science track at TechLabs gave her the practical skills and portfolio she needed. She now works as a freelance data analyst, helping startups make data-driven decisions.",
-      "imageUrl": "/img/stories/person2.png",
+      "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1080&q=80",
       "href": "/stories/lia-first-client",
       "track": "data-science",
       "trackLabel": "Data Science",
@@ -82,14 +105,19 @@
         "First client within 2 weeks of graduation",
         "€3K monthly recurring revenue",
         "Portfolio of 3 successful projects"
-      ]
+      ],
+      "photoCredit": {
+        "photographer": "Michael Dam",
+        "profileUrl": "https://unsplash.com/@michaeldam",
+        "photoPageUrl": "https://unsplash.com/photos/closeup-photography-of-woman-smiling-mEZ3PoFGs_k"
+      }
     },
     {
       "id": "3",
       "title": "Anna now is the head of Tech",
       "excerpt": "From junior developer to Head of Technology in 8 months",
       "fullDescription": "Anna came to TechLabs as a junior developer looking to advance her career. The comprehensive curriculum and mentorship helped her develop both technical and leadership skills. She's now Head of Technology at a growing fintech company.",
-      "imageUrl": "/img/stories/person3.png",
+      "imageUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1080&q=80",
       "href": "/stories/anna-lead",
       "track": "web-dev",
       "trackLabel": "Web Development",
@@ -101,19 +129,36 @@
         "Promoted from Junior to Lead in 8 months",
         "Manages team of 8 developers",
         "Led successful product launch"
-      ]
+      ],
+      "photoCredit": {
+        "photographer": "Aiony Haust",
+        "profileUrl": "https://unsplash.com/@aiony",
+        "photoPageUrl": "https://unsplash.com/photos/woman-wearing-black-crew-neck-shirt-3TLl_97HNJo"
+      }
     }
   ],
   "numbers": [
-    { "label": "Cities", "value": "15" },
-    { "label": "Graduates", "value": "+600" },
-    { "label": "Mentors", "value": "35" }
+    {
+      "label": "Cities",
+      "value": "15"
+    },
+    {
+      "label": "Graduates",
+      "value": "+600"
+    },
+    {
+      "label": "Mentors",
+      "value": "35"
+    }
   ],
   "support": {
     "title": "Support Tech Education",
     "body": "Help us empower the next generation by funding cohorts and resources.",
     "imageUrl": "/img/background.png",
-    "cta": { "label": "Support Tech Education", "to": "/support" }
+    "cta": {
+      "label": "Support Tech Education",
+      "to": "/support"
+    }
   },
   "faqs": [
     {

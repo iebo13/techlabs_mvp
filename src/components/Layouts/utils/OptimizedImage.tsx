@@ -8,6 +8,8 @@ type OptimizedImageProps = {
   alt: string
   width?: number | string
   height?: number | string
+  /** When using `object-fit: cover`, set focal point (e.g. `50% 35%` for portraits). */
+  objectPosition?: string
   placeholder?: string
   lazy?: boolean
   priority?: boolean
@@ -25,6 +27,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
     alt,
     width,
     height,
+    objectPosition,
     placeholder,
     lazy = true,
     priority = false,
@@ -94,6 +97,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
       width: width || 'auto',
       height: height || 'auto',
       objectFit: 'cover' as const,
+      ...(objectPosition ? { objectPosition } : {}),
       transition: 'opacity 0.3s ease-in-out',
       opacity: isLoaded ? 1 : 0,
     }
@@ -159,6 +163,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = memo(
               width: '100%',
               height: '100%',
               objectFit: 'cover',
+              ...(objectPosition ? { objectPosition } : {}),
               opacity: 0.5,
             }}
           />

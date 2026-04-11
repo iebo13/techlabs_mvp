@@ -343,6 +343,7 @@
     "page": {
       "title": "Geschichten unserer Absolventen",
       "subtitle": "Erfahren Sie, wie TechLabs-Alumni ihre Karriere transformieren und in der Tech-Branche Wirkung erzielen",
+      "illustrativePortraits": "Porträts sind illustrative Stockfotos und zeigen keine konkreten Absolventen.",
       "filterByTrack": "Nach Track filtern",
       "showingCount": "{{count}} von {{total}} Geschichten werden angezeigt",
       "inTrack": "in {{track}}",
@@ -427,6 +428,7 @@
   "footer": {
     "copyright": "© 2024 by TechLabs.",
     "boardMembers": "Vorstand: Sabrina Engling, Ranjini Kishen Kumar, Carolina Constant Sanchez",
+    "photosFromUnsplash": "Fotos von Unsplash",
     "city": "Düsseldorf",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen",

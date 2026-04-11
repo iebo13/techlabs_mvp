@@ -65,6 +65,12 @@ export const StoryMetricSchema = z.object({
   value: z.string().min(1),
 })
 
+export const StoryPhotoCreditSchema = z.object({
+  photographer: z.string().min(1),
+  profileUrl: z.string().url(),
+  photoPageUrl: z.string().url(),
+})
+
 export const StorySchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1).optional(),
@@ -72,6 +78,7 @@ export const StorySchema = z.object({
   excerpt: z.string().min(1),
   fullDescription: z.string().min(1),
   imageUrl: z.string().min(1),
+  coverImageUrl: z.string().url().optional(),
   href: z.string().min(1),
   track: TrackKeySchema,
   trackLabel: z.string().min(1),
@@ -84,6 +91,7 @@ export const StorySchema = z.object({
   quote: z.string().min(1).optional(),
   narrative: StoryNarrativeSchema.optional(),
   metrics: z.array(StoryMetricSchema).optional(),
+  photoCredit: StoryPhotoCreditSchema.optional(),
 })
 
 export const EventTypeSchema = z.enum(['upcoming', 'past'])

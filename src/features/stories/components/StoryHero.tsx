@@ -4,6 +4,8 @@ import { ArrowBack as ArrowBackIcon } from '@mui/icons-material'
 import { Avatar, Box, Chip, IconButton, Typography } from '@mui/material'
 import { useI18n } from '@/hooks'
 import type { Story } from '../types/stories.types'
+import { PORTRAIT_IMAGE_OBJECT_POSITION } from '../utils/portraitObjectPosition'
+import { getStoryCoverImageUrl, getStoryHeroObjectPosition } from '../utils/storyCoverImage'
 
 type StoryHeroProps = {
   readonly story: Story
@@ -13,6 +15,8 @@ export const StoryHero: React.FC<StoryHeroProps> = ({ story }) => {
   const navigate = useNavigate()
   const { t } = useI18n()
   const displayName = story.name ?? story.title
+  const coverSrc = getStoryCoverImageUrl(story)
+  const coverObjectPosition = getStoryHeroObjectPosition(story)
 
   return (
     <Box
@@ -26,30 +30,32 @@ export const StoryHero: React.FC<StoryHeroProps> = ({ story }) => {
         justifyContent: 'flex-end',
         overflow: 'hidden',
       }}>
-      {/* Background image */}
+      {/* Cover: wide banner when story.coverImageUrl is set; else portrait imageUrl */}
       <Box
         component="img"
-        src="/img/background.png"
+        src={coverSrc}
         alt=""
         aria-hidden="true"
+        fetchPriority="high"
         loading="eager"
+        decoding="async"
         sx={{
           position: 'absolute',
           inset: 0,
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          opacity: 0.2,
+          objectPosition: coverObjectPosition,
         }}
       />
 
-      {/* Gradient overlay */}
+      {/* Gradient overlay — keeps title readable on any photo */}
       <Box
         aria-hidden="true"
         sx={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.15) 100%)',
+          background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.35) 100%)',
           zIndex: 1,
         }}
       />
@@ -83,7 +89,7 @@ export const StoryHero: React.FC<StoryHeroProps> = ({ story }) => {
         />
       </Box>
 
-      {/* Person identity */}
+      {/* Person identity — large portrait left, text right */}
       <Box
         sx={{
           position: 'relative',
@@ -98,11 +104,12 @@ export const StoryHero: React.FC<StoryHeroProps> = ({ story }) => {
           src={story.imageUrl}
           alt={displayName}
           sx={{
-            width: { xs: 72, md: 108 },
-            height: { xs: 72, md: 108 },
+            width: { xs: 96, sm: 112, md: 132 },
+            height: { xs: 96, sm: 112, md: 132 },
             border: '3px solid white',
             boxShadow: '0 4px 24px rgba(0,0,0,0.45)',
             flexShrink: 0,
+            '& .MuiAvatar-img': { objectPosition: PORTRAIT_IMAGE_OBJECT_POSITION },
           }}
         />
         <Box sx={{ flex: 1, minWidth: 0, overflow: 'hidden' }}>

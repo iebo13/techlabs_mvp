@@ -10,6 +10,7 @@ import { Avatar, Box, Card, CardContent, Chip, Divider, Stack, Typography } from
 import { CTAButton } from '@/components/Buttons'
 import { useI18n } from '@/hooks'
 import type { Story } from '../types/stories.types'
+import { PORTRAIT_IMAGE_OBJECT_POSITION } from '../utils/portraitObjectPosition'
 
 type StoryProfileCardProps = {
   readonly story: Story
@@ -50,7 +51,14 @@ export const StoryProfileCard: React.FC<StoryProfileCardProps> = ({ story }) => 
             <Avatar
               src={story.imageUrl}
               alt={displayName}
-              sx={{ width: 96, height: 96, border: '3px solid', borderColor: 'primary.light', boxShadow: 2 }}
+              sx={{
+                width: 96,
+                height: 96,
+                border: '3px solid',
+                borderColor: 'primary.light',
+                boxShadow: 2,
+                '& .MuiAvatar-img': { objectPosition: PORTRAIT_IMAGE_OBJECT_POSITION },
+              }}
             />
             <Box sx={{ maxWidth: '100%', overflow: 'hidden' }}>
               <Typography variant="h6" fontWeight={700} sx={{ lineHeight: 1.25, mb: 0.5, wordBreak: 'break-word' }}>

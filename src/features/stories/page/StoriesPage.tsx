@@ -80,8 +80,14 @@ export const StoriesPage: React.FC = () => {
         <Typography component="h1" variant="h2" sx={{ color: 'primary.main' }}>
           {t('common:stories.page.title')}
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mt: 2, pb: 4, fontSize: '1.125rem', lineHeight: 1.6 }}>
+        <Typography variant="body1" color="text.secondary" sx={{ mt: 2, pb: 2, fontSize: '1.125rem', lineHeight: 1.6 }}>
           {t('common:stories.page.subtitle')}
+        </Typography>
+        <Typography
+          variant="caption"
+          color="text.secondary"
+          sx={{ display: 'block', pb: 4, maxWidth: 560, lineHeight: 1.5 }}>
+          {t('common:stories.page.illustrativePortraits')}
         </Typography>
       </Box>
 

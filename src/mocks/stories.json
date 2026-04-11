@@ -15,12 +15,24 @@
       "outcome": "Six months after graduating, Max secured €500K in seed funding. He hired five developers and launched TechFlow Solutions. Today the platform serves 40 SMBs across Germany. He still codes the first version of every new feature himself."
     },
     "metrics": [
-      { "label": "Seed Funding", "value": "€500K" },
-      { "label": "Team Size", "value": "5" },
-      { "label": "Months to Launch", "value": "6" },
-      { "label": "Clients Served", "value": "40" }
+      {
+        "label": "Seed Funding",
+        "value": "€500K"
+      },
+      {
+        "label": "Team Size",
+        "value": "5"
+      },
+      {
+        "label": "Months to Launch",
+        "value": "6"
+      },
+      {
+        "label": "Clients Served",
+        "value": "40"
+      }
     ],
-    "imageUrl": "/img/stories/max.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1080&q=80",
     "href": "/stories/max-startup",
     "track": "web-dev",
     "trackLabel": "Web Development",
@@ -33,7 +45,13 @@
       "Built and deployed MVP from scratch in 3 months",
       "Grew team from solo founder to 5 engineers",
       "Platform now serves 40 SMBs across Germany"
-    ]
+    ],
+    "photoCredit": {
+      "photographer": "Jurica Koletić",
+      "profileUrl": "https://unsplash.com/@juricakoletic",
+      "photoPageUrl": "https://unsplash.com/photos/man-wearing-henley-top-portrait-7YVZYZeITc8"
+    },
+    "coverImageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2400&h=900&q=88&fm=webp"
   },
   {
     "id": "2",
@@ -51,12 +69,24 @@
       "outcome": "Two weeks after graduation, Lia had a paying client. Within three months, she had three recurring clients and a monthly revenue that exceeded her old salary. She now helps early-stage startups build their first analytics dashboards."
     },
     "metrics": [
-      { "label": "Weeks to First Client", "value": "2" },
-      { "label": "Monthly Revenue", "value": "€3K" },
-      { "label": "Active Clients", "value": "3" },
-      { "label": "Salary Increase", "value": "35%" }
+      {
+        "label": "Weeks to First Client",
+        "value": "2"
+      },
+      {
+        "label": "Monthly Revenue",
+        "value": "€3K"
+      },
+      {
+        "label": "Active Clients",
+        "value": "3"
+      },
+      {
+        "label": "Salary Increase",
+        "value": "35%"
+      }
     ],
-    "imageUrl": "/img/stories/lia.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1080&q=80",
     "href": "/stories/lia-first-client",
     "track": "data-science",
     "trackLabel": "Data Science",
@@ -69,7 +99,13 @@
       "Built recurring revenue of €3K per month",
       "Portfolio of 3 successful analytics projects",
       "Exceeded previous salary within 3 months"
-    ]
+    ],
+    "photoCredit": {
+      "photographer": "Michael Dam",
+      "profileUrl": "https://unsplash.com/@michaeldam",
+      "photoPageUrl": "https://unsplash.com/photos/closeup-photography-of-woman-smiling-mEZ3PoFGs_k"
+    },
+    "coverImageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2400&h=900&q=88&fm=webp"
   },
   {
     "id": "3",
@@ -87,12 +123,24 @@
       "outcome": "Eight months later, Anna was promoted to Head of Technology. She now manages a team of eight developers and led the launch of the company's flagship product. She mentors two TechLabs participants each semester."
     },
     "metrics": [
-      { "label": "Months to Promotion", "value": "8" },
-      { "label": "Team Size", "value": "8" },
-      { "label": "Products Launched", "value": "1" },
-      { "label": "Mentees", "value": "2" }
+      {
+        "label": "Months to Promotion",
+        "value": "8"
+      },
+      {
+        "label": "Team Size",
+        "value": "8"
+      },
+      {
+        "label": "Products Launched",
+        "value": "1"
+      },
+      {
+        "label": "Mentees",
+        "value": "2"
+      }
     ],
-    "imageUrl": "/img/stories/anna.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1080&q=80",
     "href": "/stories/anna-lead",
     "track": "web-dev",
     "trackLabel": "Web Development",
@@ -105,7 +153,13 @@
       "Manages a team of 8 developers",
       "Led successful launch of flagship fintech product",
       "Mentors TechLabs participants each semester"
-    ]
+    ],
+    "photoCredit": {
+      "photographer": "Aiony Haust",
+      "profileUrl": "https://unsplash.com/@aiony",
+      "photoPageUrl": "https://unsplash.com/photos/woman-wearing-black-crew-neck-shirt-3TLl_97HNJo"
+    },
+    "coverImageUrl": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2400&h=900&q=88&fm=webp"
   },
   {
     "id": "4",
@@ -123,12 +177,24 @@
       "outcome": "Sarah has published two peer-reviewed papers on AI in education. Her adaptive learning platform is being piloted in 12 schools across Hessen. She presented at NeurIPS and was named one of EdTech Germany's Rising Stars."
     },
     "metrics": [
-      { "label": "Papers Published", "value": "2" },
-      { "label": "Schools Piloting", "value": "12" },
-      { "label": "Conference Talks", "value": "3" },
-      { "label": "Career Pivot Time", "value": "5mo" }
+      {
+        "label": "Papers Published",
+        "value": "2"
+      },
+      {
+        "label": "Schools Piloting",
+        "value": "12"
+      },
+      {
+        "label": "Conference Talks",
+        "value": "3"
+      },
+      {
+        "label": "Career Pivot Time",
+        "value": "5mo"
+      }
     ],
-    "imageUrl": "/img/stories/sarah.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=1080&q=80",
     "href": "/stories/sarah-ai",
     "track": "ai",
     "trackLabel": "Artificial Intelligence",
@@ -141,7 +207,13 @@
       "Developed adaptive learning platform piloted in 12 schools",
       "Presented at NeurIPS and 2 other international conferences",
       "Named EdTech Germany Rising Star 2024"
-    ]
+    ],
+    "photoCredit": {
+      "photographer": "Jake Nackos",
+      "profileUrl": "https://unsplash.com/@jakenackos",
+      "photoPageUrl": "https://unsplash.com/photos/woman-in-white-crew-neck-shirt-smiling-IF9TK5Uy-KI"
+    },
+    "coverImageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=2400&h=900&q=88&fm=webp"
   },
   {
     "id": "5",
@@ -159,12 +231,24 @@
       "outcome": "Marcus joined InnovateHub as their first dedicated product designer. Within a year, he built a three-person design team and redesigned their flagship product. User engagement increased by 40%, and the company credits the redesign as a key factor in their Series A."
     },
     "metrics": [
-      { "label": "Drop-off Reduced", "value": "40%" },
-      { "label": "Design Team Built", "value": "3" },
-      { "label": "Engagement Increase", "value": "40%" },
-      { "label": "Years in Print Before", "value": "10" }
+      {
+        "label": "Drop-off Reduced",
+        "value": "40%"
+      },
+      {
+        "label": "Design Team Built",
+        "value": "3"
+      },
+      {
+        "label": "Engagement Increase",
+        "value": "40%"
+      },
+      {
+        "label": "Years in Print Before",
+        "value": "10"
+      }
     ],
-    "imageUrl": "/img/stories/marcus.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1622841440556-df100c5dd6c6?auto=format&fit=crop&w=1080&q=80",
     "href": "/stories/marcus-design",
     "track": "product-design",
     "trackLabel": "Product Design",
@@ -177,7 +261,13 @@
       "Built and leads a 3-person design team",
       "Reduced onboarding drop-off by 40% through UX research",
       "Key contributor to company's successful Series A round"
-    ]
+    ],
+    "photoCredit": {
+      "photographer": "Aiony Haust",
+      "profileUrl": "https://unsplash.com/@aiony",
+      "photoPageUrl": "https://unsplash.com/photos/man-in-white-tank-top-looking-at-birds-flying-during-daytime-81sAxFc8NOE"
+    },
+    "coverImageUrl": "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=2400&h=900&q=88&fm=webp"
   },
   {
     "id": "6",
@@ -195,12 +285,24 @@
       "outcome": "Julia joined DataCorp Solutions as a senior data scientist — skipping the junior level entirely. Her insights have driven a 25% revenue increase for their largest client. She now mentors three junior data scientists and speaks regularly at industry conferences."
     },
     "metrics": [
-      { "label": "Revenue Impact", "value": "25%" },
-      { "label": "Junior Mentees", "value": "3" },
-      { "label": "Salary Increase", "value": "60%" },
-      { "label": "Conference Talks", "value": "4" }
+      {
+        "label": "Revenue Impact",
+        "value": "25%"
+      },
+      {
+        "label": "Junior Mentees",
+        "value": "3"
+      },
+      {
+        "label": "Salary Increase",
+        "value": "60%"
+      },
+      {
+        "label": "Conference Talks",
+        "value": "4"
+      }
     ],
-    "imageUrl": "/img/stories/julia.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1571513722275-4b41940f54b8?auto=format&fit=crop&w=1080&q=80",
     "href": "/stories/julia-data",
     "track": "data-science",
     "trackLabel": "Data Science",
@@ -213,7 +315,13 @@
       "Skipped junior level — hired directly as Senior Data Scientist",
       "Mentors 3 junior data scientists at DataCorp",
       "Regular speaker at data science industry conferences"
-    ]
+    ],
+    "photoCredit": {
+      "photographer": "Aiony Haust",
+      "profileUrl": "https://unsplash.com/@aiony",
+      "photoPageUrl": "https://unsplash.com/photos/woman-wearing-white-blazer-IXYxqP4zejo"
+    },
+    "coverImageUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2400&h=900&q=88&fm=webp"
   },
   {
     "id": "7",
@@ -231,12 +339,24 @@
       "outcome": "David joined UrbanDev Studios as a junior full-stack developer. Within a year, he was promoted to mid-level. He now builds React applications for logistics clients and earns three times his restaurant salary. He volunteers as a TechLabs mentor every semester."
     },
     "metrics": [
-      { "label": "Salary Increase", "value": "3x" },
-      { "label": "Months to First Job", "value": "2" },
-      { "label": "Promotion Time", "value": "12mo" },
-      { "label": "Prior Coding Exp.", "value": "0" }
+      {
+        "label": "Salary Increase",
+        "value": "3x"
+      },
+      {
+        "label": "Months to First Job",
+        "value": "2"
+      },
+      {
+        "label": "Promotion Time",
+        "value": "12mo"
+      },
+      {
+        "label": "Prior Coding Exp.",
+        "value": "0"
+      }
     ],
-    "imageUrl": "/img/stories/david.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1680726215501-68ec693ff4b5?auto=format&fit=crop&w=1080&q=80",
     "href": "/stories/david-codes",
     "track": "web-dev",
     "trackLabel": "Web Development",
@@ -250,7 +370,13 @@
       "Tripled previous salary in first year",
       "Volunteers as TechLabs mentor every semester",
       "Built production reservation system used by 3 restaurants"
-    ]
+    ],
+    "photoCredit": {
+      "photographer": "Jake Nackos",
+      "profileUrl": "https://unsplash.com/@jakenackos",
+      "photoPageUrl": "https://unsplash.com/photos/a-black-and-white-photo-of-a-man-standing-in-front-of-a-wall-SOQCk617RRg"
+    },
+    "coverImageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2400&h=900&q=88&fm=webp"
   },
   {
     "id": "8",
@@ -268,12 +394,24 @@
       "outcome": "Priya now develops ML models for drug discovery at BioGenesis AI. Her first model reduced the compound screening time by 70%. She published a joint paper with her former PhD lab, bridging the gap between biology and AI that she once felt stuck between."
     },
     "metrics": [
-      { "label": "Screening Time Reduced", "value": "70%" },
-      { "label": "Papers Published", "value": "3" },
-      { "label": "Time to Job Offer", "value": "3mo" },
-      { "label": "Salary vs PhD Stipend", "value": "2.5x" }
+      {
+        "label": "Screening Time Reduced",
+        "value": "70%"
+      },
+      {
+        "label": "Papers Published",
+        "value": "3"
+      },
+      {
+        "label": "Time to Job Offer",
+        "value": "3mo"
+      },
+      {
+        "label": "Salary vs PhD Stipend",
+        "value": "2.5x"
+      }
     ],
-    "imageUrl": "/img/stories/priya.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1515161079661-197513d8b51e?auto=format&fit=crop&w=1080&q=80",
     "href": "/stories/priya-ai",
     "track": "ai",
     "trackLabel": "Artificial Intelligence",
@@ -286,7 +424,13 @@
       "Published 3 papers bridging biology and machine learning",
       "Received job offer before completing PhD defense",
       "First ML hire at BioGenesis AI, now training team of 2"
-    ]
+    ],
+    "photoCredit": {
+      "photographer": "Jurica Koletić",
+      "profileUrl": "https://unsplash.com/@juricakoletic",
+      "photoPageUrl": "https://unsplash.com/photos/photograph-of-woman-digital-wallpaper-oLU63uzhT88"
+    },
+    "coverImageUrl": "https://images.unsplash.com/photo-1532187863486-defcb9bedd3b?auto=format&fit=crop&w=2400&h=900&q=88&fm=webp"
   },
   {
     "id": "9",
@@ -304,12 +448,24 @@
       "outcome": "Tomasz now works as an IoT Data Engineer at SmartBuild Tech in Essen. He designs the data infrastructure that connects building sensors to analytics dashboards. His electrician's intuition for hardware gives him an edge no pure software person has. He earned a 45% raise over his electrician salary."
     },
     "metrics": [
-      { "label": "Salary Increase", "value": "45%" },
-      { "label": "Years in Trades", "value": "15" },
-      { "label": "IoT Sensors Connected", "value": "2K+" },
-      { "label": "Age at Career Change", "value": "38" }
+      {
+        "label": "Salary Increase",
+        "value": "45%"
+      },
+      {
+        "label": "Years in Trades",
+        "value": "15"
+      },
+      {
+        "label": "IoT Sensors Connected",
+        "value": "2K+"
+      },
+      {
+        "label": "Age at Career Change",
+        "value": "38"
+      }
     ],
-    "imageUrl": "/img/stories/tomasz.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1500649297466-74794c70acfc?auto=format&fit=crop&w=1080&q=80",
     "href": "/stories/tomasz-data",
     "track": "data-science",
     "trackLabel": "Data Science",
@@ -322,7 +478,13 @@
       "Increased salary by 45% in career transition at age 38",
       "Only team member with both hardware and software expertise",
       "Built real-time anomaly detection pipeline for building energy systems"
-    ]
+    ],
+    "photoCredit": {
+      "photographer": "Jurica Koletić",
+      "profileUrl": "https://unsplash.com/@juricakoletic",
+      "photoPageUrl": "https://unsplash.com/photos/grayscale-photo-of-man-face-efqnM0zWh54"
+    },
+    "coverImageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&h=900&q=88&fm=webp"
   },
   {
     "id": "10",
@@ -340,12 +502,24 @@
       "outcome": "Elena joined HealthUX Studio as a UX Designer, working four days a week to balance family life. She's now redesigned three healthcare products, each improving patient satisfaction scores. She runs a monthly workshop for parents returning to tech careers."
     },
     "metrics": [
-      { "label": "Years Away from Work", "value": "5" },
-      { "label": "Products Redesigned", "value": "3" },
-      { "label": "Patient Satisfaction Up", "value": "28%" },
-      { "label": "Weeks to Job Offer", "value": "4" }
+      {
+        "label": "Years Away from Work",
+        "value": "5"
+      },
+      {
+        "label": "Products Redesigned",
+        "value": "3"
+      },
+      {
+        "label": "Patient Satisfaction Up",
+        "value": "28%"
+      },
+      {
+        "label": "Weeks to Job Offer",
+        "value": "4"
+      }
     ],
-    "imageUrl": "/img/stories/elena.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1553782376-b2e8256ab838?auto=format&fit=crop&w=1080&q=80",
     "href": "/stories/elena-design",
     "track": "product-design",
     "trackLabel": "Product Design",
@@ -359,6 +533,12 @@
       "Capstone design implemented by a real pediatric clinic",
       "Runs monthly workshop for parents returning to tech careers",
       "Works flexible 4-day week balancing career and family"
-    ]
+    ],
+    "photoCredit": {
+      "photographer": "Aiony Haust",
+      "profileUrl": "https://unsplash.com/@aiony",
+      "photoPageUrl": "https://unsplash.com/photos/woman-wearing-white-half-sleeved-dress-standing-in-green-room-8OxVecNEuCQ"
+    },
+    "coverImageUrl": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=2400&h=900&q=88&fm=webp"
   }
 ]

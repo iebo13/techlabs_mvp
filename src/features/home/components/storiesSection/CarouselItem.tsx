@@ -1,22 +1,13 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import type { Story } from '@/features/stories'
-
-const STORY_IMAGES = {
-  '1': '/img/stories/person1.png',
-  '2': '/img/stories/person2.png',
-  '3': '/img/stories/person3.png',
-} as const
+import { PORTRAIT_IMAGE_OBJECT_POSITION } from '@/features/stories/utils/portraitObjectPosition'
 
 type CarouselItemProps = {
   story: Story
 }
 
 export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
-  const getStoryImage = (storyId: string) => {
-    return STORY_IMAGES[storyId as keyof typeof STORY_IMAGES] || STORY_IMAGES['1']
-  }
-
   return (
     <Box
       component="a"
@@ -41,7 +32,19 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
           outlineOffset: '2px',
         },
       }}>
-      <Box component="img" src={getStoryImage(story.id)} alt={story.title} />
+      <Box
+        component="img"
+        src={story.imageUrl}
+        alt={story.title}
+        loading="lazy"
+        decoding="async"
+        sx={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: PORTRAIT_IMAGE_OBJECT_POSITION,
+        }}
+      />
       <Box
         sx={{
           position: 'absolute',

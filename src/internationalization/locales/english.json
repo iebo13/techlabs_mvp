@@ -343,6 +343,7 @@
     "page": {
       "title": "Our Graduates' Stories",
       "subtitle": "Discover how TechLabs alumni are transforming their careers and making an impact in the tech industry",
+      "illustrativePortraits": "Portraits are illustrative stock photos and do not depict specific alumni.",
       "filterByTrack": "Filter by Track",
       "showingCount": "Showing {{count}} of {{total}} stories",
       "inTrack": "in {{track}}",
@@ -427,6 +428,7 @@
   "footer": {
     "copyright": "© 2024 by TechLabs.",
     "boardMembers": "Board: Sabrina Engling, Ranjini Kishen Kumar, Carolina Constant Sanchez",
+    "photosFromUnsplash": "Photos from Unsplash",
     "city": "Düsseldorf",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",

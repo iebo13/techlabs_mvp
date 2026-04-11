@@ -4,11 +4,11 @@ import { Box, Card, CardContent, Chip, Grid, Typography, useTheme } from '@mui/m
 import { OptimizedImage } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
 import type { StoryCardProps } from '../types/stories.types'
+import { PORTRAIT_IMAGE_OBJECT_POSITION } from '../utils/portraitObjectPosition'
 
 export const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
   const theme = useTheme()
   const { t } = useI18n()
-  const storyImage = '/img/background.png'
 
   return (
     <Grid size={{ xs: 12, sm: 6, md: 4 }}>
@@ -42,13 +42,14 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
           {/* Image with track badge overlay */}
           <Box sx={{ position: 'relative' }}>
             <OptimizedImage
-              src={storyImage}
+              src={story.imageUrl}
               alt={`${story.title} - ${story.excerpt}`}
               width="100%"
               height="180px"
+              objectPosition={PORTRAIT_IMAGE_OBJECT_POSITION}
               sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 400px"
               lazy
-              placeholder="/img/stories/person2.png"
+              placeholder="/img/background.png"
             />
             <Chip
               label={story.trackLabel}

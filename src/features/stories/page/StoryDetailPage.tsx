@@ -13,6 +13,7 @@ import { StoryNarrative } from '../components/StoryNarrative'
 import { StoryProfileCard } from '../components/StoryProfileCard'
 import { StoryPullQuote } from '../components/StoryPullQuote'
 import type { Story } from '../types/stories.types'
+import { getStoryCoverImageUrl } from '../utils/storyCoverImage'
 
 const typedStoriesData = storiesData as Story[]
 
@@ -39,7 +40,7 @@ export const StoryDetailPage: React.FC = () => {
         title={`${displayName} — TechLabs Success Story`}
         description={story.excerpt}
         keywords={`${displayName}, ${story.trackLabel}, ${story.company}, TechLabs, success story`}
-        image={story.imageUrl}
+        image={getStoryCoverImageUrl(story)}
         url={`/stories/${story.id}`}
         type="article"
         publishedTime={story.graduationDate}

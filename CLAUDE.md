@@ -422,3 +422,149 @@ The project is configured for Firebase hosting:
 2. Check lazy loading implementation for large components
 3. Use `npm run lighthouse` for performance auditing
 4. Monitor Web Vitals with built-in performance tools
+
+## Core Design Principles
+
+### The Golden Rules
+
+1. **Clarity over cleverness**: Every element must have a purpose
+2. **Consistency builds trust**: Reuse patterns, colors, and components
+3. **User goals first**: Design for tasks, not features
+4. **Accessibility is not optional**: Design for everyone
+5. **Test with real users**: Validate assumptions early
+
+### Visual Hierarchy (Priority Order)
+
+1. **Size**: Larger = more important
+2. **Color/Contrast**: High contrast draws attention
+3. **Position**: Top-left (LTR) gets seen first
+4. **Whitespace**: Isolation emphasizes importance
+5. **Typography weight**: Bold stands out
+
+## Design Workflow
+
+1. **Check for design system first**: Ask user if they have existing tokens/specs, or discover from current Penpot file
+2. **Understand the page**: Call `mcp__penpot__execute_code` with `penpotUtils.shapeStructure()` to see hierarchy
+3. **Find elements**: Use `penpotUtils.findShapes()` to locate elements by type or name
+4. **Create/modify**: Use `penpot.createBoard()`, `penpot.createRectangle()`, `penpot.createText()` etc.
+5. **Apply layout**: Use `addFlexLayout()` for responsive containers
+6. **Validate**: Call `mcp__penpot__export_shape` to visually check your work
+
+## Default Design Tokens
+
+**Use these defaults only when user has no design system. Always prefer user's tokens if available.**
+
+### Spacing Scale (8px base)
+
+| Token | Value | Usage |
+| ----- | ----- | ----- |
+| `spacing-xs` | 4px | Tight inline elements |
+| `spacing-sm` | 8px | Related elements |
+| `spacing-md` | 16px | Default padding |
+| `spacing-lg` | 24px | Section spacing |
+| `spacing-xl` | 32px | Major sections |
+| `spacing-2xl` | 48px | Page-level spacing |
+
+### Typography Scale
+
+| Level | Size | Weight | Usage |
+| ----- | ---- | ------ | ----- |
+| Display | 48-64px | Bold | Hero headlines |
+| H1 | 32-40px | Bold | Page titles |
+| H2 | 24-28px | Semibold | Section headers |
+| H3 | 20-22px | Semibold | Subsections |
+| Body | 16px | Regular | Main content |
+| Small | 14px | Regular | Secondary text |
+| Caption | 12px | Regular | Labels, hints |
+
+### Color Usage
+
+| Purpose | Recommendation |
+| ------- | -------------- |
+| Primary | Main brand color, CTAs |
+| Secondary | Supporting actions |
+| Success | #22C55E range (confirmations) |
+| Warning | #F59E0B range (caution) |
+| Error | #EF4444 range (errors) |
+| Neutral | Gray scale for text/borders |
+
+## Common Layouts
+
+### Mobile Screen (375×812)
+
+```text
+┌─────────────────────────────┐
+│ Status Bar (44px)           │
+├─────────────────────────────┤
+│ Header/Nav (56px)           │
+├─────────────────────────────┤
+│                             │
+│ Content Area                │
+│ (Scrollable)                │
+│ Padding: 16px horizontal    │
+│                             │
+├─────────────────────────────┤
+│ Bottom Nav/CTA (84px)       │
+└─────────────────────────────┘
+```
+
+### Desktop Dashboard (1440×900)
+
+```text
+┌──────┬──────────────────────────────────┐
+│      │ Header (64px)                    │
+│ Side │──────────────────────────────────│
+│ bar  │ Page Title + Actions             │
+│      │──────────────────────────────────│
+│ 240  │ Content Grid                     │
+│ px   │ ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐ │
+│      │ │Card │ │Card │ │Card │ │Card │ │
+│      │ └─────┘ └─────┘ └─────┘ └─────┘ │
+│      │                                  │
+└──────┴──────────────────────────────────┘
+```
+
+## Component Checklist
+
+### Buttons
+
+- [ ] Clear, action-oriented label (2-3 words)
+- [ ] Minimum touch target: 44×44px
+- [ ] Visual states: default, hover, active, disabled, loading
+- [ ] Sufficient contrast (3:1 against background)
+- [ ] Consistent border radius across app
+
+### Forms
+
+- [ ] Labels above inputs (not just placeholders)
+- [ ] Required field indicators
+- [ ] Error messages adjacent to fields
+- [ ] Logical tab order
+- [ ] Input types match content (email, tel, etc.)
+
+### Navigation
+
+- [ ] Current location clearly indicated
+- [ ] Consistent position across screens
+- [ ] Maximum 7±2 top-level items
+- [ ] Touch-friendly on mobile (48px targets)
+
+## Accessibility Quick Checks
+
+1. **Color contrast**: Text 4.5:1, Large text 3:1
+2. **Touch targets**: Minimum 44×44px
+3. **Focus states**: Visible keyboard focus indicators
+4. **Alt text**: Meaningful descriptions for images
+5. **Hierarchy**: Proper heading levels (H1→H2→H3)
+6. **Color independence**: Never rely solely on color
+
+## Tips for Great Designs
+
+1. **Start with content**: Real content reveals layout needs
+2. **Design mobile-first**: Constraints breed creativity
+3. **Use a grid**: 8px base grid keeps things aligned
+4. **Limit colors**: 1 primary + 1 secondary + neutrals
+5. **Limit fonts**: 1-2 typefaces maximum
+6. **Embrace whitespace**: Breathing room improves comprehension
+7. **Be consistent**: Same action = same appearance everywhere
+8. **Provide feedback**: Every action needs a response

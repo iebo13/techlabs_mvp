@@ -37,6 +37,8 @@
 # Shell scripts
 *.sh text eol=lf
 *.bash text eol=lf
+# Husky hooks are shell scripts without .sh; CRLF breaks shebang (exit 127)
+.husky/* text eol=lf
 
 # Windows scripts
 *.bat text eol=crlf

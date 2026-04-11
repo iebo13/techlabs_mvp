@@ -7,8 +7,36 @@
       "date": "2025-01-15T18:00:00Z",
       "location": "Düsseldorf, Germany",
       "type": "upcoming",
-      "imageUrl": "/img/events/meetup.jpg",
-      "href": "/events/techlabs-dusseldorf-meetup"
+      "imageUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=80",
+      "href": "/events/techlabs-dusseldorf-meetup",
+      "description": [
+        "Connect with fellow learners, alumni, and mentors in a relaxed evening format. We spotlight community projects, share lessons learned, and make space for open networking.",
+        "Whether you are deep in a track or just curious about TechLabs, you are welcome. Bring questions, a short demo if you have one, and your enthusiasm for tech."
+      ],
+      "highlights": [
+        "Lightning talks from participants",
+        "Mentor office hours corner",
+        "Snacks and beverages provided"
+      ],
+      "agenda": [
+        {
+          "time": "18:00",
+          "title": "Doors open & networking"
+        },
+        {
+          "time": "18:30",
+          "title": "Community announcements"
+        },
+        {
+          "time": "19:00",
+          "title": "Project spotlights"
+        },
+        {
+          "time": "20:00",
+          "title": "Open networking"
+        }
+      ],
+      "externalUrl": "https://www.techlabs.org"
     },
     {
       "id": "2",
@@ -17,8 +45,36 @@
       "date": "2025-01-22T14:00:00Z",
       "location": "Berlin, Germany",
       "type": "upcoming",
-      "imageUrl": "/img/events/web-dev-workshop.jpg",
-      "href": "/events/web-development-workshop"
+      "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
+      "href": "/events/web-development-workshop",
+      "description": [
+        "A practical workshop focused on building accessible, type-safe interfaces with React and TypeScript. We work through a small feature slice from design to implementation.",
+        "Bring your laptop. You will pair briefly, ship a working component, and leave with patterns you can reuse in your own projects."
+      ],
+      "highlights": [
+        "Live coding with strict TypeScript",
+        "Accessibility checklist for components",
+        "Take-home starter repo"
+      ],
+      "agenda": [
+        {
+          "time": "14:00",
+          "title": "Setup & project tour"
+        },
+        {
+          "time": "14:45",
+          "title": "Implementing UI with MUI patterns"
+        },
+        {
+          "time": "16:00",
+          "title": "Break"
+        },
+        {
+          "time": "16:15",
+          "title": "Testing and polish"
+        }
+      ],
+      "externalUrl": "https://www.techlabs.org"
     },
     {
       "id": "3",
@@ -27,8 +83,26 @@
       "date": "2025-01-28T19:00:00Z",
       "location": "Munich, Germany",
       "type": "upcoming",
-      "imageUrl": "/img/events/data-science-panel.jpg",
-      "href": "/events/data-science-career-panel"
+      "imageUrl": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1600&q=80",
+      "href": "/events/data-science-career-panel",
+      "description": [
+        "Hear how practitioners moved from learning to their first data roles. Panelists cover hiring expectations, portfolio work, and how to stand out ethically in AI-driven teams.",
+        "There will be plenty of time for audience questions. Come prepared with your career questions."
+      ],
+      "agenda": [
+        {
+          "time": "19:00",
+          "title": "Welcome & introductions"
+        },
+        {
+          "time": "19:15",
+          "title": "Panel discussion"
+        },
+        {
+          "time": "20:00",
+          "title": "Audience Q&A"
+        }
+      ]
     },
     {
       "id": "4",
@@ -37,8 +111,17 @@
       "date": "2025-02-05T16:00:00Z",
       "location": "Hamburg, Germany",
       "type": "upcoming",
-      "imageUrl": "/img/events/portfolio-review.jpg",
-      "href": "/events/product-design-portfolio-review"
+      "imageUrl": "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1600&q=80",
+      "href": "/events/product-design-portfolio-review",
+      "description": [
+        "Bring your portfolio (PDF, site, or deck) for structured feedback in small mentor groups. We focus on narrative, impact, and how hiring managers scan work.",
+        "Slots are limited so everyone gets meaningful attention. You will leave with concrete next steps."
+      ],
+      "highlights": [
+        "Small-group rotations",
+        "Written takeaway notes",
+        "Optional follow-up mentor match"
+      ]
     },
     {
       "id": "5",
@@ -47,8 +130,27 @@
       "date": "2025-02-12T13:00:00Z",
       "location": "Frankfurt, Germany",
       "type": "upcoming",
-      "imageUrl": "/img/events/ai-ethics.jpg",
-      "href": "/events/ai-ethics-workshop"
+      "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=80",
+      "href": "/events/ai-ethics-workshop",
+      "description": [
+        "A facilitated workshop on fairness, transparency, and accountability when shipping ML features. We use short case studies and group discussion—no PhD required.",
+        "You will practice framing risks, communicating limitations to stakeholders, and building review habits that scale with your team."
+      ],
+      "agenda": [
+        {
+          "time": "13:00",
+          "title": "Framing responsible AI in product"
+        },
+        {
+          "time": "14:00",
+          "title": "Case breakout groups"
+        },
+        {
+          "time": "15:15",
+          "title": "Report-back and commitments"
+        }
+      ],
+      "externalUrl": "https://www.techlabs.org"
     },
     {
       "id": "6",
@@ -57,8 +159,17 @@
       "date": "2024-12-15T15:00:00Z",
       "location": "Düsseldorf, Germany",
       "type": "past",
-      "imageUrl": "/img/events/graduation-2024.jpg",
-      "href": "/events/graduation-ceremony-2024"
+      "imageUrl": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1600&q=80",
+      "href": "/events/graduation-ceremony-2024",
+      "description": [
+        "We celebrated our graduates with families, mentors, and partners. The afternoon included project demos, awards, and plenty of photos.",
+        "Thank you to everyone who supported the cohort—this community is what makes TechLabs special."
+      ],
+      "highlights": [
+        "Graduate project showcase",
+        "Mentor recognition",
+        "Networking reception"
+      ]
     },
     {
       "id": "7",
@@ -67,8 +178,26 @@
       "date": "2024-11-20T10:00:00Z",
       "location": "Cologne, Germany",
       "type": "past",
-      "imageUrl": "/img/events/hackathon-sustainable.jpg",
-      "href": "/events/hackathon-sustainable-tech"
+      "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
+      "href": "/events/hackathon-sustainable-tech",
+      "description": [
+        "Teams prototyped sustainable tech ideas—from energy dashboards to circular-economy apps—in one intense weekend.",
+        "Partners provided datasets and domain mentors; participants left with demos and new friendships across tracks."
+      ],
+      "agenda": [
+        {
+          "time": "10:00",
+          "title": "Kickoff & team formation"
+        },
+        {
+          "time": "22:00",
+          "title": "Mentor checkpoint"
+        },
+        {
+          "time": "10:00+1",
+          "title": "Demos & judging"
+        }
+      ]
     },
     {
       "id": "8",
@@ -77,8 +206,12 @@
       "date": "2024-10-28T18:00:00Z",
       "location": "Stuttgart, Germany",
       "type": "past",
-      "imageUrl": "/img/events/mentor-networking.jpg",
-      "href": "/events/mentor-networking-event"
+      "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
+      "href": "/events/mentor-networking-event",
+      "description": [
+        "An evening designed for mentors and learners to meet in a low-pressure setting. Short intros, topic tables, and open conversation.",
+        "Many mentorship matches started from nights like this one."
+      ]
     },
     {
       "id": "9",
@@ -87,8 +220,17 @@
       "date": "2024-10-15T11:00:00Z",
       "location": "Düsseldorf, Germany",
       "type": "past",
-      "imageUrl": "/img/events/career-fair.jpg",
-      "href": "/events/tech-career-fair"
+      "imageUrl": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1600&q=80",
+      "href": "/events/tech-career-fair",
+      "description": [
+        "Employers and startups met candidates in speed-networking and booth formats. Resume reviews and interview tips were available all day.",
+        "Participants reported stronger clarity on roles and next skills to build."
+      ],
+      "highlights": [
+        "Company booths",
+        "Resume review desk",
+        "Interview prep mini-sessions"
+      ]
     },
     {
       "id": "10",
@@ -97,8 +239,22 @@
       "date": "2024-08-05T09:00:00Z",
       "location": "Berlin, Germany",
       "type": "past",
-      "imageUrl": "/img/events/summer-bootcamp.jpg",
-      "href": "/events/summer-coding-bootcamp"
+      "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1600&q=80",
+      "href": "/events/summer-coding-bootcamp",
+      "description": [
+        "A structured two-week sprint through HTML, CSS, JavaScript, and React basics—with daily labs and project checkpoints.",
+        "Graduates left with a deployed portfolio project and a clear path into the TechLabs tracks."
+      ],
+      "agenda": [
+        {
+          "time": "Week 1",
+          "title": "Web foundations & layout"
+        },
+        {
+          "time": "Week 2",
+          "title": "Components, state, and shipping"
+        }
+      ]
     }
   ]
 }

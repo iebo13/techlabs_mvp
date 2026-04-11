@@ -306,12 +306,22 @@
     "page": {
       "title": "TechLabs Events",
       "subtitle": "Join our community events, workshops, and networking opportunities",
-      "loadMore": "Load More Events"
+      "loadMore": "Load More Events",
+      "filterByType": "Filter by type",
+      "showingCount": "Showing {{count}} of {{total}} events",
+      "inFilter": "in {{label}}",
+      "showMore": "Show more >"
+    },
+    "filter": {
+      "all": "All events",
+      "upcoming": "Upcoming",
+      "past": "Past"
     },
     "card": {
       "upcomingLabel": "Upcoming",
       "pastLabel": "Past",
-      "eventImageAlt": "{{title}} event image"
+      "eventImageAlt": "{{title}} event image",
+      "viewDetails": "View details for {{title}}"
     },
     "emptyState": {
       "title": "No events found",
@@ -327,6 +337,20 @@
       "all": "All Events ({{count}})",
       "upcoming": "Upcoming ({{count}})",
       "past": "Past ({{count}})"
+    },
+    "detail": {
+      "backToEvents": "Back to events",
+      "notFound": "Event not found",
+      "notFoundMessage": "This event does not exist or the link may be outdated.",
+      "dateTime": "When",
+      "location": "Where",
+      "register": "Register",
+      "learnMore": "Learn more",
+      "questions": "Questions?",
+      "contactUs": "Contact us",
+      "highlights": "Highlights",
+      "agenda": "Agenda",
+      "about": "About this event"
     }
   },
   "stories": {

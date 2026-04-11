@@ -96,6 +96,11 @@ export const StorySchema = z.object({
 
 export const EventTypeSchema = z.enum(['upcoming', 'past'])
 
+export const EventAgendaItemSchema = z.object({
+  time: z.string().min(1),
+  title: z.string().min(1),
+})
+
 export const EventSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
@@ -103,8 +108,12 @@ export const EventSchema = z.object({
   date: z.string().min(1), // ISO date string
   location: z.string().min(1),
   type: EventTypeSchema,
-  imageUrl: z.string().min(1), // Allow relative paths for MVP
+  imageUrl: z.string().min(1),
   href: z.string().min(1),
+  description: z.array(z.string().min(1)).min(1),
+  highlights: z.array(z.string().min(1)).optional(),
+  agenda: z.array(EventAgendaItemSchema).optional(),
+  externalUrl: z.string().url().optional(),
 })
 
 export const NumberStatSchema = z.object({

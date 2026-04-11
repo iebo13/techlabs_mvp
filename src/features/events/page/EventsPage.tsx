@@ -1,53 +1,28 @@
-import React, { useState } from 'react'
-import { Alert, Box, Button, Container, Grid, Tab, Tabs, Typography } from '@mui/material'
+import React, { useMemo, useState } from 'react'
+import { Box, Button, Grid, Stack, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { CTAButton } from '@/components/Buttons'
+import { Section } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
 import eventsData from '@/mocks/events.json'
-import { EventCard, type Event } from '../components/EventCard'
+import { EventCard } from '../components/EventCard'
+import type { Event } from '../types/events.types'
 
-type EventType = 'upcoming' | 'past' | 'all'
+const typedEventsData = eventsData.events as Event[]
 
-const EVENTS_PER_PAGE = 6
+type EventTypeFilter = 'all' | 'past' | 'upcoming'
+
+const MOBILE_PAGE_SIZE = 4
 
 export const EventsPage: React.FC = () => {
+  const theme = useTheme()
   const { t } = useI18n()
-  const [selectedTab, setSelectedTab] = useState<EventType>('all')
-  const [visibleCount, setVisibleCount] = useState(EVENTS_PER_PAGE)
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
-  const filteredEvents = (() => {
-    if (selectedTab === 'all') {
-      return eventsData.events as Event[]
-    }
+  const [selectedType, setSelectedType] = useState<EventTypeFilter>('all')
+  const [mobileVisibleCount, setMobileVisibleCount] = useState(MOBILE_PAGE_SIZE)
 
-    return (eventsData.events as Event[]).filter(event => event.type === selectedTab)
-  })()
-
-  const sortedEvents = (() => {
-    return [...filteredEvents].sort((a, b) => {
-      const dateA = new Date(a.date)
-      const dateB = new Date(b.date)
-
-      if (selectedTab === 'past') {
-        return dateB.getTime() - dateA.getTime()
-      }
-
-      return dateA.getTime() - dateB.getTime()
-    })
-  })()
-
-  const visibleEvents = sortedEvents.slice(0, visibleCount)
-  const hasMoreEvents = visibleCount < sortedEvents.length
-
-  const handleTabChange = (_: React.SyntheticEvent, newValue: EventType) => {
-    setSelectedTab(newValue)
-    setVisibleCount(EVENTS_PER_PAGE)
-  }
-
-  const handleLoadMore = () => {
-    setVisibleCount(prev => Math.min(prev + EVENTS_PER_PAGE, sortedEvents.length))
-  }
-
-  const getTabLabel = (type: EventType) => {
-    const events = eventsData.events as Event[]
+  const getTabLabel = (type: EventTypeFilter) => {
+    const events = typedEventsData
 
     switch (type) {
       case 'upcoming':
@@ -59,118 +34,142 @@ export const EventsPage: React.FC = () => {
     }
   }
 
+  // eslint-disable-next-line no-restricted-syntax
+  const filteredSortedEvents = useMemo(() => {
+    const byDateAsc = (a: Event, b: Event) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    const byDateDesc = (a: Event, b: Event) => new Date(b.date).getTime() - new Date(a.date).getTime()
+
+    if (selectedType === 'all') {
+      const upcoming = typedEventsData.filter(e => e.type === 'upcoming').sort(byDateAsc)
+      const past = typedEventsData.filter(e => e.type === 'past').sort(byDateDesc)
+
+      return [...upcoming, ...past]
+    }
+
+    const list = typedEventsData.filter(e => e.type === selectedType)
+
+    list.sort(selectedType === 'past' ? byDateDesc : byDateAsc)
+
+    return list
+  }, [selectedType])
+
+  const visibleEvents = isMobile ? filteredSortedEvents.slice(0, mobileVisibleCount) : filteredSortedEvents
+  const hasMoreEvents = isMobile && mobileVisibleCount < filteredSortedEvents.length
+
+  const handleTabChange = (_: React.SyntheticEvent, newValue: EventTypeFilter) => {
+    setSelectedType(newValue)
+    setMobileVisibleCount(MOBILE_PAGE_SIZE)
+  }
+
+  const handleShowMore = () => {
+    setMobileVisibleCount(prev => prev + MOBILE_PAGE_SIZE)
+  }
+
+  const selectedFilterLabel =
+    selectedType === 'all'
+      ? undefined
+      : selectedType === 'upcoming'
+        ? t('events.filter.upcoming')
+        : t('events.filter.past')
+
+  const emptyMessage = (() => {
+    if (selectedType === 'upcoming') {
+      return t('events.emptyState.upcomingMessage')
+    }
+
+    if (selectedType === 'past') {
+      return t('events.emptyState.pastMessage')
+    }
+
+    return t('events.noEvents')
+  })()
+
   return (
-    <Container maxWidth="lg" sx={{ py: 6 }}>
-      <Box sx={{ mb: 6, textAlign: 'center' }}>
-        <Typography
-          variant="h2"
-          component="h1"
-          gutterBottom
-          sx={{
-            fontWeight: 800,
-            fontSize: { xs: '2.5rem', md: '3.5rem' },
-            lineHeight: 1.2,
-            color: 'text.primary',
-          }}>
+    <Section sx={{ py: { xs: 4, md: 6 } }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          px: { xs: 1, md: 0 },
+          maxWidth: '720px',
+          textAlign: 'center',
+          mx: 'auto',
+        }}>
+        <Typography component="h1" variant="h2" sx={{ color: 'primary.main' }}>
           {t('events.page.title')}
         </Typography>
-        <Typography
-          variant="h5"
-          color="text.secondary"
-          sx={{
-            fontWeight: 400,
-            maxWidth: '600px',
-            mx: 'auto',
-            lineHeight: 1.4,
-          }}>
+        <Typography variant="body1" color="text.secondary" sx={{ mt: 2, pb: 2, fontSize: '1.125rem', lineHeight: 1.6 }}>
           {t('events.page.subtitle')}
         </Typography>
       </Box>
 
-      <Box sx={{ mb: 4 }}>
-        <Tabs
-          value={selectedTab}
-          onChange={handleTabChange}
-          variant="fullWidth"
-          sx={{
-            '& .MuiTab-root': {
-              fontSize: '1rem',
-              fontWeight: 600,
-              textTransform: 'none',
-              minHeight: '56px',
-            },
-            '& .Mui-selected': {
-              color: 'primary.main',
-            },
-          }}>
-          <Tab value="all" label={getTabLabel('all')} />
-          <Tab value="upcoming" label={getTabLabel('upcoming')} />
-          <Tab value="past" label={getTabLabel('past')} />
-        </Tabs>
-      </Box>
+      <Stack spacing={4}>
+        <Box>
+          <Tabs
+            value={selectedType}
+            onChange={handleTabChange}
+            variant="fullWidth"
+            sx={{
+              '& .MuiTab-root': {
+                fontSize: '1rem',
+                fontWeight: 600,
+                textTransform: 'none',
+                minHeight: '56px',
+              },
+              '& .Mui-selected': {
+                color: 'primary.main',
+              },
+            }}>
+            <Tab value="all" label={getTabLabel('all')} />
+            <Tab value="upcoming" label={getTabLabel('upcoming')} />
+            <Tab value="past" label={getTabLabel('past')} />
+          </Tabs>
+        </Box>
 
-      {visibleEvents.length === 0 ? (
-        <Alert severity="info" sx={{ textAlign: 'center', py: 4 }}>
-          <Typography variant="h6" gutterBottom>
-            {t('events.emptyState.title')}
+        <Box sx={{ textAlign: 'center' }}>
+          <Typography variant="body1" color="text.secondary">
+            {t('events.page.showingCount', {
+              count: visibleEvents.length,
+              total: filteredSortedEvents.length,
+            })}
+            {selectedType !== 'all' && selectedFilterLabel
+              ? ` ${t('events.page.inFilter', { label: selectedFilterLabel })}`
+              : ''}
           </Typography>
-          <Typography variant="body1">
-            {selectedTab === 'upcoming' ? t('events.emptyState.upcomingMessage') : t('events.emptyState.pastMessage')}
-          </Typography>
-        </Alert>
-      ) : (
-        <>
-          <Grid container spacing={3} sx={{ mb: 4 }}>
-            {visibleEvents.map(event => (
-              <Grid key={event.id} size={{ xs: 12, sm: 6, md: 4 }}>
-                <EventCard event={event} />
-              </Grid>
-            ))}
-          </Grid>
+        </Box>
 
-          {hasMoreEvents && (
-            <Box sx={{ textAlign: 'center' }}>
-              <Button
-                variant="outlined"
-                size="large"
-                onClick={handleLoadMore}
-                sx={{
-                  px: 4,
-                  py: 1.5,
-                  borderRadius: '28px',
-                  textTransform: 'none',
-                  fontWeight: 600,
-                  fontSize: '1rem',
-                }}>
-                {t('events.page.loadMore')}
-              </Button>
-            </Box>
-          )}
-        </>
-      )}
+        <Grid container spacing={3} px={{ xs: 2, md: 4 }}>
+          {visibleEvents.map(event => (
+            <EventCard key={event.id} event={event} />
+          ))}
+        </Grid>
 
-      <Box sx={{ mt: 8, textAlign: 'center' }}>
-        <Typography variant="h6" gutterBottom color="text.secondary">
-          {t('events.hostEvent.title')}
-        </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-          {t('events.hostEvent.description')}
-        </Typography>
-        <Button
-          variant="contained"
-          size="large"
-          href="/about#contact"
-          sx={{
-            px: 4,
-            py: 1.5,
-            borderRadius: '28px',
-            textTransform: 'none',
-            fontWeight: 600,
-            fontSize: '1rem',
-          }}>
-          {t('events.hostEvent.cta')}
-        </Button>
-      </Box>
-    </Container>
+        {hasMoreEvents && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+            <Button variant="text" sx={{ textDecoration: 'underline' }} onClick={handleShowMore}>
+              {t('events.page.showMore')}
+            </Button>
+          </Box>
+        )}
+
+        {filteredSortedEvents.length === 0 && (
+          <Box sx={{ textAlign: 'center', py: 8 }}>
+            <Typography variant="h6" color="text.secondary" gutterBottom>
+              {t('events.emptyState.title')}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {emptyMessage}
+            </Typography>
+          </Box>
+        )}
+
+        <Box sx={{ px: 2 }}>
+          <CTAButton to="/about#contact" fullWidth sx={{ borderRadius: 0.5 }}>
+            {t('events.hostEvent.cta')}
+          </CTAButton>
+        </Box>
+      </Stack>
+    </Section>
   )
 }

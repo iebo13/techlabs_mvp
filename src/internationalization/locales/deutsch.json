@@ -306,12 +306,22 @@
     "page": {
       "title": "TechLabs Veranstaltungen",
       "subtitle": "Nehmen Sie an unseren Community-Veranstaltungen, Workshops und Networking-Gelegenheiten teil",
-      "loadMore": "Weitere Veranstaltungen laden"
+      "loadMore": "Weitere Veranstaltungen laden",
+      "filterByType": "Nach Typ filtern",
+      "showingCount": "{{count}} von {{total}} Veranstaltungen werden angezeigt",
+      "inFilter": "in {{label}}",
+      "showMore": "Mehr anzeigen >"
+    },
+    "filter": {
+      "all": "Alle Veranstaltungen",
+      "upcoming": "Kommende",
+      "past": "Vergangene"
     },
     "card": {
       "upcomingLabel": "Kommend",
       "pastLabel": "Vergangen",
-      "eventImageAlt": "{{title}} Veranstaltungsbild"
+      "eventImageAlt": "{{title}} Veranstaltungsbild",
+      "viewDetails": "Details zu {{title}} anzeigen"
     },
     "emptyState": {
       "title": "Keine Veranstaltungen gefunden",
@@ -327,6 +337,20 @@
       "all": "Alle Veranstaltungen ({{count}})",
       "upcoming": "Kommende ({{count}})",
       "past": "Vergangene ({{count}})"
+    },
+    "detail": {
+      "backToEvents": "Zurück zu Veranstaltungen",
+      "notFound": "Veranstaltung nicht gefunden",
+      "notFoundMessage": "Diese Veranstaltung existiert nicht oder der Link ist veraltet.",
+      "dateTime": "Wann",
+      "location": "Wo",
+      "register": "Anmelden",
+      "learnMore": "Mehr erfahren",
+      "questions": "Fragen?",
+      "contactUs": "Kontakt",
+      "highlights": "Highlights",
+      "agenda": "Ablauf",
+      "about": "Über diese Veranstaltung"
     }
   },
   "stories": {

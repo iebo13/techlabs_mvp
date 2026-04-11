@@ -12,6 +12,10 @@ const EventsPage = lazy(() =>
   import('@/features/events/page/EventsPage').then(module => ({ default: module.EventsPage }))
 )
 
+const EventDetailPage = lazy(() =>
+  import('@/features/events/page/EventDetailPage').then(module => ({ default: module.EventDetailPage }))
+)
+
 const StoriesPage = lazy(() =>
   import('@/features/stories/page/StoriesPage').then(module => ({ default: module.StoriesPage }))
 )
@@ -56,6 +60,15 @@ export const routes: RouteConfig[] = [
     element: (
       <Suspense fallback={<LoadingFallback variant="page" />}>
         <EventsPage />
+      </Suspense>
+    ),
+    lazy: true,
+  },
+  {
+    path: '/events/:eventSlug',
+    element: (
+      <Suspense fallback={<LoadingFallback variant="page" />}>
+        <EventDetailPage />
       </Suspense>
     ),
     lazy: true,

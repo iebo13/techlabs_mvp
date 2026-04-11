@@ -365,6 +365,33 @@
     },
     "filter": {
       "allTracks": "Alle Tracks"
+    },
+    "detail": {
+      "backToStories": "Zurück zu den Geschichten",
+      "notFound": "Geschichte nicht gefunden",
+      "notFoundMessage": "Die gesuchte Geschichte existiert nicht.",
+      "theirStory": "Ihre Geschichte",
+      "theJourney": "Der Weg",
+      "before": "Vor TechLabs",
+      "during": "Bei TechLabs",
+      "after": "Heute",
+      "keyAchievements": "Wichtigste Erfolge",
+      "joinUs": "Inspiriert von ihrer Geschichte?",
+      "joinCta": "Starte deine eigene Reise bei TechLabs.",
+      "applyNow": "Jetzt bewerben",
+      "seeMore": "Mehr Geschichten",
+      "location": "Standort",
+      "graduated": "Abschluss",
+      "track": "Track",
+      "company": "Unternehmen",
+      "role": "Aktuelle Rolle",
+      "beforeFallback": "Karriere vor TechLabs",
+      "theChallenge": "Die Herausforderung",
+      "discoveringTechLabs": "Die Entdeckung von TechLabs",
+      "theExperience": "Die Erfahrung",
+      "theBreakthrough": "Der Durchbruch",
+      "whereTheyAreNow": "Wo sie heute stehen",
+      "impactNumbers": "Wirkung in Zahlen"
     }
   },
   "partners": {

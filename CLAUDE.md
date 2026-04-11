@@ -443,50 +443,55 @@ The project is configured for Firebase hosting:
 
 ## Design Workflow
 
-1. **Check for design system first**: Ask user if they have existing tokens/specs, or discover from current Penpot file
-2. **Understand the page**: Call `mcp__penpot__execute_code` with `penpotUtils.shapeStructure()` to see hierarchy
-3. **Find elements**: Use `penpotUtils.findShapes()` to locate elements by type or name
-4. **Create/modify**: Use `penpot.createBoard()`, `penpot.createRectangle()`, `penpot.createText()` etc.
+1. **Check for design system first**: Ask user if they have existing
+   tokens/specs, or discover from current Penpot file
+2. **Understand the page**: Call `mcp__penpot__execute_code` with
+   `penpotUtils.shapeStructure()` to see hierarchy
+3. **Find elements**: Use `penpotUtils.findShapes()` to locate elements by type
+   or name
+4. **Create/modify**: Use `penpot.createBoard()`, `penpot.createRectangle()`,
+   `penpot.createText()` etc.
 5. **Apply layout**: Use `addFlexLayout()` for responsive containers
 6. **Validate**: Call `mcp__penpot__export_shape` to visually check your work
 
 ## Default Design Tokens
 
-**Use these defaults only when user has no design system. Always prefer user's tokens if available.**
+**Use these defaults only when user has no design system. Always prefer user's
+tokens if available.**
 
 ### Spacing Scale (8px base)
 
-| Token | Value | Usage |
-| ----- | ----- | ----- |
-| `spacing-xs` | 4px | Tight inline elements |
-| `spacing-sm` | 8px | Related elements |
-| `spacing-md` | 16px | Default padding |
-| `spacing-lg` | 24px | Section spacing |
-| `spacing-xl` | 32px | Major sections |
-| `spacing-2xl` | 48px | Page-level spacing |
+| Token         | Value | Usage                 |
+| ------------- | ----- | --------------------- |
+| `spacing-xs`  | 4px   | Tight inline elements |
+| `spacing-sm`  | 8px   | Related elements      |
+| `spacing-md`  | 16px  | Default padding       |
+| `spacing-lg`  | 24px  | Section spacing       |
+| `spacing-xl`  | 32px  | Major sections        |
+| `spacing-2xl` | 48px  | Page-level spacing    |
 
 ### Typography Scale
 
-| Level | Size | Weight | Usage |
-| ----- | ---- | ------ | ----- |
-| Display | 48-64px | Bold | Hero headlines |
-| H1 | 32-40px | Bold | Page titles |
-| H2 | 24-28px | Semibold | Section headers |
-| H3 | 20-22px | Semibold | Subsections |
-| Body | 16px | Regular | Main content |
-| Small | 14px | Regular | Secondary text |
-| Caption | 12px | Regular | Labels, hints |
+| Level   | Size    | Weight   | Usage           |
+| ------- | ------- | -------- | --------------- |
+| Display | 48-64px | Bold     | Hero headlines  |
+| H1      | 32-40px | Bold     | Page titles     |
+| H2      | 24-28px | Semibold | Section headers |
+| H3      | 20-22px | Semibold | Subsections     |
+| Body    | 16px    | Regular  | Main content    |
+| Small   | 14px    | Regular  | Secondary text  |
+| Caption | 12px    | Regular  | Labels, hints   |
 
 ### Color Usage
 
-| Purpose | Recommendation |
-| ------- | -------------- |
-| Primary | Main brand color, CTAs |
-| Secondary | Supporting actions |
-| Success | #22C55E range (confirmations) |
-| Warning | #F59E0B range (caution) |
-| Error | #EF4444 range (errors) |
-| Neutral | Gray scale for text/borders |
+| Purpose   | Recommendation                |
+| --------- | ----------------------------- |
+| Primary   | Main brand color, CTAs        |
+| Secondary | Supporting actions            |
+| Success   | #22C55E range (confirmations) |
+| Warning   | #F59E0B range (caution)       |
+| Error     | #EF4444 range (errors)        |
+| Neutral   | Gray scale for text/borders   |
 
 ## Common Layouts
 

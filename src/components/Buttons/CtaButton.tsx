@@ -135,7 +135,14 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
   // Use Button with Link component for internal navigation (accessible pattern)
   if (to) {
     const buttonElement = (
-      <Button component={Link} to={to} variant={variant} size={size} color={color} sx={combinedSx} aria-label={ariaLabel}>
+      <Button
+        component={Link}
+        to={to}
+        variant={variant}
+        size={size}
+        color={color}
+        sx={combinedSx}
+        aria-label={ariaLabel}>
         {children}
       </Button>
     )
@@ -164,7 +171,14 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
   }
 
   const buttonElement = (
-    <Button variant={variant} size={size} color={color} disabled={disabled} sx={combinedSx} aria-label={ariaLabel} onClick={onClick}>
+    <Button
+      variant={variant}
+      size={size}
+      color={color}
+      disabled={disabled}
+      sx={combinedSx}
+      aria-label={ariaLabel}
+      onClick={onClick}>
       {children}
     </Button>
   )

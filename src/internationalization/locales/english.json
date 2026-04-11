@@ -365,6 +365,33 @@
     },
     "filter": {
       "allTracks": "All Tracks"
+    },
+    "detail": {
+      "backToStories": "Back to Stories",
+      "notFound": "Story not found",
+      "notFoundMessage": "The story you're looking for doesn't exist.",
+      "theirStory": "Their Story",
+      "theJourney": "The Journey",
+      "before": "Before TechLabs",
+      "during": "At TechLabs",
+      "after": "Today",
+      "keyAchievements": "Key Achievements",
+      "joinUs": "Inspired by their story?",
+      "joinCta": "Start your own journey at TechLabs.",
+      "applyNow": "Apply Now",
+      "seeMore": "See More Stories",
+      "location": "Location",
+      "graduated": "Graduated",
+      "track": "Track",
+      "company": "Company",
+      "role": "Current Role",
+      "beforeFallback": "Career before TechLabs",
+      "theChallenge": "The Challenge",
+      "discoveringTechLabs": "Discovering TechLabs",
+      "theExperience": "The Experience",
+      "theBreakthrough": "The Breakthrough",
+      "whereTheyAreNow": "Where They Are Now",
+      "impactNumbers": "Impact by the Numbers"
     }
   },
   "partners": {

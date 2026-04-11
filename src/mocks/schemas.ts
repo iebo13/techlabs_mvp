@@ -52,12 +52,26 @@ export const FeatureSchema = z.object({
   body: z.string().min(1),
 })
 
+export const StoryNarrativeSchema = z.object({
+  challenge: z.string().min(1),
+  discovery: z.string().min(1),
+  experience: z.string().min(1),
+  transformation: z.string().min(1),
+  outcome: z.string().min(1),
+})
+
+export const StoryMetricSchema = z.object({
+  label: z.string().min(1),
+  value: z.string().min(1),
+})
+
 export const StorySchema = z.object({
   id: z.string().min(1),
+  name: z.string().min(1).optional(),
   title: z.string().min(1),
   excerpt: z.string().min(1),
   fullDescription: z.string().min(1),
-  imageUrl: z.string().min(1), // Allow relative paths for MVP
+  imageUrl: z.string().min(1),
   href: z.string().min(1),
   track: TrackKeySchema,
   trackLabel: z.string().min(1),
@@ -65,7 +79,11 @@ export const StorySchema = z.object({
   location: z.string().min(1),
   currentRole: z.string().min(1),
   company: z.string().min(1),
+  beforeRole: z.string().min(1).optional(),
   achievements: z.array(z.string().min(1)),
+  quote: z.string().min(1).optional(),
+  narrative: StoryNarrativeSchema.optional(),
+  metrics: z.array(StoryMetricSchema).optional(),
 })
 
 export const EventTypeSchema = z.enum(['upcoming', 'past'])

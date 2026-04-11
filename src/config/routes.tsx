@@ -18,6 +18,10 @@ const StoriesPage = lazy(() =>
   import('@/features/stories/page/StoriesPage').then(module => ({ default: module.StoriesPage }))
 )
 
+const StoryDetailPage = lazy(() =>
+  import('@/features/stories/page/StoryDetailPage').then(module => ({ default: module.StoryDetailPage }))
+)
+
 const PartnersPage = lazy(() =>
   import('@/features/partners/page/PartnersPage').then(module => ({ default: module.PartnersPage }))
 )
@@ -63,6 +67,15 @@ export const routes: RouteConfig[] = [
     element: (
       <Suspense fallback={<LoadingFallback variant="page" />}>
         <StoriesPage />
+      </Suspense>
+    ),
+    lazy: true,
+  },
+  {
+    path: '/stories/:storyId',
+    element: (
+      <Suspense fallback={<LoadingFallback variant="page" />}>
+        <StoryDetailPage />
       </Suspense>
     ),
     lazy: true,

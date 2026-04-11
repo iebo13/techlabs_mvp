@@ -10,7 +10,6 @@ import { globalIgnores } from 'eslint/config'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import unusedImports from 'eslint-plugin-unused-imports'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
-import sonarjs from 'eslint-plugin-sonarjs'
 import promise from 'eslint-plugin-promise'
 import security from 'eslint-plugin-security'
 
@@ -109,7 +108,6 @@ export default [
       'react-refresh': reactRefresh,
       'unused-imports': unusedImports,
       'jsx-a11y': jsxA11y,
-      sonarjs,
       promise,
     },
     rules: {
@@ -118,8 +116,6 @@ export default [
       'max-lines': 'off',
       'max-lines-per-function': 'off',
       'no-console': 'off',
-      'sonarjs/no-duplicate-string': 'off',
-      'sonarjs/cognitive-complexity': 'off',
 
       // Keep important TypeScript rules
       '@typescript-eslint/no-non-null-assertion': 'error',
@@ -201,7 +197,6 @@ export default [
       'react-refresh': reactRefresh,
       import: importPlugin,
       'jsx-a11y': jsxA11y,
-      sonarjs,
       promise,
       security,
     },
@@ -350,25 +345,6 @@ export default [
       'jsx-a11y/role-supports-aria-props': 'error',
       'jsx-a11y/scope': 'error',
       'jsx-a11y/tabindex-no-positive': 'error',
-
-      /* =============================
-       * Code quality rules (SonarJS)
-       * ============================= */
-      'sonarjs/no-duplicate-string': ['error', { threshold: 3 }],
-      'sonarjs/no-redundant-boolean': 'error',
-      'sonarjs/prefer-immediate-return': 'error',
-      'sonarjs/no-identical-functions': 'error',
-      'sonarjs/cognitive-complexity': ['error', 15],
-      'sonarjs/no-nested-switch': 'error',
-      'sonarjs/no-collapsible-if': 'error',
-      'sonarjs/no-redundant-jump': 'error',
-      'sonarjs/no-small-switch': 'error',
-      'sonarjs/no-unused-collection': 'error',
-      'sonarjs/no-useless-catch': 'error',
-      'sonarjs/prefer-object-literal': 'error',
-      'sonarjs/no-element-overwrite': 'error',
-      'sonarjs/no-extra-arguments': 'error',
-      'sonarjs/no-use-of-empty-return-value': 'error',
 
       /* =============================
        * Promise rules

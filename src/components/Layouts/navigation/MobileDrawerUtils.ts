@@ -67,7 +67,6 @@ export const createCloseButtonStyles = (theme: Theme) => ({
     sm: 48,
   },
   borderRadius: 2,
-  // eslint-disable-next-line sonarjs/no-duplicate-string
   transition: theme.transitions.create(['background-color', 'transform', 'color'], {
     duration: theme.transitions.duration.short,
   }),

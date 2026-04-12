@@ -214,6 +214,10 @@ async function seedSiteSettings() {
           ...p,
         })),
       },
+      team: {
+        title: contentData.about.team.title,
+        description: contentData.about.team.description,
+      },
       contact: contentData.about.contact,
     },
   })

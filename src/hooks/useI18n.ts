@@ -70,7 +70,7 @@ export const useI18n = (): UseI18nReturn => {
   }
 
   const availableLanguages = SUPPORTED_LANGUAGES
-  const currentLanguage = i18n.language
+  const currentLanguage = i18n.language.split('-')[0].toLowerCase()
   const isReady = ready
   const isLoading = !ready
 

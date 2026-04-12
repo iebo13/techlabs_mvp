@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Container, Grid, Typography } from '@mui/material'
 import { DataLoadingState, Section, SEO } from '@/components/Layouts'
@@ -13,11 +13,7 @@ export const TracksPage: React.FC = () => {
   const i18n = useI18n()
   const { data: tracks, isLoading, error } = useTracks()
 
-  const localizedTracks = useMemo(() => {
-    if (!tracks) return []
-
-    return tracks.map(track => getLocalizedTrack(track, i18n.t))
-  }, [tracks, i18n.t])
+  const localizedTracks = tracks?.map(track => getLocalizedTrack(track, i18n.t)) ?? []
 
   useEffect(() => {
     const urlPrefs = searchParams.get('pref')

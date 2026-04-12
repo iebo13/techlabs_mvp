@@ -203,7 +203,7 @@ export const ContactSchema = z.object({
 export const AboutDataSchema = z.object({
   mission: MissionSchema,
   program: ProgramSchema,
-  timeline: TimelineSchema,
+  timeline: TimelineSchema.optional(),
   team: TeamSchema,
   contact: ContactSchema,
 })

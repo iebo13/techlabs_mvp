@@ -21,13 +21,15 @@ import { StoryCard } from '../components/StoryCard'
 import { useStories } from '../hooks/useStories'
 import type { Story } from '../types/stories.types'
 
+const EMPTY_STORIES: Story[] = []
+
 export const StoriesPage: React.FC = () => {
   const theme = useTheme()
   const { t } = useI18n()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const { data: storiesRaw, isLoading, error } = useStories()
 
-  const allStories = useMemo(() => (storiesRaw ?? []) as Story[], [storiesRaw])
+  const allStories = (storiesRaw ?? EMPTY_STORIES) as Story[]
 
   // eslint-disable-next-line no-restricted-syntax
   const trackOptions = useMemo(

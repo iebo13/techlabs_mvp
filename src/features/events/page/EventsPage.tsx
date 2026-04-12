@@ -10,6 +10,7 @@ import type { Event } from '../types/events.types'
 type EventTypeFilter = 'all' | 'past' | 'upcoming'
 
 const MOBILE_PAGE_SIZE = 4
+const EMPTY_EVENTS: Event[] = []
 
 export const EventsPage: React.FC = () => {
   const theme = useTheme()
@@ -17,7 +18,7 @@ export const EventsPage: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const { data: eventsRaw, isLoading, error } = useEvents()
 
-  const allEvents = useMemo(() => eventsRaw ?? [], [eventsRaw])
+  const allEvents = eventsRaw ?? EMPTY_EVENTS
 
   const [selectedType, setSelectedType] = useState<EventTypeFilter>('all')
   const [mobileVisibleCount, setMobileVisibleCount] = useState(MOBILE_PAGE_SIZE)

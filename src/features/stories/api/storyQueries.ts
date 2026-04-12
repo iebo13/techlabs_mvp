@@ -3,9 +3,9 @@ export const ALL_STORIES_QUERY = /* groq */ `
     _id,
     "id": _id,
     name,
-    title,
-    excerpt,
-    fullDescription,
+    "title": title[$lang],
+    "excerpt": excerpt[$lang],
+    "fullDescription": fullDescription[$lang],
     imageUrl,
     "imageAssetUrl": image.asset->url,
     coverImageUrl,
@@ -17,11 +17,21 @@ export const ALL_STORIES_QUERY = /* groq */ `
     location,
     currentRole,
     company,
-    beforeRole,
-    achievements,
-    quote,
-    narrative,
-    metrics,
+    "beforeRole": beforeRole[$lang],
+    "achievements": achievements[$lang],
+    "quote": quote[$lang],
+    "narrative": narrative {
+      "challenge": challenge[$lang],
+      "discovery": discovery[$lang],
+      "experience": experience[$lang],
+      "transformation": transformation[$lang],
+      "outcome": outcome[$lang]
+    },
+    "metrics": metrics[] {
+      _key,
+      "label": label[$lang],
+      value
+    },
     photoCredit
   }
 `
@@ -31,9 +41,9 @@ export const STORY_BY_SLUG_QUERY = /* groq */ `
     _id,
     "id": _id,
     name,
-    title,
-    excerpt,
-    fullDescription,
+    "title": title[$lang],
+    "excerpt": excerpt[$lang],
+    "fullDescription": fullDescription[$lang],
     imageUrl,
     "imageAssetUrl": image.asset->url,
     coverImageUrl,
@@ -45,11 +55,21 @@ export const STORY_BY_SLUG_QUERY = /* groq */ `
     location,
     currentRole,
     company,
-    beforeRole,
-    achievements,
-    quote,
-    narrative,
-    metrics,
+    "beforeRole": beforeRole[$lang],
+    "achievements": achievements[$lang],
+    "quote": quote[$lang],
+    "narrative": narrative {
+      "challenge": challenge[$lang],
+      "discovery": discovery[$lang],
+      "experience": experience[$lang],
+      "transformation": transformation[$lang],
+      "outcome": outcome[$lang]
+    },
+    "metrics": metrics[] {
+      _key,
+      "label": label[$lang],
+      value
+    },
     photoCredit
   }
 `

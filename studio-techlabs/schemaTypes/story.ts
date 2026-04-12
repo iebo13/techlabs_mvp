@@ -13,27 +13,26 @@ export const story = defineType({
     defineField({
       name: 'title',
       title: 'Story Title',
-      type: 'string',
+      type: 'localeString',
       validation: rule => rule.required(),
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: { source: 'title', maxLength: 96 },
+      options: { source: 'title.en', maxLength: 96 },
       validation: rule => rule.required(),
     }),
     defineField({
       name: 'excerpt',
       title: 'Excerpt',
-      type: 'text',
-      rows: 3,
+      type: 'localeText',
       validation: rule => rule.required(),
     }),
     defineField({
       name: 'fullDescription',
       title: 'Full Description',
-      type: 'text',
+      type: 'localeText',
       validation: rule => rule.required(),
     }),
     defineField({
@@ -103,35 +102,29 @@ export const story = defineType({
     defineField({
       name: 'beforeRole',
       title: 'Before Role',
-      type: 'string',
+      type: 'localeString',
       description: 'Role before joining TechLabs',
     }),
     defineField({
       name: 'achievements',
       title: 'Achievements',
-      type: 'array',
-      of: [{ type: 'string' }],
+      type: 'localeStringArray',
     }),
     defineField({
       name: 'quote',
       title: 'Quote',
-      type: 'text',
-      rows: 3,
+      type: 'localeText',
     }),
     defineField({
       name: 'narrative',
       title: 'Narrative',
       type: 'object',
       fields: [
-        defineField({ name: 'challenge', title: 'Challenge', type: 'text' }),
-        defineField({ name: 'discovery', title: 'Discovery', type: 'text' }),
-        defineField({ name: 'experience', title: 'Experience', type: 'text' }),
-        defineField({
-          name: 'transformation',
-          title: 'Transformation',
-          type: 'text',
-        }),
-        defineField({ name: 'outcome', title: 'Outcome', type: 'text' }),
+        defineField({ name: 'challenge', title: 'Challenge', type: 'localeText' }),
+        defineField({ name: 'discovery', title: 'Discovery', type: 'localeText' }),
+        defineField({ name: 'experience', title: 'Experience', type: 'localeText' }),
+        defineField({ name: 'transformation', title: 'Transformation', type: 'localeText' }),
+        defineField({ name: 'outcome', title: 'Outcome', type: 'localeText' }),
       ],
     }),
     defineField({
@@ -142,11 +135,11 @@ export const story = defineType({
         {
           type: 'object',
           fields: [
-            defineField({ name: 'label', title: 'Label', type: 'string' }),
+            defineField({ name: 'label', title: 'Label', type: 'localeString' }),
             defineField({ name: 'value', title: 'Value', type: 'string' }),
           ],
           preview: {
-            select: { title: 'label', subtitle: 'value' },
+            select: { title: 'label.en', subtitle: 'value' },
           },
         },
       ],
@@ -156,25 +149,13 @@ export const story = defineType({
       title: 'Photo Credit',
       type: 'object',
       fields: [
-        defineField({
-          name: 'photographer',
-          title: 'Photographer',
-          type: 'string',
-        }),
-        defineField({
-          name: 'profileUrl',
-          title: 'Profile URL',
-          type: 'url',
-        }),
-        defineField({
-          name: 'photoPageUrl',
-          title: 'Photo Page URL',
-          type: 'url',
-        }),
+        defineField({ name: 'photographer', title: 'Photographer', type: 'string' }),
+        defineField({ name: 'profileUrl', title: 'Profile URL', type: 'url' }),
+        defineField({ name: 'photoPageUrl', title: 'Photo Page URL', type: 'url' }),
       ],
     }),
   ],
   preview: {
-    select: { title: 'title', subtitle: 'track', media: 'image' },
+    select: { title: 'title.en', subtitle: 'track', media: 'image' },
   },
 })

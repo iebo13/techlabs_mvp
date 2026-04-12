@@ -29,15 +29,21 @@ const slugify = (text: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '')
 
+/** Wrap a string value as a localized object with en/de set to the same value. */
+const locale = (value: string | undefined | null) => (value ? { en: value, de: value } : undefined)
+
+/** Wrap an array of strings as a localized string array. */
+const localeArr = (arr: string[] | undefined | null) => (arr ? { en: arr, de: arr } : undefined)
+
 async function seedTracks() {
   console.log('Seeding tracks...')
   for (const track of tracksData.tracks) {
-    const label = homeData.tracks.find(t => t.id === track.id)?.label ?? track.id
+    const labelText = homeData.tracks.find(t => t.id === track.id)?.label ?? track.id
     await client.createOrReplace({
       _id: `track-${track.id}`,
       _type: 'track',
       trackId: track.id,
-      label,
+      label: locale(labelText),
       applicationDeadline: track.applicationDeadline,
       spotsAvailable: track.spotsAvailable,
       icon: track.icon,
@@ -53,16 +59,20 @@ async function seedEvents() {
     await client.createOrReplace({
       _id: `event-${event.id}`,
       _type: 'event',
-      title: event.title,
+      title: locale(event.title),
       slug: { _type: 'slug', current: slug },
-      blurb: event.blurb,
+      blurb: locale(event.blurb),
       date: event.date,
       location: event.location,
       type: event.type,
       imageUrl: event.imageUrl,
-      description: event.description,
-      highlights: event.highlights,
-      agenda: event.agenda?.map(a => ({ _key: slugify(a.title), ...a })),
+      description: localeArr(event.description),
+      highlights: localeArr(event.highlights),
+      agenda: event.agenda?.map(a => ({
+        _key: slugify(a.title),
+        time: a.time,
+        title: locale(a.title),
+      })),
       externalUrl: event.externalUrl,
     })
   }
@@ -75,14 +85,16 @@ async function seedStories() {
   for (const story of stories) {
     const slug = slugify(story.title as string)
     const metrics = story.metrics as Array<Record<string, string>> | undefined
+    const narrative = story.narrative as Record<string, string> | undefined
+    const achievements = story.achievements as string[] | undefined
     await client.createOrReplace({
       _id: `story-${story.id}`,
       _type: 'story',
       name: story.name,
-      title: story.title,
+      title: locale(story.title as string),
       slug: { _type: 'slug', current: slug },
-      excerpt: story.excerpt,
-      fullDescription: story.fullDescription,
+      excerpt: locale(story.excerpt as string),
+      fullDescription: locale(story.fullDescription as string),
       imageUrl: story.imageUrl,
       coverImageUrl: story.coverImageUrl,
       track: story.track,
@@ -91,11 +103,23 @@ async function seedStories() {
       location: story.location,
       currentRole: story.currentRole,
       company: story.company,
-      beforeRole: story.beforeRole,
-      achievements: story.achievements,
-      quote: story.quote,
-      narrative: story.narrative,
-      metrics: metrics?.map(m => ({ _key: slugify(m.label), ...m })),
+      beforeRole: locale(story.beforeRole as string | undefined),
+      achievements: localeArr(achievements),
+      quote: locale(story.quote as string | undefined),
+      narrative: narrative
+        ? {
+            challenge: locale(narrative.challenge),
+            discovery: locale(narrative.discovery),
+            experience: locale(narrative.experience),
+            transformation: locale(narrative.transformation),
+            outcome: locale(narrative.outcome),
+          }
+        : undefined,
+      metrics: metrics?.map(m => ({
+        _key: slugify(m.label),
+        label: locale(m.label),
+        value: m.value,
+      })),
       photoCredit: story.photoCredit,
     })
   }
@@ -104,7 +128,7 @@ async function seedStories() {
 
 async function seedPartners() {
   console.log('Seeding partners...')
-  for (const [i, partner] of partnersData.partners.entries()) {
+  for (const partner of partnersData.partners) {
     await client.createOrReplace({
       _id: `partner-${slugify(partner.name)}`,
       _type: 'partner',
@@ -124,8 +148,8 @@ async function seedFaqs() {
     await client.createOrReplace({
       _id: `faq-${i}`,
       _type: 'faq',
-      question: faq.q,
-      answer: faq.a,
+      question: locale(faq.q),
+      answer: locale(faq.a),
       order: i,
     })
   }
@@ -154,12 +178,33 @@ async function seedSiteSettings() {
   await client.createOrReplace({
     _id: 'siteSettings',
     _type: 'siteSettings',
-    hero: homeData.hero,
+    hero: {
+      title: locale(homeData.hero.title),
+      emphasis: locale(homeData.hero.emphasis),
+      subtitle: locale(homeData.hero.subtitle),
+    },
     applicationDeadlineISO: homeData.applicationDeadlineISO,
     video: homeData.video,
-    features: homeData.features.map(f => ({ _key: slugify(f.title), ...f })),
-    numbers: homeData.numbers.map(n => ({ _key: slugify(n.label), ...n })),
-    support: homeData.support,
+    features: homeData.features.map(f => ({
+      _key: slugify(f.title),
+      icon: f.icon,
+      title: locale(f.title),
+      body: locale(f.body),
+    })),
+    numbers: homeData.numbers.map(n => ({
+      _key: slugify(n.label),
+      label: locale(n.label),
+      value: n.value,
+    })),
+    support: {
+      title: locale(homeData.support.title),
+      body: locale(homeData.support.body),
+      imageUrl: homeData.support.imageUrl,
+      cta: {
+        label: locale(homeData.support.cta.label),
+        to: homeData.support.cta.to,
+      },
+    },
     about: {
       mission: contentData.about.mission,
       program: {

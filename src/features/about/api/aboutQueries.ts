@@ -25,7 +25,7 @@ export const TEAM_MEMBERS_QUERY = /* groq */ `
 export const ALL_FAQS_QUERY = /* groq */ `
   *[_type == "faq"] | order(order asc) {
     _id,
-    "q": question,
-    "a": answer
+    "q": question[$lang],
+    "a": answer[$lang]
   }
 `

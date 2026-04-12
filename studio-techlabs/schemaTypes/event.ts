@@ -8,21 +8,20 @@ export const event = defineType({
     defineField({
       name: 'title',
       title: 'Title',
-      type: 'string',
+      type: 'localeString',
       validation: rule => rule.required(),
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: { source: 'title', maxLength: 96 },
+      options: { source: 'title.en', maxLength: 96 },
       validation: rule => rule.required(),
     }),
     defineField({
       name: 'blurb',
       title: 'Blurb',
-      type: 'text',
-      rows: 2,
+      type: 'localeText',
       validation: rule => rule.required(),
     }),
     defineField({
@@ -66,15 +65,13 @@ export const event = defineType({
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'array',
-      of: [{ type: 'string' }],
-      validation: rule => rule.min(1),
+      type: 'localeStringArray',
+      validation: rule => rule.required(),
     }),
     defineField({
       name: 'highlights',
       title: 'Highlights',
-      type: 'array',
-      of: [{ type: 'string' }],
+      type: 'localeStringArray',
     }),
     defineField({
       name: 'agenda',
@@ -85,10 +82,10 @@ export const event = defineType({
           type: 'object',
           fields: [
             defineField({ name: 'time', title: 'Time', type: 'string' }),
-            defineField({ name: 'title', title: 'Title', type: 'string' }),
+            defineField({ name: 'title', title: 'Title', type: 'localeString' }),
           ],
           preview: {
-            select: { title: 'title', subtitle: 'time' },
+            select: { title: 'title.en', subtitle: 'time' },
           },
         },
       ],
@@ -100,6 +97,6 @@ export const event = defineType({
     }),
   ],
   preview: {
-    select: { title: 'title', subtitle: 'date', media: 'image' },
+    select: { title: 'title.en', subtitle: 'date', media: 'image' },
   },
 })

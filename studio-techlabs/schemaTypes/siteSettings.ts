@@ -10,9 +10,9 @@ export const siteSettings = defineType({
       title: 'Hero Section',
       type: 'object',
       fields: [
-        defineField({ name: 'title', title: 'Title', type: 'string' }),
-        defineField({ name: 'emphasis', title: 'Emphasis Word', type: 'string' }),
-        defineField({ name: 'subtitle', title: 'Subtitle', type: 'string' }),
+        defineField({ name: 'title', title: 'Title', type: 'localeString' }),
+        defineField({ name: 'emphasis', title: 'Emphasis Word', type: 'localeString' }),
+        defineField({ name: 'subtitle', title: 'Subtitle', type: 'localeString' }),
       ],
     }),
     defineField({
@@ -39,11 +39,11 @@ export const siteSettings = defineType({
           type: 'object',
           fields: [
             defineField({ name: 'icon', title: 'Icon', type: 'string' }),
-            defineField({ name: 'title', title: 'Title', type: 'string' }),
-            defineField({ name: 'body', title: 'Body', type: 'text' }),
+            defineField({ name: 'title', title: 'Title', type: 'localeString' }),
+            defineField({ name: 'body', title: 'Body', type: 'localeText' }),
           ],
           preview: {
-            select: { title: 'title', subtitle: 'icon' },
+            select: { title: 'title.en', subtitle: 'icon' },
           },
         },
       ],
@@ -56,11 +56,11 @@ export const siteSettings = defineType({
         {
           type: 'object',
           fields: [
-            defineField({ name: 'label', title: 'Label', type: 'string' }),
+            defineField({ name: 'label', title: 'Label', type: 'localeString' }),
             defineField({ name: 'value', title: 'Value', type: 'string' }),
           ],
           preview: {
-            select: { title: 'label', subtitle: 'value' },
+            select: { title: 'label.en', subtitle: 'value' },
           },
         },
       ],
@@ -70,15 +70,15 @@ export const siteSettings = defineType({
       title: 'Support Section',
       type: 'object',
       fields: [
-        defineField({ name: 'title', title: 'Title', type: 'string' }),
-        defineField({ name: 'body', title: 'Body', type: 'text' }),
+        defineField({ name: 'title', title: 'Title', type: 'localeString' }),
+        defineField({ name: 'body', title: 'Body', type: 'localeText' }),
         defineField({ name: 'imageUrl', title: 'Image URL', type: 'string' }),
         defineField({
           name: 'cta',
           title: 'Call to Action',
           type: 'object',
           fields: [
-            defineField({ name: 'label', title: 'Label', type: 'string' }),
+            defineField({ name: 'label', title: 'Label', type: 'localeString' }),
             defineField({ name: 'to', title: 'Link', type: 'string' }),
           ],
         }),

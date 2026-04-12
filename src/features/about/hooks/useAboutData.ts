@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { z } from 'zod'
 import { useSanityData } from '@/config/dataSource'
+import { useI18n } from '@/hooks'
 import type { AboutDataValidated, FAQValidated } from '@/mocks/schemas'
 import { AboutDataSchema, FAQSchema } from '@/mocks/schemas'
 import { sanityFetch } from '@/utils/sanityFetch'
@@ -39,9 +40,10 @@ export const useAboutData = () => {
 
 export const useFaqs = () => {
   const isSanity = useSanityData()
+  const { currentLanguage: lang } = useI18n()
 
   return useQuery({
-    queryKey: ['faqs'],
+    queryKey: ['faqs', lang],
     queryFn: async (): Promise<FAQValidated[]> => {
       if (!isSanity) {
         const faqData = await import('@/mocks/faq.json')
@@ -49,7 +51,7 @@ export const useFaqs = () => {
         return FAQsArraySchema.parse(faqData.faqs)
       }
 
-      return sanityFetch(ALL_FAQS_QUERY, {}, FAQsArraySchema)
+      return sanityFetch(ALL_FAQS_QUERY, { lang }, FAQsArraySchema)
     },
     staleTime: 5 * 60 * 1000,
   })

@@ -1,19 +1,23 @@
 export const ALL_EVENTS_QUERY = /* groq */ `
   *[_type == "event"] | order(date asc) {
     _id,
-    title,
-    blurb,
+    "id": _id,
+    "title": title[$lang],
+    "blurb": blurb[$lang],
     date,
     location,
     type,
-    "id": _id,
     "slug": slug.current,
     "href": "/events/" + slug.current,
     imageUrl,
     "imageAssetUrl": image.asset->url,
-    description,
-    highlights,
-    agenda,
+    "description": description[$lang],
+    "highlights": highlights[$lang],
+    "agenda": agenda[] {
+      _key,
+      time,
+      "title": title[$lang]
+    },
     externalUrl
   }
 `
@@ -21,19 +25,23 @@ export const ALL_EVENTS_QUERY = /* groq */ `
 export const EVENT_BY_SLUG_QUERY = /* groq */ `
   *[_type == "event" && slug.current == $slug][0] {
     _id,
-    title,
-    blurb,
+    "id": _id,
+    "title": title[$lang],
+    "blurb": blurb[$lang],
     date,
     location,
     type,
-    "id": _id,
     "slug": slug.current,
     "href": "/events/" + slug.current,
     imageUrl,
     "imageAssetUrl": image.asset->url,
-    description,
-    highlights,
-    agenda,
+    "description": description[$lang],
+    "highlights": highlights[$lang],
+    "agenda": agenda[] {
+      _key,
+      time,
+      "title": title[$lang]
+    },
     externalUrl
   }
 `

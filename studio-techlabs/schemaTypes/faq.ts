@@ -8,13 +8,13 @@ export const faq = defineType({
     defineField({
       name: 'question',
       title: 'Question',
-      type: 'string',
+      type: 'localeString',
       validation: rule => rule.required(),
     }),
     defineField({
       name: 'answer',
       title: 'Answer',
-      type: 'text',
+      type: 'localeText',
       validation: rule => rule.required(),
     }),
     defineField({
@@ -25,6 +25,6 @@ export const faq = defineType({
     }),
   ],
   preview: {
-    select: { title: 'question', subtitle: 'order' },
+    select: { title: 'question.en', subtitle: 'order' },
   },
 })

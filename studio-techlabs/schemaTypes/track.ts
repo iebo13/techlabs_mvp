@@ -22,7 +22,7 @@ export const track = defineType({
     defineField({
       name: 'label',
       title: 'Label',
-      type: 'string',
+      type: 'localeString',
       validation: rule => rule.required(),
     }),
     defineField({
@@ -45,6 +45,6 @@ export const track = defineType({
     }),
   ],
   preview: {
-    select: { title: 'label', subtitle: 'trackId' },
+    select: { title: 'label.en', subtitle: 'trackId' },
   },
 })

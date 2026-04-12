@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useSanityData } from '@/config/dataSource'
+import { useI18n } from '@/hooks'
 import { HomeDataSchema } from '@/mocks/schemas'
 import type { HomeDataValidated } from '@/mocks/schemas'
 import { sanityFetch } from '@/utils/sanityFetch'
@@ -22,9 +23,10 @@ type HomePageSanityResult = {
 
 export const useHomeData = () => {
   const isSanity = useSanityData()
+  const { currentLanguage: lang } = useI18n()
 
   return useQuery({
-    queryKey: ['home'],
+    queryKey: ['home', lang],
     queryFn: async (): Promise<HomeDataValidated> => {
       if (!isSanity) {
         const homeData = await import('@/mocks/home.json')
@@ -32,7 +34,7 @@ export const useHomeData = () => {
         return HomeDataSchema.parse(homeData)
       }
 
-      const result = await sanityFetch<HomePageSanityResult>(HOME_PAGE_QUERY)
+      const result = await sanityFetch<HomePageSanityResult>(HOME_PAGE_QUERY, { lang })
 
       return {
         hero: result.settings.hero,

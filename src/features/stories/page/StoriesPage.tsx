@@ -156,11 +156,13 @@ export const StoriesPage: React.FC = () => {
             </Box>
           )}
 
-          <Box sx={{ px: 2 }}>
-            <CTAButton to="/tracks" fullWidth sx={{ borderRadius: 0.5 }}>
-              {t('common:navigation.cta.startLearning')}
-            </CTAButton>
-          </Box>
+          {isMobile && (
+            <Box sx={{ px: 2, display: 'flex', justifyContent: 'center' }}>
+              <CTAButton to="/tracks" sx={{ borderRadius: 0.5 }}>
+                {t('common:navigation.cta.startLearning')}
+              </CTAButton>
+            </Box>
+          )}
         </Stack>
       </Section>
     </DataLoadingState>

@@ -10,6 +10,7 @@ const TrackMockSchema = z.object({
   applicationDeadline: z.string(),
   spotsAvailable: z.number(),
   icon: z.string(),
+  imageUrl: z.string().optional(),
 })
 
 const TracksArraySchema = z.array(TrackMockSchema)
@@ -22,9 +23,9 @@ export const useTracks = () => {
     queryKey: ['tracks', lang],
     queryFn: async () => {
       if (!isSanity) {
-        const tracksData = await import('@/mocks/tracks.json')
+        const { default: tracksFile } = await import('@/mocks/tracks.json')
 
-        return TracksArraySchema.parse(tracksData.tracks)
+        return TracksArraySchema.parse(tracksFile.tracks)
       }
 
       return sanityFetch(ALL_TRACKS_QUERY, { lang }, TracksArraySchema)

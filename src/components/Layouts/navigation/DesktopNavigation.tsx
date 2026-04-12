@@ -3,7 +3,6 @@ import { Box, Button, Divider } from '@mui/material'
 import { LanguageToggle } from '@/components/LanguageToggle'
 import { navigationItems, ctaButtons } from '@/config/data/navigationData'
 import { useI18n } from '@/hooks'
-import { CitySelector } from './CitySelector'
 import { NavLink } from './NavLink'
 
 export const DesktopNavigation: React.FC = () => {
@@ -31,16 +30,6 @@ export const DesktopNavigation: React.FC = () => {
 
       {/* Right section */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, flexShrink: 0 }}>
-        {/* Utility cluster: city picker + language pill toggle */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <CitySelector />
-          <LanguageToggle />
-        </Box>
-
-        {/* Visual separator */}
-        <Divider orientation="vertical" flexItem sx={{ mx: 0.75, my: 1 }} />
-
-        {/* CTA cluster */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           {ctaButtons.map(button => (
             <Button
@@ -66,6 +55,8 @@ export const DesktopNavigation: React.FC = () => {
             </Button>
           ))}
         </Box>
+        <Divider orientation="vertical" flexItem sx={{ mx: 0.75, my: 1 }} />
+        <LanguageToggle />
       </Box>
     </Box>
   )

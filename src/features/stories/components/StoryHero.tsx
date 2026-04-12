@@ -49,7 +49,7 @@ export const StoryHero: React.FC<StoryHeroProps> = ({ story }) => {
         }}
       />
 
-      {/* Gradient overlay — keeps title readable on any photo */}
+      {/* Gradient overlay, keeps title readable on any photo */}
       <Box
         aria-hidden="true"
         sx={{
@@ -89,7 +89,7 @@ export const StoryHero: React.FC<StoryHeroProps> = ({ story }) => {
         />
       </Box>
 
-      {/* Person identity — large portrait left, text right */}
+      {/* Person identity, large portrait left, text right */}
       <Box
         sx={{
           position: 'relative',

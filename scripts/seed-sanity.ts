@@ -47,6 +47,7 @@ async function seedTracks() {
       applicationDeadline: track.applicationDeadline,
       spotsAvailable: track.spotsAvailable,
       icon: track.icon,
+      imageUrl: track.imageUrl,
     })
   }
   console.log(`  Created ${tracksData.tracks.length} tracks`)

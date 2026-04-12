@@ -34,8 +34,14 @@ export const HeroSection: React.FC = () => {
   }
 
   const handleStartLearning = () => {
+    if (selectedTracks.length === 1) {
+      navigate(`/tracks/${selectedTracks[0]}`)
+
+      return
+    }
+
     const queryParam = trackIdsToQueryParam(selectedTracks)
-    const route = selectedTracks.length > 0 ? `/tracks?pref=${queryParam}` : '/tracks'
+    const route = selectedTracks.length > 1 ? `/tracks?pref=${queryParam}` : '/tracks'
 
     navigate(route)
   }

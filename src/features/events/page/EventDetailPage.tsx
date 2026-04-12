@@ -40,7 +40,7 @@ export const EventDetailPage: React.FC = () => {
   return (
     <Box>
       <SEO
-        title={`${event.title} — TechLabs Events`}
+        title={`${event.title} - TechLabs Events`}
         description={event.blurb}
         keywords={`${event.title}, ${event.location}, TechLabs, event, workshop`}
         image={event.imageUrl}

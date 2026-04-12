@@ -82,54 +82,269 @@
     "cybersecurity": "Cybersicherheit",
     "mobile": "Mobile Entwicklung",
     "card": {
-      "skillsTitle": "Fähigkeiten, die du lernen wirst",
-      "projectsTitle": "Projekte, die du bauen wirst",
-      "careerPathsTitle": "Karrierewege",
-      "applicationDetailsTitle": "Bewerbungsdetails",
-      "nextCohort": "Nächste Kohorte",
-      "applicationDeadline": "Bewerbungsfrist",
-      "showLess": "Weniger anzeigen",
-      "showDetails": "Details anzeigen",
-      "applyNow": "Jetzt bewerben",
-      "showLessAriaLabel": "Weniger Details anzeigen",
-      "showMoreAriaLabel": "Mehr Details anzeigen",
-      "spotsLeft": "{{count}} Platz verfügbar",
-      "spotsLeft_other": "{{count}} Plätze verfügbar"
+      "learnMore": "Track entdecken",
+      "durationFormat": "{{duration}} · {{format}}",
+      "spotsLeft": "Noch {{count}} Platz",
+      "spotsLeft_other": "Noch {{count}} Plätze",
+      "applicationOpen": "Bewerbung offen",
+      "viewDetails": "Details zu {{title}} ansehen"
     },
     "page": {
-      "title": "Lern-Tracks - TechLabs",
-      "description": "Entdecke unsere Lern-Tracks: Webentwicklung, Data Science, Produktdesign und KI. Wähle den Pfad, der zu deinen Karrierezielen passt, und beginne kostenlos zu lernen.",
-      "keywords": "Lern-Tracks, Webentwicklung, Data Science, Produktdesign, KI, Tech-Bildung, kostenlose Kurse",
+      "title": "Lerntracks - TechLabs",
+      "description": "Entdecke unsere Lerntracks: Webentwicklung, Data Science, Produktdesign und KI. Wähle den Pfad, der zu deinen Karrierezielen passt, und beginne kostenlos zu lernen.",
+      "keywords": "Lerntracks, Webentwicklung, Data Science, Produktdesign, KI, Tech-Bildung, kostenlose Kurse",
       "tags": [
-        "Lern-Tracks",
+        "Lerntracks",
         "Webentwicklung",
         "Data Science",
         "Produktdesign",
         "KI"
       ]
     },
+    "overview": {
+      "hero": {
+        "title": "Wähle den Track, der zu dir passt",
+        "subtitle": "Vier praxisnahe Lerntracks, komplett kostenlos, in Teilzeit und eingebettet in eine lokale Community aus Mentor:innen und Peers. Such dir deinen aus und fang an zu bauen."
+      },
+      "programPhases": {
+        "title": "Jeder Track folgt demselben erprobten Weg",
+        "subtitle": "Egal welchen Track du wählst, der Ablauf ist derselbe: von der Bewerbung bis zu deiner ersten Rolle."
+      },
+      "whyTechlabs": {
+        "title": "Warum TechLabs",
+        "free": {
+          "title": "Komplett kostenlos",
+          "body": "Wir sind gemeinnützig. Keine Gebühren, keine versteckten Kosten, keine Income-Share Agreements, nie."
+        },
+        "community": {
+          "title": "Lokale Community",
+          "body": "Triff dich regelmäßig mit Mentor:innen, Tech-Leads und einer Kohorte in Düsseldorf."
+        },
+        "practical": {
+          "title": "Echte Projekte",
+          "body": "Du baust vom ersten Tag an echte Projekte, die Art, die einen Platz in deinem Portfolio verdient."
+        }
+      },
+      "faq": {
+        "title": "Häufig gestellte Fragen",
+        "subtitle": "Alles, was du vor der Bewerbung wissen solltest.",
+        "items": [
+          {
+            "q": "Brauche ich Vorerfahrung?",
+            "a": "Nein. Unsere Tracks sind für motivierte Anfänger:innen gedacht. Wir wählen nach Neugier und Einsatz aus, nicht nach Lebenslauf."
+          },
+          {
+            "q": "Ist es wirklich kostenlos?",
+            "a": "Ja, komplett. TechLabs wird durch Partner, Sponsor:innen und die Community finanziert. Du zahlst nichts."
+          },
+          {
+            "q": "Wie viel Zeit brauche ich pro Woche?",
+            "a": "Plane ca. 10–15 Stunden pro Woche ein: zwei Abende mit deiner Kohorte plus Selbststudium dazwischen."
+          },
+          {
+            "q": "In welcher Sprache läuft das Programm?",
+            "a": "Die Lernmaterialien sind überwiegend auf Englisch. Mentoring und Community-Events laufen auf Deutsch und Englisch."
+          },
+          {
+            "q": "Muss ich in Düsseldorf sein?",
+            "a": "Unser Chapter ist in Düsseldorf zuhause. Remote-Teilnahme ist möglich, aber die meisten Absolvent:innen sagen: die Community vor Ort macht den Unterschied."
+          },
+          {
+            "q": "Was passiert nach dem Abschluss?",
+            "a": "Du gehst mit einem Portfolio-Projekt, einer starken Community und Zugang zu unserem Partner-Netzwerk für Jobs und Mentoring."
+          }
+        ]
+      },
+      "finalCta": {
+        "title": "Bereit loszulegen?",
+        "body": "Bewerbungen öffnen vor jeder Kohorte. Wähl deinen Track und bewirb dich, oder meld dich, wenn du zuerst reden willst.",
+        "primary": "Jetzt bewerben",
+        "secondary": "Mentor:in werden"
+      }
+    },
+    "detail": {
+      "backToTracks": "Zurück zu den Tracks",
+      "applicationOpen": "Bewerbung offen",
+      "metaSeparator": "·",
+      "sidebar": {
+        "duration": "Dauer",
+        "format": "Format",
+        "nextCohort": "Nächste Kohorte",
+        "deadline": "Bewerbungsfrist",
+        "spotsHeading": "Kapazität",
+        "applyCta": "Für {{track}} bewerben",
+        "talkCta": "Sprich mit uns"
+      },
+      "sections": {
+        "intro": {
+          "title": "Über diesen Track"
+        },
+        "persona": {
+          "title": "Für wen dieser Track ist",
+          "subtitle": "Vier Arten von Lernenden, die hier aufblühen."
+        },
+        "curriculum": {
+          "title": "Was du Woche für Woche lernst",
+          "subtitle": "Ein strukturierter Weg von den Grundlagen bis zum fertigen Projekt."
+        },
+        "techStack": {
+          "title": "Tools, die du meisterst",
+          "subtitle": "Der praktische Werkzeugkasten, den du in jedem Projekt nutzt und in deine erste Rolle mitnimmst."
+        },
+        "projects": {
+          "title": "Projekte, die du baust",
+          "subtitle": "Echte Deliverables für dein Portfolio, nicht Übungen, die im /dev/null enden."
+        },
+        "outcomes": {
+          "title": "Wohin dich dieser Track bringt",
+          "subtitle": "Rollen, in die unsere Absolvent:innen hineinwachsen, und die Community, die dabei hilft."
+        },
+        "stories": {
+          "title": "Absolvent:innen dieses Tracks"
+        },
+        "faq": {
+          "title": "Fragen zu diesem Track"
+        }
+      },
+      "notFound": "Diesen Track konnten wir nicht finden."
+    },
     "items": {
       "web-dev": {
         "label": "Webentwicklung",
         "description": "Lerne moderne Webentwicklung mit HTML, CSS, JavaScript und beliebten Frameworks. Erstelle responsive Websites und Webanwendungen.",
+        "tagline": "Baue echte Websites und Apps, von deiner ersten HTML-Zeile bis zum Portfolio-Projekt, auf das du stolz bist.",
+        "intro": [
+          "Der Webentwicklungs-Track bringt dich von null zu einer ausgelieferten Full-Stack-Webanwendung. Du startest mit HTML, CSS und JavaScript und bewegst dich Richtung React und einem Node.js-Backend.",
+          "Jede Woche verbindet Online-Lernen im eigenen Tempo mit praktischen Sessions neben Mentor:innen in Düsseldorf. Am Ende hast du ein deploytes Projekt, eine starke GitHub-Präsenz und das Selbstvertrauen, allein weiterzubauen."
+        ],
         "duration": "6 Monate",
         "format": "Teilzeit, 2 Abende pro Woche",
         "skills": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Git"],
         "projects": [
-          "Persönliches Portfolio",
-          "E-Commerce-Website",
-          "Social-Media-App"
+          {
+            "title": "Persönliches Portfolio",
+            "description": "Entwirf und deploye ein responsives Portfolio, das deine Arbeit, deine Geschichte und wie man dich erreicht zeigt.",
+            "skills": ["HTML", "CSS", "Responsive Design"]
+          },
+          {
+            "title": "Full-Stack-Webapp",
+            "description": "Baue ein kleines SaaS-Produkt end-to-end, Auth, Datenbank und ein React-Frontend.",
+            "skills": ["React", "Node.js", "REST APIs"]
+          },
+          {
+            "title": "Capstone-Teamprojekt",
+            "description": "Tu dich mit Peers aus anderen Tracks zusammen und liefert ein echtes Produkt für eine Community-Partnerorganisation.",
+            "skills": ["Zusammenarbeit", "Git-Workflows", "Deployment"]
+          }
         ],
         "careerPaths": [
-          "Frontend-Entwickler",
-          "Full-Stack-Entwickler",
-          "Webdesigner"
+          "Frontend-Entwickler:in",
+          "Full-Stack-Entwickler:in",
+          "Webdesigner:in"
+        ],
+        "personas": [
+          {
+            "title": "Der Quereinstieg",
+            "body": "Du kommst aus einem nicht-technischen Bereich und suchst einen strukturierten, unterstützenden Einstieg in die Webentwicklung.",
+            "icon": "🧭"
+          },
+          {
+            "title": "Der neugierige Builder",
+            "body": "Du hast eine Side-Project-Idee und willst sie endlich selbst bauen können.",
+            "icon": "🛠️"
+          },
+          {
+            "title": "Die Studentin",
+            "body": "Du studierst etwas anderes und willst praktische Coding-Skills ergänzen.",
+            "icon": "🎓"
+          },
+          {
+            "title": "Der Upskiller",
+            "body": "Du arbeitest schon tech-nah und willst richtige Engineering-Skills dazu.",
+            "icon": "🚀"
+          }
+        ],
+        "techStack": [
+          { "name": "HTML5", "icon": "📄" },
+          { "name": "CSS3", "icon": "🎨" },
+          { "name": "JavaScript", "icon": "✨" },
+          { "name": "React", "icon": "⚛️" },
+          { "name": "Node.js", "icon": "🟢" },
+          { "name": "Git", "icon": "🌿" },
+          { "name": "Vite", "icon": "⚡" },
+          { "name": "Vercel", "icon": "▲" }
+        ],
+        "curriculum": [
+          {
+            "title": "Grundlagen des Web",
+            "duration": "Woche 1–4",
+            "outcomes": [
+              "Verstehe, wie das Web end-to-end funktioniert",
+              "Baue semantisches, zugängliches HTML",
+              "Style responsive Interfaces mit modernem CSS"
+            ]
+          },
+          {
+            "title": "JavaScript & das DOM",
+            "duration": "Woche 5–8",
+            "outcomes": [
+              "Arbeite sicher mit modernem JavaScript",
+              "Manipuliere das DOM und verarbeite Events",
+              "Nutze Git und GitHub im täglichen Workflow"
+            ]
+          },
+          {
+            "title": "React & Komponentendenken",
+            "duration": "Woche 9–14",
+            "outcomes": [
+              "Baue UIs mit Komponenten, Props und State",
+              "Nutze REST-APIs und behandle asynchrone Daten",
+              "Strukturiere mittelgroße React-Anwendungen"
+            ]
+          },
+          {
+            "title": "Backend & Full-Stack",
+            "duration": "Woche 15–20",
+            "outcomes": [
+              "Entwerfe eine kleine REST-API mit Node.js",
+              "Modelliere und query eine relationale Datenbank",
+              "Deploye eine Full-Stack-App in Produktion"
+            ]
+          },
+          {
+            "title": "Capstone-Projekt",
+            "duration": "Woche 21–26",
+            "outcomes": [
+              "Liefere ein Teamprojekt mit echtem Nutzer",
+              "Präsentiere deine Arbeit der TechLabs-Community",
+              "Geh mit einem Portfolio-Stück, das Interviews gewinnt"
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "q": "Muss ich schon programmiert haben?",
+            "a": "Nein. Wir starten bei HTML. Wichtig ist, dass du wirklich regelmäßig Zeit investieren willst."
+          },
+          {
+            "q": "Welches Framework lerne ich?",
+            "a": "React. Es ist auf dem europäischen Jobmarkt am verbreitetsten, und die Konzepte übertragen sich auf jedes moderne Framework."
+          },
+          {
+            "q": "Baue ich ein echtes Portfolio?",
+            "a": "Ja. Du gehst mit mindestens drei deployten Projekten, inklusive Team-Capstone für eine Partnerorganisation."
+          }
         ],
         "nextCohort": "März 2025"
       },
       "data-science": {
         "label": "Data Science",
         "description": "Meistere Datenanalyse, maschinelles Lernen und statistische Modellierung. Arbeite mit echten Datensätzen und erstelle Vorhersagemodelle.",
+        "tagline": "Mach aus Rohdaten Entscheidungen, mit Python, Statistik und Machine Learning, das wirklich ausgeliefert wird.",
+        "intro": [
+          "Der Data-Science-Track führt dich von Tabellen zu produktionsreifen Notebooks. Du lernst Python, Statistik und den vollständigen ML-Workflow an echten, unordentlichen Daten.",
+          "Am Ende baust du ein Datenprodukt end-to-end, von der Fragestellung über bereinigte Daten und Modell bis zu einer klaren Geschichte für ein nicht-technisches Publikum."
+        ],
         "duration": "8 Monate",
         "format": "Teilzeit, 2 Abende pro Woche",
         "skills": [
@@ -141,20 +356,130 @@
           "Datenvisualisierung"
         ],
         "projects": [
-          "Kundensegmentierung",
-          "Verkaufsprognose",
-          "Sentimentanalyse"
+          {
+            "title": "Explorative Datenanalyse",
+            "description": "Wähle einen öffentlichen Datensatz, bereinige ihn und erzähle eine klare Geschichte mit Zahlen und Charts.",
+            "skills": ["Python", "Pandas", "Visualisierung"]
+          },
+          {
+            "title": "Vorhersagemodell",
+            "description": "Trainiere, evaluiere und erkläre ein überwachtes Modell für ein echtes Problem.",
+            "skills": ["Scikit-learn", "Statistik", "Feature Engineering"]
+          },
+          {
+            "title": "Capstone-Datenprodukt",
+            "description": "Liefere ein End-to-End-Datenprojekt für eine Partnerorganisation, von der Frage bis zum Dashboard.",
+            "skills": ["SQL", "ML-Workflow", "Storytelling"]
+          }
         ],
         "careerPaths": [
-          "Datenanalyst",
+          "Datenanalyst:in",
           "Data Scientist",
           "Business Intelligence"
+        ],
+        "personas": [
+          {
+            "title": "Der Spreadsheet-Profi",
+            "body": "Du lebst in Excel und bist bereit, mit Python und echter Statistik auszubrechen.",
+            "icon": "📊"
+          },
+          {
+            "title": "Die Forscherin",
+            "body": "Aus der Wissenschaft oder Forschung kommend, bereit für industrietaugliche Daten-Skills.",
+            "icon": "🔬"
+          },
+          {
+            "title": "Der Quereinstieg",
+            "body": "Neu in Tech und willst einen strukturierten Weg in eine analytische Rolle.",
+            "icon": "🧭"
+          },
+          {
+            "title": "Die Domain-Expertin",
+            "body": "Du kennst deine Branche tief und willst Datenkompetenz für bessere Entscheidungen darin.",
+            "icon": "🧠"
+          }
+        ],
+        "techStack": [
+          { "name": "Python", "icon": "🐍" },
+          { "name": "Pandas", "icon": "🐼" },
+          { "name": "NumPy", "icon": "🔢" },
+          { "name": "Scikit-learn", "icon": "📈" },
+          { "name": "SQL", "icon": "🗃️" },
+          { "name": "Matplotlib", "icon": "📉" },
+          { "name": "Jupyter", "icon": "📓" },
+          { "name": "Git", "icon": "🌿" }
+        ],
+        "curriculum": [
+          {
+            "title": "Python & Daten-Grundlagen",
+            "duration": "Woche 1–5",
+            "outcomes": [
+              "Schreibe sauberes, idiomatisches Python",
+              "Lade, bereinige und forme Daten mit Pandas",
+              "Arbeite flüssig in Jupyter-Notebooks"
+            ]
+          },
+          {
+            "title": "Statistik & SQL",
+            "duration": "Woche 6–10",
+            "outcomes": [
+              "Verstehe Verteilungen, Tests und Unsicherheit",
+              "Queren relationale Datenbanken mit SQL",
+              "Baue einen reproduzierbaren analytischen Workflow"
+            ]
+          },
+          {
+            "title": "Machine-Learning-Grundlagen",
+            "duration": "Woche 11–18",
+            "outcomes": [
+              "Trainiere und evaluiere überwachte Modelle",
+              "Konstruiere Features aus echten, unordentlichen Daten",
+              "Verstehe Overfitting, Bias und Metriken"
+            ]
+          },
+          {
+            "title": "Kommunikation & Visualisierung",
+            "duration": "Woche 19–24",
+            "outcomes": [
+              "Erzähle eine klare Geschichte mit Daten",
+              "Designe Charts, die helfen statt verwirren",
+              "Präsentiere Ergebnisse für nicht-technische Stakeholder"
+            ]
+          },
+          {
+            "title": "Capstone-Datenprodukt",
+            "duration": "Woche 25–32",
+            "outcomes": [
+              "Liefere ein vollständiges Datenprojekt für einen Partner",
+              "Deploye ein Notebook oder Dashboard für andere",
+              "Geh mit einem Stück, das du in Interviews zeigen kannst"
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "q": "Wie viel Mathe brauche ich?",
+            "a": "Schulmathe reicht. Wir wiederholen die nötige Statistik und Lineare Algebra unterwegs."
+          },
+          {
+            "q": "Eher Analyst oder Scientist?",
+            "a": "Beides. Du bist stark genug in SQL und Visualisierung für Analyst-Rollen und stark genug in ML, um in Data-Scientist-Rollen hineinzuwachsen."
+          },
+          {
+            "q": "Brauche ich eine eigene GPU?",
+            "a": "Nein. Alles läuft auf einem normalen Laptop, und schwereres rechnen wir in kostenlosen Cloud-Notebooks."
+          }
         ],
         "nextCohort": "April 2025"
       },
       "product-design": {
         "label": "Produktdesign",
         "description": "Entwerfe nutzerzentrierte digitale Produkte mit modernen Design-Tools und Methoden. Lerne UX/UI-Prinzipien und Prototyping.",
+        "tagline": "Designe digitale Produkte, die Menschen wirklich nutzen, von der Recherche bis zum pixelgenauen Interface.",
+        "intro": [
+          "Der Produktdesign-Track vermittelt den kompletten Loop modernen Produktdesigns: User Research, Informationsarchitektur, Interaktions- und Visual Design, alles in Figma.",
+          "Du arbeitest an echten Briefings mit echten Nutzer:innen, lernst Entscheidungen mit Evidenz statt Meinung zu verteidigen und gehst mit einem Portfolio aus Case Studies, das Hiring Manager erkennen."
+        ],
         "duration": "6 Monate",
         "format": "Teilzeit, 2 Abende pro Woche",
         "skills": [
@@ -164,13 +489,131 @@
           "Prototyping",
           "Design-Systeme"
         ],
-        "projects": ["Mobile-App-Design", "Website-Redesign", "Design-System"],
-        "careerPaths": ["UX-Designer", "UI-Designer", "Produktdesigner"],
+        "projects": [
+          {
+            "title": "Mobile-App-Redesign",
+            "description": "Wähle eine bestehende App, finde ihr größtes Usability-Problem und entwirf ein besseres Erlebnis.",
+            "skills": ["Research", "Wireframing", "Prototyping"]
+          },
+          {
+            "title": "Design-System",
+            "description": "Baue ein kleines, konsistentes Design-System mit Tokens, Komponenten und Dokumentation.",
+            "skills": ["Figma", "Komponenten", "Dokumentation"]
+          },
+          {
+            "title": "Capstone-Produkt",
+            "description": "Liefere ein komplettes Produkt, von User Research bis High-Fidelity-Prototyp, für eine Community-Partnerorganisation.",
+            "skills": ["UX Research", "UI Design", "Handover"]
+          }
+        ],
+        "careerPaths": [
+          "UX-Designer:in",
+          "UI-Designer:in",
+          "Produktdesigner:in"
+        ],
+        "personas": [
+          {
+            "title": "Der kreative Switch",
+            "body": "Du kommst aus Grafik, Illustration oder verwandten Feldern und willst ins Produkt.",
+            "icon": "🎨"
+          },
+          {
+            "title": "Die neugierige Forscherin",
+            "body": "Du redest gern mit Nutzer:innen und willst daraus ein Handwerk machen.",
+            "icon": "🔍"
+          },
+          {
+            "title": "Der PM oder Gründer",
+            "body": "Du lieferst schon Produkte aus und willst selbst bessere Designentscheidungen treffen.",
+            "icon": "🧩"
+          },
+          {
+            "title": "Der Quereinstieg",
+            "body": "Neu in Tech und angezogen vom Schnittpunkt von Empathie, Handwerk und Problemlösen.",
+            "icon": "🧭"
+          }
+        ],
+        "techStack": [
+          { "name": "Figma", "icon": "🖌️" },
+          { "name": "FigJam", "icon": "🧠" },
+          { "name": "User Research", "icon": "🔍" },
+          { "name": "Wireframing", "icon": "🧱" },
+          { "name": "Prototyping", "icon": "🔗" },
+          { "name": "Design-Systeme", "icon": "🧩" },
+          { "name": "Barrierefreiheit", "icon": "♿" },
+          { "name": "Handover", "icon": "🤝" }
+        ],
+        "curriculum": [
+          {
+            "title": "Grundlagen des Design Thinking",
+            "duration": "Woche 1–3",
+            "outcomes": [
+              "Verstehe den modernen Produktdesign-Prozess",
+              "Framen Probleme aus Nutzerperspektive",
+              "Führe dein erstes begleitetes User-Interview"
+            ]
+          },
+          {
+            "title": "Recherche & Synthese",
+            "duration": "Woche 4–7",
+            "outcomes": [
+              "Betreibe qualitative und quantitative Recherche",
+              "Verdichte Insights zu nutzbaren Artefakten",
+              "Übersetze Erkenntnisse in Design-Chancen"
+            ]
+          },
+          {
+            "title": "Interaktions- & UI-Design",
+            "duration": "Woche 8–14",
+            "outcomes": [
+              "Designe klare, zugängliche Interfaces in Figma",
+              "Nutze Hierarchie, Typografie und Farbe sinnvoll",
+              "Arbeite sicher mit Komponenten und Auto Layout"
+            ]
+          },
+          {
+            "title": "Prototyping & Testing",
+            "duration": "Woche 15–20",
+            "outcomes": [
+              "Baue nutzbare interaktive Prototypen",
+              "Führe Usability-Tests durch und iteriere",
+              "Übergib Designs reibungslos an Engineering"
+            ]
+          },
+          {
+            "title": "Capstone-Case-Study",
+            "duration": "Woche 21–26",
+            "outcomes": [
+              "Liefere ein echtes Produkt für eine Partnerorganisation",
+              "Schreibe eine Case Study, die Einstellungen begründet",
+              "Präsentiere deine Arbeit der TechLabs-Community"
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "q": "Muss ich gut zeichnen können?",
+            "a": "Nein. Produktdesign dreht sich um Denken und Systeme. Guter Geschmack hilft; Zeichenskill nicht."
+          },
+          {
+            "q": "Baue ich ein Portfolio auf?",
+            "a": "Ja. Du gehst mit mindestens zwei vollen Case Studies und einem ausgelieferten Capstone."
+          },
+          {
+            "q": "Welches Tool lernt ihr?",
+            "a": "Durchgehend Figma. Die Methoden übertragen sich sauber auf jedes moderne Design-Tool."
+          }
+        ],
         "nextCohort": "Mai 2025"
       },
       "ai": {
         "label": "Künstliche Intelligenz",
         "description": "Erkunde KI-Grundlagen, Machine-Learning-Algorithmen und neuronale Netze. Baue intelligente Systeme und Anwendungen.",
+        "tagline": "Hinter den Hype blicken, verstehe wie moderne KI funktioniert und bau etwas Echtes damit.",
+        "intro": [
+          "Der KI-Track ist für Leute, die die Maschinerie hinter moderner KI verstehen wollen, nicht nur eine API aufrufen. Du lernst die ML-Grundlagen und tauchst dann in neuronale Netze, NLP und generative Modelle ein.",
+          "Am Ende baust und deployst du eine KI-gestützte Anwendung, mit einem klaren Blick dafür, was diese Systeme können, was nicht, und wie du sie verantwortungsvoll einsetzt."
+        ],
         "duration": "8 Monate",
         "format": "Teilzeit, 2 Abende pro Woche",
         "skills": [
@@ -181,11 +624,120 @@
           "NLP",
           "Computer Vision"
         ],
-        "projects": ["Chatbot", "Bildklassifikator", "Empfehlungssystem"],
+        "projects": [
+          {
+            "title": "Klassisches ML-Projekt",
+            "description": "Framen ein echtes Problem, baue Features, trainiere eine Baseline und schlage sie mit einem besseren Modell.",
+            "skills": ["Python", "Scikit-learn", "Evaluation"]
+          },
+          {
+            "title": "Eigenes neuronales Netz",
+            "description": "Trainiere ein kleines neuronales Netz from scratch auf Text- oder Bilddaten, und verstehe jede Zeile.",
+            "skills": ["PyTorch", "Training Loops", "Debugging"]
+          },
+          {
+            "title": "Capstone-KI-App",
+            "description": "Baue und deploye eine LLM-gestützte Anwendung für eine echte Community-Partnerorganisation.",
+            "skills": ["LLMs", "APIs", "Produktdenken"]
+          }
+        ],
         "careerPaths": [
-          "KI-Ingenieur",
-          "Machine-Learning-Ingenieur",
-          "Forschungswissenschaftler"
+          "KI-Ingenieur:in",
+          "Machine-Learning-Ingenieur:in",
+          "Forschungswissenschaftler:in"
+        ],
+        "personas": [
+          {
+            "title": "Die neugierige Engineerin",
+            "body": "Du programmierst schon und willst verstehen, wie moderne KI-Systeme wirklich funktionieren.",
+            "icon": "🤖"
+          },
+          {
+            "title": "Der Data Scientist",
+            "body": "Aus der Analytik kommend, bereit tiefer in Deep Learning und NLP einzusteigen.",
+            "icon": "📈"
+          },
+          {
+            "title": "Die Forscherin",
+            "body": "Aus einem STEM-Hintergrund und willst industrierelevante KI-Skills zusätzlich zur Theorie.",
+            "icon": "🔬"
+          },
+          {
+            "title": "Der Produkt-Thinker",
+            "body": "Du willst KI-Features ausliefern und musst wissen, was real ist versus Marketing.",
+            "icon": "🧩"
+          }
+        ],
+        "techStack": [
+          { "name": "Python", "icon": "🐍" },
+          { "name": "NumPy", "icon": "🔢" },
+          { "name": "PyTorch", "icon": "🔥" },
+          { "name": "TensorFlow", "icon": "🧠" },
+          { "name": "Hugging Face", "icon": "🤗" },
+          { "name": "LangChain", "icon": "🔗" },
+          { "name": "Jupyter", "icon": "📓" },
+          { "name": "Git", "icon": "🌿" }
+        ],
+        "curriculum": [
+          {
+            "title": "Mathe & Python für KI",
+            "duration": "Woche 1–5",
+            "outcomes": [
+              "Frische die wichtige Lineare Algebra und Analysis auf",
+              "Schreibe sauberes, numerisches Python",
+              "Richte einen reproduzierbaren ML-Workflow ein"
+            ]
+          },
+          {
+            "title": "Klassisches Machine Learning",
+            "duration": "Woche 6–11",
+            "outcomes": [
+              "Verstehe die Kernmethoden, überwacht und unüberwacht",
+              "Baue, evaluiere und tune Baseline-Modelle",
+              "Denke über Bias, Varianz und Generalisierung nach"
+            ]
+          },
+          {
+            "title": "Deep-Learning-Grundlagen",
+            "duration": "Woche 12–18",
+            "outcomes": [
+              "Trainiere neuronale Netze from scratch in PyTorch",
+              "Verstehe Backpropagation und Optimierung",
+              "Wende Deep Learning auf Text und Bilder an"
+            ]
+          },
+          {
+            "title": "NLP & Generative KI",
+            "duration": "Woche 19–26",
+            "outcomes": [
+              "Nutze moderne LLMs verantwortungsvoll und effektiv",
+              "Baue Retrieval-Augmented-Generation-Pipelines",
+              "Fine-tune und evaluiere Open-Source-Modelle"
+            ]
+          },
+          {
+            "title": "Capstone-KI-Anwendung",
+            "duration": "Woche 27–32",
+            "outcomes": [
+              "Liefere ein KI-gestütztes Produkt für einen Partner",
+              "Denke über Sicherheit, Evaluation und Grenzen nach",
+              "Präsentiere deine Arbeit der TechLabs-Community"
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "q": "Muss ich schon Python können?",
+            "a": "Es hilft, aber wir wiederholen das nötige Python im ersten Modul. Wichtig ist, dass du mit Basis-Programmieren klarkommst."
+          },
+          {
+            "q": "Trainiere ich große Modelle?",
+            "a": "Du trainierst kleine from scratch und fine-tunest vortrainierte. Der Fokus liegt auf Verständnis, nicht auf Compute-Budget."
+          },
+          {
+            "q": "Geht es nur um LLMs?",
+            "a": "Nein. Wir decken klassisches ML, Deep Learning und moderne LLMs ab, damit du verstehst, wie wir hier hingekommen sind."
+          }
         ],
         "nextCohort": "Juni 2025"
       }
@@ -362,7 +914,8 @@
     "carousel": {
       "previousAriaLabel": "Vorherige Geschichten",
       "nextAriaLabel": "Nächste Geschichten",
-      "ariaLabel": "Geschichten-Karussell"
+      "ariaLabel": "Geschichten-Karussell",
+      "goToSlide": "Gehe zu Folie {{index}}"
     },
     "page": {
       "title": "Geschichten unserer Absolventen",

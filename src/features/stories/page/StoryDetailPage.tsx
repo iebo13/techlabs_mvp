@@ -44,7 +44,7 @@ export const StoryDetailPage: React.FC = () => {
   return (
     <Box>
       <SEO
-        title={`${displayName} — TechLabs Success Story`}
+        title={`${displayName} - TechLabs Success Story`}
         description={story.excerpt}
         keywords={`${displayName}, ${story.trackLabel}, ${story.company}, TechLabs, success story`}
         image={getStoryCoverImageUrl(story)}
@@ -68,7 +68,7 @@ export const StoryDetailPage: React.FC = () => {
             {/* Right: storytelling content */}
             <Grid size={{ xs: 12, md: 8 }}>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-                {/* Pull quote — above the fold */}
+                {/* Pull quote, above the fold */}
                 {story.quote && (
                   <StoryPullQuote
                     quote={story.quote}

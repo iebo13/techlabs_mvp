@@ -4,25 +4,29 @@
       "id": "web-dev",
       "applicationDeadline": "February 15, 2025",
       "spotsAvailable": 25,
-      "icon": "💻"
+      "icon": "💻",
+      "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
     },
     {
       "id": "data-science",
       "applicationDeadline": "March 20, 2025",
       "spotsAvailable": 20,
-      "icon": "📊"
+      "icon": "📊",
+      "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
     },
     {
       "id": "product-design",
       "applicationDeadline": "April 25, 2025",
       "spotsAvailable": 18,
-      "icon": "🎨"
+      "icon": "🎨",
+      "imageUrl": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80"
     },
     {
       "id": "ai",
       "applicationDeadline": "May 30, 2025",
       "spotsAvailable": 15,
-      "icon": "🤖"
+      "icon": "🤖",
+      "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80"
     }
   ]
 }

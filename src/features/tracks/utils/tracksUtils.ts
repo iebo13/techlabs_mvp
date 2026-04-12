@@ -1,13 +1,23 @@
 import type { TFunction } from 'i18next'
-import type { TrackKey, DetailedTrack } from '../types/tracks.types'
+import type {
+  TrackKey,
+  DetailedTrack,
+  Persona,
+  TechStackItem,
+  CurriculumPhase,
+  ProjectShowcase,
+  TrackFaq,
+} from '../types/tracks.types'
 
 const TRACK_SELECTION_KEY = 'techlabs-track-selection'
+const VALID_TRACK_KEYS: TrackKey[] = ['web-dev', 'data-science', 'product-design', 'ai']
+
+export const isValidTrackKey = (id: string | undefined | null): id is TrackKey =>
+  typeof id === 'string' && VALID_TRACK_KEYS.includes(id as TrackKey)
 
 export const saveTrackSelection = (trackIds: TrackKey[]): void => {
   try {
-    const serialized = JSON.stringify(trackIds)
-
-    sessionStorage.setItem(TRACK_SELECTION_KEY, serialized)
+    sessionStorage.setItem(TRACK_SELECTION_KEY, JSON.stringify(trackIds))
   } catch {
     // Silently fail if sessionStorage is unavailable
   }
@@ -21,16 +31,12 @@ export const loadTrackSelection = (): TrackKey[] => {
 
     const parsed = JSON.parse(stored)
 
-    // Validate that the stored data is an array of valid track keys
     if (Array.isArray(parsed)) {
-      const validTrackKeys: TrackKey[] = ['web-dev', 'data-science', 'product-design', 'ai']
-
-      return parsed.filter((id): id is TrackKey => typeof id === 'string' && validTrackKeys.includes(id as TrackKey))
+      return parsed.filter(isValidTrackKey)
     }
 
     return []
   } catch {
-    // Silently fail if sessionStorage is unavailable or data is corrupted
     return []
   }
 }
@@ -39,21 +45,19 @@ export const clearTrackSelection = (): void => {
   try {
     sessionStorage.removeItem(TRACK_SELECTION_KEY)
   } catch {
-    // Silently fail if sessionStorage is unavailable
+    // Silently fail
   }
 }
 
-export const trackIdsToQueryParam = (trackIds: TrackKey[]): string => {
-  return trackIds.join(',')
-}
+export const trackIdsToQueryParam = (trackIds: TrackKey[]): string => trackIds.join(',')
 
 export const queryParamToTrackIds = (param: string | null): TrackKey[] => {
   if (!param) return []
 
-  const ids = param.split(',').map(id => id.trim())
-  const validTrackKeys: TrackKey[] = ['web-dev', 'data-science', 'product-design', 'ai']
-
-  return ids.filter((id): id is TrackKey => validTrackKeys.includes(id as TrackKey))
+  return param
+    .split(',')
+    .map(id => id.trim())
+    .filter(isValidTrackKey)
 }
 
 type TrackMockData = {
@@ -61,23 +65,32 @@ type TrackMockData = {
   applicationDeadline: string
   spotsAvailable: number
   icon: string
+  imageUrl?: string
 }
 
 export const getLocalizedTrack = (trackData: TrackMockData, t: TFunction): DetailedTrack => {
-  const trackId = trackData.id
+  const { id } = trackData
+  const base = `tracks.items.${id}`
 
   return {
-    id: trackData.id,
-    label: t(`tracks.items.${trackId}.label`),
-    description: t(`tracks.items.${trackId}.description`),
-    duration: t(`tracks.items.${trackId}.duration`),
-    format: t(`tracks.items.${trackId}.format`),
-    skills: t(`tracks.items.${trackId}.skills`, { returnObjects: true }) as string[],
-    projects: t(`tracks.items.${trackId}.projects`, { returnObjects: true }) as string[],
-    careerPaths: t(`tracks.items.${trackId}.careerPaths`, { returnObjects: true }) as string[],
-    nextCohort: t(`tracks.items.${trackId}.nextCohort`),
+    id,
+    label: t(`${base}.label`),
+    description: t(`${base}.description`),
+    tagline: t(`${base}.tagline`),
+    intro: t(`${base}.intro`, { returnObjects: true }) as string[],
+    duration: t(`${base}.duration`),
+    format: t(`${base}.format`),
+    skills: t(`${base}.skills`, { returnObjects: true }) as string[],
+    projects: t(`${base}.projects`, { returnObjects: true }) as ProjectShowcase[],
+    careerPaths: t(`${base}.careerPaths`, { returnObjects: true }) as string[],
+    personas: t(`${base}.personas`, { returnObjects: true }) as Persona[],
+    techStack: t(`${base}.techStack`, { returnObjects: true }) as TechStackItem[],
+    curriculum: t(`${base}.curriculum`, { returnObjects: true }) as CurriculumPhase[],
+    faq: t(`${base}.faq`, { returnObjects: true }) as TrackFaq[],
+    nextCohort: t(`${base}.nextCohort`),
     applicationDeadline: trackData.applicationDeadline,
     spotsAvailable: trackData.spotsAvailable,
     icon: trackData.icon,
+    imageUrl: trackData.imageUrl,
   }
 }

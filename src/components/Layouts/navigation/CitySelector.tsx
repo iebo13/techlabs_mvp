@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Check, KeyboardArrowDown, LocationOn } from '@mui/icons-material'
+import { Check, KeyboardArrowDown } from '@mui/icons-material'
 import { Box, Button, Popover, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
 import { cities } from '@/config/data/navigationData'
 import { useI18n } from '@/hooks'
@@ -12,7 +12,12 @@ export const CitySelector: React.FC = () => {
   const [selectedCity, setSelectedCity] = useState(DEFAULT_CITY)
   const open = Boolean(anchorEl)
 
-  const handleOpen = (e: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget)
+  const handleOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setAnchorEl(e.currentTarget)
+  }
+
   const handleClose = () => setAnchorEl(null)
 
   const handleCityChange = (_: React.MouseEvent, value: string | null) => {
@@ -29,11 +34,9 @@ export const CitySelector: React.FC = () => {
       <Button
         variant="text"
         size="small"
-        startIcon={<LocationOn sx={{ fontSize: '1rem !important' }} />}
         endIcon={
           <KeyboardArrowDown
             sx={{
-              fontSize: '1rem !important',
               transition: 'transform 0.2s ease',
               transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
             }}
@@ -45,14 +48,17 @@ export const CitySelector: React.FC = () => {
         onClick={handleOpen}
         sx={{
           color: 'text.secondary',
-          fontSize: '0.8125rem',
+          fontSize: '0.75rem',
           fontWeight: 500,
-          px: 1.25,
-          borderRadius: '8px',
+          px: 0.5,
+          py: 0.25,
+          minWidth: 0,
+          borderRadius: '6px',
           textTransform: 'none',
           whiteSpace: 'nowrap',
-          '& .MuiButton-startIcon': { mr: 0.5 },
-          '& .MuiButton-endIcon': { ml: 0.25 },
+          lineHeight: 1.2,
+          '& .MuiButton-startIcon': { mr: 0.25, '& > *:nth-of-type(1)': { fontSize: '0.875rem' } },
+          '& .MuiButton-endIcon': { ml: 0.125, '& > *:nth-of-type(1)': { fontSize: '0.875rem' } },
           '&:hover': {
             backgroundColor: 'action.hover',
             color: 'text.primary',
@@ -102,8 +108,12 @@ export const CitySelector: React.FC = () => {
                 aria-label={city.name}
                 sx={{
                   justifyContent: 'space-between',
-                  border: 'none !important',
-                  borderRadius: '8px !important',
+                  border: 'none',
+                  borderRadius: '8px',
+                  '&.MuiToggleButtonGroup-grouped': {
+                    border: 'none',
+                    borderRadius: '8px',
+                  },
                   px: 1.5,
                   py: 0.875,
                   fontSize: '0.875rem',

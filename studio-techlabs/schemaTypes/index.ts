@@ -5,13 +5,18 @@ import { partner } from './partner'
 import { siteSettings } from './siteSettings'
 import { story } from './story'
 import { teamMember } from './teamMember'
-import { track } from './track'
+import { track, trackPersona, trackTechStackItem, trackCurriculumPhase, trackProject, trackFaq } from './track'
 
 export const schemaTypes = [
   localeString,
   localeText,
   localeStringArray,
   track,
+  trackPersona,
+  trackTechStackItem,
+  trackCurriculumPhase,
+  trackProject,
+  trackFaq,
   event,
   story,
   partner,

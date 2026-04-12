@@ -10,15 +10,13 @@ export const Logo: React.FC = () => {
   const navigate = useNavigate()
 
   return (
-    <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+    <Box sx={{ display: 'flex', gap: { xs: 0, md: 1 }, alignItems: 'center' }}>
       <NavLink
         to="/"
         showActive={false}
         sx={{
           display: 'flex',
           alignItems: 'center',
-          gap: 1.5,
-          p: { xs: 2, md: 0 },
           '&:hover': {
             backgroundColor: 'transparent',
           },
@@ -41,6 +39,7 @@ export const Logo: React.FC = () => {
             fontWeight: 800,
             fontSize: '1.5rem',
             color: 'primary.main',
+            cursor: 'pointer',
           }}>
           TechLabs
         </Typography>

@@ -34,7 +34,7 @@ export type TrackFaq = {
 }
 
 export type DetailedTrack = {
-  id: string
+  id: TrackKey
   label: string
   description: string
   tagline: string

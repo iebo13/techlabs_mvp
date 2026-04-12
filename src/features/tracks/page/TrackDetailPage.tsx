@@ -63,7 +63,7 @@ export const TrackDetailPage: React.FC = () => {
                 <ProjectsShowcase projects={track.projects} />
                 <CareerOutcomes careerPaths={track.careerPaths} />
                 <LazyIntersection minHeight={300}>
-                  <TrackStoriesSection trackLabel={track.label} />
+                  <TrackStoriesSection trackId={track.id} />
                 </LazyIntersection>
                 <TrackFaqSection faqs={track.faq} />
                 <Box sx={{ display: { md: 'none' }, pt: 1 }}>

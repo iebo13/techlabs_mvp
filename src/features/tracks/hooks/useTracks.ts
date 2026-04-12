@@ -5,8 +5,10 @@ import { useI18n } from '@/hooks'
 import { sanityFetch } from '@/utils/sanityFetch'
 import { ALL_TRACKS_QUERY } from '../api/trackQueries'
 
+const TrackKeySchema = z.enum(['web-dev', 'data-science', 'product-design', 'ai'])
+
 const TrackMockSchema = z.object({
-  id: z.string(),
+  id: TrackKeySchema,
   applicationDeadline: z.string(),
   spotsAvailable: z.number(),
   icon: z.string(),

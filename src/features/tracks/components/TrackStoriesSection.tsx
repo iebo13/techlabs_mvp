@@ -5,16 +5,17 @@ import { StoriesCarousel } from '@/features/home/components/storiesSection/Stori
 import { useStories } from '@/features/stories/hooks/useStories'
 import type { Story } from '@/features/stories/types/stories.types'
 import { useI18n } from '@/hooks'
+import type { TrackKey } from '../types/tracks.types'
 
 type TrackStoriesSectionProps = {
-  readonly trackLabel: string
+  readonly trackId: TrackKey
 }
 
-export const TrackStoriesSection: React.FC<TrackStoriesSectionProps> = ({ trackLabel }) => {
+export const TrackStoriesSection: React.FC<TrackStoriesSectionProps> = ({ trackId }) => {
   const { t } = useI18n()
   const { data: stories } = useStories()
 
-  const filtered = (stories?.filter(story => story.trackLabel === trackLabel) ?? []) as unknown as Story[]
+  const filtered = (stories?.filter(story => story.track === trackId) ?? []) as unknown as Story[]
 
   if (filtered.length === 0) return null
 

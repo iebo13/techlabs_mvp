@@ -61,7 +61,7 @@ export const queryParamToTrackIds = (param: string | null): TrackKey[] => {
 }
 
 type TrackMockData = {
-  id: string
+  id: TrackKey
   applicationDeadline: string
   spotsAvailable: number
   icon: string

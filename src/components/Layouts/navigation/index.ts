@@ -1,4 +1,5 @@
 export { HeaderNav } from './HeaderNav'
+export { CitySelector } from './CitySelector'
 export { DesktopNavigation } from './DesktopNavigation'
 export { MobileDrawer } from './MobileDrawer'
 export { MobileMenuButton } from './MobileMenuButton'

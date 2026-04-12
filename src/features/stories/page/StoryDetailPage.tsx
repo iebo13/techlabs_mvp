@@ -91,9 +91,11 @@ export const StoryDetailPage: React.FC = () => {
                 )}
 
                 {/* Achievements */}
-                <LazyIntersection minHeight={200}>
-                  <StoryAchievements achievements={story.achievements} />
-                </LazyIntersection>
+                {story.achievements && story.achievements.length > 0 && (
+                  <LazyIntersection minHeight={200}>
+                    <StoryAchievements achievements={story.achievements} />
+                  </LazyIntersection>
+                )}
               </Box>
             </Grid>
           </Grid>

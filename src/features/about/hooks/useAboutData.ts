@@ -26,10 +26,13 @@ export const useAboutData = () => {
         sanityFetch(TEAM_MEMBERS_QUERY),
       ])
 
+      const content = aboutContent as Record<string, unknown>
+      const existingTeam = (content.team as Record<string, unknown> | null) ?? {}
+
       return AboutDataSchema.parse({
-        ...(aboutContent as Record<string, unknown>),
+        ...content,
         team: {
-          ...((aboutContent as Record<string, unknown>).team as Record<string, unknown>),
+          ...existingTeam,
           members: teamMembers,
         },
       })

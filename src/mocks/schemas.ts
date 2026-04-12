@@ -27,7 +27,7 @@ export const PartnerTierSchema = z.object({
 })
 
 export const DetailedPartnerSchema = z.object({
-  tier: z.string().min(1),
+  tier: z.string().min(1).nullish(),
   name: z.string().min(1),
   logoUrl: z.string().min(1),
   description: z.string().min(1),
@@ -87,7 +87,7 @@ export const StorySchema = z.object({
   currentRole: z.string().min(1),
   company: z.string().min(1),
   beforeRole: z.string().min(1).nullish(),
-  achievements: z.array(z.string().min(1)),
+  achievements: z.array(z.string().min(1)).nullish(),
   quote: z.string().min(1).nullish(),
   narrative: StoryNarrativeSchema.nullish(),
   metrics: z.array(StoryMetricSchema).nullish(),
@@ -182,8 +182,8 @@ export const TeamMemberSchema = z.object({
 })
 
 export const TeamSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
+  title: z.string().min(1).nullish(),
+  description: z.string().min(1).nullish(),
   members: z.array(TeamMemberSchema),
 })
 
@@ -203,7 +203,7 @@ export const ContactSchema = z.object({
 export const AboutDataSchema = z.object({
   mission: MissionSchema,
   program: ProgramSchema,
-  timeline: TimelineSchema.optional(),
+  timeline: TimelineSchema.nullish(),
   team: TeamSchema,
   contact: ContactSchema,
 })

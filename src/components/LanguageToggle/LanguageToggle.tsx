@@ -1,72 +1,52 @@
 import React, { memo } from 'react'
-import { Language as LanguageIcon } from '@mui/icons-material'
-import { Button, Menu, MenuItem, ListItemIcon, Typography } from '@mui/material'
+import { ToggleButton, ToggleButtonGroup } from '@mui/material'
 import { useI18n } from '../../hooks'
 
 export const LanguageToggle: React.FC = memo(() => {
   const { currentLanguage, availableLanguages, changeLanguage, t } = useI18n()
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-  const open = Boolean(anchorEl)
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget)
+  const handleChange = async (_: React.MouseEvent, value: string | null) => {
+    if (value) await changeLanguage(value)
   }
-
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-
-  const handleLanguageChange = async (languageCode: string) => {
-    await changeLanguage(languageCode)
-    handleClose()
-  }
-
-  const currentLang = availableLanguages.find(lang => lang.code === currentLanguage)
 
   return (
-    <>
-      <Button
-        id="language-button"
-        aria-controls={open ? 'language-menu' : undefined}
-        aria-haspopup="menu"
-        aria-expanded={open}
-        aria-label={t('accessibility.selectLanguage', { current: currentLang?.name || currentLanguage })}
-        onClick={handleClick}
-        startIcon={<LanguageIcon aria-hidden="true" />}
-        variant="outlined"
-        size="small">
-        <span aria-hidden="true">{currentLang?.flag}</span>
-      </Button>
-      <Menu
-        id="language-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        disableScrollLock
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}>
-        {availableLanguages.map(language => (
-          <MenuItem
-            key={language.code}
-            onClick={() => handleLanguageChange(language.code)}
-            selected={language.code === currentLanguage}
-            aria-current={language.code === currentLanguage ? 'true' : undefined}>
-            <ListItemIcon sx={{ minWidth: 36, p: 0, display: 'flex', alignItems: 'center' }} aria-hidden="true">
-              {language.flag}
-            </ListItemIcon>
-            <Typography variant="body2" sx={{ ml: 1 }}>
-              {language.name}
-            </Typography>
-          </MenuItem>
-        ))}
-      </Menu>
-    </>
+    <ToggleButtonGroup
+      exclusive
+      value={currentLanguage}
+      onChange={handleChange}
+      size="small"
+      aria-label={t('accessibility.selectLanguage', { current: currentLanguage })}
+      sx={{
+        '& .MuiToggleButtonGroup-grouped': {
+          border: '1px solid',
+          borderColor: 'divider',
+          '&:first-of-type': { borderRadius: '8px 0 0 8px' },
+          '&:last-of-type': { borderRadius: '0 8px 8px 0' },
+          '&.Mui-selected': {
+            backgroundColor: 'primary.main',
+            color: 'primary.contrastText',
+            borderColor: 'primary.main',
+            '&:hover': { backgroundColor: 'primary.dark' },
+          },
+        },
+      }}>
+      {availableLanguages.map(lang => (
+        <ToggleButton
+          key={lang.code}
+          value={lang.code}
+          aria-label={lang.name}
+          sx={{
+            px: 1.25,
+            py: 0.5,
+            fontSize: '0.8125rem',
+            fontWeight: 600,
+            textTransform: 'none',
+            lineHeight: 1.5,
+          }}>
+          {lang.code.toUpperCase().slice(0, 2)}
+        </ToggleButton>
+      ))}
+    </ToggleButtonGroup>
   )
 })
 

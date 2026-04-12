@@ -1,3 +1,18 @@
+export type City = {
+  name: string
+  slug: string
+}
+
+export const cities: City[] = [
+  { name: 'Düsseldorf', slug: 'dusseldorf' },
+  { name: 'Berlin', slug: 'berlin' },
+  { name: 'Munich', slug: 'munich' },
+  { name: 'Hamburg', slug: 'hamburg' },
+  { name: 'Frankfurt', slug: 'frankfurt' },
+  { name: 'Cologne', slug: 'cologne' },
+  { name: 'Stuttgart', slug: 'stuttgart' },
+]
+
 export type NavigationItem = {
   labelKey: string
   path: string

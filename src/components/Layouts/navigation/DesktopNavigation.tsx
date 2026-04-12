@@ -1,9 +1,9 @@
 import React from 'react'
-import { KeyboardArrowDown } from '@mui/icons-material'
-import { Box, Button } from '@mui/material'
+import { Box, Button, Divider } from '@mui/material'
 import { LanguageToggle } from '@/components/LanguageToggle'
 import { navigationItems, ctaButtons } from '@/config/data/navigationData'
 import { useI18n } from '@/hooks'
+import { CitySelector } from './CitySelector'
 import { NavLink } from './NavLink'
 
 export const DesktopNavigation: React.FC = () => {
@@ -11,7 +11,8 @@ export const DesktopNavigation: React.FC = () => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, width: '100%' }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1, pl: 4, width: '100%' }}>
+      {/* Centered nav links */}
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1, pl: 4 }}>
         {navigationItems.map(item => (
           <NavLink
             key={item.path}
@@ -28,40 +29,43 @@ export const DesktopNavigation: React.FC = () => {
         ))}
       </Box>
 
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <Button
-          variant="text"
-          endIcon={<KeyboardArrowDown />}
-          aria-label={t('navigation.selectCity')}
-          aria-haspopup="true"
-          sx={{
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
-            px: 1,
-          }}>
-          {t('footer.city')}
-        </Button>
+      {/* Right section */}
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, flexShrink: 0 }}>
+        {/* Utility cluster: city picker + language pill toggle */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <CitySelector />
+          <LanguageToggle />
+        </Box>
 
-        {ctaButtons.map(button => (
-          <Button
-            key={button.path}
-            variant={button.variant}
-            component={NavLink}
-            to={button.path}
-            sx={{
-              borderRadius: '6px',
-              fontWeight: 600,
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap',
-              maxWidth: '150px',
-            }}>
-            {t(button.labelKey)}
-          </Button>
-        ))}
+        {/* Visual separator */}
+        <Divider orientation="vertical" flexItem sx={{ mx: 0.75, my: 1 }} />
 
-        <LanguageToggle />
+        {/* CTA cluster */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          {ctaButtons.map(button => (
+            <Button
+              key={button.path}
+              variant={button.variant}
+              component={NavLink}
+              to={button.path}
+              size="small"
+              sx={{
+                borderRadius: '8px',
+                fontWeight: 600,
+                fontSize: '0.875rem',
+                whiteSpace: 'nowrap',
+                px: 2,
+                boxShadow: 'none',
+                '&:hover': {
+                  boxShadow: button.variant === 'contained' ? '0 2px 8px rgba(0,0,0,0.18)' : 'none',
+                  transform: button.variant === 'contained' ? 'translateY(-1px)' : undefined,
+                },
+                transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+              }}>
+              {t(button.labelKey)}
+            </Button>
+          ))}
+        </Box>
       </Box>
     </Box>
   )

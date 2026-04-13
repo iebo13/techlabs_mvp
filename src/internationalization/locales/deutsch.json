@@ -942,7 +942,12 @@
       }
     },
     "faqSection": {
-      "title": "Häufig gestellte Fragen",
+      "title": "FAQ",
+      "subtitle": "Finde Antworten auf die häufigsten Fragen zu unserem Programm, den Tracks und unserer Community.",
+      "searchPlaceholder": "Fragen durchsuchen...",
+      "noResults": "Keine passenden Fragen gefunden. Versuche einen anderen Suchbegriff.",
+      "expandAll": "Alle aufklappen",
+      "collapseAll": "Alle zuklappen",
       "moreQuestions": "Weitere Fragen",
       "contactCta": "Noch Fragen? Kontaktiere uns"
     }

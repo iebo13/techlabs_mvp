@@ -938,7 +938,12 @@
       }
     },
     "faqSection": {
-      "title": "Frequently Asked Questions",
+      "title": "FAQ",
+      "subtitle": "Find answers to the most common questions about our program, tracks, and community.",
+      "searchPlaceholder": "Search questions...",
+      "noResults": "No matching questions found. Try a different search term.",
+      "expandAll": "Expand all",
+      "collapseAll": "Collapse all",
       "moreQuestions": "More Questions",
       "contactCta": "Still have questions? Get in touch"
     }

@@ -82,3 +82,5 @@ export const NumbersBand: React.FC<NumbersBandProps> = ({ numbers, title }) => {
     </Section>
   )
 }
+
+NumbersBand.displayName = 'NumbersBand'

@@ -12,7 +12,7 @@ export const SiteFooter: React.FC = () => {
     <Box component="footer">
       <Box
         sx={{
-          backgroundColor: theme.palette.mode === 'dark' ? '#1a1a1a' : '#F7F7F8',
+          backgroundColor: theme.palette.mode === 'dark' ? 'grey.900' : 'grey.50',
           width: '100%',
           padding: 2,
           pb: 1,
@@ -44,3 +44,5 @@ export const SiteFooter: React.FC = () => {
     </Box>
   )
 }
+
+SiteFooter.displayName = 'SiteFooter'

@@ -86,7 +86,7 @@ export const EventsPage: React.FC = () => {
 
   return (
     <DataLoadingState isLoading={isLoading} error={error}>
-      <Section sx={{ py: { xs: 4, md: 6 } }}>
+      <Section component="main" sx={{ py: { xs: 4, md: 6 } }}>
         <Box
           sx={{
             display: 'flex',
@@ -178,3 +178,5 @@ export const EventsPage: React.FC = () => {
     </DataLoadingState>
   )
 }
+
+EventsPage.displayName = 'EventsPage'

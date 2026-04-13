@@ -2,6 +2,7 @@ import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import { Box, Button, Card, CardContent, Divider, Stack, Typography } from '@mui/material'
 import { useI18n } from '@/hooks'
+import { STICKY_TOP } from '@/theme'
 import type { DetailedTrack } from '../types/tracks.types'
 
 type TrackDetailSidebarProps = {
@@ -28,7 +29,7 @@ export const TrackDetailSidebar: React.FC<TrackDetailSidebarProps> = ({ track })
   const { t, formatDate } = useI18n()
 
   return (
-    <Box sx={{ position: { md: 'sticky' }, top: { md: 24 } }}>
+    <Box sx={{ position: { md: 'sticky' }, top: { md: STICKY_TOP.sidebar } }}>
       <Card elevation={0} sx={{ border: '1px solid', borderColor: 'divider', borderRadius: 2, overflow: 'hidden' }}>
         <Box sx={{ height: 6, bgcolor: 'primary.main' }} />
 

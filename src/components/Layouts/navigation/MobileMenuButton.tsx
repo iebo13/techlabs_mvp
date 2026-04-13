@@ -1,7 +1,9 @@
 import { forwardRef } from 'react'
 import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material'
 import { IconButton, useTheme, useMediaQuery } from '@mui/material'
+import { alpha } from '@mui/material/styles'
 import { useI18n } from '@/hooks'
+import { createFocusRing } from '@/theme'
 
 type MobileMenuButtonProps = {
   mobileOpen: boolean
@@ -46,18 +48,17 @@ export const MobileMenuButton = forwardRef<HTMLButtonElement, MobileMenuButtonPr
             duration: theme.transitions.duration.short,
           }),
           '&:hover': {
-            backgroundColor: 'rgba(0, 0, 0, 0.08)',
+            backgroundColor: alpha(theme.palette.common.black, 0.08),
             transform: 'scale(1.05)',
             color: 'primary.main',
           },
           '&:focus-visible': {
-            outline: `3px solid ${theme.palette.primary.main}40`,
-            outlineOffset: 2,
-            backgroundColor: 'rgba(0, 0, 0, 0.04)',
+            ...createFocusRing(theme),
+            backgroundColor: alpha(theme.palette.common.black, 0.04),
           },
           '&:active': {
             transform: 'scale(0.95)',
-            backgroundColor: 'rgba(0, 0, 0, 0.12)',
+            backgroundColor: alpha(theme.palette.common.black, 0.12),
           },
         }}>
         <MenuIcon

@@ -4,6 +4,7 @@ import { GitHub, LinkedIn } from '@mui/icons-material'
 import { Avatar, Card, CardContent, Chip, IconButton, Stack, Typography } from '@mui/material'
 import { useI18n } from '@/hooks'
 import type { TeamMemberSchema } from '@/mocks/schemas'
+import { SHADOW, TRANSITION } from '@/theme'
 
 type TeamMember = z.infer<typeof TeamMemberSchema>
 
@@ -29,10 +30,10 @@ export const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
         border: '1px solid',
         borderColor: 'divider',
         borderRadius: 3,
-        transition: 'all 0.25s ease-in-out',
+        transition: `all ${TRANSITION.normal}`,
         '&:hover': {
           transform: 'translateY(-2px)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+          boxShadow: SHADOW.cardHover,
         },
       }}>
       <CardContent>
@@ -108,3 +109,5 @@ export const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
     </Card>
   )
 }
+
+TeamMemberCard.displayName = 'TeamMemberCard'

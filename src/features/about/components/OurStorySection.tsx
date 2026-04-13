@@ -88,3 +88,5 @@ export const OurStorySection: React.FC = () => {
     </Section>
   )
 }
+
+OurStorySection.displayName = 'OurStorySection'

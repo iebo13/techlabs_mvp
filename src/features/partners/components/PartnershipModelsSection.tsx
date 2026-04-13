@@ -15,6 +15,7 @@ import {
 import { CTAButton } from '@/components/Buttons/CtaButton'
 import { Section, SectionHeading } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
+import { RADIUS, SHADOW, TRANSITION } from '@/theme'
 
 const MODEL_KEYS = ['eventPartnership', 'brandingSponsorship'] as const
 
@@ -46,11 +47,11 @@ export const PartnershipModelsSection: React.FC = () => {
                     height: '100%',
                     border: '1px solid',
                     borderColor: 'divider',
-                    borderRadius: 3,
-                    transition: 'all 0.25s ease-in-out',
+                    borderRadius: RADIUS.md,
+                    transition: `all ${TRANSITION.normal}`,
                     '&:hover': {
                       borderColor: 'primary.main',
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+                      boxShadow: SHADOW.cardHover,
                     },
                   }}>
                   <Stack spacing={2.5} sx={{ height: '100%' }}>

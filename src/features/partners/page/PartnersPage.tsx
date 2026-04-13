@@ -74,3 +74,5 @@ export const PartnersPage: React.FC = () => {
     </main>
   )
 }
+
+PartnersPage.displayName = 'PartnersPage'

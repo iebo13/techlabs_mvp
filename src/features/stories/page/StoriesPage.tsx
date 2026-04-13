@@ -70,7 +70,7 @@ export const StoriesPage: React.FC = () => {
 
   return (
     <DataLoadingState isLoading={isLoading} error={error}>
-      <Section sx={{ py: { xs: 4, md: 6 } }}>
+      <Section component="main" sx={{ py: { xs: 4, md: 6 } }}>
         <Box
           sx={{
             display: 'flex',
@@ -110,7 +110,7 @@ export const StoriesPage: React.FC = () => {
                 onChange={handleTrackChange}
                 size="medium"
                 SelectDisplayProps={{ role: 'button', 'aria-haspopup': 'listbox' }}
-                inputProps={{ 'aria-hidden': true, 'aria-labelledby': 'track-filter-label' }}>
+                inputProps={{ 'aria-labelledby': 'track-filter-label' }}>
                 {trackOptions.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
@@ -168,3 +168,5 @@ export const StoriesPage: React.FC = () => {
     </DataLoadingState>
   )
 }
+
+StoriesPage.displayName = 'StoriesPage'

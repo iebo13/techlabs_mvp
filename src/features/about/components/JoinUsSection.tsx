@@ -1,9 +1,11 @@
 import React from 'react'
 import { Business, Handshake, School } from '@mui/icons-material'
 import { Box, Card, CardContent, Container, Grid, Stack, Typography } from '@mui/material'
+import { alpha } from '@mui/material/styles'
 import { CTAButton } from '@/components/Buttons/CtaButton'
 import { Section, SectionHeading } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
+import { TRANSITION } from '@/theme'
 
 const PATHWAYS = [
   { key: 'shaper', icon: School, to: '/tracks' },
@@ -24,7 +26,7 @@ export const JoinUsSection: React.FC = () => {
           <Typography
             variant="h6"
             component="p"
-            color="white"
+            color="common.white"
             textAlign="center"
             sx={{ maxWidth: 550, opacity: 0.9, lineHeight: 1.5, mt: -2 }}>
             {t('about.joinSection.subtitle')}
@@ -39,14 +41,14 @@ export const JoinUsSection: React.FC = () => {
                   <Card
                     sx={{
                       height: '100%',
-                      bgcolor: 'rgba(255,255,255,0.12)',
+                      bgcolor: theme => alpha(theme.palette.common.white, 0.12),
                       backdropFilter: 'blur(8px)',
-                      border: '1px solid rgba(255,255,255,0.2)',
+                      border: theme => `1px solid ${alpha(theme.palette.common.white, 0.2)}`,
                       borderRadius: 3,
                       color: 'inherit',
-                      transition: 'all 0.25s ease-in-out',
+                      transition: `all ${TRANSITION.normal}`,
                       '&:hover': {
-                        bgcolor: 'rgba(255,255,255,0.18)',
+                        bgcolor: theme => alpha(theme.palette.common.white, 0.18),
                         transform: 'translateY(-2px)',
                       },
                     }}>
@@ -57,19 +59,21 @@ export const JoinUsSection: React.FC = () => {
                             width: 56,
                             height: 56,
                             borderRadius: '50%',
-                            bgcolor: 'rgba(255,255,255,0.15)',
+                            bgcolor: theme => alpha(theme.palette.common.white, 0.15),
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                           }}>
-                          <IconComponent sx={{ fontSize: 28, color: 'white' }} />
+                          <IconComponent sx={{ fontSize: 28, color: 'common.white' }} />
                         </Box>
 
-                        <Typography variant="h6" fontWeight={700} color="white">
+                        <Typography variant="h6" fontWeight={700} color="common.white">
                           {t(`about.joinSection.${pathway.key}.title`)}
                         </Typography>
 
-                        <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>
+                        <Typography
+                          variant="body2"
+                          sx={{ color: theme => alpha(theme.palette.common.white, 0.8), lineHeight: 1.7 }}>
                           {t(`about.joinSection.${pathway.key}.description`)}
                         </Typography>
 
@@ -78,11 +82,11 @@ export const JoinUsSection: React.FC = () => {
                           variant="outlined"
                           size="small"
                           sx={{
-                            color: 'white',
-                            borderColor: 'rgba(255,255,255,0.6)',
+                            color: 'common.white',
+                            borderColor: theme => alpha(theme.palette.common.white, 0.6),
                             '&:hover': {
-                              borderColor: 'white',
-                              bgcolor: 'rgba(255,255,255,0.1)',
+                              borderColor: 'common.white',
+                              bgcolor: theme => alpha(theme.palette.common.white, 0.1),
                             },
                           }}>
                           {t(`about.joinSection.${pathway.key}.cta`)}
@@ -99,3 +103,5 @@ export const JoinUsSection: React.FC = () => {
     </Section>
   )
 }
+
+JoinUsSection.displayName = 'JoinUsSection'

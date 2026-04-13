@@ -37,13 +37,13 @@ export const ProgramPhasesBand: React.FC = () => {
                     {`0${index + 1}`}
                   </Typography>
                   <Typography variant="subtitle1" component="h3" fontWeight={700}>
-                    {t(`about.programSection.phases.${key}.title`)}
+                    {t(`tracks.overview.programPhases.phases.${key}.title`)}
                   </Typography>
                   <Typography variant="caption" color="text.secondary">
-                    {t(`about.programSection.phases.${key}.duration`)}
+                    {t(`tracks.overview.programPhases.phases.${key}.duration`)}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-                    {t(`about.programSection.phases.${key}.description`)}
+                    {t(`tracks.overview.programPhases.phases.${key}.description`)}
                   </Typography>
                 </Stack>
               </Paper>

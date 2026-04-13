@@ -62,3 +62,5 @@ export const AccessibilityIssueList: React.FC<AccessibilityIssueListProps> = ({ 
     </>
   )
 }
+
+AccessibilityIssueList.displayName = 'AccessibilityIssueList'

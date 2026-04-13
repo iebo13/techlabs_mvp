@@ -73,3 +73,5 @@ export const WhyTechlabs: React.FC = () => {
     </Section>
   )
 }
+
+WhyTechlabs.displayName = 'WhyTechlabs'

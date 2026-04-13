@@ -117,3 +117,5 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ open, onClose, title, sr
     </Dialog>
   )
 }
+
+VideoEmbed.displayName = 'VideoEmbed'

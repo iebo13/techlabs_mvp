@@ -108,7 +108,29 @@
       },
       "programPhases": {
         "title": "Every track follows the same proven path",
-        "subtitle": "Whatever track you pick, the journey is structured the same way, from application to landing your first role."
+        "subtitle": "Whatever track you pick, the journey is structured the same way, from application to landing your first role.",
+        "phases": {
+          "application": {
+            "title": "Application & Selection",
+            "description": "Apply online with your background and goals. We select candidates based on motivation and potential, not prior experience.",
+            "duration": "2 weeks"
+          },
+          "foundation": {
+            "title": "Foundation Learning",
+            "description": "Build core skills through our online platform with support from mentors and peers.",
+            "duration": "8 weeks"
+          },
+          "project": {
+            "title": "Project Development",
+            "description": "Work on real-world projects that build your portfolio and demonstrate your skills.",
+            "duration": "6 weeks"
+          },
+          "career": {
+            "title": "Career Launch",
+            "description": "Get support with job applications, networking, and career planning.",
+            "duration": "4 weeks"
+          }
+        }
       },
       "whyTechlabs": {
         "title": "Why learn with TechLabs",
@@ -265,14 +287,38 @@
           }
         ],
         "techStack": [
-          { "name": "HTML5", "icon": "📄" },
-          { "name": "CSS3", "icon": "🎨" },
-          { "name": "JavaScript", "icon": "✨" },
-          { "name": "React", "icon": "⚛️" },
-          { "name": "Node.js", "icon": "🟢" },
-          { "name": "Git", "icon": "🌿" },
-          { "name": "Vite", "icon": "⚡" },
-          { "name": "Vercel", "icon": "▲" }
+          {
+            "name": "HTML5",
+            "icon": "📄"
+          },
+          {
+            "name": "CSS3",
+            "icon": "🎨"
+          },
+          {
+            "name": "JavaScript",
+            "icon": "✨"
+          },
+          {
+            "name": "React",
+            "icon": "⚛️"
+          },
+          {
+            "name": "Node.js",
+            "icon": "🟢"
+          },
+          {
+            "name": "Git",
+            "icon": "🌿"
+          },
+          {
+            "name": "Vite",
+            "icon": "⚡"
+          },
+          {
+            "name": "Vercel",
+            "icon": "▲"
+          }
         ],
         "curriculum": [
           {
@@ -400,14 +446,38 @@
           }
         ],
         "techStack": [
-          { "name": "Python", "icon": "🐍" },
-          { "name": "Pandas", "icon": "🐼" },
-          { "name": "NumPy", "icon": "🔢" },
-          { "name": "Scikit-learn", "icon": "📈" },
-          { "name": "SQL", "icon": "🗃️" },
-          { "name": "Matplotlib", "icon": "📉" },
-          { "name": "Jupyter", "icon": "📓" },
-          { "name": "Git", "icon": "🌿" }
+          {
+            "name": "Python",
+            "icon": "🐍"
+          },
+          {
+            "name": "Pandas",
+            "icon": "🐼"
+          },
+          {
+            "name": "NumPy",
+            "icon": "🔢"
+          },
+          {
+            "name": "Scikit-learn",
+            "icon": "📈"
+          },
+          {
+            "name": "SQL",
+            "icon": "🗃️"
+          },
+          {
+            "name": "Matplotlib",
+            "icon": "📉"
+          },
+          {
+            "name": "Jupyter",
+            "icon": "📓"
+          },
+          {
+            "name": "Git",
+            "icon": "🌿"
+          }
         ],
         "curriculum": [
           {
@@ -530,14 +600,38 @@
           }
         ],
         "techStack": [
-          { "name": "Figma", "icon": "🖌️" },
-          { "name": "FigJam", "icon": "🧠" },
-          { "name": "User Research", "icon": "🔍" },
-          { "name": "Wireframing", "icon": "🧱" },
-          { "name": "Prototyping", "icon": "🔗" },
-          { "name": "Design Systems", "icon": "🧩" },
-          { "name": "Accessibility", "icon": "♿" },
-          { "name": "Hand-off", "icon": "🤝" }
+          {
+            "name": "Figma",
+            "icon": "🖌️"
+          },
+          {
+            "name": "FigJam",
+            "icon": "🧠"
+          },
+          {
+            "name": "User Research",
+            "icon": "🔍"
+          },
+          {
+            "name": "Wireframing",
+            "icon": "🧱"
+          },
+          {
+            "name": "Prototyping",
+            "icon": "🔗"
+          },
+          {
+            "name": "Design Systems",
+            "icon": "🧩"
+          },
+          {
+            "name": "Accessibility",
+            "icon": "♿"
+          },
+          {
+            "name": "Hand-off",
+            "icon": "🤝"
+          }
         ],
         "curriculum": [
           {
@@ -665,14 +759,38 @@
           }
         ],
         "techStack": [
-          { "name": "Python", "icon": "🐍" },
-          { "name": "NumPy", "icon": "🔢" },
-          { "name": "PyTorch", "icon": "🔥" },
-          { "name": "TensorFlow", "icon": "🧠" },
-          { "name": "Hugging Face", "icon": "🤗" },
-          { "name": "LangChain", "icon": "🔗" },
-          { "name": "Jupyter", "icon": "📓" },
-          { "name": "Git", "icon": "🌿" }
+          {
+            "name": "Python",
+            "icon": "🐍"
+          },
+          {
+            "name": "NumPy",
+            "icon": "🔢"
+          },
+          {
+            "name": "PyTorch",
+            "icon": "🔥"
+          },
+          {
+            "name": "TensorFlow",
+            "icon": "🧠"
+          },
+          {
+            "name": "Hugging Face",
+            "icon": "🤗"
+          },
+          {
+            "name": "LangChain",
+            "icon": "🔗"
+          },
+          {
+            "name": "Jupyter",
+            "icon": "📓"
+          },
+          {
+            "name": "Git",
+            "icon": "🌿"
+          }
         ],
         "curriculum": [
           {
@@ -1090,12 +1208,30 @@
     "impact": {
       "title": "Our Impact Together",
       "metrics": {
-        "techies": { "value": "4,000+", "label": "Trained Techies" },
-        "locations": { "value": "16", "label": "Locations in Europe" },
-        "participants": { "value": "650+", "label": "Participants" },
-        "projects": { "value": "87", "label": "Real-World Projects" },
-        "satisfaction": { "value": "4.6/5", "label": "Satisfaction Rating" },
-        "volunteers": { "value": "330+", "label": "Volunteer Members" }
+        "techies": {
+          "value": "4,000+",
+          "label": "Trained Techies"
+        },
+        "locations": {
+          "value": "16",
+          "label": "Locations in Europe"
+        },
+        "participants": {
+          "value": "650+",
+          "label": "Participants"
+        },
+        "projects": {
+          "value": "87",
+          "label": "Real-World Projects"
+        },
+        "satisfaction": {
+          "value": "4.6/5",
+          "label": "Satisfaction Rating"
+        },
+        "volunteers": {
+          "value": "330+",
+          "label": "Volunteer Members"
+        }
       }
     },
     "whyPartner": {

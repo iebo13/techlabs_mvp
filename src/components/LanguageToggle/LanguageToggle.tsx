@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { ToggleButton, ToggleButtonGroup } from '@mui/material'
-import { useI18n } from '../../hooks'
+import { useI18n } from '@/hooks'
 
 export const LanguageToggle: React.FC = memo(() => {
   const { currentLanguage, availableLanguages, changeLanguage, t } = useI18n()

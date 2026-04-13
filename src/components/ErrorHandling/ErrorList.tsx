@@ -123,3 +123,5 @@ export const ErrorList: React.FC<{ errors: ErrorReport[] }> = ({ errors }) => {
     </List>
   )
 }
+
+ErrorList.displayName = 'ErrorList'

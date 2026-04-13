@@ -4,6 +4,7 @@ import { Box, Card, Typography } from '@mui/material'
 import { CTAButton } from '@/components/Buttons/CtaButton'
 import { OptimizedImage, Section } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
+import { SHADOW } from '@/theme'
 
 const SUPPORT_BACKGROUND_IMAGE = '/img/background.png'
 
@@ -67,8 +68,8 @@ export const SupportCta: React.FC<SupportCtaProps> = ({ title, body, imageUrl, c
             maxWidth: '90%',
             borderRadius: '20px',
             border: 'none',
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
-            backgroundColor: 'white',
+            boxShadow: SHADOW.cardHover,
+            backgroundColor: 'common.white',
             zIndex: 3,
           }}>
           <Box
@@ -93,3 +94,5 @@ export const SupportCta: React.FC<SupportCtaProps> = ({ title, body, imageUrl, c
     </Section>
   )
 }
+
+SupportCta.displayName = 'SupportCta'

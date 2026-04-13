@@ -58,3 +58,5 @@ type PortableTextRendererProps = {
 export const PortableTextRenderer: React.FC<PortableTextRendererProps> = ({ value }) => (
   <PortableText value={value} components={components} />
 )
+
+PortableTextRenderer.displayName = 'PortableTextRenderer'

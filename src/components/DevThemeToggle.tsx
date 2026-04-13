@@ -39,3 +39,5 @@ export const DevThemeToggle: React.FC = () => {
     </Tooltip>
   )
 }
+
+DevThemeToggle.displayName = 'DevThemeToggle'

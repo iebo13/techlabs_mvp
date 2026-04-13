@@ -1,7 +1,9 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
+import { alpha } from '@mui/material/styles'
 import type { Story } from '@/features/stories'
 import { PORTRAIT_IMAGE_OBJECT_POSITION } from '@/features/stories/utils/portraitObjectPosition'
+import { FOCUS_RING_STATIC, SHADOW } from '@/theme'
 
 type CarouselItemProps = {
   story: Story
@@ -20,17 +22,13 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
         overflow: 'hidden',
         textDecoration: 'none',
         cursor: 'pointer',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+        boxShadow: SHADOW.subtle,
         transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
         '&:hover': {
           transform: 'translateY(-2px)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+          boxShadow: SHADOW.elevated,
         },
-        '&:focus-visible': {
-          outline: '2px solid',
-          outlineColor: 'primary.main',
-          outlineOffset: '2px',
-        },
+        '&:focus-visible': FOCUS_RING_STATIC,
       }}>
       <Box
         component="img"
@@ -52,7 +50,7 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
           left: 0,
           right: 0,
           height: '50%',
-          background: 'linear-gradient(transparent, rgba(0, 0, 0, 0.9))',
+          background: theme => `linear-gradient(transparent, ${alpha(theme.palette.common.black, 0.9)})`,
           pointerEvents: 'none',
         }}
       />
@@ -63,16 +61,18 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({ story }) => {
           bottom: 20,
           left: 20,
           right: 20,
-          color: '#FFFFFF',
+          color: 'common.white',
           pointerEvents: 'none',
         }}>
         <Typography variant="h3" component="h3">
           {story.title}
         </Typography>
-        <Typography variant="body2" color="white">
+        <Typography variant="body2" color="common.white">
           {'“ ' + story.excerpt + '”'}
         </Typography>
       </Box>
     </Box>
   )
 }
+
+CarouselItem.displayName = 'CarouselItem'

@@ -2,6 +2,7 @@ import React from 'react'
 import { OpenInNew as OpenInNewIcon } from '@mui/icons-material'
 import { Box, Stack, Typography } from '@mui/material'
 import { useI18n } from '@/hooks'
+import { RADIUS, SHADOW, TRANSITION } from '@/theme'
 import type { DetailedPartner } from '../types/partners.type'
 
 type PartnerCardProps = {
@@ -25,15 +26,15 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({ partner }) => {
         textDecoration: 'none',
         color: 'inherit',
         p: 3,
-        borderRadius: 3,
+        borderRadius: RADIUS.md,
         border: '1px solid',
         borderColor: 'divider',
-        transition: 'all 0.25s ease-in-out',
+        transition: `all ${TRANSITION.normal}`,
         cursor: 'pointer',
         height: '100%',
         '&:hover': {
           borderColor: 'primary.main',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+          boxShadow: SHADOW.subtle,
           transform: 'translateY(-2px)',
         },
       }}>
@@ -72,3 +73,5 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({ partner }) => {
     </Box>
   )
 }
+
+PartnerCard.displayName = 'PartnerCard'

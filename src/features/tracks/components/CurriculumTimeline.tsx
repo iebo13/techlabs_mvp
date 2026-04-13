@@ -3,6 +3,7 @@ import { ExpandMore } from '@mui/icons-material'
 import { Accordion, AccordionDetails, AccordionSummary, Box, Stack, Typography } from '@mui/material'
 import { SectionHeading } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
+import { RADIUS } from '@/theme'
 import type { CurriculumPhase } from '../types/tracks.types'
 
 type CurriculumTimelineProps = {
@@ -25,9 +26,9 @@ export const CurriculumTimeline: React.FC<CurriculumTimelineProps> = ({ phases }
             disableGutters
             elevation={0}
             sx={{
-              border: '1px solid',
+              border: '2px solid',
               borderColor: 'divider',
-              borderRadius: 2,
+              borderRadius: RADIUS.md,
               '&:before': { display: 'none' },
               '&.Mui-expanded': { borderColor: 'primary.main' },
             }}>

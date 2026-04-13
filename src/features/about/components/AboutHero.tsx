@@ -81,3 +81,5 @@ export const AboutHero: React.FC = () => {
     </Section>
   )
 }
+
+AboutHero.displayName = 'AboutHero'

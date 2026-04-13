@@ -1,25 +1,23 @@
 import React from 'react'
 import { Trans } from 'react-i18next'
-import { Box, Typography, useMediaQuery } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { useI18n } from '@/hooks'
-import { theme } from '@/theme'
 
 export const HeroHeading: React.FC = () => {
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const { t } = useI18n()
 
   return (
     <Box sx={{ width: '100%', mx: 'auto' }}>
       <Typography
-        variant={isMobile ? 'h1' : 'h2'}
+        variant="h1"
         id="hero-heading"
         component="h1"
         color="text.primary"
         sx={{
           pb: 2,
-          px: isMobile ? 2 : 0,
-          fontSize: isMobile ? '4.5rem' : '4rem',
-          textAlign: isMobile ? 'start' : 'center',
+          px: { xs: 2, md: 0 },
+          fontSize: { xs: '2.5rem', md: '4rem' },
+          textAlign: { xs: 'start', md: 'center' },
           '& .emphasis': {
             color: 'primary.main',
             fontWeight: 'inherit',

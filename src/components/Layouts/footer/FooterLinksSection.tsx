@@ -1,9 +1,11 @@
 import React from 'react'
-import { Grid, Typography, Box } from '@mui/material'
+import { Grid, Typography, Box, useTheme } from '@mui/material'
 import { useI18n } from '@/hooks'
+import { createFocusRing } from '@/theme'
 import { NavLink } from '../navigation/NavLink'
 
 export const FooterLinksSection: React.FC = () => {
+  const theme = useTheme()
   const { t } = useI18n()
 
   const footerSections = [
@@ -78,8 +80,7 @@ export const FooterLinksSection: React.FC = () => {
                           color: 'primary.main',
                         },
                         '&:focus-visible': {
-                          outline: '3px solid rgba(250, 33, 92, 0.25)',
-                          outlineOffset: 2,
+                          ...createFocusRing(theme),
                           borderRadius: '4px',
                         },
                       }}>
@@ -95,3 +96,5 @@ export const FooterLinksSection: React.FC = () => {
     </Box>
   )
 }
+
+FooterLinksSection.displayName = 'FooterLinksSection'

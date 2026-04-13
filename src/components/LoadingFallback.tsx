@@ -55,3 +55,5 @@ export const LoadingFallback: React.FC<LoadingFallbackProps> = ({
     </Box>
   )
 }
+
+LoadingFallback.displayName = 'LoadingFallback'

@@ -1,10 +1,5 @@
-/* Reset and base styles */
-* {
-  box-sizing: border-box;
-}
-
+/* Base styles (box-sizing and scroll-behavior handled by MuiCssBaseline) */
 html {
-  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
@@ -12,9 +7,6 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,7 +17,7 @@ body {
 
 /* Focus styles for accessibility */
 :focus-visible {
-  outline: 2px solid #1976d2;
+  outline: 2px solid #fa1e5a;
   outline-offset: 2px;
 }
 
@@ -34,7 +26,7 @@ body {
   position: absolute;
   top: -40px;
   left: 6px;
-  background: #1976d2;
+  background: #fa1e5a;
   color: white;
   padding: 8px;
   text-decoration: none;

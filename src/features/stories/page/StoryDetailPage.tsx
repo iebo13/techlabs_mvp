@@ -42,7 +42,7 @@ export const StoryDetailPage: React.FC = () => {
   const displayName = story.name ?? story.title
 
   return (
-    <Box>
+    <Box component="main">
       <SEO
         title={`${displayName} - TechLabs Success Story`}
         description={story.excerpt}

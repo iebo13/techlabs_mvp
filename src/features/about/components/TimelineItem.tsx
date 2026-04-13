@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
+import { SHADOW, TRANSITION } from '@/theme'
 
 type TimelineItemProps = {
   readonly year: string
@@ -48,9 +49,9 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({ year, title, descrip
           bgcolor: 'background.paper',
           border: '1px solid',
           borderColor: 'divider',
-          transition: 'box-shadow 0.25s ease-in-out',
+          transition: `box-shadow ${TRANSITION.normal}`,
           '&:hover': {
-            boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+            boxShadow: SHADOW.subtle,
           },
         }}>
         <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 700, letterSpacing: 1.5 }}>
@@ -66,3 +67,5 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({ year, title, descrip
     </Box>
   )
 }
+
+TimelineItem.displayName = 'TimelineItem'

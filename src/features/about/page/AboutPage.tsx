@@ -68,3 +68,5 @@ export const AboutPage: React.FC = () => {
     </main>
   )
 }
+
+AboutPage.displayName = 'AboutPage'

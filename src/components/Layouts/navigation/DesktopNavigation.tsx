@@ -1,11 +1,13 @@
 import React from 'react'
-import { Box, Button, Divider } from '@mui/material'
+import { Box, Button, Divider, useTheme } from '@mui/material'
+import { alpha } from '@mui/material/styles'
 import { LanguageToggle } from '@/components/LanguageToggle'
 import { navigationItems, ctaButtons } from '@/config/data/navigationData'
 import { useI18n } from '@/hooks'
 import { NavLink } from './NavLink'
 
 export const DesktopNavigation: React.FC = () => {
+  const theme = useTheme()
   const { t } = useI18n()
 
   return (
@@ -46,7 +48,8 @@ export const DesktopNavigation: React.FC = () => {
                 px: 2,
                 boxShadow: 'none',
                 '&:hover': {
-                  boxShadow: button.variant === 'contained' ? '0 2px 8px rgba(0,0,0,0.18)' : 'none',
+                  boxShadow:
+                    button.variant === 'contained' ? `0 2px 8px ${alpha(theme.palette.common.black, 0.18)}` : 'none',
                   transform: button.variant === 'contained' ? 'translateY(-1px)' : undefined,
                 },
                 transition: 'transform 0.15s ease, box-shadow 0.15s ease',

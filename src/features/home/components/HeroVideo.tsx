@@ -1,6 +1,7 @@
 import React, { useState, lazy, Suspense } from 'react'
 import { PlayArrow as PlayArrowIcon } from '@mui/icons-material'
 import { Card, Box, IconButton, Chip, useTheme, useMediaQuery, CircularProgress } from '@mui/material'
+import { alpha } from '@mui/material/styles'
 import { OptimizedImage, Section } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
 
@@ -88,10 +89,10 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              bgcolor: 'rgba(0, 0, 0, 0.3)',
+              bgcolor: theme => alpha(theme.palette.common.black, 0.3),
               transition: 'background-color 0.2s ease-in-out',
               '&:hover': {
-                bgcolor: 'rgba(0, 0, 0, 0.4)',
+                bgcolor: theme => alpha(theme.palette.common.black, 0.4),
               },
             }}>
             <IconButton
@@ -122,7 +123,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
               position: 'absolute',
               bottom: 16,
               right: 16,
-              bgcolor: 'rgba(0, 0, 0, 0.8)',
+              bgcolor: theme => alpha(theme.palette.common.black, 0.8),
               color: 'common.white',
               '& .MuiChip-label': {
                 px: 1.5,
@@ -147,3 +148,5 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({ posterUrl, srcUrl, duratio
     </Section>
   )
 }
+
+HeroVideo.displayName = 'HeroVideo'

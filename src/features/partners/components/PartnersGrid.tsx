@@ -86,3 +86,5 @@ export const PartnersGrid: React.FC<PartnersGridProps> = ({ partners }) => {
     </Section>
   )
 }
+
+PartnersGrid.displayName = 'PartnersGrid'

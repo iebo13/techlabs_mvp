@@ -1,5 +1,4 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
 import { useI18n } from '@/hooks'
 import { CitySelector } from './CitySelector'
@@ -7,7 +6,6 @@ import { NavLink } from './NavLink'
 
 export const Logo: React.FC = () => {
   const { t } = useI18n()
-  const navigate = useNavigate()
 
   return (
     <Box sx={{ display: 'flex', gap: { xs: 0, md: 1 }, alignItems: 'center' }}>
@@ -31,20 +29,28 @@ export const Logo: React.FC = () => {
         />
       </NavLink>
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Typography
-          variant="h6"
-          component="div"
-          onClick={() => navigate('/')}
+        <NavLink
+          to="/"
+          showActive={false}
           sx={{
-            fontWeight: 800,
-            fontSize: '1.5rem',
-            color: 'primary.main',
-            cursor: 'pointer',
+            p: 0,
+            '&:hover': { backgroundColor: 'transparent' },
           }}>
-          TechLabs
-        </Typography>
+          <Typography
+            variant="h6"
+            component="span"
+            sx={{
+              fontWeight: 800,
+              fontSize: '1.5rem',
+              color: 'primary.main',
+            }}>
+            TechLabs
+          </Typography>
+        </NavLink>
         <CitySelector />
       </Box>
     </Box>
   )
 }
+
+Logo.displayName = 'Logo'

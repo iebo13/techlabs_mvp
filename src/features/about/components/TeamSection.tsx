@@ -80,3 +80,5 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ members }) => {
     </Section>
   )
 }
+
+TeamSection.displayName = 'TeamSection'

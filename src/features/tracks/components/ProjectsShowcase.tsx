@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, CardContent, Chip, Grid, Stack, Typography, useTheme } from '@mui/material'
 import { SectionHeading } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
+import { RADIUS, SHADOW, TRANSITION } from '@/theme'
 import type { ProjectShowcase } from '../types/tracks.types'
 
 type ProjectsShowcaseProps = {
@@ -24,9 +25,9 @@ export const ProjectsShowcase: React.FC<ProjectsShowcaseProps> = ({ projects }) 
             <Card
               sx={{
                 height: '100%',
-                transition: 'all 0.22s ease-in-out',
-                borderRadius: 0.5,
-                boxShadow: '8px 12px 12px rgba(44, 42, 42, 0.3)',
+                transition: `all ${TRANSITION.normal}`,
+                borderRadius: RADIUS.md,
+                boxShadow: SHADOW.cardBrand,
                 '&:hover': {
                   transform: 'translateY(-4px)',
                   boxShadow: theme.shadows[8],

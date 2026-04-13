@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Add, Remove } from '@mui/icons-material'
 import { Accordion, AccordionDetails, AccordionSummary, Box, Chip, Stack, Typography } from '@mui/material'
 import type { FAQ } from '@/features/home/types/homePage.type'
+import { SHADOW, TRANSITION } from '@/theme'
 
 type FAQAccordionProps = {
   readonly faqs: FAQ[]
@@ -62,7 +63,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
                 borderLeft: open ? '3px solid' : '1px solid',
                 borderLeftColor: open ? 'primary.main' : showBorder ? 'divider' : 'transparent',
                 overflow: 'hidden',
-                transition: 'all 0.3s ease',
+                transition: `all ${TRANSITION.slow}`,
                 '&:before': { display: 'none' },
                 '&:hover': {
                   borderColor: open ? 'primary.light' : 'grey.400',
@@ -70,7 +71,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
                 },
                 '&.Mui-expanded': {
                   bgcolor: 'background.paper',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+                  boxShadow: SHADOW.subtle,
                 },
               }}>
               <AccordionSummary
@@ -99,8 +100,8 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
                       minWidth: 36,
                       height: 28,
                       bgcolor: open ? 'primary.main' : 'grey.200',
-                      color: open ? 'white' : 'text.secondary',
-                      transition: 'all 0.3s ease',
+                      color: open ? 'common.white' : 'text.secondary',
+                      transition: `all ${TRANSITION.slow}`,
                     }}
                   />
                 )}
@@ -110,7 +111,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
                   sx={{
                     fontWeight: open ? 700 : 600,
                     color: open ? 'primary.dark' : 'text.primary',
-                    transition: 'color 0.3s ease',
+                    transition: `color ${TRANSITION.slow}`,
                     fontSize: { xs: '0.95rem', md: '1.05rem' },
                   }}>
                   {faq.q}
@@ -128,3 +129,5 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
     </Box>
   )
 }
+
+FAQAccordion.displayName = 'FAQAccordion'

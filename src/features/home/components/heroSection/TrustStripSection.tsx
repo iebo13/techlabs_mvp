@@ -16,6 +16,7 @@ export const TrustStripSection: React.FC<TrustStripSectionProps> = ({ partners }
   const positionsRef = useRef<number[]>([])
   const animationRef = useRef<number>(0)
   const itemWidthRef = useRef<number>(0)
+  const isPausedRef = useRef(false)
 
   useEffect(() => {
     if (partners.length === 0) return
@@ -54,25 +55,27 @@ export const TrustStripSection: React.FC<TrustStripSectionProps> = ({ partners }
     }
 
     const animate = () => {
-      const itemWidth = itemWidthRef.current
+      if (!isPausedRef.current) {
+        const itemWidth = itemWidthRef.current
 
-      positionsRef.current = positionsRef.current.map((currentPos, idx) => {
-        let newPos = currentPos - SPEED
+        positionsRef.current = positionsRef.current.map((currentPos, idx) => {
+          let newPos = currentPos - SPEED
 
-        if (newPos < -itemWidth) {
-          const rightmost = findRightmostPosition()
+          if (newPos < -itemWidth) {
+            const rightmost = findRightmostPosition()
 
-          newPos = rightmost + itemWidth + ITEM_GAP
-        }
+            newPos = rightmost + itemWidth + ITEM_GAP
+          }
 
-        const el = itemRefs.current.at(idx)
+          const el = itemRefs.current.at(idx)
 
-        if (el) {
-          el.style.transform = `translateX(${newPos}px)`
-        }
+          if (el) {
+            el.style.transform = `translateX(${newPos}px)`
+          }
 
-        return newPos
-      })
+          return newPos
+        })
+      }
 
       animationRef.current = requestAnimationFrame(animate)
     }
@@ -97,9 +100,23 @@ export const TrustStripSection: React.FC<TrustStripSectionProps> = ({ partners }
     }
   }, [partners])
 
+  const handlePause = () => {
+    isPausedRef.current = true
+  }
+
+  const handleResume = () => {
+    isPausedRef.current = false
+  }
+
   return (
     <Box
       ref={containerRef}
+      role="marquee"
+      aria-label="Partner logos"
+      onMouseEnter={handlePause}
+      onMouseLeave={handleResume}
+      onFocus={handlePause}
+      onBlur={handleResume}
       sx={{
         backgroundColor: theme.palette.grey[300],
         width: '100%',
@@ -130,3 +147,5 @@ export const TrustStripSection: React.FC<TrustStripSectionProps> = ({ partners }
     </Box>
   )
 }
+
+TrustStripSection.displayName = 'TrustStripSection'

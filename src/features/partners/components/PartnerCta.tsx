@@ -15,21 +15,21 @@ export const PartnerCTA: React.FC = () => {
         <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center" px={{ xs: 2, md: 4 }}>
           <Grid size={{ xs: 12, md: 7 }}>
             <Stack spacing={3}>
-              <Typography variant="h3" component="h2" fontWeight={800} color="white">
+              <Typography variant="h3" component="h2" fontWeight={800} color="common.white">
                 {t('partners.cta.title')}
               </Typography>
-              <Typography variant="body1" color="white" sx={{ opacity: 0.85, maxWidth: 520 }}>
+              <Typography variant="body1" color="common.white" sx={{ opacity: 0.85, maxWidth: 520 }}>
                 {t('partners.cta.subtitle')}
               </Typography>
               <List disablePadding>
                 {benefits.map(benefit => (
                   <ListItem key={benefit} disableGutters sx={{ py: 0.5 }}>
                     <ListItemIcon sx={{ minWidth: 32 }}>
-                      <CheckCircleOutline sx={{ fontSize: 20, color: 'white', opacity: 0.8 }} />
+                      <CheckCircleOutline sx={{ fontSize: 20, color: 'common.white', opacity: 0.8 }} />
                     </ListItemIcon>
                     <ListItemText
                       primary={benefit}
-                      primaryTypographyProps={{ variant: 'body2', color: 'white', sx: { opacity: 0.9 } }}
+                      primaryTypographyProps={{ variant: 'body2', color: 'common.white', sx: { opacity: 0.9 } }}
                     />
                   </ListItem>
                 ))}
@@ -40,7 +40,7 @@ export const PartnerCTA: React.FC = () => {
           <Grid size={{ xs: 12, md: 5 }}>
             <Box
               sx={{
-                bgcolor: 'white',
+                bgcolor: 'common.white',
                 borderRadius: 3,
                 p: { xs: 3, md: 4 },
                 textAlign: 'center',
@@ -66,3 +66,5 @@ export const PartnerCTA: React.FC = () => {
     </Section>
   )
 }
+
+PartnerCTA.displayName = 'PartnerCTA'

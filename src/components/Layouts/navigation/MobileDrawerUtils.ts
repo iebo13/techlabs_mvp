@@ -1,4 +1,5 @@
 import type { Theme } from '@mui/material'
+import { createFocusRing } from '@/theme'
 
 export const PRIMARY_COLOR_OPACITY = '40'
 
@@ -145,10 +146,7 @@ export const createCtaButtonStyles = (theme: Theme, buttonVariant: 'contained' |
     boxShadow:
       buttonVariant === 'contained' ? `0 6px 16px ${theme.palette.primary.main}25` : '0 2px 8px rgba(0, 0, 0, 0.15)',
   },
-  '&:focus-visible': {
-    outline: `3px solid ${theme.palette.primary.main}${PRIMARY_COLOR_OPACITY}`,
-    outlineOffset: 2,
-  },
+  '&:focus-visible': createFocusRing(theme),
   '&:active': {
     transform: 'translateY(0)',
   },

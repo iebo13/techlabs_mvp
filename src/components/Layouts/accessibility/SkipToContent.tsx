@@ -52,3 +52,5 @@ export const SkipToContent: React.FC = () => {
     </Box>
   )
 }
+
+SkipToContent.displayName = 'SkipToContent'

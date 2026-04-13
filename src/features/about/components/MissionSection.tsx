@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, CardContent, Container, Grid, Typography } from '@mui/material'
 import { Section, SectionHeading } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
+import { TRANSITION } from '@/theme'
 
 const VALUE_KEYS = ['accessibility', 'community', 'practicality', 'innovation'] as const
 
@@ -26,7 +27,7 @@ export const MissionSection: React.FC = () => {
                   border: '1px solid',
                   borderColor: 'divider',
                   borderRadius: 3,
-                  transition: 'all 0.3s ease',
+                  transition: `all ${TRANSITION.slow}`,
                   '&:hover': {
                     transform: 'translateY(-4px)',
                     boxShadow: 4,
@@ -48,3 +49,5 @@ export const MissionSection: React.FC = () => {
     </Section>
   )
 }
+
+MissionSection.displayName = 'MissionSection'

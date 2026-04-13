@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
+import { useI18n } from '@/hooks'
 import { SectionSkeleton } from './skeletons'
 
 type DataLoadingStateProps = {
@@ -17,6 +18,8 @@ export const DataLoadingState: React.FC<DataLoadingStateProps> = ({
   skeleton,
   skeletonHeight = 400,
 }) => {
+  const { t } = useI18n()
+
   if (isLoading) {
     return <>{skeleton ?? <SectionSkeleton height={skeletonHeight} />}</>
   }
@@ -25,7 +28,7 @@ export const DataLoadingState: React.FC<DataLoadingStateProps> = ({
     return (
       <Box sx={{ py: 8, textAlign: 'center' }}>
         <Typography variant="h6" color="error" gutterBottom>
-          Something went wrong
+          {t('errorBoundary.title')}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {error.message}
@@ -36,3 +39,5 @@ export const DataLoadingState: React.FC<DataLoadingStateProps> = ({
 
   return <>{children}</>
 }
+
+DataLoadingState.displayName = 'DataLoadingState'

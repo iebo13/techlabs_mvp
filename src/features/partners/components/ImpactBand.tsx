@@ -50,3 +50,5 @@ export const ImpactBand: React.FC<ImpactBandProps> = ({ metrics }) => {
     </Section>
   )
 }
+
+ImpactBand.displayName = 'ImpactBand'

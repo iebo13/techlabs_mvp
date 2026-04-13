@@ -6,6 +6,7 @@ import { FAQAccordion } from '@/components/Forms/FaqAccordion'
 import { Section, SectionHeading } from '@/components/Layouts'
 import type { FAQ } from '@/features/home/types/homePage.type'
 import { useI18n } from '@/hooks'
+import { STICKY_TOP } from '@/theme'
 
 type FaqsSectionProps = {
   readonly faqs: FAQ[]
@@ -52,7 +53,7 @@ export const FaqsSection: React.FC<FaqsSectionProps> = ({ faqs }) => {
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 8 }} alignItems="flex-start">
           <Grid size={{ xs: 12, md: 4 }}>
-            <Stack spacing={3} sx={{ position: { md: 'sticky' }, top: { md: 100 } }}>
+            <Stack spacing={3} sx={{ position: { md: 'sticky' }, top: { md: STICKY_TOP.sidebar } }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                 <Box
                   sx={{
@@ -152,3 +153,5 @@ export const FaqsSection: React.FC<FaqsSectionProps> = ({ faqs }) => {
     </Section>
   )
 }
+
+FaqsSection.displayName = 'FaqsSection'

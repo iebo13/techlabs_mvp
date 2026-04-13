@@ -24,3 +24,5 @@ export const FooterCopyRights: React.FC = () => {
     </Box>
   )
 }
+
+FooterCopyRights.displayName = 'FooterCopyRights'

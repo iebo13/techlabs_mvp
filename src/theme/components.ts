@@ -1,17 +1,16 @@
 import { alpha } from '@mui/material/styles'
 import { PRIMARY, GREY } from './colors'
+import { FOCUS_RING_STATIC } from './focusRing'
+import { RADIUS, SHADOW } from './tokens'
 
 export const componentOverrides = {
   MuiButton: {
     styleOverrides: {
       root: {
-        borderRadius: 999,
+        borderRadius: RADIUS.full,
         boxShadow: 'none',
         fontWeight: 800,
-        '&:focus-visible': {
-          outline: `3px solid ${alpha(PRIMARY[500], 0.25)}`,
-          outlineOffset: 2,
-        },
+        '&:focus-visible': FOCUS_RING_STATIC,
       },
       containedPrimary: {
         ':hover': {
@@ -32,20 +31,20 @@ export const componentOverrides = {
   },
   MuiChip: {
     styleOverrides: {
-      root: { borderRadius: 999, fontWeight: 600 },
+      root: { borderRadius: RADIUS.full, fontWeight: 600 },
     },
   },
   MuiCard: {
     styleOverrides: {
       root: {
-        borderRadius: 24,
-        boxShadow: '0px 4px 24px rgba(0,0,0,0.06)',
+        borderRadius: RADIUS.xl,
+        boxShadow: SHADOW.card,
       },
     },
   },
   MuiPaper: {
     styleOverrides: {
-      rounded: { borderRadius: 24 },
+      rounded: { borderRadius: RADIUS.xl },
     },
   },
   MuiTextField: {
@@ -54,7 +53,7 @@ export const componentOverrides = {
   MuiOutlinedInput: {
     styleOverrides: {
       root: {
-        borderRadius: 12,
+        borderRadius: RADIUS.md,
         backgroundColor: GREY[0],
         '& fieldset': { borderColor: GREY[300] },
         '&:hover fieldset': { borderColor: GREY[700] },
@@ -68,15 +67,12 @@ export const componentOverrides = {
         color: PRIMARY[500],
         width: 28,
         height: 28,
-        borderRadius: 6,
+        borderRadius: RADIUS.sm,
         padding: '6px',
         '&.Mui-checked': {
           color: PRIMARY[500],
         },
-        '&:focus-visible': {
-          outline: `2px solid ${PRIMARY[500]}`,
-          outlineOffset: 2,
-        },
+        '&:focus-visible': FOCUS_RING_STATIC,
         '& .MuiSvgIcon-root': {
           fontSize: 24,
         },
@@ -95,9 +91,9 @@ export const componentOverrides = {
   MuiAppBar: {
     styleOverrides: {
       root: {
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        backgroundColor: alpha(GREY[0], 0.95),
         backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+        borderBottom: `1px solid ${alpha('#000000', 0.08)}`,
         boxShadow: 'none',
       },
     },

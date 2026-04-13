@@ -88,7 +88,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose }) => {
           }}>
           {t('navigation.mobileMenuDescription')}
         </Typography>
-        <IconButton edge="end" onClick={onClose} aria-label="close navigation menu" sx={closeButtonStyles}>
+        <IconButton edge="end" onClick={onClose} aria-label={t('navigation.closeMenu')} sx={closeButtonStyles}>
           <CloseIcon
             sx={{
               fontSize: {

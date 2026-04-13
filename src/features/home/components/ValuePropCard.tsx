@@ -24,3 +24,5 @@ export const ValuePropCard: React.FC<ValuePropCardProps> = ({ icon, title, body 
     </Box>
   )
 }
+
+ValuePropCard.displayName = 'ValuePropCard'

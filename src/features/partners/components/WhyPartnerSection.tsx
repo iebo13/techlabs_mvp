@@ -3,6 +3,7 @@ import { Campaign, Diversity3, Groups, Lightbulb, Public, School } from '@mui/ic
 import { Box, Card, CardContent, Container, Grid, Stack, Typography } from '@mui/material'
 import { Section, SectionHeading } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
+import { RADIUS, SHADOW, TRANSITION } from '@/theme'
 
 const BENEFIT_KEYS = [
   { key: 'fosterTalent', icon: School },
@@ -32,10 +33,11 @@ export const WhyPartnerSection: React.FC = () => {
                   <Card
                     sx={{
                       height: '100%',
-                      transition: 'all 0.25s ease-in-out',
+                      borderRadius: RADIUS.md,
+                      transition: `all ${TRANSITION.normal}`,
                       '&:hover': {
                         transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                        boxShadow: SHADOW.cardHover,
                       },
                     }}>
                     <CardContent sx={{ p: 3 }}>
@@ -50,7 +52,7 @@ export const WhyPartnerSection: React.FC = () => {
                             alignItems: 'center',
                             justifyContent: 'center',
                           }}>
-                          <IconComponent sx={{ color: 'white', fontSize: 28 }} />
+                          <IconComponent sx={{ color: 'common.white', fontSize: 28 }} />
                         </Box>
                         <Typography variant="h6" fontWeight={700}>
                           {t(`partners.whyPartner.benefits.${benefit.key}.title`)}
@@ -70,3 +72,5 @@ export const WhyPartnerSection: React.FC = () => {
     </Section>
   )
 }
+
+WhyPartnerSection.displayName = 'WhyPartnerSection'

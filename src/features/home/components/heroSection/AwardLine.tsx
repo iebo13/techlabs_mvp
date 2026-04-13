@@ -34,3 +34,5 @@ export const AwardLine: React.FC = () => {
     </Box>
   )
 }
+
+AwardLine.displayName = 'AwardLine'

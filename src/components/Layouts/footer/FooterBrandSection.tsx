@@ -16,3 +16,5 @@ export const FooterBrandSection: React.FC = () => {
     </Box>
   )
 }
+
+FooterBrandSection.displayName = 'FooterBrandSection'

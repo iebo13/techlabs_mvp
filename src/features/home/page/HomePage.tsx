@@ -67,3 +67,5 @@ export const HomePage: React.FC = () => {
     </main>
   )
 }
+
+HomePage.displayName = 'HomePage'

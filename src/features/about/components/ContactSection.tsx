@@ -114,3 +114,5 @@ export const ContactSection: React.FC<{ data: ContactData }> = ({ data }) => {
     </Section>
   )
 }
+
+ContactSection.displayName = 'ContactSection'

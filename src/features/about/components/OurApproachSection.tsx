@@ -3,6 +3,7 @@ import { Build, Groups, MoneyOff } from '@mui/icons-material'
 import { Box, Card, CardContent, Container, Grid, Stack, Typography } from '@mui/material'
 import { Section, SectionHeading } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
+import { SHADOW, TRANSITION } from '@/theme'
 
 const DIFFERENTIATORS = [
   { key: 'free', icon: MoneyOff },
@@ -30,10 +31,10 @@ export const OurApproachSection: React.FC = () => {
                   <Card
                     sx={{
                       height: '100%',
-                      transition: 'all 0.25s ease-in-out',
+                      transition: `all ${TRANSITION.normal}`,
                       '&:hover': {
                         transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                        boxShadow: SHADOW.cardHover,
                       },
                     }}>
                     <CardContent sx={{ p: 3 }}>
@@ -48,7 +49,7 @@ export const OurApproachSection: React.FC = () => {
                             alignItems: 'center',
                             justifyContent: 'center',
                           }}>
-                          <IconComponent sx={{ color: 'white', fontSize: 28 }} />
+                          <IconComponent sx={{ color: 'common.white', fontSize: 28 }} />
                         </Box>
                         <Typography variant="h6" fontWeight={700}>
                           {t(`about.approachSection.${item.key}.title`)}
@@ -68,3 +69,5 @@ export const OurApproachSection: React.FC = () => {
     </Section>
   )
 }
+
+OurApproachSection.displayName = 'OurApproachSection'

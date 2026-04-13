@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Box, Card, CardContent, Chip, Grid, Typography, useTheme } from '@mui/material'
 import { OptimizedImage } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
+import { createLinkCardWrapper, createLinkCard, CHIP_OVERLAY, CARD_TITLE, CARD_DESCRIPTION } from '@/theme'
 import type { StoryCardProps } from '../types/stories.types'
 import { PORTRAIT_IMAGE_OBJECT_POSITION } from '../utils/portraitObjectPosition'
 
@@ -16,36 +17,15 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
         component={Link}
         to={`/stories/${story.id}`}
         aria-label={t('common:stories.card.viewDetails', { title: story.title })}
-        sx={{
-          display: 'block',
-          textDecoration: 'none',
-          color: 'inherit',
-          height: '100%',
-          '&:focus-visible': {
-            outline: '2px solid',
-            outlineColor: 'primary.main',
-            outlineOffset: '3px',
-            borderRadius: 1,
-          },
-        }}>
-        <Card
-          sx={{
-            height: '100%',
-            transition: 'all 0.22s ease-in-out',
-            borderRadius: 0.5,
-            boxShadow: '8px 12px 12px rgba(44, 42, 42, 0.3)',
-            '&:hover': {
-              transform: 'translateY(-4px)',
-              boxShadow: theme.shadows[8],
-            },
-          }}>
+        sx={createLinkCardWrapper(theme)}>
+        <Card sx={createLinkCard(theme)}>
           {/* Image with track badge overlay */}
           <Box sx={{ position: 'relative' }}>
             <OptimizedImage
               src={story.imageUrl}
               alt={`${story.title} - ${story.excerpt}`}
               width="100%"
-              height="180px"
+              height="220px"
               objectPosition={PORTRAIT_IMAGE_OBJECT_POSITION}
               sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 400px"
               lazy
@@ -55,9 +35,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
               label={story.trackLabel}
               size="small"
               sx={{
-                position: 'absolute',
-                top: 12,
-                left: 12,
+                ...CHIP_OVERLAY,
                 backgroundColor: theme.palette.primary.main,
                 color: theme.palette.primary.contrastText,
                 fontWeight: 500,
@@ -67,16 +45,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
           </Box>
 
           <CardContent sx={{ pt: 2, pb: 2.5 }}>
-            <Typography
-              variant="subtitle1"
-              component="h2"
-              sx={{
-                fontWeight: 600,
-                mb: 0.5,
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-              }}>
+            <Typography variant="subtitle1" component="h2" sx={CARD_TITLE}>
               {story.title}
             </Typography>
 
@@ -88,16 +57,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
               {story.trackLabel}
             </Typography>
 
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                lineHeight: 1.6,
-              }}>
+            <Typography variant="body2" color="text.secondary" sx={CARD_DESCRIPTION}>
               {story.excerpt}
             </Typography>
           </CardContent>

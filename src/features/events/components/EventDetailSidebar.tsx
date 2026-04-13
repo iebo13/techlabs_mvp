@@ -2,6 +2,7 @@ import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import { Box, Button, Paper, Stack, Typography } from '@mui/material'
 import { useI18n } from '@/hooks'
+import { STICKY_TOP } from '@/theme'
 import type { Event } from '../types/events.types'
 
 type EventDetailSidebarProps = {
@@ -22,7 +23,7 @@ export const EventDetailSidebar: React.FC<EventDetailSidebarProps> = ({ event })
         border: '1px solid',
         borderColor: 'divider',
         position: { md: 'sticky' },
-        top: { md: 24 },
+        top: { md: STICKY_TOP.sidebar },
       }}>
       <Stack spacing={2}>
         <Box>

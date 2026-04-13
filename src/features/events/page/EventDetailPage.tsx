@@ -38,7 +38,7 @@ export const EventDetailPage: React.FC = () => {
   const canonicalUrl = `/events/${eventSlug}`
 
   return (
-    <Box>
+    <Box component="main">
       <SEO
         title={`${event.title} - TechLabs Events`}
         description={event.blurb}

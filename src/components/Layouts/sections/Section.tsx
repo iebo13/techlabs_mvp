@@ -19,7 +19,7 @@ export const Section: React.FC<SectionProps> = ({
   const getBackgroundColor = () => {
     switch (variant) {
       case 'paper':
-        return 'background.paper'
+        return 'grey.100'
       case 'primary':
         return 'primary.main'
       case 'secondary':

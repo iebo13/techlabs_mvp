@@ -752,6 +752,76 @@
       "keywords": "about techlabs, mission, program, team, timeline, FAQ, tech education",
       "tags": ["about", "mission", "program", "team", "timeline", "FAQ"]
     },
+    "heroSection": {
+      "tagline": "We Build. Digital. Shapers.",
+      "subtitle": "A volunteer-driven nonprofit teaching tech skills for free since 2018.",
+      "cta": "Become a Digital Shaper",
+      "stats": {
+        "shapers": "Digital Shapers",
+        "cities": "Cities across Europe",
+        "mentors": "Volunteer Mentors",
+        "completionRate": "Completion Rate"
+      }
+    },
+    "approachSection": {
+      "title": "What Makes Us Different",
+      "subtitle": "Three things you won't find at a paid bootcamp.",
+      "free": {
+        "title": "Completely Free",
+        "description": "No tuition, no hidden fees, no income-share agreements. Ever. We're a non-profit funded by partners and the community."
+      },
+      "community": {
+        "title": "Local Community",
+        "description": "Learn alongside a cohort of peers, mentored by local volunteers who work in tech. Not an anonymous online course."
+      },
+      "projects": {
+        "title": "Real Projects",
+        "description": "Build a portfolio project with a team for a real challenge. Not toy exercises — work that earns a place on your CV."
+      }
+    },
+    "storySection": {
+      "title": "How It Started",
+      "hook": "In 2018, a group of students in Münster asked a simple question: why does learning tech skills have to cost thousands of euros?",
+      "body": "They couldn't find a good answer. So they built TechLabs — a volunteer-run program where anyone with motivation could learn web development, data science, or AI, completely free. No entrance exams, no tuition, no income-share agreements. Just a community of people helping each other grow.\n\nWhat started as a single cohort of 40 learners has become a movement across eight European cities. Over 2,500 Digital Shapers have graduated. The mentors are still volunteers. The program is still free. And the question that started it all still drives everything we do.",
+      "quote": {
+        "text": "I'd been rejected from three paid bootcamps I couldn't afford. TechLabs didn't ask for my bank statement — they asked what I wanted to build.",
+        "name": "Lena S.",
+        "role": "Digital Shaper, Batch #3 — now Junior Developer at SAP"
+      },
+      "timelineTitle": "Our Journey",
+      "milestones": [
+        {
+          "year": "2018",
+          "title": "Founded in Münster",
+          "description": "A group of students launched TechLabs with a simple idea: free, community-driven tech education for everyone."
+        },
+        {
+          "year": "2019",
+          "title": "First Cohort Graduates",
+          "description": "Our inaugural batch of 40 Digital Shapers completed the program — proving the model works."
+        },
+        {
+          "year": "2020",
+          "title": "Expanding Across Germany",
+          "description": "TechLabs grew to five cities as demand surged. The pandemic proved online-first learning was the future."
+        },
+        {
+          "year": "2022",
+          "title": "1,000 Digital Shapers",
+          "description": "We celebrated our thousandth graduate — from career changers to students to refugees building new futures."
+        },
+        {
+          "year": "2024",
+          "title": "Eight European Cities",
+          "description": "TechLabs expanded internationally, bringing free tech education to communities across Europe."
+        },
+        {
+          "year": "2026",
+          "title": "The Future",
+          "description": "Our vision: make high-quality tech education a right, not a privilege, in every major European city."
+        }
+      ]
+    },
     "missionSection": {
       "title": "Empowering the Next Generation of Tech Leaders",
       "subtitle": "TechLabs is a non-profit organization dedicated to making technology education accessible to everyone, regardless of their background or financial situation.",
@@ -803,22 +873,30 @@
     },
     "teamSection": {
       "title": "Meet Our Team",
-      "description": "Our team combines expertise in education, technology, and community building to create the best possible learning experience.",
-      "members": {
-        "sarah": {
-          "name": "Dr. Sarah Chen",
-          "role": "Executive Director",
-          "bio": "Former Google engineer with 15+ years in tech education and community development."
+      "description": "TechLabs is built by volunteers who believe in the power of free tech education.",
+      "volunteerBadge": "Volunteer",
+      "cta": "Join Our Team",
+      "allDepartments": "All",
+      "departments": {
+        "leadership": {
+          "label": "Leadership",
+          "description": "Guiding TechLabs' strategic vision and ensuring our mission stays on track."
         },
-        "marcus": {
-          "name": "Marcus Weber",
-          "role": "Head of Learning",
-          "bio": "Curriculum designer with expertise in adult education and skill development."
+        "mentors": {
+          "label": "Mentors",
+          "description": "Industry professionals who volunteer their time to guide our learners through their tech journey."
         },
-        "lisa": {
-          "name": "Lisa Müller",
-          "role": "Community Manager",
-          "bio": "Passionate about building inclusive communities and connecting people through technology."
+        "tech": {
+          "label": "Tech",
+          "description": "Building and maintaining the platform that powers the TechLabs learning experience."
+        },
+        "marketing": {
+          "label": "Marketing",
+          "description": "Spreading the word and growing our community of digital shapers across Europe."
+        },
+        "operations": {
+          "label": "Operations",
+          "description": "Keeping everything running smoothly — from finances to logistics."
         }
       }
     },
@@ -840,9 +918,29 @@
         "address": "TechLabs e.V., Königsallee 92, 40212 Düsseldorf, Germany"
       }
     },
+    "joinSection": {
+      "title": "Get Involved",
+      "subtitle": "There are many ways to become part of the TechLabs community.",
+      "shaper": {
+        "title": "Become a Digital Shaper",
+        "description": "Join our free program and learn web development, data science, or AI with a supportive community.",
+        "cta": "Explore Tracks"
+      },
+      "mentor": {
+        "title": "Mentor With Us",
+        "description": "Share your industry expertise and help shape the next generation of tech talent.",
+        "cta": "Get in Touch"
+      },
+      "partner": {
+        "title": "Partner With Us",
+        "description": "Collaborate with TechLabs to connect with motivated tech talent and support digital education.",
+        "cta": "Learn More"
+      }
+    },
     "faqSection": {
       "title": "Frequently Asked Questions",
-      "moreQuestions": "More Questions"
+      "moreQuestions": "More Questions",
+      "contactCta": "Still have questions? Get in touch"
     }
   },
   "events": {

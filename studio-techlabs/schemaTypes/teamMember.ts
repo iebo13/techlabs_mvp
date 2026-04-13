@@ -37,6 +37,15 @@ export const teamMember = defineType({
       description: 'Upload image (preferred over URL)',
     }),
     defineField({
+      name: 'socialLinks',
+      title: 'Social Links',
+      type: 'object',
+      fields: [
+        defineField({ name: 'linkedin', title: 'LinkedIn', type: 'url' }),
+        defineField({ name: 'github', title: 'GitHub', type: 'url' }),
+      ],
+    }),
+    defineField({
       name: 'order',
       title: 'Display Order',
       type: 'number',

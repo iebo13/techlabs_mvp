@@ -5,20 +5,39 @@ export const ABOUT_CONTENT_QUERY = /* groq */ `
     timeline,
     team {
       title,
-      description
+      description,
+      departments[] {
+        key,
+        label,
+        description
+      }
     },
-    contact
+    contact,
+    story {
+      hook,
+      body,
+      quote {
+        text,
+        name,
+        role
+      }
+    }
   }
 `
 
 export const TEAM_MEMBERS_QUERY = /* groq */ `
-  *[_type == "teamMember"] | order(order asc) {
+  *[_type == "teamMember"] | order(department asc, order asc) {
     _id,
     name,
     role,
+    department,
     bio,
     imageUrl,
-    "imageAssetUrl": image.asset->url
+    "imageAssetUrl": image.asset->url,
+    socialLinks {
+      linkedin,
+      github
+    }
   }
 `
 

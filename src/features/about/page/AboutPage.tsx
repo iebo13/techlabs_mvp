@@ -1,9 +1,18 @@
 import React, { useEffect, useRef } from 'react'
 import { Box } from '@mui/material'
-import { DataLoadingState, SEO } from '@/components/Layouts'
-import { FaqsSection } from '@/features/about/components/FaqsSection'
+import { DataLoadingState, LazyIntersection, SEO } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
-import { ContactSection, MissionSection, TeamSection, ProgramSection } from '../components'
+import {
+  AboutHero,
+  ContactSection,
+  FaqsSection,
+  JoinUsSection,
+  MissionSection,
+  OurApproachSection,
+  OurStorySection,
+  ProgramSection,
+  TeamSection,
+} from '../components'
 import { useAboutData, useFaqs } from '../hooks/useAboutData'
 
 export const AboutPage: React.FC = () => {
@@ -36,13 +45,25 @@ export const AboutPage: React.FC = () => {
         tags={t('about.page.tags', { returnObjects: true }) as string[]}
       />
       <DataLoadingState isLoading={isLoading} error={error}>
-        <MissionSection />
-        <ProgramSection />
-        <TeamSection />
-        {aboutData?.contact && <ContactSection data={aboutData.contact} />}
+        <AboutHero />
+        <OurApproachSection />
+        <LazyIntersection>
+          <OurStorySection />
+        </LazyIntersection>
+        <LazyIntersection>
+          <MissionSection />
+        </LazyIntersection>
+        <LazyIntersection>
+          <ProgramSection />
+        </LazyIntersection>
+        <LazyIntersection>
+          <TeamSection members={aboutData?.team.members ?? []} />
+        </LazyIntersection>
+        <JoinUsSection />
         <Box ref={faqRef} tabIndex={-1}>
           <FaqsSection faqs={faqs ?? []} />
         </Box>
+        {aboutData?.contact && <ContactSection data={aboutData.contact} />}
       </DataLoadingState>
     </main>
   )

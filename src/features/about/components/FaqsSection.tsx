@@ -1,38 +1,30 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { QuestionAnswer } from '@mui/icons-material'
-import { Button, Stack, Typography } from '@mui/material'
+import { Stack } from '@mui/material'
+import { CTAButton } from '@/components/Buttons/CtaButton'
 import { FAQAccordion } from '@/components/Forms/FaqAccordion'
-import { Section } from '@/components/Layouts'
+import { Section, SectionHeading } from '@/components/Layouts'
 import type { FAQ } from '@/features/home/types/homePage.type'
 import { useI18n } from '@/hooks'
 
 type FaqsSectionProps = {
-  faqs: FAQ[]
+  readonly faqs: FAQ[]
 }
 
 export const FaqsSection: React.FC<FaqsSectionProps> = ({ faqs }) => {
   const { t } = useI18n()
 
   return (
-    <Section sx={{ py: { xs: 6, md: 8 } }}>
-      <Stack spacing={6} alignItems="center" p={2}>
-        <Typography variant="h2" component="h2" gutterBottom color="primary.main" fontWeight={600}>
+    <Section variant="paper" sx={{ py: { xs: 6, md: 8 } }}>
+      <Stack spacing={6} alignItems="center" px={2}>
+        <SectionHeading level={2} centered>
           {t('about.faqSection.title')}
-        </Typography>
+        </SectionHeading>
 
         <FAQAccordion faqs={faqs} maxWidth="md" showBorder singleOpen />
 
-        <Button
-          component={Link}
-          to="/about#faq"
-          variant="outlined"
-          startIcon={<QuestionAnswer />}
-          sx={{
-            fontWeight: 600,
-          }}>
-          {t('about.faqSection.moreQuestions')}
-        </Button>
+        <CTAButton to="/about#contact" variant="outlined">
+          {t('about.faqSection.contactCta')}
+        </CTAButton>
       </Stack>
     </Section>
   )

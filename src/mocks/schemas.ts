@@ -1,11 +1,4 @@
-/**
- * Zod validation schemas for mock data
- * Ensures runtime type safety for all JSON data
- */
-
 import { z } from 'zod'
-
-// Base schemas
 export const TrackKeySchema = z.enum(['web-dev', 'data-science', 'product-design', 'ai'])
 
 export const TrackSchema = z.object({
@@ -148,77 +141,21 @@ export const FAQSchema = z.object({
   a: z.string().min(1),
 })
 
-// About page schemas
-export const ValueSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-})
-
-export const MissionSchema = z.object({
-  title: z.string().min(1),
-  subtitle: z.string().min(1),
-  description: z.string().min(1),
-  values: z.array(ValueSchema),
-})
-
-export const ProgramPhaseSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  duration: z.string().min(1),
-  icon: z.string().min(1),
-})
-
-export const ProgramSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  phases: z.array(ProgramPhaseSchema),
-})
-
-export const TimelineMilestoneSchema = z.object({
-  year: z.string().min(1),
-  title: z.string().min(1),
-  description: z.string().min(1),
-})
-
-export const TimelineSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  milestones: z.array(TimelineMilestoneSchema),
-})
-
-export const TeamMemberSchema = z.object({
-  name: z.string().min(1),
-  role: z.string().min(1),
-  bio: z.string().min(1),
-  imageUrl: z.string().min(1),
-})
-
-export const TeamSchema = z.object({
-  title: z.string().min(1).nullish(),
-  description: z.string().min(1).nullish(),
-  members: z.array(TeamMemberSchema),
-})
-
-export const ContactSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  email: z.string().email(),
-  phone: z.string().min(1),
-  address: z.string().min(1),
-  social: z.object({
-    linkedin: z.string().url(),
-    twitter: z.string().url(),
-    github: z.string().url(),
-  }),
-})
-
-export const AboutDataSchema = z.object({
-  mission: MissionSchema,
-  program: ProgramSchema,
-  timeline: TimelineSchema.nullish(),
-  team: TeamSchema,
-  contact: ContactSchema,
-})
+// About page schemas — split to aboutSchemas.ts for line limit
+export {
+  AboutDataSchema,
+  ContactSchema,
+  DepartmentKeySchema,
+  DepartmentSchema,
+  MissionSchema,
+  ProgramPhaseSchema,
+  ProgramSchema,
+  TeamMemberSchema,
+  TeamSchema,
+  TimelineMilestoneSchema,
+  TimelineSchema,
+  ValueSchema,
+} from './aboutSchemas'
 
 export const HeroDataSchema = z.object({
   title: z.string().min(1),
@@ -255,10 +192,14 @@ export type PartnerTestimonialValidated = z.infer<typeof PartnerTestimonialSchem
 export type PartnerImpactMetricValidated = z.infer<typeof PartnerImpactMetricSchema>
 
 // About page types
-export type AboutDataValidated = z.infer<typeof AboutDataSchema>
-export type MissionValidated = z.infer<typeof MissionSchema>
-export type ProgramValidated = z.infer<typeof ProgramSchema>
-export type TimelineValidated = z.infer<typeof TimelineSchema>
-export type TeamValidated = z.infer<typeof TeamSchema>
-export type ContactValidated = z.infer<typeof ContactSchema>
+export type {
+  AboutDataValidated,
+  ContactValidated,
+  DepartmentKeyValidated,
+  DepartmentValidated,
+  MissionValidated,
+  ProgramValidated,
+  TeamValidated,
+  TimelineValidated,
+} from './aboutSchemas'
 export type FAQValidated = z.infer<typeof FAQSchema>

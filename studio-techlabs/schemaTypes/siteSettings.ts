@@ -163,6 +163,25 @@ export const siteSettings = defineType({
           ],
         }),
         defineField({
+          name: 'story',
+          title: 'Our Story',
+          type: 'object',
+          fields: [
+            defineField({ name: 'hook', title: 'Opening Hook', type: 'text' }),
+            defineField({ name: 'body', title: 'Story Body', type: 'text' }),
+            defineField({
+              name: 'quote',
+              title: 'Pull Quote',
+              type: 'object',
+              fields: [
+                defineField({ name: 'text', title: 'Quote Text', type: 'text' }),
+                defineField({ name: 'name', title: 'Name', type: 'string' }),
+                defineField({ name: 'role', title: 'Role', type: 'string' }),
+              ],
+            }),
+          ],
+        }),
+        defineField({
           name: 'team',
           title: 'Team Section',
           type: 'object',

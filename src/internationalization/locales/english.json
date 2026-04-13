@@ -970,7 +970,152 @@
   },
   "partners": {
     "title": "Our Partners",
-    "description": "Companies and organizations that support our mission"
+    "description": "Companies and organizations that support our mission",
+    "hero": {
+      "title": "Together, We Build the Next Generation of Tech Leaders",
+      "subtitle": "Join 20+ industry leaders and 330+ volunteers empowering diverse talent through hands-on tech education across 16 European locations.",
+      "cta": "Become a Partner",
+      "secondaryCta": "Why Partner With Us"
+    },
+    "grid": {
+      "title": "Our Partners",
+      "subtitle": "Together with our partners, we're building the next generation of tech leaders and innovators.",
+      "filterLabel": "Filter by Category",
+      "allCategories": "All Categories",
+      "showingCount": "Showing {{count}} of {{total}} partners"
+    },
+    "impact": {
+      "title": "Our Impact Together",
+      "metrics": {
+        "techies": { "value": "4,000+", "label": "Trained Techies" },
+        "locations": { "value": "16", "label": "Locations in Europe" },
+        "participants": { "value": "650+", "label": "Participants" },
+        "projects": { "value": "87", "label": "Real-World Projects" },
+        "satisfaction": { "value": "4.6/5", "label": "Satisfaction Rating" },
+        "volunteers": { "value": "330+", "label": "Volunteer Members" }
+      }
+    },
+    "whyPartner": {
+      "title": "Why Partner With Us",
+      "subtitle": "Partnering with TechLabs means more than sponsorship — it's an investment in the future of tech talent.",
+      "benefits": {
+        "fosterTalent": {
+          "title": "Foster Talent",
+          "description": "Help us foster young people's talent and make digital education accessible for all."
+        },
+        "talentPool": {
+          "title": "Access Talent Pool",
+          "description": "Access a pool of pre-selected talent with diverse technical skills ready to make an impact."
+        },
+        "solveChallenges": {
+          "title": "Solve Real Challenges",
+          "description": "Get solutions for your own internal challenges through real-world student projects."
+        },
+        "brandVisibility": {
+          "title": "Brand Visibility",
+          "description": "Your partnership is published on our social media channels and website, reaching thousands."
+        },
+        "diverseTalent": {
+          "title": "Diverse Talent",
+          "description": "46% female participants from STEM and business backgrounds — access truly diverse talent."
+        },
+        "scaleEurope": {
+          "title": "Scale Across Europe",
+          "description": "Expand your partnership across 16 TechLabs locations in 8 countries."
+        }
+      }
+    },
+    "partnershipModels": {
+      "title": "Partnership Models",
+      "subtitle": "Choose the partnership model that fits your goals and make a real impact.",
+      "eventPartnership": {
+        "title": "Event Partnership",
+        "subtitle": "Workshops with tech-enthusiastic emerging talent",
+        "description": "Co-create interactive workshops and events with our students, showcasing your expertise and culture.",
+        "benefits": [
+          "Co-create workshops with tech-enthusiastic talent",
+          "Set the framework and topics in coordination with TechLabs",
+          "TechLabs handles event organization and outreach",
+          "Partnership published across our social media channels"
+        ],
+        "cta": "Get Started"
+      },
+      "brandingSponsorship": {
+        "title": "Branding Sponsorship",
+        "subtitle": "Build awareness through TechLabs' strong network",
+        "description": "Increase your brand visibility through TechLabs' strong and growing network of tech talent.",
+        "benefits": [
+          "Become a semester or event sponsor",
+          "Your logo featured on our website and materials",
+          "Partnership announced on our social media channels",
+          "Visibility at TechLabs events and meetups"
+        ],
+        "cta": "Get Started"
+      }
+    },
+    "testimonials": {
+      "title": "What Our Partners Say",
+      "subtitle": "Hear from organizations making an impact with TechLabs.",
+      "items": [
+        {
+          "quote": "Working with TechLabs gave us access to motivated, skilled talent while contributing to digital education. The project results exceeded our expectations.",
+          "name": "Partner Representative",
+          "role": "Innovation Manager",
+          "company": "Industry Partner"
+        },
+        {
+          "quote": "The workshop collaboration was seamless. TechLabs students brought fresh perspectives and innovative approaches to our real-world challenges.",
+          "name": "Partner Representative",
+          "role": "HR Director",
+          "company": "Technology Partner"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Partnership FAQs",
+      "subtitle": "Common questions about partnering with TechLabs.",
+      "items": [
+        {
+          "q": "What types of partnerships do you offer?",
+          "a": "We offer two main models: Event Partnerships, where you co-create workshops and events with our students, and Branding Sponsorships, where your brand gains visibility across our network. Both can be customized to fit your goals."
+        },
+        {
+          "q": "Is there a minimum commitment?",
+          "a": "Partnerships are flexible and can range from a single event to a full semester engagement. We work with you to find the right level of involvement that matches your capacity and goals."
+        },
+        {
+          "q": "How do the workshops work?",
+          "a": "You define the topic and framework in coordination with TechLabs. We handle organization, outreach, and logistics. Your team leads the workshop with tech-enthusiastic students eager to learn from industry experts."
+        },
+        {
+          "q": "Can we expand our partnership to other locations?",
+          "a": "Absolutely! TechLabs operates in 16 locations across 8 European countries. Partnerships can start locally and scale to additional cities based on your reach and objectives."
+        },
+        {
+          "q": "What kind of students will we work with?",
+          "a": "Our participants come from STEM and business backgrounds, with 46% female representation. They are pre-selected, motivated individuals learning Data Science, AI, Web Development, and UX Design."
+        },
+        {
+          "q": "How do I get started?",
+          "a": "Simply reach out through our contact form or email us. We'll schedule an introductory call to understand your goals and propose a tailored partnership model."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Make an Impact?",
+      "subtitle": "Join our growing network of partners who are building the next generation of tech leaders and innovators.",
+      "benefits": [
+        "Access pre-selected, diverse tech talent",
+        "Co-create real-world projects with our students",
+        "Boost your brand across 16 European locations",
+        "Join a global network of forward-thinking organizations"
+      ],
+      "primaryCta": "Become a Partner",
+      "secondaryCta": "Contact Us"
+    },
+    "card": {
+      "visitPartner": "Visit {{name}} website (opens in new tab)"
+    }
   },
   "common": {
     "loading": "Loading...",

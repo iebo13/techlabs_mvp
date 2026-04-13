@@ -2,6 +2,8 @@ import { event } from './event'
 import { faq } from './faq'
 import { localeString, localeText, localeStringArray } from './locale'
 import { partner } from './partner'
+import { partnerImpactMetric } from './partnerImpactMetric'
+import { partnerTestimonial } from './partnerTestimonial'
 import { siteSettings } from './siteSettings'
 import { story } from './story'
 import { teamMember } from './teamMember'
@@ -20,6 +22,8 @@ export const schemaTypes = [
   event,
   story,
   partner,
+  partnerTestimonial,
+  partnerImpactMetric,
   faq,
   teamMember,
   siteSettings,

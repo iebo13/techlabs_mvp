@@ -1,70 +1,76 @@
-import React from 'react'
-import { Box, Button, Card, Stack, Typography } from '@mui/material'
-import { DataLoadingState, Section, SectionHeading } from '@/components/Layouts'
-import { PartnerLogo } from '../components/PartnerLogo'
+import React, { lazy } from 'react'
+import { DataLoadingState, LazyIntersection, SEO, SectionSkeleton } from '@/components/Layouts'
+import { useI18n } from '@/hooks'
+import { PartnersHero } from '../components/PartnersHero'
+import { usePartnerFaqs } from '../hooks/usePartnerFaqs'
+import { usePartnerImpactMetrics } from '../hooks/usePartnerImpactMetrics'
 import { usePartners } from '../hooks/usePartners'
-import type { Partner } from '../types/partners.type'
+import { usePartnerTestimonials } from '../hooks/usePartnerTestimonials'
+
+const PartnersGrid = lazy(() => import('../components/PartnersGrid').then(m => ({ default: m.PartnersGrid })))
+const ImpactBand = lazy(() => import('../components/ImpactBand').then(m => ({ default: m.ImpactBand })))
+const WhyPartnerSection = lazy(() =>
+  import('../components/WhyPartnerSection').then(m => ({ default: m.WhyPartnerSection }))
+)
+const PartnershipModelsSection = lazy(() =>
+  import('../components/PartnershipModelsSection').then(m => ({ default: m.PartnershipModelsSection }))
+)
+const PartnerTestimonialsSection = lazy(() =>
+  import('../components/PartnerTestimonialsSection').then(m => ({ default: m.PartnerTestimonialsSection }))
+)
+const PartnerFaqSection = lazy(() =>
+  import('../components/PartnerFaqSection').then(m => ({ default: m.PartnerFaqSection }))
+)
+const PartnerCTA = lazy(() => import('../components/PartnerCta').then(m => ({ default: m.PartnerCTA })))
 
 export const PartnersPage: React.FC = () => {
-  const { data: partners, isLoading, error } = usePartners()
+  const { t } = useI18n()
+  const { data: partners, isLoading: partnersLoading, error: partnersError } = usePartners()
+  const { data: testimonials } = usePartnerTestimonials()
+  const { data: faqs } = usePartnerFaqs()
+  const { data: impactMetrics } = usePartnerImpactMetrics()
 
   return (
     <main>
-      <Section>
-        <DataLoadingState isLoading={isLoading} error={error}>
-          <Stack spacing={4} alignItems="center" textAlign="center">
-            <SectionHeading level={2} centered>
-              Our Partners
-            </SectionHeading>
-            <Typography variant="h5" color="text.secondary" maxWidth="600px">
-              Together with our partners, we're making tech education accessible to everyone. Join us in shaping the
-              future of digital learning.
-            </Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'row',
-                gap: 4,
-              }}>
-              {(partners ?? []).map((partner: Partner) => (
-                <PartnerLogo key={partner.name} partner={partner} />
-              ))}
-            </Box>
-          </Stack>
-        </DataLoadingState>
-      </Section>
+      <SEO title={t('partners.title')} description={t('partners.description')} url="/partners" type="website" />
 
-      <Section>
-        <Card
-          sx={{
-            background: 'linear-gradient(135deg, #FF2D63 0%, #FF6B9D 100%)',
-            color: 'white',
-            textAlign: 'center',
-            p: 4,
-          }}>
-          <Stack spacing={3} alignItems="center">
-            <Typography variant="h4" component="h2" fontWeight={700}>
-              Become a Partner
-            </Typography>
-            <Typography variant="h6" maxWidth="600px">
-              Join our mission to make tech education accessible to everyone. Partner with us to shape the future of
-              digital learning.
-            </Typography>
-            <Button
-              variant="outlined"
-              size="large"
-              href="/about#contact"
-              sx={{
-                color: 'white',
-                borderColor: 'white',
-              }}>
-              Get in Touch
-            </Button>
-          </Stack>
-        </Card>
-      </Section>
+      <PartnersHero />
+
+      <DataLoadingState isLoading={partnersLoading} error={partnersError}>
+        <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>
+          <PartnersGrid partners={partners ?? []} />
+        </LazyIntersection>
+      </DataLoadingState>
+
+      {impactMetrics && impactMetrics.length > 0 && (
+        <LazyIntersection fallback={<SectionSkeleton height={200} />} minHeight={200}>
+          <ImpactBand metrics={impactMetrics} />
+        </LazyIntersection>
+      )}
+
+      <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>
+        <WhyPartnerSection />
+      </LazyIntersection>
+
+      <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>
+        <PartnershipModelsSection />
+      </LazyIntersection>
+
+      {testimonials && testimonials.length > 0 && (
+        <LazyIntersection fallback={<SectionSkeleton height={300} />} minHeight={300}>
+          <PartnerTestimonialsSection testimonials={testimonials} />
+        </LazyIntersection>
+      )}
+
+      {faqs && faqs.length > 0 && (
+        <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>
+          <PartnerFaqSection faqs={faqs} />
+        </LazyIntersection>
+      )}
+
+      <LazyIntersection fallback={<SectionSkeleton height={300} />} minHeight={300}>
+        <PartnerCTA />
+      </LazyIntersection>
     </main>
   )
 }

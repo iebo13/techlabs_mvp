@@ -8,25 +8,80 @@
       "category": "Technology & Innovation"
     },
     {
+      "name": "Google",
+      "logoUrl": "/img/partners/google.svg",
+      "description": "Empowering the next generation of developers and innovators",
+      "website": "https://www.google.com",
+      "category": "Technology & Innovation"
+    },
+    {
       "name": "O2",
       "logoUrl": "/img/partners/o2.svg",
-      "description": "Consumer goods company driving digital innovation",
+      "description": "Leading telecommunications provider driving digital innovation",
       "website": "https://www.o2.com",
       "category": "Telecommunications"
     },
     {
-      "name": "deutsche telekom",
+      "name": "Deutsche Telekom",
       "logoUrl": "/img/partners/deutsche-telekom.svg",
-      "description": "Digital agency specializing in creative technology solutions",
-      "website": "https://www.deutsche-telekom.com",
-      "category": "Digital Agency"
+      "description": "Europe's largest telecommunications company enabling digital solutions",
+      "website": "https://www.telekom.com",
+      "category": "Telecommunications"
     },
     {
-      "name": "deutsche post",
+      "name": "Deutsche Post",
       "logoUrl": "/img/partners/deutsche-post.svg",
-      "description": "Empowering digital transformation through technology",
-      "website": "https://www.deutsche-post.com",
-      "category": "Postal Services"
+      "description": "Empowering digital transformation through logistics technology",
+      "website": "https://www.deutschepost.de",
+      "category": "Logistics & Technology"
     }
+  ],
+  "testimonials": [
+    {
+      "quote": "Working with TechLabs gave us access to motivated, skilled talent while contributing to digital education. The project results exceeded our expectations.",
+      "name": "Partner Representative",
+      "role": "Innovation Manager",
+      "company": "Industry Partner"
+    },
+    {
+      "quote": "The workshop collaboration was seamless. TechLabs students brought fresh perspectives and innovative approaches to our real-world challenges.",
+      "name": "Partner Representative",
+      "role": "HR Director",
+      "company": "Technology Partner"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What types of partnerships do you offer?",
+      "a": "We offer two main models: Event Partnerships, where you co-create workshops and events with our students, and Branding Sponsorships, where your brand gains visibility across our network. Both can be customized to fit your goals."
+    },
+    {
+      "q": "Is there a minimum commitment?",
+      "a": "Partnerships are flexible and can range from a single event to a full semester engagement. We work with you to find the right level of involvement that matches your capacity and goals."
+    },
+    {
+      "q": "How do the workshops work?",
+      "a": "You define the topic and framework in coordination with TechLabs. We handle organization, outreach, and logistics. Your team leads the workshop with tech-enthusiastic students eager to learn from industry experts."
+    },
+    {
+      "q": "Can we expand our partnership to other locations?",
+      "a": "Absolutely! TechLabs operates in 16 locations across 8 European countries. Partnerships can start locally and scale to additional cities based on your reach and objectives."
+    },
+    {
+      "q": "What kind of students will we work with?",
+      "a": "Our participants come from STEM and business backgrounds, with 46% female representation. They are pre-selected, motivated individuals learning Data Science, AI, Web Development, and UX Design."
+    },
+    {
+      "q": "How do I get started?",
+      "a": "Simply reach out through our contact form or email us. We'll schedule an introductory call to understand your goals and propose a tailored partnership model."
+    }
+  ],
+  "impactMetrics": [
+    { "value": "4,000+", "label": "Trained Techies" },
+    { "value": "16", "label": "Locations in Europe" },
+    { "value": "650+", "label": "Participants" },
+    { "value": "87", "label": "Real-World Projects" },
+    { "value": "4.6/5", "label": "Satisfaction Rating" },
+    { "value": "330+", "label": "Volunteer Members" }
   ]
 }

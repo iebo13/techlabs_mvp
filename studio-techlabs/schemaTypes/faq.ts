@@ -18,6 +18,21 @@ export const faq = defineType({
       validation: rule => rule.required(),
     }),
     defineField({
+      name: 'section',
+      title: 'Section',
+      type: 'string',
+      description: 'Which page this FAQ belongs to',
+      options: {
+        list: [
+          { title: 'General / Home', value: 'general' },
+          { title: 'Partners', value: 'partners' },
+          { title: 'Tracks', value: 'tracks' },
+          { title: 'About', value: 'about' },
+        ],
+      },
+      initialValue: 'general',
+    }),
+    defineField({
       name: 'order',
       title: 'Display Order',
       type: 'number',
@@ -25,6 +40,6 @@ export const faq = defineType({
     }),
   ],
   preview: {
-    select: { title: 'question.en', subtitle: 'order' },
+    select: { title: 'question.en', subtitle: 'section' },
   },
 })

@@ -974,7 +974,152 @@
   },
   "partners": {
     "title": "Unsere Partner",
-    "description": "Unternehmen und Organisationen, die unsere Mission unterstützen"
+    "description": "Unternehmen und Organisationen, die unsere Mission unterstützen",
+    "hero": {
+      "title": "Gemeinsam bilden wir die nächste Generation von Tech-Talenten aus",
+      "subtitle": "Schließen Sie sich 20+ Branchenführern und 330+ Ehrenamtlichen an, die an 16 europäischen Standorten vielfältige Talente durch praxisnahe Tech-Ausbildung fördern.",
+      "cta": "Partner werden",
+      "secondaryCta": "Warum mit uns?"
+    },
+    "grid": {
+      "title": "Unsere Partner",
+      "subtitle": "Gemeinsam mit unseren Partnern bilden wir die nächste Generation von Tech-Talenten und Innovatoren aus.",
+      "filterLabel": "Nach Kategorie filtern",
+      "allCategories": "Alle Kategorien",
+      "showingCount": "{{count}} von {{total}} Partnern"
+    },
+    "impact": {
+      "title": "Unsere gemeinsame Wirkung",
+      "metrics": {
+        "techies": { "value": "4.000+", "label": "Ausgebildete Techies" },
+        "locations": { "value": "16", "label": "Standorte in Europa" },
+        "participants": { "value": "650+", "label": "Teilnehmende" },
+        "projects": { "value": "87", "label": "Praxisprojekte" },
+        "satisfaction": { "value": "4,6/5", "label": "Zufriedenheit" },
+        "volunteers": { "value": "330+", "label": "Ehrenamtliche Mitglieder" }
+      }
+    },
+    "whyPartner": {
+      "title": "Warum mit uns partnern?",
+      "subtitle": "Eine Partnerschaft mit TechLabs ist mehr als Sponsoring — es ist eine Investition in die Zukunft der Tech-Talente.",
+      "benefits": {
+        "fosterTalent": {
+          "title": "Talente fördern",
+          "description": "Helfen Sie uns, das Talent junger Menschen zu fördern und digitale Bildung für alle zugänglich zu machen."
+        },
+        "talentPool": {
+          "title": "Zugang zum Talentpool",
+          "description": "Zugang zu einem Pool von vorselektierten Talenten mit verschiedensten technischen Fähigkeiten."
+        },
+        "solveChallenges": {
+          "title": "Herausforderungen lösen",
+          "description": "Gewinnen Sie Lösungen für Ihre eigenen internen Herausforderungen durch studentische Praxisprojekte."
+        },
+        "brandVisibility": {
+          "title": "Markensichtbarkeit",
+          "description": "Ihre Partnerschaft wird auf unseren Social-Media-Kanälen und unserer Website veröffentlicht."
+        },
+        "diverseTalent": {
+          "title": "Vielfältige Talente",
+          "description": "46% weibliche Teilnehmende aus MINT- und Wirtschaftsstudiengängen — echte Vielfalt."
+        },
+        "scaleEurope": {
+          "title": "Europaweit skalieren",
+          "description": "Erweitern Sie Ihre Partnerschaft auf 16 TechLabs-Standorte in 8 Ländern."
+        }
+      }
+    },
+    "partnershipModels": {
+      "title": "Partnerschaftsmodelle",
+      "subtitle": "Wählen Sie das Partnerschaftsmodell, das zu Ihren Zielen passt.",
+      "eventPartnership": {
+        "title": "Event-Partnerschaft",
+        "subtitle": "Workshops mit technikbegeisterten aufstrebenden Talenten",
+        "description": "Gestalten Sie interaktive Workshops und Events mit unseren Studierenden und präsentieren Sie Ihre Expertise.",
+        "benefits": [
+          "Workshops mit technikbegeisterten Talenten gestalten",
+          "Rahmen und Themen in Abstimmung mit TechLabs festlegen",
+          "TechLabs übernimmt Organisation und Öffentlichkeitsarbeit",
+          "Partnerschaft auf unseren Social-Media-Kanälen veröffentlicht"
+        ],
+        "cta": "Loslegen"
+      },
+      "brandingSponsorship": {
+        "title": "Branding-Sponsoring",
+        "subtitle": "Bekanntheit durch das starke Netzwerk von TechLabs steigern",
+        "description": "Steigern Sie Ihre Markensichtbarkeit durch das starke und wachsende Netzwerk von TechLabs.",
+        "benefits": [
+          "Semester- oder Event-Sponsor werden",
+          "Ihr Logo auf unserer Website und Materialien",
+          "Partnerschaft auf unseren Social-Media-Kanälen angekündigt",
+          "Sichtbarkeit bei TechLabs-Events und Meetups"
+        ],
+        "cta": "Loslegen"
+      }
+    },
+    "testimonials": {
+      "title": "Was unsere Partner sagen",
+      "subtitle": "Erfahren Sie von Organisationen, die mit TechLabs einen Unterschied machen.",
+      "items": [
+        {
+          "quote": "Die Zusammenarbeit mit TechLabs gab uns Zugang zu motivierten, qualifizierten Talenten und gleichzeitig einen Beitrag zur digitalen Bildung. Die Projektergebnisse haben unsere Erwartungen übertroffen.",
+          "name": "Partner-Vertreter",
+          "role": "Innovationsmanager",
+          "company": "Branchenpartner"
+        },
+        {
+          "quote": "Die Workshop-Zusammenarbeit war reibungslos. TechLabs-Studierende brachten frische Perspektiven und innovative Ansätze für unsere realen Herausforderungen.",
+          "name": "Partner-Vertreter",
+          "role": "HR-Direktorin",
+          "company": "Technologiepartner"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Partnerschafts-FAQ",
+      "subtitle": "Häufige Fragen zur Partnerschaft mit TechLabs.",
+      "items": [
+        {
+          "q": "Welche Arten von Partnerschaften bieten Sie an?",
+          "a": "Wir bieten zwei Hauptmodelle: Event-Partnerschaften, bei denen Sie Workshops und Events mit unseren Studierenden gestalten, und Branding-Sponsoring, bei dem Ihre Marke in unserem Netzwerk sichtbar wird. Beide können an Ihre Ziele angepasst werden."
+        },
+        {
+          "q": "Gibt es eine Mindestbindung?",
+          "a": "Partnerschaften sind flexibel und können von einem einzelnen Event bis zu einem ganzen Semester reichen. Wir finden gemeinsam das richtige Engagement-Level."
+        },
+        {
+          "q": "Wie funktionieren die Workshops?",
+          "a": "Sie definieren Thema und Rahmen in Abstimmung mit TechLabs. Wir kümmern uns um Organisation, Öffentlichkeitsarbeit und Logistik. Ihr Team leitet den Workshop mit technikbegeisterten Studierenden."
+        },
+        {
+          "q": "Können wir die Partnerschaft auf andere Standorte ausweiten?",
+          "a": "Auf jeden Fall! TechLabs ist an 16 Standorten in 8 europäischen Ländern aktiv. Partnerschaften können lokal starten und auf weitere Städte skaliert werden."
+        },
+        {
+          "q": "Mit welchen Studierenden arbeiten wir?",
+          "a": "Unsere Teilnehmenden kommen aus MINT- und Wirtschaftsstudiengängen, mit 46% weiblicher Beteiligung. Sie lernen Data Science, KI, Webentwicklung und UX Design."
+        },
+        {
+          "q": "Wie fange ich an?",
+          "a": "Kontaktieren Sie uns einfach über unser Kontaktformular oder per E-Mail. Wir vereinbaren ein Kennenlerngespräch, um Ihre Ziele zu verstehen und ein passendes Partnerschaftsmodell vorzuschlagen."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Bereit, einen Unterschied zu machen?",
+      "subtitle": "Schließen Sie sich unserem wachsenden Partnernetzwerk an und bilden Sie die nächste Generation von Tech-Talenten aus.",
+      "benefits": [
+        "Zugang zu vorselektierten, vielfältigen Tech-Talenten",
+        "Praxisprojekte mit unseren Studierenden gestalten",
+        "Marke an 16 europäischen Standorten stärken",
+        "Teil eines globalen Netzwerks zukunftsorientierter Organisationen werden"
+      ],
+      "primaryCta": "Partner werden",
+      "secondaryCta": "Kontakt"
+    },
+    "card": {
+      "visitPartner": "Website von {{name}} besuchen (öffnet in neuem Tab)"
+    }
   },
   "common": {
     "loading": "Lädt...",

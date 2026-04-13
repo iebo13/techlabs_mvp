@@ -40,6 +40,18 @@ export const PartnersDataSchema = z.object({
   tiers: z.array(PartnerTierSchema),
 })
 
+export const PartnerTestimonialSchema = z.object({
+  quote: z.string().min(1),
+  name: z.string().min(1),
+  role: z.string().min(1),
+  company: z.string().min(1),
+})
+
+export const PartnerImpactMetricSchema = z.object({
+  value: z.string().min(1),
+  label: z.string().min(1),
+})
+
 export const VideoDataSchema = z.object({
   posterUrl: z.string().min(1), // Allow relative paths for MVP
   srcUrl: z.string().min(1), // Allow relative paths for MVP
@@ -239,6 +251,8 @@ export type PartnerValidated = z.infer<typeof PartnerSchema>
 export type PartnerTierValidated = z.infer<typeof PartnerTierSchema>
 export type DetailedPartnerValidated = z.infer<typeof DetailedPartnerSchema>
 export type PartnersDataValidated = z.infer<typeof PartnersDataSchema>
+export type PartnerTestimonialValidated = z.infer<typeof PartnerTestimonialSchema>
+export type PartnerImpactMetricValidated = z.infer<typeof PartnerImpactMetricSchema>
 
 // About page types
 export type AboutDataValidated = z.infer<typeof AboutDataSchema>

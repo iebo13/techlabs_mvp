@@ -14,20 +14,22 @@ export const DesktopNavigation: React.FC = () => {
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, width: '100%' }}>
       {/* Centered nav links */}
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1, pl: 4 }}>
-        {navigationItems.map(item => (
-          <NavLink
-            key={item.path}
-            to={item.path}
-            sx={{
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap',
-              minWidth: 0,
-              px: 2,
-            }}>
-            {t(item.labelKey)}
-          </NavLink>
-        ))}
+        {navigationItems
+          .filter(item => !item.mobileOnly)
+          .map(item => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              sx={{
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                minWidth: 0,
+                px: 2,
+              }}>
+              {t(item.labelKey)}
+            </NavLink>
+          ))}
       </Box>
 
       {/* Right section */}

@@ -4,7 +4,11 @@ import { useI18n } from '@/hooks'
 import { CitySelector } from './CitySelector'
 import { NavLink } from './NavLink'
 
-export const Logo: React.FC = () => {
+type LogoProps = {
+  compact?: boolean
+}
+
+export const Logo: React.FC<LogoProps> = ({ compact = false }) => {
   const { t } = useI18n()
 
   return (
@@ -28,7 +32,7 @@ export const Logo: React.FC = () => {
           }}
         />
       </NavLink>
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: compact ? 'flex-start' : 'center' }}>
         <NavLink
           to="/"
           showActive={false}
@@ -47,7 +51,7 @@ export const Logo: React.FC = () => {
             TechLabs
           </Typography>
         </NavLink>
-        <CitySelector />
+        {!compact && <CitySelector />}
       </Box>
     </Box>
   )

@@ -16,6 +16,13 @@
     "cta": {
       "joinTeam": "Volunteer werden",
       "startLearning": "Jetzt lernen"
+    },
+    "mobileDrawer": {
+      "tagline": "Baue deine Zukunft · kostenlos"
+    },
+    "sections": {
+      "explore": "Entdecken",
+      "getInvolved": "Mitmachen"
     }
   },
   "hero": {

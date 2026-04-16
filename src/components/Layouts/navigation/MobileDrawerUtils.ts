@@ -1,7 +1,10 @@
 import type { Theme } from '@mui/material'
+import { alpha } from '@mui/material/styles'
 import { createFocusRing } from '@/theme'
 
 export const PRIMARY_COLOR_OPACITY = '40'
+
+export const NAV_ITEM_STAGGER_MS = 60
 
 export type DrawerSpacing = {
   px: number
@@ -86,40 +89,77 @@ export const createCloseButtonStyles = (theme: Theme) => ({
   },
 })
 
-export const createNavLinkStyles = (theme: Theme) => ({
-  display: 'block',
+export const createNavItemStyles = (theme: Theme, isActive: boolean) => ({
+  position: 'relative' as const,
+  display: 'flex',
+  alignItems: 'center',
+  gap: 1.5,
   width: '100%',
   textDecoration: 'none',
   borderRadius: 2,
   mx: 1,
-  mb: 0.75,
+  mb: 0.5,
   minHeight: {
     xs: 52,
     sm: 56,
   },
-  px: {
+  pl: {
+    xs: 2.25,
+    sm: 2.75,
+  },
+  pr: {
     xs: 2,
     sm: 2.5,
   },
   py: {
-    xs: 1.5,
-    sm: 1.75,
+    xs: 1.25,
+    sm: 1.5,
   },
-  transition: theme.transitions.create(['background-color', 'transform'], {
+  color: isActive ? 'primary.main' : 'text.primary',
+  backgroundColor: isActive ? alpha(theme.palette.primary.main, 0.08) : 'transparent',
+  transition: theme.transitions.create(['background-color', 'transform', 'color'], {
     duration: theme.transitions.duration.short,
   }),
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    left: 4,
+    top: '20%',
+    bottom: '20%',
+    width: 3,
+    borderRadius: 2,
+    backgroundColor: isActive ? theme.palette.primary.main : 'transparent',
+    transition: theme.transitions.create(['background-color'], {
+      duration: theme.transitions.duration.short,
+    }),
+  },
   '&:hover': {
-    backgroundColor: 'rgba(0, 0, 0, 0.06)',
-    transform: 'translateX(4px)',
+    backgroundColor: isActive ? alpha(theme.palette.primary.main, 0.12) : alpha(theme.palette.common.black, 0.05),
+    transform: 'translateX(2px)',
+    color: 'primary.main',
   },
   '&:focus-visible': {
     outline: `3px solid ${theme.palette.primary.main}${PRIMARY_COLOR_OPACITY}`,
     outlineOffset: 2,
-    backgroundColor: 'rgba(0, 0, 0, 0.04)',
   },
   '&:active': {
-    transform: 'scale(0.98)',
+    transform: 'scale(0.99)',
   },
+})
+
+export const getSectionLabelSx = () => ({
+  display: 'block',
+  px: {
+    xs: 3,
+    sm: 3.5,
+  },
+  mt: 1,
+  mb: 0.75,
+  fontSize: '0.7rem',
+  fontWeight: 700,
+  letterSpacing: '0.1em',
+  textTransform: 'uppercase' as const,
+  color: 'text.secondary',
 })
 
 export const createCtaButtonStyles = (theme: Theme, buttonVariant: 'contained' | 'outlined') => ({

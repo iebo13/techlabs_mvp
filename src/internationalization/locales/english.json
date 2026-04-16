@@ -16,6 +16,13 @@
     "cta": {
       "joinTeam": "Join our team",
       "startLearning": "Start Learning"
+    },
+    "mobileDrawer": {
+      "tagline": "Learn to build your future · for free"
+    },
+    "sections": {
+      "explore": "Explore",
+      "getInvolved": "Get involved"
     }
   },
   "hero": {

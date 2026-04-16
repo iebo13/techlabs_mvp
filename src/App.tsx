@@ -18,7 +18,9 @@ const AccessibilityTester = lazy(() =>
   }))
 )
 
-const DebugPanel = lazy(() => import('@/components/ErrorHandling').then(module => ({ default: module.DebugPanel })))
+const DebugPanel = lazy(() =>
+  import('@/components/ErrorHandling/DebugPanel').then(module => ({ default: module.DebugPanel }))
+)
 
 const AppContent: React.FC = () => {
   const { currentTheme } = useTheme()

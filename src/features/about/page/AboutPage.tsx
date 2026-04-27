@@ -1,15 +1,25 @@
 import React, { useEffect, useRef } from 'react'
 import { Box } from '@mui/material'
-import { SEO } from '@/components/Layouts'
-import { FaqsSection } from '@/features/about/components/FaqsSection'
+import { DataLoadingState, LazyIntersection, SEO } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
-import contentData from '@/mocks/content.json'
-import faqData from '@/mocks/faq.json'
-import { ContactSection, MissionSection, TeamSection, ProgramSection } from '../components'
+import {
+  AboutHero,
+  ContactSection,
+  FaqsSection,
+  JoinUsSection,
+  MissionSection,
+  OurApproachSection,
+  OurStorySection,
+  ProgramSection,
+  TeamSection,
+} from '../components'
+import { useAboutData, useFaqs } from '../hooks/useAboutData'
 
 export const AboutPage: React.FC = () => {
   const { t } = useI18n()
   const faqRef = useRef<HTMLDivElement>(null)
+  const { data: aboutData, isLoading: aboutLoading, error: aboutError } = useAboutData()
+  const { data: faqs, isLoading: faqsLoading, error: faqsError } = useFaqs()
 
   useEffect(() => {
     if (window.location.hash === '#faq' && faqRef.current) {
@@ -19,6 +29,9 @@ export const AboutPage: React.FC = () => {
       }, 100)
     }
   }, [])
+
+  const isLoading = aboutLoading || faqsLoading
+  const error = aboutError || faqsError
 
   return (
     <main>
@@ -31,13 +44,29 @@ export const AboutPage: React.FC = () => {
         type="website"
         tags={t('about.page.tags', { returnObjects: true }) as string[]}
       />
-      <MissionSection />
-      <ProgramSection />
-      <TeamSection />
-      <ContactSection data={contentData.about.contact} />
-      <Box ref={faqRef} tabIndex={-1}>
-        <FaqsSection faqs={faqData.faqs} />
-      </Box>
+      <DataLoadingState isLoading={isLoading} error={error}>
+        <AboutHero />
+        <OurApproachSection />
+        <LazyIntersection>
+          <OurStorySection />
+        </LazyIntersection>
+        <LazyIntersection>
+          <MissionSection />
+        </LazyIntersection>
+        <LazyIntersection>
+          <ProgramSection />
+        </LazyIntersection>
+        <LazyIntersection>
+          <TeamSection members={aboutData?.team.members ?? []} />
+        </LazyIntersection>
+        <JoinUsSection />
+        <Box ref={faqRef} tabIndex={-1}>
+          <FaqsSection faqs={faqs ?? []} />
+        </Box>
+        {aboutData?.contact && <ContactSection data={aboutData.contact} />}
+      </DataLoadingState>
     </main>
   )
 }
+
+AboutPage.displayName = 'AboutPage'

@@ -2,7 +2,9 @@ import React, { forwardRef } from 'react'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { Link, useTheme } from '@mui/material'
 import type { LinkProps } from '@mui/material/Link'
+import { alpha } from '@mui/material/styles'
 import { useI18n } from '@/hooks'
+import { createFocusRing } from '@/theme'
 
 export type NavLinkProps = {
   to: string
@@ -40,8 +42,7 @@ export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
           transform: 'scale(1.02)',
         },
         '&:focus-visible': {
-          outline: `3px solid ${theme.palette.primary.main}40`,
-          outlineOffset: 2,
+          ...createFocusRing(theme),
           borderRadius: '4px',
         },
         '&:active': {
@@ -105,7 +106,7 @@ export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
 
             '&:hover': {
               ...baseStyles['&:hover'],
-              backgroundColor: 'rgba(0, 0, 0, 0.04)',
+              backgroundColor: alpha(theme.palette.common.black, 0.04),
             },
           }
       }

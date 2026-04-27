@@ -53,27 +53,166 @@
         }
       ]
     },
+    "story": {
+      "hook": "In 2018, a group of students in Münster asked a simple question: why does learning tech skills have to cost thousands of euros?",
+      "body": "They couldn't find a good answer. So they built TechLabs — a volunteer-run program where anyone with motivation could learn web development, data science, or AI, completely free. No entrance exams, no tuition, no income-share agreements. Just a community of people helping each other grow.\n\nWhat started as a single cohort of 40 learners has become a movement across eight European cities. Over 2,500 Digital Shapers have graduated. The mentors are still volunteers. The program is still free. And the question that started it all still drives everything we do.",
+      "quote": {
+        "text": "I'd been rejected from three paid bootcamps I couldn't afford. TechLabs didn't ask for my bank statement — they asked what I wanted to build.",
+        "name": "Lena S.",
+        "role": "Digital Shaper, Batch #3 — now Junior Developer at SAP"
+      }
+    },
     "team": {
       "title": "Meet Our Team",
-      "description": "Our team combines expertise in education, technology, and community building to create the best possible learning experience.",
+      "description": "TechLabs is built by volunteers who believe in the power of free tech education.",
+      "departments": [
+        {
+          "key": "leadership",
+          "label": "Leadership",
+          "description": "Guiding TechLabs' strategic vision and ensuring our mission stays on track."
+        },
+        {
+          "key": "mentors",
+          "label": "Mentors",
+          "description": "Industry professionals who volunteer their time to guide our learners."
+        },
+        {
+          "key": "tech",
+          "label": "Tech",
+          "description": "Building and maintaining the platform that powers the TechLabs experience."
+        },
+        {
+          "key": "marketing",
+          "label": "Marketing",
+          "description": "Spreading the word and growing our community of digital shapers."
+        },
+        {
+          "key": "operations",
+          "label": "Operations",
+          "description": "Keeping everything running smoothly behind the scenes."
+        }
+      ],
       "members": [
         {
           "name": "Dr. Sarah Chen",
           "role": "Executive Director",
+          "department": "leadership",
           "bio": "Former Google engineer with 15+ years in tech education and community development.",
-          "imageUrl": "/img/team/sarah.jpg"
+          "imageUrl": "/img/team/sarah.jpg",
+          "socialLinks": { "linkedin": "https://linkedin.com/in/sarahchen" }
+        },
+        {
+          "name": "Jan Hoffmann",
+          "role": "Co-Founder",
+          "department": "leadership",
+          "bio": "Started TechLabs as a student in Münster. Believes tech education should be a public good.",
+          "imageUrl": "/img/team/jan.jpg",
+          "socialLinks": { "linkedin": "https://linkedin.com/in/janhoffmann" }
+        },
+        {
+          "name": "Priya Sharma",
+          "role": "Head of Partnerships",
+          "department": "leadership",
+          "bio": "Connects TechLabs with industry partners to create real-world learning opportunities.",
+          "imageUrl": "/img/team/priya.jpg",
+          "socialLinks": { "linkedin": "https://linkedin.com/in/priyasharma" }
         },
         {
           "name": "Marcus Weber",
-          "role": "Head of Learning",
-          "bio": "Curriculum designer with expertise in adult education and skill development.",
-          "imageUrl": "/img/team/marcus.jpg"
+          "role": "Lead Mentor",
+          "department": "mentors",
+          "bio": "Full-stack developer at SAP. Guides learners through their web development journey.",
+          "imageUrl": "/img/team/marcus.jpg",
+          "socialLinks": {
+            "linkedin": "https://linkedin.com/in/marcusweber",
+            "github": "https://github.com/marcusweber"
+          }
+        },
+        {
+          "name": "Dr. Anna Petrov",
+          "role": "Data Science Mentor",
+          "department": "mentors",
+          "bio": "Research scientist at Fraunhofer. Passionate about making data science accessible.",
+          "imageUrl": "/img/team/anna.jpg",
+          "socialLinks": { "linkedin": "https://linkedin.com/in/annapetrov" }
+        },
+        {
+          "name": "Kai Tanaka",
+          "role": "AI Mentor",
+          "department": "mentors",
+          "bio": "ML engineer at DeepL. Brings real-world AI experience to the classroom.",
+          "imageUrl": "/img/team/kai.jpg",
+          "socialLinks": {
+            "linkedin": "https://linkedin.com/in/kaitanaka",
+            "github": "https://github.com/kaitanaka"
+          }
+        },
+        {
+          "name": "Felix Braun",
+          "role": "CTO",
+          "department": "tech",
+          "bio": "Architect of the TechLabs learning platform. Open source advocate and React enthusiast.",
+          "imageUrl": "/img/team/felix.jpg",
+          "socialLinks": {
+            "linkedin": "https://linkedin.com/in/felixbraun",
+            "github": "https://github.com/felixbraun"
+          }
+        },
+        {
+          "name": "Amira Hassan",
+          "role": "Frontend Developer",
+          "department": "tech",
+          "bio": "TechLabs alumna turned volunteer. Now builds the tools that helped her learn.",
+          "imageUrl": "/img/team/amira.jpg",
+          "socialLinks": { "github": "https://github.com/amirahassan" }
+        },
+        {
+          "name": "Tom Nielsen",
+          "role": "Platform Engineer",
+          "department": "tech",
+          "bio": "Keeps the infrastructure running. Automates everything he can so mentors can focus on teaching.",
+          "imageUrl": "/img/team/tom.jpg",
+          "socialLinks": { "github": "https://github.com/tomnielsen" }
+        },
+        {
+          "name": "Sophie Keller",
+          "role": "Head of Marketing",
+          "department": "marketing",
+          "bio": "Digital marketing strategist helping TechLabs reach more aspiring tech talent across Europe.",
+          "imageUrl": "/img/team/sophie.jpg",
+          "socialLinks": { "linkedin": "https://linkedin.com/in/sophiekeller" }
+        },
+        {
+          "name": "Luca Romano",
+          "role": "Content Creator",
+          "department": "marketing",
+          "bio": "Tells the stories of TechLabs graduates. Filmmaker and visual storyteller.",
+          "imageUrl": "/img/team/luca.jpg",
+          "socialLinks": { "linkedin": "https://linkedin.com/in/lucaromano" }
+        },
+        {
+          "name": "Elena Voss",
+          "role": "Social Media Manager",
+          "department": "marketing",
+          "bio": "Builds the TechLabs community online. Connects learners before they even start the program.",
+          "imageUrl": "/img/team/elena.jpg",
+          "socialLinks": { "linkedin": "https://linkedin.com/in/elenavoss" }
         },
         {
           "name": "Lisa Müller",
-          "role": "Community Manager",
+          "role": "Operations Lead",
+          "department": "operations",
           "bio": "Passionate about building inclusive communities and connecting people through technology.",
-          "imageUrl": "/img/team/lisa.jpg"
+          "imageUrl": "/img/team/lisa.jpg",
+          "socialLinks": { "linkedin": "https://linkedin.com/in/lisamueller" }
+        },
+        {
+          "name": "David Park",
+          "role": "Finance Lead",
+          "department": "operations",
+          "bio": "Manages TechLabs finances and ensures every euro goes toward our educational mission.",
+          "imageUrl": "/img/team/david.jpg",
+          "socialLinks": { "linkedin": "https://linkedin.com/in/davidpark" }
         }
       ]
     },

@@ -8,6 +8,10 @@ export const useMobileDrawer = () => {
     setMobileOpen(!mobileOpen)
   }
 
+  const handleDrawerOpen = () => {
+    setMobileOpen(true)
+  }
+
   const handleDrawerClose = () => {
     setMobileOpen(false)
 
@@ -39,6 +43,7 @@ export const useMobileDrawer = () => {
   return {
     mobileOpen,
     handleDrawerToggle,
+    handleDrawerOpen,
     handleDrawerClose,
     triggerButtonRef,
   }

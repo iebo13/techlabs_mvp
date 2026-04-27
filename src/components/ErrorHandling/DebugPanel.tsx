@@ -122,3 +122,5 @@ export const DebugPanel: React.FC = () => {
     </>
   )
 }
+
+DebugPanel.displayName = 'DebugPanel'

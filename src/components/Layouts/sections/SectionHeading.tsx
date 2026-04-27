@@ -1,14 +1,15 @@
 import React from 'react'
 import { Typography, Box } from '@mui/material'
 import type { TypographyProps } from '@mui/material/Typography'
+import { PRIMARY, BLUE } from '@/theme'
 
 export type SectionHeadingProps = {
-  level?: 1 | 2 | 3 | 4 | 5 | 6
-  emphasis?: 'primary' | 'secondary' | 'gradient'
-  subtitle?: string
-  centered?: boolean
-  maxWidth?: string | number
-  children: React.ReactNode
+  readonly level?: 1 | 2 | 3 | 4 | 5 | 6
+  readonly emphasis?: 'primary' | 'secondary' | 'gradient'
+  readonly subtitle?: string
+  readonly centered?: boolean
+  readonly maxWidth?: string | number
+  readonly children: React.ReactNode
 } & Omit<TypographyProps, 'variant'>
 
 export const SectionHeading: React.FC<SectionHeadingProps> = ({
@@ -52,7 +53,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
         }
       case 'gradient':
         return {
-          background: 'linear-gradient(45deg, #ff3366 0%, #6c5ce7 100%)',
+          background: `linear-gradient(45deg, ${PRIMARY[500]} 0%, ${BLUE[500]} 100%)`,
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
@@ -88,3 +89,5 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     </Box>
   )
 }
+
+SectionHeading.displayName = 'SectionHeading'

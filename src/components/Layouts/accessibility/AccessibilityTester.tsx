@@ -75,3 +75,5 @@ export const AccessibilityTester: React.FC = () => {
     </Box>
   )
 }
+
+AccessibilityTester.displayName = 'AccessibilityTester'

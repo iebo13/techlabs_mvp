@@ -9,6 +9,7 @@ import {
 import { Avatar, Box, Card, CardContent, Chip, Divider, Stack, Typography } from '@mui/material'
 import { CTAButton } from '@/components/Buttons'
 import { useI18n } from '@/hooks'
+import { STICKY_TOP } from '@/theme'
 import type { Story } from '../types/stories.types'
 import { PORTRAIT_IMAGE_OBJECT_POSITION } from '../utils/portraitObjectPosition'
 
@@ -41,7 +42,7 @@ export const StoryProfileCard: React.FC<StoryProfileCardProps> = ({ story }) => 
   const displayName = story.name ?? story.title
 
   return (
-    <Box sx={{ position: { md: 'sticky' }, top: { md: 88 } }}>
+    <Box sx={{ position: { md: 'sticky' }, top: { md: STICKY_TOP.sidebar } }}>
       <Card elevation={0} sx={{ border: '1px solid', borderColor: 'divider', borderRadius: 3, overflow: 'hidden' }}>
         <Box sx={{ height: 6, bgcolor: 'primary.main' }} />
 

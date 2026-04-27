@@ -2,23 +2,26 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Box, Button, Container, Grid, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
 import { CTAButton } from '@/components/Buttons'
-import { LazyIntersection, Section, SectionHeading, SEO } from '@/components/Layouts'
+import { DataLoadingState, LazyIntersection, Section, SectionHeading, SEO } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
-import eventsData from '@/mocks/events.json'
 import { EventDetailHero } from '../components/EventDetailHero'
 import { EventDetailSidebar } from '../components/EventDetailSidebar'
-import type { Event } from '../types/events.types'
-import { findEventBySlug, getEventSlugFromHref } from '../utils/eventSlug'
-
-const typedEvents = eventsData.events as Event[]
+import { useEventBySlug } from '../hooks/useEvents'
 
 export const EventDetailPage: React.FC = () => {
   const { eventSlug } = useParams<{ eventSlug: string }>()
   const { t } = useI18n()
+  const { data: event, isLoading, error } = useEventBySlug(eventSlug ?? '')
 
-  const event = findEventBySlug(typedEvents, eventSlug)
+  if (isLoading) {
+    return (
+      <DataLoadingState isLoading error={null}>
+        {null}
+      </DataLoadingState>
+    )
+  }
 
-  if (!event) {
+  if (error || !event) {
     return (
       <Section sx={{ py: 12, textAlign: 'center' }}>
         <SectionHeading level={2} emphasis="primary">
@@ -32,13 +35,12 @@ export const EventDetailPage: React.FC = () => {
     )
   }
 
-  const slug = getEventSlugFromHref(event.href)
-  const canonicalUrl = `/events/${slug}`
+  const canonicalUrl = `/events/${eventSlug}`
 
   return (
-    <Box>
+    <Box component="main">
       <SEO
-        title={`${event.title} — TechLabs Events`}
+        title={`${event.title} - TechLabs Events`}
         description={event.blurb}
         keywords={`${event.title}, ${event.location}, TechLabs, event, workshop`}
         image={event.imageUrl}

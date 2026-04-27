@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material'
 import { Avatar, Box, Chip, IconButton, Typography } from '@mui/material'
+import { alpha } from '@mui/material/styles'
 import { useI18n } from '@/hooks'
 import type { Story } from '../types/stories.types'
 import { PORTRAIT_IMAGE_OBJECT_POSITION } from '../utils/portraitObjectPosition'
@@ -49,15 +50,15 @@ export const StoryHero: React.FC<StoryHeroProps> = ({ story }) => {
         }}
       />
 
-      {/* Gradient overlay — keeps title readable on any photo */}
+      {/* Gradient overlay, keeps title readable on any photo */}
       <Box
         aria-hidden="true"
-        sx={{
+        sx={theme => ({
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.35) 100%)',
+          background: `linear-gradient(to top, ${alpha(theme.palette.common.black, 0.92)} 0%, ${alpha(theme.palette.common.black, 0.5)} 45%, ${alpha(theme.palette.common.black, 0.35)} 100%)`,
           zIndex: 1,
-        }}
+        })}
       />
 
       {/* Top bar */}
@@ -75,21 +76,21 @@ export const StoryHero: React.FC<StoryHeroProps> = ({ story }) => {
         <IconButton
           onClick={() => navigate('/stories')}
           aria-label={t('common:stories.detail.backToStories')}
-          sx={{
-            color: 'white',
-            bgcolor: 'rgba(255,255,255,0.12)',
+          sx={theme => ({
+            color: 'common.white',
+            bgcolor: alpha(theme.palette.common.white, 0.12),
             backdropFilter: 'blur(8px)',
-            '&:hover': { bgcolor: 'rgba(255,255,255,0.22)' },
-          }}>
+            '&:hover': { bgcolor: alpha(theme.palette.common.white, 0.22) },
+          })}>
           <ArrowBackIcon />
         </IconButton>
         <Chip
           label={story.trackLabel}
-          sx={{ bgcolor: 'primary.main', color: 'white', fontWeight: 700, fontSize: '0.75rem' }}
+          sx={{ bgcolor: 'primary.main', color: 'common.white', fontWeight: 700, fontSize: '0.75rem' }}
         />
       </Box>
 
-      {/* Person identity — large portrait left, text right */}
+      {/* Person identity, large portrait left, text right */}
       <Box
         sx={{
           position: 'relative',
@@ -106,7 +107,8 @@ export const StoryHero: React.FC<StoryHeroProps> = ({ story }) => {
           sx={{
             width: { xs: 96, sm: 112, md: 132 },
             height: { xs: 96, sm: 112, md: 132 },
-            border: '3px solid white',
+            border: '3px solid',
+            borderColor: 'common.white',
             boxShadow: '0 4px 24px rgba(0,0,0,0.45)',
             flexShrink: 0,
             '& .MuiAvatar-img': { objectPosition: PORTRAIT_IMAGE_OBJECT_POSITION },
@@ -116,7 +118,7 @@ export const StoryHero: React.FC<StoryHeroProps> = ({ story }) => {
           <Typography
             component="h1"
             sx={{
-              color: 'white',
+              color: 'common.white',
               fontWeight: 900,
               lineHeight: 1.1,
               mb: 0.5,
@@ -128,12 +130,16 @@ export const StoryHero: React.FC<StoryHeroProps> = ({ story }) => {
           </Typography>
 
           {story.name && (
-            <Typography variant="subtitle1" sx={{ color: 'rgba(255,255,255,0.7)', mb: 0.5, fontWeight: 400 }}>
+            <Typography
+              variant="subtitle1"
+              sx={theme => ({ color: alpha(theme.palette.common.white, 0.7), mb: 0.5, fontWeight: 400 })}>
               {story.title}
             </Typography>
           )}
 
-          <Typography variant="h6" sx={{ color: 'rgba(255,255,255,0.8)', fontWeight: 400, wordBreak: 'break-word' }}>
+          <Typography
+            variant="h6"
+            sx={theme => ({ color: alpha(theme.palette.common.white, 0.8), fontWeight: 400, wordBreak: 'break-word' })}>
             {story.currentRole} · {story.company}
           </Typography>
         </Box>

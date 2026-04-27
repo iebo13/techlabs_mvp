@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormatQuote as QuoteIcon } from '@mui/icons-material'
 import { Avatar, Box, Stack, Typography } from '@mui/material'
+import { alpha } from '@mui/material/styles'
 import { PORTRAIT_IMAGE_OBJECT_POSITION } from '../utils/portraitObjectPosition'
 
 type StoryPullQuoteProps = {
@@ -19,9 +20,9 @@ export const StoryPullQuote: React.FC<StoryPullQuoteProps> = ({ quote, attributi
       p: { xs: 3, md: 5 },
       borderRadius: 3,
       background: theme =>
-        `linear-gradient(135deg, ${theme.palette.primary.main}08 0%, ${theme.palette.primary.main}14 100%)`,
+        `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.03)} 0%, ${alpha(theme.palette.primary.main, 0.08)} 100%)`,
       border: '1px solid',
-      borderColor: theme => `${theme.palette.primary.main}22`,
+      borderColor: theme => alpha(theme.palette.primary.main, 0.13),
       overflow: 'hidden',
     }}>
     {/* Decorative quote icon */}

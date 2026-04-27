@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, IconButton, useTheme } from '@mui/material'
+import { createFocusRing, TRANSITION } from '@/theme'
 import { socialLinks } from './footerData'
 
 export const FooterSocialRow: React.FC = () => {
@@ -27,21 +28,18 @@ export const FooterSocialRow: React.FC = () => {
             rel={social.name === 'Email' ? undefined : 'noopener noreferrer'}
             aria-label={social.ariaLabel}
             sx={{
-              width: 40,
-              height: 40,
+              width: 44,
+              height: 44,
               backgroundColor: 'primary.main',
-              color: 'white',
+              color: 'common.white',
               borderRadius: '50%',
               border: 'none',
               '&:hover': {
                 backgroundColor: 'primary.main',
                 transform: 'scale(1.1)',
-                transition: 'transform 0.2s ease-in-out',
+                transition: `transform ${TRANSITION.fast}`,
               },
-              '&:focus-visible': {
-                outline: `3px solid ${theme.palette.primary.main}40`,
-                outlineOffset: 2,
-              },
+              '&:focus-visible': createFocusRing(theme),
             }}>
             <IconComponent fontSize="small" />
           </IconButton>
@@ -50,3 +48,5 @@ export const FooterSocialRow: React.FC = () => {
     </Box>
   )
 }
+
+FooterSocialRow.displayName = 'FooterSocialRow'

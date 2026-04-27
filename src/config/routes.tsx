@@ -8,6 +8,10 @@ const TracksPage = lazy(() =>
   import('@/features/tracks/page/TracksPage').then(module => ({ default: module.TracksPage }))
 )
 
+const TrackDetailPage = lazy(() =>
+  import('@/features/tracks/page/TrackDetailPage').then(module => ({ default: module.TrackDetailPage }))
+)
+
 const EventsPage = lazy(() =>
   import('@/features/events/page/EventsPage').then(module => ({ default: module.EventsPage }))
 )
@@ -51,6 +55,15 @@ export const routes: RouteConfig[] = [
     element: (
       <Suspense fallback={<LoadingFallback variant="page" />}>
         <TracksPage />
+      </Suspense>
+    ),
+    lazy: true,
+  },
+  {
+    path: '/tracks/:trackId',
+    element: (
+      <Suspense fallback={<LoadingFallback variant="page" />}>
+        <TrackDetailPage />
       </Suspense>
     ),
     lazy: true,

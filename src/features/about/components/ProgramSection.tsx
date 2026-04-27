@@ -64,10 +64,10 @@ export const ProgramSection: React.FC = () => {
                   borderColor: 'divider',
                   borderRadius: 3,
                   position: 'relative',
+                  transition: 'all 0.3s ease',
                   '&:hover': {
                     transform: 'translateY(-4px)',
                     boxShadow: 4,
-                    transition: 'all 0.3s ease',
                   },
                 }}>
                 <CardContent>
@@ -97,3 +97,5 @@ export const ProgramSection: React.FC = () => {
     </Section>
   )
 }
+
+ProgramSection.displayName = 'ProgramSection'

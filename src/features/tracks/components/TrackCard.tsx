@@ -1,155 +1,88 @@
-import React, { useState, useEffect } from 'react'
-import { ExpandMore, ExpandLess } from '@mui/icons-material'
-import { Card, CardContent, Typography, Box, Chip, Button, Collapse, Stack, Grid, useTheme } from '@mui/material'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Box, Card, CardContent, Chip, Grid, Typography, useTheme } from '@mui/material'
+import { alpha } from '@mui/material/styles'
+import { OptimizedImage } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
+import { createLinkCardWrapper, createLinkCard, CHIP_OVERLAY, CARD_TITLE, CARD_DESCRIPTION } from '@/theme'
 import type { TrackCardProps } from '../types/tracks.types'
 
-export const TrackCard: React.FC<TrackCardProps> = ({ track, isExpanded = false, onToggle }) => {
-  const [expanded, setExpanded] = useState(isExpanded)
+export const TrackCard: React.FC<TrackCardProps> = ({ track }) => {
   const theme = useTheme()
-  const { t, formatDate } = useI18n()
-
-  useEffect(() => {
-    setExpanded(isExpanded)
-  }, [isExpanded])
-
-  const handleToggle = () => {
-    const newExpanded = !expanded
-
-    setExpanded(newExpanded)
-    onToggle?.(track.id)
-  }
+  const { t } = useI18n()
+  const isLowCapacity = track.spotsAvailable < 10
+  const chipLabel = isLowCapacity
+    ? t('tracks.card.spotsLeft', { count: track.spotsAvailable })
+    : t('tracks.card.applicationOpen')
 
   return (
-    <Card
-      sx={{
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        transition: 'all 0.3s ease',
-        '&:hover': {
-          transform: 'translateY(-4px)',
-          boxShadow: theme.shadows[8],
-        },
-      }}>
-      <CardContent sx={{ flexGrow: 1, p: 3 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          <Typography component="span" sx={{ fontSize: '2.5rem', mr: 2 }} aria-hidden="true">
-            {track.icon}
-          </Typography>
-          <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="h3" component="h2" gutterBottom>
+    <Grid size={{ xs: 12, sm: 6 }}>
+      <Box
+        component={Link}
+        to={`/tracks/${track.id}`}
+        aria-label={t('tracks.card.viewDetails', { title: track.label })}
+        sx={createLinkCardWrapper(theme)}>
+        <Card sx={createLinkCard(theme)}>
+          <Box
+            sx={{
+              position: 'relative',
+              overflow: 'hidden',
+              borderTopLeftRadius: 'inherit',
+              borderTopRightRadius: 'inherit',
+            }}>
+            {track.imageUrl ? (
+              <OptimizedImage
+                src={track.imageUrl}
+                alt={track.label}
+                width="100%"
+                height="220px"
+                sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 400px"
+                lazy
+              />
+            ) : (
+              <Box
+                sx={{
+                  height: 220,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.12)} 0%, ${alpha(theme.palette.primary.main, 0.28)} 100%)`,
+                }}>
+                <Typography component="span" aria-hidden="true" sx={{ fontSize: '4rem', lineHeight: 1 }}>
+                  {track.icon}
+                </Typography>
+              </Box>
+            )}
+            <Chip
+              label={chipLabel}
+              size="small"
+              sx={{
+                ...CHIP_OVERLAY,
+                fontWeight: 500,
+                borderRadius: 1,
+                bgcolor: isLowCapacity ? theme.palette.warning.main : theme.palette.primary.main,
+                color: theme.palette.primary.contrastText,
+              }}
+            />
+          </Box>
+
+          <CardContent sx={{ pt: 2, pb: 2.5 }}>
+            <Typography variant="subtitle1" component="h2" sx={CARD_TITLE}>
               {track.label}
             </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ mb: 1 }}>
+
+            <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1.5 }}>
+              {t('tracks.card.durationFormat', { duration: track.duration, format: track.format })}
+            </Typography>
+
+            <Typography variant="body2" color="text.secondary" sx={CARD_DESCRIPTION}>
               {track.description}
             </Typography>
-          </Box>
-        </Box>
-
-        <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-          <Chip label={track.duration} size="small" color="primary" variant="outlined" />
-          <Chip label={track.format} size="small" color="secondary" variant="outlined" />
-          <Chip
-            label={t('tracks.card.spotsLeft', { count: track.spotsAvailable })}
-            size="small"
-            color={track.spotsAvailable < 10 ? 'error' : 'success'}
-            variant="outlined"
-          />
-        </Stack>
-
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Box sx={{ mt: 2 }}>
-            <Box sx={{ mb: 3 }}>
-              <Typography variant="h6" gutterBottom>
-                {t('tracks.card.skillsTitle')}
-              </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                {track.skills.map(skill => (
-                  <Chip key={skill} label={skill} size="small" variant="outlined" />
-                ))}
-              </Box>
-            </Box>
-
-            <Box sx={{ mb: 3 }}>
-              <Typography variant="h6" gutterBottom>
-                {t('tracks.card.projectsTitle')}
-              </Typography>
-              <Grid container spacing={1}>
-                {track.projects.map(project => (
-                  <Grid size={{ xs: 12, sm: 6 }} key={project}>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Box
-                        component="span"
-                        sx={{
-                          width: 6,
-                          height: 6,
-                          borderRadius: '50%',
-                          bgcolor: 'primary.main',
-                          mr: 1,
-                        }}
-                      />
-                      {project}
-                    </Typography>
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
-
-            <Box sx={{ mb: 3 }}>
-              <Typography variant="h6" gutterBottom>
-                {t('tracks.card.careerPathsTitle')}
-              </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                {track.careerPaths.map(career => (
-                  <Chip key={career} label={career} size="small" color="primary" />
-                ))}
-              </Box>
-            </Box>
-
-            <Box sx={{ mb: 2 }}>
-              <Typography variant="h6" gutterBottom>
-                {t('tracks.card.applicationDetailsTitle')}
-              </Typography>
-              <Stack spacing={1}>
-                <Typography variant="body2">
-                  <strong>{t('tracks.card.nextCohort')}:</strong> {track.nextCohort}
-                </Typography>
-                <Typography variant="body2">
-                  <strong>{t('tracks.card.applicationDeadline')}:</strong> {formatDate(track.applicationDeadline)}
-                </Typography>
-              </Stack>
-            </Box>
-          </Box>
-        </Collapse>
-
-        <Box sx={{ mt: 'auto', pt: 2 }}>
-          <Button
-            variant="outlined"
-            onClick={handleToggle}
-            endIcon={expanded ? <ExpandLess /> : <ExpandMore />}
-            fullWidth
-            sx={{ mb: 2 }}
-            aria-expanded={expanded}
-            aria-label={expanded ? t('tracks.card.showLessAriaLabel') : t('tracks.card.showMoreAriaLabel')}>
-            {expanded ? t('tracks.card.showLess') : t('tracks.card.showDetails')}
-          </Button>
-
-          <Button
-            variant="contained"
-            fullWidth
-            size="large"
-            href={`/apply?track=${track.id}`}
-            sx={{
-              bgcolor: 'primary.main',
-              '&:hover': {
-                bgcolor: 'primary.dark',
-              },
-            }}>
-            {t('tracks.card.applyNow')}
-          </Button>
-        </Box>
-      </CardContent>
-    </Card>
+          </CardContent>
+        </Card>
+      </Box>
+    </Grid>
   )
 }
+
+TrackCard.displayName = 'TrackCard'

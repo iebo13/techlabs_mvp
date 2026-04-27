@@ -32,3 +32,5 @@ export const VisuallyHidden: React.FC<VisuallyHiddenProps> = ({ children, compon
     {children}
   </Box>
 )
+
+VisuallyHidden.displayName = 'VisuallyHidden'

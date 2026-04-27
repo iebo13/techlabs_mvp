@@ -30,3 +30,5 @@ export const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
     </Stack>
   )
 }
+
+PartnerLogo.displayName = 'PartnerLogo'

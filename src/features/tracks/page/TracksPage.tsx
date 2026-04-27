@@ -1,64 +1,36 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import { Container, Grid, Typography } from '@mui/material'
-import { Section, SEO } from '@/components/Layouts'
-import { loadTrackSelection, queryParamToTrackIds, getLocalizedTrack } from '@/features/tracks/utils/tracksUtils'
+import React from 'react'
+import { Box } from '@mui/material'
+import { SEO } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
-import tracksData from '@/mocks/tracks.json'
-import { TrackCard } from '../components/TrackCard'
+import { ProgramPhasesBand } from '../components/ProgramPhasesBand'
+import { TrackOverviewHero } from '../components/TrackOverviewHero'
+import { TracksBottomCta } from '../components/TracksBottomCta'
+import { TracksFaqSection } from '../components/TracksFaqSection'
+import { TracksGrid } from '../components/TracksGrid'
+import { WhyTechLabsStrip } from '../components/WhyTechLabsStrip'
 
 export const TracksPage: React.FC = () => {
-  const [searchParams] = useSearchParams()
-  const [expandedTrack, setExpandedTrack] = useState<string | null>(null)
-  const i18n = useI18n()
-
-  const localizedTracks = useMemo(() => {
-    return tracksData.tracks.map(track => getLocalizedTrack(track, i18n.t))
-  }, [i18n.t])
-
-  useEffect(() => {
-    const urlPrefs = searchParams.get('pref')
-
-    if (urlPrefs) {
-      const trackIds = queryParamToTrackIds(urlPrefs)
-
-      if (trackIds.length === 1) {
-        setExpandedTrack(trackIds[0])
-      }
-    } else {
-      loadTrackSelection()
-    }
-  }, [searchParams])
-
-  const handleTrackToggle = (trackId: string) => {
-    setExpandedTrack(expandedTrack === trackId ? null : trackId)
-  }
+  const { t } = useI18n()
 
   return (
-    <main>
+    <Box component="main">
       <SEO
-        title={i18n.t('tracks.page.title')}
-        description={i18n.t('tracks.page.description')}
-        keywords={i18n.t('tracks.page.keywords')}
+        title={t('tracks.page.title')}
+        description={t('tracks.page.description')}
+        keywords={t('tracks.page.keywords')}
         image="/img/tracks-og-image.jpg"
         url="/tracks"
         type="website"
-        tags={i18n.t('tracks.page.tags') as unknown as string[]}
+        tags={t('tracks.page.tags') as unknown as string[]}
       />
-      <Section sx={{ py: { xs: 4, md: 6 } }}>
-        <Container maxWidth="lg">
-          <Typography variant="h1" sx={{ mb: 4, textAlign: 'center' }}>
-            {i18n.t('tracks.page.title')}
-          </Typography>
-          <Grid container spacing={4}>
-            {localizedTracks.map(track => (
-              <Grid size={{ xs: 12, md: 6 }} key={track.id}>
-                <TrackCard track={track} isExpanded={expandedTrack === track.id} onToggle={handleTrackToggle} />
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Section>
-    </main>
+      <TrackOverviewHero />
+      <TracksGrid />
+      <ProgramPhasesBand />
+      <WhyTechLabsStrip />
+      <TracksFaqSection />
+      <TracksBottomCta />
+    </Box>
   )
 }
+
+TracksPage.displayName = 'TracksPage'

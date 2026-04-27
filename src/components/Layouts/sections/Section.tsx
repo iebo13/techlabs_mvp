@@ -2,11 +2,11 @@ import React from 'react'
 import { Box } from '@mui/material'
 
 export type SectionProps = {
-  variant?: 'default' | 'paper' | 'primary' | 'secondary'
-  paddingScale?: number
-  component?: 'section' | 'div' | 'main' | 'article' | 'aside'
-  children: React.ReactNode
-  sx?: React.ComponentProps<typeof Box>['sx']
+  readonly variant?: 'default' | 'paper' | 'primary' | 'secondary'
+  readonly paddingScale?: number
+  readonly component?: 'section' | 'div' | 'main' | 'article' | 'aside'
+  readonly children: React.ReactNode
+  readonly sx?: React.ComponentProps<typeof Box>['sx']
 }
 
 export const Section: React.FC<SectionProps> = ({
@@ -19,7 +19,7 @@ export const Section: React.FC<SectionProps> = ({
   const getBackgroundColor = () => {
     switch (variant) {
       case 'paper':
-        return 'background.paper'
+        return 'grey.100'
       case 'primary':
         return 'primary.main'
       case 'secondary':
@@ -33,7 +33,7 @@ export const Section: React.FC<SectionProps> = ({
     switch (variant) {
       case 'primary':
       case 'secondary':
-        return 'white'
+        return 'common.white'
       default:
         return 'inherit'
     }
@@ -52,3 +52,5 @@ export const Section: React.FC<SectionProps> = ({
     </Box>
   )
 }
+
+Section.displayName = 'Section'

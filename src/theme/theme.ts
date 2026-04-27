@@ -1,6 +1,7 @@
-import { createTheme } from '@mui/material/styles'
+import { alpha, createTheme } from '@mui/material/styles'
 import { PRIMARY, BLUE, GREY } from './colors'
 import { componentOverrides } from './components'
+import { RADIUS } from './tokens'
 
 export const theme = createTheme({
   palette: {
@@ -28,7 +29,7 @@ export const theme = createTheme({
       secondary: GREY[700],
       disabled: GREY[500],
     },
-    divider: 'rgba(0,0,0,0.08)',
+    divider: alpha('#000000', 0.08),
     background: {
       default: GREY[0],
       paper: GREY[0],
@@ -38,7 +39,7 @@ export const theme = createTheme({
   spacing: 8,
 
   shape: {
-    borderRadius: 24,
+    borderRadius: RADIUS.xl,
   },
 
   typography: {
@@ -56,6 +57,9 @@ export const theme = createTheme({
       letterSpacing: '-0.01em',
     },
     h3: { fontSize: '1.875rem', lineHeight: 1.25, fontWeight: 800 },
+    h4: { fontSize: '1.5rem', lineHeight: 1.3, fontWeight: 700 },
+    h5: { fontSize: '1.25rem', lineHeight: 1.4, fontWeight: 700 },
+    h6: { fontSize: '1.125rem', lineHeight: 1.4, fontWeight: 700 },
     subtitle1: { fontSize: '1.125rem', lineHeight: 1.7, fontWeight: 600 },
     body1: { fontSize: '1rem', lineHeight: 1.65, fontWeight: 400, color: GREY[700] },
     body2: { fontSize: '0.875rem', lineHeight: 1.65, fontWeight: 400, color: GREY[700] },
@@ -78,7 +82,7 @@ export const darkTheme = createTheme({
     },
     background: {
       default: GREY[900],
-      paper: '#1a1a1a',
+      paper: GREY[900],
     },
     text: {
       primary: GREY[0],
@@ -90,9 +94,9 @@ export const darkTheme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: 'rgba(26, 26, 26, 0.95)',
+          backgroundColor: alpha(GREY[900], 0.95),
           backdropFilter: 'blur(10px)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
+          borderBottom: `1px solid ${alpha('#FFFFFF', 0.12)}`,
         },
       },
     },

@@ -1,11 +1,4 @@
-/**
- * Zod validation schemas for mock data
- * Ensures runtime type safety for all JSON data
- */
-
 import { z } from 'zod'
-
-// Base schemas
 export const TrackKeySchema = z.enum(['web-dev', 'data-science', 'product-design', 'ai'])
 
 export const TrackSchema = z.object({
@@ -16,7 +9,7 @@ export const TrackSchema = z.object({
 export const PartnerSchema = z.object({
   name: z.string().min(1),
   logoUrl: z.string().min(1), // Allow relative paths for MVP
-  href: z.string().optional(),
+  href: z.string().nullish(),
 })
 
 export const PartnerTierSchema = z.object({
@@ -27,7 +20,7 @@ export const PartnerTierSchema = z.object({
 })
 
 export const DetailedPartnerSchema = z.object({
-  tier: z.string().min(1),
+  tier: z.string().min(1).nullish(),
   name: z.string().min(1),
   logoUrl: z.string().min(1),
   description: z.string().min(1),
@@ -38,6 +31,18 @@ export const DetailedPartnerSchema = z.object({
 export const PartnersDataSchema = z.object({
   partners: z.array(DetailedPartnerSchema),
   tiers: z.array(PartnerTierSchema),
+})
+
+export const PartnerTestimonialSchema = z.object({
+  quote: z.string().min(1),
+  name: z.string().min(1),
+  role: z.string().min(1),
+  company: z.string().min(1),
+})
+
+export const PartnerImpactMetricSchema = z.object({
+  value: z.string().min(1),
+  label: z.string().min(1),
 })
 
 export const VideoDataSchema = z.object({
@@ -73,12 +78,12 @@ export const StoryPhotoCreditSchema = z.object({
 
 export const StorySchema = z.object({
   id: z.string().min(1),
-  name: z.string().min(1).optional(),
+  name: z.string().min(1).nullish(),
   title: z.string().min(1),
   excerpt: z.string().min(1),
   fullDescription: z.string().min(1),
   imageUrl: z.string().min(1),
-  coverImageUrl: z.string().url().optional(),
+  coverImageUrl: z.string().url().nullish(),
   href: z.string().min(1),
   track: TrackKeySchema,
   trackLabel: z.string().min(1),
@@ -86,12 +91,12 @@ export const StorySchema = z.object({
   location: z.string().min(1),
   currentRole: z.string().min(1),
   company: z.string().min(1),
-  beforeRole: z.string().min(1).optional(),
-  achievements: z.array(z.string().min(1)),
-  quote: z.string().min(1).optional(),
-  narrative: StoryNarrativeSchema.optional(),
-  metrics: z.array(StoryMetricSchema).optional(),
-  photoCredit: StoryPhotoCreditSchema.optional(),
+  beforeRole: z.string().min(1).nullish(),
+  achievements: z.array(z.string().min(1)).nullish(),
+  quote: z.string().min(1).nullish(),
+  narrative: StoryNarrativeSchema.nullish(),
+  metrics: z.array(StoryMetricSchema).nullish(),
+  photoCredit: StoryPhotoCreditSchema.nullish(),
 })
 
 export const EventTypeSchema = z.enum(['upcoming', 'past'])
@@ -111,9 +116,9 @@ export const EventSchema = z.object({
   imageUrl: z.string().min(1),
   href: z.string().min(1),
   description: z.array(z.string().min(1)).min(1),
-  highlights: z.array(z.string().min(1)).optional(),
-  agenda: z.array(EventAgendaItemSchema).optional(),
-  externalUrl: z.string().url().optional(),
+  highlights: z.array(z.string().min(1)).nullish(),
+  agenda: z.array(EventAgendaItemSchema).nullish(),
+  externalUrl: z.string().url().nullish(),
 })
 
 export const NumberStatSchema = z.object({
@@ -136,77 +141,21 @@ export const FAQSchema = z.object({
   a: z.string().min(1),
 })
 
-// About page schemas
-export const ValueSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-})
-
-export const MissionSchema = z.object({
-  title: z.string().min(1),
-  subtitle: z.string().min(1),
-  description: z.string().min(1),
-  values: z.array(ValueSchema),
-})
-
-export const ProgramPhaseSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  duration: z.string().min(1),
-  icon: z.string().min(1),
-})
-
-export const ProgramSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  phases: z.array(ProgramPhaseSchema),
-})
-
-export const TimelineMilestoneSchema = z.object({
-  year: z.string().min(1),
-  title: z.string().min(1),
-  description: z.string().min(1),
-})
-
-export const TimelineSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  milestones: z.array(TimelineMilestoneSchema),
-})
-
-export const TeamMemberSchema = z.object({
-  name: z.string().min(1),
-  role: z.string().min(1),
-  bio: z.string().min(1),
-  imageUrl: z.string().min(1),
-})
-
-export const TeamSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  members: z.array(TeamMemberSchema),
-})
-
-export const ContactSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  email: z.string().email(),
-  phone: z.string().min(1),
-  address: z.string().min(1),
-  social: z.object({
-    linkedin: z.string().url(),
-    twitter: z.string().url(),
-    github: z.string().url(),
-  }),
-})
-
-export const AboutDataSchema = z.object({
-  mission: MissionSchema,
-  program: ProgramSchema,
-  timeline: TimelineSchema,
-  team: TeamSchema,
-  contact: ContactSchema,
-})
+// About page schemas — split to aboutSchemas.ts for line limit
+export {
+  AboutDataSchema,
+  ContactSchema,
+  DepartmentKeySchema,
+  DepartmentSchema,
+  MissionSchema,
+  ProgramPhaseSchema,
+  ProgramSchema,
+  TeamMemberSchema,
+  TeamSchema,
+  TimelineMilestoneSchema,
+  TimelineSchema,
+  ValueSchema,
+} from './aboutSchemas'
 
 export const HeroDataSchema = z.object({
   title: z.string().min(1),
@@ -239,12 +188,18 @@ export type PartnerValidated = z.infer<typeof PartnerSchema>
 export type PartnerTierValidated = z.infer<typeof PartnerTierSchema>
 export type DetailedPartnerValidated = z.infer<typeof DetailedPartnerSchema>
 export type PartnersDataValidated = z.infer<typeof PartnersDataSchema>
+export type PartnerTestimonialValidated = z.infer<typeof PartnerTestimonialSchema>
+export type PartnerImpactMetricValidated = z.infer<typeof PartnerImpactMetricSchema>
 
 // About page types
-export type AboutDataValidated = z.infer<typeof AboutDataSchema>
-export type MissionValidated = z.infer<typeof MissionSchema>
-export type ProgramValidated = z.infer<typeof ProgramSchema>
-export type TimelineValidated = z.infer<typeof TimelineSchema>
-export type TeamValidated = z.infer<typeof TeamSchema>
-export type ContactValidated = z.infer<typeof ContactSchema>
+export type {
+  AboutDataValidated,
+  ContactValidated,
+  DepartmentKeyValidated,
+  DepartmentValidated,
+  MissionValidated,
+  ProgramValidated,
+  TeamValidated,
+  TimelineValidated,
+} from './aboutSchemas'
 export type FAQValidated = z.infer<typeof FAQSchema>

@@ -1,8 +1,8 @@
 import React, { lazy } from 'react'
-import { LazyIntersection, SEO, SectionSkeleton, CarouselSkeleton } from '@/components/Layouts'
+import { DataLoadingState, LazyIntersection, SEO, SectionSkeleton, CarouselSkeleton } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
-import homeData from '@/mocks/home.json'
 import { HeroSection, HeroVideo } from '../components'
+import { useHomeData } from '../hooks/useHomeData'
 import type { HomeData } from '../types/homePage.type'
 
 const WhyTechlabsSection = lazy(() => import('../components/WhyTechlabs').then(m => ({ default: m.WhyTechlabs })))
@@ -19,6 +19,7 @@ const FaqsSection = lazy(() =>
 
 export const HomePage: React.FC = () => {
   const { t } = useI18n()
+  const { data: homeData, isLoading, error } = useHomeData()
 
   return (
     <main>
@@ -31,32 +32,40 @@ export const HomePage: React.FC = () => {
         type="website"
         tags={t('pages.home.tags', { returnObjects: true }) as string[]}
       />
-      <HeroSection />
-      <HeroVideo
-        posterUrl={homeData.video.posterUrl}
-        srcUrl={homeData.video.srcUrl}
-        duration={homeData.video.duration}
-      />
+      <DataLoadingState isLoading={isLoading} error={error}>
+        <HeroSection />
+        {homeData && (
+          <>
+            <HeroVideo
+              posterUrl={homeData.video.posterUrl}
+              srcUrl={homeData.video.srcUrl}
+              duration={homeData.video.duration}
+            />
 
-      <LazyIntersection fallback={<SectionSkeleton height={300} />} minHeight={300}>
-        <WhyTechlabsSection />
-      </LazyIntersection>
+            <LazyIntersection fallback={<SectionSkeleton height={300} />} minHeight={300}>
+              <WhyTechlabsSection />
+            </LazyIntersection>
 
-      <LazyIntersection fallback={<CarouselSkeleton cards={3} cardHeight={350} />} minHeight={350}>
-        <StoriesCarousel stories={homeData.stories as HomeData['stories']} />
-      </LazyIntersection>
+            <LazyIntersection fallback={<CarouselSkeleton cards={3} cardHeight={350} />} minHeight={350}>
+              <StoriesCarousel stories={homeData.stories as HomeData['stories']} />
+            </LazyIntersection>
 
-      <LazyIntersection fallback={<SectionSkeleton height={200} />} minHeight={200}>
-        <NumbersBand numbers={homeData.numbers} />
-      </LazyIntersection>
+            <LazyIntersection fallback={<SectionSkeleton height={200} />} minHeight={200}>
+              <NumbersBand numbers={homeData.numbers} />
+            </LazyIntersection>
 
-      <LazyIntersection fallback={<SectionSkeleton height={250} />} minHeight={250}>
-        <SupportCta cta={homeData.support.cta} />
-      </LazyIntersection>
+            <LazyIntersection fallback={<SectionSkeleton height={250} />} minHeight={250}>
+              <SupportCta cta={homeData.support.cta} />
+            </LazyIntersection>
 
-      <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>
-        <FaqsSection faqs={homeData.faqs} />
-      </LazyIntersection>
+            <LazyIntersection fallback={<SectionSkeleton height={400} />} minHeight={400}>
+              <FaqsSection faqs={homeData.faqs} />
+            </LazyIntersection>
+          </>
+        )}
+      </DataLoadingState>
     </main>
   )
 }
+
+HomePage.displayName = 'HomePage'

@@ -2,9 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Box, Container, Grid } from '@mui/material'
 import { CTAButton } from '@/components/Buttons'
-import { LazyIntersection, Section, SectionHeading, SEO } from '@/components/Layouts'
+import { DataLoadingState, LazyIntersection, Section, SectionHeading, SEO } from '@/components/Layouts'
 import { useI18n } from '@/hooks'
-import storiesData from '@/mocks/stories.json'
 import { StoryAchievements } from '../components/StoryAchievements'
 import { StoryBottomCta } from '../components/StoryBottomCta'
 import { StoryHero } from '../components/StoryHero'
@@ -12,18 +11,26 @@ import { StoryImpactMetrics } from '../components/StoryImpactMetrics'
 import { StoryNarrative } from '../components/StoryNarrative'
 import { StoryProfileCard } from '../components/StoryProfileCard'
 import { StoryPullQuote } from '../components/StoryPullQuote'
+import { useStoryById } from '../hooks/useStories'
 import type { Story } from '../types/stories.types'
 import { getStoryCoverImageUrl } from '../utils/storyCoverImage'
-
-const typedStoriesData = storiesData as Story[]
 
 export const StoryDetailPage: React.FC = () => {
   const { storyId } = useParams<{ storyId: string }>()
   const { t } = useI18n()
+  const { data: storyData, isLoading, error } = useStoryById(storyId ?? '')
 
-  const story = typedStoriesData.find(s => s.id === storyId)
+  if (isLoading) {
+    return (
+      <DataLoadingState isLoading error={null}>
+        {null}
+      </DataLoadingState>
+    )
+  }
 
-  if (!story) {
+  const story = storyData as Story | null | undefined
+
+  if (error || !story) {
     return (
       <Section sx={{ py: 12, textAlign: 'center' }}>
         <SectionHeading level={2}>{t('common:stories.detail.notFound')}</SectionHeading>
@@ -35,9 +42,9 @@ export const StoryDetailPage: React.FC = () => {
   const displayName = story.name ?? story.title
 
   return (
-    <Box>
+    <Box component="main">
       <SEO
-        title={`${displayName} — TechLabs Success Story`}
+        title={`${displayName} - TechLabs Success Story`}
         description={story.excerpt}
         keywords={`${displayName}, ${story.trackLabel}, ${story.company}, TechLabs, success story`}
         image={getStoryCoverImageUrl(story)}
@@ -61,7 +68,7 @@ export const StoryDetailPage: React.FC = () => {
             {/* Right: storytelling content */}
             <Grid size={{ xs: 12, md: 8 }}>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-                {/* Pull quote — above the fold */}
+                {/* Pull quote, above the fold */}
                 {story.quote && (
                   <StoryPullQuote
                     quote={story.quote}
@@ -84,9 +91,11 @@ export const StoryDetailPage: React.FC = () => {
                 )}
 
                 {/* Achievements */}
-                <LazyIntersection minHeight={200}>
-                  <StoryAchievements achievements={story.achievements} />
-                </LazyIntersection>
+                {story.achievements && story.achievements.length > 0 && (
+                  <LazyIntersection minHeight={200}>
+                    <StoryAchievements achievements={story.achievements} />
+                  </LazyIntersection>
+                )}
               </Box>
             </Grid>
           </Grid>

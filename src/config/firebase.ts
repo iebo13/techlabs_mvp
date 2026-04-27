@@ -1,12 +1,6 @@
-// Import the functions you need from the SDKs you need
-import { getAnalytics } from 'firebase/analytics'
-import { initializeApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
-import { getStorage } from 'firebase/storage'
+import { type Analytics, getAnalytics, isSupported, logEvent as firebaseLogEvent } from 'firebase/analytics'
+import { type FirebaseApp, getApps, initializeApp } from 'firebase/app'
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -17,19 +11,47 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 }
 
-// Initialize Firebase
-const fireBaseApp = initializeApp(firebaseConfig)
+const hasRequiredConfig = Boolean(firebaseConfig.apiKey && firebaseConfig.appId && firebaseConfig.measurementId)
 
-// Initialize Analytics only in production and if measurementId exists
-const analytics = import.meta.env.PROD && firebaseConfig.measurementId ? getAnalytics(fireBaseApp) : null
+const analyticsEnabled = hasRequiredConfig && (import.meta.env.PROD || import.meta.env.VITE_ENABLE_ANALYTICS === 'true')
 
-// Initialize Firebase Auth
-const auth = getAuth(fireBaseApp)
+let firebaseApp: FirebaseApp | null = null
+let analyticsPromise: Promise<Analytics | null> | null = null
 
-// Initialize Firestore
-const db = getFirestore(fireBaseApp)
+const getFirebaseApp = (): FirebaseApp | null => {
+  if (!hasRequiredConfig) return null
+  if (firebaseApp) return firebaseApp
 
-// Initialize Firebase Storage
-const storage = getStorage(fireBaseApp)
+  firebaseApp = getApps()[0] ?? initializeApp(firebaseConfig)
 
-export { fireBaseApp, analytics, auth, db, storage }
+  return firebaseApp
+}
+
+export const getAnalyticsInstance = (): Promise<Analytics | null> => {
+  if (!analyticsEnabled) return Promise.resolve(null)
+
+  if (!analyticsPromise) {
+    analyticsPromise = (async () => {
+      const supported = await isSupported()
+      const app = getFirebaseApp()
+
+      if (!supported || !app) return null
+
+      return getAnalytics(app)
+    })().catch(() => null)
+  }
+
+  return analyticsPromise
+}
+
+export const logAnalyticsEvent = async (eventName: string, params?: Record<string, unknown>): Promise<void> => {
+  const analytics = await getAnalyticsInstance()
+
+  if (!analytics) return
+
+  firebaseLogEvent(analytics, eventName, params)
+}
+
+export const initializeAnalytics = (): void => {
+  void getAnalyticsInstance()
+}

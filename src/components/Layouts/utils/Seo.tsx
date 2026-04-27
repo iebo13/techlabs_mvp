@@ -74,3 +74,5 @@ export const SEO: React.FC<SEOProps> = ({
     </Helmet>
   )
 }
+
+SEO.displayName = 'SEO'

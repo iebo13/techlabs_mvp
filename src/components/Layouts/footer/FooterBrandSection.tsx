@@ -1,11 +1,8 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
-import { useI18n } from '@/hooks'
+import { Box } from '@mui/material'
 import { Logo } from '../navigation/Logo'
 
 export const FooterBrandSection: React.FC = () => {
-  const { t } = useI18n()
-
   return (
     <Box
       sx={{
@@ -15,12 +12,9 @@ export const FooterBrandSection: React.FC = () => {
         flex: 1,
         py: { xs: 2, md: 0 },
       }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-        <Logo />
-        <Typography variant="body1" color="text.secondary" sx={{ p: 0 }}>
-          {t('footer.city')}
-        </Typography>
-      </Box>
+      <Logo />
     </Box>
   )
 }
+
+FooterBrandSection.displayName = 'FooterBrandSection'

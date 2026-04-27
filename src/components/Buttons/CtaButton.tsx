@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, type ButtonProps, Box, Typography, useTheme, type SxProps, type Theme } from '@mui/material'
+import { createFocusRing } from '@/theme'
 
 type CTAButtonStyle = 'default' | 'track-chooser'
 
@@ -46,10 +47,7 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
   const getButtonStyles = () => {
     const baseStyles = {
       textTransform: 'none' as const,
-      '&:focus-visible': {
-        outline: `2px solid ${theme.palette.primary.main}`,
-        outlineOffset: 2,
-      },
+      '&:focus-visible': createFocusRing(theme),
     }
 
     if (ctaStyle === 'track-chooser') {
@@ -185,3 +183,5 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
 
   return renderButton(buttonElement)
 }
+
+CTAButton.displayName = 'CTAButton'

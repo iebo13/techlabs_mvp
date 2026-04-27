@@ -3,6 +3,7 @@
  */
 import '@testing-library/jest-dom'
 import { CssBaseline, ThemeProvider } from '@mui/material'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { HelmetProvider } from 'react-helmet-async'
@@ -11,6 +12,8 @@ import { theme } from '@/theme'
 import { EventDetailPage } from './EventDetailPage'
 
 jest.mock('@/components/Layouts', () => ({
+  DataLoadingState: ({ children, isLoading }: { children: React.ReactNode; isLoading: boolean }) =>
+    isLoading ? <div>Loading...</div> : <div>{children}</div>,
   LazyIntersection: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
   Section: ({
     children,
@@ -64,18 +67,27 @@ jest.mock('@/hooks', () => ({
   }),
 }))
 
+const createTestQueryClient = () =>
+  new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  })
+
 const renderAtSlug = (slug: string) => {
+  const queryClient = createTestQueryClient()
+
   return render(
-    <HelmetProvider>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <MemoryRouter initialEntries={[`/events/${slug}`]}>
-          <Routes>
-            <Route path="/events/:eventSlug" element={<EventDetailPage />} />
-          </Routes>
-        </MemoryRouter>
-      </ThemeProvider>
-    </HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <HelmetProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <MemoryRouter initialEntries={[`/events/${slug}`]}>
+            <Routes>
+              <Route path="/events/:eventSlug" element={<EventDetailPage />} />
+            </Routes>
+          </MemoryRouter>
+        </ThemeProvider>
+      </HelmetProvider>
+    </QueryClientProvider>
   )
 }
 

@@ -16,6 +16,13 @@
     "cta": {
       "joinTeam": "Join our team",
       "startLearning": "Start Learning"
+    },
+    "mobileDrawer": {
+      "tagline": "Learn to build your future · for free"
+    },
+    "sections": {
+      "explore": "Explore",
+      "getInvolved": "Get involved"
     }
   },
   "hero": {
@@ -82,19 +89,12 @@
     "cybersecurity": "Cybersecurity",
     "mobile": "Mobile Development",
     "card": {
-      "skillsTitle": "Skills You'll Learn",
-      "projectsTitle": "Projects You'll Build",
-      "careerPathsTitle": "Career Paths",
-      "applicationDetailsTitle": "Application Details",
-      "nextCohort": "Next Cohort",
-      "applicationDeadline": "Application Deadline",
-      "showLess": "Show Less",
-      "showDetails": "Show Details",
-      "applyNow": "Apply Now",
-      "showLessAriaLabel": "Show less details",
-      "showMoreAriaLabel": "Show more details",
+      "learnMore": "Explore track",
+      "durationFormat": "{{duration}} · {{format}}",
       "spotsLeft": "{{count}} spot left",
-      "spotsLeft_other": "{{count}} spots left"
+      "spotsLeft_other": "{{count}} spots left",
+      "applicationOpen": "Applications open",
+      "viewDetails": "View details for {{title}}"
     },
     "page": {
       "title": "Learning Tracks - TechLabs",
@@ -108,28 +108,296 @@
         "AI"
       ]
     },
+    "overview": {
+      "hero": {
+        "title": "Pick the track that fits your future",
+        "subtitle": "Four practical learning tracks, entirely free, part-time, and built around a local community of mentors and peers. Choose yours and start building."
+      },
+      "programPhases": {
+        "title": "Every track follows the same proven path",
+        "subtitle": "Whatever track you pick, the journey is structured the same way, from application to landing your first role.",
+        "phases": {
+          "application": {
+            "title": "Application & Selection",
+            "description": "Apply online with your background and goals. We select candidates based on motivation and potential, not prior experience.",
+            "duration": "2 weeks"
+          },
+          "foundation": {
+            "title": "Foundation Learning",
+            "description": "Build core skills through our online platform with support from mentors and peers.",
+            "duration": "8 weeks"
+          },
+          "project": {
+            "title": "Project Development",
+            "description": "Work on real-world projects that build your portfolio and demonstrate your skills.",
+            "duration": "6 weeks"
+          },
+          "career": {
+            "title": "Career Launch",
+            "description": "Get support with job applications, networking, and career planning.",
+            "duration": "4 weeks"
+          }
+        }
+      },
+      "whyTechlabs": {
+        "title": "Why learn with TechLabs",
+        "free": {
+          "title": "Completely free",
+          "body": "We are a non-profit. No tuition, no hidden fees, no income-share agreements, ever."
+        },
+        "community": {
+          "title": "Local community",
+          "body": "Meet regularly with mentors, tech leads, and a cohort of peers based in Düsseldorf."
+        },
+        "practical": {
+          "title": "Practical projects",
+          "body": "You build real projects from day one, the kind that earn a place on your portfolio."
+        }
+      },
+      "faq": {
+        "title": "Frequently asked questions",
+        "subtitle": "Everything you need to know before you apply.",
+        "items": [
+          {
+            "q": "Do I need prior experience to join?",
+            "a": "No. Our tracks are designed for motivated beginners. We select based on curiosity and commitment, not your CV."
+          },
+          {
+            "q": "Is it really free?",
+            "a": "Yes, completely. TechLabs is a non-profit funded by partners, sponsors, and the community. You pay nothing."
+          },
+          {
+            "q": "How much time does it take each week?",
+            "a": "Plan for around 10–15 hours per week: two evenings together with your cohort plus self-paced learning between sessions."
+          },
+          {
+            "q": "What language is the program in?",
+            "a": "Learning materials are mostly in English. Mentoring and community events run in both English and German."
+          },
+          {
+            "q": "Do I have to be in Düsseldorf?",
+            "a": "Our local chapter is based in Düsseldorf. Remote participation is possible, though most graduates tell us the local community is what makes it work."
+          },
+          {
+            "q": "What happens after I graduate?",
+            "a": "You finish with a portfolio project, a community of peers, and access to our partner network for job introductions and mentorship."
+          }
+        ]
+      },
+      "finalCta": {
+        "title": "Ready to start building?",
+        "body": "Applications open ahead of every cohort. Pick your track and apply, or reach out if you'd rather talk first.",
+        "primary": "Apply now",
+        "secondary": "Become a mentor"
+      }
+    },
+    "detail": {
+      "backToTracks": "Back to tracks",
+      "applicationOpen": "Applications open",
+      "metaSeparator": "·",
+      "sidebar": {
+        "duration": "Duration",
+        "format": "Format",
+        "nextCohort": "Next cohort",
+        "deadline": "Application deadline",
+        "spotsHeading": "Capacity",
+        "applyCta": "Apply to {{track}}",
+        "talkCta": "Talk to us"
+      },
+      "sections": {
+        "intro": {
+          "title": "About this track"
+        },
+        "persona": {
+          "title": "Who this track is for",
+          "subtitle": "Four kinds of learners who thrive here."
+        },
+        "curriculum": {
+          "title": "What you'll learn, week by week",
+          "subtitle": "A structured path from fundamentals to a finished project."
+        },
+        "techStack": {
+          "title": "Tools you'll master",
+          "subtitle": "The practical toolkit you'll use in every project and bring with you to your first role."
+        },
+        "projects": {
+          "title": "Projects you'll build",
+          "subtitle": "Real deliverables for your portfolio, not exercises that end in /dev/null."
+        },
+        "outcomes": {
+          "title": "Where this track takes you",
+          "subtitle": "Roles our graduates grow into, plus the community that helps them get there."
+        },
+        "stories": {
+          "title": "Graduates of this track"
+        },
+        "faq": {
+          "title": "Questions about this track"
+        }
+      },
+      "notFound": "We couldn't find that track."
+    },
     "items": {
       "web-dev": {
         "label": "Web Development",
         "description": "Learn modern web development with HTML, CSS, JavaScript, and popular frameworks. Build responsive websites and web applications.",
+        "tagline": "Ship real websites and apps, from your first line of HTML to a portfolio project you are proud of.",
+        "intro": [
+          "The Web Development track takes you from zero to shipping a full-stack web application. You start with HTML, CSS, and JavaScript fundamentals, then move into React and a Node.js backend.",
+          "Every week blends self-paced online learning with hands-on sessions alongside mentors in Düsseldorf. You leave with a deployed project, a strong GitHub presence, and the confidence to keep building on your own."
+        ],
         "duration": "6 months",
         "format": "Part-time, 2 evenings per week",
         "skills": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Git"],
         "projects": [
-          "Personal portfolio",
-          "E-commerce site",
-          "Social media app"
+          {
+            "title": "Personal portfolio",
+            "description": "Design and deploy a responsive portfolio that showcases your work, your story, and how to hire you.",
+            "skills": ["HTML", "CSS", "Responsive design"]
+          },
+          {
+            "title": "Full-stack web app",
+            "description": "Build a small SaaS-style product end-to-end, authentication, database, and a React frontend.",
+            "skills": ["React", "Node.js", "REST APIs"]
+          },
+          {
+            "title": "Capstone team project",
+            "description": "Team up with peers from other tracks to ship a real product for a community partner.",
+            "skills": ["Collaboration", "Git workflows", "Deployment"]
+          }
         ],
         "careerPaths": [
           "Frontend Developer",
           "Full-stack Developer",
           "Web Designer"
         ],
+        "personas": [
+          {
+            "title": "The career changer",
+            "body": "Coming from a non-tech background and looking for a structured, supportive on-ramp into web development.",
+            "icon": "🧭"
+          },
+          {
+            "title": "The curious builder",
+            "body": "You have a side-project idea and want to finally be able to build it without hiring a developer.",
+            "icon": "🛠️"
+          },
+          {
+            "title": "The student",
+            "body": "You are studying something else and want practical coding skills to complement your degree.",
+            "icon": "🎓"
+          },
+          {
+            "title": "The upskiller",
+            "body": "Already in tech-adjacent work and want to add real engineering skills to your toolkit.",
+            "icon": "🚀"
+          }
+        ],
+        "techStack": [
+          {
+            "name": "HTML5",
+            "icon": "📄"
+          },
+          {
+            "name": "CSS3",
+            "icon": "🎨"
+          },
+          {
+            "name": "JavaScript",
+            "icon": "✨"
+          },
+          {
+            "name": "React",
+            "icon": "⚛️"
+          },
+          {
+            "name": "Node.js",
+            "icon": "🟢"
+          },
+          {
+            "name": "Git",
+            "icon": "🌿"
+          },
+          {
+            "name": "Vite",
+            "icon": "⚡"
+          },
+          {
+            "name": "Vercel",
+            "icon": "▲"
+          }
+        ],
+        "curriculum": [
+          {
+            "title": "Foundations of the web",
+            "duration": "Weeks 1–4",
+            "outcomes": [
+              "Understand how the web works end to end",
+              "Build semantic, accessible HTML layouts",
+              "Style responsive interfaces with modern CSS"
+            ]
+          },
+          {
+            "title": "JavaScript & the DOM",
+            "duration": "Weeks 5–8",
+            "outcomes": [
+              "Work confidently with modern JavaScript",
+              "Manipulate the DOM and handle events",
+              "Use Git and GitHub as part of a daily workflow"
+            ]
+          },
+          {
+            "title": "React & component thinking",
+            "duration": "Weeks 9–14",
+            "outcomes": [
+              "Build UIs with components, props, and state",
+              "Consume REST APIs and handle async data",
+              "Structure medium-sized React applications"
+            ]
+          },
+          {
+            "title": "Backend & full-stack",
+            "duration": "Weeks 15–20",
+            "outcomes": [
+              "Design a small REST API with Node.js",
+              "Model and query a relational database",
+              "Deploy a full-stack application to production"
+            ]
+          },
+          {
+            "title": "Capstone project",
+            "duration": "Weeks 21–26",
+            "outcomes": [
+              "Ship a team project with a real user",
+              "Present your work to the TechLabs community",
+              "Leave with a portfolio piece that wins interviews"
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "q": "Do I need to have written code before?",
+            "a": "No. We start from HTML. What matters is that you are willing to put in steady hours every week."
+          },
+          {
+            "q": "Which framework will I learn?",
+            "a": "React. It is the most common choice on the European job market, and the concepts transfer to any other modern framework."
+          },
+          {
+            "q": "Will I build a real portfolio?",
+            "a": "Yes. You finish the track with at least three deployed projects, including a team capstone for a community partner."
+          }
+        ],
         "nextCohort": "March 2025"
       },
       "data-science": {
         "label": "Data Science",
         "description": "Master data analysis, machine learning, and statistical modeling. Work with real datasets and build predictive models.",
+        "tagline": "Turn raw data into decisions, with Python, statistics, and machine learning that actually ships.",
+        "intro": [
+          "The Data Science track takes you from spreadsheets to production-ready notebooks. You learn Python, statistics, and the core machine-learning workflow on real, messy datasets.",
+          "You finish by building a data product end-to-end, from question to cleaned data, to model, to a clear story you can present to a non-technical audience."
+        ],
         "duration": "8 months",
         "format": "Part-time, 2 evenings per week",
         "skills": [
@@ -141,20 +409,154 @@
           "Data Visualization"
         ],
         "projects": [
-          "Customer segmentation",
-          "Sales forecasting",
-          "Sentiment analysis"
+          {
+            "title": "Exploratory data analysis",
+            "description": "Pick a public dataset, clean it, and tell a clear story with charts and numbers.",
+            "skills": ["Python", "Pandas", "Visualization"]
+          },
+          {
+            "title": "Predictive model",
+            "description": "Train, evaluate, and explain a supervised model for a real classification or regression problem.",
+            "skills": ["Scikit-learn", "Statistics", "Feature engineering"]
+          },
+          {
+            "title": "Capstone data product",
+            "description": "Ship an end-to-end data project for a community partner, from question to model to dashboard.",
+            "skills": ["SQL", "ML workflow", "Storytelling"]
+          }
         ],
         "careerPaths": [
           "Data Analyst",
           "Data Scientist",
           "Business Intelligence"
         ],
+        "personas": [
+          {
+            "title": "The spreadsheet power user",
+            "body": "You already live in Excel and are ready to break out with Python and real statistics.",
+            "icon": "📊"
+          },
+          {
+            "title": "The researcher",
+            "body": "Coming from academia or research and want industry-ready data skills.",
+            "icon": "🔬"
+          },
+          {
+            "title": "The career changer",
+            "body": "New to tech entirely and want a structured path into an analytical role.",
+            "icon": "🧭"
+          },
+          {
+            "title": "The domain expert",
+            "body": "You know your industry deeply and want data skills to make better decisions inside it.",
+            "icon": "🧠"
+          }
+        ],
+        "techStack": [
+          {
+            "name": "Python",
+            "icon": "🐍"
+          },
+          {
+            "name": "Pandas",
+            "icon": "🐼"
+          },
+          {
+            "name": "NumPy",
+            "icon": "🔢"
+          },
+          {
+            "name": "Scikit-learn",
+            "icon": "📈"
+          },
+          {
+            "name": "SQL",
+            "icon": "🗃️"
+          },
+          {
+            "name": "Matplotlib",
+            "icon": "📉"
+          },
+          {
+            "name": "Jupyter",
+            "icon": "📓"
+          },
+          {
+            "name": "Git",
+            "icon": "🌿"
+          }
+        ],
+        "curriculum": [
+          {
+            "title": "Python & data fundamentals",
+            "duration": "Weeks 1–5",
+            "outcomes": [
+              "Write clean, idiomatic Python",
+              "Load, clean, and reshape data with Pandas",
+              "Work fluently inside Jupyter notebooks"
+            ]
+          },
+          {
+            "title": "Statistics & SQL",
+            "duration": "Weeks 6–10",
+            "outcomes": [
+              "Understand distributions, tests, and uncertainty",
+              "Query relational databases with SQL",
+              "Build a reproducible analytical workflow"
+            ]
+          },
+          {
+            "title": "Machine learning foundations",
+            "duration": "Weeks 11–18",
+            "outcomes": [
+              "Train and evaluate supervised models",
+              "Engineer features from messy real-world data",
+              "Reason about overfitting, bias, and metrics"
+            ]
+          },
+          {
+            "title": "Communication & visualization",
+            "duration": "Weeks 19–24",
+            "outcomes": [
+              "Tell a clear story with data",
+              "Design charts that help, not confuse",
+              "Present findings to non-technical stakeholders"
+            ]
+          },
+          {
+            "title": "Capstone data product",
+            "duration": "Weeks 25–32",
+            "outcomes": [
+              "Ship a full data project for a real partner",
+              "Deploy a notebook or dashboard others can use",
+              "Walk away with a piece you can show in interviews"
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "q": "How much math do I need?",
+            "a": "Comfort with high-school maths is enough. We revisit the statistics and linear algebra you need along the way."
+          },
+          {
+            "q": "Is this more analyst or scientist?",
+            "a": "Both. You leave strong enough in SQL and visualization to land analyst roles, and strong enough in ML to grow into data scientist positions."
+          },
+          {
+            "q": "Do I need my own GPU?",
+            "a": "No. Everything we do runs on a normal laptop, and we use free cloud notebooks for anything heavier."
+          }
+        ],
         "nextCohort": "April 2025"
       },
       "product-design": {
         "label": "Product Design",
         "description": "Design user-centered digital products using modern design tools and methodologies. Learn UX/UI principles and prototyping.",
+        "tagline": "Design digital products people actually use, from research to pixel-perfect interface.",
+        "intro": [
+          "The Product Design track teaches the full loop of modern product design: user research, information architecture, interaction design, and visual design, all in Figma.",
+          "You work on real briefs with real users, learning to defend your decisions with evidence instead of opinion, and leave with a portfolio of case studies that hiring managers recognize."
+        ],
         "duration": "6 months",
         "format": "Part-time, 2 evenings per week",
         "skills": [
@@ -164,13 +566,151 @@
           "Prototyping",
           "Design Systems"
         ],
-        "projects": ["Mobile app design", "Website redesign", "Design system"],
+        "projects": [
+          {
+            "title": "Mobile app redesign",
+            "description": "Pick an existing app, identify its biggest usability problem, and design a better experience.",
+            "skills": ["Research", "Wireframing", "Prototyping"]
+          },
+          {
+            "title": "Design system",
+            "description": "Build a small, consistent design system with tokens, components, and documentation.",
+            "skills": ["Figma", "Components", "Documentation"]
+          },
+          {
+            "title": "Capstone product",
+            "description": "Ship a complete product, from user research to high-fidelity prototype, for a community partner.",
+            "skills": ["UX research", "UI design", "Hand-off"]
+          }
+        ],
         "careerPaths": ["UX Designer", "UI Designer", "Product Designer"],
+        "personas": [
+          {
+            "title": "The creative switcher",
+            "body": "Coming from graphic design, illustration, or adjacent fields and want to move into product.",
+            "icon": "🎨"
+          },
+          {
+            "title": "The curious researcher",
+            "body": "You love talking to users and want to turn that into a craft.",
+            "icon": "🔍"
+          },
+          {
+            "title": "The PM or founder",
+            "body": "You already ship products and want to make better design decisions yourself.",
+            "icon": "🧩"
+          },
+          {
+            "title": "The career changer",
+            "body": "New to tech and drawn to the intersection of empathy, craft, and problem solving.",
+            "icon": "🧭"
+          }
+        ],
+        "techStack": [
+          {
+            "name": "Figma",
+            "icon": "🖌️"
+          },
+          {
+            "name": "FigJam",
+            "icon": "🧠"
+          },
+          {
+            "name": "User Research",
+            "icon": "🔍"
+          },
+          {
+            "name": "Wireframing",
+            "icon": "🧱"
+          },
+          {
+            "name": "Prototyping",
+            "icon": "🔗"
+          },
+          {
+            "name": "Design Systems",
+            "icon": "🧩"
+          },
+          {
+            "name": "Accessibility",
+            "icon": "♿"
+          },
+          {
+            "name": "Hand-off",
+            "icon": "🤝"
+          }
+        ],
+        "curriculum": [
+          {
+            "title": "Design thinking foundations",
+            "duration": "Weeks 1–3",
+            "outcomes": [
+              "Understand the modern product design process",
+              "Frame problems from a user perspective",
+              "Run your first guided user interview"
+            ]
+          },
+          {
+            "title": "Research & synthesis",
+            "duration": "Weeks 4–7",
+            "outcomes": [
+              "Run qualitative and quantitative research",
+              "Synthesize insights into usable artifacts",
+              "Translate findings into design opportunities"
+            ]
+          },
+          {
+            "title": "Interaction & UI design",
+            "duration": "Weeks 8–14",
+            "outcomes": [
+              "Design clear, accessible interfaces in Figma",
+              "Apply visual hierarchy, typography, and color well",
+              "Work with components and auto layout fluently"
+            ]
+          },
+          {
+            "title": "Prototyping & testing",
+            "duration": "Weeks 15–20",
+            "outcomes": [
+              "Build interactive prototypes users can actually use",
+              "Run usability tests and iterate on findings",
+              "Hand designs off to engineers without friction"
+            ]
+          },
+          {
+            "title": "Capstone case study",
+            "duration": "Weeks 21–26",
+            "outcomes": [
+              "Ship a real product for a community partner",
+              "Write a case study worth hiring for",
+              "Present your work to the TechLabs community"
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "q": "Do I need to be good at drawing?",
+            "a": "No. Product design is about thinking and systems. Good taste helps; drawing skill does not."
+          },
+          {
+            "q": "Will I build a portfolio?",
+            "a": "Yes. You leave with at least two full case studies and one shipped capstone project."
+          },
+          {
+            "q": "Which tool do you teach?",
+            "a": "Figma throughout. The methods transfer cleanly to any modern design tool."
+          }
+        ],
         "nextCohort": "May 2025"
       },
       "ai": {
         "label": "Artificial Intelligence",
         "description": "Explore AI fundamentals, machine learning algorithms, and neural networks. Build intelligent systems and applications.",
+        "tagline": "Go beyond the hype, understand how modern AI works, and build something real with it.",
+        "intro": [
+          "The AI track is for people who want to understand the machinery behind modern AI, not just call an API. You cover the machine-learning foundations, then dive into neural networks, NLP, and generative models.",
+          "You finish by building and deploying an AI-powered application, with a clear view of what these systems can and cannot do, and how to use them responsibly."
+        ],
         "duration": "8 months",
         "format": "Part-time, 2 evenings per week",
         "skills": [
@@ -181,11 +721,144 @@
           "NLP",
           "Computer Vision"
         ],
-        "projects": ["Chatbot", "Image classifier", "Recommendation system"],
+        "projects": [
+          {
+            "title": "Classic ML project",
+            "description": "Frame a real problem, build features, train a baseline, and beat it with a better model.",
+            "skills": ["Python", "Scikit-learn", "Evaluation"]
+          },
+          {
+            "title": "Neural network build",
+            "description": "Train a small neural network from scratch on text or image data, and understand every line.",
+            "skills": ["PyTorch", "Training loops", "Debugging"]
+          },
+          {
+            "title": "Capstone AI app",
+            "description": "Build and deploy an LLM-powered application for a real community partner.",
+            "skills": ["LLMs", "APIs", "Product thinking"]
+          }
+        ],
         "careerPaths": [
           "AI Engineer",
           "Machine Learning Engineer",
           "Research Scientist"
+        ],
+        "personas": [
+          {
+            "title": "The curious engineer",
+            "body": "You already code and want to understand how modern AI systems really work.",
+            "icon": "🤖"
+          },
+          {
+            "title": "The data scientist",
+            "body": "Coming from analytics and ready to go deeper into deep learning and NLP.",
+            "icon": "📈"
+          },
+          {
+            "title": "The researcher",
+            "body": "From a STEM background and want industry-relevant AI skills on top of your theory.",
+            "icon": "🔬"
+          },
+          {
+            "title": "The product thinker",
+            "body": "You want to ship AI-powered features and need to know what is real versus marketing.",
+            "icon": "🧩"
+          }
+        ],
+        "techStack": [
+          {
+            "name": "Python",
+            "icon": "🐍"
+          },
+          {
+            "name": "NumPy",
+            "icon": "🔢"
+          },
+          {
+            "name": "PyTorch",
+            "icon": "🔥"
+          },
+          {
+            "name": "TensorFlow",
+            "icon": "🧠"
+          },
+          {
+            "name": "Hugging Face",
+            "icon": "🤗"
+          },
+          {
+            "name": "LangChain",
+            "icon": "🔗"
+          },
+          {
+            "name": "Jupyter",
+            "icon": "📓"
+          },
+          {
+            "name": "Git",
+            "icon": "🌿"
+          }
+        ],
+        "curriculum": [
+          {
+            "title": "Math & Python for AI",
+            "duration": "Weeks 1–5",
+            "outcomes": [
+              "Refresh the linear algebra and calculus that matter",
+              "Write clean, numerical Python",
+              "Set up a reproducible ML workflow"
+            ]
+          },
+          {
+            "title": "Classic machine learning",
+            "duration": "Weeks 6–11",
+            "outcomes": [
+              "Understand core supervised and unsupervised methods",
+              "Build, evaluate, and tune baseline models",
+              "Reason about bias, variance, and generalisation"
+            ]
+          },
+          {
+            "title": "Deep learning foundations",
+            "duration": "Weeks 12–18",
+            "outcomes": [
+              "Train neural networks from scratch in PyTorch",
+              "Understand backpropagation and optimisation",
+              "Apply deep learning to text and images"
+            ]
+          },
+          {
+            "title": "NLP & generative AI",
+            "duration": "Weeks 19–26",
+            "outcomes": [
+              "Use modern LLMs responsibly and effectively",
+              "Build retrieval-augmented generation pipelines",
+              "Fine-tune and evaluate open-source models"
+            ]
+          },
+          {
+            "title": "Capstone AI application",
+            "duration": "Weeks 27–32",
+            "outcomes": [
+              "Ship an AI-powered product for a partner",
+              "Reason about safety, evaluation, and limits",
+              "Present your work to the TechLabs community"
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "q": "Do I need to know Python already?",
+            "a": "It helps, but we revisit the Python you need in the first module. What matters is comfort with basic programming."
+          },
+          {
+            "q": "Will I train large models?",
+            "a": "You will train small ones from scratch and fine-tune pretrained ones. We focus on understanding, not compute budget."
+          },
+          {
+            "q": "Is this about LLMs only?",
+            "a": "No. We cover classic ML, deep learning, and modern LLMs, so you understand how we got here."
+          }
         ],
         "nextCohort": "June 2025"
       }
@@ -203,6 +876,76 @@
       "description": "Learn about TechLabs mission to provide free tech education, our program approach, timeline, team, and frequently asked questions.",
       "keywords": "about techlabs, mission, program, team, timeline, FAQ, tech education",
       "tags": ["about", "mission", "program", "team", "timeline", "FAQ"]
+    },
+    "heroSection": {
+      "tagline": "We Build. Digital. Shapers.",
+      "subtitle": "A volunteer-driven nonprofit teaching tech skills for free since 2018.",
+      "cta": "Become a Digital Shaper",
+      "stats": {
+        "shapers": "Digital Shapers",
+        "cities": "Cities across Europe",
+        "mentors": "Volunteer Mentors",
+        "completionRate": "Completion Rate"
+      }
+    },
+    "approachSection": {
+      "title": "What Makes Us Different",
+      "subtitle": "Three things you won't find at a paid bootcamp.",
+      "free": {
+        "title": "Completely Free",
+        "description": "No tuition, no hidden fees, no income-share agreements. Ever. We're a non-profit funded by partners and the community."
+      },
+      "community": {
+        "title": "Local Community",
+        "description": "Learn alongside a cohort of peers, mentored by local volunteers who work in tech. Not an anonymous online course."
+      },
+      "projects": {
+        "title": "Real Projects",
+        "description": "Build a portfolio project with a team for a real challenge. Not toy exercises — work that earns a place on your CV."
+      }
+    },
+    "storySection": {
+      "title": "How It Started",
+      "hook": "In 2018, a group of students in Münster asked a simple question: why does learning tech skills have to cost thousands of euros?",
+      "body": "They couldn't find a good answer. So they built TechLabs — a volunteer-run program where anyone with motivation could learn web development, data science, or AI, completely free. No entrance exams, no tuition, no income-share agreements. Just a community of people helping each other grow.\n\nWhat started as a single cohort of 40 learners has become a movement across eight European cities. Over 2,500 Digital Shapers have graduated. The mentors are still volunteers. The program is still free. And the question that started it all still drives everything we do.",
+      "quote": {
+        "text": "I'd been rejected from three paid bootcamps I couldn't afford. TechLabs didn't ask for my bank statement — they asked what I wanted to build.",
+        "name": "Lena S.",
+        "role": "Digital Shaper, Batch #3 — now Junior Developer at SAP"
+      },
+      "timelineTitle": "Our Journey",
+      "milestones": [
+        {
+          "year": "2018",
+          "title": "Founded in Münster",
+          "description": "A group of students launched TechLabs with a simple idea: free, community-driven tech education for everyone."
+        },
+        {
+          "year": "2019",
+          "title": "First Cohort Graduates",
+          "description": "Our inaugural batch of 40 Digital Shapers completed the program — proving the model works."
+        },
+        {
+          "year": "2020",
+          "title": "Expanding Across Germany",
+          "description": "TechLabs grew to five cities as demand surged. The pandemic proved online-first learning was the future."
+        },
+        {
+          "year": "2022",
+          "title": "1,000 Digital Shapers",
+          "description": "We celebrated our thousandth graduate — from career changers to students to refugees building new futures."
+        },
+        {
+          "year": "2024",
+          "title": "Eight European Cities",
+          "description": "TechLabs expanded internationally, bringing free tech education to communities across Europe."
+        },
+        {
+          "year": "2026",
+          "title": "The Future",
+          "description": "Our vision: make high-quality tech education a right, not a privilege, in every major European city."
+        }
+      ]
     },
     "missionSection": {
       "title": "Empowering the Next Generation of Tech Leaders",
@@ -255,22 +998,30 @@
     },
     "teamSection": {
       "title": "Meet Our Team",
-      "description": "Our team combines expertise in education, technology, and community building to create the best possible learning experience.",
-      "members": {
-        "sarah": {
-          "name": "Dr. Sarah Chen",
-          "role": "Executive Director",
-          "bio": "Former Google engineer with 15+ years in tech education and community development."
+      "description": "TechLabs is built by volunteers who believe in the power of free tech education.",
+      "volunteerBadge": "Volunteer",
+      "cta": "Join Our Team",
+      "allDepartments": "All",
+      "departments": {
+        "leadership": {
+          "label": "Leadership",
+          "description": "Guiding TechLabs' strategic vision and ensuring our mission stays on track."
         },
-        "marcus": {
-          "name": "Marcus Weber",
-          "role": "Head of Learning",
-          "bio": "Curriculum designer with expertise in adult education and skill development."
+        "mentors": {
+          "label": "Mentors",
+          "description": "Industry professionals who volunteer their time to guide our learners through their tech journey."
         },
-        "lisa": {
-          "name": "Lisa Müller",
-          "role": "Community Manager",
-          "bio": "Passionate about building inclusive communities and connecting people through technology."
+        "tech": {
+          "label": "Tech",
+          "description": "Building and maintaining the platform that powers the TechLabs learning experience."
+        },
+        "marketing": {
+          "label": "Marketing",
+          "description": "Spreading the word and growing our community of digital shapers across Europe."
+        },
+        "operations": {
+          "label": "Operations",
+          "description": "Keeping everything running smoothly — from finances to logistics."
         }
       }
     },
@@ -292,9 +1043,34 @@
         "address": "TechLabs e.V., Königsallee 92, 40212 Düsseldorf, Germany"
       }
     },
+    "joinSection": {
+      "title": "Get Involved",
+      "subtitle": "There are many ways to become part of the TechLabs community.",
+      "shaper": {
+        "title": "Become a Digital Shaper",
+        "description": "Join our free program and learn web development, data science, or AI with a supportive community.",
+        "cta": "Explore Tracks"
+      },
+      "mentor": {
+        "title": "Mentor With Us",
+        "description": "Share your industry expertise and help shape the next generation of tech talent.",
+        "cta": "Get in Touch"
+      },
+      "partner": {
+        "title": "Partner With Us",
+        "description": "Collaborate with TechLabs to connect with motivated tech talent and support digital education.",
+        "cta": "Learn More"
+      }
+    },
     "faqSection": {
-      "title": "Frequently Asked Questions",
-      "moreQuestions": "More Questions"
+      "title": "FAQ",
+      "subtitle": "Find answers to the most common questions about our program, tracks, and community.",
+      "searchPlaceholder": "Search questions...",
+      "noResults": "No matching questions found. Try a different search term.",
+      "expandAll": "Expand all",
+      "collapseAll": "Collapse all",
+      "moreQuestions": "More Questions",
+      "contactCta": "Still have questions? Get in touch"
     }
   },
   "events": {
@@ -362,7 +1138,8 @@
     "carousel": {
       "previousAriaLabel": "Previous stories",
       "nextAriaLabel": "Next stories",
-      "ariaLabel": "Stories carousel"
+      "ariaLabel": "Stories carousel",
+      "goToSlide": "Go to slide {{index}}"
     },
     "page": {
       "title": "Our Graduates' Stories",
@@ -421,7 +1198,170 @@
   },
   "partners": {
     "title": "Our Partners",
-    "description": "Companies and organizations that support our mission"
+    "description": "Companies and organizations that support our mission",
+    "hero": {
+      "title": "Together, We Build the Next Generation of Tech Leaders",
+      "subtitle": "Join 20+ industry leaders and 330+ volunteers empowering diverse talent through hands-on tech education across 16 European locations.",
+      "cta": "Become a Partner",
+      "secondaryCta": "Why Partner With Us"
+    },
+    "grid": {
+      "title": "Our Partners",
+      "subtitle": "Together with our partners, we're building the next generation of tech leaders and innovators.",
+      "filterLabel": "Filter by Category",
+      "allCategories": "All Categories",
+      "showingCount": "Showing {{count}} of {{total}} partners"
+    },
+    "impact": {
+      "title": "Our Impact Together",
+      "metrics": {
+        "techies": {
+          "value": "4,000+",
+          "label": "Trained Techies"
+        },
+        "locations": {
+          "value": "16",
+          "label": "Locations in Europe"
+        },
+        "participants": {
+          "value": "650+",
+          "label": "Participants"
+        },
+        "projects": {
+          "value": "87",
+          "label": "Real-World Projects"
+        },
+        "satisfaction": {
+          "value": "4.6/5",
+          "label": "Satisfaction Rating"
+        },
+        "volunteers": {
+          "value": "330+",
+          "label": "Volunteer Members"
+        }
+      }
+    },
+    "whyPartner": {
+      "title": "Why Partner With Us",
+      "subtitle": "Partnering with TechLabs means more than sponsorship — it's an investment in the future of tech talent.",
+      "benefits": {
+        "fosterTalent": {
+          "title": "Foster Talent",
+          "description": "Help us foster young people's talent and make digital education accessible for all."
+        },
+        "talentPool": {
+          "title": "Access Talent Pool",
+          "description": "Access a pool of pre-selected talent with diverse technical skills ready to make an impact."
+        },
+        "solveChallenges": {
+          "title": "Solve Real Challenges",
+          "description": "Get solutions for your own internal challenges through real-world student projects."
+        },
+        "brandVisibility": {
+          "title": "Brand Visibility",
+          "description": "Your partnership is published on our social media channels and website, reaching thousands."
+        },
+        "diverseTalent": {
+          "title": "Diverse Talent",
+          "description": "46% female participants from STEM and business backgrounds — access truly diverse talent."
+        },
+        "scaleEurope": {
+          "title": "Scale Across Europe",
+          "description": "Expand your partnership across 16 TechLabs locations in 8 countries."
+        }
+      }
+    },
+    "partnershipModels": {
+      "title": "Partnership Models",
+      "subtitle": "Choose the partnership model that fits your goals and make a real impact.",
+      "eventPartnership": {
+        "title": "Event Partnership",
+        "subtitle": "Workshops with tech-enthusiastic emerging talent",
+        "description": "Co-create interactive workshops and events with our students, showcasing your expertise and culture.",
+        "benefits": [
+          "Co-create workshops with tech-enthusiastic talent",
+          "Set the framework and topics in coordination with TechLabs",
+          "TechLabs handles event organization and outreach",
+          "Partnership published across our social media channels"
+        ],
+        "cta": "Get Started"
+      },
+      "brandingSponsorship": {
+        "title": "Branding Sponsorship",
+        "subtitle": "Build awareness through TechLabs' strong network",
+        "description": "Increase your brand visibility through TechLabs' strong and growing network of tech talent.",
+        "benefits": [
+          "Become a semester or event sponsor",
+          "Your logo featured on our website and materials",
+          "Partnership announced on our social media channels",
+          "Visibility at TechLabs events and meetups"
+        ],
+        "cta": "Get Started"
+      }
+    },
+    "testimonials": {
+      "title": "What Our Partners Say",
+      "subtitle": "Hear from organizations making an impact with TechLabs.",
+      "items": [
+        {
+          "quote": "Working with TechLabs gave us access to motivated, skilled talent while contributing to digital education. The project results exceeded our expectations.",
+          "name": "Partner Representative",
+          "role": "Innovation Manager",
+          "company": "Industry Partner"
+        },
+        {
+          "quote": "The workshop collaboration was seamless. TechLabs students brought fresh perspectives and innovative approaches to our real-world challenges.",
+          "name": "Partner Representative",
+          "role": "HR Director",
+          "company": "Technology Partner"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Partnership FAQs",
+      "subtitle": "Common questions about partnering with TechLabs.",
+      "items": [
+        {
+          "q": "What types of partnerships do you offer?",
+          "a": "We offer two main models: Event Partnerships, where you co-create workshops and events with our students, and Branding Sponsorships, where your brand gains visibility across our network. Both can be customized to fit your goals."
+        },
+        {
+          "q": "Is there a minimum commitment?",
+          "a": "Partnerships are flexible and can range from a single event to a full semester engagement. We work with you to find the right level of involvement that matches your capacity and goals."
+        },
+        {
+          "q": "How do the workshops work?",
+          "a": "You define the topic and framework in coordination with TechLabs. We handle organization, outreach, and logistics. Your team leads the workshop with tech-enthusiastic students eager to learn from industry experts."
+        },
+        {
+          "q": "Can we expand our partnership to other locations?",
+          "a": "Absolutely! TechLabs operates in 16 locations across 8 European countries. Partnerships can start locally and scale to additional cities based on your reach and objectives."
+        },
+        {
+          "q": "What kind of students will we work with?",
+          "a": "Our participants come from STEM and business backgrounds, with 46% female representation. They are pre-selected, motivated individuals learning Data Science, AI, Web Development, and UX Design."
+        },
+        {
+          "q": "How do I get started?",
+          "a": "Simply reach out through our contact form or email us. We'll schedule an introductory call to understand your goals and propose a tailored partnership model."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Make an Impact?",
+      "subtitle": "Join our growing network of partners who are building the next generation of tech leaders and innovators.",
+      "benefits": [
+        "Access pre-selected, diverse tech talent",
+        "Co-create real-world projects with our students",
+        "Boost your brand across 16 European locations",
+        "Join a global network of forward-thinking organizations"
+      ],
+      "primaryCta": "Become a Partner",
+      "secondaryCta": "Contact Us"
+    },
+    "card": {
+      "visitPartner": "Visit {{name}} website (opens in new tab)"
+    }
   },
   "common": {
     "loading": "Loading...",

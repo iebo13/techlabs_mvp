@@ -4,9 +4,7 @@ import { Stack } from '@mui/material'
 import { Section } from '@/components/Layouts'
 import type { TrackKey } from '@/features/tracks'
 import { saveTrackSelection, loadTrackSelection, trackIdsToQueryParam } from '@/features/tracks/utils/tracksUtils'
-import homeData from '@/mocks/home.json'
-import { HomeDataSchema } from '@/mocks/schemas'
-import type { HomeData } from '../../types/homePage.type'
+import { useHomeData } from '../../hooks/useHomeData'
 import { AwardLine } from './AwardLine'
 import { HeroHeading } from './HeroHeading'
 import { TrackChooserSection } from './TrackChooserSection'
@@ -15,8 +13,9 @@ import { TrustStripSection } from './TrustStripSection'
 export const HeroSection: React.FC = () => {
   const [selectedTracks, setSelectedTracks] = useState<TrackKey[]>([])
   const navigate = useNavigate()
-  const validatedData: HomeData = HomeDataSchema.parse(homeData)
-  const { tracks, partners } = validatedData
+  const { data: homeData } = useHomeData()
+  const tracks = homeData?.tracks ?? []
+  const partners = homeData?.partners ?? []
 
   useEffect(() => {
     const savedTracks = loadTrackSelection()
@@ -35,8 +34,14 @@ export const HeroSection: React.FC = () => {
   }
 
   const handleStartLearning = () => {
+    if (selectedTracks.length === 1) {
+      navigate(`/tracks/${selectedTracks[0]}`)
+
+      return
+    }
+
     const queryParam = trackIdsToQueryParam(selectedTracks)
-    const route = selectedTracks.length > 0 ? `/tracks?pref=${queryParam}` : '/tracks'
+    const route = selectedTracks.length > 1 ? `/tracks?pref=${queryParam}` : '/tracks'
 
     navigate(route)
   }

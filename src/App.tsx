@@ -6,10 +6,12 @@ import { ThemeProvider as MuiThemeProvider, CssBaseline, Box } from '@mui/materi
 import { ErrorBoundary } from '@/components/ErrorHandling'
 import { SiteFooter, HeaderNav } from '@/components/Layouts'
 import { performanceMonitor } from '@/components/PerformanceMonitoring'
+import { initializeAnalytics } from '@/config/firebase'
 import { queryClient } from '@/config/http'
 import { initializeApp } from '@/config/preload'
 import { routes } from '@/config/routes'
 import { ThemeProvider, useTheme } from '@/contexts/ThemeContext'
+import { useAnalyticsPageView } from '@/hooks'
 import { initializeResourceHints } from '@/utils/resourceHints'
 
 const AccessibilityTester = lazy(() =>
@@ -22,6 +24,14 @@ const DebugPanel = lazy(() =>
   import('@/components/ErrorHandling/DebugPanel').then(module => ({ default: module.DebugPanel }))
 )
 
+const AnalyticsTracker: React.FC = () => {
+  useAnalyticsPageView()
+
+  return null
+}
+
+AnalyticsTracker.displayName = 'AnalyticsTracker'
+
 const AppContent: React.FC = () => {
   const { currentTheme } = useTheme()
 
@@ -32,6 +42,7 @@ const AppContent: React.FC = () => {
       performanceMonitor.init()
     }
 
+    initializeAnalytics()
     initializeApp()
   }, [])
 
@@ -42,6 +53,7 @@ const AppContent: React.FC = () => {
           <MuiThemeProvider theme={currentTheme}>
             <CssBaseline />
             <BrowserRouter>
+              <AnalyticsTracker />
               <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
                 <HeaderNav />
                 <Box component="main" id="main-content" sx={{ flex: 1 }} tabIndex={-1}>
